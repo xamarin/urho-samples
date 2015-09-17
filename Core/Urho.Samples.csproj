@@ -8,8 +8,8 @@
     <ProjectGuid>{792AF649-1BB3-4242-8BA3-61F67E357B18}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ClassLibrary1</RootNamespace>
-    <AssemblyName>ClassLibrary1</AssemblyName>
+    <RootNamespace>Urho.Samples</RootNamespace>
+    <AssemblyName>Urho.Samples</AssemblyName>
     <DefaultLanguage>en-US</DefaultLanguage>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{786C830F-07A1-408B-BD7F-6EE04809D6DB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -42,7 +42,7 @@
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Xml" />
     <Reference Include="Urho, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\MonoUrho.0.3.9\lib\portable-net45+win8+monoandroid+monotouch+Xamarin.iOS10\Urho.dll</HintPath>
+      <HintPath>..\packages\MonoUrho.0.4.10\lib\portable-net45+win8+monoandroid+monotouch+Xamarin.iOS10\Urho.dll</HintPath>
       <Private>True</Private>
     </Reference>
   </ItemGroup>

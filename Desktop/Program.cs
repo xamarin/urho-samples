@@ -10,7 +10,7 @@ namespace Urho.Samples.Desktop
 		static void Main(string[] args)
 		{
 			FindAvailableSamplesAndPrint();
-            System.Type selectedSampleType = null;
+			System.Type selectedSampleType = null;
 
 			if (args.Length > 0)
 				selectedSampleType = ParseSampleFromNumber(args[0]);
@@ -32,6 +32,10 @@ namespace Urho.Samples.Desktop
 			Console.ReadKey();
 		}
 
+		/// <summary>
+		/// Finds sample by number, e.g.:
+		/// 2 -> _02_HelloGui
+		/// </summary>
 		static System.Type ParseSampleFromNumber(string input)
 		{
 			int number;

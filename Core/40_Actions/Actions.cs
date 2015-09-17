@@ -1,4 +1,4 @@
-﻿namespace Urho
+﻿namespace Urho.Samples
 {
 	public class _40_Actions : Sample
 	{

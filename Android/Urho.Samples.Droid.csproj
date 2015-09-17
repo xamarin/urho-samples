@@ -56,14 +56,17 @@
     <Reference Include="System.Runtime" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Xml" />
-    <Reference Include="Urho, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
-      <HintPath>..\packages\MonoUrho.0.3.9\lib\MonoAndroid\Urho.dll</HintPath>
+    <Reference Include="Urho, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MonoUrho.0.4.10\lib\MonoAndroid\Urho.dll</HintPath>
+      <Private>True</Private>
     </Reference>
-    <Reference Include="Urho.Droid, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
-      <HintPath>..\packages\MonoUrho.0.3.9\lib\MonoAndroid\Urho.Droid.dll</HintPath>
+    <Reference Include="Urho.Droid, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MonoUrho.0.4.10\lib\MonoAndroid\Urho.Droid.dll</HintPath>
+      <Private>True</Private>
     </Reference>
-    <Reference Include="Urho.Droid.SdlBindings, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
-      <HintPath>..\packages\MonoUrho.0.3.9\lib\MonoAndroid\Urho.Droid.SdlBindings.dll</HintPath>
+    <Reference Include="Urho.Droid.SdlBindings, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MonoUrho.0.4.10\lib\MonoAndroid\Urho.Droid.SdlBindings.dll</HintPath>
+      <Private>True</Private>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -91,11 +94,6 @@
     <AndroidResource Include="Resources\layout\samples_list_text_view.axml" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Assets\" />
-    <Folder Include="Assets\CoreData\" />
-    <Folder Include="Assets\Data\" />
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="MonoUrhoReadme.txt" />
   </ItemGroup>
   <ItemGroup>
@@ -105,13 +103,6 @@
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
-  <Import Project="..\packages\MonoUrho.0.3.9\build\MonoAndroid\MonoUrho.targets" Condition="Exists('..\packages\MonoUrho.0.3.9\build\MonoAndroid\MonoUrho.targets')" />
-  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
-    <PropertyGroup>
-      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
-    </PropertyGroup>
-    <Error Condition="!Exists('..\packages\MonoUrho.0.3.9\build\MonoAndroid\MonoUrho.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\MonoUrho.0.3.9\build\MonoAndroid\MonoUrho.targets'))" />
-  </Target>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
      Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
@@ -1693,4 +1684,11 @@
       <Link>Assets\Data\Urho2D\imp\imp_headblink.png</Link>
     </AndroidAsset>
   </ItemGroup>
+  <Import Project="..\packages\MonoUrho.0.4.10\build\MonoAndroid\MonoUrho.targets" Condition="Exists('..\packages\MonoUrho.0.4.10\build\MonoAndroid\MonoUrho.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\MonoUrho.0.4.10\build\MonoAndroid\MonoUrho.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\MonoUrho.0.4.10\build\MonoAndroid\MonoUrho.targets'))" />
+  </Target>
 </Project>

@@ -1,14 +1,14 @@
 ﻿using System;
-using static Sample;
 
-namespace Urho
+namespace Urho.Samples
 {
 	/// <summary>
 	/// Vehicle component, responsible for physical movement according to controls.
 	/// </summary>
 	public class Vehicle : Component
 	{
-		private readonly ResourceCache cache;
+		readonly ResourceCache cache;
+
 		public const int CTRL_FORWARD = 1;
 		public const int CTRL_BACK = 2;
 		public const int CTRL_LEFT = 4;
