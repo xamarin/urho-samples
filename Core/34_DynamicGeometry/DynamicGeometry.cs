@@ -57,11 +57,11 @@ namespace Urho.Samples
 						unsafe
 						{
 							//TODO: avoid unsafe
-							Vector3* dest = (Vector3*) IntPtr.Add(vertexRawData, j*(int) vertexSize);
+							Vector3* dest = (Vector3*)IntPtr.Add(vertexRawData, j * (int)vertexSize);
 
-							dest->X = src.X * (1.0f + 0.1f*(float) Math.Sin(phase));
-							dest->Y = src.Y * (1.0f + 0.1f*(float) Math.Sin(phase + 60.0f));
-							dest->Z = src.Z * (1.0f + 0.1f*(float) Math.Sin(phase + 120.0f));
+							dest->X = src.X * (1.0f + 0.1f * (float)Math.Sin(phase));
+							dest->Y = src.Y * (1.0f + 0.1f * (float)Math.Sin(phase + 60.0f));
+							dest->Z = src.Z * (1.0f + 0.1f * (float)Math.Sin(phase + 120.0f));
 						}
 					}
 					buffer.Unlock();
@@ -119,7 +119,7 @@ namespace Urho.Samples
 				// Copy the original vertex positions
 				for (int i = 0; i < numVertices; ++i)
 				{
-					var src = (Vector3) Marshal.PtrToStructure(IntPtr.Add(vertexRawData,  i * (int)vertexSize), typeof (Vector3));
+					var src = (Vector3)Marshal.PtrToStructure(IntPtr.Add(vertexRawData, i * (int)vertexSize), typeof(Vector3));
 					originalVertices.Add(src);
 				}
 				buffer.Unlock();
@@ -144,7 +144,7 @@ namespace Urho.Samples
 				Log.Write(LogLevel.Error, "Failed to lock the model vertex buffer to get original vertices");
 				return;
 			}
-		
+
 			// Create StaticModels in the scene. Clone the model for each so that we can modify the vertex data individually
 			for (int y = -1; y <= 1; ++y)
 			{
@@ -164,7 +164,7 @@ namespace Urho.Samples
 			// Note: there are duplicated vertices to enable face normals. We will calculate normals programmatically
 			{
 				const uint numVertices = 18;
-				float[] vertexData = 
+				float[] vertexData =
 				{
 					// Position             Normal
 					0.0f, 0.5f, 0.0f,       0.0f, 0.0f, 0.0f,
@@ -214,13 +214,13 @@ namespace Urho.Samples
 
 					Vector3 edge1 = v1 - v2;
 					Vector3 edge2 = v1 - v3;
-					n1 = n2 = n3 =  Vector3.Normalize(Vector3.Cross(edge1, edge2));
+					n1 = n2 = n3 = Vector3.Normalize(Vector3.Cross(edge1, edge2));
 				}
 
-				Model fromScratchModel=new Model(Context);
-				VertexBuffer vb=new VertexBuffer(Context);
-				IndexBuffer ib=new IndexBuffer(Context);
-				Geometry geom=new Geometry(Context);
+				Model fromScratchModel = new Model(Context);
+				VertexBuffer vb = new VertexBuffer(Context, false);
+				IndexBuffer ib = new IndexBuffer(Context, false);
+				Geometry geom = new Geometry(Context);
 
 				// Shadowed buffer needed for raycasts to work, and so that data can be automatically restored on device loss
 				vb.SetShadowed(true);
@@ -232,12 +232,12 @@ namespace Urho.Samples
 				ib.SetData(indexData);
 
 				geom.SetVertexBuffer(0, vb, uint.MaxValue);
-				geom.IndexBuffer=ib;
+				geom.IndexBuffer = ib;
 				geom.SetDrawRange(PrimitiveType.TriangleList, 0, numVertices, true);
 
-				fromScratchModel.NumGeometries=1;
+				fromScratchModel.NumGeometries = 1;
 				fromScratchModel.SetGeometry(0, 0, geom);
-				fromScratchModel.BoundingBox=new BoundingBox(new Vector3(-0.5f, -0.5f, -0.5f), new Vector3(0.5f, 0.5f, 0.5f));
+				fromScratchModel.BoundingBox = new BoundingBox(new Vector3(-0.5f, -0.5f, -0.5f), new Vector3(0.5f, 0.5f, 0.5f));
 
 				Node node = scene.CreateChild("FromScratchObject");
 				node.Position = (new Vector3(0.0f, 3.0f, 0.0f));
