@@ -113,7 +113,8 @@ namespace Urho.Samples
 
 			AnimatedSprite2D animatedSprite = spriteNode2.CreateComponent<AnimatedSprite2D>();
 			// Set animation
-			animatedSprite.SetAnimation(animationSet, "idle", LoopMode2D.LM_DEFAULT);
+			animatedSprite.AnimationSet = animationSet;
+            animatedSprite.SetAnimation("idle", LoopMode2D.LM_DEFAULT);
 
 		}
 

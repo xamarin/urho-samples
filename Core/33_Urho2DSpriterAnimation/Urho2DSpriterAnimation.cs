@@ -80,7 +80,8 @@ namespace Urho.Samples
 			spriteNode = scene.CreateChild("SpriterAnimation");
 
 			AnimatedSprite2D animatedSprite = spriteNode.CreateComponent<AnimatedSprite2D>();
-			animatedSprite.SetAnimation(animationSet, AnimationNames[animationIndex], LoopMode2D.LM_DEFAULT);
+			animatedSprite.AnimationSet = animationSet;
+			animatedSprite.SetAnimation(AnimationNames[animationIndex], LoopMode2D.LM_DEFAULT);
 		}
 
 		protected override string JoystickLayoutPatch => JoystickLayoutPatches.WithZoomInAndOut;
