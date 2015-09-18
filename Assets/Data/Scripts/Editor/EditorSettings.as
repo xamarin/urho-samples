@@ -43,6 +43,15 @@ void UpdateEditorSettingsDialog()
     DropDownList@ mouseOrbitEdit = settingsDialog.GetChild("MouseOrbitEdit", true);
     mouseOrbitEdit.selection = mouseOrbitMode;
 
+    CheckBox@ middleMousePanToggle = settingsDialog.GetChild("MiddleMousePanToggle", true);
+    middleMousePanToggle.checked = mmbPanMode;
+
+    DropDownList@ hotKeysModeEdit = settingsDialog.GetChild("HotKeysModeEdit", true);
+    hotKeysModeEdit.selection = hotKeyMode;
+
+    DropDownList@ newNodeModeEdit = settingsDialog.GetChild("NewNodeModeEdit", true);
+    newNodeModeEdit.selection = newNodeMode;
+
     LineEdit@ distanceEdit = settingsDialog.GetChild("DistanceEdit", true);
     distanceEdit.text = String(newNodeDistance);
 
@@ -101,6 +110,13 @@ void UpdateEditorSettingsDialog()
 
     CheckBox@ frameLimiterToggle = settingsDialog.GetChild("FrameLimiterToggle", true);
     frameLimiterToggle.checked = engine.maxFps > 0;
+    
+    LineEdit@ cubemapPath = settingsDialog.GetChild("CubeMapGenPath", true);
+    cubemapPath.text = cubeMapGen_Path;
+    LineEdit@ cubemapName = settingsDialog.GetChild("CubeMapGenKey", true);
+    cubemapName.text = cubeMapGen_Name;
+    LineEdit@ cubemapSize = settingsDialog.GetChild("CubeMapGenSize", true);
+    cubemapSize.text = String(cubeMapGen_Size);
 
     if (!subscribedToEditorSettings)
     {
@@ -114,7 +130,10 @@ void UpdateEditorSettingsDialog()
         SubscribeToEvent(speedEdit, "TextFinished", "EditCameraSpeed");
         SubscribeToEvent(limitRotationToggle, "Toggled", "EditLimitRotation");
         SubscribeToEvent(mouseWheelCameraPositionToggle, "Toggled", "EditMouseWheelCameraPosition");
+        SubscribeToEvent(middleMousePanToggle, "Toggled", "EditMiddleMousePan");
         SubscribeToEvent(mouseOrbitEdit, "ItemSelected", "EditMouseOrbitMode");
+        SubscribeToEvent(hotKeysModeEdit, "ItemSelected", "EditHotKeyMode");
+        SubscribeToEvent(newNodeModeEdit, "ItemSelected", "EditNewNodeMode");
         SubscribeToEvent(distanceEdit, "TextChanged", "EditNewNodeDistance");
         SubscribeToEvent(distanceEdit, "TextFinished", "EditNewNodeDistance");
         SubscribeToEvent(moveStepEdit, "TextChanged", "EditMoveStep");
@@ -143,6 +162,14 @@ void UpdateEditorSettingsDialog()
         SubscribeToEvent(dynamicInstancingToggle, "Toggled", "EditDynamicInstancing");
         SubscribeToEvent(frameLimiterToggle, "Toggled", "EditFrameLimiter");
         SubscribeToEvent(settingsDialog.GetChild("CloseButton", true), "Released", "HideEditorSettingsDialog");
+        
+        SubscribeToEvent(cubemapPath, "TextChanged",  "EditCubemapPath");
+        SubscribeToEvent(cubemapPath, "TextFinished", "EditCubemapPath");
+        SubscribeToEvent(cubemapName, "TextChanged",  "EditCubemapName");
+        SubscribeToEvent(cubemapName, "TextFinished", "EditCubemapName");
+        SubscribeToEvent(cubemapSize, "TextChanged",  "EditCubemapSize");
+        SubscribeToEvent(cubemapSize, "TextFinished", "EditCubemapSize");
+        
         subscribedToEditorSettings = true;
     }
 }
@@ -211,6 +238,25 @@ void EditMouseOrbitMode(StringHash eventType, VariantMap& eventData)
 {
     DropDownList@ edit = eventData["Element"].GetPtr();
     mouseOrbitMode = edit.selection;
+}
+
+void EditMiddleMousePan(StringHash eventType, VariantMap& eventData)
+{
+    mmbPanMode = cast<CheckBox>(eventData["Element"].GetPtr()).checked;
+}
+
+void EditHotKeyMode(StringHash eventType, VariantMap& eventData)
+{
+    DropDownList@ edit = eventData["Element"].GetPtr();
+    hotKeyMode = edit.selection;
+    MessageBox("Please, restart Urho editor for applying changes.\n", " Notify ");
+    
+}
+
+void EditNewNodeMode(StringHash eventType, VariantMap& eventData)
+{
+    DropDownList@ edit = eventData["Element"].GetPtr();
+    newNodeMode = edit.selection;
 }
 
 void EditNewNodeDistance(StringHash eventType, VariantMap& eventData)
@@ -358,4 +404,22 @@ void EditFrameLimiter(StringHash eventType, VariantMap& eventData)
 {
     CheckBox@ edit = eventData["Element"].GetPtr();
     engine.maxFps = edit.checked ? 200 : 0;
+}
+
+void EditCubemapPath(StringHash eventType, VariantMap& eventData)
+{
+    LineEdit@ edit = eventData["Element"].GetPtr();
+    cubeMapGen_Path = edit.text;
+}
+
+void EditCubemapName(StringHash eventType, VariantMap& eventData)
+{
+    LineEdit@ edit = eventData["Element"].GetPtr();
+    cubeMapGen_Name = edit.text;
+}
+
+void EditCubemapSize(StringHash eventType, VariantMap& eventData)
+{
+    LineEdit@ edit = eventData["Element"].GetPtr();
+    cubeMapGen_Size = edit.text.ToInt();
 }

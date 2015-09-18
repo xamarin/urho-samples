@@ -276,19 +276,19 @@ UIElement@ CreateNumAttributeEditor(ListView@ list, Array<Serializable@>@ serial
 {
     UIElement@ parent = CreateAttributeEditorParent(list, info.name, index, subIndex);
     VariantType type = info.type;
-    uint numCoords = type - VAR_FLOAT + 1;
-    if (type == VAR_QUATERNION)
-        numCoords = 3;
-    else if (type == VAR_COLOR || type == VAR_INTRECT)
-        numCoords = 4;
-    else if (type == VAR_INTVECTOR2)
+    uint numCoords = 1;
+    if (type == VAR_VECTOR2 || type == VAR_INTVECTOR2)
         numCoords = 2;
+    if (type == VAR_VECTOR3 || type == VAR_QUATERNION)
+        numCoords = 3;
+    else if (type == VAR_VECTOR4 || type == VAR_COLOR || type == VAR_INTRECT)
+        numCoords = 4;
 
     for (uint i = 0; i < numCoords; ++i)
     {
         LineEdit@ attrEdit = CreateAttributeLineEdit(parent, serializables, index, subIndex);
         attrEdit.vars["Coordinate"] = i;
-        
+
         CreateDragSlider(attrEdit);
 
         SubscribeToEvent(attrEdit, "TextChanged", "EditAttribute");
@@ -379,22 +379,22 @@ UIElement@ CreateResourceRefAttributeEditor(ListView@ list, Array<Serializable@>
     {
         if ((picker.actions & ACTION_PICK) != 0)
         {
-            Button@ pickButton = CreateResourcePickerButton(container, serializables, index, subIndex, "Pick");
+            Button@ pickButton = CreateResourcePickerButton(container, serializables, index, subIndex, "smallButtonPick");
             SubscribeToEvent(pickButton, "Released", "PickResource");
         }
         if ((picker.actions & ACTION_OPEN) != 0)
         {
-            Button@ openButton = CreateResourcePickerButton(container, serializables, index, subIndex, "Open");
+            Button@ openButton = CreateResourcePickerButton(container, serializables, index, subIndex, "smallButtonOpen");
             SubscribeToEvent(openButton, "Released", "OpenResource");
         }
         if ((picker.actions & ACTION_EDIT) != 0)
         {
-            Button@ editButton = CreateResourcePickerButton(container, serializables, index, subIndex, "Edit");
+            Button@ editButton = CreateResourcePickerButton(container, serializables, index, subIndex, "smallButtonEdit");
             SubscribeToEvent(editButton, "Released", "EditResource");
         }
         if ((picker.actions & ACTION_TEST) != 0)
         {
-            Button@ testButton = CreateResourcePickerButton(container, serializables, index, subIndex, "Test");
+            Button@ testButton = CreateResourcePickerButton(container, serializables, index, subIndex, "smallButtonTest");
             SubscribeToEvent(testButton, "Released", "TestResource");
         }
     }
@@ -417,9 +417,14 @@ Button@ CreateResourcePickerButton(UIElement@ container, Array<Serializable@>@ s
     buttonText.style = "EditorAttributeText";
     buttonText.SetAlignment(HA_CENTER, VA_CENTER);
     buttonText.text = text;
+    buttonText.autoLocalizable = true;
 
     return button;
 }
+
+// Use internally for nested variant vector
+uint nestedSubIndex;
+Array<Variant>@ nestedVector;
 
 UIElement@ CreateAttributeEditor(ListView@ list, Array<Serializable@>@ serializables, const AttributeInfo&in info, uint index, uint subIndex, bool suppressedSeparatedLabel = false)
 {
@@ -430,7 +435,7 @@ UIElement@ CreateAttributeEditor(ListView@ list, Array<Serializable@>@ serializa
         parent = CreateStringAttributeEditor(list, serializables, info, index, subIndex);
     else if (type == VAR_BOOL)
         parent = CreateBoolAttributeEditor(list, serializables, info, index, subIndex);
-    else if ((type >= VAR_FLOAT && type <= VAR_VECTOR4) || type == VAR_QUATERNION || type == VAR_COLOR || type == VAR_INTVECTOR2 || type == VAR_INTRECT)
+    else if ((type >= VAR_FLOAT && type <= VAR_VECTOR4) || type == VAR_QUATERNION || type == VAR_COLOR || type == VAR_INTVECTOR2 || type == VAR_INTRECT || type == VAR_DOUBLE)
         parent = CreateNumAttributeEditor(list, serializables, info, index, subIndex);
     else if (type == VAR_INT)
         parent = CreateIntAttributeEditor(list, serializables, info, index, subIndex);
@@ -450,22 +455,61 @@ UIElement@ CreateAttributeEditor(ListView@ list, Array<Serializable@>@ serializa
     }
     else if (type == VAR_VARIANTVECTOR)
     {
-        VectorStruct@ vectorStruct = GetVectorStruct(serializables, index);
+        uint nameIndex = 0;
+        uint repeat = M_MAX_UNSIGNED;
+
+        VectorStruct@ vectorStruct;
+        Array<Variant>@ vector;
+        bool emptyNestedVector = false;
+        if (info.name.Contains('>'))
+        {
+            @vector = @nestedVector;
+            vectorStruct = GetNestedVectorStruct(serializables, info.name);
+            repeat = vector[subIndex].GetUInt();    // Nested VariantVector must have a predefined repeat count at the start of the vector
+            emptyNestedVector = repeat == 0;
+        }
+        else
+        {
+            @vector = serializables[0].attributes[index].GetVariantVector();
+            vectorStruct = GetVectorStruct(serializables, index);
+            subIndex = 0;
+        }
         if (vectorStruct is null)
             return null;
-        uint nameIndex = 0;
 
-        Array<Variant>@ vector = serializables[0].attributes[index].GetVariantVector();
-        for (uint i = 0; i < vector.length; ++i)
+        for (uint i = subIndex; i < vector.length; ++i)
         {
             // The individual variant in the vector is not an attribute of the serializable, the structure is reused for convenience
             AttributeInfo vectorInfo;
-            vectorInfo.name = vectorStruct.variableNames[nameIndex];
-            vectorInfo.type = vector[i].type;
+            vectorInfo.name = vectorStruct.variableNames[nameIndex++];
+            bool nested = vectorInfo.name.Contains('>');
+            if (nested)
+            {
+                vectorInfo.type = VAR_VARIANTVECTOR;
+                @nestedVector = @vector;
+            }
+            else
+                vectorInfo.type = vector[i].type;
             CreateAttributeEditor(list, serializables, vectorInfo, index, i);
-            ++nameIndex;
+            if (nested)
+            {
+                i = nestedSubIndex;
+                @nestedVector = null;
+            }
+            if (emptyNestedVector)
+            {
+                nestedSubIndex = i;
+                break;
+            }
             if (nameIndex >= vectorStruct.variableNames.length)
+            {
+                if (--repeat == 0)
+                {
+                    nestedSubIndex = i;
+                    break;
+                }
                 nameIndex = vectorStruct.restartIndex;
+            }
         }
     }
     else if (type == VAR_VARIANTMAP)
@@ -596,7 +640,7 @@ void LoadAttributeEditor(UIElement@ parent, const Variant&in value, const Attrib
     }
 
     VariantType type = info.type;
-    if (type == VAR_FLOAT || type == VAR_STRING || type == VAR_BUFFER)
+    if (type == VAR_FLOAT || type == VAR_DOUBLE || type == VAR_STRING || type == VAR_BUFFER)
         SetEditable(SetValue(parent.children[1], value.ToString(), sameValue), editable && sameValue);
     else if (type == VAR_BOOL)
         SetEditable(SetValue(parent.children[1], value.GetBool(), sameValue), editable && sameValue);
@@ -818,6 +862,8 @@ void SanitizeNumericalValue(VariantType type, String& value)
         value = String(value.ToFloat());
     else if (type == VAR_INT || type == VAR_INTRECT || type == VAR_INTVECTOR2)
         value = String(value.ToInt());
+    else if (type == VAR_DOUBLE)
+        value = String(value.ToDouble());
 }
 
 void GetEditorValue(UIElement@ parent, VariantType type, Array<String>@ enumNames, uint coordinate, Array<Variant>& values)
@@ -836,6 +882,8 @@ void GetEditorValue(UIElement@ parent, VariantType type, Array<String>@ enumName
     }
     else if (type == VAR_FLOAT)
         FillValue(values, Variant(attrEdit.text.ToFloat()));
+    else if (type == VAR_DOUBLE)
+        FillValue(values, Variant(attrEdit.text.ToDouble()));
     else if (type == VAR_QUATERNION)
     {
         float value = attrEdit.text.ToFloat();
@@ -977,22 +1025,22 @@ void EditAttribute(StringHash eventType, VariantMap& eventData)
 
     if (!dragEditAttribute)
     {
-	    // Store old values so that PostEditAttribute can create undo actions
-	    for (uint i = 0; i < serializables.length; ++i)
-		    oldValues.Push(serializables[i].attributes[index]);
+        // Store old values so that PostEditAttribute can create undo actions
+        for (uint i = 0; i < serializables.length; ++i)
+            oldValues.Push(serializables[i].attributes[index]);
     }
 
     StoreAttributeEditor(parent, serializables, index, subIndex, coordinate);
     for (uint i = 0; i < serializables.length; ++i)
-	    serializables[i].ApplyAttributes();
-    
+        serializables[i].ApplyAttributes();
+
     if (!dragEditAttribute)
     {
-	    // Do the editor post logic after attribute has been modified.
-	    PostEditAttribute(serializables, index, oldValues);
+        // Do the editor post logic after attribute has been modified.
+        PostEditAttribute(serializables, index, oldValues);
     }
 
-    // Update the stored script attributes if this is a ScriptInstance    
+    // Update the stored script attributes if this is a ScriptInstance
     EditScriptAttributes(serializables[0], index);
 
     inEditAttribute = false;
@@ -1000,7 +1048,7 @@ void EditAttribute(StringHash eventType, VariantMap& eventData)
     // If not an intermediate edit, reload the editor fields with validated values
     // (attributes may have interactions; therefore we load everything, not just the value being edited)
     if (!intermediateEdit)
-	    attributesDirty = true;
+        attributesDirty = true;
 }
 
 void LineDragBegin(StringHash eventType, VariantMap& eventData)
@@ -1121,7 +1169,7 @@ ResourcePicker@ resourcePicker = null;
 void InitResourcePicker()
 {
     // Fill resource picker data
-    Array<String> fontFilters = {"*.ttf", "*.otf", "*.fnt", "*.xml"};
+    Array<String> fontFilters = {"*.ttf", "*.otf", "*.fnt", "*.xml", "*.sdf"};
     Array<String> imageFilters = {"*.png", "*.jpg", "*.bmp", "*.tga"};
     Array<String> luaFileFilters = {"*.lua", "*.luc"};
     Array<String> scriptFilters = {"*.as", "*.asc"};
@@ -1193,7 +1241,7 @@ void PickResource(StringHash eventType, VariantMap& eventData)
     String lastPath = resourcePicker.lastPath;
     if (lastPath.empty)
         lastPath = sceneResourcePath;
-    CreateFileSelector("Pick " + resourcePicker.typeName, "OK", "Cancel", lastPath, resourcePicker.filters, resourcePicker.lastFilter);
+    CreateFileSelector(localization.Get("Pick ") + resourcePicker.typeName, "OK", "Cancel", lastPath, resourcePicker.filters, resourcePicker.lastFilter, false);
     SubscribeToEvent(uiFileSelector, "FileSelected", "PickResourceDone");
 }
 
@@ -1316,7 +1364,7 @@ String GetResourceNameFromFullName(const String&in resourceName)
             continue;
         return resourceName.Substring(resourceDirs[i].length);
     }
-    
+
     return ""; // Not found
 }
 
@@ -1374,7 +1422,7 @@ void TestResource(StringHash eventType, VariantMap& eventData)
     LineEdit@ attrEdit = button.parent.children[0];
 
     StringHash resourceType(attrEdit.vars[TYPE_VAR].GetUInt());
-    
+
     // For now only Animations can be tested
     StringHash animType("Animation");
     if (resourceType == animType)
@@ -1489,6 +1537,35 @@ void InitVectorStructs()
         "   NodeID"
     };
     vectorStructs.Push(VectorStruct("SplinePath", "Control Points", splinePathInstanceVariables, 1));
+
+    Array<String> crowdManagerFilterTypeVariables = {
+        "Query Filter Type Count",
+        "   Include Flags",
+        "   Exclude Flags",
+        "   >AreaCost"
+    };
+    vectorStructs.Push(VectorStruct("CrowdManager", "Filter Types", crowdManagerFilterTypeVariables, 1));
+
+    Array<String> crowdManagerAreaCostVariables = {
+        "   Area Count",
+        "      Cost"
+    };
+    vectorStructs.Push(VectorStruct("CrowdManager", "   >AreaCost", crowdManagerAreaCostVariables, 1));
+
+    Array<String> crowdManagerObstacleAvoidanceTypeVariables = {
+        "Obstacle Avoid. Type Count",
+        "   Velocity Bias",
+        "   Desired Velocity Weight",
+        "   Current Velocity Weight",
+        "   Side Bias Weight",
+        "   Time of Impact Weight",
+        "   Time Horizon",
+        "   Grid Size",
+        "   Adaptive Divs",
+        "   Adaptive Rings",
+        "   Adaptive Depth"
+    };
+    vectorStructs.Push(VectorStruct("CrowdManager", "Obstacle Avoidance Types", crowdManagerObstacleAvoidanceTypeVariables, 1));
 }
 
 VectorStruct@ GetVectorStruct(Array<Serializable@>@ serializables, uint index)
@@ -1502,6 +1579,16 @@ VectorStruct@ GetVectorStruct(Array<Serializable@>@ serializables, uint index)
     return null;
 }
 
+VectorStruct@ GetNestedVectorStruct(Array<Serializable@>@ serializables, const String&in name)
+{
+    for (uint i = 0; i < vectorStructs.length; ++i)
+    {
+        if (vectorStructs[i].componentTypeName == serializables[0].typeName && vectorStructs[i].attributeName == name)
+            return vectorStructs[i];
+    }
+    return null;
+}
+
 int GetAttributeIndex(Serializable@ serializable, const String&in attrName)
 {
     for (uint i = 0; i < serializable.numAttributes; ++i)
@@ -1509,6 +1596,6 @@ int GetAttributeIndex(Serializable@ serializable, const String&in attrName)
         if (serializable.attributeInfos[i].name.Compare(attrName, false) == 0)
             return i;
     }
-    
+
     return -1;
 }
