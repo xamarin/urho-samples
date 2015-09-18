@@ -118,13 +118,6 @@ namespace Urho.Samples
 							animCtrl.Stop(WALKING_ANI, 0.8f);
 					}
 				});
-
-			SubscribeToCrowdAgentFormation(args =>
-				{
-					var index = args.Index;
-					var size = args.Size;
-					var position = args.Position;
-				});
 		}
 
 		private void MoveCamera(float timeStep)
@@ -221,6 +214,7 @@ namespace Urho.Samples
 
 			if (Raycast(250.0f, out hitPos, out hitDrawable))
 			{
+				
 				DynamicNavigationMesh navMesh = scene.GetComponent<DynamicNavigationMesh>();
 				Vector3 pathPos = navMesh.FindNearestPoint(hitPos, new Vector3(1.0f, 1.0f, 1.0f));
 				Node jackGroup = scene.GetChild("Jacks", false);
@@ -350,7 +344,7 @@ namespace Urho.Samples
 			parameters.AdaptiveDivs = 7;
 			parameters.AdaptiveRings = 3;
 			parameters.AdaptiveDepth = 3;
-			crowdManager.SetObstacleAvoidanceParams(0, ref parameters);
+			crowdManager.SetObstacleAvoidanceParams(0, parameters);
 
 			// Create some movable barrels. We create them as crowd agents, as for moving entities it is less expensive and more convenient than using obstacles
 			CreateMovingBarrels(navMesh);
