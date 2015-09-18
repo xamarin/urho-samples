@@ -26,9 +26,9 @@ namespace Urho.Samples
 			// Create a Cursor UI element because we want to be able to hide and show it at will. When hidden, the mouse cursor will
 			// control the camera, and when visible, it will point the raycast target
 			XMLFile style = cache.GetXmlFile("UI/DefaultStyle.xml");
-			Cursor cursor=new Cursor(Context);
+			Cursor cursor = new Cursor(Context);
 			cursor.SetStyleAuto(style);
-			ui.Cursor=cursor;
+			ui.Cursor = cursor;
 
 			// Set starting position of the cursor at the rendering window center
 			var graphics = Graphics;
@@ -43,12 +43,11 @@ namespace Urho.Samples
 				"CTRL+LMB to teleport main agent\n" +
 				"MMB to add obstacles or remove obstacles/agents\n" +
 				"F5 to save scene, F7 to load\n" +
-				"Space to toggle debug geometry\n" +
-				"F12 to toggle this instruction text";
+				"Space to toggle debug geometry";
 
 			instructionText.SetFont(cache.GetFont("Fonts/Anonymous Pro.ttf"), 15);
 			// The text has multiple rows. Center them in relation to each other
-			instructionText.TextAlignment= HorizontalAlignment.HA_CENTER;
+			instructionText.TextAlignment = HorizontalAlignment.HA_CENTER;
 
 			// Position the text relative to the screen center
 			instructionText.HorizontalAlignment = HorizontalAlignment.HA_CENTER;
@@ -71,17 +70,17 @@ namespace Urho.Samples
 						// Visualize navigation mesh, obstacles and off-mesh connections
 						scene.GetComponent<DynamicNavigationMesh>().DrawDebugGeometry(true);
 						// Visualize agents' path and position to reach
-						scene.GetComponent<DetourCrowdManager>().DrawDebugGeometry(true);
+						scene.GetComponent<CrowdManager>().DrawDebugGeometry(true);
 					}
 				});
 
 			SubscribeToCrowdAgentFailure(args =>
 				{
 					Node node = args.Node;
-					CrowdAgentState agentState = (CrowdAgentState) args.CrowdAgentState;
+					CrowdAgentState agentState = (CrowdAgentState)args.CrowdAgentState;
 
 					// If the agent's state is invalid, likely from spawning on the side of a box, find a point in a larger area
-					if (agentState == CrowdAgentState.CROWD_AGENT_INVALID)
+					if (agentState == CrowdAgentState.CA_STATE_INVALID)
 					{
 						// Get a point on the navmesh using more generous extents
 						Vector3 newPos = scene.GetComponent<DynamicNavigationMesh>().FindNearestPoint(node.Position, new Vector3(5.0f, 5.0f, 5.0f));
@@ -107,7 +106,7 @@ namespace Urho.Samples
 						{
 							float speedRatio = speed / agent.MaxSpeed;
 							// Face the direction of its velocity but moderate the turning speed based on the speed ratio as we do not have timeStep here
-							node.Rotation = Quaternion.Slerp(node.Rotation, Quaternion.FromRotationTo(Vector3.UnitZ, velocity), 0.1f * speedRatio);
+							node.Rotation = Quaternion.Slerp(node.Rotation, Quaternion.FromRotationTo(Vector3.UnitZ, velocity), 10f * args.TimeStep * speedRatio);
 							// Throttle the animation speed based on agent speed ratio (ratio = 1 is full throttle)
 							animCtrl.SetSpeed(WALKING_ANI, speedRatio);
 						}
@@ -119,6 +118,13 @@ namespace Urho.Samples
 							animCtrl.Stop(WALKING_ANI, 0.8f);
 					}
 				});
+
+			SubscribeToCrowdAgentFormation(args =>
+				{
+					var index = args.Index;
+					var size = args.Size;
+					var position = args.Position;
+				});
 		}
 
 		private void MoveCamera(float timeStep)
@@ -126,6 +132,7 @@ namespace Urho.Samples
 			// Right mouse button controls mouse cursor visibility: hide when pressed
 			UI ui = UI;
 			Input input = Input;
+			ui.Cursor.SetVisible(!input.GetMouseButtonDown(MouseButton.Right));
 
 			// Do not move if the UI has a focused element (the console)
 			if (ui.FocusElement != null)
@@ -146,7 +153,7 @@ namespace Urho.Samples
 				Pitch = Clamp(Pitch, -90.0f, 90.0f);
 
 				// Construct new orientation for the camera scene node from yaw and pitch. Roll is fixed to zero
-				CameraNode.Rotation=new Quaternion(Pitch, Yaw, 0.0f);
+				CameraNode.Rotation = new Quaternion(Pitch, Yaw, 0.0f);
 			}
 
 			// Read WASD keys and move the camera scene node to the corresponding direction if they are pressed
@@ -177,15 +184,8 @@ namespace Urho.Samples
 			// Toggle debug geometry with space
 			if (input.GetKeyPress(Key.Space))
 				drawDebug = !drawDebug;
-
-			// Toggle instruction text with F12
-			if (input.GetKeyPress(Key.F12))
-			{
-				UIElement instruction = UI.Root.GetChild("instructionText", false);
-				instruction.SetVisible(!instruction.IsVisible());
-			}
-
 		}
+
 		bool Raycast(float maxDistance, out Vector3 hitPos, out Drawable hitDrawable)
 		{
 			hitDrawable = null;
@@ -223,12 +223,13 @@ namespace Urho.Samples
 			{
 				DynamicNavigationMesh navMesh = scene.GetComponent<DynamicNavigationMesh>();
 				Vector3 pathPos = navMesh.FindNearestPoint(hitPos, new Vector3(1.0f, 1.0f, 1.0f));
+				Node jackGroup = scene.GetChild("Jacks", false);
 				if (spawning)
 					// Spawn a jack at the target position
-					SpawnJack(pathPos);
+					SpawnJack(pathPos, jackGroup);
 				else
-				// Set crowd agents target position
-					scene.GetComponent<DetourCrowdManager>().SetCrowdTarget(pathPos, 0, int.MaxValue);
+					// Set crowd agents target position
+					scene.GetComponent<CrowdManager>().SetCrowdTarget(pathPos, jackGroup);
 			}
 		}
 
@@ -271,7 +272,7 @@ namespace Urho.Samples
 
 			// Create scene node & StaticModel component for showing a static plane
 			Node planeNode = scene.CreateChild("Plane");
-			planeNode.Scale=new Vector3(100.0f, 1.0f, 100.0f);
+			planeNode.Scale = new Vector3(100.0f, 1.0f, 100.0f);
 			StaticModel planeObject = planeNode.CreateComponent<StaticModel>();
 			planeObject.Model = (cache.GetModel("Models/Plane.mdl"));
 			planeObject.SetMaterial(cache.GetMaterial("Materials/StoneTiled.xml"));
@@ -293,7 +294,7 @@ namespace Urho.Samples
 			light.CastShadows = true;
 			light.ShadowBias = new BiasParameters(0.00025f, 0.5f);
 			// Set cascade splits at 10, 50 and 200 world units, fade shadows out at 80% of maximum shadow distance
-			light.ShadowCascade=new CascadeParameters(10.0f, 50.0f, 200.0f, 0.0f, 0.8f);
+			light.ShadowCascade = new CascadeParameters(10.0f, 50.0f, 200.0f, 0.0f, 0.8f);
 
 			// Create randomly sized boxes. If boxes are big enough, make them occluders
 			const uint NUM_BOXES = 20;
@@ -307,7 +308,7 @@ namespace Urho.Samples
 				StaticModel boxObject = boxNode.CreateComponent<StaticModel>();
 				boxObject.Model = (cache.GetModel("Models/Box.mdl"));
 				boxObject.SetMaterial(cache.GetMaterial("Materials/Stone.xml"));
-				boxObject.CastShadows=true;
+				boxObject.CastShadows = true;
 				if (size >= 3.0f)
 					boxObject.SetOccluder(true);
 			}
@@ -340,14 +341,22 @@ namespace Urho.Samples
 			for (uint i = 0; i < NUM_MUSHROOMS; ++i)
 				CreateMushroom(new Vector3(NextRandom(90.0f) - 45.0f, 0.0f, NextRandom(90.0f) - 45.0f));
 
-			scene.CreateComponent<DetourCrowdManager>();
 
+			// Create a CrowdManager component to the scene root
+			CrowdManager crowdManager = scene.CreateComponent<CrowdManager>();
+			var parameters = crowdManager.GetObstacleAvoidanceParams(0);
+			// Set the params to "High (66)" setting
+			parameters.VelBias = 0.5f;
+			parameters.AdaptiveDivs = 7;
+			parameters.AdaptiveRings = 3;
+			parameters.AdaptiveDepth = 3;
+			crowdManager.SetObstacleAvoidanceParams(0, ref parameters);
 
 			// Create some movable barrels. We create them as crowd agents, as for moving entities it is less expensive and more convenient than using obstacles
 			CreateMovingBarrels(navMesh);
 
 			// Create Jack node that will follow the path
-			SpawnJack(new Vector3(-5.0f, 0.0f, 20.0f));
+			SpawnJack(new Vector3(-5.0f, 0.0f, 20.0f), scene.CreateChild("Jacks"));
 
 
 			// Create the camera. Limit far clip distance to match the fog
@@ -361,13 +370,13 @@ namespace Urho.Samples
 			CameraNode.Rotation = new Quaternion(Pitch, Yaw, 0.0f);
 		}
 
-		void SpawnJack(Vector3 pos)
+		void SpawnJack(Vector3 pos, Node jackGroup)
 		{
 			var cache = ResourceCache;
-			Node jackNode = scene.CreateChild("Jack");
+			Node jackNode = jackGroup.CreateChild("Jack");
 			jackNode.Position = pos;
 			AnimatedModel modelObject = jackNode.CreateComponent<AnimatedModel>();
-			modelObject.Model=(cache.GetModel("Models/Jack.mdl"));
+			modelObject.Model = (cache.GetModel("Models/Jack.mdl"));
 			modelObject.SetMaterial(cache.GetMaterial("Materials/Jack.xml"));
 			modelObject.CastShadows = true;
 			jackNode.CreateComponent<AnimationController>();
@@ -385,12 +394,12 @@ namespace Urho.Samples
 
 			Node mushroomNode = scene.CreateChild("Mushroom");
 			mushroomNode.Position = (pos);
-			mushroomNode.Rotation=new Quaternion(0.0f, NextRandom(360.0f), 0.0f);
+			mushroomNode.Rotation = new Quaternion(0.0f, NextRandom(360.0f), 0.0f);
 			mushroomNode.SetScale(2.0f + NextRandom(0.5f));
 			StaticModel mushroomObject = mushroomNode.CreateComponent<StaticModel>();
 			mushroomObject.Model = (cache.GetModel("Models/Mushroom.mdl"));
 			mushroomObject.SetMaterial(cache.GetMaterial("Materials/Mushroom.xml"));
-			mushroomObject.CastShadows=true;
+			mushroomObject.CastShadows = true;
 			// Create the navigation obstacle
 			Obstacle obstacle = mushroomNode.CreateComponent<Obstacle>();
 			obstacle.Radius = mushroomNode.Scale.X;
@@ -432,6 +441,7 @@ namespace Urho.Samples
 				CrowdAgent agent = clone.CreateComponent<CrowdAgent>();
 				agent.Radius = clone.Scale.X * 0.5f;
 				agent.Height = size;
+				agent.NavigationQuality = NavigationQuality.NAVIGATIONQUALITY_LOW;
 			}
 			barrel.Remove();
 		}
