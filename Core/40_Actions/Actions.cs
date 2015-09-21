@@ -45,6 +45,9 @@
 				new EaseIn(jumpAction, 2), //you can wrap any action into "Easing function action" (by default it has linear behavior). See functions here: http://easings.net/
 				new EaseElasticOut(moveToInitialPositionAction));
 			await spriteActionsTask;
+
+			//wait 1.5 seconds
+			await Application.Delay(1500);
 		}
 
 		void CreateScene()
