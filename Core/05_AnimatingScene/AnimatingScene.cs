@@ -5,7 +5,6 @@ namespace Urho.Samples
 	public class _05_AnimatingScene : Sample
 	{
 		Scene scene;
-		List<Rotator> rotators = new List<Rotator>();
 
 		public _05_AnimatingScene (Context c) : base (c) {}
 	
@@ -30,10 +29,12 @@ namespace Urho.Samples
 			zone.FogColor = new Color (0.1f, 0.2f, 0.3f);
 			zone.FogStart = 10;
 			zone.FogEnd = 100;
+
+			var boxesNode = scene.CreateChild("Boxes");
 	
 			const int numObjects = 2000;
 			for (var i = 0; i < numObjects; ++i){
-				Node boxNode = scene.CreateChild("Box");
+				Node boxNode = boxesNode.CreateChild("Box");
 				boxNode.Position = new Vector3(NextRandom (200f) - 100f, NextRandom (200f) - 100f, NextRandom (200f) - 100f);
 				// Orient using random pitch, yaw and roll Euler angles
 				boxNode.Rotation = new Quaternion(NextRandom(360.0f), NextRandom(360.0f), NextRandom(360.0f));
@@ -55,8 +56,6 @@ namespace Urho.Samples
 					RotationSpeed = rotationSpeed
 				};
 				boxNode.AddComponent (rotator);
-				rotators.Add(rotator);
-
 			}
 			// Create the camera. Let the starting position be at the world origin. As the fog limits maximum visible distance, we can
 			// bring the far clip plane closer for more effective culling of distant objects
@@ -87,14 +86,23 @@ namespace Urho.Samples
 		protected override void OnUpdate(float timeStep)
 		{
 			SimpleMoveCamera3D(timeStep);
+			if (Input.GetKeyPress(Key.Delete))
+			{
+				scene.GetChild("Boxes", false).RemoveAllChildren();
+			}
 		}
-
 
 		class Rotator : Component
 		{
 			public Rotator(Context ctx) : base(ctx)
 			{
 				Application.SceneUpdate += SceneUpdate;
+			}
+
+			public override void OnDeleted()
+			{
+				Application.SceneUpdate -= SceneUpdate;
+				base.OnDeleted();
 			}
 
 			public Vector3 RotationSpeed { get; set; }

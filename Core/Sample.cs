@@ -232,6 +232,7 @@ namespace Urho.Samples
 
 		public override void Start ()
 		{
+			base.Start();
 			var platform = Runtime.Platform;
 			switch (platform){
 				case "Android":
