@@ -9,6 +9,8 @@ namespace Urho.Samples.Desktop
 
 		static void Main(string[] args)
 		{
+			//args =  new [] { "5" };
+
 			FindAvailableSamplesAndPrint();
 			System.Type selectedSampleType = null;
 

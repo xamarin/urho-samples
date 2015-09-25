@@ -34,7 +34,8 @@ namespace Urho.Samples
 	
 			const int numObjects = 2000;
 			for (var i = 0; i < numObjects; ++i){
-				Node boxNode = boxesNode.CreateChild("Box");
+				Node boxNode = new Node(Context);// boxesNode.CreateChild("Box");
+				boxesNode.AddChild(boxNode, 0);
 				boxNode.Position = new Vector3(NextRandom (200f) - 100f, NextRandom (200f) - 100f, NextRandom (200f) - 100f);
 				// Orient using random pitch, yaw and roll Euler angles
 				boxNode.Rotation = new Quaternion(NextRandom(360.0f), NextRandom(360.0f), NextRandom(360.0f));
@@ -96,18 +97,18 @@ namespace Urho.Samples
 		{
 			public Rotator(Context ctx) : base(ctx)
 			{
-				Application.SceneUpdate += SceneUpdate;
+				Application.SceneUpdate += OnUpdate;
 			}
 
-			public override void OnDeleted()
+			protected override void OnDeleted()
 			{
-				Application.SceneUpdate -= SceneUpdate;
+				Application.SceneUpdate -= OnUpdate;
 				base.OnDeleted();
 			}
 
 			public Vector3 RotationSpeed { get; set; }
 
-			public void SceneUpdate(SceneUpdateEventArgs args)
+			void OnUpdate(SceneUpdateEventArgs args)
 			{
 				Node.Rotate(new Quaternion(
 					RotationSpeed.X * args.TimeStep,
