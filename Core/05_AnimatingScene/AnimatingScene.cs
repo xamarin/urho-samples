@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 
 namespace Urho.Samples
@@ -5,9 +6,10 @@ namespace Urho.Samples
 	public class _05_AnimatingScene : Sample
 	{
 		Scene scene;
+		private Text fpsText;
 
 		public _05_AnimatingScene (Context c) : base (c) {}
-	
+
 		void CreateScene ()
 		{
 			var cache = ResourceCache;
@@ -34,14 +36,19 @@ namespace Urho.Samples
 	
 			const int numObjects = 2000;
 			for (var i = 0; i < numObjects; ++i){
-				Node boxNode = new Node(Context);// boxesNode.CreateChild("Box");
+				Node boxNode = new Node(Context); //boxesNode.CreateChild("Box");
 				boxesNode.AddChild(boxNode, 0);
 				boxNode.Position = new Vector3(NextRandom (200f) - 100f, NextRandom (200f) - 100f, NextRandom (200f) - 100f);
 				// Orient using random pitch, yaw and roll Euler angles
 				boxNode.Rotation = new Quaternion(NextRandom(360.0f), NextRandom(360.0f), NextRandom(360.0f));
-				var boxObject = boxNode.CreateComponent<StaticModel>();
-				boxObject.Model = cache.GetModel("Models/Box.mdl");
-				boxObject.SetMaterial (cache.GetMaterial("Materials/Stone.xml"));
+
+				using (var boxObject = boxNode.CreateComponent<StaticModel>())
+				{
+					boxObject.Model = cache.GetModel("Models/Box.mdl");
+					boxObject.SetMaterial(cache.GetMaterial("Materials/Stone.xml"));
+					//we don't need this component in C# anymore so let's just delete a MCW for it (howerver, we can access it anytime if we need via GetComponent<>) 
+					//it's just an optimization to reduce cached objects count
+				}
 		
 				// Add our custom Rotator component which will rotate the scene node each frame, when the scene sends its update event.
 				// The Rotator component derives from the base class LogicComponent, which has convenience functionality to subscribe
@@ -80,7 +87,7 @@ namespace Urho.Samples
 		{
 			base.Start ();
 			CreateScene ();
-			SimpleCreateInstructionsWithWASD ();
+			SimpleCreateInstructionsWithWASD ("\nDel to delete all boxes");
 			SetupViewport ();
 		}
 

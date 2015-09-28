@@ -20,6 +20,7 @@ namespace Urho.Samples
 		protected Sprite LogoSprite;
 		protected Subscription KeyDownEventToken;
 	
+		MonoDebugHud monoDebugHud;
 		UrhoConsole console;
 		DebugHud debugHud;
 		ResourceCache cache;
@@ -241,6 +242,9 @@ namespace Urho.Samples
 					break;
 			}
 			//Test ();
+			monoDebugHud = new MonoDebugHud(this);
+			monoDebugHud.Show();
+
 			CreateLogo ();
 			SetWindowAndTitleIcon ();
 			CreateConsoleAndDebugHud ();
