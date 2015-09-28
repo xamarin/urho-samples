@@ -18,7 +18,7 @@ namespace Urho.Samples
 			SubscribeToEvents();
 		}
 
-		private void CreateUI()
+		void CreateUI()
 		{
 			var cache = ResourceCache;
 			UI ui = UI;
@@ -61,7 +61,7 @@ namespace Urho.Samples
 			MoveCamera(timeStep);
 		}
 
-		private void SubscribeToEvents()
+		void SubscribeToEvents()
 		{
 			SubscribeToPostRenderUpdate(args =>
 				{
@@ -120,7 +120,7 @@ namespace Urho.Samples
 				});
 		}
 
-		private void MoveCamera(float timeStep)
+		void MoveCamera(float timeStep)
 		{
 			// Right mouse button controls mouse cursor visibility: hide when pressed
 			UI ui = UI;
@@ -143,7 +143,7 @@ namespace Urho.Samples
 				IntVector2 mouseMove = input.MouseMove;
 				Yaw += MOUSE_SENSITIVITY * mouseMove.X;
 				Pitch += MOUSE_SENSITIVITY * mouseMove.Y;
-				Pitch = Clamp(Pitch, -90.0f, 90.0f);
+				Pitch = MathHelper.Clamp(Pitch, -90.0f, 90.0f);
 
 				// Construct new orientation for the camera scene node from yaw and pitch. Roll is fixed to zero
 				CameraNode.Rotation = new Quaternion(Pitch, Yaw, 0.0f);
@@ -158,6 +158,8 @@ namespace Urho.Samples
 				CameraNode.Translate(new Vector3(-1, 0, 0) * MOVE_SPEED * timeStep, TransformSpace.Local);
 			if (input.GetKeyDown(Key.D))
 				CameraNode.Translate(new Vector3(1, 0, 0) * MOVE_SPEED * timeStep, TransformSpace.Local);
+
+			const int QUAL_SHIFT = 1;
 
 			// Set destination or spawn a new jack with left mouse button
 			if (input.GetMouseButtonPress(MouseButton.Left))

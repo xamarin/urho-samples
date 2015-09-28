@@ -20,7 +20,7 @@ namespace Urho.Samples
 			SetupViewport();
 		}
 
-		private void CreateScene()
+		void CreateScene()
 		{
 			var cache = ResourceCache;
 
@@ -38,7 +38,7 @@ namespace Urho.Samples
 			CameraNode.Position = new Vector3(0.0f, 2.0f, -10.0f);
 		}
 
-		private void CreateUI()
+		void CreateUI()
 		{
 			var cache = ResourceCache;
 			UI ui = UI;
@@ -77,19 +77,19 @@ namespace Urho.Samples
 			SimpleMoveCamera2D(timeStep);
 		}
 
-		private void SetupViewport()
+		void SetupViewport()
 		{
 			var renderer = Renderer;
 			renderer.SetViewport(0, new Viewport(Context, scene, CameraNode.GetComponent<Camera>(), null));
 		}
 
-		private void ToggleLight1()
+		void ToggleLight1()
 		{
 			Node lightNode = scene.GetChild("Light1", true);
 			lightNode?.SetEnabled(!lightNode.IsEnabled());
 		}
 
-		private void ToggleLight2()
+		void ToggleLight2()
 		{
 			Node lightNode = scene.GetChild("Light2", true);
 			lightNode?.SetEnabled(!lightNode.IsEnabled());

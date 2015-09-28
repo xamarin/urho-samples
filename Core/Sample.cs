@@ -11,37 +11,23 @@ namespace Urho.Samples
 {
 	public class Sample : Application
 	{
-		public const float PixelSize = 0.01f;
-		public const float TouchSensitivity = 2;
-
-		protected float Yaw, Pitch;
-		protected bool TouchEnabled;
-		protected Node CameraNode;
-		protected Sprite LogoSprite;
-		protected Subscription KeyDownEventToken;
-	
 		MonoDebugHud monoDebugHud;
 		UrhoConsole console;
 		DebugHud debugHud;
 		ResourceCache cache;
 		UI ui;
-	
-#warning MISSING_API //enum for Input::GetQualifierDown
-		public const int QUAL_SHIFT = 1;
-		public const int QUAL_CTRL = 2;
-		public const int QUAL_ALT = 4;
-		public const int QUAL_ANY = 8;
+
+		public const float PixelSize = 0.01f;
+		public const float TouchSensitivity = 2;
+
+		protected float Yaw { get; set; }
+		protected float Pitch { get; set; }
+		protected bool TouchEnabled { get; set; }
+		protected Node CameraNode { get; set; }
+		protected Sprite LogoSprite { get; set; }
+		protected Subscription KeyDownEventToken { get; set; }
 
 		public Sample (Context ctx) : base (ctx) {}
-
-		public float Clamp (float v, float min, float max)
-		{
-			if (v < min)
-				return min;
-			if (v > max)
-				return max;
-			return v;
-		}
 
 		readonly Random random = new Random();
 		/// Return a random float between 0.0 (inclusive) and 1.0 (exclusive.)
@@ -50,8 +36,6 @@ namespace Urho.Samples
 		public float NextRandom(float range) { return (float)random.NextDouble() * range; }
 		/// Return a random float between min and max, inclusive from both ends.
 		public float NextRandom(float min, float max) { return (float)((random.NextDouble() * (max - min)) + min); }
-		/// Return a random integer between 0 and range - 1.
-		public int NextRandom(int range) { return random.Next(0, 2); }
 		/// Return a random integer between min and max - 1.
 		public int NextRandom(int min, int max) { return random.Next(min, max); }
 	
@@ -89,7 +73,6 @@ namespace Urho.Samples
 			Graphics.WindowTitle = "Mono Urho3D Sample";
 		}
 
-
 		void CreateConsoleAndDebugHud ()
 		{
 			var xml = cache.GetXmlFile ("UI/DefaultStyle.xml");
@@ -107,12 +90,14 @@ namespace Urho.Samples
 				return;
 
 			var input = Input;
-			for (uint i = 0, num = input.NumTouches; i < num; ++i){
+			for (uint i = 0, num = input.NumTouches; i < num; ++i)
+			{
 				TouchState state = input.GetTouch(i);
 				if (state.TouchedElement () != null)
 					continue;
 
-				if (state.Delta.X != 0 || state.Delta.Y != 0){
+				if (state.Delta.X != 0 || state.Delta.Y != 0)
+				{
 					var camera = CameraNode.GetComponent<Camera> ();
 					if (camera == null)
 						return;
@@ -120,7 +105,9 @@ namespace Urho.Samples
 					Yaw += TouchSensitivity * camera.Fov / graphics.Height * state.Delta.X;
 					Pitch += TouchSensitivity * camera.Fov / graphics.Height * state.Delta.Y;
 					CameraNode.Rotation = new Quaternion (Pitch, Yaw, 0);
-				} else {
+				}
+				else
+				{
 					var cursor = UI.Cursor;
 					if (cursor != null && cursor.IsVisible ())
 						cursor.Position = state.Position;
@@ -130,17 +117,15 @@ namespace Urho.Samples
 
 		void HandleKeyDown (KeyDownEventArgs e)
 		{
-			switch (e.Key){
-				case Key.Esc: // ESC
-					/*if (this.Console.IsVisible ())
-				this.Console.SetVisible (false);
-			else*/
+			switch (e.Key)
+			{
+				case Key.Esc:
 					Engine.Exit ();
 					return;
-				case Key.F1: // F1
+				case Key.F1:
 					console.Toggle ();
 					return;
-				case Key.F2: // F2
+				case Key.F2: 
 					debugHud.ToggleAll ();
 					return;
 
@@ -151,11 +136,13 @@ namespace Urho.Samples
 					GC.Collect();
 					break;
 			}
+
 			if (UI.FocusElement == null)
 				return;
 		
 			var renderer = Renderer;
-			switch (e.Key){
+			switch (e.Key)
+			{
 				case Key.N1:
 					var quality = renderer.TextureQuality;
 					++quality;
@@ -163,6 +150,7 @@ namespace Urho.Samples
 						quality = 0;
 					renderer.TextureQuality = quality;
 					break;
+
 				case Key.N2:
 					var mquality = renderer.MaterialQuality;
 					++mquality;
@@ -170,12 +158,15 @@ namespace Urho.Samples
 						mquality = 0;
 					renderer.MaterialQuality = mquality;
 					break;
+
 				case Key.N3:
 					renderer.SpecularLighting = !renderer.SpecularLighting;
 					break;
+
 				case Key.N4:
 					renderer.DrawShadows = !renderer.DrawShadows;
 					break;
+
 				case Key.N5:
 					var shadowMapSize = renderer.ShadowMapSize;
 					shadowMapSize *= 2;
@@ -203,15 +194,6 @@ namespace Urho.Samples
 				case Key.N8:
 					renderer.DynamicInstancing = !renderer.DynamicInstancing;
 					break;
-
-				// screenshot
-				case Key.N9:
-					var screenshot = new Image (Context);
-
-					// Pending "Image&" binding
-					//Graphics.TakeScreenshot (screenshot);
-					//screenshot.SavePNG ("/tmp/shot.png");
-					break;
 			}
 		}
 
@@ -235,13 +217,14 @@ namespace Urho.Samples
 		{
 			base.Start();
 			var platform = Runtime.Platform;
-			switch (platform){
+			switch (platform)
+			{
 				case "Android":
 				case "iOS":
 					InitTouchInput ();
 					break;
 			}
-			//Test ();
+
 			monoDebugHud = new MonoDebugHud(this);
 			monoDebugHud.Show();
 
@@ -295,10 +278,9 @@ namespace Urho.Samples
 			const float moveSpeed = 40f;
 
 			var mouseMove = input.MouseMove;
-			//var mouseMove = Test2 (input.Handle);
 			Yaw += mouseSensitivity * mouseMove.X;
 			Pitch += mouseSensitivity * mouseMove.Y;
-			Pitch = Clamp(Pitch, -90, 90);
+			Pitch = MathHelper.Clamp(Pitch, -90, 90);
 
 			CameraNode.Rotation = new Quaternion(Pitch, Yaw, 0);
 
@@ -319,14 +301,14 @@ namespace Urho.Samples
 	
 		protected void SimpleCreateInstructions(string text = "")
 		{
-			var t = new Text(Context)
-			{
-				Value = text,
-				HorizontalAlignment = HorizontalAlignment.HA_CENTER,
-				VerticalAlignment = VerticalAlignment.VA_CENTER
-			};
-			t.SetFont(ResourceCache.GetFont("Fonts/Anonymous Pro.ttf"), 15);
-			UI.Root.AddChild(t);
+			var textElement = new Text(Context)
+				{
+					Value = text,
+					HorizontalAlignment = HorizontalAlignment.HA_CENTER,
+					VerticalAlignment = VerticalAlignment.VA_CENTER
+				};
+			textElement.SetFont(ResourceCache.GetFont("Fonts/Anonymous Pro.ttf"), 15);
+			UI.Root.AddChild(textElement);
 		}
 	}
 }

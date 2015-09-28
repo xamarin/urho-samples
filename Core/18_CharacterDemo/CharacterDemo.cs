@@ -45,18 +45,18 @@ namespace Urho.Samples
 			SubscribeToEvents();
 		}
 
-		private void SubscribeToEvents()
+		void SubscribeToEvents()
 		{
 			SubscribeToPostUpdate(HandlePostUpdate);
 			SubscribeToPhysicsPreStep(HandlePhysicsPreStep);
 		}
 
-		private void HandlePhysicsPreStep(PhysicsPreStepEventArgs args)
+		void HandlePhysicsPreStep(PhysicsPreStepEventArgs args)
 		{
 			character?.FixedUpdate(args.TimeStep);
 		}
 
-		private void HandlePostUpdate(PostUpdateEventArgs args)
+		void HandlePostUpdate(PostUpdateEventArgs args)
 		{
 			if (character == null)
 				return;
@@ -69,7 +69,7 @@ namespace Urho.Samples
 
 			// Turn head to camera pitch, but limit to avoid unnatural animation
 			Node headNode = characterNode.GetChild("Bip01_Head", true);
-			float limitPitch = Clamp(character.Controls.Pitch, -45.0f, 45.0f);
+			float limitPitch = MathHelper.Clamp(character.Controls.Pitch, -45.0f, 45.0f);
 			Quaternion headDir = rot * Quaternion.FromAxisAngle(new Vector3(1.0f, 0.0f, 0.0f), limitPitch);
 			// This could be expanded to look at an arbitrary target, now just look at a point in front
 			Vector3 headWorldTarget = headNode.WorldPosition + headDir * new Vector3(0.0f, 0.0f, 1.0f);
@@ -95,7 +95,7 @@ namespace Urho.Samples
 				scene.GetComponent<PhysicsWorld>().RaycastSingle(ref result, new Ray(aimPoint, rayDir), rayDistance, 2);
 				if (result.Body != null)
 					rayDistance = Math.Min(rayDistance, result.Distance);
-				rayDistance = Clamp(rayDistance, CAMERA_MIN_DIST, CAMERA_MAX_DIST);
+				rayDistance = MathHelper.Clamp(rayDistance, CAMERA_MIN_DIST, CAMERA_MAX_DIST);
 
 				CameraNode.Position = aimPoint + rayDir * rayDistance;
 				CameraNode.Rotation = dir;
@@ -156,7 +156,7 @@ namespace Urho.Samples
 						character.Controls.Pitch += (float)input.MouseMove.Y * YAW_SENSITIVITY;
 					}
 					// Limit pitch
-					character.Controls.Pitch = Clamp(character.Controls.Pitch, -80.0f, 80.0f);
+					character.Controls.Pitch = MathHelper.Clamp(character.Controls.Pitch, -80.0f, 80.0f);
 
 					// Switch between 1st and 3rd person
 					if (input.GetKeyPress(Key.F))
@@ -187,7 +187,7 @@ namespace Urho.Samples
 			}
 		}
 
-		private void CreateScene()
+		void CreateScene()
 		{
 			var cache = ResourceCache;
 
@@ -281,7 +281,7 @@ namespace Urho.Samples
 			}
 		}
 
-		private void CreateCharacter()
+		void CreateCharacter()
 		{
 			var cache = ResourceCache;
 

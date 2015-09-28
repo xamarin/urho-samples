@@ -22,6 +22,11 @@ namespace Urho.Samples
 				Application.SceneUpdate += OnSceneUpdate;
 			}
 
+			protected override void OnDeleted()
+			{
+				Application.SceneUpdate -= OnSceneUpdate;
+			}
+
 			void OnSceneUpdate (SceneUpdateEventArgs args)
 			{
 				// This moves the character position

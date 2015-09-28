@@ -33,7 +33,7 @@ namespace Urho.Samples
 				AnimateObjects(timeStep);
 		}
 
-		private void AnimateObjects(float timeStep)
+		void AnimateObjects(float timeStep)
 		{
 			time += timeStep * 5.0f;
 
@@ -69,13 +69,13 @@ namespace Urho.Samples
 			}
 		}
 
-		private void SetupViewport()
+		void SetupViewport()
 		{
 			var renderer = Renderer;
 			renderer.SetViewport(0, new Viewport(Context, scene, CameraNode.GetComponent<Camera>(), null));
 		}
 
-		private void CreateScene()
+		void CreateScene()
 		{
 			var cache = ResourceCache;
 

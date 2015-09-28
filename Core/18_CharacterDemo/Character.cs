@@ -95,7 +95,7 @@ namespace Urho.Samples
 			onGround = false;
 		}
 
-		private void HandleNodeCollision(NodeCollisionEventArgs args)
+		void HandleNodeCollision(NodeCollisionEventArgs args)
 		{
 			if (args.Body != body)
 				return;

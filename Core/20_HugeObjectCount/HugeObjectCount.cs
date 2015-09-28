@@ -5,11 +5,11 @@ namespace Urho.Samples
 {
 	public class _20_HugeObjectCount : Sample
 	{
-		private Scene scene;
-		private Camera camera;
-		private bool animate;
-		private bool useGroups;
-		private List<Node> boxNodes;
+		Scene scene;
+		Camera camera;
+		bool animate;
+		bool useGroups;
+		List<Node> boxNodes;
 
 		public _20_HugeObjectCount(Context ctx) : base(ctx) { }
 
@@ -43,7 +43,7 @@ namespace Urho.Samples
 				AnimateObjects(timeStep);
 		}
 
-		private void AnimateObjects(float timeStep)
+		void AnimateObjects(float timeStep)
 		{
 			const float rotateSpeed = 15.0f;
 			// Rotate about the Z axis (roll)
@@ -55,13 +55,13 @@ namespace Urho.Samples
 			}
 		}
 
-		private void SetupViewport()
+		void SetupViewport()
 		{
 			var renderer = Renderer;
 			renderer.SetViewport(0, new Viewport(Context, scene, CameraNode.GetComponent<Camera>(), null));
 		}
 
-		private void CreateScene()
+		void CreateScene()
 		{
 			var cache = ResourceCache;
 			if (scene == null)

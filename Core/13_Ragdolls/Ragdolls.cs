@@ -20,7 +20,7 @@ namespace Urho.Samples
 			SubscribeToEvents();
 		}
 
-		private void SubscribeToEvents()
+		void SubscribeToEvents()
 		{
 			SubscribeToPostRenderUpdate(args =>
 				{
@@ -51,13 +51,13 @@ namespace Urho.Samples
 				drawDebug = !drawDebug;
 		}
 
-		private void SetupViewport()
+		void SetupViewport()
 		{
 			var renderer = Renderer;
 			renderer.SetViewport(0, new Viewport(Context, scene, CameraNode.GetComponent<Camera>(), null));
 		}
 
-		private void CreateScene()
+		void CreateScene()
 		{
 			var cache = ResourceCache;
 			scene = new Scene(Context);
@@ -149,7 +149,7 @@ namespace Urho.Samples
 			CameraNode.Position = new Vector3(0.0f, 3.0f, -20.0f);
 		}
 
-		private void SpawnObject()
+		void SpawnObject()
 		{
 			var cache = ResourceCache;
 	

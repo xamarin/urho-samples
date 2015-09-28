@@ -19,7 +19,7 @@ namespace Urho.Samples
 			SubscribeToEvents();
 		}
 
-		private void SubscribeToEvents()
+		void SubscribeToEvents()
 		{
 			SubscribeToMouseMove(args => HandleMouseMove(args.X, args.Y));
 
@@ -32,7 +32,7 @@ namespace Urho.Samples
 			//override Sample's behavior by no-op
 		}
 
-		private void HandleMouseMove(int x, int y)
+		void HandleMouseMove(int x, int y)
 		{
 			if (particleNode != null)
 			{
@@ -42,13 +42,13 @@ namespace Urho.Samples
 			}
 		}
 
-		private void SetupViewport()
+		void SetupViewport()
 		{
 			var renderer = Renderer;
 			renderer.SetViewport(0, new Viewport(Context, scene, CameraNode.GetComponent<Camera>(), null));
 		}
 
-		private void CreateScene()
+		void CreateScene()
 		{
 			scene = new Scene(Context);
 			scene.CreateComponent<Octree>();

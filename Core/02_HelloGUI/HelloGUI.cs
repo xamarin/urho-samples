@@ -34,7 +34,7 @@ namespace Urho.Samples
 			CreateDraggableFish();
 		}
 
-		private void InitControls()
+		void InitControls()
 		{
 			// Create a CheckBox
 			CheckBox checkBox = new CheckBox(Context);
@@ -61,7 +61,7 @@ namespace Urho.Samples
 			lineEdit.SetStyleAuto(null);
 		}
 
-		private void InitWindow()
+		void InitWindow()
 		{
 			// Create the Window and add it to the UI's root node
 			window = new Window(Context);
@@ -101,16 +101,16 @@ namespace Urho.Samples
 			buttonClose.SetStyle("CloseButton", null);
 
 			SubscribeToReleased(args =>
-			{
-				if (args.Element == buttonClose)
-					Engine.Exit();
-			});
+				{
+					if (args.Element == buttonClose)
+						Engine.Exit();
+				});
 
 			// Subscribe also to all UI mouse clicks just to see where we have clicked
 			SubscribeToUIMouseClick(HandleControlClicked);
 		}
 
-		private void CreateDraggableFish()
+		void CreateDraggableFish()
 		{
 			var cache = ResourceCache;
 			var graphics = Graphics;
@@ -144,7 +144,7 @@ namespace Urho.Samples
 			SubscribeToDragEnd(HandleDragEnd);
 		}
 
-		private void HandleDragBegin(DragBeginEventArgs args)
+		void HandleDragBegin(DragBeginEventArgs args)
 		{
 			if (args.Element == draggableFish)
 			{
@@ -153,7 +153,7 @@ namespace Urho.Samples
 			}
 		}
 
-		private void HandleDragMove(DragMoveEventArgs args)
+		void HandleDragMove(DragMoveEventArgs args)
 		{
 			if (args.Element == draggableFish)
 			{
@@ -162,11 +162,11 @@ namespace Urho.Samples
 			}
 		}
 
-		private void HandleDragEnd(DragEndEventArgs args) // For reference (not used here)
+		void HandleDragEnd(DragEndEventArgs args) // For reference (not used here)
 		{
 		}
 
-		private void HandleControlClicked(UIMouseClickEventArgs args)
+		void HandleControlClicked(UIMouseClickEventArgs args)
 		{
 			// Get the Text control acting as the Window's title
 			var windowTitle = window.GetChild("WindowTitle", true) as Text;

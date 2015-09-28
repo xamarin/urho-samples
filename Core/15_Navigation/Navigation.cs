@@ -24,7 +24,7 @@ namespace Urho.Samples
 			SubscribeToEvents();
 		}
 
-		private void SubscribeToEvents()
+		void SubscribeToEvents()
 		{
 			SubscribeToPostRenderUpdate(args =>
 				{
@@ -60,7 +60,7 @@ namespace Urho.Samples
 			FollowPath(timeStep);
 		}
 
-		private void MoveCamera(float timeStep)
+		void MoveCamera(float timeStep)
 		{
 			// Right mouse button controls mouse cursor visibility: hide when pressed
 			UI ui = UI;
@@ -83,7 +83,7 @@ namespace Urho.Samples
 				IntVector2 mouseMove = input.MouseMove;
 				yaw += MOUSE_SENSITIVITY * mouseMove.X;
 				pitch += MOUSE_SENSITIVITY * mouseMove.Y;
-				pitch = Clamp(pitch, -90.0f, 90.0f);
+				pitch = MathHelper.Clamp(pitch, -90.0f, 90.0f);
 
 				// Construct new orientation for the camera scene node from yaw and pitch. Roll is fixed to zero
 				CameraNode.Rotation=new Quaternion(pitch, yaw, 0.0f);
@@ -111,13 +111,13 @@ namespace Urho.Samples
 				drawDebug = !drawDebug;
 		}
 
-		private void SetupViewport()
+		void SetupViewport()
 		{
 			var renderer = Renderer;
 			renderer.SetViewport(0, new Viewport(Context, scene, CameraNode.GetComponent<Camera>(), null));
 		}
 
-		private void CreateUI()
+		void CreateUI()
 		{
 			var cache = ResourceCache;
 			UI ui = UI;
@@ -152,7 +152,7 @@ namespace Urho.Samples
 			ui.Root.AddChild(instructionText);
 		}
 
-		private void CreateScene()
+		void CreateScene()
 		{
 			var cache = ResourceCache;
 
@@ -240,7 +240,7 @@ namespace Urho.Samples
 			CameraNode.Position = new Vector3(0.0f, 5.0f, 0.0f);
 		}
 
-		private void SetPathPoint()
+		void SetPathPoint()
 		{
 			Vector3 hitPos;
 			Drawable hitDrawable;
@@ -250,6 +250,7 @@ namespace Urho.Samples
 			{
 				Vector3 pathPos = navMesh.FindNearestPoint(hitPos, new Vector3(1.0f, 1.0f, 1.0f));
 
+				const int QUAL_SHIFT = 1;
 				if (Input.GetQualifierDown(QUAL_SHIFT))
 				{
 					// Teleport
@@ -267,7 +268,7 @@ namespace Urho.Samples
 			}
 		}
 
-		private void AddOrRemoveObject()
+		void AddOrRemoveObject()
 		{
 			// Raycast and check if we hit a mushroom node. If yes, remove it, if no, create a new one
 			Vector3 hitPos;
@@ -299,7 +300,7 @@ namespace Urho.Samples
 			}
 		}
 
-		private Node CreateMushroom(Vector3 pos)
+		Node CreateMushroom(Vector3 pos)
 		{
 			var cache = ResourceCache;
 
@@ -315,7 +316,7 @@ namespace Urho.Samples
 			return mushroomNode;
 		}
 
-		private bool Raycast(float maxDistance, out Vector3 hitPos, out Drawable hitDrawable)
+		bool Raycast(float maxDistance, out Vector3 hitPos, out Drawable hitDrawable)
 		{
 			hitDrawable = null;
 			hitPos = new Vector3();
@@ -343,7 +344,7 @@ namespace Urho.Samples
 		}
 
 
-		private void FollowPath(float timeStep)
+		void FollowPath(float timeStep)
 		{
 			if (currentPath.Count > 0)
 			{

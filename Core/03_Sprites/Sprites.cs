@@ -21,7 +21,7 @@ namespace Urho.Samples
 			MoveSprites(timeStep);
 		}
 
-		private void CreateSprites()
+		void CreateSprites()
 		{
 			var cache = ResourceCache;
 			var graphics = Graphics;
@@ -59,7 +59,7 @@ namespace Urho.Samples
 			}
 		}
 
-		private void MoveSprites(float timeStep)
+		void MoveSprites(float timeStep)
 		{
 			var graphics = Graphics;
 			int width = graphics.Width;

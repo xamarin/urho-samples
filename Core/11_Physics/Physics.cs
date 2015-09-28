@@ -19,7 +19,7 @@ namespace Urho.Samples
 			SubscribeToEvents();
 		}
 
-		private void SubscribeToEvents()
+		void SubscribeToEvents()
 		{
 			SubscribeToPostRenderUpdate(args =>
 			{
@@ -49,13 +49,13 @@ namespace Urho.Samples
 				drawDebug = !drawDebug;
 		}
 
-		private void SetupViewport()
+		void SetupViewport()
 		{
 			var renderer = Renderer;
 			renderer.SetViewport(0, new Viewport(Context, scene, CameraNode.GetComponent<Camera>(), null));
 		}
 
-		private void CreateScene()
+		void CreateScene()
 		{
 			var cache = ResourceCache;
 			scene = new Scene(Context);
@@ -112,8 +112,8 @@ namespace Urho.Samples
 
 				floorNode.CreateComponent<RigidBody>(); 
 				CollisionShape shape = floorNode.CreateComponent<CollisionShape>();
-				////// Set a box shape of size 1 x 1 x 1 for collision. The shape will be scaled with the scene node scale, so the
-				////// rendering and physics representation sizes should match (the box model is also 1 x 1 x 1.)
+				// Set a box shape of size 1 x 1 x 1 for collision. The shape will be scaled with the scene node scale, so the
+				// rendering and physics representation sizes should match (the box model is also 1 x 1 x 1.)
 				shape.SetBox(Vector3.One, Vector3.Zero, Quaternion.Identity);
 			}
 

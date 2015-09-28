@@ -21,13 +21,13 @@ namespace Urho.Samples
 			SimpleMoveCamera3D(timeStep);
 		}
 
-		private void SetupViewport()
+		void SetupViewport()
 		{
 			var renderer = Renderer;
 			renderer.SetViewport(0, new Viewport(Context, scene, CameraNode.GetComponent<Camera>(), null));
 		}
 
-		private void CreateScene()
+		void CreateScene()
 		{
 			var cache = ResourceCache;
 
@@ -166,11 +166,16 @@ namespace Urho.Samples
 
 	public class Rotator : Component
 	{
-		private Vector3 rotationSpeed;
+		Vector3 rotationSpeed;
 
 		public Rotator(Context c) : base(c)
 		{
-			Application.Update += args => Update(args.TimeStep);
+			Application.Update += OnUpdate;
+		}
+
+		protected override void OnDeleted()
+		{
+			Application.Update -= OnUpdate;
 		}
 
 		public void SetRotationSpeed(Vector3 vector)
@@ -178,8 +183,9 @@ namespace Urho.Samples
 			rotationSpeed = vector;
 		}
 
-		public void Update(float timeStep)
+		public void OnUpdate(UpdateEventArgs args)
 		{
+			var timeStep = args.TimeStep;
 			Node.Rotate(new Quaternion(rotationSpeed.X * timeStep, rotationSpeed.Y * timeStep, rotationSpeed.Z * timeStep), TransformSpace.Local);       
 		}
 	}

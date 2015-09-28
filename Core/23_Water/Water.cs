@@ -25,7 +25,7 @@ namespace Urho.Samples
 			camera.AspectRatio = (float)Graphics.Width / Graphics.Height;
 		}
 
-		private void SetupViewport()
+		void SetupViewport()
 		{
 			var graphics = Graphics;
 			var renderer = Renderer;
@@ -69,7 +69,7 @@ namespace Urho.Samples
 			waterMat.SetTexture(TextureUnit.TU_DIFFUSE, renderTexture);
 		}
 
-		private void CreateScene()
+		void CreateScene()
 		{
 			var cache = ResourceCache;
 			scene = new Scene(Context);

@@ -126,7 +126,7 @@ namespace Urho.Samples
 			GetWheelComponents();
 		}
 
-		private void InitWheel(string name, Vector3 offset, out Node wheelNode, out uint wheelNodeId)
+		void InitWheel(string name, Vector3 offset, out Node wheelNode, out uint wheelNodeId)
 		{
 			// Note: do not parent the wheel to the hull scene node. Instead create it on the root level and let the physics
 			// constraint keep it together
@@ -161,7 +161,7 @@ namespace Urho.Samples
 			wheelConstraint.DisableCollision = true; // Let the wheel intersect the vehicle hull
 		}
 
-		private void GetWheelComponents()
+		void GetWheelComponents()
 		{
 			frontLeftAxis = frontLeft.GetComponent<Constraint>();
 			frontRightAxis = frontRight.GetComponent<Constraint>();

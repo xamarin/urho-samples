@@ -6,7 +6,7 @@ namespace Urho.Samples
 	{
 		public _37_UIDrag(Context ctx) : base(ctx) { }
 
-		private Dictionary<UIElement, ElementInfo> elements; 
+		Dictionary<UIElement, ElementInfo> elements; 
 
 		public override void Start()
 		{
@@ -24,7 +24,7 @@ namespace Urho.Samples
 			CreateInstructions();
 		}
 
-		private void CreateGUI()
+		void CreateGUI()
 		{
 			var cache = ResourceCache;
 			UI ui = UI;
@@ -85,7 +85,7 @@ namespace Urho.Samples
 			}
 		}
 
-		private void CreateInstructions()
+		void CreateInstructions()
 		{
 			var cache = ResourceCache;
 			UI ui = UI;
@@ -102,7 +102,7 @@ namespace Urho.Samples
 			instructionText.SetPosition(0, ui.Root.Height/4);
 		}
 
-		private void HandleDragBegin(DragBeginEventArgs args)
+		void HandleDragBegin(DragBeginEventArgs args)
 		{
 			var element = args.Element;
 
@@ -121,7 +121,7 @@ namespace Urho.Samples
 			t.Value = "Number of buttons: " + args.NumButtons;
 		}
 
-		private void HandleDragMove(DragMoveEventArgs args)
+		void HandleDragMove(DragMoveEventArgs args)
 		{
 			var element = elements[args.Element];
 			int buttons = args.Buttons;
@@ -135,12 +135,12 @@ namespace Urho.Samples
 				element.Element.Position = new IntVector2(x, y);
 		}
 
-		private void HandleDragCancel(DragCancelEventArgs args)
+		void HandleDragCancel(DragCancelEventArgs args)
 		{
 			args.Element.Position = elements[args.Element].Start;
 		}
 
-		private void HandleDragEnd(DragEndEventArgs args)
+		void HandleDragEnd(DragEndEventArgs args)
 		{
 		}
 

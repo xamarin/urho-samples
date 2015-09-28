@@ -4,9 +4,9 @@ namespace Urho.Samples
 {
 	public class _08_Decals : Sample
 	{
-		private Scene scene;
-		private bool drawDebug;
-		private Camera camera;
+		Scene scene;
+		bool drawDebug;
+		Camera camera;
 
 		public _08_Decals(Context ctx) : base(ctx) { }
 
@@ -19,7 +19,7 @@ namespace Urho.Samples
 			SubscribeToEvents();
 		}
 
-		private void CreateUI()
+		void CreateUI()
 		{
 			var cache = ResourceCache;
 			var ui = UI;
@@ -37,7 +37,7 @@ namespace Urho.Samples
 				"7 to toggle occlusion culling");
 		}
 
-		private void SubscribeToEvents()
+		void SubscribeToEvents()
 		{
 			SubscribeToPostRenderUpdate(args =>
 				{
@@ -67,7 +67,7 @@ namespace Urho.Samples
 				//var mouseMove = Test2 (input.Handle);
 				Yaw += mouseSensitivity * mouseMove.X;
 				Pitch += mouseSensitivity * mouseMove.Y;
-				Pitch = Clamp(Pitch, -90, 90);
+				Pitch = MathHelper.Clamp(Pitch, -90, 90);
 			}
 
 			CameraNode.Rotation = new Quaternion(Pitch, Yaw, 0);
@@ -88,13 +88,13 @@ namespace Urho.Samples
 				PaintDecal();
 		}
 
-		private void SetupViewport()
+		void SetupViewport()
 		{
 			var renderer = Renderer;
 			renderer.SetViewport(0, new Viewport(Context, scene, CameraNode.GetComponent<Camera>(), null));
 		}
 
-		private void CreateScene()
+		void CreateScene()
 		{
 			var cache = ResourceCache;
 			scene = new Scene(Context);
@@ -169,7 +169,7 @@ namespace Urho.Samples
 			CameraNode.Position = new Vector3(0.0f, 5.0f, 0.0f);
 		}
 
-		private bool Raycast(float maxDistance, out Vector3 hitPos, out Drawable hitDrawable)
+		bool Raycast(float maxDistance, out Vector3 hitPos, out Drawable hitDrawable)
 		{
 			hitDrawable = null;
 			hitPos = Vector3.Zero;
@@ -194,7 +194,7 @@ namespace Urho.Samples
 			return false;
 		}
 
-		private void PaintDecal()
+		void PaintDecal()
 		{
 			Vector3 hitPos;
 			Drawable hitDrawable;

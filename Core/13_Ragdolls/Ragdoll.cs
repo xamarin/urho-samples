@@ -2,7 +2,7 @@ namespace Urho.Samples
 {
 	class Ragdoll : Component
 	{
-		private readonly RigidBody body;
+		readonly RigidBody body;
 
 		public Ragdoll(Context context, RigidBody body) : base(context)
 		{
@@ -90,7 +90,7 @@ namespace Urho.Samples
 			}
 		}
 
-		private void CreateRagdollBone(string boneName, ShapeType type, Vector3 size, Vector3 position, Quaternion rotation)
+		void CreateRagdollBone(string boneName, ShapeType type, Vector3 size, Vector3 position, Quaternion rotation)
 		{
 			// Find the correct child scene node recursively
 			Node boneNode = Node.GetChild(boneName, true);
@@ -118,7 +118,7 @@ namespace Urho.Samples
 				shape.SetCapsule(size.X, size.Y, position, rotation);
 		}
 
-		private void CreateRagdollConstraint(string boneName, string parentName, ConstraintType type,
+		void CreateRagdollConstraint(string boneName, string parentName, ConstraintType type,
 			Vector3 axis, Vector3 parentAxis, Vector2 highLimit, Vector2 lowLimit, bool disableCollision = true)
 		{
 			Node boneNode = Node.GetChild(boneName, true);

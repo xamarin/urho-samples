@@ -1,12 +1,8 @@
-using System;
-using System.Collections.Generic;
-
 namespace Urho.Samples
 {
 	public class _05_AnimatingScene : Sample
 	{
 		Scene scene;
-		private Text fpsText;
 
 		public _05_AnimatingScene (Context c) : base (c) {}
 
@@ -110,7 +106,6 @@ namespace Urho.Samples
 			protected override void OnDeleted()
 			{
 				Application.SceneUpdate -= OnUpdate;
-				base.OnDeleted();
 			}
 
 			public Vector3 RotationSpeed { get; set; }

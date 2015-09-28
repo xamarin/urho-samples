@@ -38,7 +38,7 @@ namespace Urho.Samples
 			SubscribeToEvents();
 		}
 
-		private void CreateUI()
+		void CreateUI()
 		{
 			IsLogoVisible = false; // We need the full rendering window
 
@@ -75,7 +75,7 @@ namespace Urho.Samples
 			Renderer.DefaultZone.FogColor = new Color(0.0f, 0.0f, 0.1f);
 		}
 
-		private void SubscribeToEvents()
+		void SubscribeToEvents()
 		{
 			SubscribeToTextFinished(args => HandleSend());
 			SubscribeToReleased(args =>
@@ -116,13 +116,13 @@ namespace Urho.Samples
 			return button;
 		}
 
-		private void ShowChatText(string row)
+		void ShowChatText(string row)
 		{
 			chatHistory.Add(row);
 			chatHistoryText.Value = string.Join("\n", chatHistory) + "\n";
 		}
 
-		private void UpdateButtons()
+		void UpdateButtons()
 		{
 			Network network = Network;
 			Connection serverConnection = network.ServerConnection;
@@ -135,12 +135,12 @@ namespace Urho.Samples
 			startServerButton.SetVisible(serverConnection == null && !serverRunning);
 		}
 
-		private void HandleLogMessage(LogMessageEventArgs args)
+		void HandleLogMessage(LogMessageEventArgs args)
 		{
 			ShowChatText(args.Message);
 		}
 
-		private void HandleSend()
+		void HandleSend()
 		{
 			string text = textEdit.Text;
 			if (string.IsNullOrEmpty(text))
@@ -158,7 +158,7 @@ namespace Urho.Samples
 			}
 		}
 
-		private void HandleConnect()
+		void HandleConnect()
 		{
 			Network network = Network;
 			string address = textEdit.Text.Trim();
@@ -175,7 +175,7 @@ namespace Urho.Samples
 			UpdateButtons();
 		}
 
-		private void HandleDisconnect()
+		void HandleDisconnect()
 		{
 			Network network = Network;
 			Connection serverConnection = network.ServerConnection;
@@ -189,7 +189,7 @@ namespace Urho.Samples
 			UpdateButtons();
 		}
 
-		private void HandleStartServer()
+		void HandleStartServer()
 		{
 			Network network = Network;
 			network.StartServer((ushort)CHAT_SERVER_PORT);
@@ -197,7 +197,7 @@ namespace Urho.Samples
 			UpdateButtons();
 		}
 
-		private unsafe void HandleNetworkMessage(NetworkMessageEventArgs args)
+		unsafe void HandleNetworkMessage(NetworkMessageEventArgs args)
 		{
 			Network network = Network;
 	

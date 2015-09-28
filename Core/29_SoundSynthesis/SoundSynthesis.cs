@@ -43,14 +43,14 @@ namespace Urho.Samples
 				filter += timeStep * 0.5f;
 			if (input.GetKeyDown(Key.Down))
 				filter -= timeStep * 0.5f;
-			filter = Clamp(filter, 0.01f, 1.0f);
+			filter = MathHelper.Clamp(filter, 0.01f, 1.0f);
 
 			instructionText.Value = "Use cursor up and down to control sound filtering\nCoefficient: " + filter;
 
 			UpdateSound();
 		}
 
-		private void CreateInstructions()
+		void CreateInstructions()
 		{
 			var cache = ResourceCache;
 			UI ui = UI;
@@ -69,7 +69,7 @@ namespace Urho.Samples
 			ui.Root.AddChild(instructionText);
 		}
 
-		private void CreateSound()
+		void CreateSound()
 		{
 			// Sound source needs a node so that it is considered enabled
 			node = new Node(Context);
@@ -84,7 +84,7 @@ namespace Urho.Samples
 			source.Play(soundStream);
 		}
 
-		private void UpdateSound()
+		void UpdateSound()
 		{
 			// Try to keep 1/10 seconds of sound in the buffer, to avoid both dropouts and unnecessary latency
 			float targetLength = 1.0f / 10.0f;
@@ -104,7 +104,7 @@ namespace Urho.Samples
 				osc1 = osc1 + 1.0f % 360.0f;
 				osc2 = osc2 + 1.002f % 360.0f;
 
-				float newValue = Clamp((float) ((Math.Sin(osc1) + Math.Sin(osc2)) * 100000.0f), -32767.0f, 32767.0f);
+				float newValue = MathHelper.Clamp((float) ((Math.Sin(osc1) + Math.Sin(osc2)) * 100000.0f), -32767.0f, 32767.0f);
 				accumulator = Lerp(accumulator, newValue, filter);
 				newData[i] = (short)accumulator;
 			}
@@ -113,7 +113,7 @@ namespace Urho.Samples
 			soundStream.AddData(newData, 0, newData.Length);
 		}
 
-		private float Lerp(float lhs, float rhs, float t)
+		float Lerp(float lhs, float rhs, float t)
 		{
 			return lhs*(1.0f - t) + rhs*t;
 		}

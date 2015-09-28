@@ -64,7 +64,7 @@ namespace Urho.Samples
 			//// SetRandomSeed(Time::GetSystemTime());
 		}
 
-		private void HandleConsoleCommand(ConsoleCommandEventArgs args)
+		void HandleConsoleCommand(ConsoleCommandEventArgs args)
 		{
 			//var id = args.Id;
 			//if (args.Id == GetType().Name)
@@ -79,14 +79,14 @@ namespace Urho.Samples
 				HandleInput(input);
 		}
 
-		private void HandleEscKeyDown(KeyDownEventArgs args)
+		void HandleEscKeyDown(KeyDownEventArgs args)
 		{
 			// Unlike the other samples, exiting the engine when ESC is pressed instead of just closing the console
 			if (args.Key == Key.Esc)
 				Engine.Exit();
 		}
 
-		private void StartGame()
+		void StartGame()
 		{
 			Print("Welcome to the Urho adventure game! You are the newest fish in the tank; your\n" +
 				"objective is to survive as long as possible. Beware of hunger and the merciless\n" +
@@ -101,7 +101,7 @@ namespace Urho.Samples
 			urhoThreat = 0;
 		}
 
-		private void EndGame(string message)
+		void EndGame(string message)
 		{
 			Print(message);
 			Print("Game over! You survived " + numTurns + " turns.\n" +
@@ -110,7 +110,7 @@ namespace Urho.Samples
 			gameOn = false;
 		}
 
-		private void Advance()
+		void Advance()
 		{
 			if (urhoThreat > 0)
 			{
@@ -157,7 +157,7 @@ namespace Urho.Samples
 			++numTurns;
 		}
 
-		private void HandleInput(string input)
+		void HandleInput(string input)
 		{
 			string inputLower = input.ToLower().Trim();
 			if (string.IsNullOrEmpty(inputLower))
@@ -234,7 +234,7 @@ namespace Urho.Samples
 			}
 		}
 
-		private void Print(string output)
+		void Print(string output)
 		{
 			// Logging appears both in the engine console and stdout
 			Log.WriteRaw(output + "\n", false);

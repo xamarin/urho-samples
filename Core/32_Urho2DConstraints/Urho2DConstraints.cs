@@ -28,7 +28,7 @@ namespace Urho.Samples
 			SubscribeToEvents();
 		}
 
-		private void SubscribeToEvents()
+		void SubscribeToEvents()
 		{
 			SubscribeToPostRenderUpdate(args =>
 				{
@@ -74,7 +74,7 @@ namespace Urho.Samples
 			}
 		}
 
-		private void HandleTouchBegin3(TouchBeginEventArgs args)
+		void HandleTouchBegin3(TouchBeginEventArgs args)
 		{
 			var graphics = Graphics;
 			PhysicsWorld2D physicsWorld = scene.GetComponent<PhysicsWorld2D>();
@@ -100,7 +100,7 @@ namespace Urho.Samples
 			touchEndEventToken = SubscribeToTouchEnd(HandleTouchEnd3);
 		}
 
-		private void HandleTouchEnd3(TouchEndEventArgs args)
+		void HandleTouchEnd3(TouchEndEventArgs args)
 		{
 			if (pickedNode != null)
 			{
@@ -114,7 +114,7 @@ namespace Urho.Samples
 			touchEndEventToken?.Unsubscribe();
 		}
 
-		private void HandleTouchMove3(TouchMoveEventArgs args)
+		void HandleTouchMove3(TouchMoveEventArgs args)
 		{
 			if (pickedNode != null)
 			{
@@ -125,7 +125,7 @@ namespace Urho.Samples
 			}
 		}
 
-		private void HandleMouseButtonDown(MouseButtonDownEventArgs args)
+		void HandleMouseButtonDown(MouseButtonDownEventArgs args)
 		{
 			Input input = Input;
 			PhysicsWorld2D physicsWorld = scene.GetComponent<PhysicsWorld2D>();
@@ -150,7 +150,7 @@ namespace Urho.Samples
 			mouseButtonUpToken = SubscribeToMouseButtonUp(HandleMouseButtonUp);
 		}
 
-		private Vector2 GetMousePositionXY()
+		Vector2 GetMousePositionXY()
 		{
 			Input input = Input;
 			var graphics = Graphics;
@@ -160,7 +160,7 @@ namespace Urho.Samples
 		}
 
 
-		private void HandleMouseMove(MouseMoveEventArgs args)
+		void HandleMouseMove(MouseMoveEventArgs args)
 		{
 			if (pickedNode != null)
 			{
@@ -170,7 +170,7 @@ namespace Urho.Samples
 
 		}
 
-		private void HandleMouseButtonUp(MouseButtonUpEventArgs args)
+		void HandleMouseButtonUp(MouseButtonUpEventArgs args)
 		{
 			if (pickedNode != null)
 			{
@@ -184,13 +184,13 @@ namespace Urho.Samples
 			mouseButtonUpToken?.Unsubscribe();
 		}
 
-		private void SetupViewport()
+		void SetupViewport()
 		{
 			var renderer = Renderer;
 			renderer.SetViewport(0, new Viewport(Context, scene, CameraNode.GetComponent<Camera>(), null));
 		}
 
-		private void CreateScene()
+		void CreateScene()
 		{
 			scene = new Scene(Context);
 			scene.CreateComponent<Octree>();
@@ -499,7 +499,7 @@ namespace Urho.Samples
 
 		}
 
-		private void CreateFlag(string text, float x, float y) // Used to create Tex3D flags
+		void CreateFlag(string text, float x, float y) // Used to create Tex3D flags
 		{
 			Node flagNode = scene.CreateChild("Flag");
 			flagNode.Position = (new Vector3(x, y, 0.0f));

@@ -19,7 +19,7 @@ namespace Urho.Samples
 			SubscribeToEvents();
 		}
 
-		private void SubscribeToEvents()
+		void SubscribeToEvents()
 		{
 			SubscribeToPostRenderUpdate(args =>
 				{
@@ -45,7 +45,7 @@ namespace Urho.Samples
 				drawDebug = !drawDebug;
 		}
 
-		private void SetupViewport()
+		void SetupViewport()
 		{
 			var renderer = Renderer;
 			var graphics = Graphics;
@@ -79,7 +79,7 @@ namespace Urho.Samples
 			renderer.SetViewport(1, rearViewport);
 		}
 
-		private void CreateScene()
+		void CreateScene()
 		{
 			var cache = ResourceCache;
 			scene = new Scene(Context);

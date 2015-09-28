@@ -8,18 +8,18 @@ namespace Urho.Samples
 		Scene scene;
 
 		readonly string[] soundNames =
-		{
-			"Fist",
-			"Explosion",
-			"Power-up"
-		};
+			{
+				"Fist",
+				"Explosion",
+				"Power-up"
+			};
 
 		readonly string[] soundResourceNames =
-		{
-			"Sounds/PlayerFistHit.wav",
-			"Sounds/BigExplosion.wav",
-			"Sounds/Powerup.wav"
-		};
+			{
+				"Sounds/PlayerFistHit.wav",
+				"Sounds/BigExplosion.wav",
+				"Sounds/Powerup.wav"
+			};
 
 		public _14_SoundEffects(Context ctx) : base(ctx) { }
 
@@ -75,7 +75,7 @@ namespace Urho.Samples
 			return slider;
 		}
 
-		private void CreateUI()
+		void CreateUI()
 		{
 			var cache = ResourceCache;
 			scene = new Scene(Context);

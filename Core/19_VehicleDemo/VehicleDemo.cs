@@ -2,8 +2,8 @@ namespace Urho.Samples
 {
 	public class _19_VehicleDemo : Sample
 	{
-		private Scene scene;
-		private Vehicle vehicle;
+		Scene scene;
+		Vehicle vehicle;
 
 		const float CAMERA_DISTANCE = 10.0f;
 
@@ -28,7 +28,7 @@ namespace Urho.Samples
 			SubscribeToEvents();
 		}
 
-		private void SubscribeToEvents()
+		void SubscribeToEvents()
 		{
 			SubscribeToPostUpdate(args =>
 				{
@@ -105,7 +105,7 @@ namespace Urho.Samples
 						vehicle.Controls.Pitch += (float)input.MouseMoveY * Vehicle.YAW_SENSITIVITY;
 					}
 					// Limit pitch
-					vehicle.Controls.Pitch = Clamp(vehicle.Controls.Pitch, 0.0f, 80.0f);
+					vehicle.Controls.Pitch = MathHelper.Clamp(vehicle.Controls.Pitch, 0.0f, 80.0f);
 
 					// Check for loading / saving the scene
 					if (input.GetKeyPress(Key.F5))
@@ -127,7 +127,7 @@ namespace Urho.Samples
 			}
 		}
 
-		private void CreateVehicle()
+		void CreateVehicle()
 		{
 			Node vehicleNode = scene.CreateChild("Vehicle");
 			vehicleNode.Position = (new Vector3(0.0f, 5.0f, 0.0f));
@@ -140,7 +140,7 @@ namespace Urho.Samples
 		}
 
 
-		private void CreateScene()
+		void CreateScene()
 		{
 			var cache = ResourceCache;
 

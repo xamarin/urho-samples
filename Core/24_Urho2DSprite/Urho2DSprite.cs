@@ -54,13 +54,13 @@ namespace Urho.Samples
 			}
 		}
 
-		private void SetupViewport()
+		void SetupViewport()
 		{
 			var renderer = Renderer;
 			renderer.SetViewport(0, new Viewport(Context, scene, CameraNode.GetComponent<Camera>(), null));
 		}
 
-		private void CreateScene()
+		void CreateScene()
 		{
 			scene = new Scene(Context);
 			scene.CreateComponent<Octree>();
