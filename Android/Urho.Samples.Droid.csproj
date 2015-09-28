@@ -56,17 +56,14 @@
     <Reference Include="System.Runtime" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Xml" />
-    <Reference Include="Urho, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\MonoUrho.0.4.10\lib\MonoAndroid\Urho.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="Urho, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+      <HintPath>..\packages\mutest123.0.4.11\lib\MonoAndroid\Urho.dll</HintPath>
     </Reference>
-    <Reference Include="Urho.Droid, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\MonoUrho.0.4.10\lib\MonoAndroid\Urho.Droid.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="Urho.Droid, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+      <HintPath>..\packages\mutest123.0.4.11\lib\MonoAndroid\Urho.Droid.dll</HintPath>
     </Reference>
-    <Reference Include="Urho.Droid.SdlBindings, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\MonoUrho.0.4.10\lib\MonoAndroid\Urho.Droid.SdlBindings.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="Urho.Droid.SdlBindings, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+      <HintPath>..\packages\mutest123.0.4.11\lib\MonoAndroid\Urho.Droid.SdlBindings.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -110,6 +107,18 @@
   <Target Name="AfterBuild">
   </Target>
   -->
+  <Import Project="..\packages\mutest123.0.4.11\build\MonoAndroid\mutest123.targets" Condition="Exists('..\packages\mutest123.0.4.11\build\MonoAndroid\mutest123.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\mutest123.0.4.11\build\MonoAndroid\mutest123.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\mutest123.0.4.11\build\MonoAndroid\mutest123.targets'))" />
+  </Target>
+  <ItemGroup>
+    <Folder Include="Assets\" />
+    <Folder Include="Assets\CoreData\" />
+    <Folder Include="Assets\Data\" />
+  </ItemGroup>
   <ItemGroup>
     <AndroidAsset Include="..\Assets\CoreData\Materials\DefaultGrey.xml">
       <Link>Assets\CoreData\Materials\DefaultGrey.xml</Link>
@@ -350,6 +359,9 @@
     </AndroidAsset>
     <AndroidAsset Include="..\Assets\CoreData\Shaders\HLSL\Water.hlsl">
       <Link>Assets\CoreData\Shaders\HLSL\Water.hlsl</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\CoreData\Techniques\BasicVColUnlitAlpha.xml">
+      <Link>Assets\CoreData\Techniques\BasicVColUnlitAlpha.xml</Link>
     </AndroidAsset>
     <AndroidAsset Include="..\Assets\CoreData\Techniques\Diff.xml">
       <Link>Assets\CoreData\Techniques\Diff.xml</Link>
@@ -681,8 +693,17 @@
     <AndroidAsset Include="..\Assets\Data\CommandLine.txt">
       <Link>Assets\Data\CommandLine.txt</Link>
     </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\EditorStrings.json">
+      <Link>Assets\Data\EditorStrings.json</Link>
+    </AndroidAsset>
     <AndroidAsset Include="..\Assets\Data\NinjaSnowWarShaders.xml">
       <Link>Assets\Data\NinjaSnowWarShaders.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\StringsDe.json">
+      <Link>Assets\Data\StringsDe.json</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\StringsEnRu.json">
+      <Link>Assets\Data\StringsEnRu.json</Link>
     </AndroidAsset>
     <AndroidAsset Include="..\Assets\Data\Fonts\Anonymous Pro.png">
       <Link>Assets\Data\Fonts\Anonymous Pro.png</Link>
@@ -707,132 +728,6 @@
     </AndroidAsset>
     <AndroidAsset Include="..\Assets\Data\Fonts\read_me.html">
       <Link>Assets\Data\Fonts\read_me.html</Link>
-    </AndroidAsset>
-    <AndroidAsset Include="..\Assets\Data\LuaScripts\01_HelloWorld.lua">
-      <Link>Assets\Data\LuaScripts\01_HelloWorld.lua</Link>
-    </AndroidAsset>
-    <AndroidAsset Include="..\Assets\Data\LuaScripts\02_HelloGUI.lua">
-      <Link>Assets\Data\LuaScripts\02_HelloGUI.lua</Link>
-    </AndroidAsset>
-    <AndroidAsset Include="..\Assets\Data\LuaScripts\03_Sprites.lua">
-      <Link>Assets\Data\LuaScripts\03_Sprites.lua</Link>
-    </AndroidAsset>
-    <AndroidAsset Include="..\Assets\Data\LuaScripts\04_StaticScene.lua">
-      <Link>Assets\Data\LuaScripts\04_StaticScene.lua</Link>
-    </AndroidAsset>
-    <AndroidAsset Include="..\Assets\Data\LuaScripts\05_AnimatingScene.lua">
-      <Link>Assets\Data\LuaScripts\05_AnimatingScene.lua</Link>
-    </AndroidAsset>
-    <AndroidAsset Include="..\Assets\Data\LuaScripts\06_SkeletalAnimation.lua">
-      <Link>Assets\Data\LuaScripts\06_SkeletalAnimation.lua</Link>
-    </AndroidAsset>
-    <AndroidAsset Include="..\Assets\Data\LuaScripts\07_Billboards.lua">
-      <Link>Assets\Data\LuaScripts\07_Billboards.lua</Link>
-    </AndroidAsset>
-    <AndroidAsset Include="..\Assets\Data\LuaScripts\08_Decals.lua">
-      <Link>Assets\Data\LuaScripts\08_Decals.lua</Link>
-    </AndroidAsset>
-    <AndroidAsset Include="..\Assets\Data\LuaScripts\09_MultipleViewports.lua">
-      <Link>Assets\Data\LuaScripts\09_MultipleViewports.lua</Link>
-    </AndroidAsset>
-    <AndroidAsset Include="..\Assets\Data\LuaScripts\10_RenderToTexture.lua">
-      <Link>Assets\Data\LuaScripts\10_RenderToTexture.lua</Link>
-    </AndroidAsset>
-    <AndroidAsset Include="..\Assets\Data\LuaScripts\11_Physics.lua">
-      <Link>Assets\Data\LuaScripts\11_Physics.lua</Link>
-    </AndroidAsset>
-    <AndroidAsset Include="..\Assets\Data\LuaScripts\12_PhysicsStressTest.lua">
-      <Link>Assets\Data\LuaScripts\12_PhysicsStressTest.lua</Link>
-    </AndroidAsset>
-    <AndroidAsset Include="..\Assets\Data\LuaScripts\13_Ragdolls.lua">
-      <Link>Assets\Data\LuaScripts\13_Ragdolls.lua</Link>
-    </AndroidAsset>
-    <AndroidAsset Include="..\Assets\Data\LuaScripts\14_SoundEffects.lua">
-      <Link>Assets\Data\LuaScripts\14_SoundEffects.lua</Link>
-    </AndroidAsset>
-    <AndroidAsset Include="..\Assets\Data\LuaScripts\15_Navigation.lua">
-      <Link>Assets\Data\LuaScripts\15_Navigation.lua</Link>
-    </AndroidAsset>
-    <AndroidAsset Include="..\Assets\Data\LuaScripts\16_Chat.lua">
-      <Link>Assets\Data\LuaScripts\16_Chat.lua</Link>
-    </AndroidAsset>
-    <AndroidAsset Include="..\Assets\Data\LuaScripts\17_SceneReplication.lua">
-      <Link>Assets\Data\LuaScripts\17_SceneReplication.lua</Link>
-    </AndroidAsset>
-    <AndroidAsset Include="..\Assets\Data\LuaScripts\18_CharacterDemo.lua">
-      <Link>Assets\Data\LuaScripts\18_CharacterDemo.lua</Link>
-    </AndroidAsset>
-    <AndroidAsset Include="..\Assets\Data\LuaScripts\19_VehicleDemo.lua">
-      <Link>Assets\Data\LuaScripts\19_VehicleDemo.lua</Link>
-    </AndroidAsset>
-    <AndroidAsset Include="..\Assets\Data\LuaScripts\20_HugeObjectCount.lua">
-      <Link>Assets\Data\LuaScripts\20_HugeObjectCount.lua</Link>
-    </AndroidAsset>
-    <AndroidAsset Include="..\Assets\Data\LuaScripts\23_Water.lua">
-      <Link>Assets\Data\LuaScripts\23_Water.lua</Link>
-    </AndroidAsset>
-    <AndroidAsset Include="..\Assets\Data\LuaScripts\24_Urho2DSprite.lua">
-      <Link>Assets\Data\LuaScripts\24_Urho2DSprite.lua</Link>
-    </AndroidAsset>
-    <AndroidAsset Include="..\Assets\Data\LuaScripts\25_Urho2DParticle.lua">
-      <Link>Assets\Data\LuaScripts\25_Urho2DParticle.lua</Link>
-    </AndroidAsset>
-    <AndroidAsset Include="..\Assets\Data\LuaScripts\26_ConsoleInput.lua">
-      <Link>Assets\Data\LuaScripts\26_ConsoleInput.lua</Link>
-    </AndroidAsset>
-    <AndroidAsset Include="..\Assets\Data\LuaScripts\27_Urho2DPhysics.lua">
-      <Link>Assets\Data\LuaScripts\27_Urho2DPhysics.lua</Link>
-    </AndroidAsset>
-    <AndroidAsset Include="..\Assets\Data\LuaScripts\28_Urho2DPhysicsRope.lua">
-      <Link>Assets\Data\LuaScripts\28_Urho2DPhysicsRope.lua</Link>
-    </AndroidAsset>
-    <AndroidAsset Include="..\Assets\Data\LuaScripts\30_LightAnimation.lua">
-      <Link>Assets\Data\LuaScripts\30_LightAnimation.lua</Link>
-    </AndroidAsset>
-    <AndroidAsset Include="..\Assets\Data\LuaScripts\31_MaterialAnimation.lua">
-      <Link>Assets\Data\LuaScripts\31_MaterialAnimation.lua</Link>
-    </AndroidAsset>
-    <AndroidAsset Include="..\Assets\Data\LuaScripts\32_Urho2DConstraints.lua">
-      <Link>Assets\Data\LuaScripts\32_Urho2DConstraints.lua</Link>
-    </AndroidAsset>
-    <AndroidAsset Include="..\Assets\Data\LuaScripts\33_Urho2DSpriterAnimation.lua">
-      <Link>Assets\Data\LuaScripts\33_Urho2DSpriterAnimation.lua</Link>
-    </AndroidAsset>
-    <AndroidAsset Include="..\Assets\Data\LuaScripts\34_DynamicGeometry.lua">
-      <Link>Assets\Data\LuaScripts\34_DynamicGeometry.lua</Link>
-    </AndroidAsset>
-    <AndroidAsset Include="..\Assets\Data\LuaScripts\35_SignedDistanceFieldText.lua">
-      <Link>Assets\Data\LuaScripts\35_SignedDistanceFieldText.lua</Link>
-    </AndroidAsset>
-    <AndroidAsset Include="..\Assets\Data\LuaScripts\36_Urho2DTileMap.lua">
-      <Link>Assets\Data\LuaScripts\36_Urho2DTileMap.lua</Link>
-    </AndroidAsset>
-    <AndroidAsset Include="..\Assets\Data\LuaScripts\37_UIDrag.lua">
-      <Link>Assets\Data\LuaScripts\37_UIDrag.lua</Link>
-    </AndroidAsset>
-    <AndroidAsset Include="..\Assets\Data\LuaScripts\38_SceneAndUILoad.lua">
-      <Link>Assets\Data\LuaScripts\38_SceneAndUILoad.lua</Link>
-    </AndroidAsset>
-    <AndroidAsset Include="..\Assets\Data\LuaScripts\39_CrowdNavigation.lua">
-      <Link>Assets\Data\LuaScripts\39_CrowdNavigation.lua</Link>
-    </AndroidAsset>
-    <AndroidAsset Include="..\Assets\Data\LuaScripts\Rotator.lua">
-      <Link>Assets\Data\LuaScripts\Rotator.lua</Link>
-    </AndroidAsset>
-    <AndroidAsset Include="..\Assets\Data\LuaScripts\TestScene.lua">
-      <Link>Assets\Data\LuaScripts\TestScene.lua</Link>
-    </AndroidAsset>
-    <AndroidAsset Include="..\Assets\Data\LuaScripts\Utilities\Network.lua">
-      <Link>Assets\Data\LuaScripts\Utilities\Network.lua</Link>
-    </AndroidAsset>
-    <AndroidAsset Include="..\Assets\Data\LuaScripts\Utilities\Sample.lua">
-      <Link>Assets\Data\LuaScripts\Utilities\Sample.lua</Link>
-    </AndroidAsset>
-    <AndroidAsset Include="..\Assets\Data\LuaScripts\Utilities\ScriptCompiler.lua">
-      <Link>Assets\Data\LuaScripts\Utilities\ScriptCompiler.lua</Link>
-    </AndroidAsset>
-    <AndroidAsset Include="..\Assets\Data\LuaScripts\Utilities\Touch.lua">
-      <Link>Assets\Data\LuaScripts\Utilities\Touch.lua</Link>
     </AndroidAsset>
     <AndroidAsset Include="..\Assets\Data\Materials\GreenTransparent.xml">
       <Link>Assets\Data\Materials\GreenTransparent.xml</Link>
@@ -911,6 +806,39 @@
     </AndroidAsset>
     <AndroidAsset Include="..\Assets\Data\Materials\Editor\BrightRedUnlit.xml">
       <Link>Assets\Data\Materials\Editor\BrightRedUnlit.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Materials\Editor\DebugIconCamera.xml">
+      <Link>Assets\Data\Materials\Editor\DebugIconCamera.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Materials\Editor\DebugIconCollisionTrigger.xml">
+      <Link>Assets\Data\Materials\Editor\DebugIconCollisionTrigger.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Materials\Editor\DebugIconCustomGeometry.xml">
+      <Link>Assets\Data\Materials\Editor\DebugIconCustomGeometry.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Materials\Editor\DebugIconLight.xml">
+      <Link>Assets\Data\Materials\Editor\DebugIconLight.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Materials\Editor\DebugIconParticleEmitter.xml">
+      <Link>Assets\Data\Materials\Editor\DebugIconParticleEmitter.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Materials\Editor\DebugIconPointLight.xml">
+      <Link>Assets\Data\Materials\Editor\DebugIconPointLight.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Materials\Editor\DebugIconSoundListener.xml">
+      <Link>Assets\Data\Materials\Editor\DebugIconSoundListener.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Materials\Editor\DebugIconSoundSource.xml">
+      <Link>Assets\Data\Materials\Editor\DebugIconSoundSource.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Materials\Editor\DebugIconSplinePathPoint.xml">
+      <Link>Assets\Data\Materials\Editor\DebugIconSplinePathPoint.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Materials\Editor\DebugIconSpotLight.xml">
+      <Link>Assets\Data\Materials\Editor\DebugIconSpotLight.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Materials\Editor\DebugIconZone.xml">
+      <Link>Assets\Data\Materials\Editor\DebugIconZone.xml</Link>
     </AndroidAsset>
     <AndroidAsset Include="..\Assets\Data\Materials\Editor\GreenUnlit.xml">
       <Link>Assets\Data\Materials\Editor\GreenUnlit.xml</Link>
@@ -1143,216 +1071,6 @@
     <AndroidAsset Include="..\Assets\Data\Scenes\SceneLoadExample.xml">
       <Link>Assets\Data\Scenes\SceneLoadExample.xml</Link>
     </AndroidAsset>
-    <AndroidAsset Include="..\Assets\Data\Scripts\01_HelloWorld.as">
-      <Link>Assets\Data\Scripts\01_HelloWorld.as</Link>
-    </AndroidAsset>
-    <AndroidAsset Include="..\Assets\Data\Scripts\02_HelloGUI.as">
-      <Link>Assets\Data\Scripts\02_HelloGUI.as</Link>
-    </AndroidAsset>
-    <AndroidAsset Include="..\Assets\Data\Scripts\03_Sprites.as">
-      <Link>Assets\Data\Scripts\03_Sprites.as</Link>
-    </AndroidAsset>
-    <AndroidAsset Include="..\Assets\Data\Scripts\04_StaticScene.as">
-      <Link>Assets\Data\Scripts\04_StaticScene.as</Link>
-    </AndroidAsset>
-    <AndroidAsset Include="..\Assets\Data\Scripts\05_AnimatingScene.as">
-      <Link>Assets\Data\Scripts\05_AnimatingScene.as</Link>
-    </AndroidAsset>
-    <AndroidAsset Include="..\Assets\Data\Scripts\06_SkeletalAnimation.as">
-      <Link>Assets\Data\Scripts\06_SkeletalAnimation.as</Link>
-    </AndroidAsset>
-    <AndroidAsset Include="..\Assets\Data\Scripts\07_Billboards.as">
-      <Link>Assets\Data\Scripts\07_Billboards.as</Link>
-    </AndroidAsset>
-    <AndroidAsset Include="..\Assets\Data\Scripts\08_Decals.as">
-      <Link>Assets\Data\Scripts\08_Decals.as</Link>
-    </AndroidAsset>
-    <AndroidAsset Include="..\Assets\Data\Scripts\09_MultipleViewports.as">
-      <Link>Assets\Data\Scripts\09_MultipleViewports.as</Link>
-    </AndroidAsset>
-    <AndroidAsset Include="..\Assets\Data\Scripts\10_RenderToTexture.as">
-      <Link>Assets\Data\Scripts\10_RenderToTexture.as</Link>
-    </AndroidAsset>
-    <AndroidAsset Include="..\Assets\Data\Scripts\11_Physics.as">
-      <Link>Assets\Data\Scripts\11_Physics.as</Link>
-    </AndroidAsset>
-    <AndroidAsset Include="..\Assets\Data\Scripts\12_PhysicsStressTest.as">
-      <Link>Assets\Data\Scripts\12_PhysicsStressTest.as</Link>
-    </AndroidAsset>
-    <AndroidAsset Include="..\Assets\Data\Scripts\13_Ragdolls.as">
-      <Link>Assets\Data\Scripts\13_Ragdolls.as</Link>
-    </AndroidAsset>
-    <AndroidAsset Include="..\Assets\Data\Scripts\14_SoundEffects.as">
-      <Link>Assets\Data\Scripts\14_SoundEffects.as</Link>
-    </AndroidAsset>
-    <AndroidAsset Include="..\Assets\Data\Scripts\15_Navigation.as">
-      <Link>Assets\Data\Scripts\15_Navigation.as</Link>
-    </AndroidAsset>
-    <AndroidAsset Include="..\Assets\Data\Scripts\16_Chat.as">
-      <Link>Assets\Data\Scripts\16_Chat.as</Link>
-    </AndroidAsset>
-    <AndroidAsset Include="..\Assets\Data\Scripts\17_SceneReplication.as">
-      <Link>Assets\Data\Scripts\17_SceneReplication.as</Link>
-    </AndroidAsset>
-    <AndroidAsset Include="..\Assets\Data\Scripts\18_CharacterDemo.as">
-      <Link>Assets\Data\Scripts\18_CharacterDemo.as</Link>
-    </AndroidAsset>
-    <AndroidAsset Include="..\Assets\Data\Scripts\19_VehicleDemo.as">
-      <Link>Assets\Data\Scripts\19_VehicleDemo.as</Link>
-    </AndroidAsset>
-    <AndroidAsset Include="..\Assets\Data\Scripts\20_HugeObjectCount.as">
-      <Link>Assets\Data\Scripts\20_HugeObjectCount.as</Link>
-    </AndroidAsset>
-    <AndroidAsset Include="..\Assets\Data\Scripts\23_Water.as">
-      <Link>Assets\Data\Scripts\23_Water.as</Link>
-    </AndroidAsset>
-    <AndroidAsset Include="..\Assets\Data\Scripts\24_Urho2DSprite.as">
-      <Link>Assets\Data\Scripts\24_Urho2DSprite.as</Link>
-    </AndroidAsset>
-    <AndroidAsset Include="..\Assets\Data\Scripts\25_Urho2DParticle.as">
-      <Link>Assets\Data\Scripts\25_Urho2DParticle.as</Link>
-    </AndroidAsset>
-    <AndroidAsset Include="..\Assets\Data\Scripts\26_ConsoleInput.as">
-      <Link>Assets\Data\Scripts\26_ConsoleInput.as</Link>
-    </AndroidAsset>
-    <AndroidAsset Include="..\Assets\Data\Scripts\27_Urho2DPhysics.as">
-      <Link>Assets\Data\Scripts\27_Urho2DPhysics.as</Link>
-    </AndroidAsset>
-    <AndroidAsset Include="..\Assets\Data\Scripts\28_Urho2DPhysicsRope.as">
-      <Link>Assets\Data\Scripts\28_Urho2DPhysicsRope.as</Link>
-    </AndroidAsset>
-    <AndroidAsset Include="..\Assets\Data\Scripts\30_LightAnimation.as">
-      <Link>Assets\Data\Scripts\30_LightAnimation.as</Link>
-    </AndroidAsset>
-    <AndroidAsset Include="..\Assets\Data\Scripts\31_MaterialAnimation.as">
-      <Link>Assets\Data\Scripts\31_MaterialAnimation.as</Link>
-    </AndroidAsset>
-    <AndroidAsset Include="..\Assets\Data\Scripts\32_Urho2DConstraints.as">
-      <Link>Assets\Data\Scripts\32_Urho2DConstraints.as</Link>
-    </AndroidAsset>
-    <AndroidAsset Include="..\Assets\Data\Scripts\33_Urho2DSpriterAnimation.as">
-      <Link>Assets\Data\Scripts\33_Urho2DSpriterAnimation.as</Link>
-    </AndroidAsset>
-    <AndroidAsset Include="..\Assets\Data\Scripts\34_DynamicGeometry.as">
-      <Link>Assets\Data\Scripts\34_DynamicGeometry.as</Link>
-    </AndroidAsset>
-    <AndroidAsset Include="..\Assets\Data\Scripts\35_SignedDistanceFieldText.as">
-      <Link>Assets\Data\Scripts\35_SignedDistanceFieldText.as</Link>
-    </AndroidAsset>
-    <AndroidAsset Include="..\Assets\Data\Scripts\36_Urho2DTileMap.as">
-      <Link>Assets\Data\Scripts\36_Urho2DTileMap.as</Link>
-    </AndroidAsset>
-    <AndroidAsset Include="..\Assets\Data\Scripts\37_UIDrag.as">
-      <Link>Assets\Data\Scripts\37_UIDrag.as</Link>
-    </AndroidAsset>
-    <AndroidAsset Include="..\Assets\Data\Scripts\38_SceneAndUILoad.as">
-      <Link>Assets\Data\Scripts\38_SceneAndUILoad.as</Link>
-    </AndroidAsset>
-    <AndroidAsset Include="..\Assets\Data\Scripts\39_CrowdNavigation.as">
-      <Link>Assets\Data\Scripts\39_CrowdNavigation.as</Link>
-    </AndroidAsset>
-    <AndroidAsset Include="..\Assets\Data\Scripts\Editor.as">
-      <Link>Assets\Data\Scripts\Editor.as</Link>
-    </AndroidAsset>
-    <AndroidAsset Include="..\Assets\Data\Scripts\NinjaSnowWar.as">
-      <Link>Assets\Data\Scripts\NinjaSnowWar.as</Link>
-    </AndroidAsset>
-    <AndroidAsset Include="..\Assets\Data\Scripts\Rotator.as">
-      <Link>Assets\Data\Scripts\Rotator.as</Link>
-    </AndroidAsset>
-    <AndroidAsset Include="..\Assets\Data\Scripts\Editor\AttributeEditor.as">
-      <Link>Assets\Data\Scripts\Editor\AttributeEditor.as</Link>
-    </AndroidAsset>
-    <AndroidAsset Include="..\Assets\Data\Scripts\Editor\EditorActions.as">
-      <Link>Assets\Data\Scripts\Editor\EditorActions.as</Link>
-    </AndroidAsset>
-    <AndroidAsset Include="..\Assets\Data\Scripts\Editor\EditorGizmo.as">
-      <Link>Assets\Data\Scripts\Editor\EditorGizmo.as</Link>
-    </AndroidAsset>
-    <AndroidAsset Include="..\Assets\Data\Scripts\Editor\EditorHierarchyWindow.as">
-      <Link>Assets\Data\Scripts\Editor\EditorHierarchyWindow.as</Link>
-    </AndroidAsset>
-    <AndroidAsset Include="..\Assets\Data\Scripts\Editor\EditorImport.as">
-      <Link>Assets\Data\Scripts\Editor\EditorImport.as</Link>
-    </AndroidAsset>
-    <AndroidAsset Include="..\Assets\Data\Scripts\Editor\EditorInspectorWindow.as">
-      <Link>Assets\Data\Scripts\Editor\EditorInspectorWindow.as</Link>
-    </AndroidAsset>
-    <AndroidAsset Include="..\Assets\Data\Scripts\Editor\EditorMaterial.as">
-      <Link>Assets\Data\Scripts\Editor\EditorMaterial.as</Link>
-    </AndroidAsset>
-    <AndroidAsset Include="..\Assets\Data\Scripts\Editor\EditorParticleEffect.as">
-      <Link>Assets\Data\Scripts\Editor\EditorParticleEffect.as</Link>
-    </AndroidAsset>
-    <AndroidAsset Include="..\Assets\Data\Scripts\Editor\EditorPreferences.as">
-      <Link>Assets\Data\Scripts\Editor\EditorPreferences.as</Link>
-    </AndroidAsset>
-    <AndroidAsset Include="..\Assets\Data\Scripts\Editor\EditorResourceBrowser.as">
-      <Link>Assets\Data\Scripts\Editor\EditorResourceBrowser.as</Link>
-    </AndroidAsset>
-    <AndroidAsset Include="..\Assets\Data\Scripts\Editor\EditorScene.as">
-      <Link>Assets\Data\Scripts\Editor\EditorScene.as</Link>
-    </AndroidAsset>
-    <AndroidAsset Include="..\Assets\Data\Scripts\Editor\EditorSecondaryToolbar.as">
-      <Link>Assets\Data\Scripts\Editor\EditorSecondaryToolbar.as</Link>
-    </AndroidAsset>
-    <AndroidAsset Include="..\Assets\Data\Scripts\Editor\EditorSettings.as">
-      <Link>Assets\Data\Scripts\Editor\EditorSettings.as</Link>
-    </AndroidAsset>
-    <AndroidAsset Include="..\Assets\Data\Scripts\Editor\EditorSoundType.as">
-      <Link>Assets\Data\Scripts\Editor\EditorSoundType.as</Link>
-    </AndroidAsset>
-    <AndroidAsset Include="..\Assets\Data\Scripts\Editor\EditorSpawn.as">
-      <Link>Assets\Data\Scripts\Editor\EditorSpawn.as</Link>
-    </AndroidAsset>
-    <AndroidAsset Include="..\Assets\Data\Scripts\Editor\EditorToolBar.as">
-      <Link>Assets\Data\Scripts\Editor\EditorToolBar.as</Link>
-    </AndroidAsset>
-    <AndroidAsset Include="..\Assets\Data\Scripts\Editor\EditorUI.as">
-      <Link>Assets\Data\Scripts\Editor\EditorUI.as</Link>
-    </AndroidAsset>
-    <AndroidAsset Include="..\Assets\Data\Scripts\Editor\EditorUIElement.as">
-      <Link>Assets\Data\Scripts\Editor\EditorUIElement.as</Link>
-    </AndroidAsset>
-    <AndroidAsset Include="..\Assets\Data\Scripts\Editor\EditorView.as">
-      <Link>Assets\Data\Scripts\Editor\EditorView.as</Link>
-    </AndroidAsset>
-    <AndroidAsset Include="..\Assets\Data\Scripts\NinjaSnowWar\AIController.as">
-      <Link>Assets\Data\Scripts\NinjaSnowWar\AIController.as</Link>
-    </AndroidAsset>
-    <AndroidAsset Include="..\Assets\Data\Scripts\NinjaSnowWar\FootSteps.as">
-      <Link>Assets\Data\Scripts\NinjaSnowWar\FootSteps.as</Link>
-    </AndroidAsset>
-    <AndroidAsset Include="..\Assets\Data\Scripts\NinjaSnowWar\GameObject.as">
-      <Link>Assets\Data\Scripts\NinjaSnowWar\GameObject.as</Link>
-    </AndroidAsset>
-    <AndroidAsset Include="..\Assets\Data\Scripts\NinjaSnowWar\LightFlash.as">
-      <Link>Assets\Data\Scripts\NinjaSnowWar\LightFlash.as</Link>
-    </AndroidAsset>
-    <AndroidAsset Include="..\Assets\Data\Scripts\NinjaSnowWar\Ninja.as">
-      <Link>Assets\Data\Scripts\NinjaSnowWar\Ninja.as</Link>
-    </AndroidAsset>
-    <AndroidAsset Include="..\Assets\Data\Scripts\NinjaSnowWar\Player.as">
-      <Link>Assets\Data\Scripts\NinjaSnowWar\Player.as</Link>
-    </AndroidAsset>
-    <AndroidAsset Include="..\Assets\Data\Scripts\NinjaSnowWar\Potion.as">
-      <Link>Assets\Data\Scripts\NinjaSnowWar\Potion.as</Link>
-    </AndroidAsset>
-    <AndroidAsset Include="..\Assets\Data\Scripts\NinjaSnowWar\SnowBall.as">
-      <Link>Assets\Data\Scripts\NinjaSnowWar\SnowBall.as</Link>
-    </AndroidAsset>
-    <AndroidAsset Include="..\Assets\Data\Scripts\NinjaSnowWar\SnowCrate.as">
-      <Link>Assets\Data\Scripts\NinjaSnowWar\SnowCrate.as</Link>
-    </AndroidAsset>
-    <AndroidAsset Include="..\Assets\Data\Scripts\Utilities\Network.as">
-      <Link>Assets\Data\Scripts\Utilities\Network.as</Link>
-    </AndroidAsset>
-    <AndroidAsset Include="..\Assets\Data\Scripts\Utilities\Sample.as">
-      <Link>Assets\Data\Scripts\Utilities\Sample.as</Link>
-    </AndroidAsset>
-    <AndroidAsset Include="..\Assets\Data\Scripts\Utilities\Touch.as">
-      <Link>Assets\Data\Scripts\Utilities\Touch.as</Link>
-    </AndroidAsset>
     <AndroidAsset Include="..\Assets\Data\Sounds\BigExplosion.wav">
       <Link>Assets\Data\Sounds\BigExplosion.wav</Link>
     </AndroidAsset>
@@ -1473,11 +1191,50 @@
     <AndroidAsset Include="..\Assets\Data\Textures\WaterNoise.dds">
       <Link>Assets\Data\Textures\WaterNoise.dds</Link>
     </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Textures\Editor\BW.png">
+      <Link>Assets\Data\Textures\Editor\BW.png</Link>
+    </AndroidAsset>
     <AndroidAsset Include="..\Assets\Data\Textures\Editor\EditorIcons.png">
       <Link>Assets\Data\Textures\Editor\EditorIcons.png</Link>
     </AndroidAsset>
     <AndroidAsset Include="..\Assets\Data\Textures\Editor\EditorIcons.xml">
       <Link>Assets\Data\Textures\Editor\EditorIcons.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Textures\Editor\HSV20.png">
+      <Link>Assets\Data\Textures\Editor\HSV20.png</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Textures\Editor\IconCamera.png">
+      <Link>Assets\Data\Textures\Editor\IconCamera.png</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Textures\Editor\IconCollisionTrigger.png">
+      <Link>Assets\Data\Textures\Editor\IconCollisionTrigger.png</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Textures\Editor\IconCustomGeometry.png">
+      <Link>Assets\Data\Textures\Editor\IconCustomGeometry.png</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Textures\Editor\IconLight.png">
+      <Link>Assets\Data\Textures\Editor\IconLight.png</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Textures\Editor\IconParticleEmitter.png">
+      <Link>Assets\Data\Textures\Editor\IconParticleEmitter.png</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Textures\Editor\IconPointLight.png">
+      <Link>Assets\Data\Textures\Editor\IconPointLight.png</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Textures\Editor\IconSoundListener.png">
+      <Link>Assets\Data\Textures\Editor\IconSoundListener.png</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Textures\Editor\IconSoundSource.png">
+      <Link>Assets\Data\Textures\Editor\IconSoundSource.png</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Textures\Editor\IconSplinePathPoint.png">
+      <Link>Assets\Data\Textures\Editor\IconSplinePathPoint.png</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Textures\Editor\IconSpotLight.png">
+      <Link>Assets\Data\Textures\Editor\IconSpotLight.png</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Textures\Editor\IconZone.png">
+      <Link>Assets\Data\Textures\Editor\IconZone.png</Link>
     </AndroidAsset>
     <AndroidAsset Include="..\Assets\Data\Textures\Editor\NoPreviewAvailable.png">
       <Link>Assets\Data\Textures\Editor\NoPreviewAvailable.png</Link>
@@ -1509,6 +1266,9 @@
     <AndroidAsset Include="..\Assets\Data\UI\DefaultStyle.xml">
       <Link>Assets\Data\UI\DefaultStyle.xml</Link>
     </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\UI\EditorColorWheel.xml">
+      <Link>Assets\Data\UI\EditorColorWheel.xml</Link>
+    </AndroidAsset>
     <AndroidAsset Include="..\Assets\Data\UI\EditorContextMenu.xml">
       <Link>Assets\Data\UI\EditorContextMenu.xml</Link>
     </AndroidAsset>
@@ -1529,6 +1289,9 @@
     </AndroidAsset>
     <AndroidAsset Include="..\Assets\Data\UI\EditorInspector_Variable.xml">
       <Link>Assets\Data\UI\EditorInspector_Variable.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\UI\EditorLayersWindow.xml">
+      <Link>Assets\Data\UI\EditorLayersWindow.xml</Link>
     </AndroidAsset>
     <AndroidAsset Include="..\Assets\Data\UI\EditorMaterialWindow.xml">
       <Link>Assets\Data\UI\EditorMaterialWindow.xml</Link>
@@ -1596,14 +1359,8 @@
     <AndroidAsset Include="..\Assets\Data\Urho2D\Box.png">
       <Link>Assets\Data\Urho2D\Box.png</Link>
     </AndroidAsset>
-    <AndroidAsset Include="..\Assets\Data\Urho2D\GoldIcon.png">
-      <Link>Assets\Data\Urho2D\GoldIcon.png</Link>
-    </AndroidAsset>
     <AndroidAsset Include="..\Assets\Data\Urho2D\GoldIcon.scml">
       <Link>Assets\Data\Urho2D\GoldIcon.scml</Link>
-    </AndroidAsset>
-    <AndroidAsset Include="..\Assets\Data\Urho2D\GoldIcon.xml">
-      <Link>Assets\Data\Urho2D\GoldIcon.xml</Link>
     </AndroidAsset>
     <AndroidAsset Include="..\Assets\Data\Urho2D\greenspiral.pex">
       <Link>Assets\Data\Urho2D\greenspiral.pex</Link>
@@ -1644,15 +1401,6 @@
     <AndroidAsset Include="..\Assets\Data\Urho2D\imp\imp.txt">
       <Link>Assets\Data\Urho2D\imp\imp.txt</Link>
     </AndroidAsset>
-    <AndroidAsset Include="..\Assets\Data\Urho2D\imp\imp.xml">
-      <Link>Assets\Data\Urho2D\imp\imp.xml</Link>
-    </AndroidAsset>
-    <AndroidAsset Include="..\Assets\Data\Urho2D\imp\imp_all.png">
-      <Link>Assets\Data\Urho2D\imp\imp_all.png</Link>
-    </AndroidAsset>
-    <AndroidAsset Include="..\Assets\Data\Urho2D\imp\imp_all.xml">
-      <Link>Assets\Data\Urho2D\imp\imp_all.xml</Link>
-    </AndroidAsset>
     <AndroidAsset Include="..\Assets\Data\Urho2D\imp\imp_blood.png">
       <Link>Assets\Data\Urho2D\imp\imp_blood.png</Link>
     </AndroidAsset>
@@ -1684,11 +1432,4 @@
       <Link>Assets\Data\Urho2D\imp\imp_headblink.png</Link>
     </AndroidAsset>
   </ItemGroup>
-  <Import Project="..\packages\MonoUrho.0.4.10\build\MonoAndroid\MonoUrho.targets" Condition="Exists('..\packages\MonoUrho.0.4.10\build\MonoAndroid\MonoUrho.targets')" />
-  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
-    <PropertyGroup>
-      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
-    </PropertyGroup>
-    <Error Condition="!Exists('..\packages\MonoUrho.0.4.10\build\MonoAndroid\MonoUrho.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\MonoUrho.0.4.10\build\MonoAndroid\MonoUrho.targets'))" />
-  </Target>
 </Project>

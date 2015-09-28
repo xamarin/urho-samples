@@ -1411,11 +1411,11 @@
     <Reference Include="System.Xml" />
     <Reference Include="System.Core" />
     <Reference Include="Urho, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\MonoUrho.0.4.10\lib\Xamarin.iOS10\Urho.dll</HintPath>
+      <HintPath>..\packages\mutest123.0.4.11\lib\Xamarin.iOS10\Urho.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Urho.iOS, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\MonoUrho.0.4.10\lib\Xamarin.iOS10\Urho.iOS.dll</HintPath>
+      <HintPath>..\packages\mutest123.0.4.11\lib\Xamarin.iOS10\Urho.iOS.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Xamarin.iOS" />
@@ -1431,16 +1431,11 @@
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
-  <ItemGroup />
-  <Import Project="..\packages\MonoUrho.0.4.10\build\Xamarin.iOS10\MonoUrho.targets" Condition="Exists('..\packages\MonoUrho.0.4.10\build\Xamarin.iOS10\MonoUrho.targets')" />
+  <Import Project="..\packages\mutest123.0.4.11\build\Xamarin.iOS10\mutest123.targets" Condition="Exists('..\packages\mutest123.0.4.11\build\Xamarin.iOS10\mutest123.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
-    <Error Condition="!Exists('..\packages\MonoUrho.0.4.10\build\Xamarin.iOS10\MonoUrho.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\MonoUrho.0.4.10\build\Xamarin.iOS10\MonoUrho.targets'))" />
+    <Error Condition="!Exists('..\packages\mutest123.0.4.11\build\Xamarin.iOS10\mutest123.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\mutest123.0.4.11\build\Xamarin.iOS10\mutest123.targets'))" />
   </Target>
-  <ItemGroup>
-    <Folder Include="Resources\CoreData\" />
-    <Folder Include="Resources\Data\" />
-  </ItemGroup>
 </Project>
