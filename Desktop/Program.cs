@@ -26,7 +26,7 @@ namespace Urho.Samples.Desktop
 				}
 			}
 			else if (selectedSampleType == null)
-				return;
+				selectedSampleType = typeof(_23_Water); //show 23_Water sample by default for OS X if args are empty.
 
 			var resourcesDirectory = @"../../Assets";
 			var code = ApplicationLauncher.Run(() => (Application)Activator.CreateInstance(selectedSampleType, new Context()), resourcesDirectory);

@@ -48,6 +48,26 @@
     <Debugger>Xamarin</Debugger>
     <DevInstrumentationEnabled>False</DevInstrumentationEnabled>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug Mac|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\Debug Mac\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release Mac|AnyCPU'">
+    <OutputPath>bin\Release Mac\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="Mono.Android" />
     <Reference Include="mscorlib" />
@@ -114,11 +134,7 @@
     </PropertyGroup>
     <Error Condition="!Exists('..\packages\mutest123.0.4.11\build\MonoAndroid\mutest123.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\mutest123.0.4.11\build\MonoAndroid\mutest123.targets'))" />
   </Target>
-  <ItemGroup>
-    <Folder Include="Assets\" />
-    <Folder Include="Assets\CoreData\" />
-    <Folder Include="Assets\Data\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <AndroidAsset Include="..\Assets\CoreData\Materials\DefaultGrey.xml">
       <Link>Assets\CoreData\Materials\DefaultGrey.xml</Link>
