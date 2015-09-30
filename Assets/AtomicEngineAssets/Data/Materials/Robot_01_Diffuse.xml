@@ -1,0 +1,5 @@
+<material>
+    <technique name="Techniques/Diff.xml" />
+    <texture unit="diffuse" name="Textures/Robot_01_Diffuse.png" />
+    <parameter name="MatSpecColor" value="0.1 0.1 0.1 16" />
+</material>

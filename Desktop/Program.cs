@@ -9,7 +9,7 @@ namespace Urho.Samples.Desktop
 
 		static void Main(string[] args)
 		{
-			//args =  new [] { "5" };
+			args =  new [] { "41" };
 
 			FindAvailableSamplesAndPrint();
 			System.Type selectedSampleType = null;
@@ -26,9 +26,17 @@ namespace Urho.Samples.Desktop
 				}
 			}
 			else if (selectedSampleType == null)
+			{
 				selectedSampleType = typeof(_23_Water); //show 23_Water sample by default for OS X if args are empty.
+			}
 
 			var resourcesDirectory = @"../../Assets";
+			//special assets for AtomicEngine based samples:
+			if (selectedSampleType == typeof (_41_ToonTown))
+			{
+				resourcesDirectory = @"../../Assets/AtomicEngineAssets";
+			}
+
 			var code = ApplicationLauncher.Run(() => (Application)Activator.CreateInstance(selectedSampleType, new Context()), resourcesDirectory);
 			Console.WriteLine($"Exit code: {code}. Press any key to exit...");
 			Console.ReadKey();

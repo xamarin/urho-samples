@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<node id="0">
+	<attribute name="Is Enabled" value="true" />
+	<attribute name="Name" value="" />
+	<attribute name="Position" value="0 0 0" />
+	<attribute name="Rotation" value="1 0 0 0" />
+	<attribute name="Scale" value="1 1 1" />
+	<attribute name="Variables" />
+	<component type="StaticModel" id="0">
+		<attribute name="Model" value="Model;Cache/4cb45fc8dc88a5baad7d93b96b6e5d3d.mdl" />
+		<attribute name="Material" value="Material;" />
+	</component>
+</node>

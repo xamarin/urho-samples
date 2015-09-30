@@ -1,0 +1,4 @@
+<material>
+    <technique name="Techniques/Diff.xml" />
+    <texture unit="diffuse" name="Textures/Crate.png" />
+</material>
