@@ -202,21 +202,6 @@ namespace Urho.Samples
 					15, 16, 17
 				};
 
-				// Calculate face normals now
-				for (uint i = 0; i < numVertices; i += 3)
-				{
-					Vector3 v1 = new Vector3(vertexData[6 * i], vertexData[6 * i + 1], vertexData[6 * i + 2]);
-					Vector3 v2 = new Vector3(vertexData[6 * (i + 1)], vertexData[6 * (i + 1) + 1], vertexData[6 * (i + 1) + 2]);
-					Vector3 v3 = new Vector3(vertexData[6 * (i + 2)], vertexData[6 * (i + 2) + 1], vertexData[6 * (i + 2) + 2]);
-					Vector3 n1 = new Vector3(vertexData[6 * i + 3], vertexData[6 * i + 3 + 1], vertexData[6 * i + 3 + 2]);
-					Vector3 n2 = new Vector3(vertexData[6 * (i + 1) + 3], vertexData[6 * (i + 1) + 3 + 1], vertexData[6 * (i + 1) + 3 + 2]);
-					Vector3 n3 = new Vector3(vertexData[6 * (i + 2) + 3], vertexData[6 * (i + 2) + 3 + 1], vertexData[6 * (i + 2) + 3 + 2]);
-
-					Vector3 edge1 = v1 - v2;
-					Vector3 edge2 = v1 - v3;
-					n1 = n2 = n3 = Vector3.Normalize(Vector3.Cross(edge1, edge2));
-				}
-
 				Model fromScratchModel = new Model(Context);
 				VertexBuffer vb = new VertexBuffer(Context, false);
 				IndexBuffer ib = new IndexBuffer(Context, false);
