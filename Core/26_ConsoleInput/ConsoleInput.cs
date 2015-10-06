@@ -16,22 +16,22 @@ namespace Urho.Samples
 		int urhoThreat;
 
 		string[] hungerLevels =
-		{
-			"bursting",
-			"well-fed",
-			"fed",
-			"hungry",
-			"very hungry",
-			"starving"
-		};
+			{
+				"bursting",
+				"well-fed",
+				"fed",
+				"hungry",
+				"very hungry",
+				"starving"
+			};
 
 		// Urho threat level descriptions
 		string[] urhoThreatLevels =
-		{
-			"Suddenly Urho appears from a dark corner of the fish tank",
-			"Urho seems to have his eyes set on you",
-			"Urho is homing in on you mercilessly"
-		};
+			{
+				"Suddenly Urho appears from a dark corner of the fish tank",
+				"Urho seems to have his eyes set on you",
+				"Urho is homing in on you mercilessly"
+			};
 
 		public _26_ConsoleInput(Context ctx) : base(ctx) { }
 
@@ -59,9 +59,6 @@ namespace Urho.Samples
 
 			// Initialize game and print the welcome message
 			StartGame();
-
-			// Randomize from system clock
-			//// SetRandomSeed(Time::GetSystemTime());
 		}
 
 		void HandleConsoleCommand(ConsoleCommandEventArgs args)

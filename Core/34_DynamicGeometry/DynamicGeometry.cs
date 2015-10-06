@@ -19,7 +19,7 @@ namespace Urho.Samples
 		{
 			base.Start();
 			CreateScene();
-			SimpleCreateInstructionsWithWASD("\nSpace to toggle animation");
+			SimpleCreateInstructionsWithWasd("\nSpace to toggle animation");
 			SetupViewport();
 		}
 
@@ -89,16 +89,16 @@ namespace Urho.Samples
 			Node zoneNode = scene.CreateChild("Zone");
 			Zone zone = zoneNode.CreateComponent<Zone>();
 			zone.SetBoundingBox(new BoundingBox(-1000.0f, 1000.0f));
-			zone.FogColor = (new Color(0.2f, 0.2f, 0.2f));
-			zone.FogStart = (200.0f);
-			zone.FogEnd = (300.0f);
+			zone.FogColor = new Color(0.2f, 0.2f, 0.2f);
+			zone.FogStart = 200.0f;
+			zone.FogEnd = 300.0f;
 
 			// Create a directional light
 			Node lightNode = scene.CreateChild("DirectionalLight");
 			lightNode.SetDirection(new Vector3(-0.6f, -1.0f, -0.8f)); // The direction vector does not need to be normalized
 			Light light = lightNode.CreateComponent<Light>();
 			light.LightType = LightType.LIGHT_DIRECTIONAL;
-			light.Color = (new Color(0.4f, 1.0f, 0.4f));
+			light.Color = new Color(0.4f, 1.0f, 0.4f);
 			light.SpecularIntensity = (1.5f);
 
 			// Get the original model and its unmodified vertices, which are used as source data for the animation

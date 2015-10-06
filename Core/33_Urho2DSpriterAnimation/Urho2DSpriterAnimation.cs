@@ -8,15 +8,15 @@ namespace Urho.Samples
 		Node spriteNode;
 		int animationIndex;
 		static readonly string[] AnimationNames =
-		{
-			"idle",
-			"run",
-			"attack",
-			"hit",
-			"dead",
-			"dead2",
-			"dead3",
-		};
+			{
+				"idle",
+				"run",
+				"attack",
+				"hit",
+				"dead",
+				"dead2",
+				"dead3",
+			};
 
 		public _33_Urho2DSpriterAnimation(Context ctx) : base(ctx) { }
 

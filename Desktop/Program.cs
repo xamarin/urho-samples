@@ -21,7 +21,7 @@ namespace Urho.Samples.Desktop
 			{
 				while (selectedSampleType == null)
 				{
-					Console.WriteLine("Enter a sample number [1-40]:");
+					Console.WriteLine("Enter a sample number [1-41]:");
 					selectedSampleType = ParseSampleFromNumber(Console.ReadLine());
 				}
 			}

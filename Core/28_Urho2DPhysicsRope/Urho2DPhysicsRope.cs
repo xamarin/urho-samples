@@ -5,7 +5,7 @@ namespace Urho.Samples
 	public class _28_Urho2DPhysicsRope : Sample
 	{
 		Scene scene;
-		const uint NUM_OBJECTS = 10;
+		const uint NumObjects = 10;
 
 		public _28_Urho2DPhysicsRope(Context ctx) : base(ctx) { }
 
@@ -13,7 +13,7 @@ namespace Urho.Samples
 		{
 			base.Start();
 			CreateScene();
-			SimpleCreateInstructionsWithWASD(", Use PageUp PageDown to zoom.");
+			SimpleCreateInstructionsWithWasd(", Use PageUp PageDown to zoom.");
 			SetupViewport();
 		}
 
@@ -66,7 +66,7 @@ namespace Urho.Samples
 			const float y = 15.0f;
 			RigidBody2D prevBody = groundBody;
 
-			for (uint i = 0; i < NUM_OBJECTS; ++i)
+			for (uint i = 0; i < NumObjects; ++i)
 			{
 				Node node = scene.CreateChild("RigidBody");
 
@@ -81,7 +81,7 @@ namespace Urho.Samples
 				// Set mask bits.
 				box.MaskBits = 0xFFFF & ~0x0002;
 
-				if (i == NUM_OBJECTS - 1)
+				if (i == NumObjects - 1)
 				{
 					node.Position = new Vector3(1.0f * i, y, 0.0f);
 					body.AngularDamping = 0.4f;
@@ -108,7 +108,7 @@ namespace Urho.Samples
 			ConstraintRope2D constraintRope = groundNode.CreateComponent<ConstraintRope2D>();
 			constraintRope.OtherBody = prevBody;
 			constraintRope.OwnerBodyAnchor=new Vector2(0.0f, y);
-			constraintRope.MaxLength = NUM_OBJECTS - 1.0f + 0.01f;
+			constraintRope.MaxLength = NumObjects - 1.0f + 0.01f;
 
 		}
 

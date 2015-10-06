@@ -9,15 +9,15 @@ namespace Urho.Samples
 	{
 		readonly ResourceCache cache;
 
-		public const int CTRL_FORWARD = 1;
-		public const int CTRL_BACK = 2;
-		public const int CTRL_LEFT = 4;
-		public const int CTRL_RIGHT = 8;
+		public const int CtrlForward = 1;
+		public const int CtrlBack = 2;
+		public const int CtrlLeft = 4;
+		public const int CtrlRight = 8;
 
-		public const float YAW_SENSITIVITY = 0.1f;
-		public const float ENGINE_POWER = 10.0f;
-		public const float DOWN_FORCE = 10.0f;
-		public const float MAX_WHEEL_ANGLE = 22.5f;
+		public const float YawSensitivity = 0.1f;
+		public const float EnginePower = 10.0f;
+		public const float DownForce = 10.0f;
+		public const float MaxWheelAngle = 22.5f;
 
 		// Movement controls.
 		public Controls Controls { get; set; } = new Controls();
@@ -59,13 +59,13 @@ namespace Urho.Samples
 			float accelerator = 0.0f;
 
 			// Read controls
-			if (Controls.IsDown(CTRL_LEFT))
+			if (Controls.IsDown(CtrlLeft))
 				newSteering = -1.0f;
-			if (Controls.IsDown(CTRL_RIGHT))
+			if (Controls.IsDown(CtrlRight))
 				newSteering = 1.0f;
-			if (Controls.IsDown(CTRL_FORWARD))
+			if (Controls.IsDown(CtrlForward))
 				accelerator = 1.0f;
-			if (Controls.IsDown(CTRL_BACK))
+			if (Controls.IsDown(CtrlBack))
 				accelerator = -0.5f;
 
 			// When steering, wake up the wheel rigidbodies so that their orientation is updated
@@ -79,7 +79,7 @@ namespace Urho.Samples
 				steering = steering * 0.8f + newSteering * 0.2f;
 
 			// Set front wheel angles
-			Quaternion steeringRot = new Quaternion(0, steering * MAX_WHEEL_ANGLE, 0);
+			Quaternion steeringRot = new Quaternion(0, steering * MaxWheelAngle, 0);
 			frontLeftAxis.SetOtherAxis(steeringRot * new Vector3(-1f, 0f, 0f));
 			frontRightAxis.SetOtherAxis(steeringRot * Vector3.UnitX);
 
@@ -87,7 +87,7 @@ namespace Urho.Samples
 			if (accelerator != 0.0f)
 			{
 				// Torques are applied in world space, so need to take the vehicle & wheel rotation into account
-				Vector3 torqueVec = new Vector3(ENGINE_POWER * accelerator, 0.0f, 0.0f);
+				Vector3 torqueVec = new Vector3(EnginePower * accelerator, 0.0f, 0.0f);
 
 				frontLeftBody.ApplyTorque(hullRot * steeringRot * torqueVec);
 				frontRightBody.ApplyTorque(hullRot * steeringRot * torqueVec);
@@ -97,7 +97,7 @@ namespace Urho.Samples
 
 			// Apply downforce proportional to velocity
 			Vector3 localVelocity = Quaternion.Invert(hullRot) * hullBody.LinearVelocity;
-			hullBody.ApplyForce(hullRot * new Vector3(0f, -1f, 0f) * Math.Abs(localVelocity.Z) * DOWN_FORCE);
+			hullBody.ApplyForce(hullRot * new Vector3(0f, -1f, 0f) * Math.Abs(localVelocity.Z) * DownForce);
 		}
 
 		public void Init()

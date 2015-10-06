@@ -12,7 +12,7 @@ namespace Urho.Samples
 		{
 			base.Start();
 			CreateScene();
-			SimpleCreateInstructionsWithWASD(     
+			SimpleCreateInstructionsWithWasd(     
 				"\nLMB to spawn physics objects\n" +
 				"F5 to save scene, F7 to load\n" +
 				"Space to toggle physics debug geometry");
@@ -168,11 +168,11 @@ namespace Urho.Samples
 			CollisionShape shape = boxNode.CreateComponent<CollisionShape>();
 			shape.SetSphere(1.0f, Vector3.Zero, Quaternion.Identity);
 	
-			const float OBJECT_VELOCITY = 10.0f;
+			const float objectVelocity = 10.0f;
 	
 			// Set initial velocity for the RigidBody based on camera forward vector. Add also a slight up component
 			// to overcome gravity better
-			body.SetLinearVelocity(CameraNode.Rotation * new Vector3(0.0f, 0.25f, 1.0f) * OBJECT_VELOCITY);
+			body.SetLinearVelocity(CameraNode.Rotation * new Vector3(0.0f, 0.25f, 1.0f) * objectVelocity);
 		}
 
 		protected override string JoystickLayoutPatch => JoystickLayoutPatches.WithFireAndDebugButtons;

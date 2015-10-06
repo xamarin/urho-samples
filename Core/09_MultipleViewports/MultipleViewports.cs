@@ -12,7 +12,7 @@ namespace Urho.Samples
 		{
 			base.Start();
 			CreateScene();
-			SimpleCreateInstructionsWithWASD(
+			SimpleCreateInstructionsWithWasd(
 				"\nB to toggle bloom, F to toggle FXAA\n" +
 				"Space to toggle debug geometry\n");
 			SetupViewport();
@@ -116,8 +116,8 @@ namespace Urho.Samples
 			light.ShadowCascade=new CascadeParameters(10.0f, 50.0f, 200.0f, 0.0f, 0.8f);
 
 			// Create some mushrooms
-			const uint NUM_MUSHROOMS = 240;
-			for (uint i = 0; i < NUM_MUSHROOMS; ++i)
+			const uint numMushrooms = 240;
+			for (uint i = 0; i < numMushrooms; ++i)
 			{
 				var mushroomNode = scene.CreateChild("Mushroom");
 				mushroomNode.Position = new Vector3(NextRandom(90.0f) - 45.0f, 0.0f, NextRandom(90.0f) - 45.0f);
@@ -130,8 +130,8 @@ namespace Urho.Samples
 			}
 
 			// Create randomly sized boxes. If boxes are big enough, make them occluders
-			const uint NUM_BOXES = 20;
-			for (uint i = 0; i < NUM_BOXES; ++i)
+			const uint numBoxes = 20;
+			for (uint i = 0; i < numBoxes; ++i)
 			{
 				var boxNode = scene.CreateChild("Box");
 				float size = 1.0f + NextRandom(10.0f);
@@ -167,6 +167,9 @@ namespace Urho.Samples
 			CameraNode.Position = new Vector3(0.0f, 5.0f, 0.0f);
 		}
 
+		/// <summary>
+		/// Set custom Joystick layout for mobile platforms
+		/// </summary>
 		protected override string JoystickLayoutPatch =>
 			"<patch>" +
 			"    <add sel=\"/element\">" +

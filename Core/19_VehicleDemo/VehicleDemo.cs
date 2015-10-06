@@ -5,7 +5,7 @@ namespace Urho.Samples
 		Scene scene;
 		Vehicle vehicle;
 
-		const float CAMERA_DISTANCE = 10.0f;
+		const float CameraDistance = 10.0f;
 
 		public _19_VehicleDemo(Context ctx) : base(ctx)
 		{
@@ -22,7 +22,7 @@ namespace Urho.Samples
 			CreateVehicle();
 
 			// Create the UI content
-			SimpleCreateInstructionsWithWASD("\nF5 to save scene, F7 to load");
+			SimpleCreateInstructionsWithWasd("\nF5 to save scene, F7 to load");
 
 			// Subscribe to necessary events
 			SubscribeToEvents();
@@ -42,7 +42,7 @@ namespace Urho.Samples
 					dir = dir * Quaternion.FromAxisAngle(Vector3.UnitY, vehicle.Controls.Yaw);
 					dir = dir * Quaternion.FromAxisAngle(Vector3.UnitX, vehicle.Controls.Pitch);
 
-					Vector3 cameraTargetPos = vehicleNode.Position - (dir * new Vector3(0.0f, 0.0f, CAMERA_DISTANCE));
+					Vector3 cameraTargetPos = vehicleNode.Position - (dir * new Vector3(0.0f, 0.0f, CameraDistance));
 					Vector3 cameraStartPos = vehicleNode.Position;
 
 					// Raycast camera against static objects (physics collision mask 2)
@@ -79,10 +79,10 @@ namespace Urho.Samples
 				// Get movement controls and assign them to the vehicle component. If UI has a focused element, clear controls
 				if (ui.FocusElement == null)
 				{
-					vehicle.Controls.Set(Vehicle.CTRL_FORWARD, input.GetKeyDown(Key.W));
-					vehicle.Controls.Set(Vehicle.CTRL_BACK, input.GetKeyDown(Key.S));
-					vehicle.Controls.Set(Vehicle.CTRL_LEFT, input.GetKeyDown(Key.A));
-					vehicle.Controls.Set(Vehicle.CTRL_RIGHT, input.GetKeyDown(Key.D));
+					vehicle.Controls.Set(Vehicle.CtrlForward, input.GetKeyDown(Key.W));
+					vehicle.Controls.Set(Vehicle.CtrlBack, input.GetKeyDown(Key.S));
+					vehicle.Controls.Set(Vehicle.CtrlLeft, input.GetKeyDown(Key.A));
+					vehicle.Controls.Set(Vehicle.CtrlRight, input.GetKeyDown(Key.D));
 
 					// Add yaw & pitch from the mouse motion or touch input. Used only for the camera, does not affect motion
 					if (TouchEnabled)
@@ -101,8 +101,8 @@ namespace Urho.Samples
 					}
 					else
 					{
-						vehicle.Controls.Yaw += (float)input.MouseMoveX * Vehicle.YAW_SENSITIVITY;
-						vehicle.Controls.Pitch += (float)input.MouseMoveY * Vehicle.YAW_SENSITIVITY;
+						vehicle.Controls.Yaw += (float)input.MouseMoveX * Vehicle.YawSensitivity;
+						vehicle.Controls.Pitch += (float)input.MouseMoveY * Vehicle.YawSensitivity;
 					}
 					// Limit pitch
 					vehicle.Controls.Pitch = MathHelper.Clamp(vehicle.Controls.Pitch, 0.0f, 80.0f);
@@ -123,7 +123,7 @@ namespace Urho.Samples
 					}
 				}
 				else
-					vehicle.Controls.Set(Vehicle.CTRL_FORWARD | Vehicle.CTRL_BACK | Vehicle.CTRL_LEFT | Vehicle.CTRL_RIGHT, false);
+					vehicle.Controls.Set(Vehicle.CtrlForward | Vehicle.CtrlBack | Vehicle.CtrlLeft | Vehicle.CtrlRight, false);
 			}
 		}
 
@@ -195,8 +195,8 @@ namespace Urho.Samples
 			shape.SetTerrain(0);
 
 			// Create 1000 mushrooms in the terrain. Always face outward along the terrain normal
-			const uint NUM_MUSHROOMS = 1000;
-			for (uint i = 0; i < NUM_MUSHROOMS; ++i)
+			const uint numMushrooms = 1000;
+			for (uint i = 0; i < numMushrooms; ++i)
 			{
 				Node objectNode = scene.CreateChild("Mushroom");
 				Vector3 position = new Vector3(NextRandom(2000.0f) - 1000.0f, 0.0f, NextRandom(2000.0f) - 1000.0f);

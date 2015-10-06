@@ -111,9 +111,6 @@
     <AndroidResource Include="Resources\layout\samples_list_text_view.axml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="MonoUrhoReadme.txt" />
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\Core\Urho.Samples.csproj">
       <Project>{792AF649-1BB3-4242-8BA3-61F67E357B18}</Project>
       <Name>Urho.Samples</Name>

@@ -1460,7 +1460,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Entitlements.plist" />
-    <Content Include="MonoUrhoReadme.txt" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Core\Urho.Samples.csproj">

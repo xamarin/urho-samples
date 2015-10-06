@@ -85,9 +85,6 @@
       <Name>Urho.Samples</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Content Include="MonoUrhoReadme.txt" />
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\mutest123.0.4.11\build\net45\mutest123.targets" Condition="Exists('..\packages\mutest123.0.4.11\build\net45\mutest123.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

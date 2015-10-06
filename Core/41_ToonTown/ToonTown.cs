@@ -8,36 +8,39 @@ namespace Urho.Samples
 	/// </summary>
 	public class _41_ToonTown : Sample
 	{
-		public const float CAMERA_MIN_DIST = 1.0f;
-		public const float CAMERA_INITIAL_DIST = 5.0f;
-		public const float CAMERA_MAX_DIST = 20.0f;
-
-		public const int CTRL_FORWARD = 1;
-		public const int CTRL_BACK = 2;
-		public const int CTRL_LEFT = 4;
-		public const int CTRL_RIGHT = 8;
-		public const int CTRL_JUMP = 16;
-
-		public const float MOVE_FORCE = 1.4f;
-		public const float INAIR_MOVE_FORCE = 0.02f;
-		public const float BRAKE_FORCE = 0.2f;
-		public const float JUMP_FORCE = 7.0f;
-		public const float YAW_SENSITIVITY = 0.1f;
-		public const float INAIR_THRESHOLD_TIME = 0.1f;
-
 		Scene scene;
 		RoboMan character;
+
+		const float CameraMinDist = 1.0f;
+		const float CameraInitialDist = 5.0f;
+		const float CameraMaxDist = 20.0f;
+		const float YawSensitivity = 0.1f;
+
+		public const int CtrlForward = 1;
+		public const int CtrlBack = 2;
+		public const int CtrlLeft = 4;
+		public const int CtrlRight = 8;
+		public const int CtrlJump = 16;
+
 		public _41_ToonTown(Context ctx) : base(ctx) { }
 		
 		public override void Start()
 		{
 			base.Start();
+			CreateScene();
+			CreateCharacter();
+			SubscribeToEvents();
+		}
+
+		void CreateScene()
+		{
 			var cache = ResourceCache;
 			scene = new Scene(Context);
 
 			// Simply open a scene designed in the Atomic Game Engine:
 			scene.LoadXmlFromCache(cache, "Scenes/ToonTown.scene");
 
+			// Set up a viewport
 			CameraNode = new Node(Context);
 			Camera camera = CameraNode.CreateComponent<Camera>();
 			camera.FarClip = 300.0f;
@@ -49,11 +52,8 @@ namespace Urho.Samples
 			var musicNode = scene.CreateChild("MusicNode");
 			var musicSource = musicNode.CreateComponent<SoundSource>();
 			musicSource.Gain = 0.5f;
-			musicSource.SetSoundType("Music"); //TODO: use enum
+			musicSource.SetSoundType("Music");
 			musicSource.Play(musicFile);
-
-			CreateCharacter();
-			SubscribeToEvents();
 		}
 
 		void SubscribeToEvents()
@@ -74,17 +74,17 @@ namespace Urho.Samples
 			if (character != null)
 			{
 				// Clear previous controls
-				character.Controls.Set(CTRL_FORWARD | CTRL_BACK | CTRL_LEFT | CTRL_RIGHT | CTRL_JUMP, false);
+				character.Controls.Set(CtrlForward | CtrlBack | CtrlLeft | CtrlRight | CtrlJump, false);
 
 				// Update controls using keys
 				UI ui = UI;
 				if (ui.FocusElement == null)
 				{
-					character.Controls.Set(CTRL_FORWARD, input.GetKeyDown(Key.W));
-					character.Controls.Set(CTRL_BACK, input.GetKeyDown(Key.S));
-					character.Controls.Set(CTRL_LEFT, input.GetKeyDown(Key.A));
-					character.Controls.Set(CTRL_RIGHT, input.GetKeyDown(Key.D));
-					character.Controls.Set(CTRL_JUMP, input.GetKeyDown(Key.Space));
+					character.Controls.Set(CtrlForward, input.GetKeyDown(Key.W));
+					character.Controls.Set(CtrlBack, input.GetKeyDown(Key.S));
+					character.Controls.Set(CtrlLeft, input.GetKeyDown(Key.A));
+					character.Controls.Set(CtrlRight, input.GetKeyDown(Key.D));
+					character.Controls.Set(CtrlJump, input.GetKeyDown(Key.Space));
 
 					// Add character yaw & pitch from the mouse motion or touch input
 					if (TouchEnabled)
@@ -106,8 +106,8 @@ namespace Urho.Samples
 					}
 					else
 					{
-						character.Controls.Yaw += (float)input.MouseMove.X * YAW_SENSITIVITY;
-						character.Controls.Pitch += (float)input.MouseMove.Y * YAW_SENSITIVITY;
+						character.Controls.Yaw += (float)input.MouseMove.X * YawSensitivity;
+						character.Controls.Pitch += (float)input.MouseMove.Y * YawSensitivity;
 					}
 					// Limit pitch
 					character.Controls.Pitch = MathHelper.Clamp(character.Controls.Pitch, -80.0f, 80.0f);
@@ -140,23 +140,21 @@ namespace Urho.Samples
 			// Correct head orientation because LookAt assumes Z = forward, but the bone has been authored differently (Y = forward)
 			headNode.Rotate(new Quaternion(0.0f, 90.0f, 90.0f), TransformSpace.Local);
 
-			{
-				// Third person camera: position behind the character
-				Vector3 aimPoint = characterNode.Position + rot * new Vector3(0.0f, 1.7f, 0.0f);
+			// Third person camera: position behind the character
+			Vector3 aimPoint = characterNode.Position + rot * new Vector3(0.0f, 1.7f, 0.0f);
 
-				// Collide camera ray with static physics objects (layer bitmask 2) to ensure we see the character properly
-				Vector3 rayDir = dir * new Vector3(0f, 0f, -1f);
-				float rayDistance = CAMERA_INITIAL_DIST;
+			// Collide camera ray with static physics objects (layer bitmask 2) to ensure we see the character properly
+			Vector3 rayDir = dir * new Vector3(0f, 0f, -1f);
+			float rayDistance = CameraInitialDist;
 
-				PhysicsRaycastResult result = new PhysicsRaycastResult();
-				scene.GetComponent<PhysicsWorld>().RaycastSingle(ref result, new Ray(aimPoint, rayDir), rayDistance, 2);
-				if (result.Body != null)
-					rayDistance = Math.Min(rayDistance, result.Distance);
-				rayDistance = MathHelper.Clamp(rayDistance, CAMERA_MIN_DIST, CAMERA_MAX_DIST);
+			PhysicsRaycastResult result = new PhysicsRaycastResult();
+			scene.GetComponent<PhysicsWorld>().RaycastSingle(ref result, new Ray(aimPoint, rayDir), rayDistance, 2);
+			if (result.Body != null)
+				rayDistance = Math.Min(rayDistance, result.Distance);
+			rayDistance = MathHelper.Clamp(rayDistance, CameraMinDist, CameraMaxDist);
 
-				CameraNode.Position = aimPoint + rayDir * rayDistance;
-				CameraNode.Rotation = dir;
-			}
+			CameraNode.Position = aimPoint + rayDir * rayDistance;
+			CameraNode.Rotation = dir;
 		}
 
 		protected override void OnSceneUpdate(float timeStep, Scene scene)

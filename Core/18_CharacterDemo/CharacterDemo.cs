@@ -6,31 +6,31 @@ namespace Urho.Samples
 	{
 		Scene scene;
 
-		public const float CAMERA_MIN_DIST = 1.0f;
-		public const float CAMERA_INITIAL_DIST = 5.0f;
-		public const float CAMERA_MAX_DIST = 20.0f;
+		public const float CameraMinDist = 1.0f;
+		public const float CameraInitialDist = 5.0f;
+		public const float CameraMaxDist = 20.0f;
 
-		public const float GYROSCOPE_THRESHOLD = 0.1f;
+		public const float GyroscopeThreshold = 0.1f;
 
-		public const int CTRL_FORWARD = 1;
-		public const int CTRL_BACK = 2;
-		public const int CTRL_LEFT = 4;
-		public const int CTRL_RIGHT = 8;
-		public const int CTRL_JUMP = 16;
+		public const int CtrlForward = 1;
+		public const int CtrlBack = 2;
+		public const int CtrlLeft = 4;
+		public const int CtrlRight = 8;
+		public const int CtrlJump = 16;
 
-		public const float MOVE_FORCE = 0.8f;
-		public const float INAIR_MOVE_FORCE = 0.02f;
-		public const float BRAKE_FORCE = 0.2f;
-		public const float JUMP_FORCE = 7.0f;
-		public const float YAW_SENSITIVITY = 0.1f;
-		public const float INAIR_THRESHOLD_TIME = 0.1f;
+		public const float MoveForce = 0.8f;
+		public const float InairMoveForce = 0.02f;
+		public const float BrakeForce = 0.2f;
+		public const float JumpForce = 7.0f;
+		public const float YawSensitivity = 0.1f;
+		public const float InairThresholdTime = 0.1f;
 
 		/// Touch utility object.
 		Touch touch;
 		/// The controllable character component.
 		Character character;
 		/// First person camera flag.
-		bool firstPerson = false;
+		bool firstPerson;
 
 		public _18_CharacterDemo(Context ctx) : base(ctx) { }
 
@@ -41,7 +41,7 @@ namespace Urho.Samples
 				touch = new Touch(Context, TouchSensitivity, Input);
 			CreateScene();
 			CreateCharacter();
-			SimpleCreateInstructionsWithWASD("\nSpace to jump, F to toggle 1st/3rd person\nF5 to save scene, F7 to load");
+			SimpleCreateInstructionsWithWasd("\nSpace to jump, F to toggle 1st/3rd person\nF5 to save scene, F7 to load");
 			SubscribeToEvents();
 		}
 
@@ -89,13 +89,13 @@ namespace Urho.Samples
 
 				// Collide camera ray with static physics objects (layer bitmask 2) to ensure we see the character properly
 				Vector3 rayDir = dir * new Vector3(0f, 0f, -1f);
-				float rayDistance = touch != null ? touch.CameraDistance : CAMERA_INITIAL_DIST;
+				float rayDistance = touch != null ? touch.CameraDistance : CameraInitialDist;
 
 				PhysicsRaycastResult result = new PhysicsRaycastResult();
 				scene.GetComponent<PhysicsWorld>().RaycastSingle(ref result, new Ray(aimPoint, rayDir), rayDistance, 2);
 				if (result.Body != null)
 					rayDistance = Math.Min(rayDistance, result.Distance);
-				rayDistance = MathHelper.Clamp(rayDistance, CAMERA_MIN_DIST, CAMERA_MAX_DIST);
+				rayDistance = MathHelper.Clamp(rayDistance, CameraMinDist, CameraMaxDist);
 
 				CameraNode.Position = aimPoint + rayDir * rayDistance;
 				CameraNode.Rotation = dir;
@@ -114,7 +114,7 @@ namespace Urho.Samples
 			if (character != null)
 			{
 				// Clear previous controls
-				character.Controls.Set(CTRL_FORWARD | CTRL_BACK | CTRL_LEFT | CTRL_RIGHT | CTRL_JUMP, false);
+				character.Controls.Set(CtrlForward | CtrlBack | CtrlLeft | CtrlRight | CtrlJump, false);
 
 				// Update controls using touch utility class
 				touch?.UpdateTouches(character.Controls);
@@ -125,12 +125,12 @@ namespace Urho.Samples
 				{
 					if (touch == null || !touch.UseGyroscope)
 					{
-						character.Controls.Set(CTRL_FORWARD, input.GetKeyDown(Key.W));
-						character.Controls.Set(CTRL_BACK, input.GetKeyDown(Key.S));
-						character.Controls.Set(CTRL_LEFT, input.GetKeyDown(Key.A));
-						character.Controls.Set(CTRL_RIGHT, input.GetKeyDown(Key.D));
+						character.Controls.Set(CtrlForward, input.GetKeyDown(Key.W));
+						character.Controls.Set(CtrlBack, input.GetKeyDown(Key.S));
+						character.Controls.Set(CtrlLeft, input.GetKeyDown(Key.A));
+						character.Controls.Set(CtrlRight, input.GetKeyDown(Key.D));
 					}
-					character.Controls.Set(CTRL_JUMP, input.GetKeyDown(Key.Space));
+					character.Controls.Set(CtrlJump, input.GetKeyDown(Key.Space));
 
 					// Add character yaw & pitch from the mouse motion or touch input
 					if (TouchEnabled)
@@ -152,8 +152,8 @@ namespace Urho.Samples
 					}
 					else
 					{
-						character.Controls.Yaw += (float)input.MouseMove.X * YAW_SENSITIVITY;
-						character.Controls.Pitch += (float)input.MouseMove.Y * YAW_SENSITIVITY;
+						character.Controls.Yaw += (float)input.MouseMove.X * YawSensitivity;
+						character.Controls.Pitch += (float)input.MouseMove.Y * YawSensitivity;
 					}
 					// Limit pitch
 					character.Controls.Pitch = MathHelper.Clamp(character.Controls.Pitch, -80.0f, 80.0f);
@@ -239,8 +239,8 @@ namespace Urho.Samples
 			shape.SetBox(Vector3.One, Vector3.Zero, Quaternion.Identity);
 
 			// Create mushrooms of varying sizes
-			const uint NUM_MUSHROOMS = 60;
-			for (uint i = 0; i < NUM_MUSHROOMS; ++i)
+			const uint numMushrooms = 60;
+			for (uint i = 0; i < numMushrooms; ++i)
 			{
 				Node objectNode = scene.CreateChild("Mushroom");
 				objectNode.Position = new Vector3(NextRandom(180.0f) - 90.0f, 0.0f, NextRandom(180.0f) - 90.0f);
@@ -258,8 +258,8 @@ namespace Urho.Samples
 			}
 
 			// Create movable boxes. Let them fall from the sky at first
-			const uint NUM_BOXES = 100;
-			for (uint i = 0; i < NUM_BOXES; ++i)
+			const uint numBoxes = 100;
+			for (uint i = 0; i < numBoxes; ++i)
 			{
 				float scale = NextRandom(2.0f) + 0.5f;
 
@@ -322,6 +322,9 @@ namespace Urho.Samples
 			character.Start();
 		}
 
+		/// <summary>
+		/// Set custom Joystick layout for mobile platforms
+		/// </summary>
 		protected override string JoystickLayoutPatch =>
 			"<patch>" +
 			"    <add sel=\"/element\">" +

@@ -72,17 +72,17 @@ namespace Urho.Samples
 				return;
 
 			// Movement speed as world units per second
-			const float MOVE_SPEED = 20.0f;
+			const float moveSpeed = 20.0f;
 			// Mouse sensitivity as degrees per pixel
-			const float MOUSE_SENSITIVITY = 0.1f;
+			const float mouseSensitivity = 0.1f;
 
 			// Use this frame's mouse motion to adjust camera node yaw and pitch. Clamp the pitch between -90 and 90 degrees
 			// Only move the camera when the cursor is hidden
 			if (!ui.Cursor.IsVisible())
 			{
 				IntVector2 mouseMove = input.MouseMove;
-				yaw += MOUSE_SENSITIVITY * mouseMove.X;
-				pitch += MOUSE_SENSITIVITY * mouseMove.Y;
+				yaw += mouseSensitivity * mouseMove.X;
+				pitch += mouseSensitivity * mouseMove.Y;
 				pitch = MathHelper.Clamp(pitch, -90.0f, 90.0f);
 
 				// Construct new orientation for the camera scene node from yaw and pitch. Roll is fixed to zero
@@ -91,13 +91,13 @@ namespace Urho.Samples
 
 			// Read WASD keys and move the camera scene node to the corresponding direction if they are pressed
 			if (input.GetKeyDown(Key.W))
-				CameraNode.Translate(new Vector3(0, 0, 1) * MOVE_SPEED * timeStep, TransformSpace.Local);
+				CameraNode.Translate(new Vector3(0, 0, 1) * moveSpeed * timeStep, TransformSpace.Local);
 			if (input.GetKeyDown(Key.S))
-				CameraNode.Translate(new Vector3(0, 0, -1) * MOVE_SPEED * timeStep, TransformSpace.Local);
+				CameraNode.Translate(new Vector3(0, 0, -1) * moveSpeed * timeStep, TransformSpace.Local);
 			if (input.GetKeyDown(Key.A))
-				CameraNode.Translate(new Vector3(-1, 0, 0) * MOVE_SPEED * timeStep, TransformSpace.Local);
+				CameraNode.Translate(new Vector3(-1, 0, 0) * moveSpeed * timeStep, TransformSpace.Local);
 			if (input.GetKeyDown(Key.D))
-				CameraNode.Translate(new Vector3(1, 0, 0) * MOVE_SPEED * timeStep, TransformSpace.Local);
+				CameraNode.Translate(new Vector3(1, 0, 0) * moveSpeed * timeStep, TransformSpace.Local);
 
 			// Set destination or teleport with left mouse button
 			if (input.GetMouseButtonPress(MouseButton.Left))
@@ -190,13 +190,13 @@ namespace Urho.Samples
 			light.ShadowCascade=new CascadeParameters(10.0f, 50.0f, 200.0f, 0.0f, 0.8f);
 
 			// Create some mushrooms
-			const uint NUM_MUSHROOMS = 100;
-			for (uint i = 0; i < NUM_MUSHROOMS; ++i)
+			const uint numMushrooms = 100;
+			for (uint i = 0; i < numMushrooms; ++i)
 				CreateMushroom(new Vector3(NextRandom(90.0f) - 45.0f, 0.0f, NextRandom(90.0f) - 45.0f));
 
 			// Create randomly sized boxes. If boxes are big enough, make them occluders
-			const uint NUM_BOXES = 20;
-			for (uint i = 0; i < NUM_BOXES; ++i)
+			const uint numBoxes = 20;
+			for (uint i = 0; i < numBoxes; ++i)
 			{
 				Node boxNode = scene.CreateChild("Box");
 				float size = 1.0f + NextRandom(10.0f);
@@ -250,8 +250,8 @@ namespace Urho.Samples
 			{
 				Vector3 pathPos = navMesh.FindNearestPoint(hitPos, new Vector3(1.0f, 1.0f, 1.0f));
 
-				const int QUAL_SHIFT = 1;
-				if (Input.GetQualifierDown(QUAL_SHIFT))
+				const int qualShift = 1;
+				if (Input.GetQualifierDown(qualShift))
 				{
 					// Teleport
 					currentPath.Clear();
@@ -365,6 +365,9 @@ namespace Urho.Samples
 			}
 		}
 
+		/// <summary>
+		/// Set custom Joystick layout for mobile platforms
+		/// </summary>
 		protected override string JoystickLayoutPatch =>
 			"<patch>" +
 			"    <add sel=\"/element\">" +

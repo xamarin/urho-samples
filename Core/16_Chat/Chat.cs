@@ -6,9 +6,9 @@ namespace Urho.Samples
 	public class _16_Chat : Sample
 	{
 		// Identifier for the chat network messages
-		const int MSG_CHAT = 32;
+		const int MsgChat = 32;
 		// UDP port we will use
-		const short CHAT_SERVER_PORT = 2345;
+		const short ChatServerPort = 2345;
 
 		/// Strings printed so far.
 		List<string> chatHistory = new List<string>();
@@ -152,7 +152,7 @@ namespace Urho.Samples
 			if (serverConnection != null)
 			{
 				// Send the chat message as in-order and reliable
-				serverConnection.SendMessage(MSG_CHAT, true, true, Encoding.UTF8.GetBytes(text));
+				serverConnection.SendMessage(MsgChat, true, true, Encoding.UTF8.GetBytes(text));
 				// Empty the text edit after sending
 				textEdit.Text = string.Empty;
 			}
@@ -170,7 +170,7 @@ namespace Urho.Samples
 			// Connect to server, do not specify a client scene as we are not using scene replication, just messages.
 			// At connect time we could also send identity parameters (such as username) in a VariantMap, but in this
 			// case we skip it for simplicity
-			network.Connect(address, CHAT_SERVER_PORT, null);
+			network.Connect(address, ChatServerPort, null);
 	
 			UpdateButtons();
 		}
@@ -192,7 +192,7 @@ namespace Urho.Samples
 		void HandleStartServer()
 		{
 			Network network = Network;
-			network.StartServer((ushort)CHAT_SERVER_PORT);
+			network.StartServer((ushort)ChatServerPort);
 	
 			UpdateButtons();
 		}
@@ -202,7 +202,7 @@ namespace Urho.Samples
 			Network network = Network;
 	
 			int msgID = args.MessageID;
-			if (msgID == MSG_CHAT)
+			if (msgID == MsgChat)
 			{
 				var textBytes = args.Data;
 				var text = Encoding.UTF8.GetString(textBytes, 0, textBytes.Length);
@@ -215,7 +215,7 @@ namespace Urho.Samples
 					text = sender + " " + text;
 					// Broadcast as in-order and reliable
 					fixed (byte* p = textBytes)
-						network.BroadcastMessage(MSG_CHAT, true, true, p, (uint) textBytes.Length, 0);
+						network.BroadcastMessage(MsgChat, true, true, p, (uint) textBytes.Length, 0);
 				}
 
 				ShowChatText(text);

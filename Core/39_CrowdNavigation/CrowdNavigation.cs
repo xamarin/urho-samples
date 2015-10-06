@@ -132,17 +132,17 @@ namespace Urho.Samples
 				return;
 
 			// Movement speed as world units per second
-			const float MOVE_SPEED = 20.0f;
+			const float moveSpeed = 20.0f;
 			// Mouse sensitivity as degrees per pixel
-			const float MOUSE_SENSITIVITY = 0.1f;
+			const float mouseSensitivity = 0.1f;
 
 			// Use this frame's mouse motion to adjust camera node yaw and pitch. Clamp the pitch between -90 and 90 degrees
 			// Only move the camera when the cursor is hidden
 			if (!ui.Cursor.IsVisible())
 			{
 				IntVector2 mouseMove = input.MouseMove;
-				Yaw += MOUSE_SENSITIVITY * mouseMove.X;
-				Pitch += MOUSE_SENSITIVITY * mouseMove.Y;
+				Yaw += mouseSensitivity * mouseMove.X;
+				Pitch += mouseSensitivity * mouseMove.Y;
 				Pitch = MathHelper.Clamp(Pitch, -90.0f, 90.0f);
 
 				// Construct new orientation for the camera scene node from yaw and pitch. Roll is fixed to zero
@@ -151,19 +151,19 @@ namespace Urho.Samples
 
 			// Read WASD keys and move the camera scene node to the corresponding direction if they are pressed
 			if (input.GetKeyDown(Key.W))
-				CameraNode.Translate(new Vector3(0, 0, 1) * MOVE_SPEED * timeStep, TransformSpace.Local);
+				CameraNode.Translate(new Vector3(0, 0, 1) * moveSpeed * timeStep, TransformSpace.Local);
 			if (input.GetKeyDown(Key.S))
-				CameraNode.Translate(new Vector3(0, 0, -1) * MOVE_SPEED * timeStep, TransformSpace.Local);
+				CameraNode.Translate(new Vector3(0, 0, -1) * moveSpeed * timeStep, TransformSpace.Local);
 			if (input.GetKeyDown(Key.A))
-				CameraNode.Translate(new Vector3(-1, 0, 0) * MOVE_SPEED * timeStep, TransformSpace.Local);
+				CameraNode.Translate(new Vector3(-1, 0, 0) * moveSpeed * timeStep, TransformSpace.Local);
 			if (input.GetKeyDown(Key.D))
-				CameraNode.Translate(new Vector3(1, 0, 0) * MOVE_SPEED * timeStep, TransformSpace.Local);
+				CameraNode.Translate(new Vector3(1, 0, 0) * moveSpeed * timeStep, TransformSpace.Local);
 
-			const int QUAL_SHIFT = 1;
+			const int qualShift = 1;
 
 			// Set destination or spawn a new jack with left mouse button
 			if (input.GetMouseButtonPress(MouseButton.Left))
-				SetPathPoint(input.GetQualifierDown(QUAL_SHIFT));
+				SetPathPoint(input.GetQualifierDown(qualShift));
 			// Add or remove objects with middle mouse button, then rebuild navigation mesh partially
 			if (input.GetMouseButtonPress(MouseButton.Middle))
 				AddOrRemoveObject();
@@ -216,7 +216,6 @@ namespace Urho.Samples
 
 			if (Raycast(250.0f, out hitPos, out hitDrawable))
 			{
-				
 				DynamicNavigationMesh navMesh = scene.GetComponent<DynamicNavigationMesh>();
 				Vector3 pathPos = navMesh.FindNearestPoint(hitPos, new Vector3(1.0f, 1.0f, 1.0f));
 				Node jackGroup = scene.GetChild("Jacks", false);
@@ -293,9 +292,9 @@ namespace Urho.Samples
 			light.ShadowCascade = new CascadeParameters(10.0f, 50.0f, 200.0f, 0.0f, 0.8f);
 
 			// Create randomly sized boxes. If boxes are big enough, make them occluders
-			const uint NUM_BOXES = 20;
+			const uint numBoxes = 20;
 			Node boxGroup = scene.CreateChild("Boxes");
-			for (uint i = 0; i < NUM_BOXES; ++i)
+			for (uint i = 0; i < numBoxes; ++i)
 			{
 				Node boxNode = boxGroup.CreateChild("Box");
 				float size = 1.0f + NextRandom(10.0f);
@@ -333,8 +332,8 @@ namespace Urho.Samples
 			CreateBoxOffMeshConnections(navMesh, boxGroup);
 
 			// Create some mushrooms
-			const uint NUM_MUSHROOMS = 100;
-			for (uint i = 0; i < NUM_MUSHROOMS; ++i)
+			const uint numMushrooms = 100;
+			for (uint i = 0; i < numMushrooms; ++i)
 				CreateMushroom(new Vector3(NextRandom(90.0f) - 45.0f, 0.0f, NextRandom(90.0f) - 45.0f));
 
 
@@ -353,7 +352,6 @@ namespace Urho.Samples
 
 			// Create Jack node that will follow the path
 			SpawnJack(new Vector3(-5.0f, 0.0f, 20.0f), scene.CreateChild("Jacks"));
-
 
 			// Create the camera. Limit far clip distance to match the fog
 			CameraNode = new Node(Context);
@@ -442,6 +440,9 @@ namespace Urho.Samples
 			barrel.Remove();
 		}
 
+		/// <summary>
+		/// Set custom Joystick layout for mobile platforms
+		/// </summary>
 		protected override string JoystickLayoutPatch =>
 			"<patch>" +
 			"    <add sel=\"/element\">" +

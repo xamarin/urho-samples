@@ -5,7 +5,7 @@ namespace Urho.Samples
 	public class _27_Urho2DPhysics : Sample
 	{
 		Scene scene;
-		const uint NUM_OBJECTS = 100;
+		const uint NumObjects = 100;
 
 		public _27_Urho2DPhysics(Context ctx) : base(ctx) { }
 
@@ -13,7 +13,7 @@ namespace Urho.Samples
 		{
 			base.Start();
 			CreateScene();
-			SimpleCreateInstructionsWithWASD(", use PageUp PageDown keys to zoom.");
+			SimpleCreateInstructionsWithWasd(", use PageUp PageDown keys to zoom.");
 			SetupViewport();
 		}
 
@@ -76,7 +76,7 @@ namespace Urho.Samples
 			// Set friction
 			groundShape.Friction = 0.5f;
 
-			for (uint i = 0; i < NUM_OBJECTS; ++i)
+			for (uint i = 0; i < NumObjects; ++i)
 			{
 				Node node = scene.CreateChild("RigidBody");
 				node.Position = (new Vector3(NextRandom(-0.1f, 0.1f), 5.0f + i * 0.4f, 0.0f));

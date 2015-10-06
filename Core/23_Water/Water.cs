@@ -14,7 +14,7 @@ namespace Urho.Samples
 		{
 			base.Start();
 			CreateScene();
-			SimpleCreateInstructionsWithWASD();
+			SimpleCreateInstructionsWithWasd();
 			SetupViewport();
 		}
 	

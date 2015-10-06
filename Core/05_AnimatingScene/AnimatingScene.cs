@@ -31,8 +31,9 @@ namespace Urho.Samples
 			var boxesNode = scene.CreateChild("Boxes");
 	
 			const int numObjects = 2000;
-			for (var i = 0; i < numObjects; ++i){
-				Node boxNode = new Node(Context); //boxesNode.CreateChild("Box");
+			for (var i = 0; i < numObjects; ++i)
+			{
+				Node boxNode = new Node(Context); 
 				boxesNode.AddChild(boxNode, 0);
 				boxNode.Position = new Vector3(NextRandom (200f) - 100f, NextRandom (200f) - 100f, NextRandom (200f) - 100f);
 				// Orient using random pitch, yaw and roll Euler angles
@@ -56,9 +57,7 @@ namespace Urho.Samples
 
 				// First style: use a Rotator instance, which is a component subclass, and
 				// add it to the boxNode.
-				var rotator = new Rotator (Context) {
-					RotationSpeed = rotationSpeed
-				};
+				var rotator = new Rotator (Context) { RotationSpeed = rotationSpeed };
 				boxNode.AddComponent (rotator);
 			}
 			// Create the camera. Let the starting position be at the world origin. As the fog limits maximum visible distance, we can
@@ -83,7 +82,7 @@ namespace Urho.Samples
 		{
 			base.Start ();
 			CreateScene ();
-			SimpleCreateInstructionsWithWASD ("\nDel to delete all boxes");
+			SimpleCreateInstructionsWithWasd ("\nDel to delete all boxes");
 			SetupViewport ();
 		}
 
@@ -112,10 +111,11 @@ namespace Urho.Samples
 
 			void OnUpdate(SceneUpdateEventArgs args)
 			{
-				Node.Rotate(new Quaternion(
-					RotationSpeed.X * args.TimeStep,
-					RotationSpeed.Y * args.TimeStep,
-					RotationSpeed.Z * args.TimeStep),
+				var timeStep = args.TimeStep;
+                Node.Rotate(new Quaternion(
+					RotationSpeed.X * timeStep,
+					RotationSpeed.Y * timeStep,
+					RotationSpeed.Z * timeStep),
 					TransformSpace.Local);
 			}
 		}

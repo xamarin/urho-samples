@@ -3,7 +3,6 @@ namespace Urho.Samples
 	public class _35_SignedDistanceFieldText : Sample
 	{
 		Scene scene;
-		Camera camera;
 
 		public _35_SignedDistanceFieldText(Context ctx) : base(ctx) { }
 
@@ -11,7 +10,7 @@ namespace Urho.Samples
 		{
 			base.Start();
 			CreateScene();
-			SimpleCreateInstructionsWithWASD();
+			SimpleCreateInstructionsWithWasd();
 			SetupViewport();
 		}
 
@@ -61,8 +60,8 @@ namespace Urho.Samples
 			// see the model get simpler as it moves further away). Finally, rendering a large number of the same object with the
 			// same material allows instancing to be used, if the GPU supports it. This reduces the amount of CPU work in rendering the
 			// scene.
-			const uint NUM_OBJECTS = 200;
-			for (uint i = 0; i < NUM_OBJECTS; ++i)
+			const uint numObjects = 200;
+			for (uint i = 0; i < numObjects; ++i)
 			{
 				Node mushroomNode = scene.CreateChild("Mushroom");
 				mushroomNode.Position = (new Vector3(NextRandom(90.0f) - 45.0f, 0.0f, NextRandom(90.0f) - 45.0f));

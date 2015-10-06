@@ -7,48 +7,6 @@ namespace Urho.Samples
 		bool drawDebug;
 
 		public _06_SkeletalAnimation (Context c) : base (c) {}
-
-		class Mover : Component
-		{
-			float MoveSpeed { get; }
-			float RotationSpeed { get; }
-			BoundingBox Bounds { get; }
-		
-			public Mover (Context ctx, float moveSpeed, float rotateSpeed, BoundingBox bounds) : base (ctx)
-			{
-				MoveSpeed = moveSpeed;
-				RotationSpeed = rotateSpeed;
-				Bounds = bounds;
-				Application.SceneUpdate += OnSceneUpdate;
-			}
-
-			protected override void OnDeleted()
-			{
-				Application.SceneUpdate -= OnSceneUpdate;
-			}
-
-			void OnSceneUpdate (SceneUpdateEventArgs args)
-			{
-				// This moves the character position
-				Node.Translate (Vector3.UnitZ * MoveSpeed * args.TimeStep, TransformSpace.Local);
-
-				// If in risk of going outside the plane, rotate the model right
-				var pos = Node.Position;
-				if (pos.X < Bounds.Min.X || pos.X > Bounds.Max.X || pos.Z < Bounds.Min.Z || pos.Z > Bounds.Max.Z)
-					Node.Yaw (RotationSpeed * args.TimeStep, TransformSpace.Local);
-
-				// Get the model's first (only) animation
-				// state and advance its time. Note the
-				// convenience accessor to other components in
-				// the same scene node
-			
-				var model = GetComponent<AnimatedModel>();
-				if (model.NumAnimationStates > 0){
-					var state = model.AnimationStates [0];
-					state.AddTime(args.TimeStep);
-				}
-			}
-		}
 	
 		void CreateScene ()
 		{
@@ -90,12 +48,13 @@ namespace Urho.Samples
 			light.ShadowCascade = new CascadeParameters(10.0f, 50.0f, 200.0f, 0.0f, 0.8f);
 
 			// Create animated models
-			const int NUM_MODELS = 100;
-			const float MODEL_MOVE_SPEED = 2.0f;
-			const float MODEL_ROTATE_SPEED = 100.0f;
+			const int numModels = 100;
+			const float modelMoveSpeed = 2.0f;
+			const float modelRotateSpeed = 100.0f;
 			var bounds = new BoundingBox (new Vector3(-47.0f, 0.0f, -47.0f), new Vector3(47.0f, 0.0f, 47.0f));
 
-			for (var i = 0; i < NUM_MODELS; ++i){
+			for (var i = 0; i < numModels; ++i)
+			{
 				var modelNode = scene.CreateChild("Jack");
 				modelNode.Position = new Vector3(NextRandom(-45,45), 0.0f, NextRandom (-45, 45));
 				modelNode.Rotation = new Quaternion (0, NextRandom(0, 360), 0);
@@ -120,7 +79,7 @@ namespace Urho.Samples
 				}
 			
 				// Create our custom Mover component that will move & animate the model during each frame's update
-				var mover = new Mover (Context, MODEL_MOVE_SPEED, MODEL_ROTATE_SPEED, bounds);
+				var mover = new Mover (Context, modelMoveSpeed, modelRotateSpeed, bounds);
 				modelNode.AddComponent (mover);
 			}
 		
@@ -156,24 +115,68 @@ namespace Urho.Samples
 			// rendering during that event
 
 			SubscribeToPostRenderUpdate(args =>
-			{
-				// If draw debug mode is enabled, draw viewport debug geometry, which will show eg. drawable bounding boxes and skeleton
-				// bones. Note that debug geometry has to be separately requested each frame. Disable depth test so that we can see the
-				// bones properly
-				if (drawDebug)
-					Renderer.DrawDebugGeometry(false);
-			});
+				{
+					// If draw debug mode is enabled, draw viewport debug geometry, which will show eg. drawable bounding boxes and skeleton
+					// bones. Note that debug geometry has to be separately requested each frame. Disable depth test so that we can see the
+					// bones properly
+					if (drawDebug)
+						Renderer.DrawDebugGeometry(false);
+				});
 		}
 
 		public override void Start ()
 		{
 			base.Start ();
 			CreateScene ();
-			SimpleCreateInstructionsWithWASD ("\nSpace to toggle debug geometry");
+			SimpleCreateInstructionsWithWasd ("\nSpace to toggle debug geometry");
 			SetupViewport ();
 			SubscribeToEvents();
 		}
 
 		protected override string JoystickLayoutPatch => JoystickLayoutPatches.WithDebugButton;
+
+
+		class Mover : Component
+		{
+			float MoveSpeed { get; }
+			float RotationSpeed { get; }
+			BoundingBox Bounds { get; }
+
+			public Mover(Context ctx, float moveSpeed, float rotateSpeed, BoundingBox bounds) : base(ctx)
+			{
+				MoveSpeed = moveSpeed;
+				RotationSpeed = rotateSpeed;
+				Bounds = bounds;
+				Application.SceneUpdate += OnSceneUpdate;
+			}
+
+			protected override void OnDeleted()
+			{
+				Application.SceneUpdate -= OnSceneUpdate;
+			}
+
+			void OnSceneUpdate(SceneUpdateEventArgs args)
+			{
+				// This moves the character position
+				Node.Translate(Vector3.UnitZ * MoveSpeed * args.TimeStep, TransformSpace.Local);
+
+				// If in risk of going outside the plane, rotate the model right
+				var pos = Node.Position;
+				if (pos.X < Bounds.Min.X || pos.X > Bounds.Max.X || pos.Z < Bounds.Min.Z || pos.Z > Bounds.Max.Z)
+					Node.Yaw(RotationSpeed * args.TimeStep, TransformSpace.Local);
+
+				// Get the model's first (only) animation
+				// state and advance its time. Note the
+				// convenience accessor to other components in
+				// the same scene node
+
+				var model = GetComponent<AnimatedModel>();
+				if (model.NumAnimationStates > 0)
+				{
+					var state = model.AnimationStates[0];
+					state.AddTime(args.TimeStep);
+				}
+			}
+		}
 	}
 }

@@ -33,23 +33,23 @@ namespace Urho.Samples
 			for (uint i = 0; i < NumSprites; ++i)
 			{
 				// Create a new sprite, set it to use the texture
-				Sprite sprite=new Sprite(Context);
-				sprite.Texture=decalTex;
+				Sprite sprite = new Sprite(Context);
+				sprite.Texture = decalTex;
 
 				// The UI root element is as big as the rendering window, set random position within it
-				sprite.Position=new IntVector2((int)(NextRandom() * graphics.Width), (int)(NextRandom() * graphics.Height));
+				sprite.Position = new IntVector2((int) (NextRandom()*graphics.Width), (int) (NextRandom()*graphics.Height));
 
 				// Set sprite size & hotspot in its center
-				sprite.Size=new IntVector2(128, 128);
-				sprite.HotSpot=new IntVector2(64, 64);
+				sprite.Size = new IntVector2(128, 128);
+				sprite.HotSpot = new IntVector2(64, 64);
 
 				// Set random rotation in degrees and random scale
-				sprite.Rotation=NextRandom() * 360.0f;
+				sprite.Rotation = NextRandom()*360.0f;
 				sprite.SetScale(NextRandom(1.0f) + 0.5f);
 
 				// Set random color and additive blending mode
 				sprite.SetColor(new Color(NextRandom(0.5f) + 0.5f, NextRandom(0.5f) + 0.5f, NextRandom(0.5f) + 0.5f));
-				sprite.BlendMode= BlendMode.Add;
+				sprite.BlendMode = BlendMode.Add;
 
 				// Add as a child of the root UI element
 				ui.Root.AddChild(sprite);

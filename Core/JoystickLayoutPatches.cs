@@ -1,8 +1,11 @@
 ﻿namespace Urho.Samples
 {
+	/// <summary>
+	/// A set of predefined Joystick layouts (mobile only)
+	/// </summary>
 	public static class JoystickLayoutPatches
 	{
-		//TODO: add fluent generic builder
+		//TODO: add fluent XML builder
 
 		public const string WithZoomInAndOut =
 			"<patch>" +
@@ -61,18 +64,6 @@
 			"<patch>" +
 			"    <remove sel=\"/element/element[./attribute[@name='Name' and @value='Button1']]/attribute[@name='Is Visible']\" />" +
 			"    <replace sel=\"/element/element[./attribute[@name='Name' and @value='Button1']]/element[./attribute[@name='Name' and @value='Label']]/attribute[@name='Text']/@value\">Debug</replace>" +
-			"    <add sel=\"/element/element[./attribute[@name='Name' and @value='Button1']]\">" +
-			"        <element type=\"Text\">" +
-			"            <attribute name=\"Name\" value=\"KeyBinding\" />" +
-			"            <attribute name=\"Text\" value=\"SPACE\" />" +
-			"        </element>" +
-			"    </add>" +
-			"</patch>";
-
-		public const string WithAnimationButton =
-			"<patch>" +
-			"    <remove sel=\"/element/element[./attribute[@name='Name' and @value='Button1']]/attribute[@name='Is Visible']\" />" +
-			"    <replace sel=\"/element/element[./attribute[@name='Name' and @value='Button1']]/element[./attribute[@name='Name' and @value='Label']]/attribute[@name='Text']/@value\">Animation</replace>" +
 			"    <add sel=\"/element/element[./attribute[@name='Name' and @value='Button1']]\">" +
 			"        <element type=\"Text\">" +
 			"            <attribute name=\"Name\" value=\"KeyBinding\" />" +

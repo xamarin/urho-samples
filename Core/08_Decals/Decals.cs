@@ -31,7 +31,7 @@ namespace Urho.Samples
 			ui.Cursor = cursor;
 			cursor.SetPosition(graphics.Width / 2, graphics.Height / 2);
 
-			SimpleCreateInstructionsWithWASD(
+			SimpleCreateInstructionsWithWasd(
 				"\nLMB to paint decals, RMB to rotate view\n" +
 				"Space to toggle debug geometry\n" +
 				"7 to toggle occlusion culling");
@@ -131,8 +131,8 @@ namespace Urho.Samples
 			light.ShadowCascade=new CascadeParameters(10.0f, 50.0f, 200.0f, 0.0f, 0.8f);
 
 			// Create some mushrooms
-			const uint NUM_MUSHROOMS = 240;
-			for (uint i = 0; i < NUM_MUSHROOMS; ++i)
+			const uint numMushrooms = 240;
+			for (uint i = 0; i < numMushrooms; ++i)
 			{
 				var mushroomNode = scene.CreateChild("Mushroom");
 				mushroomNode.Position=new Vector3(NextRandom(90.0f) - 45.0f, 0.0f, NextRandom(90.0f) - 45.0f);
@@ -146,8 +146,8 @@ namespace Urho.Samples
 
 			// Create randomly sized boxes. If boxes are big enough, make them occluders. Occluders will be software rasterized before
 			// rendering to a low-resolution depth-only buffer to test the objects in the view frustum for visibility
-			const uint NUM_BOXES = 20;
-			for (uint i = 0; i < NUM_BOXES; ++i)
+			const uint numBoxes = 20;
+			for (uint i = 0; i < numBoxes; ++i)
 			{
 				var boxNode = scene.CreateChild("Box");
 				float size = 1.0f + NextRandom(10.0f);
@@ -220,6 +220,9 @@ namespace Urho.Samples
 			}
 		}
 
+		/// <summary>
+		/// Set custom Joystick layout for mobile platforms
+		/// </summary>
 		protected override string JoystickLayoutPatch =>
 			"<patch>" +
 			"    <remove sel=\"/element/element[./attribute[@name='Name' and @value='Button0']]/attribute[@name='Is Visible']\" />" +

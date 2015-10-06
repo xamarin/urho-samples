@@ -15,7 +15,7 @@ namespace Urho.Samples
 		{
 			this.touchSensitivity = touchSensitivity;
 			this.input = input;
-			CameraDistance = _18_CharacterDemo.CAMERA_INITIAL_DIST;
+			CameraDistance = _18_CharacterDemo.CameraInitialDist;
 			zoom = false;
 			UseGyroscope = false;
 		}
@@ -46,7 +46,7 @@ namespace Urho.Samples
 					else
 						sens = 1;
 					CameraDistance += Math.Abs(touch1.Delta.Y - touch2.Delta.Y) * sens * touchSensitivity / 50.0f;
-					CameraDistance = MathHelper.Clamp(CameraDistance, _18_CharacterDemo.CAMERA_MIN_DIST, _18_CharacterDemo.CAMERA_MAX_DIST); // Restrict zoom range to [1;20]
+					CameraDistance = MathHelper.Clamp(CameraDistance, _18_CharacterDemo.CameraMinDist, _18_CharacterDemo.CameraMaxDist); // Restrict zoom range to [1;20]
 				}
 			}
 
@@ -56,14 +56,14 @@ namespace Urho.Samples
 				JoystickState joystick;
 				if (input.TryGetJoystickState(0, out joystick) && joystick.Axes.Size >= 2)
 				{
-					if (joystick.GetAxisPosition(0) < -_18_CharacterDemo.GYROSCOPE_THRESHOLD)
-						controls.Set(_18_CharacterDemo.CTRL_LEFT, true);
-					if (joystick.GetAxisPosition(0) > _18_CharacterDemo.GYROSCOPE_THRESHOLD)
-						controls.Set(_18_CharacterDemo.CTRL_RIGHT, true);
-					if (joystick.GetAxisPosition(1) < -_18_CharacterDemo.GYROSCOPE_THRESHOLD)
-						controls.Set(_18_CharacterDemo.CTRL_FORWARD, true);
-					if (joystick.GetAxisPosition(1) > _18_CharacterDemo.GYROSCOPE_THRESHOLD)
-						controls.Set(_18_CharacterDemo.CTRL_BACK, true);
+					if (joystick.GetAxisPosition(0) < -_18_CharacterDemo.GyroscopeThreshold)
+						controls.Set(_18_CharacterDemo.CtrlLeft, true);
+					if (joystick.GetAxisPosition(0) > _18_CharacterDemo.GyroscopeThreshold)
+						controls.Set(_18_CharacterDemo.CtrlRight, true);
+					if (joystick.GetAxisPosition(1) < -_18_CharacterDemo.GyroscopeThreshold)
+						controls.Set(_18_CharacterDemo.CtrlForward, true);
+					if (joystick.GetAxisPosition(1) > _18_CharacterDemo.GyroscopeThreshold)
+						controls.Set(_18_CharacterDemo.CtrlBack, true);
 				}
 			}
 		}

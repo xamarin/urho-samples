@@ -8,13 +8,13 @@ namespace Urho.Samples
 		{
 			var cache = ResourceCache;
 			var helloText = new Text(Context)
-			{
-				Value = "Hello World from Urho3D + Mono",
-				HorizontalAlignment = HorizontalAlignment.HA_CENTER,
-				VerticalAlignment = VerticalAlignment.VA_CENTER
-			};
+				{
+					Value = "Hello World from Urho3D + Mono",
+					HorizontalAlignment = HorizontalAlignment.HA_CENTER,
+					VerticalAlignment = VerticalAlignment.VA_CENTER
+				};
 			helloText.SetColor(new Color(0f, 1f, 0f));
-			helloText.SetFont(cache.GetFont("Fonts/Anonymous Pro.ttf"), 30);
+			helloText.SetFont(font: cache.GetFont("Fonts/Anonymous Pro.ttf"), size: 30);
 			UI.Root.AddChild(helloText);
 		}
 	}

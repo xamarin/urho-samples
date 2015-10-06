@@ -12,7 +12,7 @@ namespace Urho.Samples
 		{
 			base.Start();
 			CreateScene();
-			SimpleCreateInstructionsWithWASD();
+			SimpleCreateInstructionsWithWasd();
 			SetupViewport();
 		}
 
@@ -47,8 +47,8 @@ namespace Urho.Samples
 				zone.FogEnd = 100.0f;
 
 				// Create randomly positioned and oriented box StaticModels in the scene
-				const uint NUM_OBJECTS = 2000;
-				for (uint i = 0; i < NUM_OBJECTS; ++i)
+				const uint numObjects = 2000;
+				for (uint i = 0; i < numObjects; ++i)
 				{
 					Node boxNode = rttScene.CreateChild("Box");
 					boxNode.Position = new Vector3(NextRandom(200.0f) - 100.0f, NextRandom(200.0f) - 100.0f,
@@ -183,7 +183,7 @@ namespace Urho.Samples
 			rotationSpeed = vector;
 		}
 
-		public void OnUpdate(UpdateEventArgs args)
+		void OnUpdate(UpdateEventArgs args)
 		{
 			var timeStep = args.TimeStep;
 			Node.Rotate(new Quaternion(rotationSpeed.X * timeStep, rotationSpeed.Y * timeStep, rotationSpeed.Z * timeStep), TransformSpace.Local);       

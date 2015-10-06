@@ -4,16 +4,22 @@ namespace Urho.Samples
 {
 	public class RoboMan : Component
 	{
-		/// Grounded flag for movement.
+		// Grounded flag for movement.
 		bool onGround;
-		/// Jump flag.
+		// Jump flag.
 		bool okToJump;
-		/// In air timer. Due to possible physics inaccuracy, character can be off ground for max. 1/10 second and still be allowed to move.
+		// In air timer. Due to possible physics inaccuracy, character can be off ground for max. 1/10 second and still be allowed to move.
 		float inAirTimer;
 		RigidBody body;
 		AnimationController animCtrl;
 
-		/// Movement controls. Assigned by the main program each frame.
+		const float MoveForce = 1.4f;
+		const float InairMoveForce = 0.02f;
+		const float BrakeForce = 0.2f;
+		const float JumpForce = 7.0f;
+		const float InairThresholdTime = 0.1f;
+		
+		// Movement controls. Assigned by the main program each frame.
 		public Controls Controls { get; set; } = new Controls();
 
 		public RoboMan(Context context) : base(context)
@@ -38,7 +44,7 @@ namespace Urho.Samples
 			else
 				inAirTimer = 0.0f;
 			// When character has been in air less than 1/10 second, it's still interpreted as being on ground
-			bool softGrounded = inAirTimer < _41_ToonTown.INAIR_THRESHOLD_TIME;
+			bool softGrounded = inAirTimer < InairThresholdTime;
 
 			// Update movement & animation
 			var rot = Node.Rotation;
@@ -47,13 +53,13 @@ namespace Urho.Samples
 			// Velocity on the XZ plane
 			Vector3 planeVelocity = new Vector3(velocity.X, 0.0f, velocity.Z);
 
-			if (Controls.IsDown(_41_ToonTown.CTRL_FORWARD))
+			if (Controls.IsDown(_41_ToonTown.CtrlForward))
 				moveDir += Vector3.UnitZ;
-			if (Controls.IsDown(_41_ToonTown.CTRL_BACK))
+			if (Controls.IsDown(_41_ToonTown.CtrlBack))
 				moveDir += new Vector3(0f, 0f, -1f);
-			if (Controls.IsDown(_41_ToonTown.CTRL_LEFT))
+			if (Controls.IsDown(_41_ToonTown.CtrlLeft))
 				moveDir += new Vector3(-1f, 0f, 0f);
-			if (Controls.IsDown(_41_ToonTown.CTRL_RIGHT))
+			if (Controls.IsDown(_41_ToonTown.CtrlRight))
 				moveDir += Vector3.UnitX;
 
 			// Normalize move vector so that diagonal strafing is not faster
@@ -61,20 +67,20 @@ namespace Urho.Samples
 				moveDir.Normalize();
 
 			// If in air, allow control, but slower than when on ground
-			body.ApplyImpulse(rot * moveDir * (softGrounded ? _41_ToonTown.MOVE_FORCE : _41_ToonTown.INAIR_MOVE_FORCE));
+			body.ApplyImpulse(rot * moveDir * (softGrounded ? MoveForce : InairMoveForce));
 
 			if (softGrounded)
 			{
 				// When on ground, apply a braking force to limit maximum ground velocity
-				Vector3 brakeForce = -planeVelocity * _41_ToonTown.BRAKE_FORCE;
+				Vector3 brakeForce = -planeVelocity * BrakeForce;
 				body.ApplyImpulse(brakeForce);
 
 				// Jump. Must release jump control inbetween jumps
-				if (Controls.IsDown(_41_ToonTown.CTRL_JUMP))
+				if (Controls.IsDown(_41_ToonTown.CtrlJump))
 				{
 					if (okToJump)
 					{
-						body.ApplyImpulse(Vector3.UnitY * _41_ToonTown.JUMP_FORCE);
+						body.ApplyImpulse(Vector3.UnitY * JumpForce);
 						okToJump = false;
 					}
 				}

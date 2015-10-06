@@ -12,7 +12,7 @@ namespace Urho.Samples
 		{
 			base.Start();
 			CreateScene();
-			SimpleCreateInstructionsWithWASD(", use PageUp PageDown keys to zoom.");
+			SimpleCreateInstructionsWithWasd(", use PageUp PageDown keys to zoom.");
 			SetupViewport();
 		}
 

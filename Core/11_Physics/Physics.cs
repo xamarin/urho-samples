@@ -11,7 +11,7 @@ namespace Urho.Samples
 		{
 			base.Start();
 			CreateScene();
-			SimpleCreateInstructionsWithWASD(
+			SimpleCreateInstructionsWithWasd(
 				"\nLMB to spawn physics objects\n" +
 				"F5 to save scene, F7 to load\n" +
 				"Space to toggle physics debug geometry");
@@ -22,13 +22,13 @@ namespace Urho.Samples
 		void SubscribeToEvents()
 		{
 			SubscribeToPostRenderUpdate(args =>
-			{
-				// If draw debug mode is enabled, draw viewport debug geometry, which will show eg. drawable bounding boxes and skeleton
-				// bones. Note that debug geometry has to be separately requested each frame. Disable depth test so that we can see the
-				// bones properly
-				if (drawDebug)
-					Renderer.DrawDebugGeometry(false);
-			});
+				{
+					// If draw debug mode is enabled, draw viewport debug geometry, which will show eg. drawable bounding boxes and skeleton
+					// bones. Note that debug geometry has to be separately requested each frame. Disable depth test so that we can see the
+					// bones properly
+					if (drawDebug)
+						Renderer.DrawDebugGeometry(false);
+				});
 		}
 
 		protected override void OnUpdate(float timeStep)
@@ -59,7 +59,6 @@ namespace Urho.Samples
 		{
 			var cache = ResourceCache;
 			scene = new Scene(Context);
-
 
 			// Create octree, use default volume (-1000, -1000, -1000) to (1000, 1000, 1000)
 			// Create a physics simulation world with default parameters, which will update at 60fps. Like the Octree must
@@ -142,8 +141,6 @@ namespace Urho.Samples
 				}
 			}
 
-
-
 			// Create the camera. Limit far clip distance to match the fog. Note: now we actually create the camera node outside
 			// the scene, because we want it to be unaffected by scene load / save
 			CameraNode = new Node(Context);
@@ -154,7 +151,7 @@ namespace Urho.Samples
 			CameraNode.Position = (new Vector3(0.0f, 5.0f, -20.0f));
 		}
 
-		public void SpawnObject()
+		void SpawnObject()
 		{
 			var cache = ResourceCache;
 
@@ -174,9 +171,9 @@ namespace Urho.Samples
 			var shape = boxNode.CreateComponent<CollisionShape>();
 			shape.SetBox(Vector3.One, Vector3.Zero, Quaternion.Identity);
 
-			const float OBJECT_VELOCITY = 10.0f;
+			const float objectVelocity = 10.0f;
 
-			body.SetLinearVelocity(CameraNode.Rotation * new Vector3(0f, 0.25f, 1f) * OBJECT_VELOCITY);
+			body.SetLinearVelocity(CameraNode.Rotation * new Vector3(0f, 0.25f, 1f) * objectVelocity);
 		}
 
 		protected override string JoystickLayoutPatch => JoystickLayoutPatches.WithFireAndDebugButtons;

@@ -13,7 +13,7 @@ namespace Urho.Samples
 		{
 			base.Start();
 			CreateScene();
-			SimpleCreateInstructionsWithWASD("\nSpace to toggle debug geometry");
+			SimpleCreateInstructionsWithWasd("\nSpace to toggle debug geometry");
 			SetupViewport();
 			SubscribeToEvents();
 		}
@@ -43,12 +43,12 @@ namespace Urho.Samples
 			var lightNodes = scene.GetChildrenWithComponent<Light>();
 			var billboardNodes = scene.GetChildrenWithComponent<BillboardSet>();
 
-			const float LIGHT_ROTATION_SPEED = 20.0f;
-			const float BILLBOARD_ROTATION_SPEED = 50.0f;
+			const float lightRotationSpeed = 20.0f;
+			const float billboardRotationSpeed = 50.0f;
 
 			foreach (var lightNode in lightNodes)
 			{
-				lightNode.Rotate(new Quaternion(0f, LIGHT_ROTATION_SPEED * timeStep, 0f), TransformSpace.World);
+				lightNode.Rotate(new Quaternion(0f, lightRotationSpeed * timeStep, 0f), TransformSpace.World);
 			}
 
 			foreach (var billboardNode in billboardNodes)
@@ -57,7 +57,7 @@ namespace Urho.Samples
 				for (uint i = 0; i < billboardSet.NumBillboards; i++)
 				{
 					var bb = billboardSet.GetBillboardSafe(i);
-					bb.Rotation += BILLBOARD_ROTATION_SPEED*timeStep;
+					bb.Rotation += billboardRotationSpeed*timeStep;
 				}
 				billboardSet.Commit();
 			}
@@ -107,15 +107,15 @@ namespace Urho.Samples
 			}
 
 			// Create groups of mushrooms, which act as shadow casters
-			const uint NUM_MUSHROOMGROUPS = 25;
-			const uint NUM_MUSHROOMS = 25;
+			const uint numMushroomgroups = 25;
+			const uint numMushrooms = 25;
 
-			for (uint i = 0; i < NUM_MUSHROOMGROUPS; ++i)
+			for (uint i = 0; i < numMushroomgroups; ++i)
 			{
 				var groupNode = scene.CreateChild("MushroomGroup");
 				groupNode.Position = new Vector3(NextRandom(190.0f) - 95.0f, 0.0f, NextRandom(190.0f) - 95.0f);
 
-				for (uint j = 0; j < NUM_MUSHROOMS; ++j)
+				for (uint j = 0; j < numMushrooms; ++j)
 				{
 					var mushroomNode = groupNode.CreateChild("Mushroom");
 					mushroomNode.Position = new Vector3(NextRandom(25.0f) - 12.5f, 0.0f, NextRandom(25.0f) - 12.5f);
@@ -129,20 +129,20 @@ namespace Urho.Samples
 			}
 	   
 			// Create billboard sets (floating smoke)
-			const uint NUM_BILLBOARDNODES = 25;
-			const uint NUM_BILLBOARDS = 10;
+			const uint numBillboardnodes = 25;
+			const uint numBillboards = 10;
 
-			for (uint i = 0; i < NUM_BILLBOARDNODES; ++i)
+			for (uint i = 0; i < numBillboardnodes; ++i)
 			{
 				var smokeNode = scene.CreateChild("Smoke");
 				smokeNode.Position = new Vector3(NextRandom(200.0f) - 100.0f, NextRandom(20.0f) + 10.0f, NextRandom(200.0f) - 100.0f);
 
 				var billboardObject = smokeNode.CreateComponent<BillboardSet>();
-				billboardObject.NumBillboards = NUM_BILLBOARDS;
+				billboardObject.NumBillboards = numBillboards;
 				billboardObject.Material = cache.GetMaterial("Materials/LitSmoke.xml");
 				billboardObject.SetSorted(true);
 
-				for (uint j = 0; j < NUM_BILLBOARDS; ++j)
+				for (uint j = 0; j < numBillboards; ++j)
 				{
 					//NOTE: temp working solution. TODO: avoid using "unsafe"
 					var bb = billboardObject.GetBillboardSafe(j);
@@ -157,9 +157,9 @@ namespace Urho.Samples
 			}
 
 			// Create shadow casting spotlights
-			const uint NUM_LIGHTS = 9;
+			const uint numLights = 9;
 
-			for (uint i = 0; i < NUM_LIGHTS; ++i)
+			for (uint i = 0; i < numLights; ++i)
 			{
 				lightNode = scene.CreateChild("SpotLight");
 				light = lightNode.CreateComponent<Light>();

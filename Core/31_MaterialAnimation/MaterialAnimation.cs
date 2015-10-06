@@ -4,7 +4,6 @@ namespace Urho.Samples
 	{
 		Scene scene;
 		bool drawDebug;
-		Camera camera;
 
 		public _31_MaterialAnimation(Context ctx) : base(ctx) { }
 
@@ -12,7 +11,7 @@ namespace Urho.Samples
 		{
 			base.Start();
 			CreateScene();
-			SimpleCreateInstructionsWithWASD();
+			SimpleCreateInstructionsWithWasd();
 			SetupViewport();
 			SubscribeToEvents();
 		}
@@ -89,8 +88,8 @@ namespace Urho.Samples
 			mushroomMat.Scene=scene;
 			mushroomMat.SetShaderParameterAnimation("MatSpecColor", specColorAnimation, WrapMode.WM_LOOP, 1.0f);
 
-			const uint NUM_OBJECTS = 200;
-			for (uint i = 0; i < NUM_OBJECTS; ++i)
+			const uint numObjects = 200;
+			for (uint i = 0; i < numObjects; ++i)
 			{
 				Node mushroomNode = scene.CreateChild("Mushroom");
 				mushroomNode.Position = (new Vector3(NextRandom(90.0f) - 45.0f, 0.0f, NextRandom(90.0f) - 45.0f));

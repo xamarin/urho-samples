@@ -17,7 +17,7 @@ namespace Urho.Samples
 		{
 			base.Start();
 			CreateScene();
-			SimpleCreateInstructionsWithWASD(
+			SimpleCreateInstructionsWithWasd(
 				"\nSpace to toggle animation\n" +
 				"G to toggle object group optimization");
 			SetupViewport();

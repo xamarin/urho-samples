@@ -1,6 +1,4 @@
 //
-// TODO: sample class needs InitTouchInput's patch joystick support
-//
 // The class Sample contains the basic init sequence and shared code for
 // all the samples.    The subclasses represent one class per sample.
 // 
@@ -15,73 +13,22 @@ namespace Urho.Samples
 		UrhoConsole console;
 		DebugHud debugHud;
 		ResourceCache cache;
+		Sprite logoSprite;
 		UI ui;
 
-		public const float PixelSize = 0.01f;
-		public const float TouchSensitivity = 2;
-
+		protected const float PixelSize = 0.01f;
+		protected const float TouchSensitivity = 2;
 		protected float Yaw { get; set; }
 		protected float Pitch { get; set; }
 		protected bool TouchEnabled { get; set; }
 		protected Node CameraNode { get; set; }
-		protected Sprite LogoSprite { get; set; }
-		protected Subscription KeyDownEventToken { get; set; }
 
-		public Sample (Context ctx) : base (ctx) {}
-
-		readonly Random random = new Random();
-		/// Return a random float between 0.0 (inclusive) and 1.0 (exclusive.)
-		public float NextRandom() { return (float)random.NextDouble(); }
-		/// Return a random float between 0.0 and range, inclusive from both ends.
-		public float NextRandom(float range) { return (float)random.NextDouble() * range; }
-		/// Return a random float between min and max, inclusive from both ends.
-		public float NextRandom(float min, float max) { return (float)((random.NextDouble() * (max - min)) + min); }
-		/// Return a random integer between min and max - 1.
-		public int NextRandom(int min, int max) { return random.Next(min, max); }
+		protected Sample (Context ctx) : base (ctx) {}
 	
-		void CreateLogo ()
-		{
-			cache = ResourceCache;
-			var logoTexture = cache.GetTexture2D ("Textures/LogoLarge.png");
-		
-			if (logoTexture == null)
-				return;
-
-			ui = UI;
-			LogoSprite = ui.Root.CreateSprite ();
-			LogoSprite.Texture = logoTexture;
-			int w = logoTexture.Width;
-			int h = logoTexture.Height;
-			LogoSprite.SetScale (256.0f / w);
-			LogoSprite.SetSize (w, h);
-			LogoSprite.SetHotSpot (0, h);
-			LogoSprite.SetAlignment (HorizontalAlignment.HA_LEFT, VerticalAlignment.VA_BOTTOM);
-			LogoSprite.Opacity = 0.75f;
-			LogoSprite.Priority = -100;
-		}
-
 		protected bool IsLogoVisible
 		{
-			get { return LogoSprite.IsVisible(); }
-			set { LogoSprite.SetVisible(value); }
-		}
-	
-		void SetWindowAndTitleIcon ()
-		{
-			var icon = cache.GetImage ("Textures/UrhoIcon.png");
-			Graphics.SetWindowIcon (icon);
-			Graphics.WindowTitle = "Mono Urho3D Sample";
-		}
-
-		void CreateConsoleAndDebugHud ()
-		{
-			var xml = cache.GetXmlFile ("UI/DefaultStyle.xml");
-			console = Engine.CreateConsole ();
-			console.DefaultStyle = xml;
-			console.Background.Opacity = 0.8f;
-
-			debugHud = Engine.CreateDebugHud ();
-			debugHud.DefaultStyle = xml;
+			get { return logoSprite.IsVisible(); }
+			set { logoSprite.SetVisible(value); }
 		}
 
 		protected override void OnSceneUpdate(float timeStep, Scene scene)
@@ -115,18 +62,176 @@ namespace Urho.Samples
 			}
 		}
 
-		void HandleKeyDown (KeyDownEventArgs e)
+		readonly Random random = new Random();
+		/// Return a random float between 0.0 (inclusive) and 1.0 (exclusive.)
+		protected float NextRandom() { return (float)random.NextDouble(); }
+		/// Return a random float between 0.0 and range, inclusive from both ends.
+		protected float NextRandom(float range) { return (float)random.NextDouble() * range; }
+		/// Return a random float between min and max, inclusive from both ends.
+		protected float NextRandom(float min, float max) { return (float)((random.NextDouble() * (max - min)) + min); }
+		/// Return a random integer between min and max - 1.
+		protected int NextRandom(int min, int max) { return random.Next(min, max); }
+
+		/// <summary>
+		/// Joystick XML layout for mobile platforms
+		/// </summary>
+		protected virtual string JoystickLayoutPatch => string.Empty;
+
+		public override void Start ()
+		{
+			base.Start();
+			var platform = Runtime.Platform;
+			switch (platform)
+			{
+				case "Android":
+				case "iOS":
+					InitTouchInput ();
+					break;
+			}
+
+			monoDebugHud = new MonoDebugHud(this);
+			monoDebugHud.Show();
+
+			CreateLogo ();
+			SetWindowAndTitleIcon ();
+			CreateConsoleAndDebugHud ();
+			SubscribeToKeyDown (HandleKeyDown);
+		}
+
+		/// <summary>
+		/// Move camera for 2D samples
+		/// </summary>
+		protected void SimpleMoveCamera2D (float timeStep)
+		{
+			// Do not move if the UI has a focused element (the console)
+			if (UI.FocusElement != null)
+				return;
+
+			Input input = Input;
+
+			// Movement speed as world units per second
+			const float moveSpeed = 4.0f;
+
+			// Read WASD keys and move the camera scene node to the corresponding direction if they are pressed
+			if (input.GetKeyDown(Key.W))
+				CameraNode.Translate(Vector3.UnitY * moveSpeed * timeStep, TransformSpace.Local);
+			if (input.GetKeyDown(Key.S))
+				CameraNode.Translate(new Vector3(0.0f, -1.0f, 0.0f) * moveSpeed * timeStep, TransformSpace.Local);
+			if (input.GetKeyDown(Key.A))
+				CameraNode.Translate(new Vector3(-1.0f, 0.0f, 0.0f) * moveSpeed * timeStep, TransformSpace.Local);
+			if (input.GetKeyDown(Key.D))
+				CameraNode.Translate(Vector3.UnitX * moveSpeed * timeStep, TransformSpace.Local);
+
+			if (input.GetKeyDown(Key.PageUp))
+			{
+				Camera camera = CameraNode.GetComponent<Camera>();
+				camera.Zoom = (camera.Zoom * 1.01f);
+			}
+
+			if (input.GetKeyDown(Key.PageDown))
+			{
+				Camera camera = CameraNode.GetComponent<Camera>();
+				camera.Zoom = (camera.Zoom * 0.99f);
+			}
+		}
+
+		/// <summary>
+		/// Move camera for 3D samples
+		/// </summary>
+		protected void SimpleMoveCamera3D (float timeStep)
+		{
+			const float mouseSensitivity = .1f;
+		
+			if (UI.FocusElement != null)
+				return;
+			var input = Input;
+			const float moveSpeed = 40f;
+
+			var mouseMove = input.MouseMove;
+			Yaw += mouseSensitivity * mouseMove.X;
+			Pitch += mouseSensitivity * mouseMove.Y;
+			Pitch = MathHelper.Clamp(Pitch, -90, 90);
+
+			CameraNode.Rotation = new Quaternion(Pitch, Yaw, 0);
+
+			if (input.GetKeyDown (Key.W))
+				CameraNode.Translate (new Vector3(0,0,1) * moveSpeed * timeStep, TransformSpace.Local);
+			if (input.GetKeyDown (Key.S))
+				CameraNode.Translate (new Vector3(0,0,-1) * moveSpeed * timeStep, TransformSpace.Local);
+			if (input.GetKeyDown (Key.A))
+				CameraNode.Translate (new Vector3(-1,0,0) * moveSpeed * timeStep, TransformSpace.Local);
+			if (input.GetKeyDown (Key.D))
+				CameraNode.Translate (new Vector3(1,0,0) * moveSpeed * timeStep, TransformSpace.Local);
+		}
+
+		protected void SimpleCreateInstructionsWithWasd (string extra = "")
+		{
+			SimpleCreateInstructions("Use WASD keys and mouse/touch to move" + extra);
+		}
+	
+		protected void SimpleCreateInstructions(string text = "")
+		{
+			var textElement = new Text(Context)
+				{
+					Value = text,
+					HorizontalAlignment = HorizontalAlignment.HA_CENTER,
+					VerticalAlignment = VerticalAlignment.VA_CENTER
+				};
+			textElement.SetFont(ResourceCache.GetFont("Fonts/Anonymous Pro.ttf"), 15);
+			UI.Root.AddChild(textElement);
+		}
+
+		void CreateLogo()
+		{
+			cache = ResourceCache;
+			var logoTexture = cache.GetTexture2D("Textures/LogoLarge.png");
+
+			if (logoTexture == null)
+				return;
+
+			ui = UI;
+			logoSprite = ui.Root.CreateSprite();
+			logoSprite.Texture = logoTexture;
+			int w = logoTexture.Width;
+			int h = logoTexture.Height;
+			logoSprite.SetScale(256.0f / w);
+			logoSprite.SetSize(w, h);
+			logoSprite.SetHotSpot(0, h);
+			logoSprite.SetAlignment(HorizontalAlignment.HA_LEFT, VerticalAlignment.VA_BOTTOM);
+			logoSprite.Opacity = 0.75f;
+			logoSprite.Priority = -100;
+		}
+
+		void SetWindowAndTitleIcon()
+		{
+			var icon = cache.GetImage("Textures/UrhoIcon.png");
+			Graphics.SetWindowIcon(icon);
+			Graphics.WindowTitle = "Mono Urho3D Sample";
+		}
+
+		void CreateConsoleAndDebugHud()
+		{
+			var xml = cache.GetXmlFile("UI/DefaultStyle.xml");
+			console = Engine.CreateConsole();
+			console.DefaultStyle = xml;
+			console.Background.Opacity = 0.8f;
+
+			debugHud = Engine.CreateDebugHud();
+			debugHud.DefaultStyle = xml;
+		}
+
+		void HandleKeyDown(KeyDownEventArgs e)
 		{
 			switch (e.Key)
 			{
 				case Key.Esc:
-					Engine.Exit ();
+					Engine.Exit();
 					return;
 				case Key.F1:
-					console.Toggle ();
+					console.Toggle();
 					return;
-				case Key.F2: 
-					debugHud.ToggleAll ();
+				case Key.F2:
+					debugHud.ToggleAll();
 					return;
 
 				// GC tests
@@ -139,7 +244,7 @@ namespace Urho.Samples
 
 			if (UI.FocusElement == null)
 				return;
-		
+
 			var renderer = Renderer;
 			switch (e.Key)
 			{
@@ -197,118 +302,18 @@ namespace Urho.Samples
 			}
 		}
 
-		void InitTouchInput ()
+		void InitTouchInput()
 		{
 			TouchEnabled = true;
-			var layout = ResourceCache.GetXmlFile ("UI/ScreenJoystick_Samples.xml");
+			var layout = ResourceCache.GetXmlFile("UI/ScreenJoystick_Samples.xml");
 			if (!string.IsNullOrEmpty(JoystickLayoutPatch))
 			{
 				XMLFile patchXmlFile = new XMLFile(Context);
 				patchXmlFile.FromString(JoystickLayoutPatch);
 				layout.Patch(patchXmlFile);
 			}
-			var screenJoystickIndex = Input.AddScreenJoystick (layout, ResourceCache.GetXmlFile ("UI/DefaultStyle.xml"));
-			Input.SetScreenJoystickVisible (screenJoystickIndex, true);
-		}
-
-		protected virtual string JoystickLayoutPatch => string.Empty;
-
-		public override void Start ()
-		{
-			base.Start();
-			var platform = Runtime.Platform;
-			switch (platform)
-			{
-				case "Android":
-				case "iOS":
-					InitTouchInput ();
-					break;
-			}
-
-			monoDebugHud = new MonoDebugHud(this);
-			monoDebugHud.Show();
-
-			CreateLogo ();
-			SetWindowAndTitleIcon ();
-			CreateConsoleAndDebugHud ();
-			KeyDownEventToken = SubscribeToKeyDown (HandleKeyDown);
-		}
-
-		protected void SimpleMoveCamera2D (float timeStep)
-		{
-			// Do not move if the UI has a focused element (the console)
-			if (UI.FocusElement != null)
-				return;
-
-			Input input = Input;
-
-			// Movement speed as world units per second
-			const float moveSpeed = 4.0f;
-
-			// Read WASD keys and move the camera scene node to the corresponding direction if they are pressed
-			if (input.GetKeyDown(Key.W))
-				CameraNode.Translate(Vector3.UnitY * moveSpeed * timeStep, TransformSpace.Local);
-			if (input.GetKeyDown(Key.S))
-				CameraNode.Translate(new Vector3(0.0f, -1.0f, 0.0f) * moveSpeed * timeStep, TransformSpace.Local);
-			if (input.GetKeyDown(Key.A))
-				CameraNode.Translate(new Vector3(-1.0f, 0.0f, 0.0f) * moveSpeed * timeStep, TransformSpace.Local);
-			if (input.GetKeyDown(Key.D))
-				CameraNode.Translate(Vector3.UnitX * moveSpeed * timeStep, TransformSpace.Local);
-
-			if (input.GetKeyDown(Key.PageUp))
-			{
-				Camera camera = CameraNode.GetComponent<Camera>();
-				camera.Zoom = (camera.Zoom * 1.01f);
-			}
-
-			if (input.GetKeyDown(Key.PageDown))
-			{
-				Camera camera = CameraNode.GetComponent<Camera>();
-				camera.Zoom = (camera.Zoom * 0.99f);
-			}
-		}
-
-		protected void SimpleMoveCamera3D (float timeStep)
-		{
-			const float mouseSensitivity = .1f;
-		
-			if (UI.FocusElement != null)
-				return;
-			var input = Input;
-			const float moveSpeed = 40f;
-
-			var mouseMove = input.MouseMove;
-			Yaw += mouseSensitivity * mouseMove.X;
-			Pitch += mouseSensitivity * mouseMove.Y;
-			Pitch = MathHelper.Clamp(Pitch, -90, 90);
-
-			CameraNode.Rotation = new Quaternion(Pitch, Yaw, 0);
-
-			if (input.GetKeyDown (Key.W))
-				CameraNode.Translate (new Vector3(0,0,1) * moveSpeed * timeStep, TransformSpace.Local);
-			if (input.GetKeyDown (Key.S))
-				CameraNode.Translate (new Vector3(0,0,-1) * moveSpeed * timeStep, TransformSpace.Local);
-			if (input.GetKeyDown (Key.A))
-				CameraNode.Translate (new Vector3(-1,0,0) * moveSpeed * timeStep, TransformSpace.Local);
-			if (input.GetKeyDown (Key.D))
-				CameraNode.Translate (new Vector3(1,0,0) * moveSpeed * timeStep, TransformSpace.Local);
-		}
-
-		protected void SimpleCreateInstructionsWithWASD (string extra = "")
-		{
-			SimpleCreateInstructions("Use WASD keys and mouse/touch to move" + extra);
-		}
-	
-		protected void SimpleCreateInstructions(string text = "")
-		{
-			var textElement = new Text(Context)
-				{
-					Value = text,
-					HorizontalAlignment = HorizontalAlignment.HA_CENTER,
-					VerticalAlignment = VerticalAlignment.VA_CENTER
-				};
-			textElement.SetFont(ResourceCache.GetFont("Fonts/Anonymous Pro.ttf"), 15);
-			UI.Root.AddChild(textElement);
+			var screenJoystickIndex = Input.AddScreenJoystick(layout, ResourceCache.GetXmlFile("UI/DefaultStyle.xml"));
+			Input.SetScreenJoystickVisible(screenJoystickIndex, true);
 		}
 	}
 }

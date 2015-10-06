@@ -6,12 +6,14 @@ namespace Urho.Samples
 	{
 		Camera camera;
 		Scene scene;
-	
+
+		public _04_StaticScene(Context c) : base(c) { }
+
 		public override void Start ()
 		{
 			base.Start ();
 			CreateScene ();
-			SimpleCreateInstructionsWithWASD ();
+			SimpleCreateInstructionsWithWasd ();
 			SetupViewport ();
 		}
 
@@ -44,7 +46,8 @@ namespace Urho.Samples
 			light.LightType = LightType.LIGHT_DIRECTIONAL;
 
 			var rand = new Random();
-			for (int i = 0; i < 200; i++){
+			for (int i = 0; i < 200; i++)
+			{
 				var mushroom = scene.CreateChild ("Mushroom");
 				mushroom.Position = new Vector3 (rand.Next (90)-45, 0, rand.Next (90)-45);
 				mushroom.Rotation = new Quaternion (0, rand.Next (360), 0);
@@ -68,7 +71,5 @@ namespace Urho.Samples
 		{
 			SimpleMoveCamera3D(timeStep);
 		}
-
-		public _04_StaticScene (Context c) : base (c) {}
 	}
 }

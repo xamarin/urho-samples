@@ -12,12 +12,14 @@
 		{
 			base.Start();
 			CreateScene();
-			SimpleCreateInstructionsWithWASD();
+			SimpleCreateInstructionsWithWasd();
 			DoActions();
 		}
 
 		async void DoActions()
 		{
+			// Action API was introduced in Cocos2d and it's C# version - https://github.com/mono/CocosSharp/tree/master/src/actions
+			
 			// Ball sprite:
 			FadeIn fadeIn = new FadeIn(durataion: 2);
 			FadeOut fadeOut = new FadeOut(durtaion: 2);
@@ -37,7 +39,7 @@
 			await mushroomNode.RunActionsAsync(moveForwardAction,
 				new Parallel(moveRightAction, makeBiggerAction), //move right and increase scale simultaneously
 				new Parallel(moveToInitialPositionAction, rotateYAction, makeBiggerAction.Reverse()));
-
+			
 
 			JumpBy jumpAction = new JumpBy(duration: 7, position: new Vector3(50, 0, 0), height: 8, jumps: 5);
 			moveToInitialPositionAction.Duration = 5; //increase duration from 2s to 5s (2s is too fast for this step)

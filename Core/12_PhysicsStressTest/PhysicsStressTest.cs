@@ -11,7 +11,7 @@ namespace Urho.Samples
 		{
 			base.Start();
 			CreateScene();
-			SimpleCreateInstructionsWithWASD(
+			SimpleCreateInstructionsWithWasd(
 				"\nLMB to spawn physics objects\n" +
 				"F5 to save scene, F7 to load\n" +
 				"Space to toggle physics debug geometry");
@@ -77,11 +77,11 @@ namespace Urho.Samples
 			CollisionShape shape = boxNode.CreateComponent<CollisionShape>();
 			shape.SetBox(Vector3.One, Vector3.Zero, Quaternion.Identity);
 
-			const float OBJECT_VELOCITY = 10.0f;
+			const float objectVelocity = 10.0f;
 
 			// Set initial velocity for the RigidBody based on camera forward vector. Add also a slight up component
 			// to overcome gravity better
-			body.SetLinearVelocity(CameraNode.Rotation * new Vector3(0.0f, 0.25f, 1.0f) * OBJECT_VELOCITY);
+			body.SetLinearVelocity(CameraNode.Rotation * new Vector3(0.0f, 0.25f, 1.0f) * objectVelocity);
 		}
 
 		void CreateScene()
@@ -135,8 +135,8 @@ namespace Urho.Samples
 
 			{
 				// Create static mushrooms with triangle mesh collision
-				const uint NUM_MUSHROOMS = 50;
-				for (uint i = 0; i < NUM_MUSHROOMS; ++i)
+				const uint numMushrooms = 50;
+				for (uint i = 0; i < numMushrooms; ++i)
 				{
 					Node mushroomNode = scene.CreateChild("Mushroom");
 					mushroomNode.Position = new Vector3(NextRandom(400.0f) - 200.0f, 0.0f, NextRandom(400.0f) - 200.0f);
@@ -156,8 +156,8 @@ namespace Urho.Samples
 
 			{
 				// Create a large amount of falling physics objects
-				const uint NUM_OBJECTS = 1000;
-				for (uint i = 0; i < NUM_OBJECTS; ++i)
+				const uint numObjects = 1000;
+				for (uint i = 0; i < numObjects; ++i)
 				{
 					Node boxNode = scene.CreateChild("Box");
 					boxNode.Position = new Vector3(0.0f, i * 2.0f + 100.0f, 0.0f);
@@ -181,10 +181,10 @@ namespace Urho.Samples
 			// the scene, because we want it to be unaffected by scene load / save
 			CameraNode = new Node(Context);
 			Camera camera = CameraNode.CreateComponent<Camera>();
-			camera.FarClip=300.0f;
+			camera.FarClip = 300.0f;
 
 			// Set an initial position for the camera scene node above the floor
-			CameraNode.Position = (new Vector3(0.0f, 3.0f, -20.0f));
+			CameraNode.Position = new Vector3(0.0f, 3.0f, -20.0f);
 
 		}
 

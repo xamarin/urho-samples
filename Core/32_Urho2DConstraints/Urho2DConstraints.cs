@@ -22,7 +22,7 @@ namespace Urho.Samples
 		{
 			base.Start();
 			CreateScene();
-			SimpleCreateInstructionsWithWASD(", Use PageUp PageDown to zoom.\n Space to toggle debug geometry and joints - F5 to save the scene.");
+			SimpleCreateInstructionsWithWasd(", Use PageUp PageDown to zoom.\n Space to toggle debug geometry and joints - F5 to save the scene.");
 			Input.SetMouseVisible(true, false);
 			SetupViewport();
 			SubscribeToEvents();
@@ -495,8 +495,6 @@ namespace Urho.Samples
 			constraintWheel.FrequencyHz=4.0f;
 			constraintWheel.DampingRatio=0.5f;
 			constraintWheel.CollideConnected=true; // doesn't work
-
-
 		}
 
 		void CreateFlag(string text, float x, float y) // Used to create Tex3D flags
