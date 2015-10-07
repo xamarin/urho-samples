@@ -1,6 +1,5 @@
-#### 30. LightAnimation
+#### 30. Light animation example.
 
-Light animation example.
 This sample is base on StaticScene, and it demonstrates:
 - Usage of attribute animation for light color animation
 

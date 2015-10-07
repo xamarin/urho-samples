@@ -1,6 +1,5 @@
-#### 32. DynamicGeometry
+#### 32. Dynamic geometry example.
 
-Dynamic geometry example.
 This sample demonstrates:
 - Cloning a Model resource
 - Modifying the vertex buffer data of the cloned models at runtime to efficiently animate them

@@ -1,6 +1,5 @@
-#### 7. Billboards
+#### 7. Billboard example.
 
-Billboard example.
 This sample demonstrates:
 - Populating a 3D scene with billboard sets and several shadow casting spotlights
 - Parenting scene nodes to allow more intuitive creation of groups of objects

@@ -1,6 +1,5 @@
-#### 37. UIDrag
+#### 37. GUI test example.
 
-GUI test example.
 This sample demonstrates:
 - Creating GUI elements from C#
 - Loading GUI Style from xml

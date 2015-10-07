@@ -1,6 +1,5 @@
-#### 14. SoundEffects
+#### 14. Sound effects example
 
-Sound effects example
 This sample demonstrates:
 - Playing sound effects and music
 - Controlling sound and music master volume

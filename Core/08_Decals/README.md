@@ -1,6 +1,5 @@
-#### 8. Decals
+#### 8. Decals example.
 
-Decals example.
 This sample demonstrates:
 - Performing a raycast to the octree and adding a decal to the hit location
 - Defining a Cursor UI element which stays inside the window and can be shown/hidden

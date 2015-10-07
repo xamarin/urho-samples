@@ -1,6 +1,5 @@
-#### 27. Urho2DPhysics
+#### 27. Urho2D physics sample.
 
-Urho2D physics sample.
 This sample demonstrates:
 - Creating both static and moving 2D physics objects to a scene
 - Displaying physics debug geometry

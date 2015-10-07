@@ -1,6 +1,5 @@
-#### 15. Navigation
+#### 15. Navigation example.
 
-Navigation example.
 This sample demonstrates:
 - Generating a navigation mesh into the scene
 - Performing path queries to the navigation mesh

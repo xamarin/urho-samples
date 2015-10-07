@@ -1,6 +1,5 @@
-#### 13. Ragdolls
+#### 13. Ragdoll example.
 
-Ragdoll example.
 This sample demonstrates:
 - Detecting physics collisions
 - Moving an AnimatedModel's bones with physics and connecting them with constraints

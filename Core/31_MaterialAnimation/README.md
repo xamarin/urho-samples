@@ -1,6 +1,5 @@
-#### 31. MaterialAnimation
+#### 31. Material animation example.
 
-Material animation example.
 This sample is base on StaticScene, and it demonstrates:
 - Usage of material shader animation for mush room material
 

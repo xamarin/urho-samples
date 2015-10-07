@@ -1,6 +1,5 @@
-#### 3. Sprites
+#### 3. Moving sprites example.
 
-Moving sprites example.
 This sample demonstrates:
 - Adding Sprite elements to the UI
 - Storing custom data (sprite velocity) inside UI elements

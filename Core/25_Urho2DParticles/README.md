@@ -1,6 +1,5 @@
-#### 25. Urho2DParticles
+#### 25. Urho2D particle example.
 
-Urho2D particle example.
 This sample demonstrates:
 - Creating a 2D scene with particle
 - Displaying the scene using the Renderer subsystem

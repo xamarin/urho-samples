@@ -1,6 +1,5 @@
-#### 20. HugeObjectCount
+#### 20. Huge object count example.
 
-Huge object count example.
 This sample demonstrates:
 - Creating a scene with 250 x 250 simple objects
 - Competing with http://yosoygames.com.ar/wp/2013/07/ogre-2-0-is-up-to-3x-faster/ :)

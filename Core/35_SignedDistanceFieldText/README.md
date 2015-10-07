@@ -1,6 +1,5 @@
-#### 35. SignedDistanceFieldText
+#### 35. Signed distance field text example.
 
-Signed distance field text example.
 This sample demonstrates:
 - Creating a 3D scene with static content
 - Creating a 3D text use SDF Font

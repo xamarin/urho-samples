@@ -1,6 +1,5 @@
-#### 19. VehicleDemo
+#### 19. Vehicle example.
 
-Vehicle example.
 This sample demonstrates:
 - Creating a heightmap terrain with collision
 - Constructing a physical vehicle with rigid bodies for the hull and the wheels, joined with constraints

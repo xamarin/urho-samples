@@ -1,6 +1,5 @@
-#### 33. Urho2DSpriteAnimation
+#### 33. Urho2D sprite example.
 
-Urho2D sprite example.
 This sample demonstrates:
 - Creating a 2D scene with spriter animation
 - Displaying the scene using the Renderer subsystem

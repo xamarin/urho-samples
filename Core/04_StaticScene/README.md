@@ -1,6 +1,5 @@
-#### 4. StaticScene
+#### 4. Static 3D scene example.
 
-Static 3D scene example.
 This sample demonstrates:
 - Creating a 3D scene with static content
 - Displaying the scene using the Renderer subsystem

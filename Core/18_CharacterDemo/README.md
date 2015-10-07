@@ -1,6 +1,5 @@
-#### 18. CharacterDemo
+#### 18. Moving character example.
 
-Moving character example.
 This sample demonstrates:
 - Controlling a humanoid character through physics
 - Driving animations using the AnimationController component

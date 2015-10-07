@@ -1,6 +1,5 @@
-#### 6. SkeletalAnimation
+#### 6. Skeletal animation example.
 
-Skeletal animation example.
 This sample demonstrates:
 - Populating a 3D scene with skeletally animated AnimatedModel components;
 - Moving the animated models and advancing their animation using a custom component
