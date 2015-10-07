@@ -9,19 +9,22 @@ namespace Urho.Samples.Desktop
 
 		static void Main(string[] args)
 		{
-			args =  new [] { "41" };
+			//args =  new [] { "39" };
 
 			FindAvailableSamplesAndPrint();
 			System.Type selectedSampleType = null;
 
 			if (args.Length > 0)
+			{
+				// try to get a desired sample's number to run via command line args:
 				selectedSampleType = ParseSampleFromNumber(args[0]);
+			}
 
 			if (Environment.OSVersion.Platform == PlatformID.Win32NT)
 			{
 				while (selectedSampleType == null)
 				{
-					Console.WriteLine("Enter a sample number [1-41]:");
+					WriteLine("Enter a sample number [1-41]:", ConsoleColor.White);
 					selectedSampleType = ParseSampleFromNumber(Console.ReadLine());
 				}
 			}
@@ -38,7 +41,7 @@ namespace Urho.Samples.Desktop
 			}
 
 			var code = ApplicationLauncher.Run(() => (Application)Activator.CreateInstance(selectedSampleType, new Context()), resourcesDirectory);
-			Console.WriteLine($"Exit code: {code}. Press any key to exit...");
+			WriteLine($"Exit code: {code}. Press any key to exit...", ConsoleColor.DarkYellow);
 			Console.ReadKey();
 		}
 
@@ -51,14 +54,14 @@ namespace Urho.Samples.Desktop
 			int number;
 			if (!int.TryParse(input, out number))
 			{
-				Console.WriteLine("Invalid format.");
+				WriteLine("Invalid format.", ConsoleColor.Red);
 				return null;
 			}
 
 			var sample = samples.FirstOrDefault(s => s.Name.StartsWith($"_{number.ToString("00")}"));
 			if (sample == null)
 			{
-				Console.WriteLine("Sample was not found");
+				WriteLine("Sample was not found", ConsoleColor.Red);
 				return null;
 			}
 
@@ -67,10 +70,21 @@ namespace Urho.Samples.Desktop
 
 		static void FindAvailableSamplesAndPrint()
 		{
+			var highlightedSamples = new [] { typeof(_41_ToonTown) };
 			samples = typeof(Sample).Assembly.GetTypes().Where(t => t.IsSubclassOf(typeof(Application)) && t != typeof(Sample)).ToArray();
 			foreach (var sample in samples)
-				Console.WriteLine(sample.Name);
+			{
+				WriteLine(sample.Name, highlightedSamples.Contains(sample) ? ConsoleColor.Yellow : ConsoleColor.DarkGray);
+			}
 			Console.WriteLine();
+		}
+
+		static void WriteLine(string text, ConsoleColor consoleColor)
+		{
+			var color = Console.ForegroundColor;
+			Console.ForegroundColor = consoleColor;
+			Console.WriteLine(text);
+			Console.ForegroundColor = color;
 		}
 	}
 }

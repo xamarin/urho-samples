@@ -1,5 +1,4 @@
-﻿using System.Linq;
-using Foundation;
+﻿using Foundation;
 using UIKit;
 using Urho.iOS;
 using System.Threading.Tasks;

@@ -66,6 +66,7 @@ namespace Urho.Samples
 					var camera = CameraNode.GetComponent<Camera> ();
 					if (camera == null)
 						return;
+
 					var graphics = Graphics;
 					Yaw += TouchSensitivity * camera.Fov / graphics.Height * state.Delta.X;
 					Pitch += TouchSensitivity * camera.Fov / graphics.Height * state.Delta.Y;
@@ -99,12 +100,9 @@ namespace Urho.Samples
 		{
 			base.Start();
 			var platform = Runtime.Platform;
-			switch (platform)
+			if (platform == "Android" || platform == "iOS")
 			{
-				case "Android":
-				case "iOS":
-					InitTouchInput ();
-					break;
+				InitTouchInput();
 			}
 
 			monoDebugHud = new MonoDebugHud(this);
@@ -159,11 +157,12 @@ namespace Urho.Samples
 		protected void SimpleMoveCamera3D (float timeStep)
 		{
 			const float mouseSensitivity = .1f;
-		
+			const float moveSpeed = 40f;
+
 			if (UI.FocusElement != null)
 				return;
+
 			var input = Input;
-			const float moveSpeed = 40f;
 
 			var mouseMove = input.MouseMove;
 			Yaw += mouseSensitivity * mouseMove.X;

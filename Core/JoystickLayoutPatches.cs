@@ -28,8 +28,6 @@ namespace Urho.Samples
 	/// </summary>
 	public static class JoystickLayoutPatches
 	{
-		//TODO: add fluent XML builder
-
 		public const string WithZoomInAndOut =
 			"<patch>" +
 			"    <remove sel=\"/element/element[./attribute[@name='Name' and @value='Button0']]/attribute[@name='Is Visible']\" />" +
