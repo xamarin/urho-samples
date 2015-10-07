@@ -31,7 +31,7 @@ namespace Urho.Samples.Droid
 			}
 
 			ArrayAdapter<string> adapter = new ArrayAdapter<string>(this, Resource.Layout.samples_list_text_view);
-			sampleTypes = typeof(Sample).Assembly.GetTypes().Where(t => t.BaseType == typeof(Sample)).ToArray();
+			sampleTypes = typeof(Sample).Assembly.GetTypes().Where(t => t.BaseType == typeof(Sample) && t != typeof(_41_ToonTown)).ToArray();
 			foreach (var sample in sampleTypes)
 			{
 				adapter.Add(sample.Name.TrimStart('_').Replace("_", ". "));
