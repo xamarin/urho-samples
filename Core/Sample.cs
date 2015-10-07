@@ -224,7 +224,7 @@ namespace Urho.Samples
 		{
 			var icon = cache.GetImage("Textures/UrhoIcon.png");
 			Graphics.SetWindowIcon(icon);
-			Graphics.WindowTitle = "Mono Urho3D Sample";
+			Graphics.WindowTitle = "UrhoSharp Sample";
 		}
 
 		void CreateConsoleAndDebugHud()
