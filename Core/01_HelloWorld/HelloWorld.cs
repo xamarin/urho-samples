@@ -39,6 +39,9 @@ namespace Urho.Samples
 			helloText.SetColor(new Color(0f, 1f, 0f));
 			helloText.SetFont(font: cache.GetFont("Fonts/Anonymous Pro.ttf"), size: 30);
 			UI.Root.AddChild(helloText);
+			
+			Graphics.SetWindowIcon(cache.GetImage("Textures/UrhoIcon.png"));
+			Graphics.WindowTitle = "UrhoSharp Sample";
 		}
 	}
 }
