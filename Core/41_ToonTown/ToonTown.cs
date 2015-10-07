@@ -185,7 +185,7 @@ namespace Urho.Samples
 			AnimatedModel obj = objectNode.CreateComponent<AnimatedModel>();
 			obj.Model = cache.GetModel("Models/Jack.mdl");
 			var material = cache.GetMaterial("Materials/BlueGrid.xml");
-            obj.SetMaterial(material);
+			obj.SetMaterial(material);
 			obj.CastShadows = true;
 			objectNode.CreateComponent<AnimationController>();
 

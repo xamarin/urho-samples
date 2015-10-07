@@ -135,7 +135,7 @@ namespace Urho.Samples
 			void OnUpdate(SceneUpdateEventArgs args)
 			{
 				var timeStep = args.TimeStep;
-                Node.Rotate(new Quaternion(
+				Node.Rotate(new Quaternion(
 					RotationSpeed.X * timeStep,
 					RotationSpeed.Y * timeStep,
 					RotationSpeed.Z * timeStep),

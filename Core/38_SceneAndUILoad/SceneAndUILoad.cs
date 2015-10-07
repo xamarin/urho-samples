@@ -117,6 +117,5 @@ namespace Urho.Samples
 			Node lightNode = scene.GetChild("Light2", true);
 			lightNode?.SetEnabled(!lightNode.IsEnabled());
 		}
-
 	}
 }
