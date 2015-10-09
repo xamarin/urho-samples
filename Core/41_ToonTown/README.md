@@ -4,9 +4,6 @@ This sample is a C# port of <a href="http://atomicgameengine.com">Atomic Game En
 
 ![Sample](Screenshot.png)
 
-![Editor](https://hsto.org/files/3b5/fe9/5ba/3b5fe95ba61044dcbae77233f09748ad.png)
-
-
 ####LICENSE
 
 Copyright (c) 2014-2015, THUNDERBEAST GAMES LLC All rights reserved
