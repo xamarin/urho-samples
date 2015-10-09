@@ -42,8 +42,8 @@ namespace Urho.Samples
 			var instructions = new Text(Context)
 			{
 				Value = "Use WASD keys and mouse/touch to move",
-				HorizontalAlignment = HorizontalAlignment.HA_CENTER,
-				VerticalAlignment = VerticalAlignment.VA_CENTER
+				HorizontalAlignment = HorizontalAlignment.Center,
+				VerticalAlignment = VerticalAlignment.Center
 			};
 			var font = ResourceCache.GetFont("Fonts/Anonymous Pro.ttf");
 			instructions.SetFont(font, 15);
@@ -53,8 +53,8 @@ namespace Urho.Samples
 			Text text = new Text(Context);
 			text.Name = "animatingText";
 			text.SetFont(font, 15);
-			text.HorizontalAlignment = HorizontalAlignment.HA_CENTER;
-			text.VerticalAlignment = VerticalAlignment.VA_CENTER;
+			text.HorizontalAlignment = HorizontalAlignment.Center;
+			text.VerticalAlignment = VerticalAlignment.Center;
 			text.SetPosition(0, UI.Root.Height/4 + 20);
 			UI.Root.AddChild(text);
 		}
@@ -94,7 +94,7 @@ namespace Urho.Samples
 			// Create a point light to the world so that we can see something. 
 			Node lightNode = scene.CreateChild("PointLight");
 			Light light = lightNode.CreateComponent<Light>();
-			light.LightType = LightType.LIGHT_POINT;
+			light.LightType = LightType.Point;
 			light.Range = (10.0f);
 
 			// Create light animation
@@ -103,7 +103,7 @@ namespace Urho.Samples
 			// Create light position animation
 			ValueAnimation positionAnimation=new ValueAnimation(Context);
 			// Use spline interpolation method
-			positionAnimation.InterpolationMethod= InterpMethod.IM_SPLINE;
+			positionAnimation.InterpolationMethod= InterpMethod.Spline;
 			// Set spline tension
 			positionAnimation.SplineTension=0.7f;
 
@@ -113,7 +113,7 @@ namespace Urho.Samples
 			positionAnimation.SetKeyFrame(3.0f, new Vector3(-30.0f, 5.0f, 30.0f));
 			positionAnimation.SetKeyFrame(4.0f, new Vector3(-30.0f, 5.0f, -30.0f));
 			// Set position animation
-			lightAnimation.AddAttributeAnimation("Position", positionAnimation, WrapMode.WM_LOOP, 1f);
+			lightAnimation.AddAttributeAnimation("Position", positionAnimation, WrapMode.Loop, 1f);
 
 			// Create text animation
 			ValueAnimation textAnimation=new ValueAnimation(Context);
@@ -123,7 +123,7 @@ namespace Urho.Samples
 			textAnimation.SetKeyFrame(3.0f, "GREEN");
 			textAnimation.SetKeyFrame(4.0f, "WHITE");
 			var uiElement = UI.Root.GetChild("animatingText", false);
-			uiElement.SetAttributeAnimation("Text", textAnimation, WrapMode.WM_LOOP, 1f);
+			uiElement.SetAttributeAnimation("Text", textAnimation, WrapMode.Loop, 1f);
 
 			// Create light color animation
 			ValueAnimation colorAnimation=new ValueAnimation(Context);
@@ -133,7 +133,7 @@ namespace Urho.Samples
 			colorAnimation.SetKeyFrame(3.0f, Color.Green);
 			colorAnimation.SetKeyFrame(4.0f, Color.White);
 			// Set Light component's color animation
-			lightAnimation.AddAttributeAnimation("@Light/Color", colorAnimation, WrapMode.WM_LOOP, 1f);
+			lightAnimation.AddAttributeAnimation("@Light/Color", colorAnimation, WrapMode.Loop, 1f);
 
 			// Apply light animation to light node
 			lightNode.ObjectAnimation=lightAnimation;

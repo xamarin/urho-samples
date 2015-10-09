@@ -48,27 +48,27 @@ namespace Urho.Samples
 				Node.RemoveComponent<CollisionShape>();
 		
 				// Create RigidBody & CollisionShape components to bones
-				CreateRagdollBone("Bip01_Pelvis", ShapeType.SHAPE_BOX, new Vector3(0.3f, 0.2f, 0.25f), new Vector3(0.0f, 0.0f, 0.0f),
+				CreateRagdollBone("Bip01_Pelvis", ShapeType.Box, new Vector3(0.3f, 0.2f, 0.25f), new Vector3(0.0f, 0.0f, 0.0f),
 					new Quaternion(0.0f, 0.0f, 0.0f));
-				CreateRagdollBone("Bip01_Spine1", ShapeType.SHAPE_BOX, new Vector3(0.35f, 0.2f, 0.3f), new Vector3(0.15f, 0.0f, 0.0f),
+				CreateRagdollBone("Bip01_Spine1", ShapeType.Box, new Vector3(0.35f, 0.2f, 0.3f), new Vector3(0.15f, 0.0f, 0.0f),
 					new Quaternion(0.0f, 0.0f, 0.0f));
-				CreateRagdollBone("Bip01_L_Thigh", ShapeType.SHAPE_CAPSULE, new Vector3(0.175f, 0.45f, 0.175f), new Vector3(0.25f, 0.0f, 0.0f),
+				CreateRagdollBone("Bip01_L_Thigh", ShapeType.Capsule, new Vector3(0.175f, 0.45f, 0.175f), new Vector3(0.25f, 0.0f, 0.0f),
 					new Quaternion(0.0f, 0.0f, 90.0f));
-				CreateRagdollBone("Bip01_R_Thigh", ShapeType.SHAPE_CAPSULE, new Vector3(0.175f, 0.45f, 0.175f), new Vector3(0.25f, 0.0f, 0.0f),
+				CreateRagdollBone("Bip01_R_Thigh", ShapeType.Capsule, new Vector3(0.175f, 0.45f, 0.175f), new Vector3(0.25f, 0.0f, 0.0f),
 					new Quaternion(0.0f, 0.0f, 90.0f));
-				CreateRagdollBone("Bip01_L_Calf", ShapeType.SHAPE_CAPSULE, new Vector3(0.15f, 0.55f, 0.15f), new Vector3(0.25f, 0.0f, 0.0f),
+				CreateRagdollBone("Bip01_L_Calf", ShapeType.Capsule, new Vector3(0.15f, 0.55f, 0.15f), new Vector3(0.25f, 0.0f, 0.0f),
 					new Quaternion(0.0f, 0.0f, 90.0f));
-				CreateRagdollBone("Bip01_R_Calf", ShapeType.SHAPE_CAPSULE, new Vector3(0.15f, 0.55f, 0.15f), new Vector3(0.25f, 0.0f, 0.0f),
+				CreateRagdollBone("Bip01_R_Calf", ShapeType.Capsule, new Vector3(0.15f, 0.55f, 0.15f), new Vector3(0.25f, 0.0f, 0.0f),
 					new Quaternion(0.0f, 0.0f, 90.0f));
-				CreateRagdollBone("Bip01_Head", ShapeType.SHAPE_BOX, new Vector3(0.2f, 0.2f, 0.2f), new Vector3(0.1f, 0.0f, 0.0f),
+				CreateRagdollBone("Bip01_Head", ShapeType.Box, new Vector3(0.2f, 0.2f, 0.2f), new Vector3(0.1f, 0.0f, 0.0f),
 					new Quaternion(0.0f, 0.0f, 0.0f));
-				CreateRagdollBone("Bip01_L_UpperArm", ShapeType.SHAPE_CAPSULE, new Vector3(0.15f, 0.35f, 0.15f), new Vector3(0.1f, 0.0f, 0.0f),
+				CreateRagdollBone("Bip01_L_UpperArm", ShapeType.Capsule, new Vector3(0.15f, 0.35f, 0.15f), new Vector3(0.1f, 0.0f, 0.0f),
 					new Quaternion(0.0f, 0.0f, 90.0f));
-				CreateRagdollBone("Bip01_R_UpperArm", ShapeType.SHAPE_CAPSULE, new Vector3(0.15f, 0.35f, 0.15f), new Vector3(0.1f, 0.0f, 0.0f),
+				CreateRagdollBone("Bip01_R_UpperArm", ShapeType.Capsule, new Vector3(0.15f, 0.35f, 0.15f), new Vector3(0.1f, 0.0f, 0.0f),
 					new Quaternion(0.0f, 0.0f, 90.0f));
-				CreateRagdollBone("Bip01_L_Forearm", ShapeType.SHAPE_CAPSULE, new Vector3(0.125f, 0.4f, 0.125f), new Vector3(0.2f, 0.0f, 0.0f),
+				CreateRagdollBone("Bip01_L_Forearm", ShapeType.Capsule, new Vector3(0.125f, 0.4f, 0.125f), new Vector3(0.2f, 0.0f, 0.0f),
 					new Quaternion(0.0f, 0.0f, 90.0f));
-				CreateRagdollBone("Bip01_R_Forearm", ShapeType.SHAPE_CAPSULE, new Vector3(0.125f, 0.4f, 0.125f), new Vector3(0.2f, 0.0f, 0.0f),
+				CreateRagdollBone("Bip01_R_Forearm", ShapeType.Capsule, new Vector3(0.125f, 0.4f, 0.125f), new Vector3(0.2f, 0.0f, 0.0f),
 					new Quaternion(0.0f, 0.0f, 90.0f));
 		
 				Vector3 back = new Vector3(0f, 0f, -1f);
@@ -135,7 +135,7 @@ namespace Urho.Samples
 
 			CollisionShape shape = boneNode.CreateComponent<CollisionShape>();
 			// We use either a box or a capsule shape for all of the bones
-			if (type == ShapeType.SHAPE_BOX)
+			if (type == ShapeType.Box)
 				shape.SetBox(size, position, rotation);
 			else
 				shape.SetCapsule(size.X, size.Y, position, rotation);

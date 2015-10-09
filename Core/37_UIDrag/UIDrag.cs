@@ -74,8 +74,8 @@ namespace Urho.Samples
 					var t = new Text(Context);
 					b.AddChild(t);
 					t.SetStyle("Text", null);
-					t.HorizontalAlignment = HorizontalAlignment.HA_CENTER;
-					t.VerticalAlignment = VerticalAlignment.VA_CENTER;
+					t.HorizontalAlignment = HorizontalAlignment.Center;
+					t.VerticalAlignment = VerticalAlignment.Center;
 					t.Name = ("Text");
 				}
 
@@ -84,8 +84,8 @@ namespace Urho.Samples
 					b.AddChild(t);
 					t.SetStyle("Text", null);
 					t.Name=("Event Touch");
-					t.HorizontalAlignment=HorizontalAlignment.HA_CENTER;
-					t.VerticalAlignment=VerticalAlignment.VA_BOTTOM;
+					t.HorizontalAlignment=HorizontalAlignment.Center;
+					t.VerticalAlignment=VerticalAlignment.Bottom;
 				}
 
 				{
@@ -93,8 +93,8 @@ namespace Urho.Samples
 					b.AddChild(t);
 					t.SetStyle("Text", null);
 					t.Name=("Num Touch");
-					t.HorizontalAlignment=HorizontalAlignment.HA_CENTER;
-					t.VerticalAlignment=VerticalAlignment.VA_TOP;
+					t.HorizontalAlignment=HorizontalAlignment.Center;
+					t.VerticalAlignment=VerticalAlignment.Top;
 				}
 			}
 
@@ -120,8 +120,8 @@ namespace Urho.Samples
 			ui.Root.AddChild(instructionText);
 
 			// Position the text relative to the screen center
-			instructionText.HorizontalAlignment = HorizontalAlignment.HA_CENTER;
-			instructionText.VerticalAlignment = VerticalAlignment.VA_CENTER;
+			instructionText.HorizontalAlignment = HorizontalAlignment.Center;
+			instructionText.VerticalAlignment = VerticalAlignment.Center;
 			instructionText.SetPosition(0, ui.Root.Height/4);
 		}
 

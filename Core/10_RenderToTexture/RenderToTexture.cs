@@ -96,7 +96,7 @@ namespace Urho.Samples
 
 				// Create a point light to the camera scene node
 				Light light = rttCameraNode.CreateComponent<Light>();
-				light.LightType = LightType.LIGHT_POINT;
+				light.LightType = LightType.Point;
 				light.Range = 30.0f;
 			}
 
@@ -120,7 +120,7 @@ namespace Urho.Samples
 				Node lightNode = scene.CreateChild("DirectionalLight");
 				lightNode.SetDirection(new Vector3(0.5f, -1.0f, 0.5f));
 				Light light = lightNode.CreateComponent<Light>();
-				light.LightType = LightType.LIGHT_DIRECTIONAL;
+				light.LightType = LightType.Directional;
 				light.Color = new Color(0.2f, 0.2f, 0.2f);
 				light.SpecularIntensity = 1.0f;
 
@@ -157,14 +157,14 @@ namespace Urho.Samples
 
 					// Create a renderable texture (1024x768, RGB format), enable bilinear filtering on it
 					Texture2D renderTexture = new Texture2D(Context);
-					renderTexture.SetSize(1024, 768, Graphics.RGBFormat, TextureUsage.TEXTURE_RENDERTARGET);
-					renderTexture.FilterMode = TextureFilterMode.FILTER_BILINEAR;
+					renderTexture.SetSize(1024, 768, Graphics.RGBFormat, TextureUsage.Rendertarget);
+					renderTexture.FilterMode = TextureFilterMode.Bilinear;
 
 					// Create a new material from scratch, use the diffuse unlit technique, assign the render texture
 					// as its diffuse texture, then assign the material to the screen plane object
 					Material renderMaterial = new Material(Context);
 					renderMaterial.SetTechnique(0, cache.GetTechnique("Techniques/DiffUnlit.xml"), 0, 0);
-					renderMaterial.SetTexture(TextureUnit.TU_DIFFUSE, renderTexture);
+					renderMaterial.SetTexture(TextureUnit.Diffuse, renderTexture);
 					screenObject.SetMaterial(renderMaterial);
 
 					// Get the texture's RenderSurface object (exists when the texture has been created in rendertarget mode)

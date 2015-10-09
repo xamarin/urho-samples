@@ -70,11 +70,11 @@ namespace Urho.Samples
 
 			instructionText.SetFont(cache.GetFont("Fonts/Anonymous Pro.ttf"), 15);
 			// The text has multiple rows. Center them in relation to each other
-			instructionText.TextAlignment = HorizontalAlignment.HA_CENTER;
+			instructionText.TextAlignment = HorizontalAlignment.Center;
 
 			// Position the text relative to the screen center
-			instructionText.HorizontalAlignment = HorizontalAlignment.HA_CENTER;
-			instructionText.VerticalAlignment = VerticalAlignment.VA_CENTER;
+			instructionText.HorizontalAlignment = HorizontalAlignment.Center;
+			instructionText.VerticalAlignment = VerticalAlignment.Center;
 			instructionText.SetPosition(0, ui.Root.Height / 4);
 			ui.Root.AddChild(instructionText);
 		}
@@ -103,7 +103,7 @@ namespace Urho.Samples
 					CrowdAgentState agentState = (CrowdAgentState)args.CrowdAgentState;
 
 					// If the agent's state is invalid, likely from spawning on the side of a box, find a point in a larger area
-					if (agentState == CrowdAgentState.CA_STATE_INVALID)
+					if (agentState == CrowdAgentState.StateInvalid)
 					{
 						// Get a point on the navmesh using more generous extents
 						Vector3 newPos = scene.GetComponent<DynamicNavigationMesh>().FindNearestPoint(node.Position, new Vector3(5.0f, 5.0f, 5.0f));
@@ -220,7 +220,7 @@ namespace Urho.Samples
 			Ray cameraRay = camera.GetScreenRay((float)pos.X / graphics.Width, (float)pos.Y / graphics.Height);
 			// Pick only geometry objects, not eg. zones or lights, only get the first (closest) hit
 
-			var results = scene.GetComponent<Octree>().RaycastSingle(cameraRay, RayQueryLevel.RAY_TRIANGLE, maxDistance, DrawableFlags.Geometry, uint.MaxValue);
+			var results = scene.GetComponent<Octree>().RaycastSingle(cameraRay, RayQueryLevel.Triangle, maxDistance, DrawableFlags.Geometry, uint.MaxValue);
 			if (results != null && results.Any())
 			{
 				var first = results.First();
@@ -308,7 +308,7 @@ namespace Urho.Samples
 			Node lightNode = scene.CreateChild("DirectionalLight");
 			lightNode.SetDirection(new Vector3(0.6f, -1.0f, 0.8f));
 			Light light = lightNode.CreateComponent<Light>();
-			light.LightType = LightType.LIGHT_DIRECTIONAL;
+			light.LightType = LightType.Directional;
 			light.CastShadows = true;
 			light.ShadowBias = new BiasParameters(0.00025f, 0.5f);
 			// Set cascade splits at 10, 50 and 200 world units, fade shadows out at 80% of maximum shadow distance
@@ -447,7 +447,7 @@ namespace Urho.Samples
 			model.Model = cache.GetModel("Models/Cylinder.mdl");
 			Material material = cache.GetMaterial("Materials/StoneTiled.xml");
 			model.SetMaterial(material);
-			material.SetTexture(TextureUnit.TU_DIFFUSE, cache.GetTexture2D("Textures/TerrainDetail2.dds"));
+			material.SetTexture(TextureUnit.Diffuse, cache.GetTexture2D("Textures/TerrainDetail2.dds"));
 			model.CastShadows = true;
 			for (int i = 0; i < 20; ++i)
 			{
@@ -458,7 +458,7 @@ namespace Urho.Samples
 				CrowdAgent agent = clone.CreateComponent<CrowdAgent>();
 				agent.Radius = clone.Scale.X * 0.5f;
 				agent.Height = size;
-				agent.NavigationQuality = NavigationQuality.NAVIGATIONQUALITY_LOW;
+				agent.NavigationQuality = NavigationQuality.Low;
 			}
 			barrel.Remove();
 		}

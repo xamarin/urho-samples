@@ -112,7 +112,7 @@ namespace Urho.Samples
 			var lightNode = scene.CreateChild("DirectionalLight");
 			lightNode.SetDirection(new Vector3(0.5f, -1.0f, 0.5f));
 			var light = lightNode.CreateComponent<Light>();
-			light.LightType = LightType.LIGHT_DIRECTIONAL;
+			light.LightType = LightType.Directional;
 			light.Color = new Color(0.2f, 0.2f, 0.2f);
 			light.SpecularIntensity = 1.0f;
 
@@ -195,7 +195,7 @@ namespace Urho.Samples
 				lightNode.Position = position;
 				lightNode.SetDirection(new Vector3((float)Math.Sin(angle), -1.5f, (float)Math.Cos(angle)));
 
-				light.LightType = LightType.LIGHT_SPOT;
+				light.LightType = LightType.Spot;
 				light.Range = 90.0f;
 				light.RampTexture = cache.GetTexture2D("Textures/RampExtreme.png");
 				light.Fov = 45.0f;

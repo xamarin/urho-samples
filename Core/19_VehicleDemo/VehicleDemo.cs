@@ -191,7 +191,7 @@ namespace Urho.Samples
 			Node lightNode = scene.CreateChild("DirectionalLight");
 			lightNode.SetDirection(new Vector3(0.3f, -0.5f, 0.425f));
 			Light light = lightNode.CreateComponent<Light>();
-			light.LightType = LightType.LIGHT_DIRECTIONAL;
+			light.LightType = LightType.Directional;
 			light.CastShadows = true;
 			light.ShadowBias = new BiasParameters(0.00025f, 0.5f);
 			light.ShadowCascade = new CascadeParameters(10.0f, 50.0f, 200.0f, 0.0f, 0.8f);

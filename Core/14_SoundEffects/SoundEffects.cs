@@ -68,7 +68,7 @@ namespace Urho.Samples
 
 			Text buttonText = new Text(Context);
 			button.AddChild(buttonText);
-			buttonText.SetAlignment(HorizontalAlignment.HA_CENTER, VerticalAlignment.VA_CENTER);
+			buttonText.SetAlignment(HorizontalAlignment.Center, VerticalAlignment.Center);
 			buttonText.SetFont(font, 12);
 			buttonText.Value = text;
 

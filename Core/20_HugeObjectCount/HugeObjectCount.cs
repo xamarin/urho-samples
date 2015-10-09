@@ -113,7 +113,7 @@ namespace Urho.Samples
 			Node lightNode = scene.CreateChild("DirectionalLight");
 			lightNode.SetDirection(new Vector3(-0.6f, -1.0f, -0.8f)); // The direction vector does not need to be normalized
 			Light light = lightNode.CreateComponent<Light>();
-			light.LightType = LightType.LIGHT_DIRECTIONAL;
+			light.LightType = LightType.Directional;
 
 			if (!useGroups)
 			{

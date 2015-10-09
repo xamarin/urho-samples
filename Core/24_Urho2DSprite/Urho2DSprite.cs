@@ -137,7 +137,7 @@ namespace Urho.Samples
 			AnimatedSprite2D animatedSprite = spriteNode2.CreateComponent<AnimatedSprite2D>();
 			// Set animation
 			animatedSprite.AnimationSet = animationSet;
-			animatedSprite.SetAnimation("idle", LoopMode2D.LM_DEFAULT);
+			animatedSprite.SetAnimation("idle", LoopMode2D.Default);
 		}
 
 		protected override string JoystickLayoutPatch => JoystickLayoutPatches.WithZoomInAndOut;

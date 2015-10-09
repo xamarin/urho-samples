@@ -166,11 +166,11 @@ namespace Urho.Samples
 
 			instructionText.SetFont(cache.GetFont("Fonts/Anonymous Pro.ttf"), 15);
 			// The text has multiple rows. Center them in relation to each other
-			instructionText.TextAlignment= HorizontalAlignment.HA_CENTER;
+			instructionText.TextAlignment= HorizontalAlignment.Center;
 
 			// Position the text relative to the screen center
-			instructionText.HorizontalAlignment = HorizontalAlignment.HA_CENTER;
-			instructionText.VerticalAlignment = VerticalAlignment.VA_CENTER;
+			instructionText.HorizontalAlignment = HorizontalAlignment.Center;
+			instructionText.VerticalAlignment = VerticalAlignment.Center;
 			instructionText.SetPosition(0, ui.Root.Height / 4);
 			ui.Root.AddChild(instructionText);
 		}
@@ -206,7 +206,7 @@ namespace Urho.Samples
 			Node lightNode = scene.CreateChild("DirectionalLight");
 			lightNode.SetDirection(new Vector3(0.6f, -1.0f, 0.8f));
 			Light light = lightNode.CreateComponent<Light>();
-			light.LightType = LightType.LIGHT_DIRECTIONAL;
+			light.LightType = LightType.Directional;
 			light.CastShadows=true;
 			light.ShadowBias=new BiasParameters(0.00025f, 0.5f);
 			// Set cascade splits at 10, 50 and 200 world units, fade shadows out at 80% of maximum shadow distance
@@ -354,7 +354,7 @@ namespace Urho.Samples
 			Camera camera = CameraNode.GetComponent<Camera>();
 			Ray cameraRay = camera.GetScreenRay((float)pos.X / graphics.Width, (float)pos.Y / graphics.Height);
 			// Pick only geometry objects, not eg. zones or lights, only get the first (closest) hit
-			var results = scene.GetComponent<Octree>().RaycastSingle(cameraRay, RayQueryLevel.RAY_TRIANGLE, maxDistance, DrawableFlags.Geometry, uint.MaxValue);
+			var results = scene.GetComponent<Octree>().RaycastSingle(cameraRay, RayQueryLevel.Triangle, maxDistance, DrawableFlags.Geometry, uint.MaxValue);
 			if (results != null && results.Any())
 			{
 				var first = results.First();

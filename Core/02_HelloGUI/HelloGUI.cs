@@ -92,15 +92,15 @@ namespace Urho.Samples
 
 			// Set Window size and layout settings
 			window.SetMinSize(384, 192);
-			window.SetLayout(LayoutMode.LM_VERTICAL, 6, new IntRect(6, 6, 6, 6));
-			window.SetAlignment(HorizontalAlignment.HA_CENTER, VerticalAlignment.VA_CENTER);
+			window.SetLayout(LayoutMode.Vertical, 6, new IntRect(6, 6, 6, 6));
+			window.SetAlignment(HorizontalAlignment.Center, VerticalAlignment.Center);
 			window.Name = "Window";
 
 			// Create Window 'titlebar' container
 			UIElement titleBar = new UIElement(Context);
 			titleBar.SetMinSize(0, 24);
-			titleBar.VerticalAlignment = VerticalAlignment.VA_TOP;
-			titleBar.LayoutMode = LayoutMode.LM_HORIZONTAL;
+			titleBar.VerticalAlignment = VerticalAlignment.Top;
+			titleBar.LayoutMode = LayoutMode.Horizontal;
 
 			// Create the Window title Text
 			var windowTitle = new Text(Context);

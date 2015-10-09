@@ -90,7 +90,7 @@ namespace Urho.Samples
 			var lightNode = scene.CreateChild("DirectionalLight");
 			lightNode.SetDirection(new Vector3(0.6f, -1.0f, 0.8f));
 			var light = lightNode.CreateComponent<Light>();
-			light.LightType = LightType.LIGHT_DIRECTIONAL;
+			light.LightType = LightType.Directional;
 			light.CastShadows = true;
 
 			mushroomNode = scene.CreateChild("Mushroom");

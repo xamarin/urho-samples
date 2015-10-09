@@ -83,13 +83,13 @@ namespace Urho.Samples
 			// texture unit of the water material
 			int texSize = 1024;
 			Texture2D renderTexture = new Texture2D(Context);
-			renderTexture.SetSize(texSize, texSize, Graphics.RGBFormat, TextureUsage.TEXTURE_RENDERTARGET);
-			renderTexture.FilterMode = TextureFilterMode.FILTER_BILINEAR;
+			renderTexture.SetSize(texSize, texSize, Graphics.RGBFormat, TextureUsage.Rendertarget);
+			renderTexture.FilterMode = TextureFilterMode.Bilinear;
 			RenderSurface surface = renderTexture.RenderSurface;
 			var rttViewport = new Viewport(Context, scene, reflectionCamera, null);
 			surface.SetViewport(0, rttViewport);
 			var waterMat = cache.GetMaterial("Materials/Water.xml");
-			waterMat.SetTexture(TextureUnit.TU_DIFFUSE, renderTexture);
+			waterMat.SetTexture(TextureUnit.Diffuse, renderTexture);
 		}
 
 		void CreateScene()
@@ -113,7 +113,7 @@ namespace Urho.Samples
 			var lightNode = scene.CreateChild("DirectionalLight");
 			lightNode.SetDirection(new Vector3(0.6f, -1.0f, 0.8f));
 			var light = lightNode.CreateComponent<Light>();
-			light.LightType = LightType.LIGHT_DIRECTIONAL;
+			light.LightType = LightType.Directional;
 			light.CastShadows = true;
 			light.ShadowBias = new BiasParameters(0.00025f, 0.5f);
 			light.ShadowCascade = new CascadeParameters(10.0f, 50.0f, 200.0f, 0.0f, 0.8f);

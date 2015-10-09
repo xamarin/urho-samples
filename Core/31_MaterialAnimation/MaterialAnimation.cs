@@ -91,7 +91,7 @@ namespace Urho.Samples
 			Node lightNode = scene.CreateChild("DirectionalLight");
 			lightNode.SetDirection(new Vector3(0.6f, -1.0f, 0.8f)); // The direction vector does not need to be normalized
 			Light light = lightNode.CreateComponent<Light>();
-			light.LightType = LightType.LIGHT_DIRECTIONAL;
+			light.LightType = LightType.Directional;
 
 			// Create more StaticModel objects to the scene, randomly positioned, rotated and scaled. For rotation, we construct a
 			// quaternion from Euler angles where the Y angle (rotation about the Y axis) is randomized. The mushroom model contains
@@ -109,7 +109,7 @@ namespace Urho.Samples
 			specColorAnimation.SetKeyFrame(3.0f, new Color(0.1f, 0.1f, 0.1f, 16.0f));
 			// Optionally associate material with scene to make sure shader parameter animation respects scene time scale
 			mushroomMat.Scene=scene;
-			mushroomMat.SetShaderParameterAnimation("MatSpecColor", specColorAnimation, WrapMode.WM_LOOP, 1.0f);
+			mushroomMat.SetShaderParameterAnimation("MatSpecColor", specColorAnimation, WrapMode.Loop, 1.0f);
 
 			const uint numObjects = 200;
 			for (uint i = 0; i < numObjects; ++i)

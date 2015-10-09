@@ -91,7 +91,7 @@ namespace Urho.Samples
 	
 			// Create a point light to the camera scene node
 			var light = CameraNode.CreateComponent<Light>();
-			light.LightType = LightType.LIGHT_POINT;
+			light.LightType = LightType.Point;
 			light.Range = 30.0f;
 		}
 

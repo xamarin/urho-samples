@@ -33,8 +33,8 @@ namespace Urho.Samples
 			var helloText = new Text(Context)
 				{
 					Value = "Hello World from Urho3D + Mono",
-					HorizontalAlignment = HorizontalAlignment.HA_CENTER,
-					VerticalAlignment = VerticalAlignment.VA_CENTER
+					HorizontalAlignment = HorizontalAlignment.Center,
+					VerticalAlignment = VerticalAlignment.Center
 				};
 			helloText.SetColor(new Color(0f, 1f, 0f));
 			helloText.SetFont(font: cache.GetFont("Fonts/Anonymous Pro.ttf"), size: 30);

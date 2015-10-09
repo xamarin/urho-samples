@@ -58,7 +58,7 @@ namespace Urho.Samples
 				{
 					AnimatedSprite2D animatedSprite = spriteNode.GetComponent<AnimatedSprite2D>();
 					animationIndex = (animationIndex + 1) % 7;
-					animatedSprite.SetAnimation(AnimationNames[animationIndex], LoopMode2D.LM_FORCE_LOOPED);
+					animatedSprite.SetAnimation(AnimationNames[animationIndex], LoopMode2D.ForceLooped);
 				});
 		}
 
@@ -104,7 +104,7 @@ namespace Urho.Samples
 
 			AnimatedSprite2D animatedSprite = spriteNode.CreateComponent<AnimatedSprite2D>();
 			animatedSprite.AnimationSet = animationSet;
-			animatedSprite.SetAnimation(AnimationNames[animationIndex], LoopMode2D.LM_DEFAULT);
+			animatedSprite.SetAnimation(AnimationNames[animationIndex], LoopMode2D.Default);
 		}
 
 		protected override string JoystickLayoutPatch => JoystickLayoutPatches.WithZoomInAndOut;

@@ -191,8 +191,8 @@ namespace Urho.Samples
 			var textElement = new Text(Context)
 				{
 					Value = text,
-					HorizontalAlignment = HorizontalAlignment.HA_CENTER,
-					VerticalAlignment = VerticalAlignment.VA_CENTER
+					HorizontalAlignment = HorizontalAlignment.Center,
+					VerticalAlignment = VerticalAlignment.Center
 				};
 			textElement.SetFont(ResourceCache.GetFont("Fonts/Anonymous Pro.ttf"), 15);
 			UI.Root.AddChild(textElement);
@@ -214,7 +214,7 @@ namespace Urho.Samples
 			logoSprite.SetScale(256.0f / w);
 			logoSprite.SetSize(w, h);
 			logoSprite.SetHotSpot(0, h);
-			logoSprite.SetAlignment(HorizontalAlignment.HA_LEFT, VerticalAlignment.VA_BOTTOM);
+			logoSprite.SetAlignment(HorizontalAlignment.Left, VerticalAlignment.Bottom);
 			logoSprite.Opacity = 0.75f;
 			logoSprite.Priority = -100;
 		}

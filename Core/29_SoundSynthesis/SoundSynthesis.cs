@@ -84,9 +84,9 @@ namespace Urho.Samples
 			instructionText.SetFont(cache.GetFont("Fonts/Anonymous Pro.ttf"), 15);
 
 			// Position the text relative to the screen center
-			instructionText.TextAlignment = HorizontalAlignment.HA_CENTER;
-			instructionText.HorizontalAlignment = HorizontalAlignment.HA_CENTER;
-			instructionText.VerticalAlignment = VerticalAlignment.VA_CENTER;
+			instructionText.TextAlignment = HorizontalAlignment.Center;
+			instructionText.HorizontalAlignment = HorizontalAlignment.Center;
+			instructionText.VerticalAlignment = VerticalAlignment.Center;
 			instructionText.SetPosition(0, ui.Root.Height/4);
 
 			ui.Root.AddChild(instructionText);

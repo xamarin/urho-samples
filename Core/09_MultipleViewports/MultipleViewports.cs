@@ -132,7 +132,7 @@ namespace Urho.Samples
 			var lightNode = scene.CreateChild("DirectionalLight");
 			lightNode.SetDirection(new Vector3(0.6f, -1.0f, 0.8f));
 			var light = lightNode.CreateComponent<Light>();
-			light.LightType = LightType.LIGHT_DIRECTIONAL;
+			light.LightType = LightType.Directional;
 			light.CastShadows=true;
 			light.ShadowBias=new BiasParameters(0.00025f, 0.5f);
 			// Set cascade splits at 10, 50 and 200 world units, fade shadows out at 80% of maximum shadow distance

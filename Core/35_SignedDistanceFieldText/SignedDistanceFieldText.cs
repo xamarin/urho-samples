@@ -75,7 +75,7 @@ namespace Urho.Samples
 			Node lightNode = scene.CreateChild("DirectionalLight");
 			lightNode.SetDirection(new Vector3(0.6f, -1.0f, 0.8f)); // The direction vector does not need to be normalized
 			Light light = lightNode.CreateComponent<Light>();
-			light.LightType = LightType.LIGHT_DIRECTIONAL;
+			light.LightType = LightType.Directional;
 
 			// Create more StaticModel objects to the scene, randomly positioned, rotated and scaled. For rotation, we construct a
 			// quaternion from Euler angles where the Y angle (rotation about the Y axis) is randomized. The mushroom model contains
@@ -104,17 +104,17 @@ namespace Urho.Samples
 				if (i % 3 == 1)
 				{
 					mushroomTitleText.SetColor(Color.Green);
-					mushroomTitleText.TextEffect= TextEffect.TE_SHADOW;
+					mushroomTitleText.TextEffect= TextEffect.Shadow;
 					mushroomTitleText.EffectColor = new Color(0.5f, 0.5f, 0.5f);
 				}
 				else if (i % 3 == 2)
 				{
 					mushroomTitleText.SetColor(Color.Yellow);
-					mushroomTitleText.TextEffect = TextEffect.TE_STROKE;
+					mushroomTitleText.TextEffect = TextEffect.Stroke;
 					mushroomTitleText.EffectColor = new Color(0.5f, 0.5f, 0.5f);
 				}
 
-				mushroomTitleText.SetAlignment(HorizontalAlignment.HA_CENTER, VerticalAlignment.VA_CENTER);
+				mushroomTitleText.SetAlignment(HorizontalAlignment.Center, VerticalAlignment.Center);
 			}
 
 			// Create a scene node for the camera, which we will move around

@@ -81,7 +81,7 @@ namespace Urho.Samples
 			root.AddChild(buttonContainer);
 			buttonContainer.SetFixedSize(graphics.Width, 20);
 			buttonContainer.SetPosition(0, graphics.Height - 20);
-			buttonContainer.LayoutMode=LayoutMode.LM_HORIZONTAL;
+			buttonContainer.LayoutMode=LayoutMode.Horizontal;
 
 			textEdit = new LineEdit(Context); 
 			textEdit.SetStyleAuto(null);
@@ -132,7 +132,7 @@ namespace Urho.Samples
 			var buttonText = new Text(Context);
 			button.AddChild(buttonText);
 			buttonText.SetFont(font, 12);
-			buttonText.SetAlignment(HorizontalAlignment.HA_CENTER, VerticalAlignment.VA_CENTER);
+			buttonText.SetAlignment(HorizontalAlignment.Center, VerticalAlignment.Center);
 
 			buttonText.Value = text;
 	
