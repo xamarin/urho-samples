@@ -1,7 +1,10 @@
-﻿using Foundation;
+﻿using System;
+using System.Linq;
+using Foundation;
 using UIKit;
 using Urho.iOS;
 using System.Threading.Tasks;
+using MonoTouch.Dialog;
 
 namespace Urho.Samples.iOS
 {
@@ -11,23 +14,31 @@ namespace Urho.Samples.iOS
 	[Register("AppDelegate")]
 	public partial class AppDelegate : UIApplicationDelegate
 	{
-		//
-		// This method is invoked when the application has loaded and is ready to run. In this 
-		// method you should instantiate the window, load the UI into it and then make the window
-		// visible.
-		//
-		// You have 17 seconds to return from this method, or iOS will terminate your application.
-		//
 		public override bool FinishedLaunching(UIApplication app, NSDictionary options)
 		{
-			LaunchGame ();
+			var window = new UIWindow (UIScreen.MainScreen.Bounds);
+			window.RootViewController = new DialogViewController (new RootElement ("UrhoSharp") {
+				new Section ("Samples"){
+					new StringElement ("ToonTown", () => Run<ToonTown>())
+				},
+				new Section ("Feature Samples"){
+					from type in typeof (HelloWorld).Assembly.GetTypes ()
+						where type.IsSubclassOf (typeof (Sample))
+					select new StringElement ("Sample" + type.Name, () => Run (type))
+				}
+			});
+			window.MakeKeyAndVisible ();
 			return true;
 		}
 
-		async void LaunchGame()
+		static void Run<T> ()
+ 		{
+			Run (typeof(T));
+ 		}
+
+		static void Run(System.Type type)
 		{
-			await Task.Yield ();
-			ApplicationLauncher.Run(() => new SkeletalAnimation(new Context()));
+			ApplicationLauncher.Run(() => (Urho.Application)Activator.CreateInstance(type, new Context()));
 		}
 	}
 }
