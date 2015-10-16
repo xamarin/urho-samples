@@ -25,9 +25,9 @@ using System.Collections.Generic;
 
 namespace Urho.Samples
 {
-	public class _37_UIDrag : Sample
+	public class UIDrag : Sample
 	{
-		public _37_UIDrag(Context ctx) : base(ctx) { }
+		public UIDrag(Context ctx) : base(ctx) { }
 
 		Dictionary<UIElement, ElementInfo> elements; 
 

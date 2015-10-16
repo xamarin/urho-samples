@@ -25,13 +25,13 @@ using System.Linq;
 
 namespace Urho.Samples
 {
-	public class _08_Decals : Sample
+	public class Decals : Sample
 	{
 		Scene scene;
 		bool drawDebug;
 		Camera camera;
 
-		public _08_Decals(Context ctx) : base(ctx) { }
+		public Decals(Context ctx) : base(ctx) { }
 
 		public override void Start()
 		{

@@ -23,14 +23,14 @@
 
 namespace Urho.Samples
 {
-	public class _19_VehicleDemo : Sample
+	public class VehicleDemo : Sample
 	{
 		Scene scene;
 		Vehicle vehicle;
 
 		const float CameraDistance = 10.0f;
 
-		public _19_VehicleDemo(Context ctx) : base(ctx) {}
+		public VehicleDemo(Context ctx) : base(ctx) {}
 
 		public override void Start()
 		{

@@ -23,13 +23,13 @@
 
 namespace Urho.Samples
 {
-	public class _06_SkeletalAnimation : Sample
+	public class SkeletalAnimation : Sample
 	{
 		Scene scene;
 		Camera camera;
 		bool drawDebug;
 
-		public _06_SkeletalAnimation (Context c) : base (c) {}
+		public SkeletalAnimation (Context c) : base (c) {}
 	
 		void CreateScene ()
 		{

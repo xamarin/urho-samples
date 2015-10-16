@@ -25,13 +25,13 @@ using System.Collections.Generic;
 
 namespace Urho.Samples
 {
-	public class _03_Sprites : Sample
+	public class Sprites : Sample
 	{
 		readonly Dictionary<Sprite, Vector2> spritesWithVelocities = new Dictionary<Sprite, Vector2>();
 		// Number of sprites to draw
 		const uint NumSprites = 100;
 
-		public _03_Sprites(Context ctx) : base(ctx) { }
+		public Sprites(Context ctx) : base(ctx) { }
 
 		public override void Start()
 		{

@@ -23,11 +23,11 @@
 
 namespace Urho.Samples
 {
-	public class _30_LightAnimation : Sample
+	public class LightAnimation : Sample
 	{
 		Scene scene;
 
-		public _30_LightAnimation(Context ctx) : base(ctx) { }
+		public LightAnimation(Context ctx) : base(ctx) { }
 
 		public override void Start()
 		{

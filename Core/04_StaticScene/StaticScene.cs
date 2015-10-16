@@ -25,12 +25,12 @@ using System;
 
 namespace Urho.Samples
 {
-	public class _04_StaticScene : Sample
+	public class StaticScene : Sample
 	{
 		Camera camera;
 		Scene scene;
 
-		public _04_StaticScene(Context c) : base(c) { }
+		public StaticScene(Context c) : base(c) { }
 
 		public override void Start ()
 		{

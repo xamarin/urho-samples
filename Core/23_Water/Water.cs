@@ -23,7 +23,7 @@
 
 namespace Urho.Samples
 {
-	public class _23_Water : Sample
+	public class Water : Sample
 	{
 		Scene scene;
 		Node waterNode;
@@ -31,7 +31,7 @@ namespace Urho.Samples
 		Plane waterPlane;
 		Plane waterClipPlane;
 
-		public _23_Water(Context ctx) : base(ctx) { }
+		public Water(Context ctx) : base(ctx) { }
 
 		public override void Start()
 		{

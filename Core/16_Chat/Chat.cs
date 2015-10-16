@@ -26,7 +26,7 @@ using System.Text;
 
 namespace Urho.Samples
 {
-	public class _16_Chat : Sample
+	public class Chat : Sample
 	{
 		// Identifier for the chat network messages
 		const int MsgChat = 32;
@@ -51,7 +51,7 @@ namespace Urho.Samples
 		Button startServerButton;
 
 
-		public _16_Chat(Context ctx) : base(ctx) { }
+		public Chat(Context ctx) : base(ctx) { }
 
 		public override void Start()
 		{

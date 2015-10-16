@@ -25,13 +25,13 @@ using System.Collections.Generic;
 
 namespace Urho.Samples
 {
-	public class _24_Urho2DSprite : Sample
+	public class Urho2DSprite : Sample
 	{
 		Scene scene;
 		List<NodeInfo> spriteNodes;
 		const uint NumSprites = 200;
 
-		public _24_Urho2DSprite(Context ctx) : base(ctx) { }
+		public Urho2DSprite(Context ctx) : base(ctx) { }
 
 		public override void Start()
 		{

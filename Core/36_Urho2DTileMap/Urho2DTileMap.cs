@@ -25,11 +25,11 @@ using System;
 
 namespace Urho.Samples
 {
-	public class _36_Urho2DTileMap : Sample
+	public class Urho2DTileMap : Sample
 	{
 		Scene scene;
 
-		public _36_Urho2DTileMap(Context ctx) : base(ctx) { }
+		public Urho2DTileMap(Context ctx) : base(ctx) { }
 
 		public override void Start()
 		{

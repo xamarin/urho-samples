@@ -26,7 +26,7 @@ using System.Linq;
 
 namespace Urho.Samples
 {
-	public class _15_Navigation : Sample
+	public class Navigation : Sample
 	{
 		Scene scene;
 		bool drawDebug;
@@ -36,7 +36,7 @@ namespace Urho.Samples
 		float yaw;
 		float pitch;
 
-		public _15_Navigation(Context ctx) : base(ctx) { }
+		public Navigation(Context ctx) : base(ctx) { }
 
 		public override void Start()
 		{

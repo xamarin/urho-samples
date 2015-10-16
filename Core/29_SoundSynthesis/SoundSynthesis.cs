@@ -25,7 +25,7 @@ using System;
 
 namespace Urho.Samples
 {
-	public class _29_SoundSynthesis : Sample
+	public class SoundSynthesis : Sample
 	{
 		/// Scene node for the sound component.
 		Node node;
@@ -43,7 +43,7 @@ namespace Urho.Samples
 		float osc2;
 
 
-		public _29_SoundSynthesis(Context ctx) : base(ctx)
+		public SoundSynthesis(Context ctx) : base(ctx)
 		{
 			filter = 0.5f;
 			accumulator = 0f;
@@ -128,17 +128,12 @@ namespace Urho.Samples
 				osc2 = osc2 + 1.002f % 360.0f;
 
 				float newValue = MathHelper.Clamp((float) ((Math.Sin(osc1) + Math.Sin(osc2)) * 100000.0f), -32767.0f, 32767.0f);
-				accumulator = Lerp(accumulator, newValue, filter);
+				accumulator = MathHelper.Lerp(accumulator, newValue, filter);
 				newData[i] = (short)accumulator;
 			}
 
 			// Queue buffer to the stream for playback
 			soundStream.AddData(newData, 0, newData.Length);
-		}
-
-		float Lerp(float lhs, float rhs, float t)
-		{
-			return lhs*(1.0f - t) + rhs*t;
 		}
 
 		protected override string JoystickLayoutPatch => JoystickLayoutPatches.WithZoomInAndOutWithoutArrows;

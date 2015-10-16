@@ -26,7 +26,7 @@ using System.Linq;
 
 namespace Urho.Samples
 {
-	public class _14_SoundEffects : Sample
+	public class SoundEffects : Sample
 	{
 		Scene scene;
 
@@ -44,7 +44,7 @@ namespace Urho.Samples
 				"Sounds/Powerup.wav"
 			};
 
-		public _14_SoundEffects(Context ctx) : base(ctx) { }
+		public SoundEffects(Context ctx) : base(ctx) { }
 
 		public override void Start()
 		{

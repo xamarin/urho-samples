@@ -25,12 +25,12 @@ using System;
 
 namespace Urho.Samples
 {
-	public class _25_Urho2DParticle : Sample
+	public class Urho2DParticle : Sample
 	{
 		Scene scene;
 		Node particleNode;
 
-		public _25_Urho2DParticle(Context ctx) : base(ctx) { }
+		public Urho2DParticle(Context ctx) : base(ctx) { }
 
 		public override void Start()
 		{

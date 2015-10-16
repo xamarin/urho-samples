@@ -35,8 +35,7 @@ namespace Urho.Samples.Droid
 			sampleTypes = typeof(Sample).Assembly.GetTypes().Where(t => t.BaseType == typeof(Sample)).ToArray();
 			foreach (var sample in sampleTypes)
 			{
-				var name = sample.Name.TrimStart('_').Replace("_", ". ");
-				adapter.Add(name);
+				adapter.Add(sample.Name);
 			}
 			SetContentView(Resource.Layout.samples_list);
 			ListAdapter = adapter;
@@ -44,12 +43,8 @@ namespace Urho.Samples.Droid
 		
 		protected override void OnListItemClick(Android.Widget.ListView l, Android.Views.View v, int position, long id)
 		{
-			/*
-				In order to run a sample:
-				ApplicationLauncher.Run(() => new MyGame(new Urho.Context());
-				It opens a special full screen activity and runs the sample.
-			*/
-			ApplicationLauncher.Run(() => (Application)Activator.CreateInstance(sampleTypes[position], new Urho.Context()));
+			UrhoEngine.Init(() => (Application)Activator.CreateInstance(sampleTypes[position], new Urho.Context()));
+			UrhoSurfaceViewController.RunInActivity();
 		}
 	}
 }

@@ -25,12 +25,12 @@ using System;
 
 namespace Urho.Samples
 {
-	public class _28_Urho2DPhysicsRope : Sample
+	public class Urho2DPhysicsRope : Sample
 	{
 		Scene scene;
 		const uint NumObjects = 10;
 
-		public _28_Urho2DPhysicsRope(Context ctx) : base(ctx) { }
+		public Urho2DPhysicsRope(Context ctx) : base(ctx) { }
 
 		public override void Start()
 		{

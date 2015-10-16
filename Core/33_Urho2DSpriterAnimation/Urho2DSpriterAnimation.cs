@@ -25,7 +25,7 @@ using System;
 
 namespace Urho.Samples
 {
-	public class _33_Urho2DSpriterAnimation : Sample
+	public class Urho2DSpriterAnimation : Sample
 	{
 		Scene scene;
 		Node spriteNode;
@@ -41,7 +41,7 @@ namespace Urho.Samples
 				"dead3",
 			};
 
-		public _33_Urho2DSpriterAnimation(Context ctx) : base(ctx) { }
+		public Urho2DSpriterAnimation(Context ctx) : base(ctx) { }
 
 		public override void Start()
 		{

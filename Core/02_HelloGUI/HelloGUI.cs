@@ -23,14 +23,14 @@
 
 namespace Urho.Samples
 {
-	public class _02_HelloGUI : Sample
+	public class HelloGUI : Sample
 	{
 		Window window;
 		UIElement uiRoot;
 		IntVector2 dragBeginPosition;
 		Button draggableFish;
 
-		public _02_HelloGUI(Context ctx) : base(ctx)
+		public HelloGUI(Context ctx) : base(ctx)
 		{
 			uiRoot = UI.Root;
 			dragBeginPosition = new IntVector2(0, 0);

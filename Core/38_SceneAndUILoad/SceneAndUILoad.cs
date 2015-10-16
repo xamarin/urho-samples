@@ -23,11 +23,11 @@
 
 namespace Urho.Samples
 {
-	public class _38_SceneAndUILoad : Sample
+	public class SceneAndUILoad : Sample
 	{
 		Scene scene;
 
-		public _38_SceneAndUILoad(Context ctx) : base(ctx) { }
+		public SceneAndUILoad(Context ctx) : base(ctx) { }
 
 		public override void Start()
 		{

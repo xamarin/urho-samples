@@ -23,13 +23,13 @@
 
 namespace Urho.Samples
 {
-	public class _10_RenderToTexture : Sample
+	public class RenderToTexture : Sample
 	{
 		Scene scene;
 		Scene rttScene;
 		Node rttCameraNode;
 
-		public _10_RenderToTexture(Context ctx) : base(ctx) {}
+		public RenderToTexture(Context ctx) : base(ctx) {}
 
 		public override void Start()
 		{

@@ -23,13 +23,13 @@
 
 namespace Urho.Samples
 {
-	public class _13_Ragdolls : Sample
+	public class Ragdolls : Sample
 	{
 		Scene scene;
 		bool drawDebug;
 		Camera camera;
 
-		public _13_Ragdolls(Context ctx) : base(ctx) { }
+		public Ragdolls(Context ctx) : base(ctx) { }
 
 		public override void Start()
 		{

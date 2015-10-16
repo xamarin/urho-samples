@@ -27,7 +27,7 @@ namespace Urho.Samples.iOS
 		async void LaunchGame()
 		{
 			await Task.Yield ();
-			ApplicationLauncher.Run(() => new _06_SkeletalAnimation(new Context()));
+			ApplicationLauncher.Run(() => new SkeletalAnimation(new Context()));
 		}
 	}
 }

@@ -23,12 +23,12 @@
 
 namespace Urho.Samples
 {
-	public class _11_Physics : Sample
+	public class Physics : Sample
 	{
 		Scene scene;
 		bool drawDebug;
 
-		public _11_Physics(Context ctx) : base(ctx) { }
+		public Physics(Context ctx) : base(ctx) { }
 
 		public override void Start()
 		{

@@ -23,13 +23,13 @@
 
 namespace Urho.Samples
 {
-	public class _09_MultipleViewports : Sample
+	public class MultipleViewports : Sample
 	{
 		Scene scene;
 		bool drawDebug;
 		Node rearCameraNode;
 
-		public _09_MultipleViewports(Context ctx) : base(ctx) { }
+		public MultipleViewports(Context ctx) : base(ctx) { }
 
 		public override void Start()
 		{

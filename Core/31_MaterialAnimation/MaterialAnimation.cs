@@ -23,12 +23,12 @@
 
 namespace Urho.Samples
 {
-	public class _31_MaterialAnimation : Sample
+	public class MaterialAnimation : Sample
 	{
 		Scene scene;
 		bool drawDebug;
 
-		public _31_MaterialAnimation(Context ctx) : base(ctx) { }
+		public MaterialAnimation(Context ctx) : base(ctx) { }
 
 		public override void Start()
 		{

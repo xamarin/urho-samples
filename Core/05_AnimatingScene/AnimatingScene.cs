@@ -23,11 +23,11 @@
 
 namespace Urho.Samples
 {
-	public class _05_AnimatingScene : Sample
+	public class AnimatingScene : Sample
 	{
 		Scene scene;
 
-		public _05_AnimatingScene (Context c) : base (c) {}
+		public AnimatingScene (Context c) : base (c) {}
 
 		void CreateScene ()
 		{

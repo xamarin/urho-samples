@@ -17,7 +17,7 @@ using System;
 
 namespace Urho.Samples
 {
-	public class _41_ToonTown : Sample
+	public class ToonTown : Sample
 	{
 		Scene scene;
 		RoboMan character;
@@ -33,7 +33,7 @@ namespace Urho.Samples
 		public const int CtrlRight = 8;
 		public const int CtrlJump = 16;
 
-		public _41_ToonTown(Context ctx) : base(ctx) { }
+		public ToonTown(Context ctx) : base(ctx) { }
 		
 		public override void Start()
 		{

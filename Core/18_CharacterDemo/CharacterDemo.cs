@@ -25,7 +25,7 @@ using System;
 
 namespace Urho.Samples
 {
-	public class _18_CharacterDemo : Sample
+	public class CharacterDemo : Sample
 	{
 		Scene scene;
 
@@ -55,7 +55,7 @@ namespace Urho.Samples
 		/// First person camera flag.
 		bool firstPerson;
 
-		public _18_CharacterDemo(Context ctx) : base(ctx) { }
+		public CharacterDemo(Context ctx) : base(ctx) { }
 
 		public override void Start()
 		{

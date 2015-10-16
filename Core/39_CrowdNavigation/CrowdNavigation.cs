@@ -25,12 +25,12 @@ using System.Linq;
 
 namespace Urho.Samples
 {
-	public class _39_CrowdNavigation : Sample
+	public class CrowdNavigation : Sample
 	{
 		Scene scene;
 		bool drawDebug;
 
-		public _39_CrowdNavigation(Context ctx) : base(ctx) { }
+		public CrowdNavigation(Context ctx) : base(ctx) { }
 
 		public override void Start()
 		{

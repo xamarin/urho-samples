@@ -68,13 +68,13 @@ namespace Urho.Samples
 			// Velocity on the XZ plane
 			Vector3 planeVelocity = new Vector3(velocity.X, 0.0f, velocity.Z);
 
-			if (Controls.IsDown(_41_ToonTown.CtrlForward))
+			if (Controls.IsDown(ToonTown.CtrlForward))
 				moveDir += Vector3.UnitZ;
-			if (Controls.IsDown(_41_ToonTown.CtrlBack))
+			if (Controls.IsDown(ToonTown.CtrlBack))
 				moveDir += new Vector3(0f, 0f, -1f);
-			if (Controls.IsDown(_41_ToonTown.CtrlLeft))
+			if (Controls.IsDown(ToonTown.CtrlLeft))
 				moveDir += new Vector3(-1f, 0f, 0f);
-			if (Controls.IsDown(_41_ToonTown.CtrlRight))
+			if (Controls.IsDown(ToonTown.CtrlRight))
 				moveDir += Vector3.UnitX;
 
 			// Normalize move vector so that diagonal strafing is not faster
@@ -91,7 +91,7 @@ namespace Urho.Samples
 				body.ApplyImpulse(brakeForce);
 
 				// Jump. Must release jump control inbetween jumps
-				if (Controls.IsDown(_41_ToonTown.CtrlJump))
+				if (Controls.IsDown(ToonTown.CtrlJump))
 				{
 					if (okToJump)
 					{

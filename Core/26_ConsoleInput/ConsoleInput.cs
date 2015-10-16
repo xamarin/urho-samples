@@ -23,7 +23,7 @@
 
 namespace Urho.Samples
 {
-	public class _26_ConsoleInput : Sample
+	public class ConsoleInput : Sample
 	{
 		/// Game on flag.
 		bool gameOn;
@@ -56,7 +56,7 @@ namespace Urho.Samples
 				"Urho is homing in on you mercilessly"
 			};
 
-		public _26_ConsoleInput(Context ctx) : base(ctx) { }
+		public ConsoleInput(Context ctx) : base(ctx) { }
 
 		public override void Start()
 		{

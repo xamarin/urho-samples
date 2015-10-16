@@ -26,7 +26,7 @@ using System.Collections.Generic;
 
 namespace Urho.Samples
 {
-	public class _20_HugeObjectCount : Sample
+	public class HugeObjectCount : Sample
 	{
 		Scene scene;
 		Camera camera;
@@ -34,7 +34,7 @@ namespace Urho.Samples
 		bool useGroups;
 		List<Node> boxNodes;
 
-		public _20_HugeObjectCount(Context ctx) : base(ctx) { }
+		public HugeObjectCount(Context ctx) : base(ctx) { }
 
 		public override void Start()
 		{

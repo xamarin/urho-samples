@@ -25,12 +25,12 @@ using System;
 
 namespace Urho.Samples
 {
-	public class _07_Billboards : Sample
+	public class Billboards : Sample
 	{
 		Scene scene;
 		bool drawDebug;
 
-		public _07_Billboards(Context ctx) : base(ctx) {}
+		public Billboards(Context ctx) : base(ctx) {}
 
 		public override void Start()
 		{

@@ -23,11 +23,11 @@
 
 namespace Urho.Samples
 {
-	public class _35_SignedDistanceFieldText : Sample
+	public class SignedDistanceFieldText : Sample
 	{
 		Scene scene;
 
-		public _35_SignedDistanceFieldText(Context ctx) : base(ctx) { }
+		public SignedDistanceFieldText(Context ctx) : base(ctx) { }
 
 		public override void Start()
 		{

@@ -25,12 +25,12 @@ using System;
 
 namespace Urho.Samples
 {
-	public class _27_Urho2DPhysics : Sample
+	public class Urho2DPhysics : Sample
 	{
 		Scene scene;
 		const uint NumObjects = 100;
 
-		public _27_Urho2DPhysics(Context ctx) : base(ctx) { }
+		public Urho2DPhysics(Context ctx) : base(ctx) { }
 
 		public override void Start()
 		{

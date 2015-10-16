@@ -25,7 +25,7 @@ using System;
 
 namespace Urho.Samples
 {
-	public class _32_Urho2DConstraints : Sample
+	public class Urho2DConstraints : Sample
 	{
 		Scene scene;
 		bool drawDebug;
@@ -39,7 +39,7 @@ namespace Urho.Samples
 		Subscription mouseMoveEventToken;
 		Subscription mouseButtonUpToken;
 
-		public _32_Urho2DConstraints(Context ctx) : base(ctx) { }
+		public Urho2DConstraints(Context ctx) : base(ctx) { }
 
 		public override void Start()
 		{

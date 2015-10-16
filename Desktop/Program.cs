@@ -24,18 +24,18 @@ namespace Urho.Samples.Desktop
 			{
 				while (selectedSampleType == null)
 				{
-					WriteLine("Enter a sample number [1-41]:", ConsoleColor.White);
+					WriteLine("Enter a sample number:", ConsoleColor.White);
 					selectedSampleType = ParseSampleFromNumber(Console.ReadLine());
 				}
 			}
 			else if (selectedSampleType == null)
 			{
-				selectedSampleType = typeof(_41_ToonTown); //show _41_ToonTown sample by default for OS X if args are empty.
+				selectedSampleType = typeof(ToonTown); //show ToonTown sample by default for OS X if args are empty.
 			}
 
 			var resourcesDirectory = @"../../Assets";
 			//special assets for AtomicEngine based samples:
-			if (selectedSampleType == typeof (_41_ToonTown))
+			if (selectedSampleType == typeof (ToonTown))
 			{
 				resourcesDirectory = @"../../Assets/AtomicEngineAssets";
 			}
@@ -58,23 +58,23 @@ namespace Urho.Samples.Desktop
 				return null;
 			}
 
-			var sample = samples.FirstOrDefault(s => s.Name.StartsWith($"_{number.ToString("00")}"));
-			if (sample == null)
+			if (number >= samples.Length || number < 0)
 			{
-				WriteLine("Sample was not found", ConsoleColor.Red);
+				WriteLine("Invalid number.", ConsoleColor.Red);
 				return null;
 			}
 
-			return sample;
+			return samples[number];
 		}
 
 		static void FindAvailableSamplesAndPrint()
 		{
-			var highlightedSamples = new [] { typeof(_41_ToonTown) };
+			var highlightedSamples = new [] { typeof(ToonTown) };
 			samples = typeof(Sample).Assembly.GetTypes().Where(t => t.IsSubclassOf(typeof(Application)) && t != typeof(Sample)).ToArray();
-			foreach (var sample in samples)
+			for (int index = 0; index < samples.Length; index++)
 			{
-				WriteLine(sample.Name, highlightedSamples.Contains(sample) ? ConsoleColor.Yellow : ConsoleColor.DarkGray);
+				var sample = samples[index];
+				WriteLine($"{index}. {sample.Name}", highlightedSamples.Contains(sample) ? ConsoleColor.Yellow : ConsoleColor.DarkGray);
 			}
 			Console.WriteLine();
 		}

@@ -23,9 +23,9 @@
 
 namespace Urho.Samples
 {
-	public class _01_HelloWorld : Application
+	public class HelloWorld : Application
 	{
-		public _01_HelloWorld(Context c) : base(c) { }
+		public HelloWorld(Context c) : base(c) { }
 
 		public override void Start()
 		{

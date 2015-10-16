@@ -62,7 +62,7 @@ namespace Urho.Samples
 			else
 				inAirTimer = 0.0f;
 			// When character has been in air less than 1/10 second, it's still interpreted as being on ground
-			bool softGrounded = inAirTimer < _18_CharacterDemo.InairThresholdTime;
+			bool softGrounded = inAirTimer < CharacterDemo.InairThresholdTime;
 
 			// Update movement & animation
 			var rot = Node.Rotation;
@@ -71,13 +71,13 @@ namespace Urho.Samples
 			// Velocity on the XZ plane
 			Vector3 planeVelocity = new Vector3(velocity.X, 0.0f, velocity.Z);
 
-			if (Controls.IsDown(_18_CharacterDemo.CtrlForward))
+			if (Controls.IsDown(CharacterDemo.CtrlForward))
 				moveDir += Vector3.UnitZ;
-			if (Controls.IsDown(_18_CharacterDemo.CtrlBack))
+			if (Controls.IsDown(CharacterDemo.CtrlBack))
 				moveDir += new Vector3(0f, 0f, -1f);
-			if (Controls.IsDown(_18_CharacterDemo.CtrlLeft))
+			if (Controls.IsDown(CharacterDemo.CtrlLeft))
 				moveDir += new Vector3(-1f, 0f, 0f);
-			if (Controls.IsDown(_18_CharacterDemo.CtrlRight))
+			if (Controls.IsDown(CharacterDemo.CtrlRight))
 				moveDir += Vector3.UnitX;
 
 			// Normalize move vector so that diagonal strafing is not faster
@@ -85,20 +85,20 @@ namespace Urho.Samples
 				moveDir.Normalize();
 
 			// If in air, allow control, but slower than when on ground
-			body.ApplyImpulse(rot * moveDir * (softGrounded ? _18_CharacterDemo.MoveForce : _18_CharacterDemo.InairMoveForce));
+			body.ApplyImpulse(rot * moveDir * (softGrounded ? CharacterDemo.MoveForce : CharacterDemo.InairMoveForce));
 
 			if (softGrounded)
 			{
 				// When on ground, apply a braking force to limit maximum ground velocity
-				Vector3 brakeForce = -planeVelocity * _18_CharacterDemo.BrakeForce;
+				Vector3 brakeForce = -planeVelocity * CharacterDemo.BrakeForce;
 				body.ApplyImpulse(brakeForce);
 
 				// Jump. Must release jump control inbetween jumps
-				if (Controls.IsDown(_18_CharacterDemo.CtrlJump))
+				if (Controls.IsDown(CharacterDemo.CtrlJump))
 				{
 					if (okToJump)
 					{
-						body.ApplyImpulse(Vector3.UnitY * _18_CharacterDemo.JumpForce);
+						body.ApplyImpulse(Vector3.UnitY * CharacterDemo.JumpForce);
 						okToJump = false;
 					}
 				}

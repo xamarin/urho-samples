@@ -27,7 +27,7 @@ using System.Runtime.InteropServices;
 
 namespace Urho.Samples
 {
-	public class _34_DynamicGeometry : Sample
+	public class DynamicGeometry : Sample
 	{
 		Scene scene;
 		float time;
@@ -36,7 +36,7 @@ namespace Urho.Samples
 		readonly List<Vector3> originalVertices = new List<Vector3>();
 		readonly List<VertexBuffer> animatingBuffers = new List<VertexBuffer>();
 
-		public _34_DynamicGeometry(Context ctx) : base(ctx) { }
+		public DynamicGeometry(Context ctx) : base(ctx) { }
 
 		public override void Start()
 		{
