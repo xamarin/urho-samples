@@ -43,8 +43,7 @@ namespace Urho.Samples.Droid
 		
 		protected override void OnListItemClick(Android.Widget.ListView l, Android.Views.View v, int position, long id)
 		{
-			UrhoEngine.Init(() => (Application)Activator.CreateInstance(sampleTypes[position], new Urho.Context()));
-			UrhoSurfaceViewController.RunInActivity();
+			ApplicationLauncher.RunInActivity(() => (Application)Activator.CreateInstance(sampleTypes[position], new Urho.Context()));
 		}
 	}
 }

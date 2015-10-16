@@ -77,14 +77,17 @@
     <Reference Include="System.Runtime" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Xml" />
-    <Reference Include="Urho, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
-      <HintPath>..\packages\mutest123.0.4.11\lib\MonoAndroid\Urho.dll</HintPath>
+    <Reference Include="Urho, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\UrhoSharp.1.0.17\lib\MonoAndroid\Urho.dll</HintPath>
+      <Private>True</Private>
     </Reference>
-    <Reference Include="Urho.Droid, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
-      <HintPath>..\packages\mutest123.0.4.11\lib\MonoAndroid\Urho.Droid.dll</HintPath>
+    <Reference Include="Urho.Droid, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\UrhoSharp.1.0.17\lib\MonoAndroid\Urho.Droid.dll</HintPath>
+      <Private>True</Private>
     </Reference>
-    <Reference Include="Urho.Droid.SdlBindings, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
-      <HintPath>..\packages\mutest123.0.4.11\lib\MonoAndroid\Urho.Droid.SdlBindings.dll</HintPath>
+    <Reference Include="Urho.Droid.SdlBindings, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\UrhoSharp.1.0.17\lib\MonoAndroid\Urho.Droid.SdlBindings.dll</HintPath>
+      <Private>True</Private>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -965,13 +968,6 @@
   <Target Name="AfterBuild">
   </Target>
   -->
-  <Import Project="..\packages\mutest123.0.4.11\build\MonoAndroid\mutest123.targets" Condition="Exists('..\packages\mutest123.0.4.11\build\MonoAndroid\mutest123.targets')" />
-  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
-    <PropertyGroup>
-      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
-    </PropertyGroup>
-    <Error Condition="!Exists('..\packages\mutest123.0.4.11\build\MonoAndroid\mutest123.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\mutest123.0.4.11\build\MonoAndroid\mutest123.targets'))" />
-  </Target>
   <ItemGroup>
     <AndroidAsset Include="..\Assets\AtomicEngineAssets\Data\Cache\1e6f476797a3bc5fac853ba877e4f021_thumbnail.png">
       <Link>Assets\Data\Cache\1e6f476797a3bc5fac853ba877e4f021_thumbnail.png</Link>
@@ -3390,4 +3386,14 @@
       <Link>Assets\Data\Cache\ff83e8a7cfcefc18cb373735c3ae4084_thumbnail.png</Link>
     </AndroidAsset>
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="UrhoSharpReadme.txt" />
+  </ItemGroup>
+  <Import Project="..\packages\UrhoSharp.1.0.17\build\MonoAndroid\UrhoSharp.targets" Condition="Exists('..\packages\UrhoSharp.1.0.17\build\MonoAndroid\UrhoSharp.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\UrhoSharp.1.0.17\build\MonoAndroid\UrhoSharp.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\UrhoSharp.1.0.17\build\MonoAndroid\UrhoSharp.targets'))" />
+  </Target>
 </Project>
