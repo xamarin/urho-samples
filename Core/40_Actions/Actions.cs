@@ -28,51 +28,54 @@ namespace Urho.Samples
 		public _40_Actions(Context ctx) : base(ctx) { }
 
 		Scene scene;
-		Node mushroomNode;
-		Node spriteNode;
+		Node boxNode;
 
 		public override void Start()
 		{
 			base.Start();
 			CreateScene();
-			SimpleCreateInstructionsWithWasd();
-			DoActions();
+			SimpleCreateInstructions("Use WASD to call Actions.");
 		}
 
-		async void DoActions()
+		protected override void OnUpdate(float timeStep)
 		{
-			// Action API was introduced in Cocos2d and it's C# version - https://github.com/mono/CocosSharp/tree/master/src/actions
-			
-			// Ball sprite:
-			FadeIn fadeIn = new FadeIn(durataion: 2);
-			FadeOut fadeOut = new FadeOut(durtaion: 2);
-			TintTo tintToRed = new TintTo(duration: 1, red: 1, green: 0, blue: 0);
-			TintTo tintToGreen = new TintTo(duration: 1, red: 0, green: 1, blue: 0);
-			TintTo tintToBlue = new TintTo(duration: 1, red: 0, green: 0, blue: 1);
-			// RunActionsAsync accepts a list of actions to be executed consequentially (if you want to do it simultaneously - wrap with new Parallel(...) - see below
-			var spriteActionsTask = spriteNode.RunActionsAsync(fadeOut, fadeIn, tintToRed, tintToGreen, tintToBlue);
+			var input = Input;
 
+			const float duration = 2f; //2s
+			FiniteTimeAction action = null;
 
-			// Mushroom:
-			MoveBy moveForwardAction = new MoveBy(duration: 1.5f, position: new Vector3(0, 0, 15));
-			MoveBy moveRightAction = new MoveBy(duration: 1.5f, position: new Vector3(10, 0, 0));
-			ScaleBy makeBiggerAction = new ScaleBy(duration: 1.5f, scale: 3);
-			RotateTo rotateYAction = new RotateTo(duration: 2f, deltaAngleX: 0, deltaAngleY: 5, deltaAngleZ: 0);
-			MoveTo moveToInitialPositionAction = new MoveTo(duration: 2, position: new Vector3(0, 0, 0));
-			await mushroomNode.RunActionsAsync(moveForwardAction,
-				new Parallel(moveRightAction, makeBiggerAction), //move right and increase scale simultaneously
-				new Parallel(moveToInitialPositionAction, rotateYAction, makeBiggerAction.Reverse()));
-			
+			if (input.GetKeyPress(Key.W))
+			{
+				//move forward with easing (see http://easings.net/)
+				MoveBy moveBy = new MoveBy(duration, new Vector3(0, 0, 15));
+				action = new EaseBackOut(moveBy);
+			}
+			if (input.GetKeyPress(Key.S))
+			{
+				//move backward with rotation (parallel actions)
+				MoveBy moveBy = new MoveBy(duration, new Vector3(0, 0, -15));
+				RotateBy rotateBy = new RotateBy(2f, 0, 360, 0);
+				action = new Parallel(moveBy, rotateBy);
+			}
+			if (input.GetKeyPress(Key.A))
+			{
+				//move left with scale increasing
+				MoveBy moveBy = new MoveBy(duration, new Vector3(-15, 0, 0));
+				ScaleBy scaleBy = new ScaleBy(duration, 2f);
+				action = new Parallel(moveBy, scaleBy);
+			}
+			if (input.GetKeyPress(Key.D))
+			{
+				//move right
+				MoveBy moveBy = new MoveBy(duration, new Vector3(15, 0, 0));
+				action = new EaseOut(moveBy, 2);
+			}
 
-			JumpBy jumpAction = new JumpBy(duration: 7, position: new Vector3(50, 0, 0), height: 8, jumps: 5);
-			moveToInitialPositionAction.Duration = 5; //increase duration from 2s to 5s (2s is too fast for this step)
-			await mushroomNode.RunActionsAsync(
-				new EaseIn(jumpAction, 2), //you can wrap any action into "Easing function action" (by default it has linear behavior). See functions here: http://easings.net/
-				new EaseElasticOut(moveToInitialPositionAction));
-			await spriteActionsTask;
-
-			//wait 1.5 seconds
-			await Application.Delay(1500);
+			if (action != null)
+			{
+				//can be awaited
+				boxNode.RunActionsAsync(action);
+			}
 		}
 
 		void CreateScene()
@@ -93,33 +96,21 @@ namespace Urho.Samples
 			light.LightType = LightType.Directional;
 			light.CastShadows = true;
 
-			mushroomNode = scene.CreateChild("Mushroom");
-			mushroomNode.Position = new Vector3(0, 0, 0);
-			mushroomNode.Rotation = new Quaternion(0, 180, 0);
-			mushroomNode.SetScale(2f);
+			boxNode = scene.CreateChild("Mushroom");
+			boxNode.Position = new Vector3(0, 1, -40);
+			//boxNode.Rotation = new Quaternion(0, 0, 0);
+			boxNode.SetScale(2f);
 
-			var mushroomObject = mushroomNode.CreateComponent<StaticModel>();
-			mushroomObject.Model = cache.GetModel("Models/Mushroom.mdl");
-			mushroomObject.SetMaterial(cache.GetMaterial("Materials/Mushroom.xml"));
-			mushroomObject.CastShadows = true;
-
-			var sprite = cache.GetSprite2D("Urho2D/ball.png");
-			spriteNode = scene.CreateChild("StaticSprite2D");
-			spriteNode.Position = new Vector3(0f, 10f, 10.0f);
-			spriteNode.SetScale(8f);
-			var staticSprite = spriteNode.CreateComponent<StaticSprite2D>();
-			staticSprite.BlendMode = BlendMode.Alpha;
-			staticSprite.Sprite = sprite;
+			var boxModel = boxNode.CreateComponent<StaticModel>();
+			boxModel.Model = cache.GetModel("Models/Box.mdl");
+			boxModel.SetMaterial(cache.GetMaterial("Materials/StoneEnvMapSmall.xml"));
+			boxModel.CastShadows = true;
 
 			CameraNode = scene.CreateChild("camera");
 			var camera = CameraNode.CreateComponent<Camera>();
-			CameraNode.Position = new Vector3(0, 5, -20);
+			CameraNode.Position = new Vector3(0, 20, -60);
+			CameraNode.Rotation = new Quaternion(30f, 0f, 0f);
 			Renderer.SetViewport(0, new Viewport(Context, scene, camera, null));
-		}
-
-		protected override void OnUpdate(float timeStep)
-		{
-			SimpleMoveCamera3D(timeStep);
 		}
 	}
 }

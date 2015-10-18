@@ -40,15 +40,13 @@ namespace Urho.Samples.Desktop
 				resourcesDirectory = @"../../Assets/AtomicEngineAssets";
 			}
 
-			var code = ApplicationLauncher.Run(() => (Application)Activator.CreateInstance(selectedSampleType, new Context()), resourcesDirectory);
-			WriteLine($"Exit code: {code}. Press any key to exit...", ConsoleColor.DarkYellow);
+			UrhoEngine.Init(resourcesDirectory);
+			var game = (Application) Activator.CreateInstance(selectedSampleType, new Context());
+			var exitCode = game.Run();
+			WriteLine($"Exit code: {exitCode}. Press any key to exit...", ConsoleColor.DarkYellow);
 			Console.ReadKey();
 		}
 
-		/// <summary>
-		/// Finds sample by number, e.g.:
-		/// 2 -> _02_HelloGui
-		/// </summary>
 		static System.Type ParseSampleFromNumber(string input)
 		{
 			int number;
@@ -64,16 +62,16 @@ namespace Urho.Samples.Desktop
 				return null;
 			}
 
-			return samples[number];
+			return samples[number - 1];
 		}
 
 		static void FindAvailableSamplesAndPrint()
 		{
 			var highlightedSamples = new [] { typeof(ToonTown) };
 			samples = typeof(Sample).Assembly.GetTypes().Where(t => t.IsSubclassOf(typeof(Application)) && t != typeof(Sample)).ToArray();
-			for (int index = 0; index < samples.Length; index++)
+			for (int index = 1; index <= samples.Length; index++)
 			{
-				var sample = samples[index];
+				var sample = samples[index - 1];
 				WriteLine($"{index}. {sample.Name}", highlightedSamples.Contains(sample) ? ConsoleColor.Yellow : ConsoleColor.DarkGray);
 			}
 			Console.WriteLine();
