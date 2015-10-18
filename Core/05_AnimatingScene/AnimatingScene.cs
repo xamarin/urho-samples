@@ -122,12 +122,12 @@ namespace Urho.Samples
 		{
 			public Rotator(Context ctx) : base(ctx)
 			{
-				Application.SceneUpdate += OnUpdate;
+				Application.Current.SceneUpdate += OnUpdate;
 			}
 
 			protected override void OnDeleted()
 			{
-				Application.SceneUpdate -= OnUpdate;
+				Application.Current.SceneUpdate -= OnUpdate;
 			}
 
 			public Vector3 RotationSpeed { get; set; }

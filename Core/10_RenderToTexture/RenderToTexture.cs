@@ -193,12 +193,12 @@ namespace Urho.Samples
 
 		public Rotator(Context c) : base(c)
 		{
-			Application.Update += OnUpdate;
+			Application.Current.Update += OnUpdate;
 		}
 
 		protected override void OnDeleted()
 		{
-			Application.Update -= OnUpdate;
+			Application.Current.Update -= OnUpdate;
 		}
 
 		public void SetRotationSpeed(Vector3 vector)

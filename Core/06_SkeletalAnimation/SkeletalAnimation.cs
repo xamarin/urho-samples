@@ -170,12 +170,12 @@ namespace Urho.Samples
 				MoveSpeed = moveSpeed;
 				RotationSpeed = rotateSpeed;
 				Bounds = bounds;
-				Application.SceneUpdate += OnSceneUpdate;
+				Application.Current.SceneUpdate += OnSceneUpdate;
 			}
 
 			protected override void OnDeleted()
 			{
-				Application.SceneUpdate -= OnSceneUpdate;
+				Application.Current.SceneUpdate -= OnSceneUpdate;
 			}
 
 			void OnSceneUpdate(SceneUpdateEventArgs args)
