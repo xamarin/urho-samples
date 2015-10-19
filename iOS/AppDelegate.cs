@@ -19,7 +19,7 @@ namespace Urho.Samples.iOS
 			var window = new UIWindow (UIScreen.MainScreen.Bounds);
 			window.RootViewController = new DialogViewController (new RootElement ("UrhoSharp") {
 				new Section ("Samples"){
-					new StringElement ("ToonTown", () => Run<ToonTown>())
+					new StringElement ("ToonTown", Run<ToonTown>)
 				},
 				new Section ("Feature Samples"){
 					from type in typeof (HelloWorld).Assembly.GetTypes ()
@@ -28,6 +28,7 @@ namespace Urho.Samples.iOS
 				}
 			});
 			window.MakeKeyAndVisible ();
+			UrhoEngine.Init();
 			return true;
 		}
 
@@ -38,7 +39,7 @@ namespace Urho.Samples.iOS
 
 		static void Run(System.Type type)
 		{
-			ApplicationLauncher.Run(() => (Urho.Application)Activator.CreateInstance(type, new Context()));
+			Urho.Application.CreateInstance(type).Run();
 		}
 	}
 }
