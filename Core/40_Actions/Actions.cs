@@ -23,9 +23,9 @@
 
 namespace Urho.Samples
 {
-	public class _40_Actions : Sample
+	public class Actions : Sample
 	{
-		public _40_Actions(Context ctx) : base(ctx) { }
+		public Actions(Context ctx) : base(ctx) { }
 
 		Scene scene;
 		Node boxNode;
@@ -94,11 +94,10 @@ namespace Urho.Samples
 			lightNode.SetDirection(new Vector3(0.6f, -1.0f, 0.8f));
 			var light = lightNode.CreateComponent<Light>();
 			light.LightType = LightType.Directional;
-			light.CastShadows = true;
+			//light.CastShadows = true; 
 
 			boxNode = scene.CreateChild("Mushroom");
 			boxNode.Position = new Vector3(0, 1, -40);
-			//boxNode.Rotation = new Quaternion(0, 0, 0);
 			boxNode.SetScale(2f);
 
 			var boxModel = boxNode.CreateComponent<StaticModel>();
