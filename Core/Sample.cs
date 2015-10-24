@@ -27,7 +27,6 @@ namespace Urho.Samples
 {
 	public class Sample : Application
 	{
-		MonoDebugHud monoDebugHud;
 		UrhoConsole console;
 		DebugHud debugHud;
 		ResourceCache cache;
@@ -40,6 +39,7 @@ namespace Urho.Samples
 		protected float Pitch { get; set; }
 		protected bool TouchEnabled { get; set; }
 		protected Node CameraNode { get; set; }
+		protected MonoDebugHud MonoDebugHud { get; set; }
 
 		protected Sample (Context ctx) : base (ctx) {}
 	
@@ -81,15 +81,15 @@ namespace Urho.Samples
 			}
 		}
 
-		readonly Random random = new Random();
+		static readonly Random random = new Random();
 		/// Return a random float between 0.0 (inclusive) and 1.0 (exclusive.)
-		protected float NextRandom() { return (float)random.NextDouble(); }
+		public static float NextRandom() { return (float)random.NextDouble(); }
 		/// Return a random float between 0.0 and range, inclusive from both ends.
-		protected float NextRandom(float range) { return (float)random.NextDouble() * range; }
+		public static float NextRandom(float range) { return (float)random.NextDouble() * range; }
 		/// Return a random float between min and max, inclusive from both ends.
-		protected float NextRandom(float min, float max) { return (float)((random.NextDouble() * (max - min)) + min); }
+		public static float NextRandom(float min, float max) { return (float)((random.NextDouble() * (max - min)) + min); }
 		/// Return a random integer between min and max - 1.
-		protected int NextRandom(int min, int max) { return random.Next(min, max); }
+		public static int NextRandom(int min, int max) { return random.Next(min, max); }
 
 		/// <summary>
 		/// Joystick XML layout for mobile platforms
@@ -105,8 +105,8 @@ namespace Urho.Samples
 				InitTouchInput();
 			}
 
-			monoDebugHud = new MonoDebugHud(this);
-			monoDebugHud.Show();
+			MonoDebugHud = new MonoDebugHud(this);
+			MonoDebugHud.Show();
 
 			CreateLogo ();
 			SetWindowAndTitleIcon ();
@@ -157,7 +157,7 @@ namespace Urho.Samples
 		protected void SimpleMoveCamera3D (float timeStep)
 		{
 			const float mouseSensitivity = .1f;
-			const float moveSpeed = 40f;
+			const float moveSpeed = 10f;
 
 			if (UI.FocusElement != null)
 				return;

@@ -47,7 +47,7 @@ namespace Urho.Samples.Desktop
 			Console.ReadKey();
 		}
 
-		static System.Type ParseSampleFromNumber(string input)
+		static Type ParseSampleFromNumber(string input)
 		{
 			int number;
 			if (!int.TryParse(input, out number))
@@ -56,7 +56,7 @@ namespace Urho.Samples.Desktop
 				return null;
 			}
 
-			if (number >= samples.Length || number < 0)
+			if (number > samples.Length || number < 0)
 			{
 				WriteLine("Invalid number.", ConsoleColor.Red);
 				return null;
@@ -67,7 +67,7 @@ namespace Urho.Samples.Desktop
 
 		static void FindAvailableSamplesAndPrint()
 		{
-			var highlightedSamples = new [] { typeof(ToonTown) };
+			var highlightedSamples = new [] { typeof(ToonTown), typeof(Skies) };
 			samples = typeof(Sample).Assembly.GetTypes().Where(t => t.IsSubclassOf(typeof(Application)) && t != typeof(Sample)).ToArray();
 			for (int index = 1; index <= samples.Length; index++)
 			{
