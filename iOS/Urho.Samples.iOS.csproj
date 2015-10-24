@@ -3264,14 +3264,16 @@
     <Reference Include="System" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Core" />
+    <Reference Include="Urho, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\UrhoSharp.1.0.37\lib\Xamarin.iOS10\Urho.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Urho.iOS, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\UrhoSharp.1.0.37\lib\Xamarin.iOS10\Urho.iOS.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Xamarin.iOS" />
     <Reference Include="MonoTouch.Dialog-1" />
-    <Reference Include="Urho, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
-      <HintPath>..\packages\UrhoSharp.1.0.33\lib\Xamarin.iOS10\Urho.dll</HintPath>
-    </Reference>
-    <Reference Include="Urho.iOS, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
-      <HintPath>..\packages\UrhoSharp.1.0.33\lib\Xamarin.iOS10\Urho.iOS.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Entitlements.plist" />
@@ -3290,8 +3292,8 @@
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
     <Error Condition="!Exists('..\packages\UrhoSharp.1.0.33\build\Xamarin.iOS10\UrhoSharp.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\UrhoSharp.1.0.33\build\Xamarin.iOS10\UrhoSharp.targets'))" />
+    <Error Condition="!Exists('..\..\packages\UrhoSharp.1.0.37\build\Xamarin.iOS10\UrhoSharp.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\UrhoSharp.1.0.37\build\Xamarin.iOS10\UrhoSharp.targets'))" />
   </Target>
-  <ItemGroup>
-    <Folder Include="Resources\Data\" />
-  </ItemGroup>
+  <ItemGroup />
+  <Import Project="..\..\packages\UrhoSharp.1.0.37\build\Xamarin.iOS10\UrhoSharp.targets" Condition="Exists('..\..\packages\UrhoSharp.1.0.37\build\Xamarin.iOS10\UrhoSharp.targets')" />
 </Project>

@@ -46,7 +46,7 @@ namespace Urho.Samples
 
 		protected virtual void Init()
 		{
-			SubscribeToNodeCollision(OnCollided);
+			SubscribeToNodeCollisionStart(OnCollided);
 		}
 
 		protected Node CreateRigidBullet(bool byPlayer)
@@ -68,7 +68,7 @@ namespace Urho.Samples
 
 		protected abstract Task OnFire(bool byPlayer);
 
-		void OnCollided(NodeCollisionEventArgs args)
+		void OnCollided(NodeCollisionStartEventArgs args)
 		{
 			var node = args.Body.Node;
 			var otherNode = args.OtherNode;

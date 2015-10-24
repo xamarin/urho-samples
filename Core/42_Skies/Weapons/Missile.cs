@@ -39,14 +39,18 @@ namespace Urho.Samples
 			particleEmitter.Effect = cache.GetParticleEffect2D("Urho2D/sun2.pex");
 
 			// Route (Bezier)
-			var moveMissileAction = new BezierBy(1f, new BezierConfig
+			float direction = player ? 1 : -1;
+			var moveMissileAction = new BezierBy(1.2f, new BezierConfig
 				{
-					ControlPoint1 = new Vector3(1f * (left ? -1 : 1), 3f, 0),
-					ControlPoint2 = new Vector3(Sample.NextRandom(-3f, 3f), 5, 0),
-					EndPosition = new Vector3(0, 8, 0),//to launch "to" point
+					ControlPoint1 = new Vector3(1f * (left ? -1 : 1), 3f * direction, 0),
+					ControlPoint2 = new Vector3(Sample.NextRandom(-3f, 3f), 5 * direction, 0),
+					EndPosition = new Vector3(0, 12 * direction, 0),//to launch "to" point
 				});
 
-			await bulletNode.RunActionsAsync(new EaseIn(moveMissileAction, 2), new DelayTime(2f)); //a delay to leave the trace effect
+			await bulletNode.RunActionsAsync(
+				new EaseIn(moveMissileAction, 2), // move
+				new CallFunc(() => bulletNode.SetScale(0f)), //collapse
+				new DelayTime(2f)); //a delay to leave the trace effect
 
 			//remove the missile from the scene.
 			bulletNode.Remove();
