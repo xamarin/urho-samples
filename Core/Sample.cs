@@ -41,7 +41,7 @@ namespace Urho.Samples
 		protected Node CameraNode { get; set; }
 		protected MonoDebugHud MonoDebugHud { get; set; }
 
-		protected Sample (Context ctx) : base (ctx) {}
+		protected Sample (Context ctx, ApplicationOptions options = null) : base (ctx, options) {}
 	
 		protected bool IsLogoVisible
 		{
