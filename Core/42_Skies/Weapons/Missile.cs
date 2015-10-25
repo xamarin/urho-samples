@@ -29,7 +29,6 @@ namespace Urho.Samples
 
 			var model = bulletModelNode.CreateComponent<StaticModel>();
 			model.Model = cache.GetModel("Models/Sphere.mdl");
-			model.SetMaterial(cache.GetMaterial("Materials/StoneEnvMap.xml"));
 
 			bulletModelNode.Scale = new Vector3(1f, 2f, 1f) / 2;
 			bulletNode.SetScale(0.2f);
@@ -42,9 +41,9 @@ namespace Urho.Samples
 			float direction = player ? 1 : -1;
 			var moveMissileAction = new BezierBy(1.2f, new BezierConfig
 				{
-					ControlPoint1 = new Vector3(1f * (left ? -1 : 1), 3f * direction, 0),
-					ControlPoint2 = new Vector3(Sample.NextRandom(-3f, 3f), 5 * direction, 0),
-					EndPosition = new Vector3(0, 12 * direction, 0),//to launch "to" point
+					ControlPoint1 = new Vector3(1f * (left ? -1 : 1), 2f * direction, 0),
+					ControlPoint2 = new Vector3(0, 8 * direction, 0),
+					EndPosition = new Vector3(-3 * (left ? -1 : 1), 12 * direction, 0),
 				});
 
 			await bulletNode.RunActionsAsync(

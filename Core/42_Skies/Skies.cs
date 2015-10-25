@@ -15,7 +15,7 @@ namespace Urho.Samples
 		const float BackgroundSpeed = 0.1f;
 		const float FlightHeight = 9f;
 
-		public Skies(Context c) : base(c, new ApplicationOptions { Height = 800, Width = 500, Orientation = ApplicationOptions.OrientationType.Portrait}) { }
+		public Skies(Context c) : base(c, new ApplicationOptions { Height = 800, Width = 500, ResizableWindow = true, Orientation = ApplicationOptions.OrientationType.Portrait}) { }
 
 		public override void Start()
 		{
@@ -103,10 +103,6 @@ namespace Urho.Samples
 
 				rearTile.Position = new Vector3(0, x, y);
 			}
-		}
-
-		void SetupViewport()
-		{
 		}
 
 		Node CreateTile(int index)

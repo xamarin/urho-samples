@@ -104,6 +104,16 @@ namespace Urho.Samples
 			{
 				InitTouchInput();
 			}
+			else if (Input.NumJoysticks == 0)
+			{
+				Subscription subscription = null;
+				subscription = SubscribeToTouchBegin(args =>
+					{
+						// On some platforms like Windows the presence of touch input can only be detected dynamically
+						InitTouchInput();
+						subscription.Unsubscribe();
+					});
+			}
 
 			MonoDebugHud = new MonoDebugHud(this);
 			MonoDebugHud.Show();

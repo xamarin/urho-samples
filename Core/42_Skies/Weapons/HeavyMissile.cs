@@ -22,7 +22,6 @@ namespace Urho.Samples
 
 			var model = bulletModelNode.CreateComponent<StaticModel>();
 			model.Model = cache.GetModel("Models/Sphere.mdl");
-			model.SetMaterial(cache.GetMaterial("Materials/StoneEnvMap.xml"));
 
 			bulletModelNode.Scale = new Vector3(1f, 2f, 1f) / 1.5f;
 			bulletNode.SetScale(0.2f);
