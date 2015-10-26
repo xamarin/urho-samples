@@ -13,14 +13,15 @@ namespace Urho.Samples
 
 		protected override void Init()
 		{
-			var cache = Application.Current.ResourceCache;
+			var cache = Application.ResourceCache;
 			var node = Node;
 			var model = node.CreateComponent<StaticModel>();
-			model.Model = cache.GetModel("Models/f16.mdl");
+			model.Model = cache.GetModel("Models/F35.mdl");
+			var material = cache.GetMaterial("Materials/plane.xml").Clone("");
+			model.SetMaterial(material);
 
 			node.SetScale(0.1f);
 			node.Position = new Vector3(0f, -3f, 0f);
-			node.Rotation = new Quaternion(10, 0, 0);
 
 			// Load weapons
 			node.AddComponent(new MachineGun(Context));
@@ -72,7 +73,7 @@ namespace Urho.Samples
 			{
 				// Go back to normal state
 				var x = aircraft.Rotation.ToEulerAngles().X;
-				if (Math.Abs(x) > 10)
+				if (Math.Abs(x) > 0)
 				{
 					aircraft.Rotate(new Quaternion(1.5f * turnSpeed * (x > 0 ? -1 : 1), 0, 0), TransformSpace.World);
 				}

@@ -12,7 +12,7 @@ namespace Urho.Samples
 		{
 			liveTask = new TaskCompletionSource<bool>();
 			Health = health;
-			Application.Current.Update += OnUpdate;
+			Application.Update += OnUpdate;
 			var node = Node;
 
 			// Define physics
@@ -30,7 +30,7 @@ namespace Urho.Samples
 
 		public virtual async Task Explode()
 		{
-			var cache = Application.Current.ResourceCache;
+			var cache = Application.ResourceCache;
 			var explosionNode = Scene.CreateChild();
 			explosionNode.SetScale(1.8f);
 			explosionNode.Position = this.Node.WorldPosition;
@@ -44,6 +44,14 @@ namespace Urho.Samples
 			explosionNode.Remove();
 		}
 
+		public virtual void Hit()
+		{
+			var specColorAnimation = new ValueAnimation(Context);
+			specColorAnimation.SetKeyFrame(0.0f, new Color(1.0f, 0.0f, 0.0f, 1.0f));
+			specColorAnimation.SetKeyFrame(0.2f, new Color(0.1f, 0.1f, 0.1f, 16.0f));
+			Node.GetComponent<StaticModel>().GetMaterial(0).SetShaderParameterAnimation("MatSpecColor", specColorAnimation, WrapMode.Once, 1.0f);
+		}
+
 		public int Health { get; set; }
 
 		protected virtual void Init() {}
@@ -52,7 +60,7 @@ namespace Urho.Samples
 
 		protected override void OnDeleted()
 		{
-			Application.Current.Update -= OnUpdate;
+			Application.Update -= OnUpdate;
 		}
 
 		protected virtual void OnUpdate(UpdateEventArgs args) {}

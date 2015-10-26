@@ -86,6 +86,10 @@ namespace Urho.Samples
 					{
 						aircraft.Explode();
 					}
+					else
+					{
+						aircraft.Hit();
+					}
 					OnCollided(node, aircraft, killed);
 				}
 			}

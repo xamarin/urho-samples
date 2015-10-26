@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace Urho.Samples
@@ -47,7 +48,7 @@ namespace Urho.Samples
 			var cameraLight = CameraNode.CreateComponent<Light>();
 			cameraLight.LightType = LightType.Point;
 			cameraLight.Range = 20.0f;
-			cameraLight.CastShadows = true;
+			cameraLight.Brightness = 1.3f;
 
 			player = new Player(Context);
 			var aircraftNode = scene.CreateChild(nameof(Aircraft));
@@ -55,14 +56,20 @@ namespace Urho.Samples
 			var playersLife = player.Play(health: 30);
 
 			var lightNode = scene.CreateChild("AdditionalLight");
-			lightNode.Position = new Vector3(2, 0, 2);
+			lightNode.Position = new Vector3(1, 0, -5);
 			var light = lightNode.CreateComponent<Light>();
 			light.LightType = LightType.Point;
-			light.Range = 10.0f;
-			light.CastShadows = true;
-			
+			light.Range = 110.0f;
+			light.CastShadows = false;
+			light.Brightness = 1f;
+
+
+
+
+
 			SummonEnemies();
 			await playersLife;
+			aircraftNode.Remove();
 			//game over
 		}
 
@@ -115,12 +122,52 @@ namespace Urho.Samples
 			planeObject.Model = cache.GetModel("Models/Box.mdl");
 			planeObject.SetMaterial(cache.GetMaterial("Materials/Grass.xml"));
 
+			// Create billboard sets (floating smoke)
+			const uint numBillboardnodes = 15;
+			const uint numBillboards = 3;
+
+			for (uint i = 0; i < numBillboardnodes; ++i)
+			{
+				var smokeNode = tile.CreateChild("Smoke");
+				smokeNode.Position = new Vector3(NextRandom(0f, 6f), NextRandom(1f, 3f), NextRandom(-22f, 4f));
+
+				var billboardObject = smokeNode.CreateComponent<BillboardSet>();
+				billboardObject.NumBillboards = numBillboards;
+				billboardObject.Material = ResourceCache.GetMaterial("Materials/LitSmoke.xml");
+				billboardObject.SetSorted(true);
+
+				for (uint j = 0; j < numBillboards; ++j)
+				{
+					//NOTE: temp working solution. TODO: avoid using "unsafe"
+					var bb = billboardObject.GetBillboardSafe(j);
+					bb.Position = new Vector3(NextRandom(1, 3), NextRandom(0, 3), 0);
+					bb.Size = new Vector2(NextRandom(1, 3f), NextRandom(1.5f, 3f));
+					bb.Rotation = NextRandom(30, 90);
+					bb.Enabled = true;
+				}
+
+				// After modifying the billboards, they need to be "commited" so that the BillboardSet updates its internals
+				billboardObject.Commit();
+			}
+
+
+			var usedCoordinates = new HashSet<Vector3>();
 			for (int i = 0; i < BackgroundScale * 4; i++)
 			{
+				Vector3 randomCoordinates;
+				// Generate random unique coordinates for trees
+				while (true)
+				{
+					randomCoordinates = new Vector3((int) NextRandom(-BackgroundScale/2, BackgroundScale/2), 0f, (int) NextRandom(-BackgroundScale/2, BackgroundScale/2));
+					if (!usedCoordinates.Contains(randomCoordinates))
+					{
+						usedCoordinates.Add(randomCoordinates);
+						break;
+					}
+				}
+
 				var tree = CreateTree(tile);
-				tree.Position = new Vector3(
-					x: (int)NextRandom(-BackgroundScale / 2, BackgroundScale / 2), y: 0, 
-					z: (int)NextRandom(-BackgroundScale / 2, BackgroundScale / 2));
+				tree.Position = randomCoordinates;
 			}
 			tile.Rotate(new Quaternion(270 + BackgroundRotationX, BackgroundRotationY, 0), TransformSpace.Local);
 

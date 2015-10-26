@@ -13,10 +13,11 @@ namespace Urho.Samples
 
 		protected override async void Init()
 		{
-			var cache = Application.Current.ResourceCache;
+			var cache = Application.ResourceCache;
 			var node = Node;
 			var model = node.CreateComponent<StaticModel>();
-			model.Model = cache.GetModel("Models/f16.mdl");
+			model.Model = cache.GetModel("Models/F35.mdl");
+			model.SetMaterial(cache.GetMaterial("Materials/plane.xml").Clone(""));
 
 			node.SetScale(0.1f);
 			node.Position = new Vector3(0f, 5f, 0f);
