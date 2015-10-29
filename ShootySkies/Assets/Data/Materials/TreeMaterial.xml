@@ -1,0 +1,6 @@
+<material>
+	<technique name="Techniques/Diff.xml"/>
+	<texture name="Textures/TreeUV2.png" unit="diffuse"/>
+	<parameter name="MatDiffColor" value="0.7424 0.7424 0.7424 1"/>
+	<parameter name="MatSpecColor" value="0.0634232 0.0634232 0.0634232 94"/>
+</material>

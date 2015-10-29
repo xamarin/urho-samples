@@ -1,0 +1,1 @@
+In order to import you can use Urho's AssetImporter or a plug-in for Blender: https://github.com/reattiva/Urho3D-Blender 
