@@ -12,6 +12,8 @@ namespace ShootySkies
 
 		protected override uint CollisionLayer => PlayerAircraftCollisionLayer;
 
+		public override int MaxHealth => 100;
+
 		protected override void Init()
 		{
 			var cache = Application.ResourceCache;
@@ -57,8 +59,8 @@ namespace ShootySkies
 			const float moveSpeedX = 3f;
 			const float moveSpeedY = 2f;
 
-			float maxY = 3.5f, minY = -3.5f;
-			float maxX = 2.5f, minX = -2.5f;
+			float maxY = 3.5f;
+			float maxX = 2.5f;
 
 			const float mouseSensitivity = .5f;
 			var mouseMove = input.MouseMove;
@@ -66,7 +68,7 @@ namespace ShootySkies
 			var x = mouseSensitivity * mouseMove.X * moveSpeedX * timeStep;
 			var y = mouseSensitivity * -mouseMove.Y * moveSpeedY * timeStep;
 
-			bool outOfBattlefield = (cX + x >= maxX && x > 0) || (cX + x <= minX && x < 0) || (cY + y >= maxY && y > 0) || (cY + y<= minY && y < 0);
+			bool outOfBattlefield = (cX + x >= maxX && x > 0) || (cX + x <= -maxX && x < 0) || (cY + y >= maxY && y > 0) || (cY + y<= -maxY && y < 0);
 
 			if (!outOfBattlefield)
 			{

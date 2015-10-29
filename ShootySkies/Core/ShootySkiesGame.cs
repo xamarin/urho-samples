@@ -14,8 +14,9 @@ namespace ShootySkies
 		const float BackgroundRotationX = 45f;
 		const float BackgroundRotationY = 15f;
 		const float BackgroundScale = 40f;
-		const float BackgroundSpeed = 0.3f;
+		const float BackgroundSpeed = 0.08f;
 		const float FlightHeight = 10f;
+		const int TreesPerTile = 200;
 
 		public ShootySkiesGame(Context c) : base(c, new ApplicationOptions { Height = 800, Width = 500, Orientation = ApplicationOptions.OrientationType.Portrait }) { }
 
@@ -48,31 +49,28 @@ namespace ShootySkies
 			player = new Player(Context);
 			var aircraftNode = scene.CreateChild(nameof(Aircraft));
 			aircraftNode.AddComponent(player);
-			var playersLife = player.Play(health: 70);
+			var playersLife = player.Play();
+
+			// UI:
+
+			var textBlock = new Text(Context);
+			textBlock.HorizontalAlignment = HorizontalAlignment.Right;
+			textBlock.Value = "points: 628";
+			textBlock.SetFont(ResourceCache.GetFont("Fonts/BlueHighway.ttf"), 22);
+			UI.Root.AddChild(textBlock);
+
 
 			// Lights:
 
-			var cameraLight = CameraNode.CreateComponent<Light>();
-			cameraLight.LightType = LightType.Point;
-			cameraLight.Range = 10.0f;
-			cameraLight.Brightness = 1f;
-
-			var lightNode1 = scene.CreateChild("AdditionalLight");
+			var lightNode1 = scene.CreateChild("Light1");
 			lightNode1.Position = new Vector3(0, -5, -40);
-			var light1 = lightNode1.CreateComponent<Light>();
-			light1.LightType = LightType.Point;
-			light1.Range = 120.0f;
-			light1.CastShadows = false;
-			light1.Brightness = 1.7f;
+			lightNode1.AddComponent(new Light(Context) { LightType = LightType.Point, Range = 120, Brightness = 1.4f });
 
-			var lightNode2 = scene.CreateChild("AdditionalLight");
+			var lightNode2 = scene.CreateChild("Light2");
 			lightNode2.Position = new Vector3(10, 15, -12);
-			var light2 = lightNode2.CreateComponent<Light>();
-			light2.LightType = LightType.Point;
-			light2.Range = 30.0f;
-			light2.CastShadows = false;
-			light2.Brightness = 1f;
+			lightNode2.AddComponent(new Light(Context) { LightType = LightType.Point, Range = 30.0f, CastShadows = true, Brightness = 1.7f });
 
+			SummonEnemies();
 			SummonEnemies();
 			SummonEnemies();
 
@@ -88,8 +86,9 @@ namespace ShootySkies
 			{
 				var enemy = new EnemyBat(Context);
 				var enemyNode = scene.CreateChild(nameof(Aircraft));
+				await enemyNode.RunActionsAsync(new DelayTime(RandomHelper.NextRandom(0.2f, 1f)));
 				enemyNode.AddComponent(enemy);
-				await enemy.Play(health: 30);
+				await enemy.Play();
 				enemyNode.Remove();
 			}
 		}
@@ -105,7 +104,7 @@ namespace ShootySkies
 				var x = BackgroundScale*(float) Math.Sin((90 - BackgroundRotationX)*MathHelper.Pi/180);
 				var y = BackgroundScale*(float) Math.Sin(BackgroundRotationX*MathHelper.Pi/180) + FlightHeight;
 
-				var moveTo = x + 0.9f; //a small adjusment to hide that gap between two tiles
+				var moveTo = x + 1f; //a small adjusment to hide that gap between two tiles
 				var h = (float)Math.Tan(BackgroundRotationX * MathHelper.Pi / 180) * moveTo;
 				await Task.WhenAll(
 					frontTile.RunActionsAsync(new MoveBy(1 / BackgroundSpeed, new Vector3(0, -moveTo, -h))),
@@ -131,7 +130,7 @@ namespace ShootySkies
 			planeObject.SetMaterial(cache.GetMaterial("Materials/Grass.xml"));
 
 			var usedCoordinates = new HashSet<Vector3>();
-			for (int i = 0; i < 200; i++)
+			for (int i = 0; i < TreesPerTile; i++)
 			{
 				Vector3 randomCoordinates;
 				// Generate random unique coordinates for trees
@@ -176,7 +175,6 @@ namespace ShootySkies
 			var model = treeNode.CreateComponent<StaticModel>();
 			model.Model = cache.GetModel("Models/Tree.mdl");
 			model.SetMaterial(cache.GetMaterial("Materials/TreeMaterial.xml"));
-			//treeNode.Scale = new Vector3(1f, 1f, 1f);
 			treeNode.SetScale(RandomHelper.NextRandom(0.2f, 0.3f));
 			model.CastShadows = true;
 			return treeNode;

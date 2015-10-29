@@ -6,14 +6,14 @@ namespace ShootySkies
 {
 	public class MachineGun : Weapon
 	{
-		const float GunOffsetSize = 0.1f;
+		const float GunOffsetSize = 0.15f; //accuracy (lower - better)
 		float currentGunOffset = -GunOffsetSize;
 
 		public MachineGun(Context context) : base(context) {}
 
 		protected override TimeSpan ReloadDuration => TimeSpan.FromSeconds(0.1f);
 
-		public override int Damage => 1;
+		public override int Damage => 2;
 		
 		protected override async Task OnFire(bool player)
 		{
@@ -27,6 +27,10 @@ namespace ShootySkies
 
 			var model = bulletNode.CreateComponent<StaticModel>();
 			model.Model = cache.GetModel("Models/Box.mdl");
+			var mat = cache.GetMaterial("Materials/MachineGun.xml");
+			model.SetMaterial(mat);
+			bulletNode.Rotate(new Quaternion(0, -40, 0), TransformSpace.Local);
+
 			bulletNode.Scale = new Vector3(0.1f, 0.3f, 0.1f);
 
 			await bulletNode.RunActionsAsync(
@@ -35,11 +39,6 @@ namespace ShootySkies
 
 			//remove the bullet from the scene.
 			bulletNode.Remove();
-		}
-
-		protected override void OnCollided(Node bullet, Aircraft target, bool killed)
-		{
-			//TODO: some "glow" effect
 		}
 	}
 }

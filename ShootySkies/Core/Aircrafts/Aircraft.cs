@@ -10,11 +10,11 @@ namespace ShootySkies
 
 		protected Aircraft(Context context) : base(context) {}
 
-		public Task Play(int health)
+		public Task Play()
 		{
 			isAlive = true;
 			liveTask = new TaskCompletionSource<bool>();
-			Health = health;
+			Health = MaxHealth;
 			Application.Update += OnUpdate;
 			var node = Node;
 
@@ -50,6 +50,7 @@ namespace ShootySkies
 
 		public void Hit()
 		{
+			// blink with white color:
 			var specColorAnimation = new ValueAnimation(Context);
 			specColorAnimation.SetKeyFrame(0.0f, new Color(1.0f, 1.0f, 1.0f, 1.0f));
 			specColorAnimation.SetKeyFrame(0.2f, new Color(0.1f, 0.1f, 0.1f, 16.0f));
@@ -57,6 +58,8 @@ namespace ShootySkies
 		}
 
 		public int Health { get; set; }
+
+		public virtual int MaxHealth => 30;
 
 		protected bool IsAlive => isAlive && IsEnabled() && !IsDeleted;
 
