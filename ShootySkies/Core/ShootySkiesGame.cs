@@ -48,7 +48,7 @@ namespace ShootySkies
 			player = new Player(Context);
 			var aircraftNode = scene.CreateChild(nameof(Aircraft));
 			aircraftNode.AddComponent(player);
-			var playersLife = player.Play(health: 30);
+			var playersLife = player.Play(health: 70);
 
 			// Lights:
 
@@ -63,7 +63,7 @@ namespace ShootySkies
 			light1.LightType = LightType.Point;
 			light1.Range = 120.0f;
 			light1.CastShadows = false;
-			light1.Brightness = 2f;
+			light1.Brightness = 1.7f;
 
 			var lightNode2 = scene.CreateChild("AdditionalLight");
 			lightNode2.Position = new Vector3(10, 15, -12);
@@ -73,7 +73,6 @@ namespace ShootySkies
 			light2.CastShadows = false;
 			light2.Brightness = 1f;
 
-			SummonEnemies();
 			SummonEnemies();
 			SummonEnemies();
 

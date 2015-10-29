@@ -24,7 +24,7 @@ namespace ShootySkies
 			body.SetKinematic(true);
 			body.CollisionMask = CollisionLayer;
 			CollisionShape shape = node.CreateComponent<CollisionShape>();
-			shape.SetBox(new Vector3(2, 2, 2), Vector3.Zero, Quaternion.Identity);
+			shape.SetBox(Vector3.One * 1.3f, Vector3.Zero, Quaternion.Identity);
 
 			Init();
 
@@ -39,7 +39,7 @@ namespace ShootySkies
 			explosionNode.SetScale(1f);
 			explosionNode.Position = this.Node.WorldPosition;
 			var particleEmitter = explosionNode.CreateComponent<ParticleEmitter2D>();
-			particleEmitter.Effect = cache.GetParticleEffect2D("Urho2D/sun2.pex");
+			particleEmitter.Effect = cache.GetParticleEffect2D("Urho2D/Explosion.pex");
 			ScaleBy scaleBy = new ScaleBy(0.7f, 0f);
 			Node.RemoveAllActions();
 			Node.SetEnabled(false);

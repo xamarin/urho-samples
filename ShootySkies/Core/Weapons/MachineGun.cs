@@ -26,8 +26,8 @@ namespace ShootySkies
 			bulletNode.Translate(new Vector3(currentGunOffset, 0, 0), TransformSpace.Local);
 
 			var model = bulletNode.CreateComponent<StaticModel>();
-			model.Model = cache.GetModel("Models/Sphere.mdl");
-			bulletNode.Scale = new Vector3(0.1f, 0.2f, 0.1f);
+			model.Model = cache.GetModel("Models/Box.mdl");
+			bulletNode.Scale = new Vector3(0.1f, 0.3f, 0.1f);
 
 			await bulletNode.RunActionsAsync(
 				new MoveBy(0.6f, new Vector3(0, 10, 0)*(player ? 1 : -1)),
