@@ -67,7 +67,7 @@ namespace Urho.Samples.Desktop
 
 		static void FindAvailableSamplesAndPrint()
 		{
-			var highlightedSamples = new [] { typeof(ToonTown), typeof(Skies) };
+			var highlightedSamples = new [] { typeof(ToonTown) };
 			samples = typeof(Sample).Assembly.GetTypes().Where(t => t.IsSubclassOf(typeof(Application)) && t != typeof(Sample)).ToArray();
 			for (int index = 1; index <= samples.Length; index++)
 			{

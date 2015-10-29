@@ -30,7 +30,7 @@ namespace ShootySkies
 			bulletNode.Scale = new Vector3(0.1f, 0.2f, 0.1f);
 
 			await bulletNode.RunActionsAsync(
-				new MoveBy(0.7f, new Vector3(0, 10, 0)*(player ? 1 : -1)),
+				new MoveBy(0.6f, new Vector3(0, 10, 0)*(player ? 1 : -1)),
 				new CallFunc(() => bulletNode.SetScale(0f))); //collapse);
 
 			//remove the bullet from the scene.
