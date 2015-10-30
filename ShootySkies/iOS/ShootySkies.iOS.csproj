@@ -24,6 +24,10 @@
     <MtouchArch>i386</MtouchArch>
     <MtouchLink>None</MtouchLink>
     <MtouchDebug>true</MtouchDebug>
+    <MtouchUseRefCounting>true</MtouchUseRefCounting>
+    <MtouchI18n>
+    </MtouchI18n>
+    <OptimizePNGs>false</OptimizePNGs>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhoneSimulator' ">
     <DebugType>none</DebugType>
@@ -95,20 +99,663 @@
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\Default-568h%402x.png" />
+    <BundleResource Include="..\Assets\CoreData\Materials\DefaultGrey.xml">
+      <Link>Resources\CoreData\Materials\DefaultGrey.xml</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\CoreData\RenderPaths\Deferred.xml">
+      <Link>Resources\CoreData\RenderPaths\Deferred.xml</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\CoreData\RenderPaths\DeferredHWDepth.xml">
+      <Link>Resources\CoreData\RenderPaths\DeferredHWDepth.xml</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\CoreData\RenderPaths\Forward.xml">
+      <Link>Resources\CoreData\RenderPaths\Forward.xml</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\CoreData\RenderPaths\ForwardDepth.xml">
+      <Link>Resources\CoreData\RenderPaths\ForwardDepth.xml</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\CoreData\RenderPaths\ForwardHWDepth.xml">
+      <Link>Resources\CoreData\RenderPaths\ForwardHWDepth.xml</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\CoreData\RenderPaths\Prepass.xml">
+      <Link>Resources\CoreData\RenderPaths\Prepass.xml</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\CoreData\RenderPaths\PrepassHDR.xml">
+      <Link>Resources\CoreData\RenderPaths\PrepassHDR.xml</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\CoreData\RenderPaths\PrepassHWDepth.xml">
+      <Link>Resources\CoreData\RenderPaths\PrepassHWDepth.xml</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\CoreData\Shaders\GLSL\AutoExposure.glsl">
+      <Link>Resources\CoreData\Shaders\GLSL\AutoExposure.glsl</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\CoreData\Shaders\GLSL\Basic.glsl">
+      <Link>Resources\CoreData\Shaders\GLSL\Basic.glsl</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\CoreData\Shaders\GLSL\Bloom.glsl">
+      <Link>Resources\CoreData\Shaders\GLSL\Bloom.glsl</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\CoreData\Shaders\GLSL\BloomHDR.glsl">
+      <Link>Resources\CoreData\Shaders\GLSL\BloomHDR.glsl</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\CoreData\Shaders\GLSL\Blur.glsl">
+      <Link>Resources\CoreData\Shaders\GLSL\Blur.glsl</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\CoreData\Shaders\GLSL\ColorCorrection.glsl">
+      <Link>Resources\CoreData\Shaders\GLSL\ColorCorrection.glsl</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\CoreData\Shaders\GLSL\CopyFramebuffer.glsl">
+      <Link>Resources\CoreData\Shaders\GLSL\CopyFramebuffer.glsl</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\CoreData\Shaders\GLSL\DeferredLight.glsl">
+      <Link>Resources\CoreData\Shaders\GLSL\DeferredLight.glsl</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\CoreData\Shaders\GLSL\Depth.glsl">
+      <Link>Resources\CoreData\Shaders\GLSL\Depth.glsl</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\CoreData\Shaders\GLSL\FXAA2.glsl">
+      <Link>Resources\CoreData\Shaders\GLSL\FXAA2.glsl</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\CoreData\Shaders\GLSL\FXAA3.glsl">
+      <Link>Resources\CoreData\Shaders\GLSL\FXAA3.glsl</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\CoreData\Shaders\GLSL\Fog.glsl">
+      <Link>Resources\CoreData\Shaders\GLSL\Fog.glsl</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\CoreData\Shaders\GLSL\GammaCorrection.glsl">
+      <Link>Resources\CoreData\Shaders\GLSL\GammaCorrection.glsl</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\CoreData\Shaders\GLSL\GreyScale.glsl">
+      <Link>Resources\CoreData\Shaders\GLSL\GreyScale.glsl</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\CoreData\Shaders\GLSL\Lighting.glsl">
+      <Link>Resources\CoreData\Shaders\GLSL\Lighting.glsl</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\CoreData\Shaders\GLSL\LitParticle.glsl">
+      <Link>Resources\CoreData\Shaders\GLSL\LitParticle.glsl</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\CoreData\Shaders\GLSL\LitSolid.glsl">
+      <Link>Resources\CoreData\Shaders\GLSL\LitSolid.glsl</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\CoreData\Shaders\GLSL\PostProcess.glsl">
+      <Link>Resources\CoreData\Shaders\GLSL\PostProcess.glsl</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\CoreData\Shaders\GLSL\PrepassLight.glsl">
+      <Link>Resources\CoreData\Shaders\GLSL\PrepassLight.glsl</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\CoreData\Shaders\GLSL\Samplers.glsl">
+      <Link>Resources\CoreData\Shaders\GLSL\Samplers.glsl</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\CoreData\Shaders\GLSL\ScreenPos.glsl">
+      <Link>Resources\CoreData\Shaders\GLSL\ScreenPos.glsl</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\CoreData\Shaders\GLSL\Shadow.glsl">
+      <Link>Resources\CoreData\Shaders\GLSL\Shadow.glsl</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\CoreData\Shaders\GLSL\Skybox.glsl">
+      <Link>Resources\CoreData\Shaders\GLSL\Skybox.glsl</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\CoreData\Shaders\GLSL\Stencil.glsl">
+      <Link>Resources\CoreData\Shaders\GLSL\Stencil.glsl</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\CoreData\Shaders\GLSL\TerrainBlend.glsl">
+      <Link>Resources\CoreData\Shaders\GLSL\TerrainBlend.glsl</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\CoreData\Shaders\GLSL\Text.glsl">
+      <Link>Resources\CoreData\Shaders\GLSL\Text.glsl</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\CoreData\Shaders\GLSL\Tonemap.glsl">
+      <Link>Resources\CoreData\Shaders\GLSL\Tonemap.glsl</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\CoreData\Shaders\GLSL\Transform.glsl">
+      <Link>Resources\CoreData\Shaders\GLSL\Transform.glsl</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\CoreData\Shaders\GLSL\Uniforms.glsl">
+      <Link>Resources\CoreData\Shaders\GLSL\Uniforms.glsl</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\CoreData\Shaders\GLSL\Unlit.glsl">
+      <Link>Resources\CoreData\Shaders\GLSL\Unlit.glsl</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\CoreData\Shaders\GLSL\Urho2D.glsl">
+      <Link>Resources\CoreData\Shaders\GLSL\Urho2D.glsl</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\CoreData\Shaders\GLSL\Vegetation.glsl">
+      <Link>Resources\CoreData\Shaders\GLSL\Vegetation.glsl</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\CoreData\Shaders\GLSL\VegetationDepth.glsl">
+      <Link>Resources\CoreData\Shaders\GLSL\VegetationDepth.glsl</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\CoreData\Shaders\GLSL\VegetationShadow.glsl">
+      <Link>Resources\CoreData\Shaders\GLSL\VegetationShadow.glsl</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\CoreData\Shaders\GLSL\Water.glsl">
+      <Link>Resources\CoreData\Shaders\GLSL\Water.glsl</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\CoreData\Shaders\HLSL\AutoExposure.hlsl">
+      <Link>Resources\CoreData\Shaders\HLSL\AutoExposure.hlsl</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\CoreData\Shaders\HLSL\Basic.hlsl">
+      <Link>Resources\CoreData\Shaders\HLSL\Basic.hlsl</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\CoreData\Shaders\HLSL\Bloom.hlsl">
+      <Link>Resources\CoreData\Shaders\HLSL\Bloom.hlsl</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\CoreData\Shaders\HLSL\BloomHDR.hlsl">
+      <Link>Resources\CoreData\Shaders\HLSL\BloomHDR.hlsl</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\CoreData\Shaders\HLSL\Blur.hlsl">
+      <Link>Resources\CoreData\Shaders\HLSL\Blur.hlsl</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\CoreData\Shaders\HLSL\ClearFramebuffer.hlsl">
+      <Link>Resources\CoreData\Shaders\HLSL\ClearFramebuffer.hlsl</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\CoreData\Shaders\HLSL\ColorCorrection.hlsl">
+      <Link>Resources\CoreData\Shaders\HLSL\ColorCorrection.hlsl</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\CoreData\Shaders\HLSL\CopyFramebuffer.hlsl">
+      <Link>Resources\CoreData\Shaders\HLSL\CopyFramebuffer.hlsl</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\CoreData\Shaders\HLSL\DeferredLight.hlsl">
+      <Link>Resources\CoreData\Shaders\HLSL\DeferredLight.hlsl</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\CoreData\Shaders\HLSL\Depth.hlsl">
+      <Link>Resources\CoreData\Shaders\HLSL\Depth.hlsl</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\CoreData\Shaders\HLSL\FXAA2.hlsl">
+      <Link>Resources\CoreData\Shaders\HLSL\FXAA2.hlsl</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\CoreData\Shaders\HLSL\FXAA3.hlsl">
+      <Link>Resources\CoreData\Shaders\HLSL\FXAA3.hlsl</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\CoreData\Shaders\HLSL\Fog.hlsl">
+      <Link>Resources\CoreData\Shaders\HLSL\Fog.hlsl</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\CoreData\Shaders\HLSL\GammaCorrection.hlsl">
+      <Link>Resources\CoreData\Shaders\HLSL\GammaCorrection.hlsl</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\CoreData\Shaders\HLSL\GreyScale.hlsl">
+      <Link>Resources\CoreData\Shaders\HLSL\GreyScale.hlsl</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\CoreData\Shaders\HLSL\Lighting.hlsl">
+      <Link>Resources\CoreData\Shaders\HLSL\Lighting.hlsl</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\CoreData\Shaders\HLSL\LitParticle.hlsl">
+      <Link>Resources\CoreData\Shaders\HLSL\LitParticle.hlsl</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\CoreData\Shaders\HLSL\LitSolid.hlsl">
+      <Link>Resources\CoreData\Shaders\HLSL\LitSolid.hlsl</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\CoreData\Shaders\HLSL\PostProcess.hlsl">
+      <Link>Resources\CoreData\Shaders\HLSL\PostProcess.hlsl</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\CoreData\Shaders\HLSL\PrepassLight.hlsl">
+      <Link>Resources\CoreData\Shaders\HLSL\PrepassLight.hlsl</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\CoreData\Shaders\HLSL\Samplers.hlsl">
+      <Link>Resources\CoreData\Shaders\HLSL\Samplers.hlsl</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\CoreData\Shaders\HLSL\ScreenPos.hlsl">
+      <Link>Resources\CoreData\Shaders\HLSL\ScreenPos.hlsl</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\CoreData\Shaders\HLSL\Shadow.hlsl">
+      <Link>Resources\CoreData\Shaders\HLSL\Shadow.hlsl</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\CoreData\Shaders\HLSL\Skybox.hlsl">
+      <Link>Resources\CoreData\Shaders\HLSL\Skybox.hlsl</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\CoreData\Shaders\HLSL\Stencil.hlsl">
+      <Link>Resources\CoreData\Shaders\HLSL\Stencil.hlsl</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\CoreData\Shaders\HLSL\TerrainBlend.hlsl">
+      <Link>Resources\CoreData\Shaders\HLSL\TerrainBlend.hlsl</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\CoreData\Shaders\HLSL\Text.hlsl">
+      <Link>Resources\CoreData\Shaders\HLSL\Text.hlsl</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\CoreData\Shaders\HLSL\Tonemap.hlsl">
+      <Link>Resources\CoreData\Shaders\HLSL\Tonemap.hlsl</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\CoreData\Shaders\HLSL\Transform.hlsl">
+      <Link>Resources\CoreData\Shaders\HLSL\Transform.hlsl</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\CoreData\Shaders\HLSL\Uniforms.hlsl">
+      <Link>Resources\CoreData\Shaders\HLSL\Uniforms.hlsl</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\CoreData\Shaders\HLSL\Unlit.hlsl">
+      <Link>Resources\CoreData\Shaders\HLSL\Unlit.hlsl</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\CoreData\Shaders\HLSL\Urho2D.hlsl">
+      <Link>Resources\CoreData\Shaders\HLSL\Urho2D.hlsl</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\CoreData\Shaders\HLSL\Vegetation.hlsl">
+      <Link>Resources\CoreData\Shaders\HLSL\Vegetation.hlsl</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\CoreData\Shaders\HLSL\VegetationDepth.hlsl">
+      <Link>Resources\CoreData\Shaders\HLSL\VegetationDepth.hlsl</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\CoreData\Shaders\HLSL\VegetationShadow.hlsl">
+      <Link>Resources\CoreData\Shaders\HLSL\VegetationShadow.hlsl</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\CoreData\Shaders\HLSL\Water.hlsl">
+      <Link>Resources\CoreData\Shaders\HLSL\Water.hlsl</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\CoreData\Techniques\BasicVColUnlitAlpha.xml">
+      <Link>Resources\CoreData\Techniques\BasicVColUnlitAlpha.xml</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\CoreData\Techniques\Diff.xml">
+      <Link>Resources\CoreData\Techniques\Diff.xml</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\CoreData\Techniques\DiffAO.xml">
+      <Link>Resources\CoreData\Techniques\DiffAO.xml</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\CoreData\Techniques\DiffAOAlpha.xml">
+      <Link>Resources\CoreData\Techniques\DiffAOAlpha.xml</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\CoreData\Techniques\DiffAOAlphaMask.xml">
+      <Link>Resources\CoreData\Techniques\DiffAOAlphaMask.xml</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\CoreData\Techniques\DiffAdd.xml">
+      <Link>Resources\CoreData\Techniques\DiffAdd.xml</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\CoreData\Techniques\DiffAddAlpha.xml">
+      <Link>Resources\CoreData\Techniques\DiffAddAlpha.xml</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\CoreData\Techniques\DiffAlpha.xml">
+      <Link>Resources\CoreData\Techniques\DiffAlpha.xml</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\CoreData\Techniques\DiffAlphaMask.xml">
+      <Link>Resources\CoreData\Techniques\DiffAlphaMask.xml</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\CoreData\Techniques\DiffEmissive.xml">
+      <Link>Resources\CoreData\Techniques\DiffEmissive.xml</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\CoreData\Techniques\DiffEmissiveAlpha.xml">
+      <Link>Resources\CoreData\Techniques\DiffEmissiveAlpha.xml</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\CoreData\Techniques\DiffEnvCube.xml">
+      <Link>Resources\CoreData\Techniques\DiffEnvCube.xml</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\CoreData\Techniques\DiffEnvCubeAO.xml">
+      <Link>Resources\CoreData\Techniques\DiffEnvCubeAO.xml</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\CoreData\Techniques\DiffEnvCubeAOAlpha.xml">
+      <Link>Resources\CoreData\Techniques\DiffEnvCubeAOAlpha.xml</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\CoreData\Techniques\DiffEnvCubeAlpha.xml">
+      <Link>Resources\CoreData\Techniques\DiffEnvCubeAlpha.xml</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\CoreData\Techniques\DiffLightMap.xml">
+      <Link>Resources\CoreData\Techniques\DiffLightMap.xml</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\CoreData\Techniques\DiffLightMapAlpha.xml">
+      <Link>Resources\CoreData\Techniques\DiffLightMapAlpha.xml</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\CoreData\Techniques\DiffLitParticleAlpha.xml">
+      <Link>Resources\CoreData\Techniques\DiffLitParticleAlpha.xml</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\CoreData\Techniques\DiffMultiply.xml">
+      <Link>Resources\CoreData\Techniques\DiffMultiply.xml</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\CoreData\Techniques\DiffNormal.xml">
+      <Link>Resources\CoreData\Techniques\DiffNormal.xml</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\CoreData\Techniques\DiffNormalAO.xml">
+      <Link>Resources\CoreData\Techniques\DiffNormalAO.xml</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\CoreData\Techniques\DiffNormalAOAlpha.xml">
+      <Link>Resources\CoreData\Techniques\DiffNormalAOAlpha.xml</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\CoreData\Techniques\DiffNormalAOAlphaMask.xml">
+      <Link>Resources\CoreData\Techniques\DiffNormalAOAlphaMask.xml</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\CoreData\Techniques\DiffNormalAlpha.xml">
+      <Link>Resources\CoreData\Techniques\DiffNormalAlpha.xml</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\CoreData\Techniques\DiffNormalAlphaMask.xml">
+      <Link>Resources\CoreData\Techniques\DiffNormalAlphaMask.xml</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\CoreData\Techniques\DiffNormalEmissive.xml">
+      <Link>Resources\CoreData\Techniques\DiffNormalEmissive.xml</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\CoreData\Techniques\DiffNormalEmissiveAlpha.xml">
+      <Link>Resources\CoreData\Techniques\DiffNormalEmissiveAlpha.xml</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\CoreData\Techniques\DiffNormalEnvCube.xml">
+      <Link>Resources\CoreData\Techniques\DiffNormalEnvCube.xml</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\CoreData\Techniques\DiffNormalEnvCubeAlpha.xml">
+      <Link>Resources\CoreData\Techniques\DiffNormalEnvCubeAlpha.xml</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\CoreData\Techniques\DiffNormalPacked.xml">
+      <Link>Resources\CoreData\Techniques\DiffNormalPacked.xml</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\CoreData\Techniques\DiffNormalPackedAO.xml">
+      <Link>Resources\CoreData\Techniques\DiffNormalPackedAO.xml</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\CoreData\Techniques\DiffNormalPackedAOAlpha.xml">
+      <Link>Resources\CoreData\Techniques\DiffNormalPackedAOAlpha.xml</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\CoreData\Techniques\DiffNormalPackedAOAlphaMask.xml">
+      <Link>Resources\CoreData\Techniques\DiffNormalPackedAOAlphaMask.xml</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\CoreData\Techniques\DiffNormalPackedAlpha.xml">
+      <Link>Resources\CoreData\Techniques\DiffNormalPackedAlpha.xml</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\CoreData\Techniques\DiffNormalPackedAlphaMask.xml">
+      <Link>Resources\CoreData\Techniques\DiffNormalPackedAlphaMask.xml</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\CoreData\Techniques\DiffNormalPackedEmissive.xml">
+      <Link>Resources\CoreData\Techniques\DiffNormalPackedEmissive.xml</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\CoreData\Techniques\DiffNormalPackedEmissiveAlpha.xml">
+      <Link>Resources\CoreData\Techniques\DiffNormalPackedEmissiveAlpha.xml</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\CoreData\Techniques\DiffNormalPackedEnvCube.xml">
+      <Link>Resources\CoreData\Techniques\DiffNormalPackedEnvCube.xml</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\CoreData\Techniques\DiffNormalPackedEnvCubeAlpha.xml">
+      <Link>Resources\CoreData\Techniques\DiffNormalPackedEnvCubeAlpha.xml</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\CoreData\Techniques\DiffNormalPackedSpec.xml">
+      <Link>Resources\CoreData\Techniques\DiffNormalPackedSpec.xml</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\CoreData\Techniques\DiffNormalPackedSpecAO.xml">
+      <Link>Resources\CoreData\Techniques\DiffNormalPackedSpecAO.xml</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\CoreData\Techniques\DiffNormalPackedSpecAOAlpha.xml">
+      <Link>Resources\CoreData\Techniques\DiffNormalPackedSpecAOAlpha.xml</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\CoreData\Techniques\DiffNormalPackedSpecAOAlphaMask.xml">
+      <Link>Resources\CoreData\Techniques\DiffNormalPackedSpecAOAlphaMask.xml</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\CoreData\Techniques\DiffNormalPackedSpecAlpha.xml">
+      <Link>Resources\CoreData\Techniques\DiffNormalPackedSpecAlpha.xml</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\CoreData\Techniques\DiffNormalPackedSpecAlphaMask.xml">
+      <Link>Resources\CoreData\Techniques\DiffNormalPackedSpecAlphaMask.xml</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\CoreData\Techniques\DiffNormalPackedSpecEmissive.xml">
+      <Link>Resources\CoreData\Techniques\DiffNormalPackedSpecEmissive.xml</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\CoreData\Techniques\DiffNormalPackedSpecEmissiveAlpha.xml">
+      <Link>Resources\CoreData\Techniques\DiffNormalPackedSpecEmissiveAlpha.xml</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\CoreData\Techniques\DiffNormalSpec.xml">
+      <Link>Resources\CoreData\Techniques\DiffNormalSpec.xml</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\CoreData\Techniques\DiffNormalSpecAO.xml">
+      <Link>Resources\CoreData\Techniques\DiffNormalSpecAO.xml</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\CoreData\Techniques\DiffNormalSpecAOAlpha.xml">
+      <Link>Resources\CoreData\Techniques\DiffNormalSpecAOAlpha.xml</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\CoreData\Techniques\DiffNormalSpecAOAlphaMask.xml">
+      <Link>Resources\CoreData\Techniques\DiffNormalSpecAOAlphaMask.xml</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\CoreData\Techniques\DiffNormalSpecAlpha.xml">
+      <Link>Resources\CoreData\Techniques\DiffNormalSpecAlpha.xml</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\CoreData\Techniques\DiffNormalSpecAlphaMask.xml">
+      <Link>Resources\CoreData\Techniques\DiffNormalSpecAlphaMask.xml</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\CoreData\Techniques\DiffNormalSpecEmissive.xml">
+      <Link>Resources\CoreData\Techniques\DiffNormalSpecEmissive.xml</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\CoreData\Techniques\DiffNormalSpecEmissiveAlpha.xml">
+      <Link>Resources\CoreData\Techniques\DiffNormalSpecEmissiveAlpha.xml</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\CoreData\Techniques\DiffOverlay.xml">
+      <Link>Resources\CoreData\Techniques\DiffOverlay.xml</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\CoreData\Techniques\DiffSkybox.xml">
+      <Link>Resources\CoreData\Techniques\DiffSkybox.xml</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\CoreData\Techniques\DiffSkyplane.xml">
+      <Link>Resources\CoreData\Techniques\DiffSkyplane.xml</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\CoreData\Techniques\DiffSpec.xml">
+      <Link>Resources\CoreData\Techniques\DiffSpec.xml</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\CoreData\Techniques\DiffSpecAlpha.xml">
+      <Link>Resources\CoreData\Techniques\DiffSpecAlpha.xml</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\CoreData\Techniques\DiffSpecAlphaMask.xml">
+      <Link>Resources\CoreData\Techniques\DiffSpecAlphaMask.xml</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\CoreData\Techniques\DiffUnlit.xml">
+      <Link>Resources\CoreData\Techniques\DiffUnlit.xml</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\CoreData\Techniques\DiffUnlitAlpha.xml">
+      <Link>Resources\CoreData\Techniques\DiffUnlitAlpha.xml</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\CoreData\Techniques\DiffUnlitAlphaMask.xml">
+      <Link>Resources\CoreData\Techniques\DiffUnlitAlphaMask.xml</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\CoreData\Techniques\DiffVCol.xml">
+      <Link>Resources\CoreData\Techniques\DiffVCol.xml</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\CoreData\Techniques\DiffVColAdd.xml">
+      <Link>Resources\CoreData\Techniques\DiffVColAdd.xml</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\CoreData\Techniques\DiffVColAddAlpha.xml">
+      <Link>Resources\CoreData\Techniques\DiffVColAddAlpha.xml</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\CoreData\Techniques\DiffVColMultiply.xml">
+      <Link>Resources\CoreData\Techniques\DiffVColMultiply.xml</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\CoreData\Techniques\DiffVColUnlitAlpha.xml">
+      <Link>Resources\CoreData\Techniques\DiffVColUnlitAlpha.xml</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\CoreData\Techniques\NoTexture.xml">
+      <Link>Resources\CoreData\Techniques\NoTexture.xml</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\CoreData\Techniques\NoTextureAO.xml">
+      <Link>Resources\CoreData\Techniques\NoTextureAO.xml</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\CoreData\Techniques\NoTextureAOAlpha.xml">
+      <Link>Resources\CoreData\Techniques\NoTextureAOAlpha.xml</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\CoreData\Techniques\NoTextureAdd.xml">
+      <Link>Resources\CoreData\Techniques\NoTextureAdd.xml</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\CoreData\Techniques\NoTextureAddAlpha.xml">
+      <Link>Resources\CoreData\Techniques\NoTextureAddAlpha.xml</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\CoreData\Techniques\NoTextureAlpha.xml">
+      <Link>Resources\CoreData\Techniques\NoTextureAlpha.xml</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\CoreData\Techniques\NoTextureEnvCube.xml">
+      <Link>Resources\CoreData\Techniques\NoTextureEnvCube.xml</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\CoreData\Techniques\NoTextureEnvCubeAO.xml">
+      <Link>Resources\CoreData\Techniques\NoTextureEnvCubeAO.xml</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\CoreData\Techniques\NoTextureEnvCubeAOAlpha.xml">
+      <Link>Resources\CoreData\Techniques\NoTextureEnvCubeAOAlpha.xml</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\CoreData\Techniques\NoTextureEnvCubeAlpha.xml">
+      <Link>Resources\CoreData\Techniques\NoTextureEnvCubeAlpha.xml</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\CoreData\Techniques\NoTextureMultiply.xml">
+      <Link>Resources\CoreData\Techniques\NoTextureMultiply.xml</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\CoreData\Techniques\NoTextureNormal.xml">
+      <Link>Resources\CoreData\Techniques\NoTextureNormal.xml</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\CoreData\Techniques\NoTextureNormalAlpha.xml">
+      <Link>Resources\CoreData\Techniques\NoTextureNormalAlpha.xml</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\CoreData\Techniques\NoTextureNormalPacked.xml">
+      <Link>Resources\CoreData\Techniques\NoTextureNormalPacked.xml</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\CoreData\Techniques\NoTextureNormalPackedAlpha.xml">
+      <Link>Resources\CoreData\Techniques\NoTextureNormalPackedAlpha.xml</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\CoreData\Techniques\NoTextureOverlay.xml">
+      <Link>Resources\CoreData\Techniques\NoTextureOverlay.xml</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\CoreData\Techniques\NoTextureUnlit.xml">
+      <Link>Resources\CoreData\Techniques\NoTextureUnlit.xml</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\CoreData\Techniques\NoTextureUnlitAlpha.xml">
+      <Link>Resources\CoreData\Techniques\NoTextureUnlitAlpha.xml</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\CoreData\Techniques\NoTextureUnlitVCol.xml">
+      <Link>Resources\CoreData\Techniques\NoTextureUnlitVCol.xml</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\CoreData\Techniques\NoTextureVCol.xml">
+      <Link>Resources\CoreData\Techniques\NoTextureVCol.xml</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\CoreData\Techniques\NoTextureVColAdd.xml">
+      <Link>Resources\CoreData\Techniques\NoTextureVColAdd.xml</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\CoreData\Techniques\NoTextureVColAddAlpha.xml">
+      <Link>Resources\CoreData\Techniques\NoTextureVColAddAlpha.xml</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\CoreData\Techniques\NoTextureVColMultiply.xml">
+      <Link>Resources\CoreData\Techniques\NoTextureVColMultiply.xml</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\CoreData\Techniques\TerrainBlend.xml">
+      <Link>Resources\CoreData\Techniques\TerrainBlend.xml</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\CoreData\Techniques\VegetationDiff.xml">
+      <Link>Resources\CoreData\Techniques\VegetationDiff.xml</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\CoreData\Techniques\VegetationDiffAlphaMask.xml">
+      <Link>Resources\CoreData\Techniques\VegetationDiffAlphaMask.xml</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\CoreData\Techniques\VegetationDiffUnlit.xml">
+      <Link>Resources\CoreData\Techniques\VegetationDiffUnlit.xml</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\CoreData\Techniques\VegetationDiffUnlitAlphaMask.xml">
+      <Link>Resources\CoreData\Techniques\VegetationDiffUnlitAlphaMask.xml</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\CoreData\Techniques\Water.xml">
+      <Link>Resources\CoreData\Techniques\Water.xml</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\CoreData\Textures\LUTIdentity.png">
+      <Link>Resources\CoreData\Textures\LUTIdentity.png</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\CoreData\Textures\LUTIdentity.xml">
+      <Link>Resources\CoreData\Textures\LUTIdentity.xml</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\CoreData\Textures\Ramp.png">
+      <Link>Resources\CoreData\Textures\Ramp.png</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\CoreData\Textures\Ramp.xml">
+      <Link>Resources\CoreData\Textures\Ramp.xml</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\CoreData\Textures\RampExtreme.png">
+      <Link>Resources\CoreData\Textures\RampExtreme.png</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\CoreData\Textures\RampExtreme.xml">
+      <Link>Resources\CoreData\Textures\RampExtreme.xml</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\CoreData\Textures\RampWide.png">
+      <Link>Resources\CoreData\Textures\RampWide.png</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\CoreData\Textures\RampWide.xml">
+      <Link>Resources\CoreData\Textures\RampWide.xml</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\CoreData\Textures\Spot.png">
+      <Link>Resources\CoreData\Textures\Spot.png</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\CoreData\Textures\Spot.xml">
+      <Link>Resources\CoreData\Textures\Spot.xml</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\CoreData\Textures\SpotWide.png">
+      <Link>Resources\CoreData\Textures\SpotWide.png</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\CoreData\Textures\SpotWide.xml">
+      <Link>Resources\CoreData\Textures\SpotWide.xml</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\Data\Fonts\BlueHighway.png">
+      <Link>Resources\Data\Fonts\BlueHighway.png</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\Data\Fonts\BlueHighway.ttf">
+      <Link>Resources\Data\Fonts\BlueHighway.ttf</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\Data\Materials\DefaultMaterial.xml">
+      <Link>Resources\Data\Materials\DefaultMaterial.xml</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\Data\Materials\Enemy1.xml">
+      <Link>Resources\Data\Materials\Enemy1.xml</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\Data\Materials\Grass.xml">
+      <Link>Resources\Data\Materials\Grass.xml</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\Data\Materials\MachineGun.xml">
+      <Link>Resources\Data\Materials\MachineGun.xml</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\Data\Materials\None.xml">
+      <Link>Resources\Data\Materials\None.xml</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\Data\Materials\Particle.xml">
+      <Link>Resources\Data\Materials\Particle.xml</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\Data\Materials\Player.xml">
+      <Link>Resources\Data\Materials\Player.xml</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\Data\Materials\TreeMaterial.xml">
+      <Link>Resources\Data\Materials\TreeMaterial.xml</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\Data\Models\Box.mdl">
+      <Link>Resources\Data\Models\Box.mdl</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\Data\Models\Enemy1.mdl">
+      <Link>Resources\Data\Models\Enemy1.mdl</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\Data\Models\Player.mdl">
+      <Link>Resources\Data\Models\Player.mdl</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\Data\Models\Sphere.mdl">
+      <Link>Resources\Data\Models\Sphere.mdl</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\Data\Models\Tree.mdl">
+      <Link>Resources\Data\Models\Tree.mdl</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\Data\Particle\Fire.xml">
+      <Link>Resources\Data\Particle\Fire.xml</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\Data\Textures\Enemy1.png">
+      <Link>Resources\Data\Textures\Enemy1.png</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\Data\Textures\Grass.dds">
+      <Link>Resources\Data\Textures\Grass.dds</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\Data\Textures\Player1.png">
+      <Link>Resources\Data\Textures\Player1.png</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\Data\Textures\TreeUV2.png">
+      <Link>Resources\Data\Textures\TreeUV2.png</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\Data\Urho2D\Explosion.pex">
+      <Link>Resources\Data\Urho2D\Explosion.pex</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\Data\Urho2D\Explosion.png">
+      <Link>Resources\Data\Urho2D\Explosion.png</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\Data\Urho2D\HeavyMissileExplosion.pex">
+      <Link>Resources\Data\Urho2D\HeavyMissileExplosion.pex</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\Data\Urho2D\HeavyMissileExplosion.png">
+      <Link>Resources\Data\Urho2D\HeavyMissileExplosion.png</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\Data\Urho2D\MissileTrace.pex">
+      <Link>Resources\Data\Urho2D\MissileTrace.pex</Link>
+    </BundleResource>
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Core" />
-    <Reference Include="Urho, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\UrhoSharp.1.0.44\lib\Xamarin.iOS10\Urho.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Urho.iOS, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\UrhoSharp.1.0.44\lib\Xamarin.iOS10\Urho.iOS.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="Xamarin.iOS" />
+    <Reference Include="Urho, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+      <HintPath>..\..\packages\UrhoSharp.1.0.44\lib\Xamarin.iOS10\Urho.dll</HintPath>
+    </Reference>
+    <Reference Include="Urho.iOS, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+      <HintPath>..\..\packages\UrhoSharp.1.0.44\lib\Xamarin.iOS10\Urho.iOS.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Entitlements.plist" />
@@ -122,4 +769,14 @@
     </PropertyGroup>
     <Error Condition="!Exists('..\..\packages\UrhoSharp.1.0.44\build\Xamarin.iOS10\UrhoSharp.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\UrhoSharp.1.0.44\build\Xamarin.iOS10\UrhoSharp.targets'))" />
   </Target>
+  <ItemGroup>
+    <Folder Include="Resources\CoreData\" />
+    <Folder Include="Resources\Data\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Core\ShootySkies.csproj">
+      <Project>{7C4B3936-72F4-49E0-B5A7-E1284863C8C4}</Project>
+      <Name>ShootySkies</Name>
+    </ProjectReference>
+  </ItemGroup>
 </Project>

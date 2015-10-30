@@ -6,7 +6,7 @@ namespace ShootySkies.Desktop
 	{
 		static void Main(string[] args)
 		{
-			UrhoEngine.Init(@"..\..\Assets");
+			UrhoEngine.Init(@"../../Assets");
 			new ShootySkiesGame(new Context()).Run();
 		}
 	}

@@ -29,11 +29,12 @@ namespace ShootySkies.iOS
 			window = new UIWindow(UIScreen.MainScreen.Bounds);
 
 			// If you have defined a view, add it here:
-			// window.RootViewController  = navigationController;
+			//window.RootViewController  = navigationController;
 
 			// make the window visible
-			window.MakeKeyAndVisible();
-
+			//window.MakeKeyAndVisible();
+			Urho.iOS.UrhoEngine.Init ();
+			new ShootySkiesGame (new Urho.Context ()).Run ();
 			return true;
 		}
 	}
