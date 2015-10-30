@@ -1,0 +1,6 @@
+<material>
+	<technique name="Techniques/Diff.xml"/>
+	<texture name="Textures/Enemy2.png" unit="diffuse"/>
+	<parameter name="MatDiffColor" value="0.64 0.64 0.64 1"/>
+	<parameter name="MatSpecColor" value="0.313953 0.313953 0.313953 50"/>
+</material>

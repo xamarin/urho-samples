@@ -24,7 +24,7 @@ namespace ShootySkies
 			body.SetKinematic(true);
 			body.CollisionMask = CollisionLayer;
 			CollisionShape shape = node.CreateComponent<CollisionShape>();
-			shape.SetBox(Vector3.One * 1.3f, Vector3.Zero, Quaternion.Identity);
+			shape.SetBox(Vector3.One * 1.1f, Vector3.Zero, Quaternion.Identity);
 			isAlive = true;
 			Init();
 			return liveTask.Task;
@@ -53,7 +53,7 @@ namespace ShootySkies
 			var specColorAnimation = new ValueAnimation(Context);
 			specColorAnimation.SetKeyFrame(0.0f, new Color(1.0f, 1.0f, 1.0f, 1.0f));
 			specColorAnimation.SetKeyFrame(0.2f, new Color(0.1f, 0.1f, 0.1f, 16.0f));
-			Node.GetComponent<StaticModel>().GetMaterial(0).SetShaderParameterAnimation("MatSpecColor", specColorAnimation, WrapMode.Once, 1.0f);
+			Node.GetComponent<StaticModel>().GetMaterial(0)?.SetShaderParameterAnimation("MatSpecColor", specColorAnimation, WrapMode.Once, 1.0f);
 		}
 
 		public int Health { get; set; }

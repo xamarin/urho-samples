@@ -11,7 +11,7 @@ namespace ShootySkies
 		Scene scene;
 		Node frontTile, rearTile;
 		Player player;
-		List<Aircraft> enemies;
+		List<Enemy> enemies;
 
 		const float BackgroundRotationX = 45f;
 		const float BackgroundRotationY = 15f;
@@ -80,7 +80,7 @@ namespace ShootySkies
 			aircraftNode.AddComponent(player);
 			var playersLife = player.Play();
 
-			enemies = new List<Aircraft>();
+			enemies = new List<Enemy>();
 
 			SummonEnemies();
 			await aircraftNode.RunActionsAsync(new DelayTime(1));
@@ -102,7 +102,7 @@ namespace ShootySkies
 			// Summon enemies one by one
 			while (player.IsAlive)
 			{
-				var enemy = new EnemyBat(Context);
+				var enemy = (RandomHelper.NextRandom(0, 3) == 1) ? (Enemy)new EnemySlotMachine(Context) : new EnemyBat(Context);
 				var enemyNode = scene.CreateChild(nameof(Aircraft));
 				enemyNode.AddComponent(enemy);
 				enemies.Add(enemy);
