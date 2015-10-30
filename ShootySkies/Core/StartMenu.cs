@@ -8,8 +8,8 @@ namespace ShootySkies
 		TaskCompletionSource<bool> menuTaskSource;
 		Node bigAircraft;
 		Node rotor;
-		Node menuLight;
 		Text textBlock;
+		Node menuLight;
 
 		public StartMenu(Context context) : base(context) {}
 
@@ -33,6 +33,7 @@ namespace ShootySkies
 			rotor.Position = new Vector3(0, -0.15f, 1);
 			rotor.RunActionsAsync(new RepeatForever(new RotateBy(1f, 0, 0, 360f * 2))); //RPM
 
+			menuLight?.Remove();
 			menuLight = Node.CreateChild();
 			menuLight.Position = new Vector3(0, 0, -10);
 			menuLight.AddComponent(new Light(Context) { LightType = LightType.Point, Range = 12, Brightness = 1f });

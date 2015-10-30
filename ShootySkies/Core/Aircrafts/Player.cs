@@ -1,11 +1,14 @@
 ﻿using System;
 using System.Linq;
+using System.Threading.Tasks;
 using Urho;
 
 namespace ShootySkies
 {
 	public class Player : Aircraft
 	{
+		Node rotor;
+
 		public const uint PlayerAircraftCollisionLayer = 2; //specific layer to ignore own bullets
 
 		public Player(Context context) : base(context) {}
@@ -28,7 +31,7 @@ namespace ShootySkies
 			node.Rotation = new Quaternion(-40, 0, 0);
 
 			//TODO: rotor should be defined in the model + animation
-			var rotor = node.CreateChild();
+			rotor = node.CreateChild();
 			var rotorModel = rotor.CreateComponent<StaticModel>();
 			rotorModel.Model = cache.GetModel("Models/Box.mdl");
 			rotor.Scale = new Vector3(0.1f, 1.4f, 0.1f);
@@ -42,6 +45,13 @@ namespace ShootySkies
 
 			await node.RunActionsAsync(new EaseOut(new MoveBy(0.5f, new Vector3(0, 3, 0)), 2));
 			MoveRandomly();
+		}
+
+		public override Task Explode()
+		{
+			rotor.RemoveAllActions();
+			rotor.Remove();
+			return base.Explode();
 		}
 
 		async void MoveRandomly()

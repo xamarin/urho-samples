@@ -30,7 +30,7 @@ namespace ShootySkies
 			return liveTask.Task;
 		}
 
-		public async Task Explode()
+		public async virtual Task Explode()
 		{
 			isAlive = false;
 			var cache = Application.ResourceCache;
@@ -60,7 +60,7 @@ namespace ShootySkies
 
 		public virtual int MaxHealth => 30;
 
-		protected bool IsAlive => isAlive && IsEnabled() && !IsDeleted;
+		public bool IsAlive => isAlive && IsEnabled() && !IsDeleted;
 
 		protected virtual void Init() {}
 

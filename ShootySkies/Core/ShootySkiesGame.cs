@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using Urho;
 
@@ -10,6 +11,7 @@ namespace ShootySkies
 		Scene scene;
 		Node frontTile, rearTile;
 		Player player;
+		List<Aircraft> enemies;
 
 		const float BackgroundRotationX = 45f;
 		const float BackgroundRotationY = 15f;
@@ -78,24 +80,34 @@ namespace ShootySkies
 			aircraftNode.AddComponent(player);
 			var playersLife = player.Play();
 
+			enemies = new List<Aircraft>();
+
 			SummonEnemies();
+			await aircraftNode.RunActionsAsync(new DelayTime(1));
 			SummonEnemies();
+			await aircraftNode.RunActionsAsync(new DelayTime(1));
 			SummonEnemies();
 
 			await playersLife;
+
+			//game over -- explode all enemies
+			foreach (var enemy in enemies)
+				enemy.Explode(); 
+
 			aircraftNode.Remove();
 		}
 
 		async void SummonEnemies()
 		{
 			// Summon enemies one by one
-			while (true)
+			while (player.IsAlive)
 			{
 				var enemy = new EnemyBat(Context);
 				var enemyNode = scene.CreateChild(nameof(Aircraft));
-				await enemyNode.RunActionsAsync(new DelayTime(RandomHelper.NextRandom(0.2f, 1f)));
 				enemyNode.AddComponent(enemy);
+				enemies.Add(enemy);
 				await enemy.Play();
+				enemies.Remove(enemy);
 				enemyNode.Remove();
 			}
 		}
