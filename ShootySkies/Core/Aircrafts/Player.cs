@@ -63,10 +63,30 @@ namespace ShootySkies
 			float maxX = 2.5f;
 
 			const float mouseSensitivity = .5f;
-			var mouseMove = input.MouseMove;
+			const float touchSensitivity = .1f;
 
-			var x = mouseSensitivity * mouseMove.X * moveSpeedX * timeStep;
-			var y = mouseSensitivity * -mouseMove.Y * moveSpeedY * timeStep;
+
+			float inputX = 0;
+			float inputY = 0;
+
+			if (input.NumTouches > 0)
+			{
+				TouchState state = input.GetTouch(0);
+				if (state.Delta.X != 0 || state.Delta.Y != 0)
+				{
+					inputX = state.Delta.X * touchSensitivity;
+					inputY = state.Delta.Y * touchSensitivity;
+				}
+			}
+			else
+			{
+				var mouseMove = input.MouseMove;
+				inputX = mouseSensitivity * mouseMove.X;
+				inputY = mouseSensitivity * mouseMove.Y;
+			}
+
+			var x = inputX * moveSpeedX * timeStep;
+			var y = -inputY * moveSpeedY * timeStep;
 
 			bool outOfBattlefield = (cX + x >= maxX && x > 0) || (cX + x <= -maxX && x < 0) || (cY + y >= maxY && y > 0) || (cY + y<= -maxY && y < 0);
 
@@ -91,7 +111,7 @@ namespace ShootySkies
 			}
 
 			// Fire 
-			if (input.GetMouseButtonDown(MouseButton.Left))
+			if (input.GetMouseButtonDown(MouseButton.Left) || input.NumTouches > 0)
 			{
 				foreach (var weapon in Node.Components.OfType<Weapon>())
 				{

@@ -5,7 +5,7 @@ using Urho;
 
 namespace ShootySkies
 {
-	public class ShootySkiesGame : GameBase
+	public class ShootySkiesGame : Application
 	{
 		Scene scene;
 		Node frontTile, rearTile;
@@ -24,6 +24,11 @@ namespace ShootySkies
 		{
 			base.Start();
 			CreateScene();
+			SubscribeToKeyDown(e =>
+				{
+					if (e.Key == Key.Esc)
+						Engine.Exit();
+				});
 		}
 
 		async void CreateScene()
@@ -34,10 +39,10 @@ namespace ShootySkies
 			var physics = scene.CreateComponent<PhysicsWorld>();
 			physics.SetGravity(new Vector3(0, 0, 0));
 
-			CameraNode = scene.CreateChild("Camera");
-			CameraNode.Position = (new Vector3(0.0f, 0.0f, -10.0f));
-			CameraNode.CreateComponent<Camera>();
-			Renderer.SetViewport(0, new Viewport(Context, scene, CameraNode.GetComponent<Camera>(), null));
+			var cameraNode = scene.CreateChild("Camera");
+			cameraNode.Position = (new Vector3(0.0f, 0.0f, -10.0f));
+			cameraNode.CreateComponent<Camera>();
+			Renderer.SetViewport(0, new Viewport(Context, scene, cameraNode.GetComponent<Camera>(), null));
 
 			// Background consists of two tiles (each BackgroundScale x BackgroundScale)
 			frontTile = CreateTile(0);
@@ -58,7 +63,6 @@ namespace ShootySkies
 			textBlock.Value = "points: 628";
 			textBlock.SetFont(ResourceCache.GetFont("Fonts/BlueHighway.ttf"), 22);
 			UI.Root.AddChild(textBlock);
-
 
 			// Lights:
 
