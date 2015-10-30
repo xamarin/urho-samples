@@ -70,9 +70,7 @@ namespace ShootySkies
 			var particleEmitter = explosionNode.CreateComponent<ParticleEmitter2D>();
 			particleEmitter.Effect = cache.GetParticleEffect2D("Urho2D/MissileTrace.pex");
 			ScaleBy scaleBy = new ScaleBy(0.2f, 0.1f);
-			var syn1 = SynchronizationContext.Current;
 			await explosionNode.RunActionsAsync(scaleBy, new DelayTime(1f));
-			var syn2 = SynchronizationContext.Current;
 			explosionNode.Remove();
 		}
 	}

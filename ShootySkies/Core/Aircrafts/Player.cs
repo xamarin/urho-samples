@@ -14,7 +14,7 @@ namespace ShootySkies
 
 		public override int MaxHealth => 100;
 
-		protected override void Init()
+		protected override async void Init()
 		{
 			var cache = Application.ResourceCache;
 			var node = Node;
@@ -24,13 +24,23 @@ namespace ShootySkies
 			model.SetMaterial(material);
 
 			node.SetScale(0.5f);
-			node.Position = new Vector3(0f, -3f, 0f);
+			node.Position = new Vector3(0f, -6f, 0f);
 			node.Rotation = new Quaternion(-40, 0, 0);
+
+			//TODO: rotor should be defined in the model + animation
+			var rotor = node.CreateChild();
+			var rotorModel = rotor.CreateComponent<StaticModel>();
+			rotorModel.Model = cache.GetModel("Models/Box.mdl");
+			rotor.Scale = new Vector3(0.1f, 1.4f, 0.1f);
+			rotor.Rotation = new Quaternion(0, 0, 0);
+			rotor.Position = new Vector3(0, -0.15f, 1.2f);
+			rotor.RunActionsAsync(new RepeatForever(new RotateBy(1f, 0, 0, 360f * 4))); //RPM
 
 			// Load weapons
 			node.AddComponent(new MachineGun(Context));
 			node.AddComponent(new Missile(Context));
 
+			await node.RunActionsAsync(new EaseOut(new MoveBy(0.5f, new Vector3(0, 3, 0)), 2));
 			MoveRandomly();
 		}
 
@@ -52,19 +62,16 @@ namespace ShootySkies
 			var aircraft = Node;
 			var timeStep = args.TimeStep;
 
-			var cX = aircraft.Position.X;
-			var cY = aircraft.Position.Y;
-
 			const float turnSpeed = 1f;
 			const float moveSpeedX = 3f;
 			const float moveSpeedY = 2f;
-
-			float maxY = 3.5f;
-			float maxX = 2.5f;
-
 			const float mouseSensitivity = .5f;
 			const float touchSensitivity = .1f;
+			const float maxY = 3.5f;
+			const float maxX = 2.5f;
 
+			var cX = aircraft.Position.X;
+			var cY = aircraft.Position.Y;
 
 			float inputX = 0;
 			float inputY = 0;

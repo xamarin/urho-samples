@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System.Threading;
+using System.Threading.Tasks;
 using Urho;
 
 namespace ShootySkies
@@ -12,7 +13,6 @@ namespace ShootySkies
 
 		public Task Play()
 		{
-			isAlive = true;
 			liveTask = new TaskCompletionSource<bool>();
 			Health = MaxHealth;
 			Application.Update += OnUpdate;
@@ -25,9 +25,8 @@ namespace ShootySkies
 			body.CollisionMask = CollisionLayer;
 			CollisionShape shape = node.CreateComponent<CollisionShape>();
 			shape.SetBox(Vector3.One * 1.3f, Vector3.Zero, Quaternion.Identity);
-
+			isAlive = true;
 			Init();
-
 			return liveTask.Task;
 		}
 

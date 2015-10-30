@@ -39,7 +39,7 @@ namespace ShootySkies
 			var physics = scene.CreateComponent<PhysicsWorld>();
 			physics.SetGravity(new Vector3(0, 0, 0));
 
-			var cameraNode = scene.CreateChild("Camera");
+			var cameraNode = scene.CreateChild();
 			cameraNode.Position = (new Vector3(0.0f, 0.0f, -10.0f));
 			cameraNode.CreateComponent<Camera>();
 			Renderer.SetViewport(0, new Viewport(Context, scene, cameraNode.GetComponent<Camera>(), null));
@@ -50,29 +50,33 @@ namespace ShootySkies
 
 			// Move them and swap (rotate) to be looked like the background is infinite
 			RotateBackground();
+			
+			// Lights:
 
+			var lightNode1 = scene.CreateChild();
+			lightNode1.Position = new Vector3(0, -5, -40);
+			lightNode1.AddComponent(new Light(Context) { LightType = LightType.Point, Range = 120, Brightness = 1.4f });
+
+			var lightNode2 = scene.CreateChild();
+			lightNode2.Position = new Vector3(10, 15, -12);
+			lightNode2.AddComponent(new Light(Context) { LightType = LightType.Point, Range = 30.0f, CastShadows = true, Brightness = 1.7f });
+
+			var startMenu = new StartMenu(Context);
+			scene.AddComponent(startMenu);
+
+			while (true)
+			{
+				await startMenu.ShowStartMenu(); //wait for "start"
+				await StartGame();
+			}
+		}
+
+		async Task StartGame()
+		{
 			player = new Player(Context);
 			var aircraftNode = scene.CreateChild(nameof(Aircraft));
 			aircraftNode.AddComponent(player);
 			var playersLife = player.Play();
-
-			// UI:
-
-			var textBlock = new Text(Context);
-			textBlock.HorizontalAlignment = HorizontalAlignment.Right;
-			textBlock.Value = "points: 628";
-			textBlock.SetFont(ResourceCache.GetFont("Fonts/BlueHighway.ttf"), 22);
-			UI.Root.AddChild(textBlock);
-
-			// Lights:
-
-			var lightNode1 = scene.CreateChild("Light1");
-			lightNode1.Position = new Vector3(0, -5, -40);
-			lightNode1.AddComponent(new Light(Context) { LightType = LightType.Point, Range = 120, Brightness = 1.4f });
-
-			var lightNode2 = scene.CreateChild("Light2");
-			lightNode2.Position = new Vector3(10, 15, -12);
-			lightNode2.AddComponent(new Light(Context) { LightType = LightType.Point, Range = 30.0f, CastShadows = true, Brightness = 1.7f });
 
 			SummonEnemies();
 			SummonEnemies();
@@ -80,7 +84,6 @@ namespace ShootySkies
 
 			await playersLife;
 			aircraftNode.Remove();
-			//game over
 		}
 
 		async void SummonEnemies()
@@ -127,7 +130,7 @@ namespace ShootySkies
 		{
 			var cache = ResourceCache;
 			Node tile = scene.CreateChild();
-			var planeNode = tile.CreateChild("Plane");
+			var planeNode = tile.CreateChild();
 			planeNode.Scale = new Vector3(BackgroundScale, 0.0001f, BackgroundScale);
 			var planeObject = planeNode.CreateComponent<StaticModel>();
 			planeObject.Model = cache.GetModel("Models/Box.mdl");
