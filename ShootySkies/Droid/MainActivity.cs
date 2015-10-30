@@ -1,10 +1,7 @@
-﻿using System;
-using Android.App;
-using Android.Content;
-using Android.Runtime;
-using Android.Views;
+﻿using Android.App;
 using Android.Widget;
 using Android.OS;
+using Urho.Droid;
 
 namespace ShootySkies.Droid
 {
@@ -23,8 +20,13 @@ namespace ShootySkies.Droid
 			// Get our button from the layout resource,
 			// and attach an event to it
 			Button button = FindViewById<Button>(Resource.Id.MyButton);
+			button.Text = "Start game";
 
-			button.Click += delegate { button.Text = string.Format("{0} clicks!", count++); };
+			button.Click += delegate
+				{
+					UrhoEngine.Init();
+					UrhoSurfaceViewController.RunInActivity<ShootySkiesGame>();
+				};
 		}
 	}
 }
