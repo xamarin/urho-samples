@@ -36,8 +36,8 @@ namespace ShootySkies
 			var b = bulletNode.CreateChild();
 
 			var model = b.CreateComponent<StaticModel>();
-			model.Model = cache.GetModel("Models/SMWeapon.mdl");
-			model.SetMaterial(cache.GetMaterial("Materials/SMWeapon.xml"));
+			model.Model = cache.GetModel(Assets.Models.SMWeapon);
+			model.SetMaterial(cache.GetMaterial(Assets.Materials.SMWeapon));
 
 			await bulletNode.RunActionsAsync(
 				new MoveBy(5f, direction),

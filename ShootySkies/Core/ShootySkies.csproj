@@ -35,6 +35,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Aircrafts\Aircraft.cs" />
+    <Compile Include="Assets.cs" />
     <Compile Include="Weapons\Coin.cs" />
     <Compile Include="Aircrafts\Enemies\Enemy.cs" />
     <Compile Include="Aircrafts\Enemies\EnemyBat.cs" />

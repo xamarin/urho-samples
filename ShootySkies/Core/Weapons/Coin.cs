@@ -16,8 +16,8 @@ namespace ShootySkies
 			var cache = Application.ResourceCache;
 			var node = CreateRigidBullet(byPlayer);
 			var model = node.CreateComponent<StaticModel>();
-			model.Model = cache.GetModel("Models/Coin.mdl");
-			model.SetMaterial(cache.GetMaterial("Materials/Coin.xml"));
+			model.Model = cache.GetModel(Assets.Models.Coin);
+			model.SetMaterial(cache.GetMaterial(Assets.Materials.Coin));
 
 			node.SetScale(1);
 			node.Rotation = new Quaternion(-40, 0, 0);

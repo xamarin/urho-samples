@@ -13,8 +13,8 @@ namespace ShootySkies
 			var cache = Application.ResourceCache;
 			var node = Node;
 			var model = node.CreateComponent<StaticModel>();
-			model.Model = cache.GetModel("Models/Enemy1.mdl");
-			model.SetMaterial(cache.GetMaterial("Materials/Enemy1.xml").Clone(""));
+			model.Model = cache.GetModel(Assets.Models.Enemy1);
+			model.SetMaterial(cache.GetMaterial(Assets.Materials.Enemy1).Clone(""));
 
 			node.SetScale(RandomHelper.NextRandom(0.5f, 0.8f));
 			node.Position = new Vector3(0f, 5f, 0f);

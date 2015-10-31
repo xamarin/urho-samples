@@ -35,14 +35,14 @@ namespace ShootySkies
 			var bulletModelNode = bulletNode.CreateChild();
 
 			var model = bulletModelNode.CreateComponent<StaticModel>();
-			model.Model = cache.GetModel("Models/Box.mdl");
+			model.Model = cache.GetModel(Assets.Models.Box);
 
 			bulletModelNode.Scale = new Vector3(1f, 2f, 1f) / 2.5f;
 			bulletNode.SetScale(0.3f);
 
 			// Trace-effect using particles
 			var particleEmitter = bulletNode.CreateComponent<ParticleEmitter2D>();
-			particleEmitter.Effect = cache.GetParticleEffect2D("Particles/MissileTrace.pex");
+			particleEmitter.Effect = cache.GetParticleEffect2D(Assets.Particles.MissileTrace);
 
 			// Route (Bezier)
 			float directionY = player ? 1 : -1;
@@ -71,7 +71,7 @@ namespace ShootySkies
 			explosionNode.SetScale(0.5f);
 			explosionNode.Position = target.Node.WorldPosition;
 			var particleEmitter = explosionNode.CreateComponent<ParticleEmitter2D>();
-			particleEmitter.Effect = cache.GetParticleEffect2D("Particles/MissileTrace.pex");
+			particleEmitter.Effect = cache.GetParticleEffect2D(Assets.Particles.MissileTrace);
 			ScaleBy scaleBy = new ScaleBy(0.2f, 0.1f);
 			await explosionNode.RunActionsAsync(scaleBy, new DelayTime(1f));
 			explosionNode.Remove();

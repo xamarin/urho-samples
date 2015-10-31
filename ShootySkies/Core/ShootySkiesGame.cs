@@ -45,7 +45,7 @@ namespace ShootySkies
 			// UI
 			coinsText = new Text(Context);
 			coinsText.HorizontalAlignment = HorizontalAlignment.Right;
-			coinsText.SetFont(ResourceCache.GetFont("Fonts/BlueHighway.ttf"), 18);
+			coinsText.SetFont(ResourceCache.GetFont(Assets.Fonts.BlueHighway), 18);
 			UI.Root.AddChild(coinsText);
 
 			// Background

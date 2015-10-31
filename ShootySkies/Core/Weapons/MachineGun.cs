@@ -26,8 +26,8 @@ namespace ShootySkies
 			bulletNode.Translate(new Vector3(currentGunOffset, 0, 0), TransformSpace.Local);
 
 			var model = bulletNode.CreateComponent<StaticModel>();
-			model.Model = cache.GetModel("Models/Box.mdl");
-			var mat = cache.GetMaterial("Materials/MachineGun.xml");
+			model.Model = cache.GetModel(Assets.Models.Box);
+			var mat = cache.GetMaterial(Assets.Materials.MachineGun);
 			model.SetMaterial(mat);
 			bulletNode.Rotate(new Quaternion(0, -40, 0), TransformSpace.Local);
 

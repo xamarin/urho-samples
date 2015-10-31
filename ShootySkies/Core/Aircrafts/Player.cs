@@ -21,8 +21,8 @@ namespace ShootySkies
 			var cache = Application.ResourceCache;
 			var node = Node;
 			var model = node.CreateComponent<StaticModel>();
-			model.Model = cache.GetModel("Models/Player.mdl");
-			var material = cache.GetMaterial("Materials/Player.xml").Clone("");
+			model.Model = cache.GetModel(Assets.Models.Player);
+			var material = cache.GetMaterial(Assets.Materials.Player).Clone("");
 			model.SetMaterial(material);
 
 			node.SetScale(0.5f);
@@ -32,8 +32,8 @@ namespace ShootySkies
 			//TODO: rotor should be defined in the model + animation
 			rotor = node.CreateChild();
 			var rotorModel = rotor.CreateComponent<StaticModel>();
-			rotorModel.Model = cache.GetModel("Models/Box.mdl");
-			rotorModel.SetMaterial(cache.GetMaterial("Materials/Black.xml"));
+			rotorModel.Model = cache.GetModel(Assets.Models.Box);
+			rotorModel.SetMaterial(cache.GetMaterial(Assets.Materials.Black));
 			rotor.Scale = new Vector3(0.1f, 1.4f, 0.1f);
 			rotor.Rotation = new Quaternion(0, 0, 0);
 			rotor.Position = new Vector3(0, -0.15f, 1.2f);
@@ -53,7 +53,7 @@ namespace ShootySkies
 			rotor.Remove();
 			var particleEmitter = explodeNode.CreateComponent<ParticleEmitter2D>();
 			explodeNode.SetScale(1.5f);
-			particleEmitter.Effect = Application.ResourceCache.GetParticleEffect2D("Particles/PlayerExplosion.pex");
+			particleEmitter.Effect = Application.ResourceCache.GetParticleEffect2D(Assets.Particles.PlayerExplosion);
 		}
 
 		async void MoveRandomly()

@@ -61,8 +61,8 @@ namespace ShootySkies
 			var planeNode = tile.CreateChild();
 			planeNode.Scale = new Vector3(BackgroundScale, 0.0001f, BackgroundScale);
 			var planeObject = planeNode.CreateComponent<StaticModel>();
-			planeObject.Model = cache.GetModel("Models/Box.mdl");
-			planeObject.SetMaterial(cache.GetMaterial("Materials/Grass.xml"));
+			planeObject.Model = cache.GetModel(Assets.Models.Box);
+			planeObject.SetMaterial(cache.GetMaterial(Assets.Materials.Grass));
 
 			var usedCoordinates = new HashSet<Vector3>();
 			for (int i = 0; i < TreesPerTile; i++)
@@ -108,8 +108,8 @@ namespace ShootySkies
 			Node treeNode = container.CreateChild();
 			treeNode.Rotate(new Quaternion(0, RandomHelper.NextRandom(0, 5) * 90, 0), TransformSpace.Local);
 			var model = treeNode.CreateComponent<StaticModel>();
-			model.Model = cache.GetModel("Models/Tree.mdl");
-			model.SetMaterial(cache.GetMaterial("Materials/TreeMaterial.xml"));
+			model.Model = cache.GetModel(Assets.Models.Tree);
+			model.SetMaterial(cache.GetMaterial(Assets.Materials.TreeMaterial));
 			treeNode.SetScale(RandomHelper.NextRandom(0.2f, 0.3f));
 			model.CastShadows = true;
 			return treeNode;

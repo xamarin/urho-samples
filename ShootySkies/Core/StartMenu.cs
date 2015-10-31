@@ -18,8 +18,8 @@ namespace ShootySkies
 			var cache = Application.ResourceCache;
 			bigAircraft = Node.CreateChild();
 			var model = bigAircraft.CreateComponent<StaticModel>();
-			model.Model = cache.GetModel("Models/Player.mdl");
-			model.SetMaterial(cache.GetMaterial("Materials/Player.xml").Clone(""));
+			model.Model = cache.GetModel(Assets.Models.Player);
+			model.SetMaterial(cache.GetMaterial(Assets.Materials.Player).Clone(""));
 			bigAircraft.SetScale(1.2f);
 			bigAircraft.Rotate(new Quaternion(0, 220, 40), TransformSpace.Local);
 			bigAircraft.Position = new Vector3(10, 2, 10);
@@ -27,8 +27,8 @@ namespace ShootySkies
 			//TODO: rotor should be defined in the model + animation
 			rotor = bigAircraft.CreateChild();
 			var rotorModel = rotor.CreateComponent<StaticModel>();
-			rotorModel.Model = cache.GetModel("Models/Box.mdl");
-			rotorModel.SetMaterial(cache.GetMaterial("Materials/Black.xml"));
+			rotorModel.Model = cache.GetModel(Assets.Models.Box);
+			rotorModel.SetMaterial(cache.GetMaterial(Assets.Materials.Black));
 			rotor.Scale = new Vector3(0.1f, 1.6f, 0.1f);
 			rotor.Rotation = new Quaternion(0, 0, 0);
 			rotor.Position = new Vector3(0, -0.15f, 1);
@@ -45,7 +45,7 @@ namespace ShootySkies
 			textBlock.HorizontalAlignment = HorizontalAlignment.Center;
 			textBlock.VerticalAlignment = VerticalAlignment.Bottom;
 			textBlock.Value = "TAP TO START";
-			textBlock.SetFont(cache.GetFont("Fonts/BlueHighway.ttf"), 28);
+			textBlock.SetFont(cache.GetFont(Assets.Fonts.BlueHighway), 28);
 			Application.UI.Root.AddChild(textBlock);
 
 			menuTaskSource = new TaskCompletionSource<bool>();
