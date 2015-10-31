@@ -50,8 +50,13 @@
     <ConsolePause>false</ConsolePause>
     <MtouchArch>ARMv7, ARM64</MtouchArch>
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
-    <CodesignKey>iPhone Developer</CodesignKey>
+    <CodesignKey>iPhone Developer: Yahor Bahatau (PW9C6H2Z34)</CodesignKey>
     <MtouchDebug>true</MtouchDebug>
+    <CodesignProvision>1c92fa31-7088-4869-9304-8ff238fee60a</CodesignProvision>
+    <MtouchFastDev>true</MtouchFastDev>
+    <IpaPackageName>
+    </IpaPackageName>
+    <OptimizePNGs>false</OptimizePNGs>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhone' ">
     <DebugType>none</DebugType>
@@ -99,6 +104,120 @@
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\Default-568h%402x.png" />
+    <BundleResource Include="..\Assets\Data\Fonts\BlueHighway.png">
+      <Link>Resources\Data\Fonts\BlueHighway.png</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\Data\Fonts\BlueHighway.ttf">
+      <Link>Resources\Data\Fonts\BlueHighway.ttf</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\Data\Materials\Black.xml">
+      <Link>Resources\Data\Materials\Black.xml</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\Data\Materials\Coin.xml">
+      <Link>Resources\Data\Materials\Coin.xml</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\Data\Materials\DefaultMaterial.xml">
+      <Link>Resources\Data\Materials\DefaultMaterial.xml</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\Data\Materials\Enemy1.xml">
+      <Link>Resources\Data\Materials\Enemy1.xml</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\Data\Materials\Enemy2.xml">
+      <Link>Resources\Data\Materials\Enemy2.xml</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\Data\Materials\Grass.xml">
+      <Link>Resources\Data\Materials\Grass.xml</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\Data\Materials\MachineGun.xml">
+      <Link>Resources\Data\Materials\MachineGun.xml</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\Data\Materials\None.xml">
+      <Link>Resources\Data\Materials\None.xml</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\Data\Materials\Particle.xml">
+      <Link>Resources\Data\Materials\Particle.xml</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\Data\Materials\Player-material.xml">
+      <Link>Resources\Data\Materials\Player-material.xml</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\Data\Materials\Player.xml">
+      <Link>Resources\Data\Materials\Player.xml</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\Data\Materials\SMWeapon.xml">
+      <Link>Resources\Data\Materials\SMWeapon.xml</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\Data\Materials\TreeMaterial.xml">
+      <Link>Resources\Data\Materials\TreeMaterial.xml</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\Data\Models\Box.mdl">
+      <Link>Resources\Data\Models\Box.mdl</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\Data\Models\Coin.mdl">
+      <Link>Resources\Data\Models\Coin.mdl</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\Data\Models\Enemy1.mdl">
+      <Link>Resources\Data\Models\Enemy1.mdl</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\Data\Models\Enemy2.mdl">
+      <Link>Resources\Data\Models\Enemy2.mdl</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\Data\Models\Player.mdl">
+      <Link>Resources\Data\Models\Player.mdl</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\Data\Models\SMWeapon.mdl">
+      <Link>Resources\Data\Models\SMWeapon.mdl</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\Data\Models\Sphere.mdl">
+      <Link>Resources\Data\Models\Sphere.mdl</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\Data\Models\Tree.mdl">
+      <Link>Resources\Data\Models\Tree.mdl</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\Data\Particles\Explosion.pex">
+      <Link>Resources\Data\Particles\Explosion.pex</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\Data\Particles\Explosion.png">
+      <Link>Resources\Data\Particles\Explosion.png</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\Data\Particles\HeavyMissileExplosion.pex">
+      <Link>Resources\Data\Particles\HeavyMissileExplosion.pex</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\Data\Particles\HeavyMissileExplosion.png">
+      <Link>Resources\Data\Particles\HeavyMissileExplosion.png</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\Data\Particles\MissileTrace.pex">
+      <Link>Resources\Data\Particles\MissileTrace.pex</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\Data\Particles\PlayerExplosion.pex">
+      <Link>Resources\Data\Particles\PlayerExplosion.pex</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\Data\Particles\PlayerExplosion.png">
+      <Link>Resources\Data\Particles\PlayerExplosion.png</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\Data\Textures\Coin.png">
+      <Link>Resources\Data\Textures\Coin.png</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\Data\Textures\Enemy1.png">
+      <Link>Resources\Data\Textures\Enemy1.png</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\Data\Textures\Enemy2.png">
+      <Link>Resources\Data\Textures\Enemy2.png</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\Data\Textures\Grass.dds">
+      <Link>Resources\Data\Textures\Grass.dds</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\Data\Textures\Player.002">
+      <Link>Resources\Data\Textures\Player.002</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\Data\Textures\Player1.png">
+      <Link>Resources\Data\Textures\Player1.png</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\Data\Textures\SMWeapon.002">
+      <Link>Resources\Data\Textures\SMWeapon.002</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\Data\Textures\TreeUV2.png">
+      <Link>Resources\Data\Textures\TreeUV2.png</Link>
+    </BundleResource>
     <BundleResource Include="..\Assets\CoreData\Materials\DefaultGrey.xml">
       <Link>Resources\CoreData\Materials\DefaultGrey.xml</Link>
     </BundleResource>
@@ -669,81 +788,6 @@
     <BundleResource Include="..\Assets\CoreData\Textures\SpotWide.xml">
       <Link>Resources\CoreData\Textures\SpotWide.xml</Link>
     </BundleResource>
-    <BundleResource Include="..\Assets\Data\Fonts\BlueHighway.png">
-      <Link>Resources\Data\Fonts\BlueHighway.png</Link>
-    </BundleResource>
-    <BundleResource Include="..\Assets\Data\Fonts\BlueHighway.ttf">
-      <Link>Resources\Data\Fonts\BlueHighway.ttf</Link>
-    </BundleResource>
-    <BundleResource Include="..\Assets\Data\Materials\DefaultMaterial.xml">
-      <Link>Resources\Data\Materials\DefaultMaterial.xml</Link>
-    </BundleResource>
-    <BundleResource Include="..\Assets\Data\Materials\Enemy1.xml">
-      <Link>Resources\Data\Materials\Enemy1.xml</Link>
-    </BundleResource>
-    <BundleResource Include="..\Assets\Data\Materials\Grass.xml">
-      <Link>Resources\Data\Materials\Grass.xml</Link>
-    </BundleResource>
-    <BundleResource Include="..\Assets\Data\Materials\MachineGun.xml">
-      <Link>Resources\Data\Materials\MachineGun.xml</Link>
-    </BundleResource>
-    <BundleResource Include="..\Assets\Data\Materials\None.xml">
-      <Link>Resources\Data\Materials\None.xml</Link>
-    </BundleResource>
-    <BundleResource Include="..\Assets\Data\Materials\Particle.xml">
-      <Link>Resources\Data\Materials\Particle.xml</Link>
-    </BundleResource>
-    <BundleResource Include="..\Assets\Data\Materials\Player.xml">
-      <Link>Resources\Data\Materials\Player.xml</Link>
-    </BundleResource>
-    <BundleResource Include="..\Assets\Data\Materials\TreeMaterial.xml">
-      <Link>Resources\Data\Materials\TreeMaterial.xml</Link>
-    </BundleResource>
-    <BundleResource Include="..\Assets\Data\Models\Box.mdl">
-      <Link>Resources\Data\Models\Box.mdl</Link>
-    </BundleResource>
-    <BundleResource Include="..\Assets\Data\Models\Enemy1.mdl">
-      <Link>Resources\Data\Models\Enemy1.mdl</Link>
-    </BundleResource>
-    <BundleResource Include="..\Assets\Data\Models\Player.mdl">
-      <Link>Resources\Data\Models\Player.mdl</Link>
-    </BundleResource>
-    <BundleResource Include="..\Assets\Data\Models\Sphere.mdl">
-      <Link>Resources\Data\Models\Sphere.mdl</Link>
-    </BundleResource>
-    <BundleResource Include="..\Assets\Data\Models\Tree.mdl">
-      <Link>Resources\Data\Models\Tree.mdl</Link>
-    </BundleResource>
-    <BundleResource Include="..\Assets\Data\Particle\Fire.xml">
-      <Link>Resources\Data\Particle\Fire.xml</Link>
-    </BundleResource>
-    <BundleResource Include="..\Assets\Data\Textures\Enemy1.png">
-      <Link>Resources\Data\Textures\Enemy1.png</Link>
-    </BundleResource>
-    <BundleResource Include="..\Assets\Data\Textures\Grass.dds">
-      <Link>Resources\Data\Textures\Grass.dds</Link>
-    </BundleResource>
-    <BundleResource Include="..\Assets\Data\Textures\Player1.png">
-      <Link>Resources\Data\Textures\Player1.png</Link>
-    </BundleResource>
-    <BundleResource Include="..\Assets\Data\Textures\TreeUV2.png">
-      <Link>Resources\Data\Textures\TreeUV2.png</Link>
-    </BundleResource>
-    <BundleResource Include="..\Assets\Data\Urho2D\Explosion.pex">
-      <Link>Resources\Data\Urho2D\Explosion.pex</Link>
-    </BundleResource>
-    <BundleResource Include="..\Assets\Data\Urho2D\Explosion.png">
-      <Link>Resources\Data\Urho2D\Explosion.png</Link>
-    </BundleResource>
-    <BundleResource Include="..\Assets\Data\Urho2D\HeavyMissileExplosion.pex">
-      <Link>Resources\Data\Urho2D\HeavyMissileExplosion.pex</Link>
-    </BundleResource>
-    <BundleResource Include="..\Assets\Data\Urho2D\HeavyMissileExplosion.png">
-      <Link>Resources\Data\Urho2D\HeavyMissileExplosion.png</Link>
-    </BundleResource>
-    <BundleResource Include="..\Assets\Data\Urho2D\MissileTrace.pex">
-      <Link>Resources\Data\Urho2D\MissileTrace.pex</Link>
-    </BundleResource>
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -769,10 +813,6 @@
     </PropertyGroup>
     <Error Condition="!Exists('..\..\packages\UrhoSharp.1.0.44\build\Xamarin.iOS10\UrhoSharp.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\UrhoSharp.1.0.44\build\Xamarin.iOS10\UrhoSharp.targets'))" />
   </Target>
-  <ItemGroup>
-    <Folder Include="Resources\CoreData\" />
-    <Folder Include="Resources\Data\" />
-  </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Core\ShootySkies.csproj">
       <Project>{7C4B3936-72F4-49E0-B5A7-E1284863C8C4}</Project>
