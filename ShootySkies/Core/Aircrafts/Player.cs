@@ -34,6 +34,7 @@ namespace ShootySkies
 			rotor = node.CreateChild();
 			var rotorModel = rotor.CreateComponent<StaticModel>();
 			rotorModel.Model = cache.GetModel("Models/Box.mdl");
+			rotorModel.SetMaterial(cache.GetMaterial("Materials/Black.xml"));
 			rotor.Scale = new Vector3(0.1f, 1.4f, 0.1f);
 			rotor.Rotation = new Quaternion(0, 0, 0);
 			rotor.Position = new Vector3(0, -0.15f, 1.2f);
@@ -47,11 +48,13 @@ namespace ShootySkies
 			MoveRandomly();
 		}
 
-		public override Task Explode()
+		protected override void OnExplode(Node explodeNode)
 		{
 			rotor.RemoveAllActions();
 			rotor.Remove();
-			return base.Explode();
+			var particleEmitter = explodeNode.CreateComponent<ParticleEmitter2D>();
+			explodeNode.SetScale(1.5f);
+			particleEmitter.Effect = Application.ResourceCache.GetParticleEffect2D("Particles/PlayerExplosion.pex");
 		}
 
 		async void MoveRandomly()

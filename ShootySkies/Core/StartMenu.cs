@@ -28,10 +28,11 @@ namespace ShootySkies
 			rotor = bigAircraft.CreateChild();
 			var rotorModel = rotor.CreateComponent<StaticModel>();
 			rotorModel.Model = cache.GetModel("Models/Box.mdl");
+			rotorModel.SetMaterial(cache.GetMaterial("Materials/Black.xml"));
 			rotor.Scale = new Vector3(0.1f, 1.6f, 0.1f);
 			rotor.Rotation = new Quaternion(0, 0, 0);
 			rotor.Position = new Vector3(0, -0.15f, 1);
-			rotor.RunActionsAsync(new RepeatForever(new RotateBy(1f, 0, 0, 360f * 2))); //RPM
+			rotor.RunActionsAsync(new RepeatForever(new RotateBy(1f, 0, 0, 360f * 3))); //RPM
 
 			menuLight?.Remove();
 			menuLight = Node.CreateChild();

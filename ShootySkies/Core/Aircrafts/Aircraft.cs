@@ -30,21 +30,24 @@ namespace ShootySkies
 			return liveTask.Task;
 		}
 
-		public async virtual Task Explode()
+		public async Task Explode()
 		{
 			isAlive = false;
-			var cache = Application.ResourceCache;
 			var explosionNode = Scene.CreateChild();
-			explosionNode.SetScale(1f);
-			explosionNode.Position = this.Node.WorldPosition;
-			var particleEmitter = explosionNode.CreateComponent<ParticleEmitter2D>();
-			particleEmitter.Effect = cache.GetParticleEffect2D("Urho2D/Explosion.pex");
+			explosionNode.Position = Node.WorldPosition;
+			OnExplode(explosionNode);
 			ScaleBy scaleBy = new ScaleBy(0.7f, 0f);
 			Node.RemoveAllActions();
 			Node.SetEnabled(false);
 			await explosionNode.RunActionsAsync(scaleBy, new DelayTime(1f));
 			liveTask.TrySetResult(true);
 			explosionNode.Remove();
+		}
+
+		protected virtual void OnExplode(Node explodeNode)
+		{
+			var particleEmitter = explodeNode.CreateComponent<ParticleEmitter2D>();
+			particleEmitter.Effect = Application.ResourceCache.GetParticleEffect2D("Particles/Explosion.pex");
 		}
 
 		public void Hit()

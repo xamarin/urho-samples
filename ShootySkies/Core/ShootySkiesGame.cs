@@ -12,6 +12,7 @@ namespace ShootySkies
 		Node frontTile, rearTile;
 		Player player;
 		List<Enemy> enemies;
+		private MonoDebugHud hud;
 
 		const float BackgroundRotationX = 45f;
 		const float BackgroundRotationY = 15f;
@@ -66,6 +67,9 @@ namespace ShootySkies
 			var startMenu = new StartMenu(Context);
 			scene.AddComponent(startMenu);
 
+			hud = new MonoDebugHud(this);
+			hud.Show();
+
 			while (true)
 			{
 				await startMenu.ShowStartMenu(); //wait for "start"
@@ -102,7 +106,7 @@ namespace ShootySkies
 			// Summon enemies one by one
 			while (player.IsAlive)
 			{
-				var enemy = (RandomHelper.NextRandom(0, 3) == 1) ? (Enemy)new EnemySlotMachine(Context) : new EnemyBat(Context);
+				Enemy enemy = (RandomHelper.NextRandom(0, 3) == 1) ? (Enemy)new EnemySlotMachine(Context) : new EnemyBat(Context);
 				var enemyNode = scene.CreateChild(nameof(Aircraft));
 				enemyNode.AddComponent(enemy);
 				enemies.Add(enemy);

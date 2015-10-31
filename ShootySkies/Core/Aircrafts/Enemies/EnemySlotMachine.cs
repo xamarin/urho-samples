@@ -18,7 +18,7 @@ namespace ShootySkies
 
 			node.SetScale(RandomHelper.NextRandom(0.9f, 1.1f));
 			node.Position = new Vector3(0f, 5f, 0f);
-			node.Rotation = new Quaternion(240, 180, 0);
+			node.Rotation = new Quaternion(225, 180, 0);
 
 			node.AddComponent(new Joysticks(Context));
 			base.Init();
