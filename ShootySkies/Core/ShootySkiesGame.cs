@@ -15,6 +15,10 @@ namespace ShootySkies
 		Text coinsText;
 		List<Enemy> enemies;
 
+		public Camera Camera { get; private set; }
+
+		public Viewport Viewport { get; private set; }
+
 		public ShootySkiesGame(Context c) : base(c, new ApplicationOptions { Height = 800, Width = 500, Orientation = ApplicationOptions.OrientationType.Portrait }) { }
 
 		public override void Start()
@@ -39,14 +43,15 @@ namespace ShootySkies
 			// Camera
 			var cameraNode = scene.CreateChild();
 			cameraNode.Position = (new Vector3(0.0f, 0.0f, -10.0f));
-			cameraNode.CreateComponent<Camera>();
-			Renderer.SetViewport(0, new Viewport(Context, scene, cameraNode.GetComponent<Camera>(), null));
+			Camera = cameraNode.CreateComponent<Camera>();
+			Renderer.SetViewport(0, Viewport = new Viewport(Context, scene, cameraNode.GetComponent<Camera>(), null));
 
 			// UI
 			coinsText = new Text(Context);
 			coinsText.HorizontalAlignment = HorizontalAlignment.Right;
 			coinsText.SetFont(ResourceCache.GetFont(Assets.Fonts.BlueHighway), 18);
 			UI.Root.AddChild(coinsText);
+			Input.SetMouseVisible(true, false);
 
 			// Background
 			var background = new Background(Context);
@@ -90,7 +95,7 @@ namespace ShootySkies
 				await aircraftNode.RunActionsAsync(new DelayTime(1));
 			}
 			SpawnCoins();
-			
+
 			await playersLife;
 
 			//game over -- explode all enemies

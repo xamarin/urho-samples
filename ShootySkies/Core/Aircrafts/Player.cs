@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Linq;
 using Urho;
 
@@ -25,7 +26,7 @@ namespace ShootySkies
 			var material = cache.GetMaterial(Assets.Materials.Player).Clone("");
 			model.SetMaterial(material);
 
-			node.SetScale(0.5f);
+			node.SetScale(0.45f);
 			node.Position = new Vector3(0f, -6f, 0f);
 			node.Rotation = new Quaternion(-40, 0, 0);
 
@@ -64,7 +65,7 @@ namespace ShootySkies
 				await Node.RunActionsAsync(moveAction, moveAction.Reverse());
 			}
 		}
-		
+
 		protected override void OnUpdate(UpdateEventArgs args)
 		{
 			if (!IsAlive)
@@ -76,17 +77,11 @@ namespace ShootySkies
 
 			const float turnSpeed = 1f;
 			const float moveSpeedX = 3f;
-			const float moveSpeedY = 2f;
 			const float mouseSensitivity = .5f;
 			const float touchSensitivity = .1f;
-			const float maxY = 3.5f;
-			const float maxX = 2.5f;
-
-			var cX = aircraft.Position.X;
-			var cY = aircraft.Position.Y;
 
 			float inputX = 0;
-			float inputY = 0;
+			IntVector2 touchPosition;
 
 			if (input.NumTouches > 0)
 			{
@@ -94,28 +89,25 @@ namespace ShootySkies
 				if (state.Delta.X != 0 || state.Delta.Y != 0)
 				{
 					inputX = state.Delta.X * touchSensitivity;
-					inputY = state.Delta.Y * touchSensitivity;
 				}
+				touchPosition = state.Position;
+
+				var srcPos = aircraft.WorldPosition;
+				Vector3 destWorldPos = ((ShootySkiesGame)Application).Viewport.ScreenToWorldPoint(touchPosition.X, touchPosition.Y, 10);
+
+				var delta = (destWorldPos - srcPos);
+				aircraft.Translate(delta, TransformSpace.World);
 			}
 			else
 			{
 				var mouseMove = input.MouseMove;
 				inputX = mouseSensitivity * mouseMove.X;
-				inputY = mouseSensitivity * mouseMove.Y;
 			}
 
 			var x = inputX * moveSpeedX * timeStep;
-			var y = -inputY * moveSpeedY * timeStep;
-
-			bool outOfBattlefield = (cX + x >= maxX && x > 0) || (cX + x <= -maxX && x < 0) || (cY + y >= maxY && y > 0) || (cY + y<= -maxY && y < 0);
-
-			if (!outOfBattlefield)
-			{
-				aircraft.Translate(new Vector3(x, y, 0), TransformSpace.World);
-			}
 
 			// a small rotation left/right
-			if (Math.Abs(x) > 0.01 && !outOfBattlefield)
+			if (Math.Abs(x) > 0.01)
 			{
 				aircraft.Rotate(new Quaternion(0, turnSpeed * (x > 0 ? -1 : 1), 0f), TransformSpace.World);
 			}
