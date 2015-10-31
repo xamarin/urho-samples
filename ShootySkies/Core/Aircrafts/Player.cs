@@ -81,8 +81,6 @@ namespace ShootySkies
 			const float touchSensitivity = .1f;
 
 			float inputX = 0;
-			IntVector2 touchPosition;
-
 			if (input.NumTouches > 0)
 			{
 				TouchState state = input.GetTouch(0);
@@ -90,22 +88,20 @@ namespace ShootySkies
 				{
 					inputX = state.Delta.X * touchSensitivity;
 				}
-				touchPosition = state.Position;
-
-				var srcPos = aircraft.WorldPosition;
+				var touchPosition = state.Position;
 				Vector3 destWorldPos = ((ShootySkiesGame)Application).Viewport.ScreenToWorldPoint(touchPosition.X, touchPosition.Y, 10);
-
-				var delta = (destWorldPos - srcPos);
-				aircraft.Translate(delta, TransformSpace.World);
+				aircraft.Translate(destWorldPos - aircraft.WorldPosition, TransformSpace.World);
 			}
-			else
+			else if (!((ShootySkiesGame)Application).TouchEnabled)
 			{
-				var mouseMove = input.MouseMove;
-				inputX = mouseSensitivity * mouseMove.X;
+				var mousePos = input.MousePosition;
+				inputX = mouseSensitivity * input.MouseMove.X;
+				Vector3 destWorldPos = ((ShootySkiesGame)Application).Viewport.ScreenToWorldPoint(mousePos.X, mousePos.Y, 10);
+				aircraft.Translate(destWorldPos - aircraft.WorldPosition, TransformSpace.World);
 			}
 
 			var x = inputX * moveSpeedX * timeStep;
-
+			
 			// a small rotation left/right
 			if (Math.Abs(x) > 0.01)
 			{

@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Threading;
 using System.Threading.Tasks;
 using Urho;
 
@@ -15,15 +16,16 @@ namespace ShootySkies
 		Text coinsText;
 		List<Enemy> enemies;
 
-		public Camera Camera { get; private set; }
-
 		public Viewport Viewport { get; private set; }
+
+		public bool TouchEnabled { get; set; }
 
 		public ShootySkiesGame(Context c) : base(c, new ApplicationOptions { Height = 800, Width = 500, Orientation = ApplicationOptions.OrientationType.Portrait }) { }
 
 		public override void Start()
 		{
 			base.Start();
+			TouchEnabled = Runtime.Platform == "Android" || Runtime.Platform == "iOS";
 			CreateScene();
 			SubscribeToKeyDown(e =>
 				{
@@ -43,7 +45,7 @@ namespace ShootySkies
 			// Camera
 			var cameraNode = scene.CreateChild();
 			cameraNode.Position = (new Vector3(0.0f, 0.0f, -10.0f));
-			Camera = cameraNode.CreateComponent<Camera>();
+			cameraNode.CreateComponent<Camera>();
 			Renderer.SetViewport(0, Viewport = new Viewport(Context, scene, cameraNode.GetComponent<Camera>(), null));
 
 			// UI
