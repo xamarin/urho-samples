@@ -16,9 +16,8 @@ namespace ShootySkies
 			model.Model = cache.GetModel("Models/Enemy2.mdl");
 			model.SetMaterial(cache.GetMaterial("Materials/Enemy2.xml").Clone(""));
 
-			node.SetScale(RandomHelper.NextRandom(0.9f, 1.1f));
+			node.SetScale(RandomHelper.NextRandom(0.85f, 1f));
 			node.Position = new Vector3(0f, 5f, 0f);
-			node.Rotation = new Quaternion(225, 180, 0);
 
 			node.AddComponent(new Joysticks(Context));
 			base.Init();

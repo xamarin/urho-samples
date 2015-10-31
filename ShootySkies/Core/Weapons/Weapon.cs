@@ -65,7 +65,7 @@ namespace ShootySkies
 			return bullet;
 		}
 
-		protected virtual void OnCollided(Node bullet, Aircraft target, bool killed) {}
+		protected virtual void OnHit(Aircraft target, bool killed) {}
 
 		protected abstract Task OnFire(bool byPlayer);
 
@@ -87,13 +87,14 @@ namespace ShootySkies
 					{
 						aircraft.Explode();
 					}
-					else
+					else if (Damage > 0)
 					{
 						aircraft.Hit();
 					}
-					OnCollided(node, aircraft, killed);
+					OnHit(aircraft, killed);
 				}
 			}
 		}
+
 	}
 }

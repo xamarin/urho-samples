@@ -13,7 +13,7 @@ namespace ShootySkies
 
 		protected override async void Init()
 		{
-			await Node.RunActionsAsync(new MoveBy(1f, new Vector3(0, -2, 0)));
+			await Node.RunActionsAsync(new MoveBy(0.6f, new Vector3(0, -2, 0)));
 
 			MoveRandomly();
 			AttackRandomly();
@@ -36,9 +36,16 @@ namespace ShootySkies
 		{
 			while (IsAlive)
 			{
-				var moveAction = new MoveBy(2f, new Vector3(RandomHelper.NextRandom(-3f, 3f), RandomHelper.NextRandom(-4f, 1f), 0));
+				var moveAction = new MoveBy(RandomHelper.NextRandom(1f, 2f), new Vector3(RandomHelper.NextRandom(-3f, 3f), RandomHelper.NextRandom(-4f, 1f), 0));
 				await Node.RunActionsAsync(moveAction, moveAction.Reverse());
 			}
+		}
+
+		protected override void OnUpdate(UpdateEventArgs args)
+		{
+			//TODO: look at player
+			Node.LookAt(new Vector3(0, -2, 0), new Vector3(0, 1, -1), TransformSpace.World);
+			base.OnUpdate(args);
 		}
 	}
 }

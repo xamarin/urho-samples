@@ -24,7 +24,7 @@ namespace ShootySkies
 			bulletModelNode.SetScale(2f);
 			bulletModelNode.Rotate(new Quaternion(45, 0, 0), TransformSpace.Local);
 
-			bulletNode.SetScale(0.2f);
+			bulletNode.SetScale(RandomHelper.NextRandom(0.15f, 0.2f));
 
 			// Trace-effect using particles
 			var particleEmitter = bulletNode.CreateComponent<ParticleEmitter2D>();
@@ -47,7 +47,7 @@ namespace ShootySkies
 			bulletNode.Remove();
 		}
 
-		protected override async void OnCollided(Node missile, Aircraft target, bool killed)
+		protected override async void OnHit(Aircraft target, bool killed)
 		{
 			// show a small explosion (it doesn't mean the target is killed)
 			var cache = Application.ResourceCache;

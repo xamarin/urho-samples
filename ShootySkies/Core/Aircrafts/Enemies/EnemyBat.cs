@@ -1,5 +1,4 @@
-﻿using System.Linq;
-using Urho;
+﻿using Urho;
 
 namespace ShootySkies
 {
@@ -7,7 +6,7 @@ namespace ShootySkies
 	{
 		public EnemyBat(Context context) : base(context) {}
 
-		public override int MaxHealth => 30;
+		public override int MaxHealth => 20;
 
 		protected override void Init()
 		{
@@ -17,9 +16,8 @@ namespace ShootySkies
 			model.Model = cache.GetModel("Models/Enemy1.mdl");
 			model.SetMaterial(cache.GetMaterial("Materials/Enemy1.xml").Clone(""));
 
-			node.SetScale(RandomHelper.NextRandom(0.7f, 0.9f));
+			node.SetScale(RandomHelper.NextRandom(0.5f, 0.8f));
 			node.Position = new Vector3(0f, 5f, 0f);
-			node.Rotation = new Quaternion(0, 0, 0);
 		
 			node.AddComponent(new HeavyMissile(Context));
 			base.Init();

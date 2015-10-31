@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Threading;
 using System.Threading.Tasks;
 using Urho;
 
@@ -10,7 +9,7 @@ namespace ShootySkies
 	{
 		public Missile(Context context) : base(context) {}
 
-		protected override TimeSpan ReloadDuration => TimeSpan.FromSeconds(5);
+		protected override TimeSpan ReloadDuration => TimeSpan.FromSeconds(3);
 
 		public override int Damage => 10;
 
@@ -64,7 +63,7 @@ namespace ShootySkies
 			bulletNode.Remove();
 		}
 
-		protected override async void OnCollided(Node missile, Aircraft target, bool killed)
+		protected override async void OnHit(Aircraft target, bool killed)
 		{
 			// show a small explosion (it doesn't mean the target is killed)
 			var cache = Application.Current.ResourceCache;

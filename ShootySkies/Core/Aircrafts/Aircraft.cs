@@ -1,5 +1,4 @@
-﻿using System.Threading;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using Urho;
 
 namespace ShootySkies
@@ -55,7 +54,7 @@ namespace ShootySkies
 			// blink with white color:
 			var specColorAnimation = new ValueAnimation(Context);
 			specColorAnimation.SetKeyFrame(0.0f, new Color(1.0f, 1.0f, 1.0f, 1.0f));
-			specColorAnimation.SetKeyFrame(0.2f, new Color(0.1f, 0.1f, 0.1f, 16.0f));
+			specColorAnimation.SetKeyFrame(0.1f, new Color(0.1f, 0.1f, 0.1f, 16.0f));
 			Node.GetComponent<StaticModel>().GetMaterial(0)?.SetShaderParameterAnimation("MatSpecColor", specColorAnimation, WrapMode.Once, 1.0f);
 		}
 

@@ -15,23 +15,23 @@ namespace ShootySkies
 
 		protected override Task OnFire(bool byPlayer)
 		{
-			const int joysticksCount = 10;
+			const int joysticksCount = 12;
 			const float length = 10f;
 
 			List<Task> tasks = new List<Task>();
 			for (int i = 0; i < joysticksCount; i++)
 			{
 				var angle = 360 / joysticksCount * i * MathHelper.Pi / 180; //angle per joystick (in radians)
-				tasks.Add(Fire(new Vector3((float)Math.Cos(angle) * length, (float)Math.Sin(angle) * length, 0)));
+				tasks.Add(Fire(new Vector3((float)Math.Cos(angle) * length, (float)Math.Sin(angle) * length, 0), byPlayer));
 			}
 			return Task.WhenAll(tasks);
 		}
 
-		async Task Fire(Vector3 direction)
+		async Task Fire(Vector3 direction, bool byPlayer)
 		{
 			var cache = Application.ResourceCache;
 
-			var bulletNode = CreateRigidBullet(false);
+			var bulletNode = CreateRigidBullet(byPlayer);
 			bulletNode.Rotation = new Quaternion(130, 0, 0);
 			var b = bulletNode.CreateChild();
 

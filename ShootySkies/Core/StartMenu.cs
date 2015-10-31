@@ -35,9 +35,9 @@ namespace ShootySkies
 			rotor.RunActionsAsync(new RepeatForever(new RotateBy(1f, 0, 0, 360f * 3))); //RPM
 
 			menuLight?.Remove();
-			menuLight = Node.CreateChild();
-			menuLight.Position = new Vector3(0, 0, -10);
-			menuLight.AddComponent(new Light(Context) { LightType = LightType.Point, Range = 12, Brightness = 1f });
+			menuLight = bigAircraft.CreateChild();
+			menuLight.Position = new Vector3(-3, 6, 2);
+			menuLight.AddComponent(new Light(Context) { LightType = LightType.Point, Range = 14, Brightness = 1f });
 
 			await bigAircraft.RunActionsAsync(new EaseIn(new MoveBy(1f, new Vector3(-10, -2, -10)), 2));
 

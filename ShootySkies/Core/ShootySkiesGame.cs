@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using Urho;
 
@@ -8,18 +6,14 @@ namespace ShootySkies
 {
 	public class ShootySkiesGame : Application
 	{
-		Scene scene;
-		Node frontTile, rearTile;
-		Player player;
-		List<Enemy> enemies;
-		private MonoDebugHud hud;
+		const string CoinstFormat = "{0} coins";
+		const int EnemySpawningIntensivity = 3;
 
-		const float BackgroundRotationX = 45f;
-		const float BackgroundRotationY = 15f;
-		const float BackgroundScale = 40f;
-		const float BackgroundSpeed = 0.08f;
-		const float FlightHeight = 10f;
-		const int TreesPerTile = 200;
+		int coins;
+		Scene scene;
+		Player player;
+		Text coinsText;
+		List<Enemy> enemies;
 
 		public ShootySkiesGame(Context c) : base(c, new ApplicationOptions { Height = 800, Width = 500, Orientation = ApplicationOptions.OrientationType.Portrait }) { }
 
@@ -42,20 +36,24 @@ namespace ShootySkies
 			var physics = scene.CreateComponent<PhysicsWorld>();
 			physics.SetGravity(new Vector3(0, 0, 0));
 
+			// Camera
 			var cameraNode = scene.CreateChild();
 			cameraNode.Position = (new Vector3(0.0f, 0.0f, -10.0f));
 			cameraNode.CreateComponent<Camera>();
 			Renderer.SetViewport(0, new Viewport(Context, scene, cameraNode.GetComponent<Camera>(), null));
 
-			// Background consists of two tiles (each BackgroundScale x BackgroundScale)
-			frontTile = CreateTile(0);
-			rearTile = CreateTile(1);
+			// UI
+			coinsText = new Text(Context);
+			coinsText.HorizontalAlignment = HorizontalAlignment.Right;
+			coinsText.SetFont(ResourceCache.GetFont("Fonts/BlueHighway.ttf"), 18);
+			UI.Root.AddChild(coinsText);
 
-			// Move them and swap (rotate) to be looked like the background is infinite
-			RotateBackground();
-			
+			// Background
+			var background = new Background(Context);
+			scene.AddComponent(background);
+			background.Start();
+
 			// Lights:
-
 			var lightNode1 = scene.CreateChild();
 			lightNode1.Position = new Vector3(0, -5, -40);
 			lightNode1.AddComponent(new Light(Context) { LightType = LightType.Point, Range = 120, Brightness = 1.4f });
@@ -64,12 +62,11 @@ namespace ShootySkies
 			lightNode2.Position = new Vector3(10, 15, -12);
 			lightNode2.AddComponent(new Light(Context) { LightType = LightType.Point, Range = 30.0f, CastShadows = true, Brightness = 1.7f });
 
+			// Menu
 			var startMenu = new StartMenu(Context);
 			scene.AddComponent(startMenu);
 
-			hud = new MonoDebugHud(this);
-			hud.Show();
-
+			// Game logic cycle
 			while (true)
 			{
 				await startMenu.ShowStartMenu(); //wait for "start"
@@ -79,6 +76,7 @@ namespace ShootySkies
 
 		async Task StartGame()
 		{
+			UpdateCoins(0);
 			player = new Player(Context);
 			var aircraftNode = scene.CreateChild(nameof(Aircraft));
 			aircraftNode.AddComponent(player);
@@ -86,12 +84,13 @@ namespace ShootySkies
 
 			enemies = new List<Enemy>();
 
-			SummonEnemies();
-			await aircraftNode.RunActionsAsync(new DelayTime(1));
-			SummonEnemies();
-			await aircraftNode.RunActionsAsync(new DelayTime(1));
-			SummonEnemies();
-
+			for (int i = 0; i < EnemySpawningIntensivity; i++)
+			{
+				SpawnEnemies();
+				await aircraftNode.RunActionsAsync(new DelayTime(1));
+			}
+			SpawnCoins();
+			
 			await playersLife;
 
 			//game over -- explode all enemies
@@ -101,7 +100,7 @@ namespace ShootySkies
 			aircraftNode.Remove();
 		}
 
-		async void SummonEnemies()
+		async void SpawnEnemies()
 		{
 			// Summon enemies one by one
 			while (player.IsAlive)
@@ -112,95 +111,31 @@ namespace ShootySkies
 				enemies.Add(enemy);
 				await enemy.Play();
 				enemies.Remove(enemy);
+
 				enemyNode.Remove();
 			}
 		}
 
-		/// <summary>
-		/// The background actually is not infinite, it consists of two tiles which change places
-		/// </summary>
-		async void RotateBackground()
+		async void SpawnCoins()
 		{
-			while (true)
+			while (player.IsAlive)
 			{
-				// calculate positions using Law of sines
-				var x = BackgroundScale*(float) Math.Sin((90 - BackgroundRotationX)*MathHelper.Pi/180);
-				var y = BackgroundScale*(float) Math.Sin(BackgroundRotationX*MathHelper.Pi/180) + FlightHeight;
+				var coinNode = scene.CreateChild();
+				coinNode.Position = new Vector3(RandomHelper.NextRandom(-2.5f, 2.5f), 4f, 0);
+				var coin = new Coin(Context);
+				coinNode.AddComponent(coin);
+				await coin.FireAsync(false);
 
-				var moveTo = x + 1f; //a small adjusment to hide that gap between two tiles
-				var h = (float)Math.Tan(BackgroundRotationX * MathHelper.Pi / 180) * moveTo;
-				await Task.WhenAll(
-					frontTile.RunActionsAsync(new MoveBy(1 / BackgroundSpeed, new Vector3(0, -moveTo, -h))),
-					rearTile.RunActionsAsync(new MoveBy(1 / BackgroundSpeed, new Vector3(0, -moveTo, -h))));
-
-				//switch tiles
-				var tmp = frontTile;
-				frontTile = rearTile;
-				rearTile = tmp;
-
-				rearTile.Position = new Vector3(0, x, y);
+				coinNode.Remove();
 			}
 		}
 
-		Node CreateTile(int index)
+		public void OnCoinCollected() => UpdateCoins(coins + 1);
+
+		void UpdateCoins(int amount)
 		{
-			var cache = ResourceCache;
-			Node tile = scene.CreateChild();
-			var planeNode = tile.CreateChild();
-			planeNode.Scale = new Vector3(BackgroundScale, 0.0001f, BackgroundScale);
-			var planeObject = planeNode.CreateComponent<StaticModel>();
-			planeObject.Model = cache.GetModel("Models/Box.mdl");
-			planeObject.SetMaterial(cache.GetMaterial("Materials/Grass.xml"));
-
-			var usedCoordinates = new HashSet<Vector3>();
-			for (int i = 0; i < TreesPerTile; i++)
-			{
-				Vector3 randomCoordinates;
-				// Generate random unique coordinates for trees
-				while (true)
-				{
-					var x = (int) RandomHelper.NextRandom(-10, 10);
-					var y = (int) RandomHelper.NextRandom(-25, 25);
-					randomCoordinates = new Vector3(x, 0f, y);
-					if (!usedCoordinates.Contains(randomCoordinates))
-					{
-						usedCoordinates.Add(randomCoordinates);
-						break;
-					}
-				}
-
-				var tree = CreateTree(tile);
-				tree.Position = randomCoordinates;
-			}
-			tile.Rotate(new Quaternion(270 + BackgroundRotationX, 0, 0), TransformSpace.Local);
-			tile.RotateAround(new Vector3(0, 0, 0), new Quaternion(0, BackgroundRotationY, 0), TransformSpace.Local);
-
-			switch (index)
-			{
-				case 0:
-					tile.Position = new Vector3(0, 0, FlightHeight);
-					break;
-				case 1:
-					var x = BackgroundScale * (float)Math.Sin((90 - BackgroundRotationX) * MathHelper.Pi / 180);
-					var y = BackgroundScale * (float)Math.Sin(BackgroundRotationX * MathHelper.Pi / 180) + FlightHeight;
-					tile.Position = new Vector3(0, x + 0.01f, y);
-					break;
-			}
-
-			return tile;
-		}
-
-		Node CreateTree(Node container)
-		{
-			var cache = ResourceCache;
-			Node treeNode = container.CreateChild();
-			treeNode.Rotate(new Quaternion(0, RandomHelper.NextRandom(0, 5) * 90, 0), TransformSpace.Local);
-			var model = treeNode.CreateComponent<StaticModel>();
-			model.Model = cache.GetModel("Models/Tree.mdl");
-			model.SetMaterial(cache.GetMaterial("Materials/TreeMaterial.xml"));
-			treeNode.SetScale(RandomHelper.NextRandom(0.2f, 0.3f));
-			model.CastShadows = true;
-			return treeNode;
+			coins = amount;
+			coinsText.Value = string.Format(CoinstFormat, coins);
 		}
 	}
 }
