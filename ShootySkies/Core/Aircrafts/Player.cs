@@ -14,6 +14,8 @@ namespace ShootySkies
 
 		protected override uint CollisionLayer => PlayerAircraftCollisionLayer;
 
+		protected override Vector3 CollisionShapeSize => new Vector3(2.5f, 1.2f, 1.2f); // to get collisions by wings too
+
 		public override int MaxHealth => 100;
 
 		protected override async void Init()
@@ -112,25 +114,7 @@ namespace ShootySkies
 				}
 			}
 
-
-			var x = deltaX * moveSpeedX * timeStep;
-
-			var yAngle = aircraft.Rotation.ToEulerAngles().Y;
-			// a small rotation left/right
-			if (Math.Abs(x) > 0.01)
-			{
-				var delta = deltaX * turnSpeed * -1;
-				if ((yAngle < maxTurnAngle || delta < 0) && (yAngle > -maxTurnAngle || delta > 0))
-					aircraft.Rotate(new Quaternion(0, delta, 0f), TransformSpace.World);
-			}
-			else
-			{
-				// Go back to normal state
-				if (Math.Abs(yAngle) > turnSpeed)
-				{
-					aircraft.Rotate(new Quaternion(0, 1.5f * turnSpeed * (yAngle > 0 ? 1 : -1), 0), TransformSpace.World);
-				}
-			}
+			aircraft.LookAt(new Vector3(0, aircraft.WorldPosition.Y + 12, 10), new Vector3(0, 1, -1), TransformSpace.World);
 		}
 	}
 }

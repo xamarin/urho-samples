@@ -28,7 +28,7 @@ namespace ShootySkies
 			body.SetKinematic(true);
 			body.CollisionMask = CollisionLayer;
 			CollisionShape shape = node.CreateComponent<CollisionShape>();
-			shape.SetBox(new Vector3(3, 1.2f, 1.2f), Vector3.Zero, Quaternion.Identity);
+			shape.SetBox(CollisionShapeSize, Vector3.Zero, Quaternion.Identity);
 			Init();
 			node.SubscribeToNodeCollisionStart(OnCollided);
 			return liveTask.Task;
@@ -84,7 +84,7 @@ namespace ShootySkies
 
 		protected virtual void OnExplode(Node explodeNode)
 		{
-			explodeNode.SetScale(1.75f);
+			explodeNode.SetScale(1.9f);
 			var particleEmitter = explodeNode.CreateComponent<ParticleEmitter2D>();
 			particleEmitter.Effect = Application.ResourceCache.GetParticleEffect2D(Assets.Particles.Explosion);
 		}
@@ -92,6 +92,8 @@ namespace ShootySkies
 		protected virtual void Init() {}
 
 		protected virtual uint CollisionLayer => 1;
+
+		protected virtual Vector3 CollisionShapeSize => new Vector3(1.2f, 1.2f, 1.2f);
 
 		protected override void OnDeleted()
 		{
