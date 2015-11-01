@@ -75,10 +75,14 @@ namespace ShootySkies
 		async void Hit()
 		{
 			// blink with white color:
+			var material = Node.GetComponent<StaticModel>().GetMaterial(0);
+			if (material == null)
+				return;
+			material.SetShaderParameter("MatSpecColor", new Color(0, 0, 0, 0));
 			var specColorAnimation = new ValueAnimation(Context);
-			specColorAnimation.SetKeyFrame(0.0f, new Color(1.0f, 1.0f, 1.0f, 1.0f));
-			specColorAnimation.SetKeyFrame(0.1f, new Color(0.1f, 0.1f, 0.1f, 16.0f));
-			Node.GetComponent<StaticModel>().GetMaterial(0)?.SetShaderParameterAnimation("MatSpecColor", specColorAnimation, WrapMode.Once, 1.0f);
+			specColorAnimation.SetKeyFrame(0.0f, new Color(1.0f, 1.0f, 1.0f, 0.5f));
+			specColorAnimation.SetKeyFrame(0.1f, new Color(0, 0, 0, 0));
+			material.SetShaderParameterAnimation("MatSpecColor", specColorAnimation, WrapMode.Once, 1.0f);
 			await Node.RunActionsAsync(new DelayTime(1f));
 		}
 

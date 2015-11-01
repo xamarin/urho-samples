@@ -31,11 +31,8 @@ namespace ShootySkies
 			var carrierPos = carrier.Position;
 
 			var bulletNode = CreateRigidBullet(player);
-			bulletNode.Position = new Vector3(carrierPos.X + 0.7f * (left ? -1 : 1), carrierPos.Y + 0.1f, carrierPos.Z);
+			bulletNode.Position = new Vector3(carrierPos.X + 0.7f * (left ? -1 : 1), carrierPos.Y + 0.3f, carrierPos.Z);
 			var bulletModelNode = bulletNode.CreateChild();
-
-			//var model = bulletModelNode.CreateComponent<StaticModel>();
-			//model.Model = cache.GetModel(Assets.Models.Box);
 
 			bulletModelNode.Scale = new Vector3(1f, 2f, 1f) / 2.5f;
 			bulletNode.SetScale(0.3f);
@@ -49,7 +46,7 @@ namespace ShootySkies
 			float directionX = left ? -1 : 1;
 			var moveMissileAction = new BezierBy(1.0f, new BezierConfig
 				{
-					ControlPoint1 = new Vector3(RandomHelper.NextRandom(-2, 2) * directionX, 2f * directionY, 0),
+					ControlPoint1 = new Vector3(-directionX, 2f * directionY, 0),
 					ControlPoint2 = new Vector3(RandomHelper.NextRandom(-2, 2) * directionX, 4 * directionY, 0),
 					EndPosition = new Vector3(RandomHelper.NextRandom(-1, 1) * directionX, 12 * directionY, 0),
 				});

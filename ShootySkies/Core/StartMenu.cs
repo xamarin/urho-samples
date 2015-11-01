@@ -45,7 +45,7 @@ namespace ShootySkies
 			textBlock.HorizontalAlignment = HorizontalAlignment.Center;
 			textBlock.VerticalAlignment = VerticalAlignment.Bottom;
 			textBlock.Value = "TAP TO START";
-			textBlock.SetFont(cache.GetFont(Assets.Fonts.BlueHighway), 28);
+			textBlock.SetFont(cache.GetFont(Assets.Fonts.Font), Application.Graphics.Width / 15);
 			Application.UI.Root.AddChild(textBlock);
 
 			menuTaskSource = new TaskCompletionSource<bool>();

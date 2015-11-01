@@ -37,7 +37,7 @@
 
 		public static class Fonts
 		{
-			public const string BlueHighway = "Fonts/BlueHighway.ttf";
+			public const string Font = "Fonts/Font.ttf";
 		}
 	}
 }

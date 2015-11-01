@@ -43,7 +43,7 @@ namespace ShootySkies
 			// UI
 			coinsText = new Text(Context);
 			coinsText.HorizontalAlignment = HorizontalAlignment.Right;
-			coinsText.SetFont(ResourceCache.GetFont(Assets.Fonts.BlueHighway), 18);
+			coinsText.SetFont(ResourceCache.GetFont(Assets.Fonts.Font), Graphics.Width / 20);
 			UI.Root.AddChild(coinsText);
 			Input.SetMouseVisible(true, false);
 
@@ -55,11 +55,11 @@ namespace ShootySkies
 			// Lights:
 			var lightNode1 = scene.CreateChild();
 			lightNode1.Position = new Vector3(0, -5, -40);
-			lightNode1.AddComponent(new Light(Context) { LightType = LightType.Point, Range = 120, Brightness = 1.4f });
+			lightNode1.AddComponent(new Light(Context) { LightType = LightType.Point, Range = 120, Brightness = 1.5f });
 
 			var lightNode2 = scene.CreateChild();
 			lightNode2.Position = new Vector3(10, 15, -12);
-			lightNode2.AddComponent(new Light(Context) { LightType = LightType.Point, Range = 30.0f, CastShadows = true, Brightness = 1.7f });
+			lightNode2.AddComponent(new Light(Context) { LightType = LightType.Point, Range = 30.0f, CastShadows = true, Brightness = 1.5f });
 
 			// Menu
 			var startMenu = new StartMenu(Context);
