@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Urho;
@@ -45,23 +46,20 @@ namespace ShootySkies
 			return true;
 		}
 
-		protected virtual void Init()
-		{
-			SubscribeToNodeCollisionStart(OnCollided);
-		}
+		protected virtual void Init() {}
 
 		protected Node CreateRigidBullet(bool byPlayer)
 		{
 			var carrier = Node;
-			Node bullet = carrier.Scene.CreateChild(GetType().Name);
+			var bullet = carrier.Scene.CreateChild(GetType().Name);
+			SubscribeToNodeCollisionStart(OnCollided);
 			var carrierPos = carrier.Position;
 			bullet.Position = carrierPos;
-
 			var body = bullet.CreateComponent<RigidBody>();
 			CollisionShape shape = bullet.CreateComponent<CollisionShape>();
 			shape.SetBox(Vector3.One, Vector3.Zero, Quaternion.Identity);
 			body.SetKinematic(true);
-			body.CollisionLayer = byPlayer ? EnemyBat.EnemyCollisionLayer : Player.PlayerAircraftCollisionLayer;
+			body.CollisionLayer = byPlayer ? Enemy.EnemyCollisionLayer : Player.PlayerAircraftCollisionLayer;
 			return bullet;
 		}
 
@@ -69,17 +67,20 @@ namespace ShootySkies
 
 		protected abstract Task OnFire(bool byPlayer);
 
+
 		void OnCollided(NodeCollisionStartEventArgs args)
 		{
-			var node = args.Body.Node;
+			var node = args.Body?.Node;
 			var otherNode = args.OtherNode;
-			if (node.Name == GetType().Name && otherNode.Name == nameof(Aircraft))
+			if (node == null || otherNode == null)
+				return;
+
+			if (node.Name.StartsWith(GetType().Name) && otherNode.Name == nameof(Aircraft))
 			{
 				node.GetComponent<RigidBody>()?.SetEnabled(false);
 				node.SetScale(0);
-
 				var aircraft = otherNode.Components.OfType<Aircraft>().FirstOrDefault();
-				if (aircraft != null)
+				if (aircraft != null && aircraft.Health > 0)
 				{
 					aircraft.Health -= Damage;
 					bool killed = aircraft.Health <= 0;

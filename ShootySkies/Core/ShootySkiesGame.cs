@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Threading;
 using System.Threading.Tasks;
 using Urho;
 
@@ -8,7 +7,7 @@ namespace ShootySkies
 	public class ShootySkiesGame : Application
 	{
 		const string CoinstFormat = "{0} coins";
-		const int EnemySpawningIntensivity = 3;
+		const int EnemySpawningIntensivity = 4;
 
 		int coins;
 		Scene scene;
@@ -18,20 +17,13 @@ namespace ShootySkies
 
 		public Viewport Viewport { get; private set; }
 
-		public bool TouchEnabled { get; set; }
-
 		public ShootySkiesGame(Context c) : base(c, new ApplicationOptions { Height = 800, Width = 500, Orientation = ApplicationOptions.OrientationType.Portrait }) { }
 
 		public override void Start()
 		{
 			base.Start();
-			TouchEnabled = Runtime.Platform == "Android" || Runtime.Platform == "iOS";
 			CreateScene();
-			SubscribeToKeyDown(e =>
-				{
-					if (e.Key == Key.Esc)
-						Engine.Exit();
-				});
+			SubscribeToKeyDown(e => { if (e.Key == Key.Esc) Engine.Exit(); });
 		}
 
 		async void CreateScene()
@@ -112,13 +104,12 @@ namespace ShootySkies
 			// Summon enemies one by one
 			while (player.IsAlive)
 			{
-				Enemy enemy = (RandomHelper.NextRandom(0, 3) == 1) ? (Enemy)new EnemySlotMachine(Context) : new EnemyBat(Context);
+				Enemy enemy = RandomHelper.NextRandom(0, 3) == 1 ? new EnemySlotMachine(Context) : (Enemy)new EnemyBat(Context);
 				var enemyNode = scene.CreateChild(nameof(Aircraft));
 				enemyNode.AddComponent(enemy);
 				enemies.Add(enemy);
 				await enemy.Play();
 				enemies.Remove(enemy);
-
 				enemyNode.Remove();
 			}
 		}
@@ -132,7 +123,6 @@ namespace ShootySkies
 				var coin = new Coin(Context);
 				coinNode.AddComponent(coin);
 				await coin.FireAsync(false);
-
 				coinNode.Remove();
 			}
 		}

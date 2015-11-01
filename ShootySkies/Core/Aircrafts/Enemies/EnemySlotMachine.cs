@@ -15,7 +15,6 @@ namespace ShootySkies
 			var model = node.CreateComponent<StaticModel>();
 			model.Model = cache.GetModel(Assets.Models.Enemy2);
 			model.SetMaterial(cache.GetMaterial(Assets.Materials.Enemy2).Clone(""));
-
 			node.SetScale(RandomHelper.NextRandom(0.85f, 1f));
 			node.Position = new Vector3(0f, 5f, 0f);
 

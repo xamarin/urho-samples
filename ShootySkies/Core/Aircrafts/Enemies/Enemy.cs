@@ -14,14 +14,13 @@ namespace ShootySkies
 		protected override async void Init()
 		{
 			await Node.RunActionsAsync(new MoveBy(0.6f, new Vector3(0, -2, 0)));
-
 			MoveRandomly();
 			AttackRandomly();
 		}
 
 		async void AttackRandomly()
 		{
-			while (IsAlive)
+			while (IsAlive && Node.Components.Count > 0)
 			{
 				foreach (var weapon in Node.Components.OfType<Weapon>())
 				{
@@ -29,6 +28,7 @@ namespace ShootySkies
 					if (!IsAlive)
 						return;
 				}
+				await Node.RunActionsAsync(new DelayTime(0.1f));
 			}
 		}
 
@@ -41,7 +41,7 @@ namespace ShootySkies
 			}
 		}
 
-		protected override void OnUpdate(UpdateEventArgs args)
+		protected override void OnUpdate(SceneUpdateEventArgs args)
 		{
 			//TODO: look at player
 			Node.LookAt(new Vector3(0, -2, 0), new Vector3(0, 1, -1), TransformSpace.World);

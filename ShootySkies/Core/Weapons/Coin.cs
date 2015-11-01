@@ -11,20 +11,20 @@ namespace ShootySkies
 
 		public Coin(Context context) : base(context) {}
 
-		protected override Task OnFire(bool byPlayer)
+		protected override async Task OnFire(bool byPlayer)
 		{
 			var cache = Application.ResourceCache;
 			var node = CreateRigidBullet(byPlayer);
 			var model = node.CreateComponent<StaticModel>();
 			model.Model = cache.GetModel(Assets.Models.Coin);
 			model.SetMaterial(cache.GetMaterial(Assets.Materials.Coin));
-
 			node.SetScale(1);
 			node.Rotation = new Quaternion(-40, 0, 0);
-			return node.RunActionsAsync(
+			await node.RunActionsAsync(
 				new Urho.Parallel(
 					new MoveBy(3f, new Vector3(0, 10 * (byPlayer ? 1 : -1), 0)),
 					new RotateBy(3f, 0, 360 * 5, 0)));
+			node.Remove();
 		}
 
 		protected override void OnHit(Aircraft target, bool killed)

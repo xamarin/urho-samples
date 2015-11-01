@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Diagnostics;
 using System.Linq;
 using Urho;
 
@@ -66,7 +65,7 @@ namespace ShootySkies
 			}
 		}
 
-		protected override void OnUpdate(UpdateEventArgs args)
+		protected override void OnUpdate(SceneUpdateEventArgs args)
 		{
 			if (!IsAlive)
 				return;
@@ -75,37 +74,49 @@ namespace ShootySkies
 			var aircraft = Node;
 			var timeStep = args.TimeStep;
 
-			const float turnSpeed = 1f;
+			const float turnSpeed = 0.3f;
 			const float moveSpeedX = 3f;
-			const float mouseSensitivity = .5f;
-			const float touchSensitivity = .1f;
 
-			float inputX = 0;
+			float deltaX = 0;
+			int positionX = 0, positionY = 0;
+			bool hasInput = false;
 			if (input.NumTouches > 0)
 			{
+				// move with touches:
 				TouchState state = input.GetTouch(0);
-				if (state.Delta.X != 0 || state.Delta.Y != 0)
-				{
-					inputX = state.Delta.X * touchSensitivity;
-				}
+				deltaX = state.Delta.X;
 				var touchPosition = state.Position;
-				Vector3 destWorldPos = ((ShootySkiesGame)Application).Viewport.ScreenToWorldPoint(touchPosition.X, touchPosition.Y, 10);
-				aircraft.Translate(destWorldPos - aircraft.WorldPosition, TransformSpace.World);
+				positionX = touchPosition.X;
+				positionY = touchPosition.Y;
+				hasInput = true;
 			}
-			else if (!((ShootySkiesGame)Application).TouchEnabled)
+			else if (input.GetMouseButtonDown(MouseButton.Left))
 			{
+				// move with mouse:
 				var mousePos = input.MousePosition;
-				inputX = mouseSensitivity * input.MouseMove.X;
-				Vector3 destWorldPos = ((ShootySkiesGame)Application).Viewport.ScreenToWorldPoint(mousePos.X, mousePos.Y, 10);
-				aircraft.Translate(destWorldPos - aircraft.WorldPosition, TransformSpace.World);
+				positionX = mousePos.X;
+				positionY = mousePos.Y;
+				deltaX =  input.MouseMove.X;
+				hasInput = true;
 			}
 
-			var x = inputX * moveSpeedX * timeStep;
+			if (hasInput)
+			{
+				Vector3 destWorldPos = ((ShootySkiesGame)Application).Viewport.ScreenToWorldPoint(positionX, positionY, 10);
+				aircraft.Translate(destWorldPos - aircraft.WorldPosition, TransformSpace.World);
+				foreach (var weapon in Node.Components.OfType<Weapon>())
+				{
+					weapon.FireAsync(byPlayer: true);
+				}
+			}
+
+
+			var x = deltaX * moveSpeedX * timeStep;
 			
 			// a small rotation left/right
 			if (Math.Abs(x) > 0.01)
 			{
-				aircraft.Rotate(new Quaternion(0, turnSpeed * (x > 0 ? -1 : 1), 0f), TransformSpace.World);
+				aircraft.Rotate(new Quaternion(0, deltaX * turnSpeed * -1, 0f), TransformSpace.World);
 			}
 			else
 			{
@@ -114,15 +125,6 @@ namespace ShootySkies
 				if (Math.Abs(yAngle) > turnSpeed)
 				{
 					aircraft.Rotate(new Quaternion(0, 1.5f * turnSpeed * (yAngle > 0 ? 1 : -1), 0), TransformSpace.World);
-				}
-			}
-
-			// Fire 
-			if (input.GetMouseButtonDown(MouseButton.Left) || input.NumTouches > 0)
-			{
-				foreach (var weapon in Node.Components.OfType<Weapon>())
-				{
-					weapon.FireAsync(byPlayer: true);
 				}
 			}
 		}

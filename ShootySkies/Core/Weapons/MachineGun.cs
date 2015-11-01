@@ -13,7 +13,7 @@ namespace ShootySkies
 
 		protected override TimeSpan ReloadDuration => TimeSpan.FromSeconds(0.1f);
 
-		public override int Damage => 2;
+		public override int Damage => 3;
 		
 		protected override async Task OnFire(bool player)
 		{

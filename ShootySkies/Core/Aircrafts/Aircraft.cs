@@ -7,6 +7,7 @@ namespace ShootySkies
 	{
 		TaskCompletionSource<bool> liveTask;
 		bool isAlive;
+		bool isExploding;
 
 		protected Aircraft(Context context) : base(context) {}
 
@@ -14,7 +15,7 @@ namespace ShootySkies
 		{
 			liveTask = new TaskCompletionSource<bool>();
 			Health = MaxHealth;
-			Application.Update += OnUpdate;
+			Application.SceneUpdate += OnUpdate;
 			var node = Node;
 
 			// Define physics
@@ -31,6 +32,9 @@ namespace ShootySkies
 
 		public async Task Explode()
 		{
+			if (isExploding) //since the method is async we need to protect the aircraft from being exploded twice
+				return;
+			isExploding = true;
 			isAlive = false;
 			var explosionNode = Scene.CreateChild();
 			explosionNode.Position = Node.WorldPosition;
@@ -49,13 +53,14 @@ namespace ShootySkies
 			particleEmitter.Effect = Application.ResourceCache.GetParticleEffect2D(Assets.Particles.Explosion);
 		}
 
-		public void Hit()
+		public async void Hit()
 		{
 			// blink with white color:
 			var specColorAnimation = new ValueAnimation(Context);
 			specColorAnimation.SetKeyFrame(0.0f, new Color(1.0f, 1.0f, 1.0f, 1.0f));
 			specColorAnimation.SetKeyFrame(0.1f, new Color(0.1f, 0.1f, 0.1f, 16.0f));
 			Node.GetComponent<StaticModel>().GetMaterial(0)?.SetShaderParameterAnimation("MatSpecColor", specColorAnimation, WrapMode.Once, 1.0f);
+			await Node.RunActionsAsync(new DelayTime(1f));
 		}
 
 		public int Health { get; set; }
@@ -70,9 +75,9 @@ namespace ShootySkies
 
 		protected override void OnDeleted()
 		{
-			Application.Update -= OnUpdate;
+			Application.SceneUpdate -= OnUpdate;
 		}
 
-		protected virtual void OnUpdate(UpdateEventArgs args) {}
+		protected virtual void OnUpdate(SceneUpdateEventArgs sceneUpdateEventArgs) {}
 	}
 }
