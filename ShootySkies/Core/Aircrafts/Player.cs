@@ -74,7 +74,7 @@ namespace ShootySkies
 			var aircraft = Node;
 			var timeStep = args.TimeStep;
 
-			const float turnSpeed = 0.3f;
+			const float turnSpeed = 0.2f;
 			const float moveSpeedX = 3f;
 			const float maxTurnAngle = 70f;
 
@@ -104,6 +104,7 @@ namespace ShootySkies
 			if (hasInput)
 			{
 				Vector3 destWorldPos = ((ShootySkiesGame)Application).Viewport.ScreenToWorldPoint(positionX, positionY, 10);
+				destWorldPos.Z = 0;
 				aircraft.Translate(destWorldPos - aircraft.WorldPosition, TransformSpace.World);
 				foreach (var weapon in Node.Components.OfType<Weapon>())
 				{

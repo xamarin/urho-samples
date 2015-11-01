@@ -11,7 +11,7 @@ namespace ShootySkies
 
 		public MachineGun(Context context) : base(context) {}
 
-		protected override TimeSpan ReloadDuration => TimeSpan.FromSeconds(0.1f);
+		public override TimeSpan ReloadDuration => TimeSpan.FromSeconds(0.1f);
 
 		public override int Damage => 3;
 		

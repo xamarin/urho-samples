@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System.Linq;
+using System.Threading.Tasks;
 using Urho;
 
 namespace ShootySkies
@@ -6,10 +7,13 @@ namespace ShootySkies
 	public abstract class Aircraft : Component
 	{
 		TaskCompletionSource<bool> liveTask;
-		bool isAlive;
 		bool isExploding;
 
 		protected Aircraft(Context context) : base(context) {}
+
+		public int Health { get; set; }
+		public virtual int MaxHealth => 30;
+		public bool IsAlive => Health > 0 && IsEnabled() && !IsDeleted;
 
 		public Task Play()
 		{
@@ -24,9 +28,9 @@ namespace ShootySkies
 			body.SetKinematic(true);
 			body.CollisionMask = CollisionLayer;
 			CollisionShape shape = node.CreateComponent<CollisionShape>();
-			shape.SetBox(Vector3.One * 1.1f, Vector3.Zero, Quaternion.Identity);
-			isAlive = true;
+			shape.SetBox(new Vector3(3, 1.2f, 1.2f), Vector3.Zero, Quaternion.Identity);
 			Init();
+			node.SubscribeToNodeCollisionStart(OnCollided);
 			return liveTask.Task;
 		}
 
@@ -35,7 +39,7 @@ namespace ShootySkies
 			if (isExploding) //since the method is async we need to protect the aircraft from being exploded twice
 				return;
 			isExploding = true;
-			isAlive = false;
+			Health = 0;
 			var explosionNode = Scene.CreateChild();
 			explosionNode.Position = Node.WorldPosition;
 			OnExplode(explosionNode);
@@ -47,14 +51,28 @@ namespace ShootySkies
 			explosionNode.Remove();
 		}
 
-		protected virtual void OnExplode(Node explodeNode)
+		void OnCollided(NodeCollisionStartEventArgs args)
 		{
-			explodeNode.SetScale(1.75f);
-			var particleEmitter = explodeNode.CreateComponent<ParticleEmitter2D>();
-			particleEmitter.Effect = Application.ResourceCache.GetParticleEffect2D(Assets.Particles.Explosion);
+			var bulletNode = args.OtherNode;
+			if (IsAlive && bulletNode.Name != null && bulletNode.Name.StartsWith(nameof(Weapon)) && args.Body.Node == Node)
+			{
+				// TODO: fix #69 (GetComponent<T> for custom components)
+				var weapon = ((WeaponReferenceComponent)bulletNode.Components.First(c => c is WeaponReferenceComponent)).Weapon;
+				Health -= weapon.Damage;
+				var killed = Health <= 0;
+				if (killed)
+				{
+					Explode();
+				}
+				else if (weapon.Damage > 0)
+				{
+					Hit();
+				}
+				weapon.OnHit(target: this, killed: killed, bulletNode: bulletNode);
+			}
 		}
 
-		public async void Hit()
+		async void Hit()
 		{
 			// blink with white color:
 			var specColorAnimation = new ValueAnimation(Context);
@@ -64,11 +82,12 @@ namespace ShootySkies
 			await Node.RunActionsAsync(new DelayTime(1f));
 		}
 
-		public int Health { get; set; }
-
-		public virtual int MaxHealth => 30;
-
-		public bool IsAlive => isAlive && IsEnabled() && !IsDeleted;
+		protected virtual void OnExplode(Node explodeNode)
+		{
+			explodeNode.SetScale(1.75f);
+			var particleEmitter = explodeNode.CreateComponent<ParticleEmitter2D>();
+			particleEmitter.Effect = Application.ResourceCache.GetParticleEffect2D(Assets.Particles.Explosion);
+		}
 
 		protected virtual void Init() {}
 

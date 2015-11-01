@@ -18,7 +18,7 @@ namespace ShootySkies
 			node.SetScale(RandomHelper.NextRandom(0.5f, 0.8f));
 			node.Position = new Vector3(0f, 5f, 0f);
 
-			node.AddComponent(new HeavyMissile(Context));
+			node.AddComponent(new BigWhiteCube(Context));
 			base.Init();
 		}
 	}

@@ -6,7 +6,8 @@ namespace ShootySkies
 {
 	public class Coin : Weapon
 	{
-		protected override TimeSpan ReloadDuration => TimeSpan.FromSeconds(0.1f);
+		public override TimeSpan ReloadDuration => TimeSpan.FromSeconds(0.1f);
+
 		public override int Damage => 0;
 
 		public Coin(Context context) : base(context) {}
@@ -27,8 +28,9 @@ namespace ShootySkies
 			node.Remove();
 		}
 
-		protected override void OnHit(Aircraft target, bool killed)
+		public override void OnHit(Aircraft target, bool killed, Node bulletNode)
 		{
+			base.OnHit(target, killed, bulletNode);
 			((ShootySkiesGame)Application).OnCoinCollected();
 		}
 	}

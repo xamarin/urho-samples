@@ -4,11 +4,11 @@ using Urho;
 
 namespace ShootySkies
 {
-	public class HeavyMissile : Weapon
+	public class BigWhiteCube : Weapon
 	{
-		public HeavyMissile(Context context) : base(context) {}
+		public BigWhiteCube(Context context) : base(context) {}
 
-		protected override TimeSpan ReloadDuration => TimeSpan.FromSeconds(3);
+		public override TimeSpan ReloadDuration => TimeSpan.FromSeconds(3);
 
 		public override int Damage => 20;
 
@@ -46,6 +46,19 @@ namespace ShootySkies
 
 			//remove the missile from the scene.
 			bulletNode.Remove();
+		}
+		
+		public override async void OnHit(Aircraft target, bool killed, Node bulletNode)
+		{
+			base.OnHit(target, killed, bulletNode);
+			var cache = Application.ResourceCache;
+			var explosionNode = target.Node.CreateChild();
+			explosionNode.SetScale(1.6f);
+			var particleEmitter = explosionNode.CreateComponent<ParticleEmitter2D>();
+			particleEmitter.Effect = cache.GetParticleEffect2D(Assets.Particles.Explosion);
+			ScaleBy scaleBy = new ScaleBy(0.3f, 0.1f);
+			await explosionNode.RunActionsAsync(scaleBy, new DelayTime(1f));
+			explosionNode.Remove();
 		}
 	}
 }

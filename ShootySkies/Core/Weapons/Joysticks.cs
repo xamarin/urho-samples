@@ -9,7 +9,7 @@ namespace ShootySkies
 	{
 		public Joysticks(Context context) : base(context) { }
 
-		protected override TimeSpan ReloadDuration => TimeSpan.FromSeconds(2f);
+		public override TimeSpan ReloadDuration => TimeSpan.FromSeconds(2f);
 
 		public override int Damage => 10;
 
@@ -33,6 +33,7 @@ namespace ShootySkies
 
 			var bulletNode = CreateRigidBullet(byPlayer);
 			bulletNode.Rotation = new Quaternion(130, 0, 0);
+			bulletNode.SetScale(0.8f);
 
 			var model = bulletNode.CreateComponent<StaticModel>();
 			model.Model = cache.GetModel(Assets.Models.SMWeapon);

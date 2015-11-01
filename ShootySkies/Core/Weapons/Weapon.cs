@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using Urho;
 
@@ -10,14 +8,14 @@ namespace ShootySkies
 	{
 		protected Weapon(Context context) : base(context) { }
 
-		protected bool Inited { get; set; }
-		
-		protected DateTime LastLaunchDate { get; set; }
+		public bool Inited { get; set; }
+
+		public DateTime LastLaunchDate { get; set; }
 
 		/// <summary>
 		/// Reload duration (between two launches)
 		/// </summary>
-		protected virtual TimeSpan ReloadDuration => TimeSpan.FromSeconds(0.5f);
+		public virtual TimeSpan ReloadDuration => TimeSpan.FromSeconds(0.5f);
 
 		public virtual int Damage => 1;
 
@@ -46,13 +44,18 @@ namespace ShootySkies
 			return true;
 		}
 
+		public virtual void OnHit(Aircraft target, bool killed, Node bulletNode)
+		{
+			bulletNode.GetComponent<RigidBody>()?.SetEnabled(false);
+			bulletNode.SetScale(0);
+		}
+
 		protected virtual void Init() {}
 
 		protected Node CreateRigidBullet(bool byPlayer)
 		{
 			var carrier = Node;
-			var bullet = carrier.Scene.CreateChild(GetType().Name);
-			SubscribeToNodeCollisionStart(OnCollided);
+			var bullet = carrier.Scene.CreateChild(nameof(Weapon) + GetType().Name);
 			var carrierPos = carrier.Position;
 			bullet.Position = carrierPos;
 			var body = bullet.CreateComponent<RigidBody>();
@@ -60,42 +63,20 @@ namespace ShootySkies
 			shape.SetBox(Vector3.One, Vector3.Zero, Quaternion.Identity);
 			body.SetKinematic(true);
 			body.CollisionLayer = byPlayer ? Enemy.EnemyCollisionLayer : Player.PlayerAircraftCollisionLayer;
+			bullet.AddComponent(new WeaponReferenceComponent(Context, this));
 			return bullet;
 		}
 
-		protected virtual void OnHit(Aircraft target, bool killed) {}
-
 		protected abstract Task OnFire(bool byPlayer);
+	}
 
+	public class WeaponReferenceComponent : Component
+	{
+		public Weapon Weapon { get; set; }
 
-		void OnCollided(NodeCollisionStartEventArgs args)
+		public WeaponReferenceComponent(Context context, Weapon weapon) : base(context)
 		{
-			var node = args.Body?.Node;
-			var otherNode = args.OtherNode;
-			if (node == null || otherNode == null)
-				return;
-
-			if (node.Name.StartsWith(GetType().Name) && otherNode.Name == nameof(Aircraft))
-			{
-				node.GetComponent<RigidBody>()?.SetEnabled(false);
-				node.SetScale(0);
-				var aircraft = otherNode.Components.OfType<Aircraft>().FirstOrDefault();
-				if (aircraft != null && aircraft.Health > 0)
-				{
-					aircraft.Health -= Damage;
-					bool killed = aircraft.Health <= 0;
-					if (killed)
-					{
-						aircraft.Explode();
-					}
-					else if (Damage > 0)
-					{
-						aircraft.Hit();
-					}
-					OnHit(aircraft, killed);
-				}
-			}
+			Weapon = weapon;
 		}
-
 	}
 }

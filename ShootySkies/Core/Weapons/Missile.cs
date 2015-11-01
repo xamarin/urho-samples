@@ -9,7 +9,7 @@ namespace ShootySkies
 	{
 		public Missile(Context context) : base(context) {}
 
-		protected override TimeSpan ReloadDuration => TimeSpan.FromSeconds(3);
+		public override TimeSpan ReloadDuration => TimeSpan.FromSeconds(3);
 
 		public override int Damage => 10;
 
@@ -50,8 +50,8 @@ namespace ShootySkies
 			var moveMissileAction = new BezierBy(1.0f, new BezierConfig
 				{
 					ControlPoint1 = new Vector3(RandomHelper.NextRandom(-2, 2) * directionX, 2f * directionY, 0),
-					ControlPoint2 = new Vector3(RandomHelper.NextRandom(-2, 2) * directionX, 8 * directionY, 0),
-					EndPosition = new Vector3(RandomHelper.NextRandom(-2, 2) * directionX, 12 * directionY, 0),
+					ControlPoint2 = new Vector3(RandomHelper.NextRandom(-2, 2) * directionX, 4 * directionY, 0),
+					EndPosition = new Vector3(RandomHelper.NextRandom(-1, 1) * directionX, 12 * directionY, 0),
 				});
 
 			await bulletNode.RunActionsAsync(
