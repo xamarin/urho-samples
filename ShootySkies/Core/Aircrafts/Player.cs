@@ -76,6 +76,7 @@ namespace ShootySkies
 
 			const float turnSpeed = 0.3f;
 			const float moveSpeedX = 3f;
+			const float maxTurnAngle = 70f;
 
 			float deltaX = 0;
 			int positionX = 0, positionY = 0;
@@ -112,16 +113,18 @@ namespace ShootySkies
 
 
 			var x = deltaX * moveSpeedX * timeStep;
-			
+
+			var yAngle = aircraft.Rotation.ToEulerAngles().Y;
 			// a small rotation left/right
 			if (Math.Abs(x) > 0.01)
 			{
-				aircraft.Rotate(new Quaternion(0, deltaX * turnSpeed * -1, 0f), TransformSpace.World);
+				var delta = deltaX * turnSpeed * -1;
+				if ((yAngle < maxTurnAngle || delta < 0) && (yAngle > -maxTurnAngle || delta > 0))
+					aircraft.Rotate(new Quaternion(0, delta, 0f), TransformSpace.World);
 			}
 			else
 			{
 				// Go back to normal state
-				var yAngle = aircraft.Rotation.ToEulerAngles().Y;
 				if (Math.Abs(yAngle) > turnSpeed)
 				{
 					aircraft.Rotate(new Quaternion(0, 1.5f * turnSpeed * (yAngle > 0 ? 1 : -1), 0), TransformSpace.World);

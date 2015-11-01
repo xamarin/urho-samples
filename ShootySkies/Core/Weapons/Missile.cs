@@ -34,8 +34,8 @@ namespace ShootySkies
 			bulletNode.Position = new Vector3(carrierPos.X + 0.7f * (left ? -1 : 1), carrierPos.Y + 0.1f, carrierPos.Z);
 			var bulletModelNode = bulletNode.CreateChild();
 
-			var model = bulletModelNode.CreateComponent<StaticModel>();
-			model.Model = cache.GetModel(Assets.Models.Box);
+			//var model = bulletModelNode.CreateComponent<StaticModel>();
+			//model.Model = cache.GetModel(Assets.Models.Box);
 
 			bulletModelNode.Scale = new Vector3(1f, 2f, 1f) / 2.5f;
 			bulletNode.SetScale(0.3f);
@@ -61,20 +61,6 @@ namespace ShootySkies
 
 			//remove the missile from the scene.
 			bulletNode.Remove();
-		}
-
-		protected override async void OnHit(Aircraft target, bool killed)
-		{
-			// show a small explosion (it doesn't mean the target is killed)
-			var cache = Application.Current.ResourceCache;
-			var explosionNode = Scene.CreateChild();
-			explosionNode.SetScale(0.5f);
-			explosionNode.Position = target.Node.WorldPosition;
-			var particleEmitter = explosionNode.CreateComponent<ParticleEmitter2D>();
-			particleEmitter.Effect = cache.GetParticleEffect2D(Assets.Particles.MissileTrace);
-			ScaleBy scaleBy = new ScaleBy(0.2f, 0.1f);
-			await explosionNode.RunActionsAsync(scaleBy, new DelayTime(1f));
-			explosionNode.Remove();
 		}
 	}
 }

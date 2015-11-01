@@ -23,11 +23,12 @@ namespace ShootySkies
 			model.Model = cache.GetModel(Assets.Models.Box);
 			bulletModelNode.SetScale(2f);
 			bulletModelNode.Rotate(new Quaternion(45, 0, 0), TransformSpace.Local);
-
 			bulletNode.SetScale(RandomHelper.NextRandom(0.15f, 0.2f));
 
 			// Trace-effect using particles
-			var particleEmitter = bulletNode.CreateComponent<ParticleEmitter2D>();
+			var trace = bulletNode.CreateChild();
+			trace.SetScale(2f);
+			var particleEmitter = trace.CreateComponent<ParticleEmitter2D>();
 			particleEmitter.Effect = cache.GetParticleEffect2D(Assets.Particles.Explosion);
 
 			// Route (Bezier)
@@ -45,19 +46,6 @@ namespace ShootySkies
 
 			//remove the missile from the scene.
 			bulletNode.Remove();
-		}
-
-		protected override async void OnHit(Aircraft target, bool killed)
-		{
-			// show a small explosion (it doesn't mean the target is killed)
-			var cache = Application.ResourceCache;
-			var explosionNode = Scene.CreateChild();
-			explosionNode.Position = target.Node.WorldPosition;
-			var particleEmitter = explosionNode.CreateComponent<ParticleEmitter2D>();
-			particleEmitter.Effect = cache.GetParticleEffect2D(Assets.Particles.HeavyMissileExplosion);
-			ScaleBy scaleBy = new ScaleBy(0.2f, 0.1f);
-			await explosionNode.RunActionsAsync(scaleBy, new DelayTime(1f));
-			explosionNode.Remove();
 		}
 	}
 }

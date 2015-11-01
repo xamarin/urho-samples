@@ -49,6 +49,7 @@ namespace ShootySkies
 
 		protected virtual void OnExplode(Node explodeNode)
 		{
+			explodeNode.SetScale(1.75f);
 			var particleEmitter = explodeNode.CreateComponent<ParticleEmitter2D>();
 			particleEmitter.Effect = Application.ResourceCache.GetParticleEffect2D(Assets.Particles.Explosion);
 		}
