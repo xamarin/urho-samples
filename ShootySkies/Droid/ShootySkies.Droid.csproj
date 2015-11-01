@@ -14,7 +14,7 @@
     <AndroidResgenFile>Resources\Resource.Designer.cs</AndroidResgenFile>
     <GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
     <AndroidUseLatestPlatformSdk>True</AndroidUseLatestPlatformSdk>
-    <TargetFrameworkVersion>v5.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v6.0</TargetFrameworkVersion>
     <AndroidManifest>Properties\AndroidManifest.xml</AndroidManifest>
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
@@ -741,9 +741,6 @@
     </AndroidAsset>
     <AndroidAsset Include="..\Assets\Data\Models\Tree.mdl">
       <Link>Assets\Data\Models\Tree.mdl</Link>
-    </AndroidAsset>
-    <AndroidAsset Include="..\Assets\Data\Particles\.DS_Store">
-      <Link>Assets\Data\Particles\.DS_Store</Link>
     </AndroidAsset>
     <AndroidAsset Include="..\Assets\Data\Particles\Explosion.pex">
       <Link>Assets\Data\Particles\Explosion.pex</Link>
