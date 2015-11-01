@@ -14,7 +14,7 @@
     <AndroidResgenFile>Resources\Resource.Designer.cs</AndroidResgenFile>
     <GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
     <AndroidUseLatestPlatformSdk>True</AndroidUseLatestPlatformSdk>
-    <TargetFrameworkVersion>v6.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v5.0</TargetFrameworkVersion>
     <AndroidManifest>Properties\AndroidManifest.xml</AndroidManifest>
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
@@ -96,6 +96,10 @@
   <Target Name="AfterBuild">
   </Target>
   -->
+  <ItemGroup>
+    <Folder Include="Resources\layout\" />
+    <Folder Include="Assets\" />
+  </ItemGroup>
   <ItemGroup>
     <AndroidAsset Include="..\Assets\CoreData\Materials\DefaultGrey.xml">
       <Link>Assets\CoreData\Materials\DefaultGrey.xml</Link>
@@ -667,11 +671,8 @@
     <AndroidAsset Include="..\Assets\CoreData\Textures\SpotWide.xml">
       <Link>Assets\CoreData\Textures\SpotWide.xml</Link>
     </AndroidAsset>
-    <AndroidAsset Include="..\Assets\Data\Fonts\BlueHighway.png">
-      <Link>Assets\Data\Fonts\BlueHighway.png</Link>
-    </AndroidAsset>
-    <AndroidAsset Include="..\Assets\Data\Fonts\BlueHighway.ttf">
-      <Link>Assets\Data\Fonts\BlueHighway.ttf</Link>
+    <AndroidAsset Include="..\Assets\Data\Fonts\Font.ttf">
+      <Link>Assets\Data\Fonts\Font.ttf</Link>
     </AndroidAsset>
     <AndroidAsset Include="..\Assets\Data\Materials\Black.xml">
       <Link>Assets\Data\Materials\Black.xml</Link>
@@ -781,8 +782,5 @@
     <AndroidAsset Include="..\Assets\Data\Textures\TreeUV2.png">
       <Link>Assets\Data\Textures\TreeUV2.png</Link>
     </AndroidAsset>
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Resources\layout\" />
   </ItemGroup>
 </Project>

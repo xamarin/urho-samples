@@ -104,11 +104,8 @@
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\Default-568h%402x.png" />
-    <BundleResource Include="..\Assets\Data\Fonts\BlueHighway.png">
-      <Link>Resources\Data\Fonts\BlueHighway.png</Link>
-    </BundleResource>
-    <BundleResource Include="..\Assets\Data\Fonts\BlueHighway.ttf">
-      <Link>Resources\Data\Fonts\BlueHighway.ttf</Link>
+    <BundleResource Include="..\Assets\Data\Fonts\Font.ttf">
+      <Link>Resources\Data\Fonts\Font.ttf</Link>
     </BundleResource>
     <BundleResource Include="..\Assets\Data\Materials\Black.xml">
       <Link>Resources\Data\Materials\Black.xml</Link>
