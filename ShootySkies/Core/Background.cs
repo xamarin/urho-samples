@@ -41,8 +41,7 @@ namespace ShootySkies
 
 				var moveTo = x + 1f; //a small adjusment to hide that gap between two tiles
 				var h = (float)Math.Tan(BackgroundRotationX * MathHelper.Pi / 180) * moveTo;
-				await Task.WhenAll(
-					frontTile.RunActionsAsync(new MoveBy(1 / BackgroundSpeed, new Vector3(0, -moveTo, -h))),
+				await Task.WhenAll(frontTile.RunActionsAsync(new MoveBy(1 / BackgroundSpeed, new Vector3(0, -moveTo, -h))),
 					rearTile.RunActionsAsync(new MoveBy(1 / BackgroundSpeed, new Vector3(0, -moveTo, -h))));
 
 				//switch tiles
@@ -86,19 +85,9 @@ namespace ShootySkies
 			}
 			tile.Rotate(new Quaternion(270 + BackgroundRotationX, 0, 0), TransformSpace.Local);
 			tile.RotateAround(new Vector3(0, 0, 0), new Quaternion(0, BackgroundRotationY, 0), TransformSpace.Local);
-
-			switch (index)
-			{
-				case 0:
-					tile.Position = new Vector3(0, 0, FlightHeight);
-					break;
-				case 1:
-					var x = BackgroundScale * (float)Math.Sin((90 - BackgroundRotationX) * MathHelper.Pi / 180);
-					var y = BackgroundScale * (float)Math.Sin(BackgroundRotationX * MathHelper.Pi / 180) + FlightHeight;
-					tile.Position = new Vector3(0, x + 0.01f, y);
-					break;
-			}
-
+			var tilePosX = BackgroundScale * (float)Math.Sin((90 - BackgroundRotationX) * MathHelper.Pi / 180);
+			var tilePosY = BackgroundScale * (float)Math.Sin(BackgroundRotationX * MathHelper.Pi / 180);
+			tile.Position = new Vector3(0, (tilePosX + 0.01f) * index, tilePosY * index + FlightHeight);
 			return tile;
 		}
 

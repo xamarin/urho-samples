@@ -11,9 +11,10 @@ namespace ShootySkies
 
 		int coins;
 		Scene scene;
-		Player player;
 		Text coinsText;
 		List<Enemy> enemies;
+
+		public Player Player { get; private set; }
 
 		public Viewport Viewport { get; private set; }
 
@@ -76,10 +77,10 @@ namespace ShootySkies
 		async Task StartGame()
 		{
 			UpdateCoins(0);
-			player = new Player(Context);
+			Player = new Player(Context);
 			var aircraftNode = scene.CreateChild(nameof(Aircraft));
-			aircraftNode.AddComponent(player);
-			var playersLife = player.Play();
+			aircraftNode.AddComponent(Player);
+			var playersLife = Player.Play();
 
 			enemies = new List<Enemy>();
 
@@ -102,7 +103,7 @@ namespace ShootySkies
 		async void SpawnEnemies()
 		{
 			// Summon enemies one by one
-			while (player.IsAlive)
+			while (Player.IsAlive)
 			{
 				Enemy enemy = RandomHelper.NextRandom(0, 3) == 1 ? new EnemySlotMachine(Context) : (Enemy)new EnemyBat(Context);
 				var enemyNode = scene.CreateChild(nameof(Aircraft));
@@ -116,7 +117,7 @@ namespace ShootySkies
 
 		async void SpawnCoins()
 		{
-			while (player.IsAlive)
+			while (Player.IsAlive)
 			{
 				var coinNode = scene.CreateChild();
 				coinNode.Position = new Vector3(RandomHelper.NextRandom(-2.5f, 2.5f), 4f, 0);
