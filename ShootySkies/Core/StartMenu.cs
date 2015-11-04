@@ -54,7 +54,7 @@ namespace ShootySkies
 			await menuTaskSource.Task;
 		}
 
-		private async void OnSceneUpdate(SceneUpdateEventArgs args)
+		async void OnSceneUpdate(SceneUpdateEventArgs args)
 		{
 			var input = Application.Input;
 			if (input.GetMouseButtonDown(MouseButton.Left) || input.NumTouches > 0)
