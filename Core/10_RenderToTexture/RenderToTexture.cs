@@ -187,18 +187,18 @@ namespace Urho.Samples
 		}
 	}
 
-	public class Rotator : Component
+	public class Rotator : SharpComponent
 	{
 		Vector3 rotationSpeed;
 
 		public Rotator(Context c) : base(c)
 		{
-			Application.Current.Update += OnUpdate;
+			Application.Update += OnUpdate;
 		}
 
 		protected override void OnDeleted()
 		{
-			Application.Current.Update -= OnUpdate;
+			Application.Update -= OnUpdate;
 		}
 
 		public void SetRotationSpeed(Vector3 vector)

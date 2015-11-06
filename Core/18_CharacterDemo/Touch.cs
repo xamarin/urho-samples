@@ -25,7 +25,7 @@ using System;
 
 namespace Urho.Samples
 {
-	public class Touch : Component
+	public class Touch : SharpComponent
 	{
 		readonly float touchSensitivity;
 		readonly Input input;

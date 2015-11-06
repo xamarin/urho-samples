@@ -25,7 +25,7 @@ using System;
 
 namespace Urho.Samples
 {
-	public class Character : Component
+	public class Character : SharpComponent
 	{
 		/// Movement controls. Assigned by the main program each frame.
 		public Controls Controls { get; set; } = new Controls();

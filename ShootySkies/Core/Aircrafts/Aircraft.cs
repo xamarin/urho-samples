@@ -7,7 +7,6 @@ namespace ShootySkies
 	public abstract class Aircraft : Component
 	{
 		TaskCompletionSource<bool> liveTask;
-		bool isExploding;
 
 		protected Aircraft(Context context) : base(context) {}
 
@@ -36,9 +35,6 @@ namespace ShootySkies
 
 		public async Task Explode()
 		{
-			if (isExploding) //since the method is async we need to protect the aircraft from being exploded twice
-				return;
-			isExploding = true;
 			Health = 0;
 			var explosionNode = Scene.CreateChild();
 			explosionNode.Position = Node.WorldPosition;

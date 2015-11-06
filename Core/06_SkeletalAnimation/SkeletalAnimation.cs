@@ -21,6 +21,8 @@
 // THE SOFTWARE.
 //
 
+using System.Linq;
+
 namespace Urho.Samples
 {
 	public class SkeletalAnimation : Sample
@@ -159,7 +161,7 @@ namespace Urho.Samples
 		protected override string JoystickLayoutPatch => JoystickLayoutPatches.WithDebugButton;
 
 
-		class Mover : Component
+		class Mover : SharpComponent
 		{
 			float MoveSpeed { get; }
 			float RotationSpeed { get; }
@@ -170,12 +172,12 @@ namespace Urho.Samples
 				MoveSpeed = moveSpeed;
 				RotationSpeed = rotateSpeed;
 				Bounds = bounds;
-				Application.Current.SceneUpdate += OnSceneUpdate;
+				Application.SceneUpdate += OnSceneUpdate;
 			}
 
 			protected override void OnDeleted()
 			{
-				Application.Current.SceneUpdate -= OnSceneUpdate;
+				Application.SceneUpdate -= OnSceneUpdate;
 			}
 
 			void OnSceneUpdate(SceneUpdateEventArgs args)
@@ -196,7 +198,7 @@ namespace Urho.Samples
 				var model = GetComponent<AnimatedModel>();
 				if (model.NumAnimationStates > 0)
 				{
-					var state = model.AnimationStates[0];
+					var state = model.AnimationStates.First();
 					state.AddTime(args.TimeStep);
 				}
 			}

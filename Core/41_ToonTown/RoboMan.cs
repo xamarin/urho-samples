@@ -17,7 +17,7 @@ using System;
 
 namespace Urho.Samples
 {
-	public class RoboMan : Component
+	public class RoboMan : SharpComponent
 	{
 		// Grounded flag for movement.
 		bool onGround;

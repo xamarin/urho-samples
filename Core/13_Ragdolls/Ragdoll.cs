@@ -23,7 +23,7 @@
 
 namespace Urho.Samples
 {
-	class Ragdoll : Component
+	class Ragdoll : SharpComponent
 	{
 		readonly RigidBody body;
 

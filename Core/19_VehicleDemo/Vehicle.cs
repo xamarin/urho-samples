@@ -28,7 +28,7 @@ namespace Urho.Samples
 	/// <summary>
 	/// Vehicle component, responsible for physical movement according to controls.
 	/// </summary>
-	public class Vehicle : Component
+	public class Vehicle : SharpComponent
 	{
 		readonly ResourceCache cache;
 
