@@ -30,8 +30,6 @@ namespace Urho.Samples
 	/// </summary>
 	public class Vehicle : SharpComponent
 	{
-		readonly ResourceCache cache;
-
 		public const int CtrlForward = 1;
 		public const int CtrlBack = 2;
 		public const int CtrlLeft = 4;
@@ -71,10 +69,7 @@ namespace Urho.Samples
 		/// Current left/right steering amount (-1 to 1.)
 		float steering;
 
-		public Vehicle(Context context, ResourceCache cache) : base(context)
-		{
-			this.cache = cache;
-		}
+		public Vehicle(Context context) : base(context) {}
 
 		public void FixedUpdate(float timeStep)
 		{
@@ -132,8 +127,8 @@ namespace Urho.Samples
 			CollisionShape hullShape = node.CreateComponent<CollisionShape>();
 
 			node.Scale = new Vector3(1.5f, 1.0f, 3.0f);
-			hullObject.Model = cache.GetModel("Models/Box.mdl");
-			hullObject.SetMaterial(cache.GetMaterial("Materials/Stone.xml"));
+			hullObject.Model = Application.ResourceCache.GetModel("Models/Box.mdl");
+			hullObject.SetMaterial(Application.ResourceCache.GetMaterial("Materials/Stone.xml"));
 			hullObject.CastShadows = true;
 			hullShape.SetBox(Vector3.One, Vector3.Zero, Quaternion.Identity);
 			hullBody.Mass = 4.0f;
@@ -165,8 +160,8 @@ namespace Urho.Samples
 			CollisionShape wheelShape = wheelNode.CreateComponent<CollisionShape>();
 			Constraint wheelConstraint = wheelNode.CreateComponent<Constraint>();
 
-			wheelObject.Model = (cache.GetModel("Models/Cylinder.mdl"));
-			wheelObject.SetMaterial(cache.GetMaterial("Materials/Stone.xml"));
+			wheelObject.Model = (Application.ResourceCache.GetModel("Models/Cylinder.mdl"));
+			wheelObject.SetMaterial(Application.ResourceCache.GetMaterial("Materials/Stone.xml"));
 			wheelObject.CastShadows = true;
 			wheelShape.SetSphere(1.0f, Vector3.Zero, Quaternion.Identity);
 			wheelBody.Friction = (1.0f);

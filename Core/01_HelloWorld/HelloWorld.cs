@@ -23,7 +23,7 @@
 
 namespace Urho.Samples
 {
-	public class HelloWorld : Application
+	public class HelloWorld : Application //The fist sample is not derived from Sample
 	{
 		public HelloWorld(Context c) : base(c) { }
 
@@ -42,6 +42,9 @@ namespace Urho.Samples
 			
 			Graphics.SetWindowIcon(cache.GetImage("Textures/UrhoIcon.png"));
 			Graphics.WindowTitle = "UrhoSharp Sample";
+
+			// Subscribe to Esc key:
+			SubscribeToKeyDown(args => { if (args.Key == Key.Esc) Engine.Exit(); });
 		}
 	}
 }

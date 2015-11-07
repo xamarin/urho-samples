@@ -154,7 +154,7 @@ namespace Urho.Samples
 			vehicleNode.Position = (new Vector3(0.0f, 5.0f, 0.0f));
 
 			// Create the vehicle logic component
-			vehicle = new Vehicle(Context, ResourceCache); 
+			vehicle = new Vehicle(Context); 
 			vehicleNode.AddComponent(vehicle);
 			// Create the rendering and physics components
 			vehicle.Init();
