@@ -773,9 +773,6 @@
       <Link>Assets\Data\Textures\TreeUV2.png</Link>
     </AndroidAsset>
   </ItemGroup>
-  <ItemGroup>
-    <Content Include="UrhoSharpReadme.txt" />
-  </ItemGroup>
   <Import Project="..\..\packages\UrhoSharp.1.0.50\build\MonoAndroid\UrhoSharp.targets" Condition="Exists('..\..\packages\UrhoSharp.1.0.50\build\MonoAndroid\UrhoSharp.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
