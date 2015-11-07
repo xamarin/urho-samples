@@ -65,7 +65,7 @@ namespace ShootySkies
 	/// </summary>
 	public class WeaponReferenceComponent : Component
 	{
-		public Weapon Weapon { get; }
+		public Weapon Weapon { get; private set; }
 
 		public WeaponReferenceComponent(Context context, Weapon weapon) : base(context)
 		{

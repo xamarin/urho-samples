@@ -95,6 +95,7 @@ namespace ShootySkies
 			var material = Node.GetComponent<StaticModel>().GetMaterial(0);
 			if (material == null)
 				return;
+			//NOTE: the material should not be cached (Clone() should be called) or all object with it will be blinking
 			material.SetShaderParameter("MatSpecColor", new Color(0, 0, 0, 0));
 			var specColorAnimation = new ValueAnimation(Context);
 			specColorAnimation.SetKeyFrame(0.0f, new Color(1.0f, 1.0f, 1.0f, 0.5f));
