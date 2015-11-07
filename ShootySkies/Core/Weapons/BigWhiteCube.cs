@@ -53,7 +53,8 @@ namespace ShootySkies
 			// show a small explosion when the cube reaches an aircraft. 
 			base.OnHit(target, killed, bulletNode);
 			var cache = Application.ResourceCache;
-			var explosionNode = target.Node.CreateChild();
+			var explosionNode = Scene.CreateChild();
+			explosionNode.Position = target.Node.WorldPosition;
 			explosionNode.SetScale(1.6f);
 			var particleEmitter = explosionNode.CreateComponent<ParticleEmitter2D>();
 			particleEmitter.Effect = cache.GetParticleEffect2D(Assets.Particles.Explosion);

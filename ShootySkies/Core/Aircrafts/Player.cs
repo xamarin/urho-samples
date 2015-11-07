@@ -13,7 +13,7 @@ namespace ShootySkies
 
 		protected override Vector3 CollisionShapeSize => new Vector3(2.1f, 1.2f, 1.2f); // extend default shape to get collisions by wings too
 
-		public override int MaxHealth => 80;
+		public override int MaxHealth => 70;
 
 		protected override async void Init()
 		{

@@ -42,7 +42,7 @@ namespace ShootySkies
 			bulletNode.SetScale(0);
 		}
 
-		protected Node CreateRigidBullet(bool byPlayer)
+		protected Node CreateRigidBullet(bool byPlayer, Vector3 collisionBox)
 		{
 			var carrier = Node;
 			var bullet = carrier.Scene.CreateChild(nameof(Weapon) + GetType().Name);
@@ -50,11 +50,16 @@ namespace ShootySkies
 			bullet.Position = carrierPos;
 			var body = bullet.CreateComponent<RigidBody>();
 			CollisionShape shape = bullet.CreateComponent<CollisionShape>();
-			shape.SetBox(Vector3.One, Vector3.Zero, Quaternion.Identity);
+			shape.SetBox(collisionBox, Vector3.Zero, Quaternion.Identity);
 			body.SetKinematic(true);
 			body.CollisionLayer = byPlayer ? (uint)CollisionLayers.Enemy : (uint)CollisionLayers.Player;
 			bullet.AddComponent(new WeaponReferenceComponent(Context, this));
 			return bullet;
+		}
+
+		protected Node CreateRigidBullet(bool byPlayer)
+		{
+			return CreateRigidBullet(byPlayer, Vector3.One);
 		}
 
 		protected abstract Task OnFire(bool byPlayer);

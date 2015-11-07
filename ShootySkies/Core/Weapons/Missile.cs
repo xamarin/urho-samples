@@ -11,7 +11,7 @@ namespace ShootySkies
 
 		public override TimeSpan ReloadDuration => TimeSpan.FromSeconds(3);
 
-		public override int Damage => 10;
+		public override int Damage => 8;
 
 		protected override async Task OnFire(bool player)
 		{
@@ -58,6 +58,21 @@ namespace ShootySkies
 
 			//remove the missile from the scene.
 			bulletNode.Remove();
+		}
+
+		public override async void OnHit(Aircraft target, bool killed, Node bulletNode)
+		{
+			// show a small explosion when the missile reaches an aircraft. 
+			base.OnHit(target, killed, bulletNode);
+			var cache = Application.ResourceCache;
+			var explosionNode = Scene.CreateChild();
+			explosionNode.Position = target.Node.WorldPosition;
+			explosionNode.SetScale(1f);
+			var particleEmitter = explosionNode.CreateComponent<ParticleEmitter2D>();
+			particleEmitter.Effect = cache.GetParticleEffect2D(Assets.Particles.MissileTrace);
+			var scaleAction = new ScaleTo(0.5f, 0f);
+			await explosionNode.RunActionsAsync(scaleAction, new DelayTime(0.5f));
+			explosionNode.Remove();
 		}
 	}
 }

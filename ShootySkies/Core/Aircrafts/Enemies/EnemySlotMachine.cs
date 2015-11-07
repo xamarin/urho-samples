@@ -6,7 +6,7 @@ namespace ShootySkies
 	{
 		public EnemySlotMachine(Context context) : base(context) { }
 
-		public override int MaxHealth => 30;
+		public override int MaxHealth => 50;
 
 		protected override void Init()
 		{

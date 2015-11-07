@@ -6,7 +6,7 @@ namespace ShootySkies
 {
 	public class MachineGun : Weapon
 	{
-		const float GunOffsetSize = 0.15f; //accuracy (lower - better)
+		const float GunOffsetSize = 0.2f; //accuracy (lower - better)
 		float currentGunOffset = -GunOffsetSize;
 
 		public MachineGun(Context context) : base(context) {}
@@ -29,13 +29,14 @@ namespace ShootySkies
 			model.Model = cache.GetModel(Assets.Models.Box);
 			var mat = cache.GetMaterial(Assets.Materials.MachineGun);
 			model.SetMaterial(mat);
-			bulletNode.Rotate(new Quaternion(0, -40, 0), TransformSpace.Local);
 
+			bulletNode.LookAt(new Vector3(bulletNode.WorldPosition.X, 10, -10), new Vector3(0, 1, -1), TransformSpace.World);
+			bulletNode.Rotate(new Quaternion(0, 45, 0), TransformSpace.Local);
 			bulletNode.Scale = new Vector3(0.1f, 0.3f, 0.1f);
 
 			await bulletNode.RunActionsAsync(
-				new MoveBy(0.6f, new Vector3(0, 10, 0) * (player ? 1 : -1)),
-				new CallFunc(() => bulletNode.SetScale(0f))); //collapse);
+				new MoveBy(0.7f, new Vector3(0, 10, 0) * (player ? 1 : -1)),
+				new CallFunc(() => bulletNode.SetScale(0f))); // collapse
 
 			//remove the bullet from the scene.
 			bulletNode.Remove();

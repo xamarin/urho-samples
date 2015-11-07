@@ -7,6 +7,8 @@
 		{
 			public const string Enemy1 = "Materials/Enemy1.xml";
 			public const string Enemy2 = "Materials/Enemy2.xml";
+			public const string Enemy3 = "Materials/Enemy3.xml";
+			public const string Enemy3weapon = "Materials/Enemy3weapon.xml";
 			public const string TreeMaterial = "Materials/TreeMaterial.xml";
 			public const string Grass = "Materials/Grass.xml";
 			public const string Player = "Materials/Player.xml";
@@ -21,8 +23,10 @@
 			public const string Tree = "Models/Tree.mdl";
 			public const string Box = "Models/Box.mdl";
 			public const string Player = "Models/Player.mdl";
-			public const string Enemy2 = "Models/Enemy2.mdl";
 			public const string Enemy1 = "Models/Enemy1.mdl";
+			public const string Enemy2 = "Models/Enemy2.mdl";
+			public const string Enemy3 = "Models/Enemy3.mdl";
+			public const string Enemy3weapon = "Models/Enemy3weapon.mdl";
 			public const string Coin = "Models/Coin.mdl";
 			public const string SMWeapon = "Models/SMWeapon.mdl";
 		}

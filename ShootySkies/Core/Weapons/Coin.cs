@@ -23,8 +23,8 @@ namespace ShootySkies
 			node.Rotation = new Quaternion(-40, 0, 0);
 			await node.RunActionsAsync(
 				new Urho.Parallel(
-					new MoveBy(3f, new Vector3(0, 10 * (byPlayer ? 1 : -1), 0)),
-					new RotateBy(3f, 0, 360 * 5, 0)));
+					new MoveBy(duration: 3f, position: new Vector3(0, 10 * (byPlayer ? 1 : -1), 0)),
+					new RotateBy(duration: 3f, deltaAngleX: 0, deltaAngleY: 360 * 5, deltaAngleZ: 0)));
 			node.Remove();
 		}
 

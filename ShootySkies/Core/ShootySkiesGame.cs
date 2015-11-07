@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
+using ShootySkies.Aircrafts.Enemies;
 using Urho;
 
 namespace ShootySkies
@@ -7,7 +8,7 @@ namespace ShootySkies
 	public class ShootySkiesGame : Application
 	{
 		const string CoinstFormat = "{0} coins";
-		const int EnemySpawningIntensivity = 4;
+		const int EnemySpawningIntensivity = 1;
 
 		int coins;
 		Scene scene;
@@ -52,6 +53,7 @@ namespace ShootySkies
 			var background = new Background(Context);
 			scene.AddComponent(background);
 			background.Start();
+
 			// Lights:
 			var lightNode1 = scene.CreateChild();
 			lightNode1.Position = new Vector3(0, -5, -40);
@@ -80,40 +82,15 @@ namespace ShootySkies
 			var aircraftNode = scene.CreateChild(nameof(Aircraft));
 			aircraftNode.AddComponent(Player);
 			var playersLife = Player.Play();
-
-			enemies = new List<Enemy>();
-
-			for (int i = 0; i < EnemySpawningIntensivity; i++)
-			{
-				SpawnEnemies();
-				//await aircraftNode.RunActionsAsync(new DelayTime(1));
-			}
+			Enemies enemies = new Enemies(Context, Player);
+			scene.AddComponent(enemies);
 			SpawnCoins();
-
+			enemies.StartSpawning();
 			await playersLife;
-
-			//game over -- explode all enemies
-			foreach (var enemy in enemies)
-				enemy.Explode(); 
-
+			enemies.KillAll();
 			aircraftNode.Remove();
 		}
-
-		async void SpawnEnemies()
-		{
-			// Summon enemies one by one
-			while (Player.IsAlive)
-			{
-				Enemy enemy = RandomHelper.NextRandom(0, 3) == 1 ? new EnemySlotMachine(Context) : (Enemy)new EnemyBat(Context);
-				var enemyNode = scene.CreateChild(nameof(Aircraft));
-				enemyNode.AddComponent(enemy);
-				enemies.Add(enemy);
-				await enemy.Play();
-				enemies.Remove(enemy);
-				enemyNode.Remove();
-			}
-		}
-
+		
 		async void SpawnCoins()
 		{
 			while (Player.IsAlive)
@@ -122,7 +99,7 @@ namespace ShootySkies
 				coinNode.Position = new Vector3(RandomHelper.NextRandom(-2.5f, 2.5f), 4f, 0);
 				var coin = new Coin(Context);
 				coinNode.AddComponent(coin);
-				await coin.FireAsync(false);
+				await Task.WhenAll(coin.FireAsync(false), coinNode.RunActionsAsync(new DelayTime(10f)));
 				coinNode.Remove();
 			}
 		}
@@ -133,7 +110,7 @@ namespace ShootySkies
 		{
 			if (amount == 5)
 			{
-				// give player a MassMachineGun once he earns more 5 coins
+				// give player a MassMachineGun once he earns 5 coins
 				Player.Node.AddComponent(new MassMachineGun(Context));
 			}
 			coins = amount;

@@ -12,11 +12,11 @@ namespace ShootySkies
 		protected override async void Init()
 		{
 			await Node.RunActionsAsync(new MoveBy(0.6f, new Vector3(0, -2, 0)));
-			MoveRandomly();
-			AttackRandomly();
+			MoveRandomly(minX: 1, maxX: 2, minY: -3, maxY: 3, duration: 1.5f);
+			StartShooting();
 		}
 
-		async void AttackRandomly()
+		protected async void StartShooting()
 		{
 			while (IsAlive && Node.Components.Count > 0)
 			{
@@ -30,11 +30,11 @@ namespace ShootySkies
 			}
 		}
 
-		async void MoveRandomly()
+		protected async void MoveRandomly(float minX, float maxX, float minY, float maxY, float duration)
 		{
 			while (IsAlive)
 			{
-				var moveAction = new MoveBy(RandomHelper.NextRandom(1f, 2f), new Vector3(RandomHelper.NextRandom(-3f, 3f), RandomHelper.NextRandom(-4f, 1f), 0));
+				var moveAction = new MoveBy(duration, new Vector3(RandomHelper.NextRandom(minX, maxX), RandomHelper.NextRandom(minY, maxY), 0));
 				await Node.RunActionsAsync(moveAction, moveAction.Reverse());
 			}
 		}

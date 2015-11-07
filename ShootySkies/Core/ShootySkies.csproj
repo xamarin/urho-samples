@@ -35,11 +35,13 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Aircrafts\Aircraft.cs" />
+    <Compile Include="Aircrafts\Enemies\EnemySlotMachine.cs" />
+    <Compile Include="Aircrafts\Enemies\Enemies.cs" />
     <Compile Include="Assets.cs" />
     <Compile Include="Weapons\Coin.cs" />
     <Compile Include="Aircrafts\Enemies\Enemy.cs" />
     <Compile Include="Aircrafts\Enemies\EnemyBat.cs" />
-    <Compile Include="Aircrafts\Enemies\EnemySlotMachine.cs" />
+    <Compile Include="Aircrafts\Enemies\EnemyMonitorScreen.cs" />
     <Compile Include="Aircrafts\Player.cs" />
     <Compile Include="Background.cs" />
     <Compile Include="Helpers\RandomHelper.cs" />
@@ -47,6 +49,7 @@
     <Compile Include="ShootySkiesGame.cs" />
     <Compile Include="StartMenu.cs" />
     <Compile Include="Weapons\BigWhiteCube.cs" />
+    <Compile Include="Weapons\SmallPlates.cs" />
     <Compile Include="Weapons\MassMachineGun.cs" />
     <Compile Include="Weapons\Joysticks.cs" />
     <Compile Include="Weapons\MachineGun.cs" />

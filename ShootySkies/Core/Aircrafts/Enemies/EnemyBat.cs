@@ -6,9 +6,9 @@ namespace ShootySkies
 	{
 		public EnemyBat(Context context) : base(context) {}
 
-		public override int MaxHealth => 20;
+		public override int MaxHealth => 30;
 
-		protected override void Init()
+		protected override async void Init()
 		{
 			var cache = Application.ResourceCache;
 			var node = Node;
@@ -19,7 +19,12 @@ namespace ShootySkies
 			node.Position = new Vector3(0f, 5f, 0f);
 
 			node.AddComponent(new BigWhiteCube(Context));
-			base.Init();
+
+			node.Position = new Vector3(3 * (RandomHelper.NextBoolRandom() ? 1 : -1), RandomHelper.NextRandom(0, 2), 0);
+			await Node.RunActionsAsync(new MoveTo(1f, new Vector3(RandomHelper.NextRandom(-2, 2), RandomHelper.NextRandom(2, 4), 0)));
+
+			MoveRandomly(minX: -2f, maxX: 2f, minY: -1f, maxY: 1f, duration: 0.5f);
+			StartShooting();
 		}
 	}
 }
