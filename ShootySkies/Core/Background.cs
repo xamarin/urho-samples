@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Threading.Tasks;
 using Urho;
 
@@ -14,7 +13,6 @@ namespace ShootySkies
 		const float BackgroundScale = 40f;
 		const float BackgroundSpeed = 0.06f;
 		const float FlightHeight = 10f;
-		const int TreesPerTile = 200;
 
 		public Background(Context context) : base(context) {}
 
@@ -63,26 +61,15 @@ namespace ShootySkies
 			planeObject.Model = cache.GetModel(Assets.Models.Box);
 			planeObject.SetMaterial(cache.GetMaterial(Assets.Materials.Grass));
 
-			var usedCoordinates = new HashSet<Vector3>();
-			for (int i = 0; i < TreesPerTile; i++)
+			for (float i = -BackgroundScale / 2; i < BackgroundScale / 2; i+=2f)
 			{
-				Vector3 randomCoordinates;
-				// Generate random unique coordinates for trees
-				while (true)
+				for (float j = -BackgroundScale / 2; j < BackgroundScale / 2; j+=2.2f)
 				{
-					var x = (int)RandomHelper.NextRandom(-10, 10);
-					var y = (int)RandomHelper.NextRandom(-25, 25);
-					randomCoordinates = new Vector3(x, 0f, y);
-					if (!usedCoordinates.Contains(randomCoordinates))
-					{
-						usedCoordinates.Add(randomCoordinates);
-						break;
-					}
+					var tree = CreateTree(tile);
+					tree.Position = new Vector3(i + RandomHelper.NextRandom(-0.5f, 0.5f), 0, j);
 				}
-
-				var tree = CreateTree(tile);
-				tree.Position = randomCoordinates;
 			}
+
 			tile.Rotate(new Quaternion(270 + BackgroundRotationX, 0, 0), TransformSpace.Local);
 			tile.RotateAround(new Vector3(0, 0, 0), new Quaternion(0, BackgroundRotationY, 0), TransformSpace.Local);
 			var tilePosX = BackgroundScale * (float)Math.Sin((90 - BackgroundRotationX) * MathHelper.Pi / 180);
