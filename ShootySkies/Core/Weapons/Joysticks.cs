@@ -21,8 +21,11 @@ namespace ShootySkies
 			List<Task> tasks = new List<Task>();
 			for (int i = 0; i < joysticksCount; i++)
 			{
-				var angle = 360 / joysticksCount * i * MathHelper.Pi / 180; //angle per joystick (in radians)
-				tasks.Add(Fire(new Vector3((float)Math.Cos(angle) * length, (float)Math.Sin(angle) * length, 0), byPlayer));
+				var angle = MathHelper.DegreesToRadians(360 / joysticksCount * i); //angle per joystick (in radians)
+				//x^2 + y^2 = length^2 (Equation of Circle):
+				var x = (float) Math.Cos(angle) * length;
+				var y = (float) Math.Sin(angle) * length;
+				tasks.Add(Fire(new Vector3(x, y, 0), byPlayer));
 			}
 			return Task.WhenAll(tasks);
 		}

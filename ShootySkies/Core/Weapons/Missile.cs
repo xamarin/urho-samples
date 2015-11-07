@@ -38,8 +38,8 @@ namespace ShootySkies
 			bulletNode.SetScale(0.3f);
 
 			// Trace-effect using particles
-			var particleEmitter = bulletNode.CreateComponent<ParticleEmitter2D>();
-			particleEmitter.Effect = cache.GetParticleEffect2D(Assets.Particles.MissileTrace);
+			bulletNode.CreateComponent<ParticleEmitter2D>().Effect = cache.GetParticleEffect2D(Assets.Particles.MissileTrace);
+			bulletNode.CreateComponent<ParticleEmitter2D>().Effect = cache.GetParticleEffect2D(Assets.Particles.Explosion);
 
 			// Route (Bezier)
 			float directionY = player ? 1 : -1;

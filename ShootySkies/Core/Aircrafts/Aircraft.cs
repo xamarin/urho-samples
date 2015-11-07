@@ -4,16 +4,33 @@ using Urho;
 
 namespace ShootySkies
 {
+	/// <summary>
+	/// A base class for all aircrafts including the player and enemies
+	/// </summary>
 	public abstract class Aircraft : Component
 	{
 		TaskCompletionSource<bool> liveTask;
 
 		protected Aircraft(Context context) : base(context) {}
 
+		/// <summary>
+		/// Current health (less or equal to MaxHealth)
+		/// </summary>
 		public int Health { get; set; }
+
+		/// <summary>
+		/// Max health value 
+		/// </summary>
 		public virtual int MaxHealth => 30;
+		
+		/// <summary>
+		/// Is aircraft alive
+		/// </summary>
 		public bool IsAlive => Health > 0 && IsEnabled() && !IsDeleted;
 
+		/// <summary>
+		/// Spawn the aircraft and wait until it's exploded
+		/// </summary>
 		public Task Play()
 		{
 			liveTask = new TaskCompletionSource<bool>();
@@ -21,11 +38,11 @@ namespace ShootySkies
 			Application.SceneUpdate += OnUpdate;
 			var node = Node;
 
-			// Define physics
+			// Define physics for handling collisions
 			var body = node.CreateComponent<RigidBody>();
 			body.Mass = 1;
 			body.SetKinematic(true);
-			body.CollisionMask = CollisionLayer;
+			body.CollisionMask = (uint)CollisionLayer;
 			CollisionShape shape = node.CreateComponent<CollisionShape>();
 			shape.SetBox(CollisionShapeSize, Vector3.Zero, Quaternion.Identity);
 			Init();
@@ -33,16 +50,20 @@ namespace ShootySkies
 			return liveTask.Task;
 		}
 
+		/// <summary>
+		/// Explode the aircraft with animation
+		/// </summary>
 		public async Task Explode()
 		{
 			Health = 0;
+			//create a special independent node in the scene for explosion
 			var explosionNode = Scene.CreateChild();
 			explosionNode.Position = Node.WorldPosition;
 			OnExplode(explosionNode);
-			ScaleBy scaleBy = new ScaleBy(0.7f, 0f);
+			var scaleAction = new ScaleTo(1f, 0f);
 			Node.RemoveAllActions();
 			Node.SetEnabled(false);
-			await explosionNode.RunActionsAsync(scaleBy, new DelayTime(1f));
+			await explosionNode.RunActionsAsync(scaleAction, new DelayTime(1f));
 			liveTask.TrySetResult(true);
 			explosionNode.Remove();
 		}
@@ -91,7 +112,7 @@ namespace ShootySkies
 
 		protected virtual void Init() {}
 
-		protected virtual uint CollisionLayer => 1;
+		protected virtual CollisionLayers CollisionLayer => CollisionLayers.Enemy;
 
 		protected virtual Vector3 CollisionShapeSize => new Vector3(1.2f, 1.2f, 1.2f);
 
@@ -101,5 +122,11 @@ namespace ShootySkies
 		}
 
 		protected virtual void OnUpdate(SceneUpdateEventArgs sceneUpdateEventArgs) {}
+	}
+
+	public enum CollisionLayers : uint
+	{
+		Player = 2,
+		Enemy = 4
 	}
 }

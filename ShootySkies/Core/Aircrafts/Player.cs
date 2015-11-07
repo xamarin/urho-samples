@@ -1,5 +1,4 @@
-﻿using System;
-using System.Linq;
+﻿using System.Linq;
 using Urho;
 
 namespace ShootySkies
@@ -8,13 +7,11 @@ namespace ShootySkies
 	{
 		Node rotor;
 
-		public const uint PlayerAircraftCollisionLayer = 2; //specific layer to ignore own bullets
-
 		public Player(Context context) : base(context) {}
 
-		protected override uint CollisionLayer => PlayerAircraftCollisionLayer;
+		protected override CollisionLayers CollisionLayer => CollisionLayers.Player;
 
-		protected override Vector3 CollisionShapeSize => new Vector3(2.5f, 1.2f, 1.2f); // to get collisions by wings too
+		protected override Vector3 CollisionShapeSize => new Vector3(2.1f, 1.2f, 1.2f); // extend default shape to get collisions by wings too
 
 		public override int MaxHealth => 100;
 
@@ -74,20 +71,13 @@ namespace ShootySkies
 
 			var input = Application.Current.Input;
 			var aircraft = Node;
-			var timeStep = args.TimeStep;
 
-			const float turnSpeed = 0.2f;
-			const float moveSpeedX = 3f;
-			const float maxTurnAngle = 70f;
-
-			float deltaX = 0;
 			int positionX = 0, positionY = 0;
 			bool hasInput = false;
 			if (input.NumTouches > 0)
 			{
 				// move with touches:
 				TouchState state = input.GetTouch(0);
-				deltaX = state.Delta.X;
 				var touchPosition = state.Position;
 				positionX = touchPosition.X;
 				positionY = touchPosition.Y;
@@ -99,7 +89,6 @@ namespace ShootySkies
 				var mousePos = input.MousePosition;
 				positionX = mousePos.X;
 				positionY = mousePos.Y;
-				deltaX =  input.MouseMove.X;
 				hasInput = true;
 			}
 
@@ -110,11 +99,11 @@ namespace ShootySkies
 				aircraft.Translate(destWorldPos - aircraft.WorldPosition, TransformSpace.World);
 				foreach (var weapon in Node.Components.OfType<Weapon>())
 				{
-					weapon.FireAsync(byPlayer: true);
+					weapon.FireAsync(true);
 				}
 			}
 
-			aircraft.LookAt(new Vector3(0, aircraft.WorldPosition.Y + 12, 10), new Vector3(0, 1, -1), TransformSpace.World);
+			aircraft.LookAt(new Vector3(0, aircraft.WorldPosition.Y + 10, 10), new Vector3(0, 1, -1), TransformSpace.World);
 		}
 	}
 }

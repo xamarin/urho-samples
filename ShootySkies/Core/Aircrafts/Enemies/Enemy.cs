@@ -5,11 +5,9 @@ namespace ShootySkies
 {
 	public abstract class Enemy : Aircraft
 	{
-		public const uint EnemyCollisionLayer = 4; //specific layer to ignore own bullets
-
 		protected Enemy(Context context) : base(context) { }
 
-		protected override uint CollisionLayer => EnemyCollisionLayer;
+		protected override CollisionLayers CollisionLayer => CollisionLayers.Enemy;
 
 		protected override async void Init()
 		{

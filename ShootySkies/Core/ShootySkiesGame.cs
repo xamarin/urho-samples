@@ -52,7 +52,6 @@ namespace ShootySkies
 			var background = new Background(Context);
 			scene.AddComponent(background);
 			background.Start();
-
 			// Lights:
 			var lightNode1 = scene.CreateChild();
 			lightNode1.Position = new Vector3(0, -5, -40);
@@ -87,7 +86,7 @@ namespace ShootySkies
 			for (int i = 0; i < EnemySpawningIntensivity; i++)
 			{
 				SpawnEnemies();
-				await aircraftNode.RunActionsAsync(new DelayTime(1));
+				//await aircraftNode.RunActionsAsync(new DelayTime(1));
 			}
 			SpawnCoins();
 

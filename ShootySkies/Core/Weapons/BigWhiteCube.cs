@@ -50,6 +50,7 @@ namespace ShootySkies
 		
 		public override async void OnHit(Aircraft target, bool killed, Node bulletNode)
 		{
+			// show a small explosion when the cube reaches an aircraft. 
 			base.OnHit(target, killed, bulletNode);
 			var cache = Application.ResourceCache;
 			var explosionNode = target.Node.CreateChild();

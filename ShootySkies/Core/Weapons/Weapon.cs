@@ -8,8 +8,6 @@ namespace ShootySkies
 	{
 		protected Weapon(Context context) : base(context) { }
 
-		public bool Inited { get; set; }
-
 		public DateTime LastLaunchDate { get; set; }
 
 		/// <summary>
@@ -28,12 +26,6 @@ namespace ShootySkies
 		/// </summary>
 		public async Task<bool> FireAsync(bool byPlayer)
 		{
-			if (!Inited)
-			{
-				Inited = true;
-				Init();
-			}
-
 			if (IsReloading)
 			{
 				return false;
@@ -50,8 +42,6 @@ namespace ShootySkies
 			bulletNode.SetScale(0);
 		}
 
-		protected virtual void Init() {}
-
 		protected Node CreateRigidBullet(bool byPlayer)
 		{
 			var carrier = Node;
@@ -62,7 +52,7 @@ namespace ShootySkies
 			CollisionShape shape = bullet.CreateComponent<CollisionShape>();
 			shape.SetBox(Vector3.One, Vector3.Zero, Quaternion.Identity);
 			body.SetKinematic(true);
-			body.CollisionLayer = byPlayer ? Enemy.EnemyCollisionLayer : Player.PlayerAircraftCollisionLayer;
+			body.CollisionLayer = byPlayer ? (uint)CollisionLayers.Enemy : (uint)CollisionLayers.Player;
 			bullet.AddComponent(new WeaponReferenceComponent(Context, this));
 			return bullet;
 		}
@@ -70,9 +60,12 @@ namespace ShootySkies
 		protected abstract Task OnFire(bool byPlayer);
 	}
 
+	/// <summary>
+	/// A component that should be attached to bullets' nodes in order to have a link to the Weapon
+	/// </summary>
 	public class WeaponReferenceComponent : Component
 	{
-		public Weapon Weapon { get; set; }
+		public Weapon Weapon { get; }
 
 		public WeaponReferenceComponent(Context context, Weapon weapon) : base(context)
 		{
