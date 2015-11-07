@@ -11,7 +11,7 @@ namespace ShootySkies
 		const float BackgroundRotationX = 45f;
 		const float BackgroundRotationY = 15f;
 		const float BackgroundScale = 40f;
-		const float BackgroundSpeed = 0.06f;
+		const float BackgroundSpeed = 0.05f;
 		const float FlightHeight = 10f;
 
 		public Background(Context context) : base(context) {}
@@ -34,11 +34,11 @@ namespace ShootySkies
 			while (true)
 			{
 				// calculate positions using Law of sines
-				var x = BackgroundScale * (float)Math.Sin((90 - BackgroundRotationX) * MathHelper.Pi / 180);
-				var y = BackgroundScale * (float)Math.Sin(BackgroundRotationX * MathHelper.Pi / 180) + FlightHeight;
+				var x = BackgroundScale * (float)Math.Sin(MathHelper.DegreesToRadians(90 - BackgroundRotationX));
+				var y = BackgroundScale * (float)Math.Sin(MathHelper.DegreesToRadians(BackgroundRotationX)) + FlightHeight;
 
 				var moveTo = x + 1f; //a small adjusment to hide that gap between two tiles
-				var h = (float)Math.Tan(BackgroundRotationX * MathHelper.Pi / 180) * moveTo;
+				var h = (float)Math.Tan(MathHelper.DegreesToRadians(BackgroundRotationX)) * moveTo;
 				await Task.WhenAll(frontTile.RunActionsAsync(new MoveBy(1 / BackgroundSpeed, new Vector3(0, -moveTo, -h))),
 					rearTile.RunActionsAsync(new MoveBy(1 / BackgroundSpeed, new Vector3(0, -moveTo, -h))));
 
@@ -61,9 +61,10 @@ namespace ShootySkies
 			planeObject.Model = cache.GetModel(Assets.Models.Box);
 			planeObject.SetMaterial(cache.GetMaterial(Assets.Materials.Grass));
 
-			for (float i = -BackgroundScale / 2; i < BackgroundScale / 2; i+=2f)
+			var size = BackgroundScale/2;
+			for (float i = -size; i < size; i+=2f)
 			{
-				for (float j = -BackgroundScale / 2; j < BackgroundScale / 2; j+=2.2f)
+				for (float j = -size; j < size; j+=2.2f)
 				{
 					var tree = CreateTree(tile);
 					tree.Position = new Vector3(i + RandomHelper.NextRandom(-0.5f, 0.5f), 0, j);
@@ -72,8 +73,8 @@ namespace ShootySkies
 
 			tile.Rotate(new Quaternion(270 + BackgroundRotationX, 0, 0), TransformSpace.Local);
 			tile.RotateAround(new Vector3(0, 0, 0), new Quaternion(0, BackgroundRotationY, 0), TransformSpace.Local);
-			var tilePosX = BackgroundScale * (float)Math.Sin((90 - BackgroundRotationX) * MathHelper.Pi / 180);
-			var tilePosY = BackgroundScale * (float)Math.Sin(BackgroundRotationX * MathHelper.Pi / 180);
+			var tilePosX = BackgroundScale * (float)Math.Sin(MathHelper.DegreesToRadians(90 - BackgroundRotationX));
+			var tilePosY = BackgroundScale * (float)Math.Sin(MathHelper.DegreesToRadians(BackgroundRotationX));
 			tile.Position = new Vector3(0, (tilePosX + 0.01f) * index, tilePosY * index + FlightHeight);
 			return tile;
 		}

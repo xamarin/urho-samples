@@ -131,6 +131,11 @@ namespace ShootySkies
 
 		void UpdateCoins(int amount)
 		{
+			if (amount == 5)
+			{
+				// give player a MassMachineGun once he earns more 5 coins
+				Player.Node.AddComponent(new MassMachineGun(Context));
+			}
 			coins = amount;
 			coinsText.Value = string.Format(CoinstFormat, coins);
 		}
