@@ -47,6 +47,7 @@
     <Compile Include="ShootySkiesGame.cs" />
     <Compile Include="StartMenu.cs" />
     <Compile Include="Weapons\BigWhiteCube.cs" />
+    <Compile Include="Weapons\MassMachineGun.cs" />
     <Compile Include="Weapons\Joysticks.cs" />
     <Compile Include="Weapons\MachineGun.cs" />
     <Compile Include="Weapons\Missile.cs" />
