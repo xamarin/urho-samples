@@ -39,6 +39,14 @@
 			public const string MissileTrace = "Particles/MissileTrace.pex";
 		}
 
+		public static class Sounds
+		{
+			public const string BigExplosion = "Sounds/BigExplosion.wav";
+			public const string MachineGun = "Sounds/MachineGun.wav";
+			public const string SmallExplosion = "Sounds/SmallExplosion.wav";
+			public const string Powerup = "Sounds/Powerup.wav";
+		}
+
 		public static class Fonts
 		{
 			public const string Font = "Fonts/Font.ttf";

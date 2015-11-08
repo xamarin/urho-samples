@@ -8,7 +8,6 @@ namespace ShootySkies
 	public class ShootySkiesGame : Application
 	{
 		const string CoinstFormat = "{0} coins";
-		const int EnemySpawningIntensivity = 1;
 
 		int coins;
 		Scene scene;

@@ -58,6 +58,11 @@ namespace ShootySkies
 			Health = 0;
 			//create a special independent node in the scene for explosion
 			var explosionNode = Scene.CreateChild();
+			SoundSource soundSource = explosionNode.CreateComponent<SoundSource>();
+			soundSource.Play(Application.ResourceCache.GetSound(Assets.Sounds.BigExplosion));
+			soundSource.Gain = 0.5f;
+			soundSource.AutoRemove = true;
+
 			explosionNode.Position = Node.WorldPosition;
 			OnExplode(explosionNode);
 			var scaleAction = new ScaleTo(1f, 0f);

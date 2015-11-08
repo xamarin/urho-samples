@@ -8,6 +8,7 @@ namespace ShootySkies
 	{
 		const float GunOffsetSize = 0.2f; //accuracy (lower - better)
 		float currentGunOffset = -GunOffsetSize;
+		SoundSource soundSource;
 
 		public MachineGun(Context context) : base(context) {}
 
@@ -34,12 +35,19 @@ namespace ShootySkies
 			bulletNode.Rotate(new Quaternion(0, 45, 0), TransformSpace.Local);
 			bulletNode.Scale = new Vector3(0.1f, 0.3f, 0.1f);
 
+			soundSource.Play(Application.ResourceCache.GetSound(Assets.Sounds.MachineGun));
 			await bulletNode.RunActionsAsync(
 				new MoveBy(0.7f, new Vector3(0, 10, 0) * (player ? 1 : -1)),
 				new CallFunc(() => bulletNode.SetScale(0f))); // collapse
 
 			//remove the bullet from the scene.
 			bulletNode.Remove();
+		}
+
+		protected override void Init()
+		{
+			soundSource = Node.CreateComponent<SoundSource>();
+			soundSource.Gain = 0.1f;
 		}
 	}
 }

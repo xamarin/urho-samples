@@ -6,6 +6,8 @@ namespace ShootySkies
 {
 	public abstract class Weapon : Component
 	{
+		bool isInited;
+
 		protected Weapon(Context context) : base(context) { }
 
 		public DateTime LastLaunchDate { get; set; }
@@ -26,6 +28,12 @@ namespace ShootySkies
 		/// </summary>
 		public async Task<bool> FireAsync(bool byPlayer)
 		{
+			if (!isInited)
+			{
+				isInited = true;
+				Init();
+			}
+
 			if (IsReloading)
 			{
 				return false;
@@ -41,6 +49,8 @@ namespace ShootySkies
 			bulletNode.GetComponent<RigidBody>()?.SetEnabled(false);
 			bulletNode.SetScale(0);
 		}
+
+		protected virtual void Init() { }
 
 		protected Node CreateRigidBullet(bool byPlayer, Vector3 collisionBox)
 		{

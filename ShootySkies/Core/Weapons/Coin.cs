@@ -30,6 +30,9 @@ namespace ShootySkies
 
 		public override void OnHit(Aircraft target, bool killed, Node bulletNode)
 		{
+			var soundSource = Node.CreateComponent<SoundSource>();
+			soundSource.Gain = 0.1f;
+			soundSource.Play(Application.ResourceCache.GetSound(Assets.Sounds.Powerup));
 			base.OnHit(target, killed, bulletNode);
 			((ShootySkiesGame)Application).OnCoinCollected();
 		}
