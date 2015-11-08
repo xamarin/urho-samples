@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using Android.App;
+using Android.Content;
 using Android.OS;
 using Android.Views;
 using Android.Widget;
@@ -8,10 +9,11 @@ using Urho.Droid;
 
 namespace Urho.Samples.Droid
 {
-	[Activity(Label = "MonoUrho Samples", MainLauncher = true, Icon = "@drawable/icon", NoHistory = true)]
+	[Activity(Label = "MonoUrho Samples", MainLauncher = true, Icon = "@drawable/icon")]
 	public class SamplesSelectorActivity : ListActivity
 	{
 		System.Type[] sampleTypes;
+
 
 		protected override void OnCreate(Bundle bundle)
 		{
@@ -30,6 +32,7 @@ namespace Urho.Samples.Droid
 				return;
 			}
 
+
 			//Show a list of available samples (click to run):
 			ArrayAdapter<string> adapter = new ArrayAdapter<string>(this, Resource.Layout.samples_list_text_view);
 			sampleTypes = typeof(Sample).Assembly.GetTypes().Where(t => t.BaseType == typeof(Sample)).ToArray();
@@ -44,7 +47,10 @@ namespace Urho.Samples.Droid
 		
 		protected override void OnListItemClick(Android.Widget.ListView l, Android.Views.View v, int position, long id)
 		{
-			UrhoSurfaceViewController.RunInActivity(sampleTypes[position]);
+			var intent = new Intent(this, typeof (GameActivity));
+			intent.SetFlags(ActivityFlags.NewTask | ActivityFlags.SingleTop);
+			intent.PutExtra("Type", sampleTypes[position].AssemblyQualifiedName);
+			StartActivity(intent);
 		}
 	}
 }
