@@ -14,7 +14,7 @@
     <AndroidResgenFile>Resources\Resource.Designer.cs</AndroidResgenFile>
     <GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
     <AndroidUseLatestPlatformSdk>True</AndroidUseLatestPlatformSdk>
-    <TargetFrameworkVersion>v6.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v5.0</TargetFrameworkVersion>
     <AndroidManifest>Properties\AndroidManifest.xml</AndroidManifest>
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
@@ -45,17 +45,14 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Xml" />
-    <Reference Include="Urho, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="Urho, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
       <HintPath>..\..\packages\UrhoSharp.1.0.50\lib\MonoAndroid\Urho.dll</HintPath>
-      <Private>True</Private>
     </Reference>
-    <Reference Include="Urho.Droid, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="Urho.Droid, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
       <HintPath>..\..\packages\UrhoSharp.1.0.50\lib\MonoAndroid\Urho.Droid.dll</HintPath>
-      <Private>True</Private>
     </Reference>
-    <Reference Include="Urho.Droid.SdlBindings, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="Urho.Droid.SdlBindings, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
       <HintPath>..\..\packages\UrhoSharp.1.0.50\lib\MonoAndroid\Urho.Droid.SdlBindings.dll</HintPath>
-      <Private>True</Private>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -90,6 +87,13 @@
   <ItemGroup>
     <Folder Include="Resources\layout\" />
   </ItemGroup>
+  <Import Project="..\..\packages\UrhoSharp.1.0.50\build\MonoAndroid\UrhoSharp.targets" Condition="Exists('..\..\packages\UrhoSharp.1.0.50\build\MonoAndroid\UrhoSharp.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\..\packages\UrhoSharp.1.0.50\build\MonoAndroid\UrhoSharp.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\UrhoSharp.1.0.50\build\MonoAndroid\UrhoSharp.targets'))" />
+  </Target>
   <ItemGroup>
     <AndroidAsset Include="..\Assets\CoreData\Materials\DefaultGrey.xml">
       <Link>Assets\CoreData\Materials\DefaultGrey.xml</Link>
@@ -661,6 +665,12 @@
     <AndroidAsset Include="..\Assets\CoreData\Textures\SpotWide.xml">
       <Link>Assets\CoreData\Textures\SpotWide.xml</Link>
     </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Icon.png">
+      <Link>Assets\Data\Icon.png</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Splashscreen.png">
+      <Link>Assets\Data\Splashscreen.png</Link>
+    </AndroidAsset>
     <AndroidAsset Include="..\Assets\Data\Fonts\Font.ttf">
       <Link>Assets\Data\Fonts\Font.ttf</Link>
     </AndroidAsset>
@@ -678,6 +688,12 @@
     </AndroidAsset>
     <AndroidAsset Include="..\Assets\Data\Materials\Enemy2.xml">
       <Link>Assets\Data\Materials\Enemy2.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Materials\Enemy3.xml">
+      <Link>Assets\Data\Materials\Enemy3.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Materials\Enemy3weapon.xml">
+      <Link>Assets\Data\Materials\Enemy3weapon.xml</Link>
     </AndroidAsset>
     <AndroidAsset Include="..\Assets\Data\Materials\Grass.xml">
       <Link>Assets\Data\Materials\Grass.xml</Link>
@@ -715,6 +731,12 @@
     <AndroidAsset Include="..\Assets\Data\Models\Enemy2.mdl">
       <Link>Assets\Data\Models\Enemy2.mdl</Link>
     </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Models\Enemy3.mdl">
+      <Link>Assets\Data\Models\Enemy3.mdl</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Models\Enemy3weapon.mdl">
+      <Link>Assets\Data\Models\Enemy3weapon.mdl</Link>
+    </AndroidAsset>
     <AndroidAsset Include="..\Assets\Data\Models\Player.mdl">
       <Link>Assets\Data\Models\Player.mdl</Link>
     </AndroidAsset>
@@ -748,6 +770,18 @@
     <AndroidAsset Include="..\Assets\Data\Particles\PlayerExplosion.png">
       <Link>Assets\Data\Particles\PlayerExplosion.png</Link>
     </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Sounds\BigExplosion.wav">
+      <Link>Assets\Data\Sounds\BigExplosion.wav</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Sounds\MachineGun.wav">
+      <Link>Assets\Data\Sounds\MachineGun.wav</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Sounds\Powerup.wav">
+      <Link>Assets\Data\Sounds\Powerup.wav</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Sounds\SmallExplosion.wav">
+      <Link>Assets\Data\Sounds\SmallExplosion.wav</Link>
+    </AndroidAsset>
     <AndroidAsset Include="..\Assets\Data\Textures\Coin.png">
       <Link>Assets\Data\Textures\Coin.png</Link>
     </AndroidAsset>
@@ -756,6 +790,12 @@
     </AndroidAsset>
     <AndroidAsset Include="..\Assets\Data\Textures\Enemy2.png">
       <Link>Assets\Data\Textures\Enemy2.png</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Textures\Enemy3.png">
+      <Link>Assets\Data\Textures\Enemy3.png</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Textures\Enemy3weapon.png">
+      <Link>Assets\Data\Textures\Enemy3weapon.png</Link>
     </AndroidAsset>
     <AndroidAsset Include="..\Assets\Data\Textures\Grass.dds">
       <Link>Assets\Data\Textures\Grass.dds</Link>
@@ -773,11 +813,4 @@
       <Link>Assets\Data\Textures\TreeUV2.png</Link>
     </AndroidAsset>
   </ItemGroup>
-  <Import Project="..\..\packages\UrhoSharp.1.0.50\build\MonoAndroid\UrhoSharp.targets" Condition="Exists('..\..\packages\UrhoSharp.1.0.50\build\MonoAndroid\UrhoSharp.targets')" />
-  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
-    <PropertyGroup>
-      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
-    </PropertyGroup>
-    <Error Condition="!Exists('..\..\packages\UrhoSharp.1.0.50\build\MonoAndroid\UrhoSharp.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\UrhoSharp.1.0.50\build\MonoAndroid\UrhoSharp.targets'))" />
-  </Target>
 </Project>
