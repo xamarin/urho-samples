@@ -5,21 +5,24 @@ namespace Urho.Samples.Desktop
 {
 	class Program
 	{
-		static System.Type[] samples;
+		static Type[] samples;
 
 		static void Main(string[] args)
 		{
-			//args =  new [] { "39" };
+			// Actually you can launch any sample using this snippet:
+			//
+			//   UrhoEngine.Init(pathToAssets);
+			//   new Water(new Context()).Run();
+			//   return;
 
 			FindAvailableSamplesAndPrint();
-			System.Type selectedSampleType = null;
+			Type selectedSampleType = null;
 
 			if (args.Length > 0)
 			{
 				// try to get a desired sample's number to run via command line args:
 				selectedSampleType = ParseSampleFromNumber(args[0]);
 			}
-
 			if (Environment.OSVersion.Platform == PlatformID.Win32NT)
 			{
 				while (selectedSampleType == null)
@@ -56,24 +59,23 @@ namespace Urho.Samples.Desktop
 				return null;
 			}
 
-			if (number > samples.Length || number < 0)
+			if (number >= samples.Length || number < 0)
 			{
 				WriteLine("Invalid number.", ConsoleColor.Red);
 				return null;
 			}
 
-			return samples[number - 1];
+			return samples[number];
 		}
 
 		static void FindAvailableSamplesAndPrint()
 		{
-			var highlightedSamples = new [] { typeof(ToonTown) };
 			samples = typeof(Sample).Assembly.GetTypes().Where(t => t.IsSubclassOf(typeof(Application)) && t != typeof(Sample)).ToArray();
-			for (int index = 1; index <= samples.Length; index++)
-			{
-				var sample = samples[index - 1];
-				WriteLine($"{index}. {sample.Name}", highlightedSamples.Contains(sample) ? ConsoleColor.Yellow : ConsoleColor.DarkGray);
-			}
+			int blockSize = samples.Length / 2;
+			for (int i = 0; i < blockSize; i++)
+				WriteLine(string.Format("{2,2}. {0,-30}{3,2}. {1,-30}", samples[i].Name, samples[i + blockSize].Name, i, i + blockSize), ConsoleColor.DarkGray);
+			if (blockSize * 2 < samples.Length)
+				WriteLine($"{samples.Length - 1,36}. {samples[samples.Length - 1].Name}", ConsoleColor.DarkGray);
 			Console.WriteLine();
 		}
 
