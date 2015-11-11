@@ -161,7 +161,7 @@ namespace Urho.Samples
 		protected override string JoystickLayoutPatch => JoystickLayoutPatches.WithDebugButton;
 
 
-		class Mover : SharpComponent
+		class Mover : Component
 		{
 			float MoveSpeed { get; }
 			float RotationSpeed { get; }

@@ -118,7 +118,7 @@ namespace Urho.Samples
 			}
 		}
 
-		class Rotator : SharpComponent
+		class Rotator : Component
 		{
 			public Rotator(Context ctx) : base(ctx)
 			{

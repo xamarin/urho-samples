@@ -187,7 +187,7 @@ namespace Urho.Samples
 		}
 	}
 
-	public class Rotator : SharpComponent
+	public class Rotator : Component
 	{
 		Vector3 rotationSpeed;
 

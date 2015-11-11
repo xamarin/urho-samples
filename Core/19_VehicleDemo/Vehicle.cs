@@ -28,7 +28,7 @@ namespace Urho.Samples
 	/// <summary>
 	/// Vehicle component, responsible for physical movement according to controls.
 	/// </summary>
-	public class Vehicle : SharpComponent
+	public class Vehicle : Component
 	{
 		public const int CtrlForward = 1;
 		public const int CtrlBack = 2;
