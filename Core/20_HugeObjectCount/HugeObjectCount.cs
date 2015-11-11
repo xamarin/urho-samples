@@ -124,12 +124,21 @@ namespace Urho.Samples
 				{
 					for (int x = -125; x < 125; ++x)
 					{
-						Node boxNode = scene.CreateChild("Box");
-						boxNode.Position = new Vector3(x * 0.3f, 0.0f, y * 0.3f);
-						boxNode.SetScale(0.25f);
-						StaticModel boxObject = boxNode.CreateComponent<StaticModel>();
-						boxObject.Model=cache.GetModel("Models/Box.mdl");
-						boxNodes.Add(boxNode);
+						/*
+						 NOTE: 
+						 "using" statement here and below is not required and will not lead to memory leaks.
+						 It just removes these objects from the inner UrhoSharp cache as the result the app consumes less memory
+						*/
+						using (var boxNode = scene.CreateChild("Box"))
+						{
+							boxNode.Position = new Vector3(x*0.3f, 0.0f, y*0.3f);
+							boxNode.SetScale(0.25f);
+							using (var boxObject = boxNode.CreateComponent<StaticModel>())
+							{
+								boxObject.Model = cache.GetModel("Models/Box.mdl");
+								boxNodes.Add(boxNode);
+							}
+						}
 					}
 				}
 			}
@@ -148,18 +157,22 @@ namespace Urho.Samples
 						// Create new group if no group yet, or the group has already "enough" objects. The tradeoff is between culling
 						// accuracy and the amount of CPU processing needed for all the objects. Note that the group's own transform
 						// does not matter, and it does not render anything if instance nodes are not added to it
-						if (lastGroup == null || lastGroup.NumInstanceNodes >= 25 * 25)
+						if (lastGroup == null || lastGroup.NumInstanceNodes >= 50 * 50)
 						{
-							Node boxGroupNode = scene.CreateChild("BoxGroup");
-							lastGroup = boxGroupNode.CreateComponent<StaticModelGroup>();
-							lastGroup.Model=cache.GetModel("Models/Box.mdl");
+							using (var boxGroupNode = scene.CreateChild("BoxGroup"))
+							{
+								lastGroup = boxGroupNode.CreateComponent<StaticModelGroup>();
+								lastGroup.Model = cache.GetModel("Models/Box.mdl");
+							}
 						}
 
-						Node boxNode = scene.CreateChild("Box");
-						boxNode.Position=new Vector3(x* 0.3f, 0.0f, y* 0.3f);
-						boxNode.SetScale(0.25f);
-						boxNodes.Add(boxNode);
-						lastGroup.AddInstanceNode(boxNode);
+						using (var boxNode = scene.CreateChild("Box"))
+						{
+							boxNode.Position = new Vector3(x*0.3f, 0.0f, y*0.3f);
+							boxNode.SetScale(0.25f);
+							boxNodes.Add(boxNode);
+							lastGroup.AddInstanceNode(boxNode);
+						}
 					}
 				}
 			}
