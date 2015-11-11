@@ -18,7 +18,7 @@ namespace ShootySkies
 
 		public void Start()
 		{
-			// Background consists of two tiles (each BackgroundScale x BackgroundScale)
+			// Background consists of two huge tiles (each BackgroundScale x BackgroundScale)
 			frontTile = CreateTile(0);
 			rearTile = CreateTile(1);
 
@@ -26,9 +26,6 @@ namespace ShootySkies
 			RotateBackground();
 		}
 
-		/// <summary>
-		/// The background actually is not infinite, it consists of two tiles which change places
-		/// </summary>
 		async void RotateBackground() 
 		{
 			while (true)

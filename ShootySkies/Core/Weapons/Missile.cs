@@ -66,9 +66,12 @@ namespace ShootySkies
 			base.OnHit(target, killed, bulletNode);
 			var cache = Application.ResourceCache;
 			var explosionNode = Scene.CreateChild();
+
+			// play "boom" sound
 			SoundSource soundSource = explosionNode.CreateComponent<SoundSource>();
 			soundSource.Play(Application.ResourceCache.GetSound(Assets.Sounds.SmallExplosion));
 			soundSource.Gain = 0.2f;
+
 			explosionNode.Position = target.Node.WorldPosition;
 			explosionNode.SetScale(1f);
 			var particleEmitter = explosionNode.CreateComponent<ParticleEmitter2D>();

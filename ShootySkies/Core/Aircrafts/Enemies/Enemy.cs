@@ -3,6 +3,9 @@ using Urho;
 
 namespace ShootySkies
 {
+	/// <summary>
+	/// Base class for all kind of enemies
+	/// </summary>
 	public abstract class Enemy : Aircraft
 	{
 		protected Enemy(Context context) : base(context) { }
@@ -26,10 +29,13 @@ namespace ShootySkies
 					if (!IsAlive)
 						return;
 				}
-				await Node.RunActionsAsync(new DelayTime(0.1f));
+				await Node.RunActionsAsync(new DelayTime(RandomHelper.NextRandom(0.1f, 0.5f)));
 			}
 		}
 
+		/// <summary>
+		/// Set boundaries for random movements
+		/// </summary>
 		protected async void MoveRandomly(float minX, float maxX, float minY, float maxY, float duration)
 		{
 			while (IsAlive)

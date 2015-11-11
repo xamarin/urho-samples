@@ -26,6 +26,7 @@ namespace ShootySkies
 			model.SetMaterial(cache.GetMaterial(Assets.Materials.Enemy3).Clone(""));
 			node.SetScale(1f);
 
+			// load weapons:
 			node.AddComponent(new SmallPlates(Context));
 
 			var direction = fromLeftSide ? -1 : 1;

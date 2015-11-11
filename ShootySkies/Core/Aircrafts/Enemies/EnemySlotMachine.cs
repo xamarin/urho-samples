@@ -18,7 +18,9 @@ namespace ShootySkies
 			node.SetScale(RandomHelper.NextRandom(0.85f, 1f));
 			node.Position = new Vector3(0f, 5f, 0f);
 
+			// load weapons:
 			node.AddComponent(new Joysticks(Context));
+
 			base.Init();
 		}
 	}

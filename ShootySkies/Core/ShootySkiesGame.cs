@@ -12,7 +12,6 @@ namespace ShootySkies
 		int coins;
 		Scene scene;
 		Text coinsText;
-		List<Enemy> enemies;
 
 		public Player Player { get; private set; }
 
@@ -107,9 +106,9 @@ namespace ShootySkies
 
 		void UpdateCoins(int amount)
 		{
-			if (amount == 5)
+			if (amount % 5 == 0 && amount > 0)
 			{
-				// give player a MassMachineGun once he earns 5 coins
+				// give player a MassMachineGun each time he earns 5 coins
 				Player.Node.AddComponent(new MassMachineGun(Context));
 			}
 			coins = amount;

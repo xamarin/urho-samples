@@ -78,8 +78,7 @@ namespace ShootySkies
 			var bulletNode = args.OtherNode;
 			if (IsAlive && bulletNode.Name != null && bulletNode.Name.StartsWith(nameof(Weapon)) && args.Body.Node == Node)
 			{
-				// TODO: fix #69 (GetComponent<T> for custom components)
-				var weapon = ((WeaponReferenceComponent)bulletNode.Components.First(c => c is WeaponReferenceComponent)).Weapon;
+				var weapon = bulletNode.GetComponent<WeaponReferenceComponent>().Weapon;
 				Health -= weapon.Damage;
 				var killed = Health <= 0;
 				if (killed)
@@ -96,7 +95,6 @@ namespace ShootySkies
 
 		async void Hit()
 		{
-			// blink with white color:
 			var material = Node.GetComponent<StaticModel>().GetMaterial(0);
 			if (material == null)
 				return;
@@ -111,7 +109,7 @@ namespace ShootySkies
 
 		protected virtual void OnExplode(Node explodeNode)
 		{
-			explodeNode.SetScale(1.9f);
+			explodeNode.SetScale(2f);
 			var particleEmitter = explodeNode.CreateComponent<ParticleEmitter2D>();
 			particleEmitter.Effect = Application.ResourceCache.GetParticleEffect2D(Assets.Particles.Explosion);
 		}

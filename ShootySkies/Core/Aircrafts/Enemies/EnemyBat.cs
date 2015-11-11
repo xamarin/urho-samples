@@ -18,6 +18,7 @@ namespace ShootySkies
 			node.SetScale(RandomHelper.NextRandom(0.5f, 0.8f));
 			node.Position = new Vector3(0f, 5f, 0f);
 
+			// load weapons:
 			node.AddComponent(new BigWhiteCube(Context));
 
 			node.Position = new Vector3(3 * (RandomHelper.NextBoolRandom() ? 1 : -1), RandomHelper.NextRandom(0, 2), 0);

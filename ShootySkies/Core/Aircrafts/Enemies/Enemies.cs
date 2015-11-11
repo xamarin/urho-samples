@@ -5,6 +5,9 @@ using Urho;
 
 namespace ShootySkies.Aircrafts.Enemies
 {
+	/// <summary>
+	/// A component to rule all enemies
+	/// </summary>
 	public class Enemies : Component
 	{
 		readonly Player player;

@@ -35,7 +35,6 @@ namespace ShootySkies
 			var cache = Application.ResourceCache;
 
 			var bulletNode = CreateRigidBullet(byPlayer);
-			//bulletNode.Rotation = new Quaternion(130, 0, 0);
 			bulletNode.SetScale(0.15f);
 
 			var model = bulletNode.CreateComponent<StaticModel>();
@@ -44,7 +43,7 @@ namespace ShootySkies
 
 			await bulletNode.RunActionsAsync(
 				new MoveBy(1f, direction),
-				new CallFunc(() => bulletNode.SetScale(0f))); //collapse);
+				new CallFunc(() => bulletNode.SetScale(0f)));
 
 			//remove the bullet from the scene.
 			bulletNode.Remove();
