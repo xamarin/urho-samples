@@ -43,7 +43,7 @@ namespace Urho.Samples
 	
 		protected override void OnUpdate(float timeStep)
 		{
-			SimpleMoveCamera3D(timeStep);
+			SimpleMoveCamera3D(timeStep, 100f);
 			var camera = reflectionCameraNode.GetComponent<Camera>();
 			camera.AspectRatio = (float)Graphics.Width / Graphics.Height;
 		}

@@ -45,7 +45,10 @@ namespace Urho.Samples
 			okToJump = true;
 		}
 
-		public void Start()
+		// constructor needed for deserialization
+		public Character(IntPtr handle) : base(handle) { }
+
+		public override void OnAttachedToNode()
 		{
 			// Component has been inserted into its scene node. Subscribe to events now
 			SubscribeToNodeCollision(HandleNodeCollision);

@@ -172,23 +172,18 @@ namespace Urho.Samples
 				MoveSpeed = moveSpeed;
 				RotationSpeed = rotateSpeed;
 				Bounds = bounds;
-				Application.SceneUpdate += OnSceneUpdate;
+				ReceiveSceneUpdates = true;
 			}
 
-			protected override void OnDeleted()
-			{
-				Application.SceneUpdate -= OnSceneUpdate;
-			}
-
-			void OnSceneUpdate(SceneUpdateEventArgs args)
+			protected override void OnUpdate(float timeStep)
 			{
 				// This moves the character position
-				Node.Translate(Vector3.UnitZ * MoveSpeed * args.TimeStep, TransformSpace.Local);
+				Node.Translate(Vector3.UnitZ * MoveSpeed * timeStep, TransformSpace.Local);
 
 				// If in risk of going outside the plane, rotate the model right
 				var pos = Node.Position;
 				if (pos.X < Bounds.Min.X || pos.X > Bounds.Max.X || pos.Z < Bounds.Min.Z || pos.Z > Bounds.Max.Z)
-					Node.Yaw(RotationSpeed * args.TimeStep, TransformSpace.Local);
+					Node.Yaw(RotationSpeed * timeStep, TransformSpace.Local);
 
 				// Get the model's first (only) animation
 				// state and advance its time. Note the
@@ -199,7 +194,7 @@ namespace Urho.Samples
 				if (model.NumAnimationStates > 0)
 				{
 					var state = model.AnimationStates.First();
-					state.AddTime(args.TimeStep);
+					state.AddTime(timeStep);
 				}
 			}
 		}

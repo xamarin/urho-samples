@@ -69,6 +69,8 @@ namespace Urho.Samples
 		/// Current left/right steering amount (-1 to 1.)
 		float steering;
 
+		public Vehicle(IntPtr handle) : base(handle) { }
+
 		public Vehicle(Context context) : base(context) {}
 
 		public void FixedUpdate(float timeStep)

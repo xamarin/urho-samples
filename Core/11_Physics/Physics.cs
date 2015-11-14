@@ -21,8 +21,6 @@
 // THE SOFTWARE.
 //
 
-using System.Linq;
-
 namespace Urho.Samples
 {
 	public class Physics : Sample

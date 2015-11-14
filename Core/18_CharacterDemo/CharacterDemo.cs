@@ -342,7 +342,6 @@ namespace Urho.Samples
 			// and keeps it alive as long as it's not removed from the hierarchy
 			character = new Character(Context);
 			objectNode.AddComponent(character);
-			character.Start();
 		}
 
 		/// <summary>

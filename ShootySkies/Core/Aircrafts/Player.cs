@@ -64,7 +64,7 @@ namespace ShootySkies
 			}
 		}
 
-		protected override void OnUpdate(SceneUpdateEventArgs args)
+		protected override void OnUpdate(float timeStep)
 		{
 			if (!IsAlive)
 				return;

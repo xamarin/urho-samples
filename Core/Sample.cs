@@ -164,10 +164,9 @@ namespace Urho.Samples
 		/// <summary>
 		/// Move camera for 3D samples
 		/// </summary>
-		protected void SimpleMoveCamera3D (float timeStep)
+		protected void SimpleMoveCamera3D (float timeStep, float moveSpeed = 10.0f)
 		{
 			const float mouseSensitivity = .1f;
-			const float moveSpeed = 10f;
 
 			if (UI.FocusElement != null)
 				return;

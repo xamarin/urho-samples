@@ -37,6 +37,8 @@ namespace Urho.Samples
 		// Movement controls. Assigned by the main program each frame.
 		public Controls Controls { get; set; } = new Controls();
 
+		public RoboMan(IntPtr handle) : base(handle) { }
+
 		public RoboMan(Context context) : base(context)
 		{
 			okToJump = true;

@@ -122,19 +122,14 @@ namespace Urho.Samples
 		{
 			public Rotator(Context ctx) : base(ctx)
 			{
-				Application.Update += OnUpdate;
-			}
-
-			protected override void OnDeleted()
-			{
-				Application.Update -= OnUpdate;
+				//to receive OnUpdate:
+				ReceiveSceneUpdates = true;
 			}
 
 			public Vector3 RotationSpeed { get; set; }
 
-			void OnUpdate(UpdateEventArgs args)
+			protected override void OnUpdate(float timeStep)
 			{
-				var timeStep = args.TimeStep;
 				Node.Rotate(new Quaternion(
 					RotationSpeed.X * timeStep,
 					RotationSpeed.Y * timeStep,

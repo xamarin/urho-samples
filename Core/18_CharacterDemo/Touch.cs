@@ -34,6 +34,8 @@ namespace Urho.Samples
 		public float CameraDistance { get; set; }
 		public bool UseGyroscope { get; set; }
 
+		public Touch(IntPtr handle) : base(handle) { }
+
 		public Touch(Context ctx, float touchSensitivity, Input input) : base(ctx)
 		{
 			this.touchSensitivity = touchSensitivity;

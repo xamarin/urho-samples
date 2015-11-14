@@ -21,21 +21,27 @@
 // THE SOFTWARE.
 //
 
+using System;
+
 namespace Urho.Samples
 {
 	class Ragdoll : Component
 	{
-		readonly RigidBody body;
+		//readonly RigidBody body;
 
-		public Ragdoll(Context context, RigidBody body) : base(context)
+		public Ragdoll(IntPtr handle) : base(handle) {}
+
+		public Ragdoll(Context context) : base(context) {}
+
+		public override void OnAttachedToNode()
 		{
-			this.body = body;
 			SubscribeToNodeCollision(HandleNodeCollision);
+			base.OnAttachedToNode();
 		}
 
 		void HandleNodeCollision(NodeCollisionEventArgs args)
 		{
-			if (args.Body != body)
+			if (args.Body != Node.GetComponent<RigidBody>())
 				return;
 
 			// Get the other colliding body, make sure it is moving (has nonzero mass)

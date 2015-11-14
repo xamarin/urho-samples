@@ -23,7 +23,7 @@
 
 namespace Urho.Samples
 {
-	public class HelloWorld : Application //The fist sample is not derived from Sample
+	public class HelloWorld : Application 
 	{
 		public HelloWorld(Context c) : base(c) { }
 
@@ -32,7 +32,7 @@ namespace Urho.Samples
 			var cache = ResourceCache;
 			var helloText = new Text(Context)
 				{
-					Value = "Hello World from Urho3D + Mono",
+					Value = "Hello World from UrhoSharp",
 					HorizontalAlignment = HorizontalAlignment.Center,
 					VerticalAlignment = VerticalAlignment.Center
 				};

@@ -45,10 +45,9 @@ namespace ShootySkies
 			}
 		}
 
-		protected override void OnUpdate(SceneUpdateEventArgs args)
+		protected override void OnUpdate(float timeStep)
 		{
 			Node.LookAt(new Vector3(0, -3, 0), new Vector3(0, 1, -1), TransformSpace.World);
-			base.OnUpdate(args);
 		}
 	}
 }

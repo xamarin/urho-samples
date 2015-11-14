@@ -11,7 +11,10 @@ namespace ShootySkies
 	{
 		TaskCompletionSource<bool> liveTask;
 
-		protected Aircraft(Context context) : base(context) {}
+		protected Aircraft(Context context) : base(context)
+		{
+			ReceiveSceneUpdates = true;
+		}
 
 		/// <summary>
 		/// Current health (less or equal to MaxHealth)
@@ -35,7 +38,6 @@ namespace ShootySkies
 		{
 			liveTask = new TaskCompletionSource<bool>();
 			Health = MaxHealth;
-			Application.SceneUpdate += OnUpdate;
 			var node = Node;
 
 			// Define physics for handling collisions
@@ -119,13 +121,6 @@ namespace ShootySkies
 		protected virtual CollisionLayers CollisionLayer => CollisionLayers.Enemy;
 
 		protected virtual Vector3 CollisionShapeSize => new Vector3(1.2f, 1.2f, 1.2f);
-
-		protected override void OnDeleted()
-		{
-			Application.SceneUpdate -= OnUpdate;
-		}
-
-		protected virtual void OnUpdate(SceneUpdateEventArgs sceneUpdateEventArgs) {}
 	}
 
 	public enum CollisionLayers : uint

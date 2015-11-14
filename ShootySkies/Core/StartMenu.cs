@@ -10,8 +10,12 @@ namespace ShootySkies
 		Node rotor;
 		Text textBlock;
 		Node menuLight;
+		bool finished = true;
 
-		public StartMenu(Context context) : base(context) {}
+		public StartMenu(Context context) : base(context)
+		{
+			ReceiveSceneUpdates = true;
+		}
 
 		public async Task ShowStartMenu()
 		{
@@ -49,22 +53,23 @@ namespace ShootySkies
 			Application.UI.Root.AddChild(textBlock);
 
 			menuTaskSource = new TaskCompletionSource<bool>();
-			Application.SceneUpdate += OnSceneUpdate;
-
+			finished = false;
 			await menuTaskSource.Task;
 		}
 
-		async void OnSceneUpdate(SceneUpdateEventArgs args)
+		protected override async void OnUpdate(float timeStep)
 		{
+			if (finished)
+				return;
+
 			var input = Application.Input;
 			if (input.GetMouseButtonDown(MouseButton.Left) || input.NumTouches > 0)
 			{
+				finished = true;
 				Application.UI.Root.RemoveChild(textBlock, 0);
 				await bigAircraft.RunActionsAsync(new EaseIn(new MoveBy(1f, new Vector3(-10, -2, -10)), 3));
 				rotor.RemoveAllActions();
-				//TODO: remove scene
 				menuTaskSource.TrySetResult(true);
-				Application.SceneUpdate -= OnSceneUpdate;
 			}
 		}
 	}
