@@ -63,8 +63,7 @@ namespace ShootySkies
 			{
 				for (float j = -size; j < size; j+=2f)
 				{
-					var tree = CreateTree(tile);
-					tree.Position = new Vector3(i + RandomHelper.NextRandom(-0.4f, 0.4f), 0, j);
+					AddTree(tile, new Vector3(i + RandomHelper.NextRandom(-0.4f, 0.4f), 0, j));
 				}
 			}
 
@@ -76,17 +75,22 @@ namespace ShootySkies
 			return tile;
 		}
 
-		Node CreateTree(Node container)
+		void AddTree(Node container, Vector3 position)
 		{
 			var cache = Application.ResourceCache;
-			Node treeNode = container.CreateChild();
-			treeNode.Rotate(new Quaternion(0, RandomHelper.NextRandom(0, 5) * 90, 0), TransformSpace.Local);
-			var model = treeNode.CreateComponent<StaticModel>();
-			model.Model = cache.GetModel(Assets.Models.Tree);
-			model.SetMaterial(cache.GetMaterial(Assets.Materials.TreeMaterial));
-			treeNode.SetScale(RandomHelper.NextRandom(0.25f, 0.3f));
-			model.CastShadows = true;
-			return treeNode;
+			using (Node treeNode = container.CreateChild())
+			{
+				treeNode.Rotate(new Quaternion(0, RandomHelper.NextRandom(0, 5)*90, 0), TransformSpace.Local);
+				treeNode.SetScale(RandomHelper.NextRandom(0.25f, 0.3f));
+				treeNode.Position = position;
+				using (var model = treeNode.CreateComponent<StaticModel>())
+				{
+					model.Model = cache.GetModel(Assets.Models.Tree);
+					model.SetMaterial(cache.GetMaterial(Assets.Materials.TreeMaterial));
+					model.CastShadows = true;
+				}
+			}
+			//"using" here is just a sort of optimization - it prevents MCW to be cached (we don't need them anymore).
 		}
 	}
 }
