@@ -22,17 +22,6 @@ namespace Urho.Samples.Droid
 			RequestWindowFeature(WindowFeatures.NoTitle);
 			Window.SetFlags(WindowManagerFlags.Fullscreen, WindowManagerFlags.Fullscreen);
 
-			var assets = Assets.List("");
-			if (!assets.Contains("CoreData") || !assets.Contains("Data"))
-			{
-				new AlertDialog.Builder(this)
-					.SetMessage("Assets are empty")
-					.SetTitle("Error")
-					.Show();
-				return;
-			}
-
-
 			//Show a list of available samples (click to run):
 			ArrayAdapter<string> adapter = new ArrayAdapter<string>(this, Resource.Layout.samples_list_text_view);
 			sampleTypes = typeof(Sample).Assembly.GetTypes().Where(t => t.BaseType == typeof(Sample)).ToArray();
