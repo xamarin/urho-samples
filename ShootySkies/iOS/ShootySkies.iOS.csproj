@@ -57,6 +57,7 @@
     <IpaPackageName>
     </IpaPackageName>
     <OptimizePNGs>false</OptimizePNGs>
+    <MtouchOptimizePNGs>False</MtouchOptimizePNGs>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhone' ">
     <DebugType>none</DebugType>

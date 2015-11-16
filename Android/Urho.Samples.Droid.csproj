@@ -975,21 +975,6 @@
     </AndroidAsset>
   </ItemGroup>
   <ItemGroup>
-    <AndroidAsset Include="..\Assets\Data\CommandLine.txt">
-      <Link>Assets\Data\CommandLine.txt</Link>
-    </AndroidAsset>
-    <AndroidAsset Include="..\Assets\Data\EditorStrings.json">
-      <Link>Assets\Data\EditorStrings.json</Link>
-    </AndroidAsset>
-    <AndroidAsset Include="..\Assets\Data\NinjaSnowWarShaders.xml">
-      <Link>Assets\Data\NinjaSnowWarShaders.xml</Link>
-    </AndroidAsset>
-    <AndroidAsset Include="..\Assets\Data\StringsDe.json">
-      <Link>Assets\Data\StringsDe.json</Link>
-    </AndroidAsset>
-    <AndroidAsset Include="..\Assets\Data\StringsEnRu.json">
-      <Link>Assets\Data\StringsEnRu.json</Link>
-    </AndroidAsset>
     <AndroidAsset Include="..\Assets\Data\Fonts\Anonymous Pro.png">
       <Link>Assets\Data\Fonts\Anonymous Pro.png</Link>
     </AndroidAsset>
