@@ -17,45 +17,45 @@ namespace ShootySkies.Droid
 		{
 			base.OnCreate(bundle);
 			var mLayout = new AbsoluteLayout(this);
-			var surface = UrhoSurfaceViewController.CreateSurface<ShootySkiesGame>(this);
+			var surface = UrhoSurface.CreateSurface<ShootySkiesGame>(this);
 			mLayout.AddView(surface);
 			SetContentView(mLayout);
 		}
 
 		protected override void OnResume()
 		{
-			UrhoSurfaceViewController.OnResume();
+			UrhoSurface.OnResume();
 			base.OnResume();
 		}
 
 		protected override void OnPause()
 		{
-			UrhoSurfaceViewController.OnPause();
+			UrhoSurface.OnPause();
 			base.OnPause();
 		}
 
 		public override void OnLowMemory()
 		{
-			UrhoSurfaceViewController.OnLowMemory();
+			UrhoSurface.OnLowMemory();
 			base.OnLowMemory();
 		}
 
 		protected override void OnDestroy()
 		{
-			UrhoSurfaceViewController.OnDestroy();
+			UrhoSurface.OnDestroy();
 			base.OnDestroy();
 		}
 
 		public override bool DispatchKeyEvent(KeyEvent e)
 		{
-			if (!UrhoSurfaceViewController.DispatchKeyEvent(e))
+			if (!UrhoSurface.DispatchKeyEvent(e))
 				return false;
 			return base.DispatchKeyEvent(e);
 		}
 
 		public override void OnWindowFocusChanged(bool hasFocus)
 		{
-			UrhoSurfaceViewController.OnWindowFocusChanged(hasFocus);
+			UrhoSurface.OnWindowFocusChanged(hasFocus);
 			base.OnWindowFocusChanged(hasFocus);
 		}
 	}
