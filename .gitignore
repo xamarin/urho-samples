@@ -33,6 +33,7 @@ x64/
 *.tlh
 *.tmp
 *.log
+*.pak
 *.vspscc
 *.vssscc
 .builds
