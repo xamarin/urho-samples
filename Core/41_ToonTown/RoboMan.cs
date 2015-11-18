@@ -47,7 +47,7 @@ namespace Urho.Samples
 		public void Start()
 		{
 			// Component has been inserted into its scene node. Subscribe to events now
-			SubscribeToNodeCollision(HandleNodeCollision);
+			body.Node.SubscribeToNodeCollision(HandleNodeCollision);
 		}
 
 		public void FixedUpdate(float timeStep)

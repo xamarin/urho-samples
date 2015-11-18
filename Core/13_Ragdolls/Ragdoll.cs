@@ -33,10 +33,10 @@ namespace Urho.Samples
 
 		public Ragdoll(Context context) : base(context) {}
 
-		public override void OnAttachedToNode()
+		public override void OnAttachedToNode(Node node)
 		{
-			SubscribeToNodeCollision(HandleNodeCollision);
-			base.OnAttachedToNode();
+			node.SubscribeToNodeCollision(HandleNodeCollision);
+			base.OnAttachedToNode(node);
 		}
 
 		void HandleNodeCollision(NodeCollisionEventArgs args)

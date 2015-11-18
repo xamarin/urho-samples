@@ -43,7 +43,7 @@ namespace Urho.Samples
 
 		void SubscribeToEvents()
 		{
-			SubscribeToPostRenderUpdate(args =>
+			Engine.SubscribeToPostRenderUpdate(args =>
 				{
 					// If draw debug mode is enabled, draw viewport debug geometry, which will show eg. drawable bounding boxes and skeleton
 					// bones. Note that debug geometry has to be separately requested each frame. Disable depth test so that we can see the

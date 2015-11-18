@@ -54,7 +54,7 @@ namespace Urho.Samples
 
 		void SubscribeToEvents()
 		{
-			SubscribeToMouseButtonDown(args =>
+			Input.SubscribeToMouseButtonDown(args =>
 				{
 					AnimatedSprite2D animatedSprite = spriteNode.GetComponent<AnimatedSprite2D>();
 					animationIndex = (animationIndex + 1) % 7;

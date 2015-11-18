@@ -54,6 +54,7 @@ namespace Urho.Samples
 		Character character;
 		/// First person camera flag.
 		bool firstPerson;
+		PhysicsWorld physicsWorld;
 
 		public CharacterDemo(Context ctx) : base(ctx) { }
 
@@ -70,8 +71,8 @@ namespace Urho.Samples
 
 		void SubscribeToEvents()
 		{
-			SubscribeToPostUpdate(HandlePostUpdate);
-			SubscribeToPhysicsPreStep(HandlePhysicsPreStep);
+			Engine.SubscribeToPostUpdate(HandlePostUpdate);
+			physicsWorld.SubscribeToPhysicsPreStep(HandlePhysicsPreStep);
 		}
 
 		void HandlePhysicsPreStep(PhysicsPreStepEventArgs args)
@@ -218,7 +219,7 @@ namespace Urho.Samples
 
 			// Create scene subsystem components
 			scene.CreateComponent<Octree>();
-			scene.CreateComponent<PhysicsWorld>();
+			physicsWorld = scene.CreateComponent<PhysicsWorld>();
 
 			// Create camera and define viewport. We will be doing load / save, so it's convenient to create the camera outside the scene,
 			// so that it won't be destroyed and recreated, and we don't have to redefine the viewport on load

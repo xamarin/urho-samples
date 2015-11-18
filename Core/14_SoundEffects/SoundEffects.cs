@@ -105,7 +105,7 @@ namespace Urho.Samples
 			// Create a scene which will not be actually rendered, but is used to hold SoundSource components while they play sounds
 
 			UIElement root = UI.Root;
-			XMLFile uiStyle = cache.GetXmlFile("UI/DefaultStyle.xml");
+			XmlFile uiStyle = cache.GetXmlFile("UI/DefaultStyle.xml");
 			// Set style to the UI root so that elements will inherit it
 			root.SetDefaultStyle(uiStyle);
 
@@ -119,28 +119,30 @@ namespace Urho.Samples
 		
 			// Create buttons for playing/stopping music
 			var playMusicButton = CreateButton(20, 80, 120, 40, "Play Music");
+			playMusicButton.SubscribeToReleased (args => {
+				if (scene.GetChild ("Music", false) != null)
+					return;
+
+				var music = cache.GetSound ("Music/Ninja Gods.ogg");
+				music.SetLooped (true);
+				Node musicNode = scene.CreateChild ("Music");
+				SoundSource musicSource = musicNode.CreateComponent<SoundSource> ();
+				// Set the sound type to music so that master volume control works correctly
+				musicSource.SetSoundType (SoundType.Music.ToString ());
+				musicSource.Play (music);
+			});
+
 			var stopMusicButton = CreateButton(160, 80, 120, 40, "Stop Music");
+			stopMusicButton.SubscribeToReleased (args => {
+				scene.RemoveChild (scene.GetChild ("Music", false));
+			});
+
+			#if UHOH
+			// I have no idea what the following code
+			// was supposed to do at all, since we do not have other buttons on the UI
+
 			SubscribeToReleased(args =>
 				{
-					if (args.Element == playMusicButton)
-					{
-						if (scene.GetChild("Music", false) != null)
-							return;
-
-						var music = cache.GetSound("Music/Ninja Gods.ogg");
-						music.SetLooped(true);
-						Node musicNode = scene.CreateChild("Music");
-						SoundSource musicSource = musicNode.CreateComponent<SoundSource>();
-						// Set the sound type to music so that master volume control works correctly
-						musicSource.SetSoundType(SoundType.Music.ToString());
-						musicSource.Play(music);
-					}
-					else if (args.Element == stopMusicButton)
-					{
-						scene.RemoveChild(scene.GetChild("Music", false));
-					}
-					else
-					{
 						var button = soundButtons.FirstOrDefault(b => b == args.Element);
 						if (button == null)
 							return;
@@ -163,29 +165,24 @@ namespace Urho.Samples
 						}
 					}
 				});
-
+			#endif
 			Audio audio = Audio;
 
 			// Create sliders for controlling sound and music master volume
 			var soundSlider = CreateSlider(20, 140, 200, 20, "Sound Volume");
 			soundSlider.Value = audio.GetMasterGain(SoundType.Effect.ToString());
-
+			soundSlider.SubscribeToSliderChanged(args =>
+			{
+				float newVolume = args.Value;
+				Audio.SetMasterGain(SoundType.Effect.ToString(), newVolume);
+			});
+					
 			var musicSlider = CreateSlider(20, 200, 200, 20, "Music Volume");
 			musicSlider.Value = audio.GetMasterGain(SoundType.Music.ToString());
-
-			SubscribeToSliderChanged(args =>
-				{
-					if (args.Element == soundSlider)
-					{
-						float newVolume = args.Value;
-						Audio.SetMasterGain(SoundType.Effect.ToString(), newVolume);
-					}
-					else if (args.Element == musicSlider)
-					{
-						float newVolume = args.Value;
-						Audio.SetMasterGain(SoundType.Music.ToString(), newVolume);
-					}
-				});
+			musicSlider.SubscribeToSliderChanged (args=>{
+				float newVolume = args.Value;
+				Audio.SetMasterGain(SoundType.Music.ToString(), newVolume);
+			});
 		}
 
 		protected override string JoystickLayoutPatch => JoystickLayoutPatches.Hidden;

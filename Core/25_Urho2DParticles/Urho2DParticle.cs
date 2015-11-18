@@ -44,10 +44,10 @@ namespace Urho.Samples
 
 		void SubscribeToEvents()
 		{
-			SubscribeToMouseMove(args => HandleMouseMove(args.X, args.Y));
+			Input.SubscribeToMouseMove(args => HandleMouseMove(args.X, args.Y));
 
 			if (TouchEnabled)
-				SubscribeToTouchMove(args => HandleMouseMove(args.X, args.Y));
+				Input.SubscribeToTouchMove(args => HandleMouseMove(args.X, args.Y));
 		}
 
 		protected override void OnSceneUpdate(float timeStep, Scene scene)

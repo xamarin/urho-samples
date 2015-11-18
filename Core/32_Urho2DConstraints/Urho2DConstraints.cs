@@ -53,7 +53,7 @@ namespace Urho.Samples
 
 		void SubscribeToEvents()
 		{
-			SubscribeToPostRenderUpdate(args =>
+			Engine.SubscribeToPostRenderUpdate(args =>
 				{
 					// If draw debug mode is enabled, draw viewport debug geometry, which will show eg. drawable bounding boxes and skeleton
 					// bones. Note that debug geometry has to be separately requested each frame. Disable depth test so that we can see the
@@ -62,11 +62,11 @@ namespace Urho.Samples
 						scene.GetComponent<PhysicsWorld2D>().DrawDebugGeometry();
 				});
 
-			mouseDownEventToken = SubscribeToMouseButtonDown(HandleMouseButtonDown);
+			mouseDownEventToken = Input.SubscribeToMouseButtonDown(HandleMouseButtonDown);
 		
 			if (TouchEnabled)
 			{
-				touchBeginEventToken = SubscribeToTouchBegin(HandleTouchBegin3);
+				touchBeginEventToken = Input.SubscribeToTouchBegin(HandleTouchBegin3);
 			}
 		}
 
@@ -119,8 +119,8 @@ namespace Urho.Samples
 				constraintMouse.DampingRatio=0;
 			}
 
-			touchMoveEventToken = SubscribeToTouchMove(HandleTouchMove3);
-			touchEndEventToken = SubscribeToTouchEnd(HandleTouchEnd3);
+			touchMoveEventToken = Input.SubscribeToTouchMove(HandleTouchMove3);
+			touchEndEventToken = Input.SubscribeToTouchEnd(HandleTouchEnd3);
 		}
 
 		void HandleTouchEnd3(TouchEndEventArgs args)
@@ -169,8 +169,8 @@ namespace Urho.Samples
 				constraintMouse.DampingRatio=0.0f;
 			}
 
-			mouseMoveEventToken = SubscribeToMouseMove(HandleMouseMove);
-			mouseButtonUpToken = SubscribeToMouseButtonUp(HandleMouseButtonUp);
+			mouseMoveEventToken = Input.SubscribeToMouseMove(HandleMouseMove);
+			mouseButtonUpToken = Input.SubscribeToMouseButtonUp(HandleMouseButtonUp);
 		}
 
 		Vector2 GetMousePositionXY()

@@ -42,7 +42,7 @@ namespace Urho.Samples
 			Input.SetMouseVisible(true, false);
 			// Load XML file containing default UI style sheet
 			var cache = ResourceCache;
-			XMLFile style = cache.GetXmlFile("UI/DefaultStyle.xml");
+			XmlFile style = cache.GetXmlFile("UI/DefaultStyle.xml");
 
 			// Set the loaded style as default style
 			uiRoot.SetDefaultStyle(style);
@@ -123,14 +123,10 @@ namespace Urho.Samples
 			windowTitle.SetStyleAuto(null);
 			buttonClose.SetStyle("CloseButton", null);
 
-			SubscribeToReleased(args =>
-				{
-					if (args.Element == buttonClose)
-						Engine.Exit();
-				});
-
+			buttonClose.SubscribeToReleased (args => Engine.Exit ());
+				
 			// Subscribe also to all UI mouse clicks just to see where we have clicked
-			SubscribeToUIMouseClick(HandleControlClicked);
+			UI.SubscribeToUIMouseClick(HandleControlClicked);
 		}
 
 		void CreateDraggableFish()
@@ -162,9 +158,9 @@ namespace Urho.Samples
 
 			// Subscribe draggableFish to Drag Events (in order to make it draggable)
 			// See "Event list" in documentation's Main Page for reference on available Events and their eventData
-			SubscribeToDragBegin(HandleDragBegin);
-			SubscribeToDragMove(HandleDragMove);
-			SubscribeToDragEnd(HandleDragEnd);
+			UI.SubscribeToDragBegin(HandleDragBegin);
+			UI.SubscribeToDragMove(HandleDragMove);
+			UI.SubscribeToDragEnd(HandleDragEnd);
 		}
 
 		void HandleDragBegin(DragBeginEventArgs args)

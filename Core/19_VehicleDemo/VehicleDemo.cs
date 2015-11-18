@@ -51,7 +51,7 @@ namespace Urho.Samples
 
 		void SubscribeToEvents()
 		{
-			SubscribeToPostUpdate(args =>
+			Engine.SubscribeToPostUpdate(args =>
 				{
 					if (vehicle == null)
 						return;
@@ -81,7 +81,7 @@ namespace Urho.Samples
 					CameraNode.Rotation = dir;
 				});
 
-			SubscribeToPhysicsPreStep(args => vehicle?.FixedUpdate(args.TimeStep));
+			scene.GetComponent<PhysicsWorld>().SubscribeToPhysicsPreStep(args => vehicle?.FixedUpdate(args.TimeStep));
 		}
 
 		protected override void OnSceneUpdate(float timeStep, Scene scene)

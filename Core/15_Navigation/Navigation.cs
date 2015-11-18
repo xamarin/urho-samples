@@ -49,7 +49,7 @@ namespace Urho.Samples
 
 		void SubscribeToEvents()
 		{
-			SubscribeToPostRenderUpdate(args =>
+			Engine.SubscribeToPostRenderUpdate(args =>
 				{
 					// If draw debug mode is enabled, draw viewport debug geometry, which will show eg. drawable bounding boxes and skeleton
 					// bones. Note that debug geometry has to be separately requested each frame. Disable depth test so that we can see the
@@ -147,7 +147,7 @@ namespace Urho.Samples
 
 			// Create a Cursor UI element because we want to be able to hide and show it at will. When hidden, the mouse cursor will
 			// control the camera, and when visible, it will point the raycast target
-			XMLFile style = cache.GetXmlFile("UI/DefaultStyle.xml");
+			XmlFile style = cache.GetXmlFile("UI/DefaultStyle.xml");
 			Cursor cursor=new Cursor(Context);
 			cursor.SetStyleAuto(style);
 			ui.Cursor=cursor;

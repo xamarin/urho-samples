@@ -67,7 +67,7 @@ namespace Urho.Samples
 			UI ui = UI;
 
 			// Set up global UI style into the root UI element
-			XMLFile style = cache.GetXmlFile("UI/DefaultStyle.xml");
+			XmlFile style = cache.GetXmlFile("UI/DefaultStyle.xml");
 			ui.Root.SetDefaultStyle(style);
 
 			// Create a Cursor UI element because we want to be able to hide and show it at will. When hidden, the mouse cursor will
@@ -83,16 +83,11 @@ namespace Urho.Samples
 			ui.LoadLayoutToElement(ui.Root, cache, "UI/UILoadExample.xml");
 
 			// Subscribe to button actions (toggle scene lights when pressed then released)
-			var button1 = ui.Root.GetChild("ToggleLight1", true);
-			var button2 = ui.Root.GetChild("ToggleLight2", true);
+			var button1 = (Button) ui.Root.GetChild("ToggleLight1", true);
+			var button2 = (Button) ui.Root.GetChild("ToggleLight2", true);
 
-			SubscribeToReleased(args =>
-				{
-					if (args.Element == button1)
-						ToggleLight1();
-					if (args.Element == button2)
-						ToggleLight2();
-				});
+			button1.SubscribeToReleased (args => ToggleLight1 ());
+			button2.SubscribeToReleased (args => ToggleLight2 ());
 		}
 
 		protected override void OnUpdate(float timeStep)

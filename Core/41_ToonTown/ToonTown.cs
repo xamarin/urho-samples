@@ -70,8 +70,8 @@ namespace Urho.Samples
 
 		void SubscribeToEvents()
 		{
-			SubscribeToPostUpdate(HandlePostUpdate);
-			SubscribeToPhysicsPreStep(HandlePhysicsPreStep);
+			Engine.SubscribeToPostUpdate(HandlePostUpdate);
+			scene.GetComponent<PhysicsWorld>().SubscribeToPhysicsPreStep(HandlePhysicsPreStep);
 		}
 
 		void HandlePhysicsPreStep(PhysicsPreStepEventArgs args)

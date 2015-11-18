@@ -29,6 +29,7 @@ namespace Urho.Samples
 	{
 		Scene scene;
 		bool drawDebug;
+		CrowdAgent agent;
 
 		public CrowdNavigation(Context ctx) : base(ctx) { }
 
@@ -48,7 +49,7 @@ namespace Urho.Samples
 
 			// Create a Cursor UI element because we want to be able to hide and show it at will. When hidden, the mouse cursor will
 			// control the camera, and when visible, it will point the raycast target
-			XMLFile style = cache.GetXmlFile("UI/DefaultStyle.xml");
+			XmlFile style = cache.GetXmlFile("UI/DefaultStyle.xml");
 			Cursor cursor = new Cursor(Context);
 			cursor.SetStyleAuto(style);
 			ui.Cursor = cursor;
@@ -86,7 +87,7 @@ namespace Urho.Samples
 
 		void SubscribeToEvents()
 		{
-			SubscribeToPostRenderUpdate(args =>
+			Engine.SubscribeToPostRenderUpdate(args =>
 				{
 					if (drawDebug)
 					{
@@ -97,7 +98,7 @@ namespace Urho.Samples
 					}
 				});
 
-			SubscribeToCrowdAgentFailure(args =>
+			agent.SubscribeToCrowdAgentFailure(args =>
 				{
 					Node node = args.Node;
 					CrowdAgentState agentState = (CrowdAgentState)args.CrowdAgentState;
@@ -112,7 +113,7 @@ namespace Urho.Samples
 					}
 				});
 
-			SubscribeToCrowdAgentReposition(args =>
+			agent.SubscribeToCrowdAgentReposition(args =>
 				{
 					string WALKING_ANI = "Models/Jack_Walk.ani";
 
@@ -399,7 +400,7 @@ namespace Urho.Samples
 			jackNode.CreateComponent<AnimationController>();
 
 			// Create the CrowdAgent
-			CrowdAgent agent = jackNode.CreateComponent<CrowdAgent>();
+			agent = jackNode.CreateComponent<CrowdAgent>();
 			agent.Height = 2.0f;
 			agent.MaxSpeed = 3.0f;
 			agent.MaxAccel = 3.0f;

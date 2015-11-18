@@ -107,7 +107,7 @@ namespace Urho.Samples
 			else if (Input.NumJoysticks == 0)
 			{
 				Subscription subscription = null;
-				subscription = SubscribeToTouchBegin(args =>
+				subscription = Input.SubscribeToTouchBegin(args =>
 					{
 						// On some platforms like Windows the presence of touch input can only be detected dynamically
 						InitTouchInput();
@@ -121,7 +121,7 @@ namespace Urho.Samples
 			CreateLogo ();
 			SetWindowAndTitleIcon ();
 			CreateConsoleAndDebugHud ();
-			SubscribeToKeyDown (HandleKeyDown);
+			Input.SubscribeToKeyDown (HandleKeyDown);
 		}
 
 		/// <summary>
@@ -334,7 +334,7 @@ namespace Urho.Samples
 			var layout = ResourceCache.GetXmlFile("UI/ScreenJoystick_Samples.xml");
 			if (!string.IsNullOrEmpty(JoystickLayoutPatch))
 			{
-				XMLFile patchXmlFile = new XMLFile(Context);
+				XmlFile patchXmlFile = new XmlFile(Context);
 				patchXmlFile.FromString(JoystickLayoutPatch);
 				layout.Patch(patchXmlFile);
 			}

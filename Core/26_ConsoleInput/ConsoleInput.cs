@@ -61,8 +61,8 @@ namespace Urho.Samples
 		public override void Start()
 		{
 			base.Start();
-			SubscribeToConsoleCommand(HandleConsoleCommand);
-			SubscribeToKeyDown(HandleEscKeyDown);
+			Console.SubscribeToConsoleCommand(HandleConsoleCommand);
+			Input.SubscribeToKeyDown(HandleEscKeyDown);
 			IsLogoVisible = false;
 
 			// Show the console by default, make it large. Console will show the text edit field when there is at least one

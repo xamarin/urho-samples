@@ -68,7 +68,7 @@ namespace Urho.Samples
 			var graphics = Graphics;
 			UIElement root = UI.Root;
 			var cache = ResourceCache;
-			XMLFile uiStyle = cache.GetXmlFile("UI/DefaultStyle.xml");
+			XmlFile uiStyle = cache.GetXmlFile("UI/DefaultStyle.xml");
 			// Set style to the UI root so that elements will inherit it
 			root.SetDefaultStyle(uiStyle);
 
@@ -100,23 +100,17 @@ namespace Urho.Samples
 
 		void SubscribeToEvents()
 		{
-			SubscribeToTextFinished(args => HandleSend());
-			SubscribeToReleased(args =>
-				{
-					if (args.Element == sendButton)
-						HandleSend();
-					if (args.Element == connectButton)
-						HandleConnect();
-					if (args.Element == disconnectButton)
-						HandleDisconnect();
-					if (args.Element == startServerButton)
-						HandleStartServer();
-				});
-			SubscribeToLogMessage(HandleLogMessage);
-			SubscribeToNetworkMessage(HandleNetworkMessage);
-			SubscribeToServerConnected(args => UpdateButtons());
-			SubscribeToServerDisconnected(args => UpdateButtons());
-			SubscribeToConnectFailed(args => UpdateButtons());
+			textEdit.SubscribeToTextFinished(args => HandleSend());
+			sendButton.SubscribeToReleased (args => HandleSend());
+			connectButton.SubscribeToReleased (args => HandleConnect ());
+			disconnectButton.SubscribeToReleased (args => HandleDisconnect ());
+			startServerButton.SubscribeToReleased (args => HandleStartServer ());
+
+			Log.SubscribeToLogMessage(HandleLogMessage);
+			Network.ServerConnection.SubscribeToNetworkMessage(HandleNetworkMessage);
+			Network.SubscribeToServerConnected(args => UpdateButtons());
+			Network.SubscribeToServerDisconnected(args => UpdateButtons());
+			Network.SubscribeToConnectFailed(args => UpdateButtons());
 		}
 	
 		Button CreateButton(string text, int width)

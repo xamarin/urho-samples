@@ -65,10 +65,10 @@ namespace Urho.Samples
 				b.SetSize(300, 100);
 				b.Position = new IntVector2(50 * i, 50 * i);
 
-				SubscribeToDragMove(HandleDragMove);
-				SubscribeToDragBegin(HandleDragBegin);
-				SubscribeToDragCancel(HandleDragCancel);
-				SubscribeToDragEnd(HandleDragEnd);
+				UI.SubscribeToDragMove(HandleDragMove);
+				UI.SubscribeToDragBegin(HandleDragBegin);
+				UI.SubscribeToDragCancel(HandleDragCancel);
+				UI.SubscribeToDragEnd(HandleDragEnd);
 
 				{
 					var t = new Text(Context);

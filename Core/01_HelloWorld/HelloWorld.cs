@@ -44,7 +44,7 @@ namespace Urho.Samples
 			Graphics.WindowTitle = "UrhoSharp Sample";
 
 			// Subscribe to Esc key:
-			SubscribeToKeyDown(args => { if (args.Key == Key.Esc) Engine.Exit(); });
+			Input.SubscribeToKeyDown(args => { if (args.Key == Key.Esc) Engine.Exit(); });
 		}
 	}
 }
