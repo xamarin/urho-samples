@@ -55,20 +55,19 @@ namespace ShootySkies
 			// Lights:
 			var lightNode1 = scene.CreateChild();
 			lightNode1.Position = new Vector3(0, -5, -40);
-			lightNode1.AddComponent(new Light(Context) { LightType = LightType.Point, Range = 120, Brightness = 1.5f });
+			lightNode1.AddComponent(new Light(Context) {  Range = 120, Brightness = 1.5f });
 
 			var lightNode2 = scene.CreateChild();
 			lightNode2.Position = new Vector3(10, 15, -12);
-			lightNode2.AddComponent(new Light(Context) { LightType = LightType.Point, Range = 30.0f, CastShadows = true, Brightness = 1.5f });
+			lightNode2.AddComponent(new Light(Context) {  Range = 30.0f, CastShadows = true, Brightness = 1.5f });
 
-			// Menu
-			var startMenu = new StartMenu(Context);
-			scene.AddComponent(startMenu);
 
 			// Game logic cycle
 			while (true)
 			{
+				var startMenu = scene.CreateComponent<StartMenu>();
 				await startMenu.ShowStartMenu(); //wait for "start"
+				startMenu.Remove();
 				await StartGame();
 			}
 		}
