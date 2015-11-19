@@ -123,7 +123,7 @@ namespace Urho.Samples
 			windowTitle.SetStyleAuto(null);
 			buttonClose.SetStyle("CloseButton", null);
 
-			buttonClose.SubscribeToReleased (args => Engine.Exit ());
+			buttonClose.SubscribeToReleased(_ => Engine.Exit());
 				
 			// Subscribe also to all UI mouse clicks just to see where we have clicked
 			UI.SubscribeToUIMouseClick(HandleControlClicked);
@@ -157,28 +157,21 @@ namespace Urho.Samples
 			toolTipText.Value = "Please drag me!";
 
 			// Subscribe draggableFish to Drag Events (in order to make it draggable)
-			// See "Event list" in documentation's Main Page for reference on available Events and their eventData
-			UI.SubscribeToDragBegin(HandleDragBegin);
-			UI.SubscribeToDragMove(HandleDragMove);
-			UI.SubscribeToDragEnd(HandleDragEnd);
+			draggableFish.SubscribeToDragBegin(HandleDragBegin);
+			draggableFish.SubscribeToDragMove(HandleDragMove);
+			draggableFish.SubscribeToDragEnd(HandleDragEnd);
 		}
 
 		void HandleDragBegin(DragBeginEventArgs args)
 		{
-			if (args.Element == draggableFish)
-			{
-				// Get UIElement relative position where input (touch or click) occured (top-left = IntVector2(0,0))
-				dragBeginPosition = new IntVector2(args.ElementX, args.ElementY);
-			}
+			// Get UIElement relative position where input (touch or click) occured (top-left = IntVector2(0,0))
+			dragBeginPosition = new IntVector2(args.ElementX, args.ElementY);
 		}
 
 		void HandleDragMove(DragMoveEventArgs args)
 		{
-			if (args.Element == draggableFish)
-			{
-				IntVector2 dragCurrentPosition = new IntVector2(args.X, args.Y);
-				args.Element.Position = dragCurrentPosition - dragBeginPosition;
-			}
+			IntVector2 dragCurrentPosition = new IntVector2(args.X, args.Y);
+			args.Element.Position = dragCurrentPosition - dragBeginPosition;
 		}
 
 		void HandleDragEnd(DragEndEventArgs args) // For reference (not used here)
@@ -201,7 +194,7 @@ namespace Urho.Samples
 			}
 
 			// Update the Window's title text
-			windowTitle.Value = "Hello " + name + "!";
+			windowTitle.Value = $"Hello {name}!";
 		}
 
 		protected override string JoystickLayoutPatch => JoystickLayoutPatches.Hidden;

@@ -70,11 +70,6 @@ namespace Urho.Samples
 			}
 		}
 
-		protected override void OnSceneUpdate(float timeStep, Scene scene)
-		{
-			// Unsubscribe the SceneUpdate event from base class to prevent camera pitch and yaw in 2D sample
-		}
-
 		protected override void OnUpdate(float timeStep)
 		{
 			SimpleMoveCamera2D(timeStep);

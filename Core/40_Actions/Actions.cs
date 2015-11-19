@@ -46,7 +46,7 @@ namespace Urho.Samples
 
 			if (input.GetKeyPress(Key.W))
 			{
-				//move forward with easing (see http://easings.net/)
+				//move forward with easing
 				MoveBy moveBy = new MoveBy(duration, new Vector3(0, 0, 15));
 				action = new EaseBackOut(moveBy);
 			}
@@ -59,7 +59,7 @@ namespace Urho.Samples
 			}
 			if (input.GetKeyPress(Key.A))
 			{
-				//move left with scale increasing
+				//move left, increase scale
 				MoveBy moveBy = new MoveBy(duration, new Vector3(-15, 0, 0));
 				ScaleBy scaleBy = new ScaleBy(duration, 2f);
 				action = new Parallel(moveBy, scaleBy);
@@ -76,6 +76,7 @@ namespace Urho.Samples
 				//can be awaited
 				boxNode.RunActionsAsync(action);
 			}
+			base.OnUpdate(timeStep);
 		}
 
 		void CreateScene()
@@ -94,7 +95,6 @@ namespace Urho.Samples
 			lightNode.SetDirection(new Vector3(0.6f, -1.0f, 0.8f));
 			var light = lightNode.CreateComponent<Light>();
 			light.LightType = LightType.Directional;
-			//light.CastShadows = true; 
 
 			boxNode = scene.CreateChild("Mushroom");
 			boxNode.Position = new Vector3(0, 1, -40);

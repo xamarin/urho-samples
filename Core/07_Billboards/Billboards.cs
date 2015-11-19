@@ -59,6 +59,7 @@ namespace Urho.Samples
 			AnimateScene(timeStep);
 			if (Input.GetKeyPress(Key.Space))
 				drawDebug = !drawDebug;
+			base.OnUpdate(timeStep);
 		}
 
 		void AnimateScene(float timeStep)
@@ -167,11 +168,10 @@ namespace Urho.Samples
 
 				for (uint j = 0; j < numBillboards; ++j)
 				{
-					//NOTE: temp working solution. TODO: avoid using "unsafe"
 					var bb = billboardObject.GetBillboardSafe(j);
 					bb.Position = new Vector3(NextRandom(12.0f) - 6.0f, NextRandom(8.0f) - 4.0f, NextRandom(12.0f) - 6.0f);
 					bb.Size = new Vector2(NextRandom(2.0f) + 3.0f, NextRandom(2.0f) + 3.0f);
-					bb.Rotation = NextRandom()*360.0f;
+					bb.Rotation = NextRandom() * 360.0f;
 					bb.Enabled = true;
 				}
 
@@ -206,7 +206,7 @@ namespace Urho.Samples
 
 				// Configure shadow fading for the lights. When they are far away enough, the lights eventually become unshadowed for
 				// better GPU performance. Note that we could also set the maximum distance for each object to cast shadows
-				light.ShadowFadeDistance = (100.0f); // Fade start distance
+				light.ShadowFadeDistance = 100.0f; // Fade start distance
 				light.ShadowDistance = 125.0f; // Fade end distance, shadows are disabled
 				// Set half resolution for the shadow maps for increased performance
 				light.ShadowResolution = 0.5f;

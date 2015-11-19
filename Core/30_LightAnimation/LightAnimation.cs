@@ -62,6 +62,7 @@ namespace Urho.Samples
 		protected override void OnUpdate(float timeStep)
 		{
 			SimpleMoveCamera3D(timeStep);
+			base.OnUpdate(timeStep);
 		}
 
 		void SetupViewport()

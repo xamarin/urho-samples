@@ -123,9 +123,6 @@ namespace Urho.Samples
 
 		void HandleNodeCollision(NodeCollisionEventArgs args)
 		{
-			if (args.Body != body)
-				return;
-
 			foreach (var contact in args.Contacts)
 			{
 				// If contact is below node center and mostly vertical, assume it's a ground contact

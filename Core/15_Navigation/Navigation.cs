@@ -29,12 +29,12 @@ namespace Urho.Samples
 	public class Navigation : Sample
 	{
 		Scene scene;
-		bool drawDebug;
-		Node jackNode;
-		List<Vector3> currentPath = new List<Vector3>();
-		Vector3 endPos;
 		float yaw;
 		float pitch;
+		bool drawDebug;
+		Node jackNode;
+		Vector3 endPos;
+		List<Vector3> currentPath = new List<Vector3>();
 
 		public Navigation(Context ctx) : base(ctx) { }
 
@@ -79,6 +79,7 @@ namespace Urho.Samples
 
 		protected override void OnUpdate(float timeStep)
 		{
+			base.OnUpdate(timeStep);
 			MoveCamera(timeStep);
 			FollowPath(timeStep);
 		}
@@ -86,12 +87,10 @@ namespace Urho.Samples
 		void MoveCamera(float timeStep)
 		{
 			// Right mouse button controls mouse cursor visibility: hide when pressed
-			UI ui = UI;
-			Input input = Input;
-			ui.Cursor.SetVisible(!input.GetMouseButtonDown(MouseButton.Right));
+			UI.Cursor.SetVisible(!Input.GetMouseButtonDown(MouseButton.Right));
 
 			// Do not move if the UI has a focused element (the console)
-			if (ui.FocusElement != null)
+			if (UI.FocusElement != null)
 				return;
 
 			// Movement speed as world units per second
@@ -101,9 +100,9 @@ namespace Urho.Samples
 
 			// Use this frame's mouse motion to adjust camera node yaw and pitch. Clamp the pitch between -90 and 90 degrees
 			// Only move the camera when the cursor is hidden
-			if (!ui.Cursor.IsVisible())
+			if (!UI.Cursor.IsVisible())
 			{
-				IntVector2 mouseMove = input.MouseMove;
+				IntVector2 mouseMove = Input.MouseMove;
 				yaw += mouseSensitivity * mouseMove.X;
 				pitch += mouseSensitivity * mouseMove.Y;
 				pitch = MathHelper.Clamp(pitch, -90.0f, 90.0f);
@@ -113,24 +112,24 @@ namespace Urho.Samples
 			}
 
 			// Read WASD keys and move the camera scene node to the corresponding direction if they are pressed
-			if (input.GetKeyDown(Key.W))
-				CameraNode.Translate(new Vector3(0, 0, 1) * moveSpeed * timeStep, TransformSpace.Local);
-			if (input.GetKeyDown(Key.S))
-				CameraNode.Translate(new Vector3(0, 0, -1) * moveSpeed * timeStep, TransformSpace.Local);
-			if (input.GetKeyDown(Key.A))
-				CameraNode.Translate(new Vector3(-1, 0, 0) * moveSpeed * timeStep, TransformSpace.Local);
-			if (input.GetKeyDown(Key.D))
-				CameraNode.Translate(new Vector3(1, 0, 0) * moveSpeed * timeStep, TransformSpace.Local);
+			if (Input.GetKeyDown(Key.W))
+				CameraNode.Translate(Vector3.UnitZ * moveSpeed * timeStep);
+			if (Input.GetKeyDown(Key.S))
+				CameraNode.Translate(-Vector3.UnitZ * moveSpeed * timeStep);
+			if (Input.GetKeyDown(Key.A))
+				CameraNode.Translate(-Vector3.UnitX * moveSpeed * timeStep);
+			if (Input.GetKeyDown(Key.D))
+				CameraNode.Translate(Vector3.UnitX * moveSpeed * timeStep);
 
 			// Set destination or teleport with left mouse button
-			if (input.GetMouseButtonPress(MouseButton.Left))
+			if (Input.GetMouseButtonPress(MouseButton.Left))
 				SetPathPoint();
 			// Add or remove objects with middle mouse button, then rebuild navigation mesh partially
-			if (input.GetMouseButtonPress(MouseButton.Middle))
+			if (Input.GetMouseButtonPress(MouseButton.Middle))
 				AddOrRemoveObject();
 
 			// Toggle debug geometry with space
-			if (input.GetKeyPress(Key.Space))
+			if (Input.GetKeyPress(Key.Space))
 				drawDebug = !drawDebug;
 		}
 
@@ -143,14 +142,13 @@ namespace Urho.Samples
 		void CreateUI()
 		{
 			var cache = ResourceCache;
-			UI ui = UI;
-
+			
 			// Create a Cursor UI element because we want to be able to hide and show it at will. When hidden, the mouse cursor will
 			// control the camera, and when visible, it will point the raycast target
 			XmlFile style = cache.GetXmlFile("UI/DefaultStyle.xml");
 			Cursor cursor=new Cursor(Context);
 			cursor.SetStyleAuto(style);
-			ui.Cursor=cursor;
+			UI.Cursor=cursor;
 
 			// Set starting position of the cursor at the rendering window center
 			var graphics = Graphics;
@@ -171,8 +169,8 @@ namespace Urho.Samples
 			// Position the text relative to the screen center
 			instructionText.HorizontalAlignment = HorizontalAlignment.Center;
 			instructionText.VerticalAlignment = VerticalAlignment.Center;
-			instructionText.SetPosition(0, ui.Root.Height / 4);
-			ui.Root.AddChild(instructionText);
+			instructionText.SetPosition(0, UI.Root.Height / 4);
+			UI.Root.AddChild(instructionText);
 		}
 
 		void CreateScene()
@@ -343,11 +341,10 @@ namespace Urho.Samples
 		{
 			hitDrawable = null;
 			hitPos = new Vector3();
-
-			UI ui = UI;
-			IntVector2 pos = ui.CursorPosition;
+			
+			IntVector2 pos = UI.CursorPosition;
 			// Check the cursor is visible and there is no UI element in front of the cursor
-			if (!ui.Cursor.IsVisible() || ui.GetElementAt(pos, true) != null)
+			if (!UI.Cursor.IsVisible() || UI.GetElementAt(pos, true) != null)
 				return false;
 
 			var graphics = Graphics;

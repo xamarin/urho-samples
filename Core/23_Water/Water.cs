@@ -43,6 +43,7 @@ namespace Urho.Samples
 	
 		protected override void OnUpdate(float timeStep)
 		{
+			base.OnUpdate(timeStep);
 			SimpleMoveCamera3D(timeStep, 100f);
 			var camera = reflectionCameraNode.GetComponent<Camera>();
 			camera.AspectRatio = (float)Graphics.Width / Graphics.Height;
@@ -144,8 +145,8 @@ namespace Urho.Samples
 			terrain.SetOccluder(true);
 
 			// Create 1000 boxes in the terrain. Always face outward along the terrain normal
-			uint NUM_OBJECTS = 1000;
-			for (uint i = 0; i < NUM_OBJECTS; ++i)
+			uint numObjects = 1000;
+			for (uint i = 0; i < numObjects; ++i)
 			{
 				var objectNode = scene.CreateChild("Box");
 				Vector3 position = new Vector3(NextRandom(2000.0f) - 1000.0f, 0.0f, NextRandom(2000.0f) - 1000.0f);

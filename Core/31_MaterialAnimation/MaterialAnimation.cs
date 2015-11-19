@@ -53,6 +53,7 @@ namespace Urho.Samples
 
 		protected override void OnUpdate(float timeStep)
 		{
+			base.OnUpdate(timeStep);
 			SimpleMoveCamera3D(timeStep);
 			if (Input.GetKeyPress(Key.Space))
 				drawDebug = !drawDebug;

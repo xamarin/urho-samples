@@ -56,6 +56,7 @@ namespace Urho.Samples
 
 		protected override void OnUpdate(float timeStep)
 		{
+			base.OnUpdate(timeStep);
 			SimpleMoveCamera3D(timeStep);
 
 			var effectRenderPath = Renderer.GetViewport(0).RenderPath;
@@ -171,7 +172,7 @@ namespace Urho.Samples
 			// Create the cameras. Limit far clip distance to match the fog
 			CameraNode = scene.CreateChild("Camera");
 			Camera camera = CameraNode.CreateComponent<Camera>();
-			camera.FarClip=300.0f;
+			camera.FarClip = 300.0f;
 
 			// Parent the rear camera node to the front camera node and turn it 180 degrees to face backward
 			// Here, we use the angle-axis constructor for Quaternion instead of the usual Euler angles

@@ -48,6 +48,7 @@ namespace Urho.Samples
 	
 		protected override void OnUpdate(float timeStep)
 		{
+			base.OnUpdate(timeStep);
 			// Toggle animation with space
 			Input input = Input;
 			if (input.GetKeyPress(Key.Space))
@@ -124,21 +125,12 @@ namespace Urho.Samples
 				{
 					for (int x = -125; x < 125; ++x)
 					{
-						/*
-						 NOTE: 
-						 "using" statement here and below is not required and will not lead to memory leaks.
-						 It just removes these objects from the inner UrhoSharp cache as the result the app consumes less memory
-						*/
-						using (var boxNode = scene.CreateChild("Box"))
-						{
-							boxNode.Position = new Vector3(x*0.3f, 0.0f, y*0.3f);
-							boxNode.SetScale(0.25f);
-							using (var boxObject = boxNode.CreateComponent<StaticModel>())
-							{
-								boxObject.Model = cache.GetModel("Models/Box.mdl");
-								boxNodes.Add(boxNode);
-							}
-						}
+						var boxNode = scene.CreateChild("Box");
+						boxNode.Position = new Vector3(x*0.3f, 0.0f, y*0.3f);
+						boxNode.SetScale(0.25f);
+						var boxObject = boxNode.CreateComponent<StaticModel>();
+						boxObject.Model = cache.GetModel("Models/Box.mdl");
+						boxNodes.Add(boxNode);
 					}
 				}
 			}
@@ -166,13 +158,11 @@ namespace Urho.Samples
 							}
 						}
 
-						using (var boxNode = scene.CreateChild("Box"))
-						{
-							boxNode.Position = new Vector3(x*0.3f, 0.0f, y*0.3f);
-							boxNode.SetScale(0.25f);
-							boxNodes.Add(boxNode);
-							lastGroup.AddInstanceNode(boxNode);
-						}
+						var boxNode = scene.CreateChild("Box");
+						boxNode.Position = new Vector3(x*0.3f, 0.0f, y*0.3f);
+						boxNode.SetScale(0.25f);
+						boxNodes.Add(boxNode);
+						lastGroup.AddInstanceNode(boxNode);
 					}
 				}
 			}

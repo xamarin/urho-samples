@@ -40,11 +40,6 @@ namespace Urho.Samples
 			SetupViewport();
 		}
 
-		protected override void OnSceneUpdate(float timeStep, Scene scene)
-		{
-			//override Sample's behavior by no-op
-		}
-
 		protected override void OnUpdate(float timeStep)
 		{
 			SimpleMoveCamera2D(timeStep);

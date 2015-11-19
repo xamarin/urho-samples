@@ -42,6 +42,7 @@ namespace Urho.Samples
 		protected override void OnUpdate(float timeStep)
 		{
 			MoveSprites(timeStep);
+			base.OnUpdate(timeStep);
 		}
 
 		void CreateSprites()

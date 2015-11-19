@@ -38,8 +38,7 @@ namespace Urho.Samples
 			elements = new Dictionary<UIElement, ElementInfo>();
 			// Set mouse visible
 		
-			string platform = Urho.Runtime.Platform;
-			if (platform != "Android" && platform != "iOS")
+			if (Platform != Platforms.Android && Platform != Platforms.iOS)
 				Input.SetMouseVisible(true, false);
 
 			// Create the UI content
@@ -65,10 +64,10 @@ namespace Urho.Samples
 				b.SetSize(300, 100);
 				b.Position = new IntVector2(50 * i, 50 * i);
 
-				UI.SubscribeToDragMove(HandleDragMove);
-				UI.SubscribeToDragBegin(HandleDragBegin);
-				UI.SubscribeToDragCancel(HandleDragCancel);
-				UI.SubscribeToDragEnd(HandleDragEnd);
+				b.SubscribeToDragMove(HandleDragMove);
+				b.SubscribeToDragBegin(HandleDragBegin);
+				b.SubscribeToDragCancel(HandleDragCancel);
+				b.SubscribeToDragEnd(HandleDragEnd);
 
 				{
 					var t = new Text(Context);
@@ -169,6 +168,7 @@ namespace Urho.Samples
 
 		protected override void OnUpdate(float timeStep)
 		{
+			base.OnUpdate(timeStep);
 			UI ui = UI;
 			UIElement root = ui.Root;
 

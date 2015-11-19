@@ -39,6 +39,7 @@ namespace Urho.Samples
 
 		protected override void OnUpdate(float timeStep)
 		{
+			base.OnUpdate(timeStep);
 			SimpleMoveCamera3D(timeStep);
 		}
 
@@ -97,7 +98,7 @@ namespace Urho.Samples
 				mushroomTitleNode.Position = (new Vector3(0.0f, 1.2f, 0.0f));
 				Text3D mushroomTitleText = mushroomTitleNode.CreateComponent<Text3D>();
 				mushroomTitleText.Text="Mushroom " + i;
-				mushroomTitleText.SetFont(cache.GetFont("Fonts/BlueHighway.sdf"), 24);
+				mushroomTitleText.SetFont(cache.GetFont("Fonts/BlueHighway.sdf"), 24);//sdf, not ttf. size of font doesn't matter.
 
 				mushroomTitleText.SetColor(Color.Red);
 

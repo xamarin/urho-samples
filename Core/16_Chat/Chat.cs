@@ -81,7 +81,7 @@ namespace Urho.Samples
 			root.AddChild(buttonContainer);
 			buttonContainer.SetFixedSize(graphics.Width, 20);
 			buttonContainer.SetPosition(0, graphics.Height - 20);
-			buttonContainer.LayoutMode=LayoutMode.Horizontal;
+			buttonContainer.LayoutMode = LayoutMode.Horizontal;
 
 			textEdit = new LineEdit(Context); 
 			textEdit.SetStyleAuto(null);
@@ -107,7 +107,7 @@ namespace Urho.Samples
 			startServerButton.SubscribeToReleased (args => HandleStartServer ());
 
 			Log.SubscribeToLogMessage(HandleLogMessage);
-			Network.ServerConnection.SubscribeToNetworkMessage(HandleNetworkMessage);
+			Network.SubscribeToNetworkMessage(HandleNetworkMessage);
 			Network.SubscribeToServerConnected(args => UpdateButtons());
 			Network.SubscribeToServerDisconnected(args => UpdateButtons());
 			Network.SubscribeToConnectFailed(args => UpdateButtons());

@@ -48,39 +48,7 @@ namespace Urho.Samples
 			get { return logoSprite.IsVisible(); }
 			set { logoSprite.SetVisible(value); }
 		}
-
-		protected override void OnSceneUpdate(float timeStep, Scene scene)
-		{
-			if (!TouchEnabled || CameraNode == null)
-				return;
-
-			var input = Input;
-			for (uint i = 0, num = input.NumTouches; i < num; ++i)
-			{
-				TouchState state = input.GetTouch(i);
-				if (state.TouchedElement () != null)
-					continue;
-
-				if (state.Delta.X != 0 || state.Delta.Y != 0)
-				{
-					var camera = CameraNode.GetComponent<Camera> ();
-					if (camera == null)
-						return;
-
-					var graphics = Graphics;
-					Yaw += TouchSensitivity * camera.Fov / graphics.Height * state.Delta.X;
-					Pitch += TouchSensitivity * camera.Fov / graphics.Height * state.Delta.Y;
-					CameraNode.Rotation = new Quaternion (Pitch, Yaw, 0);
-				}
-				else
-				{
-					var cursor = UI.Cursor;
-					if (cursor != null && cursor.IsVisible ())
-						cursor.Position = state.Position;
-				}
-			}
-		}
-
+		
 		static readonly Random random = new Random();
 		/// Return a random float between 0.0 (inclusive) and 1.0 (exclusive.)
 		public static float NextRandom() { return (float)random.NextDouble(); }
@@ -99,8 +67,7 @@ namespace Urho.Samples
 		public override void Start ()
 		{
 			base.Start();
-			var platform = Runtime.Platform;
-			if (platform == "Android" || platform == "iOS")
+			if (Platform == Platforms.Android || Platform == Platforms.iOS)
 			{
 				InitTouchInput();
 			}
@@ -124,6 +91,12 @@ namespace Urho.Samples
 			Input.SubscribeToKeyDown (HandleKeyDown);
 		}
 
+		protected override void OnUpdate(float timeStep)
+		{
+			MoveCameraByTouches(timeStep);
+			base.OnUpdate(timeStep);
+		}
+
 		/// <summary>
 		/// Move camera for 2D samples
 		/// </summary>
@@ -133,31 +106,25 @@ namespace Urho.Samples
 			if (UI.FocusElement != null)
 				return;
 
-			Input input = Input;
-
 			// Movement speed as world units per second
 			const float moveSpeed = 4.0f;
 
 			// Read WASD keys and move the camera scene node to the corresponding direction if they are pressed
-			if (input.GetKeyDown(Key.W))
-				CameraNode.Translate(Vector3.UnitY * moveSpeed * timeStep, TransformSpace.Local);
-			if (input.GetKeyDown(Key.S))
-				CameraNode.Translate(new Vector3(0.0f, -1.0f, 0.0f) * moveSpeed * timeStep, TransformSpace.Local);
-			if (input.GetKeyDown(Key.A))
-				CameraNode.Translate(new Vector3(-1.0f, 0.0f, 0.0f) * moveSpeed * timeStep, TransformSpace.Local);
-			if (input.GetKeyDown(Key.D))
-				CameraNode.Translate(Vector3.UnitX * moveSpeed * timeStep, TransformSpace.Local);
+			if (Input.GetKeyDown(Key.W)) CameraNode.Translate( Vector3.UnitY * moveSpeed * timeStep);
+			if (Input.GetKeyDown(Key.S)) CameraNode.Translate(-Vector3.UnitY * moveSpeed * timeStep);
+			if (Input.GetKeyDown(Key.A)) CameraNode.Translate(-Vector3.UnitX * moveSpeed * timeStep);
+			if (Input.GetKeyDown(Key.D)) CameraNode.Translate( Vector3.UnitX * moveSpeed * timeStep);
 
-			if (input.GetKeyDown(Key.PageUp))
+			if (Input.GetKeyDown(Key.PageUp))
 			{
 				Camera camera = CameraNode.GetComponent<Camera>();
-				camera.Zoom = (camera.Zoom * 1.01f);
+				camera.Zoom = camera.Zoom * 1.01f;
 			}
 
-			if (input.GetKeyDown(Key.PageDown))
+			if (Input.GetKeyDown(Key.PageDown))
 			{
 				Camera camera = CameraNode.GetComponent<Camera>();
-				camera.Zoom = (camera.Zoom * 0.99f);
+				camera.Zoom = camera.Zoom * 0.99f;
 			}
 		}
 
@@ -171,23 +138,49 @@ namespace Urho.Samples
 			if (UI.FocusElement != null)
 				return;
 
-			var input = Input;
-
-			var mouseMove = input.MouseMove;
+			var mouseMove = Input.MouseMove;
 			Yaw += mouseSensitivity * mouseMove.X;
 			Pitch += mouseSensitivity * mouseMove.Y;
 			Pitch = MathHelper.Clamp(Pitch, -90, 90);
 
 			CameraNode.Rotation = new Quaternion(Pitch, Yaw, 0);
 
-			if (input.GetKeyDown (Key.W))
-				CameraNode.Translate (new Vector3(0,0,1) * moveSpeed * timeStep, TransformSpace.Local);
-			if (input.GetKeyDown (Key.S))
-				CameraNode.Translate (new Vector3(0,0,-1) * moveSpeed * timeStep, TransformSpace.Local);
-			if (input.GetKeyDown (Key.A))
-				CameraNode.Translate (new Vector3(-1,0,0) * moveSpeed * timeStep, TransformSpace.Local);
-			if (input.GetKeyDown (Key.D))
-				CameraNode.Translate (new Vector3(1,0,0) * moveSpeed * timeStep, TransformSpace.Local);
+			if (Input.GetKeyDown (Key.W)) CameraNode.Translate ( Vector3.UnitZ * moveSpeed * timeStep);
+			if (Input.GetKeyDown (Key.S)) CameraNode.Translate (-Vector3.UnitZ * moveSpeed * timeStep);
+			if (Input.GetKeyDown (Key.A)) CameraNode.Translate (-Vector3.UnitX * moveSpeed * timeStep);
+			if (Input.GetKeyDown (Key.D)) CameraNode.Translate ( Vector3.UnitX * moveSpeed * timeStep);
+		}
+
+		protected void MoveCameraByTouches (float timeStep)
+		{
+			if (!TouchEnabled || CameraNode == null)
+				return;
+
+			var input = Input;
+			for (uint i = 0, num = input.NumTouches; i < num; ++i)
+			{
+				TouchState state = input.GetTouch(i);
+				if (state.TouchedElement() != null)
+					continue;
+
+				if (state.Delta.X != 0 || state.Delta.Y != 0)
+				{
+					var camera = CameraNode.GetComponent<Camera>();
+					if (camera == null)
+						return;
+
+					var graphics = Graphics;
+					Yaw += TouchSensitivity * camera.Fov / graphics.Height * state.Delta.X;
+					Pitch += TouchSensitivity * camera.Fov / graphics.Height * state.Delta.Y;
+					CameraNode.Rotation = new Quaternion(Pitch, Yaw, 0);
+				}
+				else
+				{
+					var cursor = UI.Cursor;
+					if (cursor != null && cursor.IsVisible())
+						cursor.Position = state.Position;
+				}
+			}
 		}
 
 		protected void SimpleCreateInstructionsWithWasd (string extra = "")
@@ -259,13 +252,6 @@ namespace Urho.Samples
 				case Key.F2:
 					debugHud.ToggleAll();
 					return;
-
-				// GC tests
-				case Key.N0:
-					GC.Collect();
-					GC.WaitForPendingFinalizers();
-					GC.Collect();
-					break;
 			}
 
 			if (UI.FocusElement == null)

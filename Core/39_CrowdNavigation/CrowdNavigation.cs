@@ -83,6 +83,7 @@ namespace Urho.Samples
 		protected override void OnUpdate(float timeStep)
 		{
 			MoveCamera(timeStep);
+			base.OnUpdate(timeStep);
 		}
 
 		void SubscribeToEvents()
@@ -174,14 +175,10 @@ namespace Urho.Samples
 			}
 
 			// Read WASD keys and move the camera scene node to the corresponding direction if they are pressed
-			if (input.GetKeyDown(Key.W))
-				CameraNode.Translate(new Vector3(0, 0, 1) * moveSpeed * timeStep, TransformSpace.Local);
-			if (input.GetKeyDown(Key.S))
-				CameraNode.Translate(new Vector3(0, 0, -1) * moveSpeed * timeStep, TransformSpace.Local);
-			if (input.GetKeyDown(Key.A))
-				CameraNode.Translate(new Vector3(-1, 0, 0) * moveSpeed * timeStep, TransformSpace.Local);
-			if (input.GetKeyDown(Key.D))
-				CameraNode.Translate(new Vector3(1, 0, 0) * moveSpeed * timeStep, TransformSpace.Local);
+			if (input.GetKeyDown(Key.W)) CameraNode.Translate( Vector3.UnitZ * moveSpeed * timeStep);
+			if (input.GetKeyDown(Key.S)) CameraNode.Translate(-Vector3.UnitZ * moveSpeed * timeStep);
+			if (input.GetKeyDown(Key.A)) CameraNode.Translate(-Vector3.UnitX * moveSpeed * timeStep);
+			if (input.GetKeyDown(Key.D)) CameraNode.Translate( Vector3.UnitX * moveSpeed * timeStep);
 
 			const int qualShift = 1;
 

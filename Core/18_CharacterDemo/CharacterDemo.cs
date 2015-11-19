@@ -125,12 +125,7 @@ namespace Urho.Samples
 				CameraNode.Rotation = dir;
 			}
 		}
-
-		protected override void OnSceneUpdate(float timeStep, Scene scene)
-		{
-			// Unsubscribe the SceneUpdate event from base class as the camera node is being controlled in HandlePostUpdate() in this sample
-		}
-
+		
 		protected override void OnUpdate(float timeStep)
 		{
 			Input input = Input;

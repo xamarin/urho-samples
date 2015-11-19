@@ -87,7 +87,6 @@ namespace Urho.Samples
 			if (!ui.Cursor.IsVisible())
 			{
 				var mouseMove = input.MouseMove;
-				//var mouseMove = Test2 (input.Handle);
 				Yaw += mouseSensitivity * mouseMove.X;
 				Pitch += mouseSensitivity * mouseMove.Y;
 				Pitch = MathHelper.Clamp(Pitch, -90, 90);
@@ -96,19 +95,20 @@ namespace Urho.Samples
 			CameraNode.Rotation = new Quaternion(Pitch, Yaw, 0);
 
 			if (input.GetKeyDown(Key.W))
-				CameraNode.Translate(new Vector3(0, 0, 1) * moveSpeed * timeStep, TransformSpace.Local);
+				CameraNode.Translate(Vector3.UnitZ * moveSpeed * timeStep);
 			if (input.GetKeyDown(Key.S))
-				CameraNode.Translate(new Vector3(0, 0, -1) * moveSpeed * timeStep, TransformSpace.Local);
+				CameraNode.Translate(-Vector3.UnitZ * moveSpeed * timeStep);
 			if (input.GetKeyDown(Key.A))
-				CameraNode.Translate(new Vector3(-1, 0, 0) * moveSpeed * timeStep, TransformSpace.Local);
+				CameraNode.Translate(-Vector3.UnitX * moveSpeed * timeStep);
 			if (input.GetKeyDown(Key.D))
-				CameraNode.Translate(new Vector3(1, 0, 0) * moveSpeed * timeStep, TransformSpace.Local);
+				CameraNode.Translate(Vector3.UnitX * moveSpeed * timeStep);
 
 			if (Input.GetKeyPress(Key.Space))
 				drawDebug = !drawDebug;
 
 			if (UI.Cursor.IsVisible() && Input.GetMouseButtonPress(MouseButton.Left))
 				PaintDecal();
+			base.OnUpdate(timeStep);
 		}
 
 		void SetupViewport()

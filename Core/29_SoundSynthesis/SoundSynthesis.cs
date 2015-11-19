@@ -60,6 +60,7 @@ namespace Urho.Samples
 	
 		protected override void OnUpdate(float timeStep)
 		{
+			base.OnUpdate(timeStep);
 			// Use keys to control the filter constant
 			Input input = Input;
 			if (input.GetKeyDown(Key.Up))
@@ -68,7 +69,7 @@ namespace Urho.Samples
 				filter -= timeStep * 0.5f;
 			filter = MathHelper.Clamp(filter, 0.01f, 1.0f);
 
-			instructionText.Value = "Use cursor up and down to control sound filtering\nCoefficient: " + filter;
+			instructionText.Value = "Use arrow up and down to control sound filtering\nCoefficient: " + filter;
 
 			UpdateSound();
 		}

@@ -105,7 +105,7 @@ namespace Urho.Samples
 		{
 			base.Start ();
 			CreateScene ();
-			SimpleCreateInstructionsWithWasd ("\nDel to delete all boxes");
+			SimpleCreateInstructionsWithWasd ();
 			SetupViewport ();
 		}
 
@@ -116,6 +116,7 @@ namespace Urho.Samples
 			{
 				scene.GetChild("Boxes", false).RemoveAllChildren();
 			}
+			base.OnUpdate(timeStep);
 		}
 
 		class Rotator : Component

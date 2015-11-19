@@ -56,6 +56,7 @@ namespace Urho.Samples
 
 		protected override void OnUpdate(float timeStep)
 		{
+			base.OnUpdate(timeStep);
 			var input = Input;
 			SimpleMoveCamera3D(timeStep);
 

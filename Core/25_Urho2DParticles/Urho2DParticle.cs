@@ -42,17 +42,14 @@ namespace Urho.Samples
 			SubscribeToEvents();
 		}
 
+		protected override void OnUpdate(float timeStep) {}
+
 		void SubscribeToEvents()
 		{
 			Input.SubscribeToMouseMove(args => HandleMouseMove(args.X, args.Y));
 
 			if (TouchEnabled)
 				Input.SubscribeToTouchMove(args => HandleMouseMove(args.X, args.Y));
-		}
-
-		protected override void OnSceneUpdate(float timeStep, Scene scene)
-		{
-			//override Sample's behavior by no-op
 		}
 
 		void HandleMouseMove(int x, int y)
@@ -85,7 +82,7 @@ namespace Urho.Samples
 			camera.SetOrthographic(true);
 
 			var graphics = Graphics;
-			camera.OrthoSize=(float)graphics.Height * PixelSize;
+			camera.OrthoSize = (float)graphics.Height * PixelSize;
 			camera.Zoom=1.2f * Math.Min((float)graphics.Width / 1280.0f, (float)graphics.Height / 800.0f); // Set zoom according to user's resolution to ensure full visibility (initial zoom (1.2) is set for full visibility at 1280x800 resolution)
 
 			var cache = ResourceCache;

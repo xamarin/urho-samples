@@ -30,19 +30,12 @@ namespace Urho.Samples
 	{
 		Scene scene;
 
-		readonly string[] soundNames =
+		readonly Dictionary<string, string> sounds = new Dictionary<string, string>
 			{
-				"Fist",
-				"Explosion",
-				"Power-up"
-			};
-
-		readonly string[] soundResourceNames =
-			{
-				"Sounds/PlayerFistHit.wav",
-				"Sounds/BigExplosion.wav",
-				"Sounds/Powerup.wav"
-			};
+				{"Fist",      "Sounds/PlayerFistHit.wav"},
+				{"Explosion", "Sounds/BigExplosion.wav"},
+				{"Power-up",  "Sounds/Powerup.wav"},
+			}; 
 
 		public SoundEffects(Context ctx) : base(ctx) { }
 
@@ -110,13 +103,13 @@ namespace Urho.Samples
 			root.SetDefaultStyle(uiStyle);
 
 			// Create buttons for playing back sounds
-			for (int i = 0; i < soundNames.Length; ++i)
+			int i = 0;
+			foreach (var item in sounds)
 			{
-				var soundResource = soundResourceNames[i];
-				Button button = CreateButton(i * 140 + 20, 20, 120, 40, soundNames[i]);
+				Button button = CreateButton(i++ * 140 + 20, 20, 120, 40, item.Key);
 				button.SubscribeToReleased(args => {
 					// Get the sound resource
-					Sound sound = cache.GetSound(soundResource);
+					Sound sound = cache.GetSound(item.Value);
 					if (sound != null)
 					{
 						// Create a scene node with a SoundSource component for playing the sound. The SoundSource component plays
@@ -149,26 +142,16 @@ namespace Urho.Samples
 			});
 
 			var stopMusicButton = CreateButton(160, 80, 120, 40, "Stop Music");
-			stopMusicButton.SubscribeToReleased (args => {
-				scene.RemoveChild (scene.GetChild ("Music", false));
-			});
-
-			Audio audio = Audio;
+			stopMusicButton.SubscribeToReleased (args => scene.RemoveChild (scene.GetChild ("Music", false)));
 
 			// Create sliders for controlling sound and music master volume
 			var soundSlider = CreateSlider(20, 140, 200, 20, "Sound Volume");
-			soundSlider.Value = audio.GetMasterGain(SoundType.Effect.ToString());
-			soundSlider.SubscribeToSliderChanged(args => {
-				float newVolume = args.Value;
-				Audio.SetMasterGain(SoundType.Effect.ToString(), newVolume);
-			});
+			soundSlider.Value = Audio.GetMasterGain(SoundType.Effect.ToString());
+			soundSlider.SubscribeToSliderChanged(args => Audio.SetMasterGain(SoundType.Effect.ToString(), args.Value));
 					
 			var musicSlider = CreateSlider(20, 200, 200, 20, "Music Volume");
-			musicSlider.Value = audio.GetMasterGain(SoundType.Music.ToString());
-			musicSlider.SubscribeToSliderChanged (args=>{
-				float newVolume = args.Value;
-				Audio.SetMasterGain(SoundType.Music.ToString(), newVolume);
-			});
+			musicSlider.Value = Audio.GetMasterGain(SoundType.Music.ToString());
+			musicSlider.SubscribeToSliderChanged (args=> Audio.SetMasterGain(SoundType.Music.ToString(), args.Value));
 		}
 
 		protected override string JoystickLayoutPatch => JoystickLayoutPatches.Hidden;

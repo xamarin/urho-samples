@@ -61,12 +61,7 @@ namespace Urho.Samples
 					animatedSprite.SetAnimation(AnimationNames[animationIndex], LoopMode2D.ForceLooped);
 				});
 		}
-
-		protected override void OnSceneUpdate(float timeStep, Scene scene)
-		{
-			// Unsubscribe the SceneUpdate event from base class to prevent camera pitch and yaw in 2D sample
-		}
-
+		
 		protected override void OnUpdate(float timeStep)
 		{
 			SimpleMoveCamera2D(timeStep);
@@ -92,8 +87,8 @@ namespace Urho.Samples
 			camera.SetOrthographic(true);
 
 			var graphics = Graphics;
-			camera.OrthoSize=(float)graphics.Height * PixelSize;
-			camera.Zoom = (1.5f * Math.Min((float)graphics.Width / 1280.0f, (float)graphics.Height / 800.0f)); // Set zoom according to user's resolution to ensure full visibility (initial zoom (1.5) is set for full visibility at 1280x800 resolution)
+			camera.OrthoSize=graphics.Height * PixelSize;
+			camera.Zoom = 1.5f * Math.Min(graphics.Width / 1280.0f, graphics.Height / 800.0f); // Set zoom according to user's resolution to ensure full visibility (initial zoom (1.5) is set for full visibility at 1280x800 resolution)
 
 			var cache = ResourceCache;
 			AnimationSet2D animationSet = cache.GetAnimationSet2D("Urho2D/imp/imp.scml");

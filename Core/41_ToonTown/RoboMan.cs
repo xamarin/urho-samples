@@ -28,7 +28,7 @@ namespace Urho.Samples
 		RigidBody body;
 		AnimationController animCtrl;
 
-		const float MoveForce = 1.4f;
+		const float MoveForce = 0.8f;
 		const float InairMoveForce = 0.02f;
 		const float BrakeForce = 0.2f;
 		const float JumpForce = 7.0f;
@@ -47,7 +47,7 @@ namespace Urho.Samples
 		public void Start()
 		{
 			// Component has been inserted into its scene node. Subscribe to events now
-			body.Node.SubscribeToNodeCollision(HandleNodeCollision);
+			Node.SubscribeToNodeCollision(HandleNodeCollision);
 		}
 
 		public void FixedUpdate(float timeStep)
@@ -70,14 +70,10 @@ namespace Urho.Samples
 			// Velocity on the XZ plane
 			Vector3 planeVelocity = new Vector3(velocity.X, 0.0f, velocity.Z);
 
-			if (Controls.IsDown(ToonTown.CtrlForward))
-				moveDir += Vector3.UnitZ;
-			if (Controls.IsDown(ToonTown.CtrlBack))
-				moveDir += new Vector3(0f, 0f, -1f);
-			if (Controls.IsDown(ToonTown.CtrlLeft))
-				moveDir += new Vector3(-1f, 0f, 0f);
-			if (Controls.IsDown(ToonTown.CtrlRight))
-				moveDir += Vector3.UnitX;
+			if (Controls.IsDown(ToonTown.CtrlForward)) moveDir += Vector3.UnitZ;
+			if (Controls.IsDown(ToonTown.CtrlBack)) moveDir += -Vector3.UnitZ;
+			if (Controls.IsDown(ToonTown.CtrlLeft)) moveDir += -Vector3.UnitX;
+			if (Controls.IsDown(ToonTown.CtrlRight)) moveDir += Vector3.UnitX;
 
 			// Normalize move vector so that diagonal strafing is not faster
 			if (moveDir.LengthSquared > 0.0f)
@@ -119,9 +115,6 @@ namespace Urho.Samples
 
 		void HandleNodeCollision(NodeCollisionEventArgs args)
 		{
-			if (args.Body != body)
-				return;
-
 			foreach (var contact in args.Contacts)
 			{
 				// If contact is below node center and mostly vertical, assume it's a ground contact
