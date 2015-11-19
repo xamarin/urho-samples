@@ -41,9 +41,6 @@ namespace Urho.Samples
 
 		void HandleNodeCollision(NodeCollisionEventArgs args)
 		{
-			if (args.Body != Node.GetComponent<RigidBody>())
-				return;
-
 			// Get the other colliding body, make sure it is moving (has nonzero mass)
 			RigidBody otherBody = args.OtherBody;
 

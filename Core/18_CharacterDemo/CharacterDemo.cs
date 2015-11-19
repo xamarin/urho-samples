@@ -202,6 +202,8 @@ namespace Urho.Samples
 						{
 							character = characterNode.GetComponent<Character>();
 						}
+						physicsWorld = scene.CreateComponent<PhysicsWorld>();
+						physicsWorld.SubscribeToPhysicsPreStep(HandlePhysicsPreStep);
 					}
 				}
 			

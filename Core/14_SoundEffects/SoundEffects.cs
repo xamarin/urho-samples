@@ -110,11 +110,27 @@ namespace Urho.Samples
 			root.SetDefaultStyle(uiStyle);
 
 			// Create buttons for playing back sounds
-			List<Button> soundButtons = new List<Button>();
 			for (int i = 0; i < soundNames.Length; ++i)
 			{
-				Button b = CreateButton(i * 140 + 20, 20, 120, 40, soundNames[i]);
-				soundButtons.Add(b);
+				var soundResource = soundResourceNames[i];
+				Button button = CreateButton(i * 140 + 20, 20, 120, 40, soundNames[i]);
+				button.SubscribeToReleased(args => {
+					// Get the sound resource
+					Sound sound = cache.GetSound(soundResource);
+					if (sound != null)
+					{
+						// Create a scene node with a SoundSource component for playing the sound. The SoundSource component plays
+						// non-positional audio, so its 3D position in the scene does not matter. For positional sounds the
+						// SoundSource3D component would be used instead
+						Node soundNode = scene.CreateChild("Sound");
+						SoundSource soundSource = soundNode.CreateComponent<SoundSource>();
+						soundSource.Play(sound);
+						// In case we also play music, set the sound volume below maximum so that we don't clip the output
+						soundSource.Gain = 0.75f;
+						// Set the sound component to automatically remove its scene node from the scene when the sound is done playing
+						soundSource.AutoRemove = true;
+					}
+				});
 			}
 		
 			// Create buttons for playing/stopping music
@@ -137,42 +153,12 @@ namespace Urho.Samples
 				scene.RemoveChild (scene.GetChild ("Music", false));
 			});
 
-			#if UHOH
-			// I have no idea what the following code
-			// was supposed to do at all, since we do not have other buttons on the UI
-
-			SubscribeToReleased(args =>
-				{
-						var button = soundButtons.FirstOrDefault(b => b == args.Element);
-						if (button == null)
-							return;
-
-						// Get the sound resource
-						Sound sound = cache.GetSound(soundResourceNames[soundButtons.IndexOf(button)]);
-
-						if (sound != null)
-						{
-							// Create a scene node with a SoundSource component for playing the sound. The SoundSource component plays
-							// non-positional audio, so its 3D position in the scene does not matter. For positional sounds the
-							// SoundSource3D component would be used instead
-							Node soundNode = scene.CreateChild("Sound");
-							SoundSource soundSource = soundNode.CreateComponent<SoundSource>();
-							soundSource.Play(sound);
-							// In case we also play music, set the sound volume below maximum so that we don't clip the output
-							soundSource.Gain = 0.75f;
-							// Set the sound component to automatically remove its scene node from the scene when the sound is done playing
-							soundSource.AutoRemove = true;
-						}
-					}
-				});
-			#endif
 			Audio audio = Audio;
 
 			// Create sliders for controlling sound and music master volume
 			var soundSlider = CreateSlider(20, 140, 200, 20, "Sound Volume");
 			soundSlider.Value = audio.GetMasterGain(SoundType.Effect.ToString());
-			soundSlider.SubscribeToSliderChanged(args =>
-			{
+			soundSlider.SubscribeToSliderChanged(args => {
 				float newVolume = args.Value;
 				Audio.SetMasterGain(SoundType.Effect.ToString(), newVolume);
 			});
