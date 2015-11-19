@@ -29,7 +29,7 @@ namespace Urho.Samples
 	{
 		Scene scene;
 		bool drawDebug;
-		CrowdAgent agent;
+		CrowdManager crowdManager;
 
 		public CrowdNavigation(Context ctx) : base(ctx) { }
 
@@ -95,11 +95,11 @@ namespace Urho.Samples
 						// Visualize navigation mesh, obstacles and off-mesh connections
 						scene.GetComponent<DynamicNavigationMesh>().DrawDebugGeometry(true);
 						// Visualize agents' path and position to reach
-						scene.GetComponent<CrowdManager>().DrawDebugGeometry(true);
+						crowdManager.DrawDebugGeometry(true);
 					}
 				});
 
-			agent.SubscribeToCrowdAgentFailure(args =>
+			crowdManager.SubscribeToCrowdAgentFailure(args =>
 				{
 					Node node = args.Node;
 					CrowdAgentState agentState = (CrowdAgentState)args.CrowdAgentState;
@@ -114,12 +114,11 @@ namespace Urho.Samples
 					}
 				});
 
-			agent.SubscribeToCrowdAgentReposition(args =>
+			crowdManager.SubscribeToCrowdAgentReposition(args =>
 				{
 					string WALKING_ANI = "Models/Jack_Walk.ani";
 
 					Node node = args.Node;
-					CrowdAgent agent = args.CrowdAgent;
 					Vector3 velocity = args.Velocity;
 
 					// Only Jack agent has animation controller
@@ -129,7 +128,7 @@ namespace Urho.Samples
 						float speed = velocity.Length;
 						if (animCtrl.IsPlaying(WALKING_ANI))
 						{
-							float speedRatio = speed / agent.MaxSpeed;
+							float speedRatio = speed / args.CrowdAgent.MaxSpeed;
 							// Face the direction of its velocity but moderate the turning speed based on the speed ratio as we do not have timeStep here
 							node.Rotation = Quaternion.Slerp(node.Rotation, Quaternion.FromRotationTo(Vector3.UnitZ, velocity), 10f * args.TimeStep * speedRatio);
 							// Throttle the animation speed based on agent speed ratio (ratio = 1 is full throttle)
@@ -139,7 +138,7 @@ namespace Urho.Samples
 							animCtrl.Play(WALKING_ANI, 0, true, 0.1f);
 
 						// If speed is too low then stopping the animation
-						if (speed < agent.Radius)
+						if (speed < args.CrowdAgent.Radius)
 							animCtrl.Stop(WALKING_ANI, 0.8f);
 					}
 				});
@@ -192,7 +191,7 @@ namespace Urho.Samples
 			// Check for loading/saving the scene. Save the scene to the file Data/Scenes/CrowdNavigation.xml relative to the executable
 			// directory
 			if (input.GetKeyPress(Key.F5))
-				scene.SaveXml(FileSystem.ProgramDir + "Data/Scenes/CrowdNavigation.xml", "\t");
+				scene.SaveXml(FileSystem.ProgramDir + "Data/Scenes/CrowdNavigation.xml");
 
 			if (input.GetKeyPress(Key.F7))
 				scene.LoadXml(FileSystem.ProgramDir + "Data/Scenes/CrowdNavigation.xml");
@@ -359,7 +358,7 @@ namespace Urho.Samples
 
 
 			// Create a CrowdManager component to the scene root
-			CrowdManager crowdManager = scene.CreateComponent<CrowdManager>();
+			crowdManager = scene.CreateComponent<CrowdManager>();
 			var parameters = crowdManager.GetObstacleAvoidanceParams(0);
 			// Set the params to "High (66)" setting
 			parameters.VelBias = 0.5f;
@@ -397,7 +396,7 @@ namespace Urho.Samples
 			jackNode.CreateComponent<AnimationController>();
 
 			// Create the CrowdAgent
-			agent = jackNode.CreateComponent<CrowdAgent>();
+			var agent = jackNode.CreateComponent<CrowdAgent>();
 			agent.Height = 2.0f;
 			agent.MaxSpeed = 3.0f;
 			agent.MaxAccel = 3.0f;
