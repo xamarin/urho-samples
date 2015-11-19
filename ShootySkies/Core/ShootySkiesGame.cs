@@ -23,7 +23,7 @@ namespace ShootySkies
 		{
 			base.Start();
 			CreateScene();
-			SubscribeToKeyDown(e => { if (e.Key == Key.Esc) Engine.Exit(); });
+			Input.SubscribeToKeyDown(e => { if (e.Key == Key.Esc) Engine.Exit(); });
 		}
 
 		async void CreateScene()
