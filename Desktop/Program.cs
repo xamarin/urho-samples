@@ -9,8 +9,6 @@ namespace Urho.Samples.Desktop
 
 		static void Main(string[] args)
 		{
-			// Actually you can launch any sample using this snippet:
-			//
 			//   UrhoEngine.Init(pathToAssets);
 			//   new Water(new Context()).Run();
 			//   return;
@@ -20,9 +18,9 @@ namespace Urho.Samples.Desktop
 
 			if (args.Length > 0)
 			{
-				// try to get a desired sample's number to run via command line args:
 				selectedSampleType = ParseSampleFromNumber(args[0]);
 			}
+
 			if (Environment.OSVersion.Platform == PlatformID.Win32NT)
 			{
 				while (selectedSampleType == null)
@@ -36,14 +34,7 @@ namespace Urho.Samples.Desktop
 				selectedSampleType = typeof(ToonTown); //show ToonTown sample by default for OS X if args are empty.
 			}
 
-			var resourcesDirectory = @"../../Assets";
-			//special assets for AtomicEngine based samples:
-			if (selectedSampleType == typeof (ToonTown))
-			{
-				resourcesDirectory = @"../../Assets/AtomicEngineAssets";
-			}
-
-			UrhoEngine.Init(resourcesDirectory);
+			UrhoEngine.Init(pathToAssets: @"../../Assets");
 			var game = (Application) Activator.CreateInstance(selectedSampleType, new Context());
 			var exitCode = game.Run();
 			WriteLine($"Exit code: {exitCode}. Press any key to exit...", ConsoleColor.DarkYellow);

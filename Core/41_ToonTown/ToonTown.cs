@@ -33,8 +33,14 @@ namespace Urho.Samples
 		public const int CtrlRight = 8;
 		public const int CtrlJump = 16;
 
-		public ToonTown(Context ctx) : base(ctx) { }
-		
+		static ApplicationOptions options = new ApplicationOptions
+			{
+				ResourcePaths = new[] {"CoreData", "AtomicEngineData"},
+				ResourcePackagesPaths = new[] {"CoreData.pak"}
+			};
+
+		public ToonTown(Context ctx) : base(ctx, options) {}
+
 		public override void Start()
 		{
 			base.Start();
