@@ -55,17 +55,30 @@ namespace SamplyGame
 			var planeNode = tile.CreateChild();
 			planeNode.Scale = new Vector3(BackgroundScale, 0.0001f, BackgroundScale);
 			var planeObject = planeNode.CreateComponent<StaticModel>();
-			planeObject.Model = cache.GetModel(Assets.Models.Box);
+			planeObject.Model = cache.GetModel(Assets.Models.Plane);
 			planeObject.SetMaterial(cache.GetMaterial(Assets.Materials.Grass));
 
-			var size = BackgroundScale/2;
-			for (float i = -size; i < size; i+=1.8f)
+			// area for trees:
+			var sizeZ = BackgroundScale / 2.1f;
+			var sizeX = BackgroundScale / 3.8f;
+
+			Node treeNode = tile.CreateChild();
+			treeNode.Rotate(new Quaternion(0, RandomHelper.NextRandom(0, 5) * 90, 0), TransformSpace.Local);
+			treeNode.SetScale(0.35f);//RandomHelper.NextRandom(0.33f, 0.38f));
+			var treeGroup = treeNode.CreateComponent<StaticModel>();
+			treeGroup.Model = cache.GetModel(Assets.Models.Tree);
+			treeGroup.SetMaterial(cache.GetMaterial(Assets.Materials.TreeMaterial));
+
+			for (float i = -sizeX; i < sizeX; i += 2.6f)
 			{
-				for (float j = -size; j < size; j+=2f)
+				for (float j = -sizeZ; j < sizeZ; j += 3f)
 				{
-					AddTree(tile, new Vector3(i + RandomHelper.NextRandom(-0.4f, 0.4f), 0, j));
+					var clonedTreeNode = treeNode.Clone(CreateMode.Local);
+					clonedTreeNode.Position = new Vector3(i + RandomHelper.NextRandom(-0.5f, 0.5f), 0, j);
 				}
 			}
+
+			treeNode.Remove();
 
 			tile.Rotate(new Quaternion(270 + BackgroundRotationX, 0, 0), TransformSpace.Local);
 			tile.RotateAround(new Vector3(0, 0, 0), new Quaternion(0, BackgroundRotationY, 0), TransformSpace.Local);
@@ -73,24 +86,6 @@ namespace SamplyGame
 			var tilePosY = BackgroundScale * (float)Math.Sin(MathHelper.DegreesToRadians(BackgroundRotationX));
 			tile.Position = new Vector3(0, (tilePosX + 0.01f) * index, tilePosY * index + FlightHeight);
 			return tile;
-		}
-
-		void AddTree(Node container, Vector3 position)
-		{
-			var cache = Application.ResourceCache;
-			using (Node treeNode = container.CreateChild())
-			{
-				treeNode.Rotate(new Quaternion(0, RandomHelper.NextRandom(0, 5)*90, 0), TransformSpace.Local);
-				treeNode.SetScale(RandomHelper.NextRandom(0.25f, 0.3f));
-				treeNode.Position = position;
-				using (var model = treeNode.CreateComponent<StaticModel>())
-				{
-					model.Model = cache.GetModel(Assets.Models.Tree);
-					model.SetMaterial(cache.GetMaterial(Assets.Materials.TreeMaterial));
-					model.CastShadows = true;
-				}
-			}
-			//"using" here is just a sort of optimization - it prevents MCW to be cached (we don't need them anymore).
 		}
 	}
 }

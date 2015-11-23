@@ -70,6 +70,12 @@
     <AndroidResource Include="Resources\drawable\Icon.png" />
   </ItemGroup>
   <ItemGroup>
+    <AndroidAsset Include="..\Assets\Data\Models\Plane.mdl">
+      <Link>Assets\Data\Models\Plane.mdl</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Fonts\Anonymous Pro.ttf">
+      <Link>Assets\Data\Fonts\Anonymous Pro.ttf</Link>
+    </AndroidAsset>
     <None Include="packages.config" />
     <None Include="Properties\AndroidManifest.xml" />
   </ItemGroup>

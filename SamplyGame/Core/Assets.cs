@@ -22,6 +22,7 @@
 		{
 			public const string Tree = "Models/Tree.mdl";
 			public const string Box = "Models/Box.mdl";
+			public const string Plane = "Models/Plane.mdl";
 			public const string Player = "Models/Player.mdl";
 			public const string Enemy1 = "Models/Enemy1.mdl";
 			public const string Enemy2 = "Models/Enemy2.mdl";

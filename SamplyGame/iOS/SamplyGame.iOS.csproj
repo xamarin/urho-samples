@@ -99,6 +99,12 @@
   <ItemGroup>
     <Compile Include="Main.cs" />
     <Compile Include="AppDelegate.cs" />
+    <BundleResource Include="..\Assets\Data\Fonts\Anonymous Pro.ttf">
+      <Link>Resources\Data\Fonts\Anonymous Pro.ttf</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\Data\Models\Plane.mdl">
+      <Link>Resources\Data\Models\Plane.mdl</Link>
+    </BundleResource>
     <None Include="Info.plist" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <None Include="packages.config" />

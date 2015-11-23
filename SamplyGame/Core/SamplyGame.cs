@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using SamplyGame.Aircrafts.Enemies;
 using Urho;
 
@@ -17,7 +16,7 @@ namespace SamplyGame
 
 		public Viewport Viewport { get; private set; }
 
-		public SamplyGame(Context c) : base(c, new ApplicationOptions { Height = 800, Width = 500, Orientation = ApplicationOptions.OrientationType.Portrait }) { }
+		public SamplyGame(Context c) : base(c, new ApplicationOptions { Height = 736, Width = 414, Orientation = ApplicationOptions.OrientationType.Portrait, LimitFps = false }) { }
 
 		public override void Start()
 		{
@@ -38,6 +37,7 @@ namespace SamplyGame
 			var cameraNode = scene.CreateChild();
 			cameraNode.Position = (new Vector3(0.0f, 0.0f, -10.0f));
 			cameraNode.CreateComponent<Camera>();
+			
 			Renderer.SetViewport(0, Viewport = new Viewport(Context, scene, cameraNode.GetComponent<Camera>(), null));
 
 			// UI
@@ -59,8 +59,7 @@ namespace SamplyGame
 
 			var lightNode2 = scene.CreateChild();
 			lightNode2.Position = new Vector3(10, 15, -12);
-			lightNode2.AddComponent(new Light(Context) {  Range = 30.0f, CastShadows = true, Brightness = 1.5f });
-
+			lightNode2.AddComponent(new Light(Context) {  Range = 30.0f, Brightness = 1.5f });
 
 			// Game logic cycle
 			while (true)
