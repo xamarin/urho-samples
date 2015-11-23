@@ -14,6 +14,7 @@
 //
 
 using System;
+using System.Diagnostics;
 
 namespace Urho.Samples
 {
@@ -33,10 +34,11 @@ namespace Urho.Samples
 		public const int CtrlRight = 8;
 		public const int CtrlJump = 16;
 
-		static ApplicationOptions options = new ApplicationOptions
-			{
+		// special case: assets for this sample are in the separate folder
+		// tell the engine where we store them (by defualt it looks for Data and CoreData only)
+		static ApplicationOptions options = new ApplicationOptions {
 				ResourcePaths = new[] {"CoreData", "AtomicEngineData"},
-				ResourcePackagesPaths = new[] {"CoreData.pak"}
+				ResourcePackagesPaths = new[] { "CoreData.pak" }
 			};
 
 		public ToonTown(Context ctx) : base(ctx, options) {}
@@ -189,9 +191,6 @@ namespace Urho.Samples
 			obj.SetMaterial(material);
 			obj.CastShadows = true;
 			objectNode.CreateComponent<AnimationController>();
-
-			// Set the head bone for manual control
-			//obj.Skeleton.GetBoneSafe("Bip01_Head").Animated = false;
 
 			// Create rigidbody, and set non-zero mass so that the body becomes dynamic
 			RigidBody body = objectNode.CreateComponent<RigidBody>();
