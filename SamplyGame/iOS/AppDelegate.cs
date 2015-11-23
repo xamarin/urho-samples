@@ -2,6 +2,7 @@
 using UIKit;
 using Urho;
 using Urho.iOS;
+using System.Threading.Tasks;
 
 namespace SamplyGame.iOS
 {
@@ -10,9 +11,15 @@ namespace SamplyGame.iOS
 	{
 		public override bool FinishedLaunching(UIApplication app, NSDictionary options)
 		{
-			UrhoEngine.Init ();
-			new SamplyGame (new Context ()).Run ();
+			LaunchGame();
 			return true;
+		}
+
+		async void LaunchGame()
+		{
+			await Task.Yield();
+			UrhoEngine.Init();
+			new SamplyGame(new Context()).Run();
 		}
 	}
 }
