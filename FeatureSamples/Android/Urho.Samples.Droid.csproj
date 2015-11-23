@@ -1,0 +1,3024 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{9599B6A8-09DA-455C-9391-319A1FCDC5B6}</ProjectGuid>
+    <ProjectTypeGuids>{EFBA0AD7-5A72-4C68-AF49-83D382785DCF};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Urho.Samples.Droid</RootNamespace>
+    <AssemblyName>Urho.Samples.Droid</AssemblyName>
+    <FileAlignment>512</FileAlignment>
+    <AndroidApplication>true</AndroidApplication>
+    <AndroidResgenFile>Resources\Resource.Designer.cs</AndroidResgenFile>
+    <GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
+    <AndroidUseLatestPlatformSdk>True</AndroidUseLatestPlatformSdk>
+    <TargetFrameworkVersion>v6.0</TargetFrameworkVersion>
+    <AndroidManifest>Properties\AndroidManifest.xml</AndroidManifest>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AndroidLinkMode>None</AndroidLinkMode>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AndroidUseSharedRuntime>False</AndroidUseSharedRuntime>
+    <AndroidLinkSkip>
+    </AndroidLinkSkip>
+    <EmbedAssembliesIntoApk>True</EmbedAssembliesIntoApk>
+    <AndroidSupportedAbis>armeabi,armeabi-v7a,x86</AndroidSupportedAbis>
+    <AndroidStoreUncompressedFileExtensions>
+    </AndroidStoreUncompressedFileExtensions>
+    <MandroidI18n>
+    </MandroidI18n>
+    <Debugger>Xamarin</Debugger>
+    <DevInstrumentationEnabled>False</DevInstrumentationEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug Mac|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\Debug Mac\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <WarningLevel>4</WarningLevel>
+    <Optimize>false</Optimize>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release Mac|AnyCPU'">
+    <OutputPath>bin\Release Mac\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Mono.Android" />
+    <Reference Include="mscorlib" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Urho">
+      <HintPath>..\..\packages\UrhoSharp.1.0.149\lib\MonoAndroid\Urho.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Urho.Droid">
+      <HintPath>..\..\packages\UrhoSharp.1.0.149\lib\MonoAndroid\Urho.Droid.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Urho.Droid.SdlBindings">
+      <HintPath>..\..\packages\UrhoSharp.1.0.149\lib\MonoAndroid\Urho.Droid.SdlBindings.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="GameActivity.cs" />
+    <Compile Include="SamplesSelectorActivity.cs" />
+    <Compile Include="Resources\Resource.Designer.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\values\Strings.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\Icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+    <None Include="Properties\AndroidManifest.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\logo_large.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\samples_list.axml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\samples_list_text_view.axml" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Core\Urho.Samples.csproj">
+      <Project>{792AF649-1BB3-4242-8BA3-61F67E357B18}</Project>
+      <Name>Urho.Samples</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+     Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+  <ItemGroup>
+    <AndroidAsset Include="..\Assets\Data\CommandLine.txt">
+      <Link>Assets\Data\CommandLine.txt</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\EditorStrings.json">
+      <Link>Assets\Data\EditorStrings.json</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\NinjaSnowWarShaders.xml">
+      <Link>Assets\Data\NinjaSnowWarShaders.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\StringsDe.json">
+      <Link>Assets\Data\StringsDe.json</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\StringsEnRu.json">
+      <Link>Assets\Data\StringsEnRu.json</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Fonts\Anonymous Pro.png">
+      <Link>Assets\Data\Fonts\Anonymous Pro.png</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Fonts\Anonymous Pro.sdf">
+      <Link>Assets\Data\Fonts\Anonymous Pro.sdf</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Fonts\Anonymous Pro.ttf">
+      <Link>Assets\Data\Fonts\Anonymous Pro.ttf</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Fonts\BlueHighway.png">
+      <Link>Assets\Data\Fonts\BlueHighway.png</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Fonts\BlueHighway.sdf">
+      <Link>Assets\Data\Fonts\BlueHighway.sdf</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Fonts\BlueHighway.ttf">
+      <Link>Assets\Data\Fonts\BlueHighway.ttf</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Fonts\OFL.txt">
+      <Link>Assets\Data\Fonts\OFL.txt</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Fonts\read_me.html">
+      <Link>Assets\Data\Fonts\read_me.html</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Materials\Enemy1.xml">
+      <Link>Assets\Data\Materials\Enemy1.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Materials\glass.xml">
+      <Link>Assets\Data\Materials\glass.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Materials\Grass.xml">
+      <Link>Assets\Data\Materials\Grass.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Materials\Green.xml">
+      <Link>Assets\Data\Materials\Green.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Materials\GreenTransparent.xml">
+      <Link>Assets\Data\Materials\GreenTransparent.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Materials\Jack.xml">
+      <Link>Assets\Data\Materials\Jack.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Materials\JackEnvMap.xml">
+      <Link>Assets\Data\Materials\JackEnvMap.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Materials\LitSmoke.xml">
+      <Link>Assets\Data\Materials\LitSmoke.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Materials\Mushroom.xml">
+      <Link>Assets\Data\Materials\Mushroom.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Materials\MushroomEnvMap.xml">
+      <Link>Assets\Data\Materials\MushroomEnvMap.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Materials\MushroomWind.xml">
+      <Link>Assets\Data\Materials\MushroomWind.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Materials\MushroomWindUnlit.xml">
+      <Link>Assets\Data\Materials\MushroomWindUnlit.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Materials\Particle.xml">
+      <Link>Assets\Data\Materials\Particle.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Materials\plane.xml">
+      <Link>Assets\Data\Materials\plane.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Materials\Player.xml">
+      <Link>Assets\Data\Materials\Player.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Materials\Skybox.xml">
+      <Link>Assets\Data\Materials\Skybox.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Materials\Smoke.xml">
+      <Link>Assets\Data\Materials\Smoke.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Materials\Stone.xml">
+      <Link>Assets\Data\Materials\Stone.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Materials\StoneEnvMap.xml">
+      <Link>Assets\Data\Materials\StoneEnvMap.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Materials\StoneEnvMapSmall.xml">
+      <Link>Assets\Data\Materials\StoneEnvMapSmall.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Materials\StoneSmall.xml">
+      <Link>Assets\Data\Materials\StoneSmall.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Materials\StoneTiled.xml">
+      <Link>Assets\Data\Materials\StoneTiled.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Materials\StoneTiledH.xml">
+      <Link>Assets\Data\Materials\StoneTiledH.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Materials\Terrain.xml">
+      <Link>Assets\Data\Materials\Terrain.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Materials\UrhoDecal.xml">
+      <Link>Assets\Data\Materials\UrhoDecal.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Materials\UrhoDecalAlpha.xml">
+      <Link>Assets\Data\Materials\UrhoDecalAlpha.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Materials\VColUnlit.xml">
+      <Link>Assets\Data\Materials\VColUnlit.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Materials\Water.xml">
+      <Link>Assets\Data\Materials\Water.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Materials\Editor\BlueUnlit.xml">
+      <Link>Assets\Data\Materials\Editor\BlueUnlit.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Materials\Editor\BrightBlueUnlit.xml">
+      <Link>Assets\Data\Materials\Editor\BrightBlueUnlit.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Materials\Editor\BrightGreenUnlit.xml">
+      <Link>Assets\Data\Materials\Editor\BrightGreenUnlit.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Materials\Editor\BrightRedUnlit.xml">
+      <Link>Assets\Data\Materials\Editor\BrightRedUnlit.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Materials\Editor\DebugIconCamera.xml">
+      <Link>Assets\Data\Materials\Editor\DebugIconCamera.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Materials\Editor\DebugIconCollisionTrigger.xml">
+      <Link>Assets\Data\Materials\Editor\DebugIconCollisionTrigger.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Materials\Editor\DebugIconCustomGeometry.xml">
+      <Link>Assets\Data\Materials\Editor\DebugIconCustomGeometry.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Materials\Editor\DebugIconLight.xml">
+      <Link>Assets\Data\Materials\Editor\DebugIconLight.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Materials\Editor\DebugIconParticleEmitter.xml">
+      <Link>Assets\Data\Materials\Editor\DebugIconParticleEmitter.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Materials\Editor\DebugIconPointLight.xml">
+      <Link>Assets\Data\Materials\Editor\DebugIconPointLight.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Materials\Editor\DebugIconSoundListener.xml">
+      <Link>Assets\Data\Materials\Editor\DebugIconSoundListener.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Materials\Editor\DebugIconSoundSource.xml">
+      <Link>Assets\Data\Materials\Editor\DebugIconSoundSource.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Materials\Editor\DebugIconSplinePathPoint.xml">
+      <Link>Assets\Data\Materials\Editor\DebugIconSplinePathPoint.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Materials\Editor\DebugIconSpotLight.xml">
+      <Link>Assets\Data\Materials\Editor\DebugIconSpotLight.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Materials\Editor\DebugIconZone.xml">
+      <Link>Assets\Data\Materials\Editor\DebugIconZone.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Materials\Editor\GreenUnlit.xml">
+      <Link>Assets\Data\Materials\Editor\GreenUnlit.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Materials\Editor\RedUnlit.xml">
+      <Link>Assets\Data\Materials\Editor\RedUnlit.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Materials\Editor\TexturedUnlit.xml">
+      <Link>Assets\Data\Materials\Editor\TexturedUnlit.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Materials\NinjaSnowWar\CloudPlane.xml">
+      <Link>Assets\Data\Materials\NinjaSnowWar\CloudPlane.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Materials\NinjaSnowWar\Ninja.xml">
+      <Link>Assets\Data\Materials\NinjaSnowWar\Ninja.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Materials\NinjaSnowWar\Potion.xml">
+      <Link>Assets\Data\Materials\NinjaSnowWar\Potion.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Materials\NinjaSnowWar\Snow.xml">
+      <Link>Assets\Data\Materials\NinjaSnowWar\Snow.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Materials\NinjaSnowWar\SnowCrate.xml">
+      <Link>Assets\Data\Materials\NinjaSnowWar\SnowCrate.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Models\Box.mdl">
+      <Link>Assets\Data\Models\Box.mdl</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Models\Cone.mdl">
+      <Link>Assets\Data\Models\Cone.mdl</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Models\Cylinder.mdl">
+      <Link>Assets\Data\Models\Cylinder.mdl</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Models\Dome.mdl">
+      <Link>Assets\Data\Models\Dome.mdl</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Models\Enemy1.mdl">
+      <Link>Assets\Data\Models\Enemy1.mdl</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Models\Jack.mdl">
+      <Link>Assets\Data\Models\Jack.mdl</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Models\Jack_Walk.ani">
+      <Link>Assets\Data\Models\Jack_Walk.ani</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Models\Mushroom.mdl">
+      <Link>Assets\Data\Models\Mushroom.mdl</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Models\Plane.mdl">
+      <Link>Assets\Data\Models\Plane.mdl</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Models\Player.mdl">
+      <Link>Assets\Data\Models\Player.mdl</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Models\Pyramid.mdl">
+      <Link>Assets\Data\Models\Pyramid.mdl</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Models\Sphere.mdl">
+      <Link>Assets\Data\Models\Sphere.mdl</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Models\TeaPot.mdl">
+      <Link>Assets\Data\Models\TeaPot.mdl</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Models\Torus.mdl">
+      <Link>Assets\Data\Models\Torus.mdl</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Models\Editor\Axes.mdl">
+      <Link>Assets\Data\Models\Editor\Axes.mdl</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Models\Editor\ImagePlane.mdl">
+      <Link>Assets\Data\Models\Editor\ImagePlane.mdl</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Models\Editor\RotateAxes.mdl">
+      <Link>Assets\Data\Models\Editor\RotateAxes.mdl</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Models\Editor\ScaleAxes.mdl">
+      <Link>Assets\Data\Models\Editor\ScaleAxes.mdl</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Models\NinjaSnowWar\CloudPlane.mdl">
+      <Link>Assets\Data\Models\NinjaSnowWar\CloudPlane.mdl</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Models\NinjaSnowWar\Level.mdl">
+      <Link>Assets\Data\Models\NinjaSnowWar\Level.mdl</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Models\NinjaSnowWar\Ninja.mdl">
+      <Link>Assets\Data\Models\NinjaSnowWar\Ninja.mdl</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Models\NinjaSnowWar\Ninja_Attack1.ani">
+      <Link>Assets\Data\Models\NinjaSnowWar\Ninja_Attack1.ani</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Models\NinjaSnowWar\Ninja_Attack2.ani">
+      <Link>Assets\Data\Models\NinjaSnowWar\Ninja_Attack2.ani</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Models\NinjaSnowWar\Ninja_Attack3.ani">
+      <Link>Assets\Data\Models\NinjaSnowWar\Ninja_Attack3.ani</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Models\NinjaSnowWar\Ninja_Backflip.ani">
+      <Link>Assets\Data\Models\NinjaSnowWar\Ninja_Backflip.ani</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Models\NinjaSnowWar\Ninja_Block.ani">
+      <Link>Assets\Data\Models\NinjaSnowWar\Ninja_Block.ani</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Models\NinjaSnowWar\Ninja_Climb.ani">
+      <Link>Assets\Data\Models\NinjaSnowWar\Ninja_Climb.ani</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Models\NinjaSnowWar\Ninja_Crouch.ani">
+      <Link>Assets\Data\Models\NinjaSnowWar\Ninja_Crouch.ani</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Models\NinjaSnowWar\Ninja_Death1.ani">
+      <Link>Assets\Data\Models\NinjaSnowWar\Ninja_Death1.ani</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Models\NinjaSnowWar\Ninja_Death2.ani">
+      <Link>Assets\Data\Models\NinjaSnowWar\Ninja_Death2.ani</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Models\NinjaSnowWar\Ninja_HighJump.ani">
+      <Link>Assets\Data\Models\NinjaSnowWar\Ninja_HighJump.ani</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Models\NinjaSnowWar\Ninja_Idle1.ani">
+      <Link>Assets\Data\Models\NinjaSnowWar\Ninja_Idle1.ani</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Models\NinjaSnowWar\Ninja_Idle2.ani">
+      <Link>Assets\Data\Models\NinjaSnowWar\Ninja_Idle2.ani</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Models\NinjaSnowWar\Ninja_Idle3.ani">
+      <Link>Assets\Data\Models\NinjaSnowWar\Ninja_Idle3.ani</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Models\NinjaSnowWar\Ninja_Jump.ani">
+      <Link>Assets\Data\Models\NinjaSnowWar\Ninja_Jump.ani</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Models\NinjaSnowWar\Ninja_JumpNoHeight.ani">
+      <Link>Assets\Data\Models\NinjaSnowWar\Ninja_JumpNoHeight.ani</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Models\NinjaSnowWar\Ninja_Kick.ani">
+      <Link>Assets\Data\Models\NinjaSnowWar\Ninja_Kick.ani</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Models\NinjaSnowWar\Ninja_SideKick.ani">
+      <Link>Assets\Data\Models\NinjaSnowWar\Ninja_SideKick.ani</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Models\NinjaSnowWar\Ninja_Spin.ani">
+      <Link>Assets\Data\Models\NinjaSnowWar\Ninja_Spin.ani</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Models\NinjaSnowWar\Ninja_Stealth.ani">
+      <Link>Assets\Data\Models\NinjaSnowWar\Ninja_Stealth.ani</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Models\NinjaSnowWar\Ninja_Stealth.xml">
+      <Link>Assets\Data\Models\NinjaSnowWar\Ninja_Stealth.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Models\NinjaSnowWar\Ninja_Walk.ani">
+      <Link>Assets\Data\Models\NinjaSnowWar\Ninja_Walk.ani</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Models\NinjaSnowWar\Ninja_Walk.xml">
+      <Link>Assets\Data\Models\NinjaSnowWar\Ninja_Walk.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Models\NinjaSnowWar\Potion.mdl">
+      <Link>Assets\Data\Models\NinjaSnowWar\Potion.mdl</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Models\NinjaSnowWar\SnowBall.mdl">
+      <Link>Assets\Data\Models\NinjaSnowWar\SnowBall.mdl</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Models\NinjaSnowWar\SnowCrate.mdl">
+      <Link>Assets\Data\Models\NinjaSnowWar\SnowCrate.mdl</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Music\Ninja Gods.ogg">
+      <Link>Assets\Data\Music\Ninja Gods.ogg</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Objects\LightFlash.xml">
+      <Link>Assets\Data\Objects\LightFlash.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Objects\Ninja.xml">
+      <Link>Assets\Data\Objects\Ninja.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Objects\Potion.xml">
+      <Link>Assets\Data\Objects\Potion.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Objects\SnowBall.xml">
+      <Link>Assets\Data\Objects\SnowBall.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Objects\SnowCrate.xml">
+      <Link>Assets\Data\Objects\SnowCrate.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Particle\Disco.xml">
+      <Link>Assets\Data\Particle\Disco.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Particle\Fire.xml">
+      <Link>Assets\Data\Particle\Fire.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Particle\Smoke.xml">
+      <Link>Assets\Data\Particle\Smoke.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Particle\SmokeStack.xml">
+      <Link>Assets\Data\Particle\SmokeStack.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Particle\SnowExplosion.xml">
+      <Link>Assets\Data\Particle\SnowExplosion.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Particle\SnowExplosionBig.xml">
+      <Link>Assets\Data\Particle\SnowExplosionBig.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Particle\SnowExplosionFade.xml">
+      <Link>Assets\Data\Particle\SnowExplosionFade.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\PostProcess\AutoExposure.xml">
+      <Link>Assets\Data\PostProcess\AutoExposure.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\PostProcess\Bloom.xml">
+      <Link>Assets\Data\PostProcess\Bloom.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\PostProcess\BloomHDR.xml">
+      <Link>Assets\Data\PostProcess\BloomHDR.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\PostProcess\Blur.xml">
+      <Link>Assets\Data\PostProcess\Blur.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\PostProcess\ColorCorrection.xml">
+      <Link>Assets\Data\PostProcess\ColorCorrection.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\PostProcess\FXAA2.xml">
+      <Link>Assets\Data\PostProcess\FXAA2.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\PostProcess\FXAA3.xml">
+      <Link>Assets\Data\PostProcess\FXAA3.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\PostProcess\GammaCorrection.xml">
+      <Link>Assets\Data\PostProcess\GammaCorrection.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\PostProcess\GreyScale.xml">
+      <Link>Assets\Data\PostProcess\GreyScale.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\PostProcess\Tonemap.xml">
+      <Link>Assets\Data\PostProcess\Tonemap.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Scenes\NinjaSnowWar.xml">
+      <Link>Assets\Data\Scenes\NinjaSnowWar.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Scenes\SceneLoadExample.xml">
+      <Link>Assets\Data\Scenes\SceneLoadExample.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Sounds\BigExplosion.wav">
+      <Link>Assets\Data\Sounds\BigExplosion.wav</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Sounds\NutThrow.wav">
+      <Link>Assets\Data\Sounds\NutThrow.wav</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Sounds\PlayerFist.wav">
+      <Link>Assets\Data\Sounds\PlayerFist.wav</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Sounds\PlayerFistHit.wav">
+      <Link>Assets\Data\Sounds\PlayerFistHit.wav</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Sounds\PlayerLand.wav">
+      <Link>Assets\Data\Sounds\PlayerLand.wav</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Sounds\Powerup.wav">
+      <Link>Assets\Data\Sounds\Powerup.wav</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Sounds\SmallExplosion.wav">
+      <Link>Assets\Data\Sounds\SmallExplosion.wav</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Textures\BrightDay1_NegX.dds">
+      <Link>Assets\Data\Textures\BrightDay1_NegX.dds</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Textures\BrightDay1_NegY.dds">
+      <Link>Assets\Data\Textures\BrightDay1_NegY.dds</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Textures\BrightDay1_NegZ.dds">
+      <Link>Assets\Data\Textures\BrightDay1_NegZ.dds</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Textures\BrightDay1_PosX.dds">
+      <Link>Assets\Data\Textures\BrightDay1_PosX.dds</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Textures\BrightDay1_PosY.dds">
+      <Link>Assets\Data\Textures\BrightDay1_PosY.dds</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Textures\BrightDay1_PosZ.dds">
+      <Link>Assets\Data\Textures\BrightDay1_PosZ.dds</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Textures\Eject_Seat.png">
+      <Link>Assets\Data\Textures\Eject_Seat.png</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Textures\Enemy1.png">
+      <Link>Assets\Data\Textures\Enemy1.png</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Textures\Flare.dds">
+      <Link>Assets\Data\Textures\Flare.dds</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Textures\Glass_Cockpit.png">
+      <Link>Assets\Data\Textures\Glass_Cockpit.png</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Textures\Grass.dds">
+      <Link>Assets\Data\Textures\Grass.dds</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Textures\HeightMap.png">
+      <Link>Assets\Data\Textures\HeightMap.png</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Textures\Jack_body_color.jpg">
+      <Link>Assets\Data\Textures\Jack_body_color.jpg</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Textures\Jack_face.jpg">
+      <Link>Assets\Data\Textures\Jack_face.jpg</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Textures\Logo.png">
+      <Link>Assets\Data\Textures\Logo.png</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Textures\Logo.xml">
+      <Link>Assets\Data\Textures\Logo.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Textures\LogoLarge.png">
+      <Link>Assets\Data\Textures\LogoLarge.png</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Textures\LogoLarge.xml">
+      <Link>Assets\Data\Textures\LogoLarge.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Textures\Mushroom.dds">
+      <Link>Assets\Data\Textures\Mushroom.dds</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Textures\OldUI.png">
+      <Link>Assets\Data\Textures\OldUI.png</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Textures\OldUI.xml">
+      <Link>Assets\Data\Textures\OldUI.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Textures\Player1.png">
+      <Link>Assets\Data\Textures\Player1.png</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Textures\Skybox.xml">
+      <Link>Assets\Data\Textures\Skybox.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Textures\Smoke.dds">
+      <Link>Assets\Data\Textures\Smoke.dds</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Textures\StoneDiffuse.dds">
+      <Link>Assets\Data\Textures\StoneDiffuse.dds</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Textures\StoneNormal.dds">
+      <Link>Assets\Data\Textures\StoneNormal.dds</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Textures\TerrainDetail1.dds">
+      <Link>Assets\Data\Textures\TerrainDetail1.dds</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Textures\TerrainDetail2.dds">
+      <Link>Assets\Data\Textures\TerrainDetail2.dds</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Textures\TerrainDetail3.dds">
+      <Link>Assets\Data\Textures\TerrainDetail3.dds</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Textures\TerrainWeights.dds">
+      <Link>Assets\Data\Textures\TerrainWeights.dds</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Textures\TouchInput.png">
+      <Link>Assets\Data\Textures\TouchInput.png</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Textures\UI.png">
+      <Link>Assets\Data\Textures\UI.png</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Textures\UI.xml">
+      <Link>Assets\Data\Textures\UI.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Textures\UrhoDecal.dds">
+      <Link>Assets\Data\Textures\UrhoDecal.dds</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Textures\UrhoDecalAlpha.dds">
+      <Link>Assets\Data\Textures\UrhoDecalAlpha.dds</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Textures\UrhoIcon.icns">
+      <Link>Assets\Data\Textures\UrhoIcon.icns</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Textures\UrhoIcon.png">
+      <Link>Assets\Data\Textures\UrhoIcon.png</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Textures\WaterNoise.dds">
+      <Link>Assets\Data\Textures\WaterNoise.dds</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Textures\Editor\BW.png">
+      <Link>Assets\Data\Textures\Editor\BW.png</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Textures\Editor\EditorIcons.png">
+      <Link>Assets\Data\Textures\Editor\EditorIcons.png</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Textures\Editor\EditorIcons.xml">
+      <Link>Assets\Data\Textures\Editor\EditorIcons.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Textures\Editor\HSV20.png">
+      <Link>Assets\Data\Textures\Editor\HSV20.png</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Textures\Editor\IconCamera.png">
+      <Link>Assets\Data\Textures\Editor\IconCamera.png</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Textures\Editor\IconCollisionTrigger.png">
+      <Link>Assets\Data\Textures\Editor\IconCollisionTrigger.png</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Textures\Editor\IconCustomGeometry.png">
+      <Link>Assets\Data\Textures\Editor\IconCustomGeometry.png</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Textures\Editor\IconLight.png">
+      <Link>Assets\Data\Textures\Editor\IconLight.png</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Textures\Editor\IconParticleEmitter.png">
+      <Link>Assets\Data\Textures\Editor\IconParticleEmitter.png</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Textures\Editor\IconPointLight.png">
+      <Link>Assets\Data\Textures\Editor\IconPointLight.png</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Textures\Editor\IconSoundListener.png">
+      <Link>Assets\Data\Textures\Editor\IconSoundListener.png</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Textures\Editor\IconSoundSource.png">
+      <Link>Assets\Data\Textures\Editor\IconSoundSource.png</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Textures\Editor\IconSplinePathPoint.png">
+      <Link>Assets\Data\Textures\Editor\IconSplinePathPoint.png</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Textures\Editor\IconSpotLight.png">
+      <Link>Assets\Data\Textures\Editor\IconSpotLight.png</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Textures\Editor\IconZone.png">
+      <Link>Assets\Data\Textures\Editor\IconZone.png</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Textures\Editor\NoPreviewAvailable.png">
+      <Link>Assets\Data\Textures\Editor\NoPreviewAvailable.png</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Textures\NinjaSnowWar\CloudPlane.dds">
+      <Link>Assets\Data\Textures\NinjaSnowWar\CloudPlane.dds</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Textures\NinjaSnowWar\HealthBarBorder.png">
+      <Link>Assets\Data\Textures\NinjaSnowWar\HealthBarBorder.png</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Textures\NinjaSnowWar\HealthBarInside.png">
+      <Link>Assets\Data\Textures\NinjaSnowWar\HealthBarInside.png</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Textures\NinjaSnowWar\Ninja.dds">
+      <Link>Assets\Data\Textures\NinjaSnowWar\Ninja.dds</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Textures\NinjaSnowWar\Sight.png">
+      <Link>Assets\Data\Textures\NinjaSnowWar\Sight.png</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Textures\NinjaSnowWar\Sight.xml">
+      <Link>Assets\Data\Textures\NinjaSnowWar\Sight.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Textures\NinjaSnowWar\Snow.dds">
+      <Link>Assets\Data\Textures\NinjaSnowWar\Snow.dds</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Textures\NinjaSnowWar\SnowCrate.dds">
+      <Link>Assets\Data\Textures\NinjaSnowWar\SnowCrate.dds</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\UI\DefaultStyle.xml">
+      <Link>Assets\Data\UI\DefaultStyle.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\UI\EditorColorWheel.xml">
+      <Link>Assets\Data\UI\EditorColorWheel.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\UI\EditorContextMenu.xml">
+      <Link>Assets\Data\UI\EditorContextMenu.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\UI\EditorHierarchyWindow.xml">
+      <Link>Assets\Data\UI\EditorHierarchyWindow.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\UI\EditorIcons.xml">
+      <Link>Assets\Data\UI\EditorIcons.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\UI\EditorInspectorWindow.xml">
+      <Link>Assets\Data\UI\EditorInspectorWindow.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\UI\EditorInspector_Attribute.xml">
+      <Link>Assets\Data\UI\EditorInspector_Attribute.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\UI\EditorInspector_Style.xml">
+      <Link>Assets\Data\UI\EditorInspector_Style.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\UI\EditorInspector_Variable.xml">
+      <Link>Assets\Data\UI\EditorInspector_Variable.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\UI\EditorLayersWindow.xml">
+      <Link>Assets\Data\UI\EditorLayersWindow.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\UI\EditorMaterialWindow.xml">
+      <Link>Assets\Data\UI\EditorMaterialWindow.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\UI\EditorParticleEffectWindow.xml">
+      <Link>Assets\Data\UI\EditorParticleEffectWindow.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\UI\EditorPreferencesDialog.xml">
+      <Link>Assets\Data\UI\EditorPreferencesDialog.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\UI\EditorQuickMenu.xml">
+      <Link>Assets\Data\UI\EditorQuickMenu.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\UI\EditorResourceBrowser.xml">
+      <Link>Assets\Data\UI\EditorResourceBrowser.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\UI\EditorResourceFilterWindow.xml">
+      <Link>Assets\Data\UI\EditorResourceFilterWindow.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\UI\EditorSettingsDialog.xml">
+      <Link>Assets\Data\UI\EditorSettingsDialog.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\UI\EditorSoundTypeWindow.xml">
+      <Link>Assets\Data\UI\EditorSoundTypeWindow.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\UI\EditorSpawnWindow.xml">
+      <Link>Assets\Data\UI\EditorSpawnWindow.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\UI\EditorViewport.xml">
+      <Link>Assets\Data\UI\EditorViewport.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\UI\MessageBox.xml">
+      <Link>Assets\Data\UI\MessageBox.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\UI\OldStyle.xml">
+      <Link>Assets\Data\UI\OldStyle.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\UI\ScreenJoystick.xml">
+      <Link>Assets\Data\UI\ScreenJoystick.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\UI\ScreenJoystickSettings.xml">
+      <Link>Assets\Data\UI\ScreenJoystickSettings.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\UI\ScreenJoystickSettings_NinjaSnowWar.xml">
+      <Link>Assets\Data\UI\ScreenJoystickSettings_NinjaSnowWar.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\UI\ScreenJoystickSettings_Samples.xml">
+      <Link>Assets\Data\UI\ScreenJoystickSettings_Samples.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\UI\ScreenJoystick_NinjaSnowWar.xml">
+      <Link>Assets\Data\UI\ScreenJoystick_NinjaSnowWar.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\UI\ScreenJoystick_Samples.xml">
+      <Link>Assets\Data\UI\ScreenJoystick_Samples.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\UI\UILoadExample.xml">
+      <Link>Assets\Data\UI\UILoadExample.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Urho2D\Aster.png">
+      <Link>Assets\Data\Urho2D\Aster.png</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Urho2D\Ball.png">
+      <Link>Assets\Data\Urho2D\Ball.png</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Urho2D\Box.png">
+      <Link>Assets\Data\Urho2D\Box.png</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Urho2D\GoldIcon.scml">
+      <Link>Assets\Data\Urho2D\GoldIcon.scml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Urho2D\greenspiral.pex">
+      <Link>Assets\Data\Urho2D\greenspiral.pex</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Urho2D\greenspiral.png">
+      <Link>Assets\Data\Urho2D\greenspiral.png</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Urho2D\isometric_grass_and_water.png">
+      <Link>Assets\Data\Urho2D\isometric_grass_and_water.png</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Urho2D\isometric_grass_and_water.tmx">
+      <Link>Assets\Data\Urho2D\isometric_grass_and_water.tmx</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Urho2D\sun.pex">
+      <Link>Assets\Data\Urho2D\sun.pex</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Urho2D\sun.png">
+      <Link>Assets\Data\Urho2D\sun.png</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Urho2D\sun2.pex">
+      <Link>Assets\Data\Urho2D\sun2.pex</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Urho2D\sun2.png">
+      <Link>Assets\Data\Urho2D\sun2.png</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Urho2D\sun3.pex">
+      <Link>Assets\Data\Urho2D\sun3.pex</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Urho2D\GoldIcon\1.png">
+      <Link>Assets\Data\Urho2D\GoldIcon\1.png</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Urho2D\GoldIcon\2.png">
+      <Link>Assets\Data\Urho2D\GoldIcon\2.png</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Urho2D\GoldIcon\3.png">
+      <Link>Assets\Data\Urho2D\GoldIcon\3.png</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Urho2D\GoldIcon\4.png">
+      <Link>Assets\Data\Urho2D\GoldIcon\4.png</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Urho2D\GoldIcon\5.png">
+      <Link>Assets\Data\Urho2D\GoldIcon\5.png</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Urho2D\imp\imp.scml">
+      <Link>Assets\Data\Urho2D\imp\imp.scml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Urho2D\imp\imp.txt">
+      <Link>Assets\Data\Urho2D\imp\imp.txt</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Urho2D\imp\imp_blood.png">
+      <Link>Assets\Data\Urho2D\imp\imp_blood.png</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Urho2D\imp\imp_body.png">
+      <Link>Assets\Data\Urho2D\imp\imp_body.png</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Urho2D\imp\imp_footbig.png">
+      <Link>Assets\Data\Urho2D\imp\imp_footbig.png</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Urho2D\imp\imp_footsmall.png">
+      <Link>Assets\Data\Urho2D\imp\imp_footsmall.png</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Urho2D\imp\imp_handbig.png">
+      <Link>Assets\Data\Urho2D\imp\imp_handbig.png</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Urho2D\imp\imp_handsmall.png">
+      <Link>Assets\Data\Urho2D\imp\imp_handsmall.png</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Urho2D\imp\imp_handthrow.png">
+      <Link>Assets\Data\Urho2D\imp\imp_handthrow.png</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Urho2D\imp\imp_head.png">
+      <Link>Assets\Data\Urho2D\imp\imp_head.png</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Urho2D\imp\imp_headangry.png">
+      <Link>Assets\Data\Urho2D\imp\imp_headangry.png</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Urho2D\imp\imp_headblink.png">
+      <Link>Assets\Data\Urho2D\imp\imp_headblink.png</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\008de1037e094d6ef7f3e14f56458200">
+      <Link>Assets\AtomicEngineData\Cache\008de1037e094d6ef7f3e14f56458200</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\008de1037e094d6ef7f3e14f56458200.mdl">
+      <Link>Assets\AtomicEngineData\Cache\008de1037e094d6ef7f3e14f56458200.mdl</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\05593b56f9717b58bb89baa3b0490926">
+      <Link>Assets\AtomicEngineData\Cache\05593b56f9717b58bb89baa3b0490926</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\05593b56f9717b58bb89baa3b0490926_thumbnail.png">
+      <Link>Assets\AtomicEngineData\Cache\05593b56f9717b58bb89baa3b0490926_thumbnail.png</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\0778e97e29c54666cf75d722171e0c05">
+      <Link>Assets\AtomicEngineData\Cache\0778e97e29c54666cf75d722171e0c05</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\0778e97e29c54666cf75d722171e0c05_thumbnail.png">
+      <Link>Assets\AtomicEngineData\Cache\0778e97e29c54666cf75d722171e0c05_thumbnail.png</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\0adace959bdc4fabf70455d632371afa">
+      <Link>Assets\AtomicEngineData\Cache\0adace959bdc4fabf70455d632371afa</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\0adace959bdc4fabf70455d632371afa.mdl">
+      <Link>Assets\AtomicEngineData\Cache\0adace959bdc4fabf70455d632371afa.mdl</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\0e612de849e8907c3a30226481899485">
+      <Link>Assets\AtomicEngineData\Cache\0e612de849e8907c3a30226481899485</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\0e612de849e8907c3a30226481899485.mdl">
+      <Link>Assets\AtomicEngineData\Cache\0e612de849e8907c3a30226481899485.mdl</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\0ebed4320dd4a29e7b97cd08efd64366">
+      <Link>Assets\AtomicEngineData\Cache\0ebed4320dd4a29e7b97cd08efd64366</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\0ebed4320dd4a29e7b97cd08efd64366.mdl">
+      <Link>Assets\AtomicEngineData\Cache\0ebed4320dd4a29e7b97cd08efd64366.mdl</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\0ec3a08bf8320df014e68dc5e659b570">
+      <Link>Assets\AtomicEngineData\Cache\0ec3a08bf8320df014e68dc5e659b570</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\0ec3a08bf8320df014e68dc5e659b570.mdl">
+      <Link>Assets\AtomicEngineData\Cache\0ec3a08bf8320df014e68dc5e659b570.mdl</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\10d9b59158a7f9f87d70cb35770848ed">
+      <Link>Assets\AtomicEngineData\Cache\10d9b59158a7f9f87d70cb35770848ed</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\10d9b59158a7f9f87d70cb35770848ed.mdl">
+      <Link>Assets\AtomicEngineData\Cache\10d9b59158a7f9f87d70cb35770848ed.mdl</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\115aa94da08f9845a7a40d77d7a4034e">
+      <Link>Assets\AtomicEngineData\Cache\115aa94da08f9845a7a40d77d7a4034e</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\115aa94da08f9845a7a40d77d7a4034e_thumbnail.png">
+      <Link>Assets\AtomicEngineData\Cache\115aa94da08f9845a7a40d77d7a4034e_thumbnail.png</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\13f6217f5f951e434c9c7902844ff17f">
+      <Link>Assets\AtomicEngineData\Cache\13f6217f5f951e434c9c7902844ff17f</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\13f6217f5f951e434c9c7902844ff17f.mdl">
+      <Link>Assets\AtomicEngineData\Cache\13f6217f5f951e434c9c7902844ff17f.mdl</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\15a486eebc8438f7ae378f4fb40f1227">
+      <Link>Assets\AtomicEngineData\Cache\15a486eebc8438f7ae378f4fb40f1227</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\15a486eebc8438f7ae378f4fb40f1227_thumbnail.png">
+      <Link>Assets\AtomicEngineData\Cache\15a486eebc8438f7ae378f4fb40f1227_thumbnail.png</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\18c720e0420a37e7ce5f84aad96930f2">
+      <Link>Assets\AtomicEngineData\Cache\18c720e0420a37e7ce5f84aad96930f2</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\18c720e0420a37e7ce5f84aad96930f2.mdl">
+      <Link>Assets\AtomicEngineData\Cache\18c720e0420a37e7ce5f84aad96930f2.mdl</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\1b973ab573ce1cb99d982834b60b46f9">
+      <Link>Assets\AtomicEngineData\Cache\1b973ab573ce1cb99d982834b60b46f9</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\1b973ab573ce1cb99d982834b60b46f9.mdl">
+      <Link>Assets\AtomicEngineData\Cache\1b973ab573ce1cb99d982834b60b46f9.mdl</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\1dc4ef8c79ac786582bfa0a0758e2b0b">
+      <Link>Assets\AtomicEngineData\Cache\1dc4ef8c79ac786582bfa0a0758e2b0b</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\1dc4ef8c79ac786582bfa0a0758e2b0b.mdl">
+      <Link>Assets\AtomicEngineData\Cache\1dc4ef8c79ac786582bfa0a0758e2b0b.mdl</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\1e6f476797a3bc5fac853ba877e4f021">
+      <Link>Assets\AtomicEngineData\Cache\1e6f476797a3bc5fac853ba877e4f021</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\1e6f476797a3bc5fac853ba877e4f021_thumbnail.png">
+      <Link>Assets\AtomicEngineData\Cache\1e6f476797a3bc5fac853ba877e4f021_thumbnail.png</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\2302483e0d0639ebd3d4590c8695cf51">
+      <Link>Assets\AtomicEngineData\Cache\2302483e0d0639ebd3d4590c8695cf51</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\2302483e0d0639ebd3d4590c8695cf51.mdl">
+      <Link>Assets\AtomicEngineData\Cache\2302483e0d0639ebd3d4590c8695cf51.mdl</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\243874af8c58d6775b876de9b1a2e850">
+      <Link>Assets\AtomicEngineData\Cache\243874af8c58d6775b876de9b1a2e850</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\243874af8c58d6775b876de9b1a2e850.mdl">
+      <Link>Assets\AtomicEngineData\Cache\243874af8c58d6775b876de9b1a2e850.mdl</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\25be021c6c18b0c6f4ae393436a24324">
+      <Link>Assets\AtomicEngineData\Cache\25be021c6c18b0c6f4ae393436a24324</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\25be021c6c18b0c6f4ae393436a24324_thumbnail.png">
+      <Link>Assets\AtomicEngineData\Cache\25be021c6c18b0c6f4ae393436a24324_thumbnail.png</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\26e655b40e55f789013c352577b04cb9">
+      <Link>Assets\AtomicEngineData\Cache\26e655b40e55f789013c352577b04cb9</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\26e655b40e55f789013c352577b04cb9.mdl">
+      <Link>Assets\AtomicEngineData\Cache\26e655b40e55f789013c352577b04cb9.mdl</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\275d4b295d0ada29a04ae2f16915fc70">
+      <Link>Assets\AtomicEngineData\Cache\275d4b295d0ada29a04ae2f16915fc70</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\275d4b295d0ada29a04ae2f16915fc70.mdl">
+      <Link>Assets\AtomicEngineData\Cache\275d4b295d0ada29a04ae2f16915fc70.mdl</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\27624785b4cb453b3e833e8321aeda50">
+      <Link>Assets\AtomicEngineData\Cache\27624785b4cb453b3e833e8321aeda50</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\27624785b4cb453b3e833e8321aeda50_thumbnail.png">
+      <Link>Assets\AtomicEngineData\Cache\27624785b4cb453b3e833e8321aeda50_thumbnail.png</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\27d1b6fcde2742ca71721fd30dab75fd">
+      <Link>Assets\AtomicEngineData\Cache\27d1b6fcde2742ca71721fd30dab75fd</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\27d1b6fcde2742ca71721fd30dab75fd.mdl">
+      <Link>Assets\AtomicEngineData\Cache\27d1b6fcde2742ca71721fd30dab75fd.mdl</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\28a9849b68c621c6867142f89c0de31e">
+      <Link>Assets\AtomicEngineData\Cache\28a9849b68c621c6867142f89c0de31e</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\28a9849b68c621c6867142f89c0de31e_thumbnail.png">
+      <Link>Assets\AtomicEngineData\Cache\28a9849b68c621c6867142f89c0de31e_thumbnail.png</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\2a0d21a1bb6eca4ffd2a6d94e68c6ce8">
+      <Link>Assets\AtomicEngineData\Cache\2a0d21a1bb6eca4ffd2a6d94e68c6ce8</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\2a0d21a1bb6eca4ffd2a6d94e68c6ce8_thumbnail.png">
+      <Link>Assets\AtomicEngineData\Cache\2a0d21a1bb6eca4ffd2a6d94e68c6ce8_thumbnail.png</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\2edc48fef5ca18e96232655d3fb43b31">
+      <Link>Assets\AtomicEngineData\Cache\2edc48fef5ca18e96232655d3fb43b31</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\2edc48fef5ca18e96232655d3fb43b31_thumbnail.png">
+      <Link>Assets\AtomicEngineData\Cache\2edc48fef5ca18e96232655d3fb43b31_thumbnail.png</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\2f5ef144f2e304efc157fb1f2f904528">
+      <Link>Assets\AtomicEngineData\Cache\2f5ef144f2e304efc157fb1f2f904528</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\2f5ef144f2e304efc157fb1f2f904528.mdl">
+      <Link>Assets\AtomicEngineData\Cache\2f5ef144f2e304efc157fb1f2f904528.mdl</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\2fa385154297315c95b183c758669361">
+      <Link>Assets\AtomicEngineData\Cache\2fa385154297315c95b183c758669361</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\2fa385154297315c95b183c758669361.mdl">
+      <Link>Assets\AtomicEngineData\Cache\2fa385154297315c95b183c758669361.mdl</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\2feccbe0b40bd2972504b6bcd7db8f09">
+      <Link>Assets\AtomicEngineData\Cache\2feccbe0b40bd2972504b6bcd7db8f09</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\2feccbe0b40bd2972504b6bcd7db8f09.mdl">
+      <Link>Assets\AtomicEngineData\Cache\2feccbe0b40bd2972504b6bcd7db8f09.mdl</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\302d322caad327abacdaba49765c2852">
+      <Link>Assets\AtomicEngineData\Cache\302d322caad327abacdaba49765c2852</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\302d322caad327abacdaba49765c2852.mdl">
+      <Link>Assets\AtomicEngineData\Cache\302d322caad327abacdaba49765c2852.mdl</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\36164fd064dd6ef8314cc32a7f45b57d">
+      <Link>Assets\AtomicEngineData\Cache\36164fd064dd6ef8314cc32a7f45b57d</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\36164fd064dd6ef8314cc32a7f45b57d_thumbnail.png">
+      <Link>Assets\AtomicEngineData\Cache\36164fd064dd6ef8314cc32a7f45b57d_thumbnail.png</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\371e645b6b1694f2126fa488885a1d86">
+      <Link>Assets\AtomicEngineData\Cache\371e645b6b1694f2126fa488885a1d86</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\371e645b6b1694f2126fa488885a1d86.mdl">
+      <Link>Assets\AtomicEngineData\Cache\371e645b6b1694f2126fa488885a1d86.mdl</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\38147d4725d3ce8adcbcc0643b7e72bc">
+      <Link>Assets\AtomicEngineData\Cache\38147d4725d3ce8adcbcc0643b7e72bc</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\38147d4725d3ce8adcbcc0643b7e72bc.mdl">
+      <Link>Assets\AtomicEngineData\Cache\38147d4725d3ce8adcbcc0643b7e72bc.mdl</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\396df1cd6effb0997022f4bf1ff7a882">
+      <Link>Assets\AtomicEngineData\Cache\396df1cd6effb0997022f4bf1ff7a882</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\396df1cd6effb0997022f4bf1ff7a882_thumbnail.png">
+      <Link>Assets\AtomicEngineData\Cache\396df1cd6effb0997022f4bf1ff7a882_thumbnail.png</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\3a8dfea7f6263958b6907369903d2c00">
+      <Link>Assets\AtomicEngineData\Cache\3a8dfea7f6263958b6907369903d2c00</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\3a8dfea7f6263958b6907369903d2c00_thumbnail.png">
+      <Link>Assets\AtomicEngineData\Cache\3a8dfea7f6263958b6907369903d2c00_thumbnail.png</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\3c2f01dcf6036d7707168157a901c95d">
+      <Link>Assets\AtomicEngineData\Cache\3c2f01dcf6036d7707168157a901c95d</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\3c2f01dcf6036d7707168157a901c95d.mdl">
+      <Link>Assets\AtomicEngineData\Cache\3c2f01dcf6036d7707168157a901c95d.mdl</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\3d3804568a9cf5027cba534d3b86f205">
+      <Link>Assets\AtomicEngineData\Cache\3d3804568a9cf5027cba534d3b86f205</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\3d3804568a9cf5027cba534d3b86f205.mdl">
+      <Link>Assets\AtomicEngineData\Cache\3d3804568a9cf5027cba534d3b86f205.mdl</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\3ebf2caafd88a1c3babc04281783a8dd">
+      <Link>Assets\AtomicEngineData\Cache\3ebf2caafd88a1c3babc04281783a8dd</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\3ebf2caafd88a1c3babc04281783a8dd_thumbnail.png">
+      <Link>Assets\AtomicEngineData\Cache\3ebf2caafd88a1c3babc04281783a8dd_thumbnail.png</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\40f83f5f2d80a914b6f876c9bd3b2b6a">
+      <Link>Assets\AtomicEngineData\Cache\40f83f5f2d80a914b6f876c9bd3b2b6a</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\40f83f5f2d80a914b6f876c9bd3b2b6a_thumbnail.png">
+      <Link>Assets\AtomicEngineData\Cache\40f83f5f2d80a914b6f876c9bd3b2b6a_thumbnail.png</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\4324c72f314772c776b028d6e92cbf6d">
+      <Link>Assets\AtomicEngineData\Cache\4324c72f314772c776b028d6e92cbf6d</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\4324c72f314772c776b028d6e92cbf6d_thumbnail.png">
+      <Link>Assets\AtomicEngineData\Cache\4324c72f314772c776b028d6e92cbf6d_thumbnail.png</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\4992eebf4b45dc69fab755db3537b05b">
+      <Link>Assets\AtomicEngineData\Cache\4992eebf4b45dc69fab755db3537b05b</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\4992eebf4b45dc69fab755db3537b05b_thumbnail.png">
+      <Link>Assets\AtomicEngineData\Cache\4992eebf4b45dc69fab755db3537b05b_thumbnail.png</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\4af37abb82936df3616ca492ed7302ec">
+      <Link>Assets\AtomicEngineData\Cache\4af37abb82936df3616ca492ed7302ec</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\4af37abb82936df3616ca492ed7302ec_thumbnail.png">
+      <Link>Assets\AtomicEngineData\Cache\4af37abb82936df3616ca492ed7302ec_thumbnail.png</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\4ba8f235fa43aa998e5afc2f07669de5">
+      <Link>Assets\AtomicEngineData\Cache\4ba8f235fa43aa998e5afc2f07669de5</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\4ba8f235fa43aa998e5afc2f07669de5.mdl">
+      <Link>Assets\AtomicEngineData\Cache\4ba8f235fa43aa998e5afc2f07669de5.mdl</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\4be4a04d4bdc52b354451f045624cbb6">
+      <Link>Assets\AtomicEngineData\Cache\4be4a04d4bdc52b354451f045624cbb6</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\4be4a04d4bdc52b354451f045624cbb6_thumbnail.png">
+      <Link>Assets\AtomicEngineData\Cache\4be4a04d4bdc52b354451f045624cbb6_thumbnail.png</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\4c50f5964c0c651a116abc65fd14b97d">
+      <Link>Assets\AtomicEngineData\Cache\4c50f5964c0c651a116abc65fd14b97d</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\4c50f5964c0c651a116abc65fd14b97d_thumbnail.png">
+      <Link>Assets\AtomicEngineData\Cache\4c50f5964c0c651a116abc65fd14b97d_thumbnail.png</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\4cb45fc8dc88a5baad7d93b96b6e5d3d">
+      <Link>Assets\AtomicEngineData\Cache\4cb45fc8dc88a5baad7d93b96b6e5d3d</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\4cb45fc8dc88a5baad7d93b96b6e5d3d.mdl">
+      <Link>Assets\AtomicEngineData\Cache\4cb45fc8dc88a5baad7d93b96b6e5d3d.mdl</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\50334a146d13737a1163af8d473668a1">
+      <Link>Assets\AtomicEngineData\Cache\50334a146d13737a1163af8d473668a1</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\50334a146d13737a1163af8d473668a1.mdl">
+      <Link>Assets\AtomicEngineData\Cache\50334a146d13737a1163af8d473668a1.mdl</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\514ea751787738d4a068510a3246d773">
+      <Link>Assets\AtomicEngineData\Cache\514ea751787738d4a068510a3246d773</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\514ea751787738d4a068510a3246d773.mdl">
+      <Link>Assets\AtomicEngineData\Cache\514ea751787738d4a068510a3246d773.mdl</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\5299c078aff22eaffd3dd5ae790d3bec">
+      <Link>Assets\AtomicEngineData\Cache\5299c078aff22eaffd3dd5ae790d3bec</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\5299c078aff22eaffd3dd5ae790d3bec.mdl">
+      <Link>Assets\AtomicEngineData\Cache\5299c078aff22eaffd3dd5ae790d3bec.mdl</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\539d73131159420c96524cfb614ff3ba">
+      <Link>Assets\AtomicEngineData\Cache\539d73131159420c96524cfb614ff3ba</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\539d73131159420c96524cfb614ff3ba.mdl">
+      <Link>Assets\AtomicEngineData\Cache\539d73131159420c96524cfb614ff3ba.mdl</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\53c5a74cbd747b73b0adedc2310bccfe">
+      <Link>Assets\AtomicEngineData\Cache\53c5a74cbd747b73b0adedc2310bccfe</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\53c5a74cbd747b73b0adedc2310bccfe.mdl">
+      <Link>Assets\AtomicEngineData\Cache\53c5a74cbd747b73b0adedc2310bccfe.mdl</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\5436d44c346dc919b96e2fdbb87e98ea">
+      <Link>Assets\AtomicEngineData\Cache\5436d44c346dc919b96e2fdbb87e98ea</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\5436d44c346dc919b96e2fdbb87e98ea_thumbnail.png">
+      <Link>Assets\AtomicEngineData\Cache\5436d44c346dc919b96e2fdbb87e98ea_thumbnail.png</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\56a38f652e674f4adeb9b6ae302a5a02">
+      <Link>Assets\AtomicEngineData\Cache\56a38f652e674f4adeb9b6ae302a5a02</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\56a38f652e674f4adeb9b6ae302a5a02.mdl">
+      <Link>Assets\AtomicEngineData\Cache\56a38f652e674f4adeb9b6ae302a5a02.mdl</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\57dd40affe085cb8b6c9572d1e453e9d">
+      <Link>Assets\AtomicEngineData\Cache\57dd40affe085cb8b6c9572d1e453e9d</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\57dd40affe085cb8b6c9572d1e453e9d_thumbnail.png">
+      <Link>Assets\AtomicEngineData\Cache\57dd40affe085cb8b6c9572d1e453e9d_thumbnail.png</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\58c4417360e05b09fc6377f4d75e7e23">
+      <Link>Assets\AtomicEngineData\Cache\58c4417360e05b09fc6377f4d75e7e23</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\58c4417360e05b09fc6377f4d75e7e23.mdl">
+      <Link>Assets\AtomicEngineData\Cache\58c4417360e05b09fc6377f4d75e7e23.mdl</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\5aba1f0cf743892794808b3cf20c06d6">
+      <Link>Assets\AtomicEngineData\Cache\5aba1f0cf743892794808b3cf20c06d6</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\5aba1f0cf743892794808b3cf20c06d6.mdl">
+      <Link>Assets\AtomicEngineData\Cache\5aba1f0cf743892794808b3cf20c06d6.mdl</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\5da70bf4cf05a89b2f55a570c5c5b2e8">
+      <Link>Assets\AtomicEngineData\Cache\5da70bf4cf05a89b2f55a570c5c5b2e8</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\5da70bf4cf05a89b2f55a570c5c5b2e8_thumbnail.png">
+      <Link>Assets\AtomicEngineData\Cache\5da70bf4cf05a89b2f55a570c5c5b2e8_thumbnail.png</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\5db7f0d5b87e470a82dd3d5405060cf4">
+      <Link>Assets\AtomicEngineData\Cache\5db7f0d5b87e470a82dd3d5405060cf4</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\5db7f0d5b87e470a82dd3d5405060cf4.mdl">
+      <Link>Assets\AtomicEngineData\Cache\5db7f0d5b87e470a82dd3d5405060cf4.mdl</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\5dffb3e377efc33a3086a9ffb4aa0717">
+      <Link>Assets\AtomicEngineData\Cache\5dffb3e377efc33a3086a9ffb4aa0717</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\5dffb3e377efc33a3086a9ffb4aa0717_thumbnail.png">
+      <Link>Assets\AtomicEngineData\Cache\5dffb3e377efc33a3086a9ffb4aa0717_thumbnail.png</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\5e8998e6b767caf3cae1c118e16a7c06">
+      <Link>Assets\AtomicEngineData\Cache\5e8998e6b767caf3cae1c118e16a7c06</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\5e8998e6b767caf3cae1c118e16a7c06_thumbnail.png">
+      <Link>Assets\AtomicEngineData\Cache\5e8998e6b767caf3cae1c118e16a7c06_thumbnail.png</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\6184eadf5ef926a6d85bf813fe76f40b">
+      <Link>Assets\AtomicEngineData\Cache\6184eadf5ef926a6d85bf813fe76f40b</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\6184eadf5ef926a6d85bf813fe76f40b_thumbnail.png">
+      <Link>Assets\AtomicEngineData\Cache\6184eadf5ef926a6d85bf813fe76f40b_thumbnail.png</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\619d5a90af2396ab48483f67bf6e12b0">
+      <Link>Assets\AtomicEngineData\Cache\619d5a90af2396ab48483f67bf6e12b0</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\619d5a90af2396ab48483f67bf6e12b0.mdl">
+      <Link>Assets\AtomicEngineData\Cache\619d5a90af2396ab48483f67bf6e12b0.mdl</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\62c8e79985d2c515538b48c2e1b124e7">
+      <Link>Assets\AtomicEngineData\Cache\62c8e79985d2c515538b48c2e1b124e7</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\62c8e79985d2c515538b48c2e1b124e7_thumbnail.png">
+      <Link>Assets\AtomicEngineData\Cache\62c8e79985d2c515538b48c2e1b124e7_thumbnail.png</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\62fb2f8beb28910cee5b429b86b92815">
+      <Link>Assets\AtomicEngineData\Cache\62fb2f8beb28910cee5b429b86b92815</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\62fb2f8beb28910cee5b429b86b92815.mdl">
+      <Link>Assets\AtomicEngineData\Cache\62fb2f8beb28910cee5b429b86b92815.mdl</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\64017cbabd8edffba6ec4fccd24fb9d1">
+      <Link>Assets\AtomicEngineData\Cache\64017cbabd8edffba6ec4fccd24fb9d1</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\64017cbabd8edffba6ec4fccd24fb9d1_thumbnail.png">
+      <Link>Assets\AtomicEngineData\Cache\64017cbabd8edffba6ec4fccd24fb9d1_thumbnail.png</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\65d547afbfd0cd4ecf954ba577f9b050">
+      <Link>Assets\AtomicEngineData\Cache\65d547afbfd0cd4ecf954ba577f9b050</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\65d547afbfd0cd4ecf954ba577f9b050.mdl">
+      <Link>Assets\AtomicEngineData\Cache\65d547afbfd0cd4ecf954ba577f9b050.mdl</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\66e7246993799097e596a73fd7400948">
+      <Link>Assets\AtomicEngineData\Cache\66e7246993799097e596a73fd7400948</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\66e7246993799097e596a73fd7400948_thumbnail.png">
+      <Link>Assets\AtomicEngineData\Cache\66e7246993799097e596a73fd7400948_thumbnail.png</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\687ecd74c148aeb8b805186ea736eb1f">
+      <Link>Assets\AtomicEngineData\Cache\687ecd74c148aeb8b805186ea736eb1f</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\687ecd74c148aeb8b805186ea736eb1f.mdl">
+      <Link>Assets\AtomicEngineData\Cache\687ecd74c148aeb8b805186ea736eb1f.mdl</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\6c6b8c9ecb85072f863ac6a1568bc4af">
+      <Link>Assets\AtomicEngineData\Cache\6c6b8c9ecb85072f863ac6a1568bc4af</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\6c6b8c9ecb85072f863ac6a1568bc4af_thumbnail.png">
+      <Link>Assets\AtomicEngineData\Cache\6c6b8c9ecb85072f863ac6a1568bc4af_thumbnail.png</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\6d83beeb1b9bde349d6d9503c0e7f89f">
+      <Link>Assets\AtomicEngineData\Cache\6d83beeb1b9bde349d6d9503c0e7f89f</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\6d83beeb1b9bde349d6d9503c0e7f89f.mdl">
+      <Link>Assets\AtomicEngineData\Cache\6d83beeb1b9bde349d6d9503c0e7f89f.mdl</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\6d984f7d829976fa21153e461f4f14be">
+      <Link>Assets\AtomicEngineData\Cache\6d984f7d829976fa21153e461f4f14be</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\6d984f7d829976fa21153e461f4f14be.mdl">
+      <Link>Assets\AtomicEngineData\Cache\6d984f7d829976fa21153e461f4f14be.mdl</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\6f4f765018a3cba86f28f8995ee2d66c">
+      <Link>Assets\AtomicEngineData\Cache\6f4f765018a3cba86f28f8995ee2d66c</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\6f4f765018a3cba86f28f8995ee2d66c_thumbnail.png">
+      <Link>Assets\AtomicEngineData\Cache\6f4f765018a3cba86f28f8995ee2d66c_thumbnail.png</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\70bec284438e5462023702c995925455">
+      <Link>Assets\AtomicEngineData\Cache\70bec284438e5462023702c995925455</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\70bec284438e5462023702c995925455.mdl">
+      <Link>Assets\AtomicEngineData\Cache\70bec284438e5462023702c995925455.mdl</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\71fea1efa07e170e74ca3c87599d8105">
+      <Link>Assets\AtomicEngineData\Cache\71fea1efa07e170e74ca3c87599d8105</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\71fea1efa07e170e74ca3c87599d8105_thumbnail.png">
+      <Link>Assets\AtomicEngineData\Cache\71fea1efa07e170e74ca3c87599d8105_thumbnail.png</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\73f23804e418c560543df9389abe7c54">
+      <Link>Assets\AtomicEngineData\Cache\73f23804e418c560543df9389abe7c54</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\73f23804e418c560543df9389abe7c54_thumbnail.png">
+      <Link>Assets\AtomicEngineData\Cache\73f23804e418c560543df9389abe7c54_thumbnail.png</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\74a050dd7ea9cdca18abacc30af2e675">
+      <Link>Assets\AtomicEngineData\Cache\74a050dd7ea9cdca18abacc30af2e675</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\74a050dd7ea9cdca18abacc30af2e675.mdl">
+      <Link>Assets\AtomicEngineData\Cache\74a050dd7ea9cdca18abacc30af2e675.mdl</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\7741e9731cec969a15276420eeb781b2">
+      <Link>Assets\AtomicEngineData\Cache\7741e9731cec969a15276420eeb781b2</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\7741e9731cec969a15276420eeb781b2_thumbnail.png">
+      <Link>Assets\AtomicEngineData\Cache\7741e9731cec969a15276420eeb781b2_thumbnail.png</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\77649bd16b1d9e2fdf58c40d61a0ce07">
+      <Link>Assets\AtomicEngineData\Cache\77649bd16b1d9e2fdf58c40d61a0ce07</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\77649bd16b1d9e2fdf58c40d61a0ce07.mdl">
+      <Link>Assets\AtomicEngineData\Cache\77649bd16b1d9e2fdf58c40d61a0ce07.mdl</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\7bfa69e06b375fcb169a205f021052bf">
+      <Link>Assets\AtomicEngineData\Cache\7bfa69e06b375fcb169a205f021052bf</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\7bfa69e06b375fcb169a205f021052bf_thumbnail.png">
+      <Link>Assets\AtomicEngineData\Cache\7bfa69e06b375fcb169a205f021052bf_thumbnail.png</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\7c2753b8e35f605c82612eb825f71243">
+      <Link>Assets\AtomicEngineData\Cache\7c2753b8e35f605c82612eb825f71243</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\7c2753b8e35f605c82612eb825f71243_thumbnail.png">
+      <Link>Assets\AtomicEngineData\Cache\7c2753b8e35f605c82612eb825f71243_thumbnail.png</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\7ef006e96a055c81ad70f9c7e1a2446d">
+      <Link>Assets\AtomicEngineData\Cache\7ef006e96a055c81ad70f9c7e1a2446d</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\7ef006e96a055c81ad70f9c7e1a2446d.mdl">
+      <Link>Assets\AtomicEngineData\Cache\7ef006e96a055c81ad70f9c7e1a2446d.mdl</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\8113be5fc19e1e85ddf64e0f11a9ae74">
+      <Link>Assets\AtomicEngineData\Cache\8113be5fc19e1e85ddf64e0f11a9ae74</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\8113be5fc19e1e85ddf64e0f11a9ae74_thumbnail.png">
+      <Link>Assets\AtomicEngineData\Cache\8113be5fc19e1e85ddf64e0f11a9ae74_thumbnail.png</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\840cdfb502dd18725338d9d9d9f0f0bf">
+      <Link>Assets\AtomicEngineData\Cache\840cdfb502dd18725338d9d9d9f0f0bf</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\840cdfb502dd18725338d9d9d9f0f0bf.mdl">
+      <Link>Assets\AtomicEngineData\Cache\840cdfb502dd18725338d9d9d9f0f0bf.mdl</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\84f340023041bf0bac5c1d227d55c24d">
+      <Link>Assets\AtomicEngineData\Cache\84f340023041bf0bac5c1d227d55c24d</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\84f340023041bf0bac5c1d227d55c24d_thumbnail.png">
+      <Link>Assets\AtomicEngineData\Cache\84f340023041bf0bac5c1d227d55c24d_thumbnail.png</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\89d93e9b7609b8bf04b0775083ccc332">
+      <Link>Assets\AtomicEngineData\Cache\89d93e9b7609b8bf04b0775083ccc332</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\89d93e9b7609b8bf04b0775083ccc332.mdl">
+      <Link>Assets\AtomicEngineData\Cache\89d93e9b7609b8bf04b0775083ccc332.mdl</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\8b709a0fd7fd6513febfd46d8b11d693">
+      <Link>Assets\AtomicEngineData\Cache\8b709a0fd7fd6513febfd46d8b11d693</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\8b709a0fd7fd6513febfd46d8b11d693.mdl">
+      <Link>Assets\AtomicEngineData\Cache\8b709a0fd7fd6513febfd46d8b11d693.mdl</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\8c9c15d5994c88354ce80cf837c16a7e">
+      <Link>Assets\AtomicEngineData\Cache\8c9c15d5994c88354ce80cf837c16a7e</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\8c9c15d5994c88354ce80cf837c16a7e.mdl">
+      <Link>Assets\AtomicEngineData\Cache\8c9c15d5994c88354ce80cf837c16a7e.mdl</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\8ce2fe6c86d79bcf1b20c4ad6dd271a9">
+      <Link>Assets\AtomicEngineData\Cache\8ce2fe6c86d79bcf1b20c4ad6dd271a9</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\8ce2fe6c86d79bcf1b20c4ad6dd271a9.mdl">
+      <Link>Assets\AtomicEngineData\Cache\8ce2fe6c86d79bcf1b20c4ad6dd271a9.mdl</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\8d34c3f26ccd997d7caeba8276155da2">
+      <Link>Assets\AtomicEngineData\Cache\8d34c3f26ccd997d7caeba8276155da2</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\8d34c3f26ccd997d7caeba8276155da2_thumbnail.png">
+      <Link>Assets\AtomicEngineData\Cache\8d34c3f26ccd997d7caeba8276155da2_thumbnail.png</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\8da332e08a38da6a71a43e3fabe01017">
+      <Link>Assets\AtomicEngineData\Cache\8da332e08a38da6a71a43e3fabe01017</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\8da332e08a38da6a71a43e3fabe01017.mdl">
+      <Link>Assets\AtomicEngineData\Cache\8da332e08a38da6a71a43e3fabe01017.mdl</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\8f954c4b83403fcbbf7aa59c408a7596">
+      <Link>Assets\AtomicEngineData\Cache\8f954c4b83403fcbbf7aa59c408a7596</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\8f954c4b83403fcbbf7aa59c408a7596.mdl">
+      <Link>Assets\AtomicEngineData\Cache\8f954c4b83403fcbbf7aa59c408a7596.mdl</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\903725cd0d197deed9b89582e816c80f">
+      <Link>Assets\AtomicEngineData\Cache\903725cd0d197deed9b89582e816c80f</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\903725cd0d197deed9b89582e816c80f.mdl">
+      <Link>Assets\AtomicEngineData\Cache\903725cd0d197deed9b89582e816c80f.mdl</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\9056116fcc68e55cb93848393c81126b">
+      <Link>Assets\AtomicEngineData\Cache\9056116fcc68e55cb93848393c81126b</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\9056116fcc68e55cb93848393c81126b.mdl">
+      <Link>Assets\AtomicEngineData\Cache\9056116fcc68e55cb93848393c81126b.mdl</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\91dec97a957e69acdc831e57672e88ad">
+      <Link>Assets\AtomicEngineData\Cache\91dec97a957e69acdc831e57672e88ad</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\91dec97a957e69acdc831e57672e88ad.mdl">
+      <Link>Assets\AtomicEngineData\Cache\91dec97a957e69acdc831e57672e88ad.mdl</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\9249dd600350b2716654e06807d09cc6">
+      <Link>Assets\AtomicEngineData\Cache\9249dd600350b2716654e06807d09cc6</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\9249dd600350b2716654e06807d09cc6.mdl">
+      <Link>Assets\AtomicEngineData\Cache\9249dd600350b2716654e06807d09cc6.mdl</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\93bdae276fd2bdb037878f508ffead79">
+      <Link>Assets\AtomicEngineData\Cache\93bdae276fd2bdb037878f508ffead79</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\93bdae276fd2bdb037878f508ffead79.mdl">
+      <Link>Assets\AtomicEngineData\Cache\93bdae276fd2bdb037878f508ffead79.mdl</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\94ed8e1f08ed0f9dc2aa83e6687a2159">
+      <Link>Assets\AtomicEngineData\Cache\94ed8e1f08ed0f9dc2aa83e6687a2159</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\94ed8e1f08ed0f9dc2aa83e6687a2159.mdl">
+      <Link>Assets\AtomicEngineData\Cache\94ed8e1f08ed0f9dc2aa83e6687a2159.mdl</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\95239036a3e60e60d18537e06ca14580">
+      <Link>Assets\AtomicEngineData\Cache\95239036a3e60e60d18537e06ca14580</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\95239036a3e60e60d18537e06ca14580_thumbnail.png">
+      <Link>Assets\AtomicEngineData\Cache\95239036a3e60e60d18537e06ca14580_thumbnail.png</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\95898401a9ffb31d24af6441c08a06f1">
+      <Link>Assets\AtomicEngineData\Cache\95898401a9ffb31d24af6441c08a06f1</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\95898401a9ffb31d24af6441c08a06f1_thumbnail.png">
+      <Link>Assets\AtomicEngineData\Cache\95898401a9ffb31d24af6441c08a06f1_thumbnail.png</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\96663b7c7b0dde51844b6f4053e3fbdc">
+      <Link>Assets\AtomicEngineData\Cache\96663b7c7b0dde51844b6f4053e3fbdc</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\96663b7c7b0dde51844b6f4053e3fbdc_thumbnail.png">
+      <Link>Assets\AtomicEngineData\Cache\96663b7c7b0dde51844b6f4053e3fbdc_thumbnail.png</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\96c8d3fdf1d7e222aef4127ab53c9219">
+      <Link>Assets\AtomicEngineData\Cache\96c8d3fdf1d7e222aef4127ab53c9219</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\96c8d3fdf1d7e222aef4127ab53c9219_thumbnail.png">
+      <Link>Assets\AtomicEngineData\Cache\96c8d3fdf1d7e222aef4127ab53c9219_thumbnail.png</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\9748de9f1b6888d4456d28a880472a05">
+      <Link>Assets\AtomicEngineData\Cache\9748de9f1b6888d4456d28a880472a05</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\9748de9f1b6888d4456d28a880472a05_thumbnail.png">
+      <Link>Assets\AtomicEngineData\Cache\9748de9f1b6888d4456d28a880472a05_thumbnail.png</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\9826954f371bef9a9486a2b919eed3c8">
+      <Link>Assets\AtomicEngineData\Cache\9826954f371bef9a9486a2b919eed3c8</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\9826954f371bef9a9486a2b919eed3c8.mdl">
+      <Link>Assets\AtomicEngineData\Cache\9826954f371bef9a9486a2b919eed3c8.mdl</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\9890e704562badb6b52bcf5622a65fc7">
+      <Link>Assets\AtomicEngineData\Cache\9890e704562badb6b52bcf5622a65fc7</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\9890e704562badb6b52bcf5622a65fc7_thumbnail.png">
+      <Link>Assets\AtomicEngineData\Cache\9890e704562badb6b52bcf5622a65fc7_thumbnail.png</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\998e9737f0372c38032eaaf58d5d20a4">
+      <Link>Assets\AtomicEngineData\Cache\998e9737f0372c38032eaaf58d5d20a4</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\998e9737f0372c38032eaaf58d5d20a4.mdl">
+      <Link>Assets\AtomicEngineData\Cache\998e9737f0372c38032eaaf58d5d20a4.mdl</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\9a773b79bb6463d7706ab984c2f73b26">
+      <Link>Assets\AtomicEngineData\Cache\9a773b79bb6463d7706ab984c2f73b26</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\9a773b79bb6463d7706ab984c2f73b26.mdl">
+      <Link>Assets\AtomicEngineData\Cache\9a773b79bb6463d7706ab984c2f73b26.mdl</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\a0e8b065a99a915ebf48497b8061f39b">
+      <Link>Assets\AtomicEngineData\Cache\a0e8b065a99a915ebf48497b8061f39b</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\a0e8b065a99a915ebf48497b8061f39b.mdl">
+      <Link>Assets\AtomicEngineData\Cache\a0e8b065a99a915ebf48497b8061f39b.mdl</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\a19b4d3443753647b81165c1f3aba338">
+      <Link>Assets\AtomicEngineData\Cache\a19b4d3443753647b81165c1f3aba338</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\a19b4d3443753647b81165c1f3aba338.mdl">
+      <Link>Assets\AtomicEngineData\Cache\a19b4d3443753647b81165c1f3aba338.mdl</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\a1e0d43560ab47ca34c1ef4643e5c24f">
+      <Link>Assets\AtomicEngineData\Cache\a1e0d43560ab47ca34c1ef4643e5c24f</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\a1e0d43560ab47ca34c1ef4643e5c24f.mdl">
+      <Link>Assets\AtomicEngineData\Cache\a1e0d43560ab47ca34c1ef4643e5c24f.mdl</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\a4cc068f611c4bb21ebdb77fa749e21d">
+      <Link>Assets\AtomicEngineData\Cache\a4cc068f611c4bb21ebdb77fa749e21d</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\a4cc068f611c4bb21ebdb77fa749e21d.mdl">
+      <Link>Assets\AtomicEngineData\Cache\a4cc068f611c4bb21ebdb77fa749e21d.mdl</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\aa717efe9c865bf49337528716f850d9">
+      <Link>Assets\AtomicEngineData\Cache\aa717efe9c865bf49337528716f850d9</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\aa717efe9c865bf49337528716f850d9_thumbnail.png">
+      <Link>Assets\AtomicEngineData\Cache\aa717efe9c865bf49337528716f850d9_thumbnail.png</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\ab4e6b038b6c1db1c012931d8f162635">
+      <Link>Assets\AtomicEngineData\Cache\ab4e6b038b6c1db1c012931d8f162635</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\ab4e6b038b6c1db1c012931d8f162635_thumbnail.png">
+      <Link>Assets\AtomicEngineData\Cache\ab4e6b038b6c1db1c012931d8f162635_thumbnail.png</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\ab8b820b6b1b0348e0073672dcadfe49">
+      <Link>Assets\AtomicEngineData\Cache\ab8b820b6b1b0348e0073672dcadfe49</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\ab8b820b6b1b0348e0073672dcadfe49.mdl">
+      <Link>Assets\AtomicEngineData\Cache\ab8b820b6b1b0348e0073672dcadfe49.mdl</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\addbf890025c0cac00bc2747d76781b6">
+      <Link>Assets\AtomicEngineData\Cache\addbf890025c0cac00bc2747d76781b6</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\addbf890025c0cac00bc2747d76781b6.mdl">
+      <Link>Assets\AtomicEngineData\Cache\addbf890025c0cac00bc2747d76781b6.mdl</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\ae3588c96e07238db6624d0fd000ce36">
+      <Link>Assets\AtomicEngineData\Cache\ae3588c96e07238db6624d0fd000ce36</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\ae3588c96e07238db6624d0fd000ce36.mdl">
+      <Link>Assets\AtomicEngineData\Cache\ae3588c96e07238db6624d0fd000ce36.mdl</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\af5986d4c67be744e37214922dd96e8a">
+      <Link>Assets\AtomicEngineData\Cache\af5986d4c67be744e37214922dd96e8a</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\af5986d4c67be744e37214922dd96e8a_thumbnail.png">
+      <Link>Assets\AtomicEngineData\Cache\af5986d4c67be744e37214922dd96e8a_thumbnail.png</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\b1a3ad4b871c5845ad632909ee0d5871">
+      <Link>Assets\AtomicEngineData\Cache\b1a3ad4b871c5845ad632909ee0d5871</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\b1a3ad4b871c5845ad632909ee0d5871.mdl">
+      <Link>Assets\AtomicEngineData\Cache\b1a3ad4b871c5845ad632909ee0d5871.mdl</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\b3e7da3b575a7034e9fe1f8c858df746">
+      <Link>Assets\AtomicEngineData\Cache\b3e7da3b575a7034e9fe1f8c858df746</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\b3e7da3b575a7034e9fe1f8c858df746.mdl">
+      <Link>Assets\AtomicEngineData\Cache\b3e7da3b575a7034e9fe1f8c858df746.mdl</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\b9a7f1dcfda526f166236f46ee9e3fdc">
+      <Link>Assets\AtomicEngineData\Cache\b9a7f1dcfda526f166236f46ee9e3fdc</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\b9a7f1dcfda526f166236f46ee9e3fdc.mdl">
+      <Link>Assets\AtomicEngineData\Cache\b9a7f1dcfda526f166236f46ee9e3fdc.mdl</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\b9da595c83bb297a5d2dad90e4955a19">
+      <Link>Assets\AtomicEngineData\Cache\b9da595c83bb297a5d2dad90e4955a19</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\b9da595c83bb297a5d2dad90e4955a19_thumbnail.png">
+      <Link>Assets\AtomicEngineData\Cache\b9da595c83bb297a5d2dad90e4955a19_thumbnail.png</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\c1703d09900a43a36ed96bd2ed6d9ff7">
+      <Link>Assets\AtomicEngineData\Cache\c1703d09900a43a36ed96bd2ed6d9ff7</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\c1703d09900a43a36ed96bd2ed6d9ff7.mdl">
+      <Link>Assets\AtomicEngineData\Cache\c1703d09900a43a36ed96bd2ed6d9ff7.mdl</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\c22cecb4dc3018dcea40ac35c53b0558">
+      <Link>Assets\AtomicEngineData\Cache\c22cecb4dc3018dcea40ac35c53b0558</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\c22cecb4dc3018dcea40ac35c53b0558.mdl">
+      <Link>Assets\AtomicEngineData\Cache\c22cecb4dc3018dcea40ac35c53b0558.mdl</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\c56aa9f0cd5a77791f9b843f1e48d9bb">
+      <Link>Assets\AtomicEngineData\Cache\c56aa9f0cd5a77791f9b843f1e48d9bb</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\c56aa9f0cd5a77791f9b843f1e48d9bb.mdl">
+      <Link>Assets\AtomicEngineData\Cache\c56aa9f0cd5a77791f9b843f1e48d9bb.mdl</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\c6c2f7a5753f0c43be30b9dfc6630b84">
+      <Link>Assets\AtomicEngineData\Cache\c6c2f7a5753f0c43be30b9dfc6630b84</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\c6c2f7a5753f0c43be30b9dfc6630b84.mdl">
+      <Link>Assets\AtomicEngineData\Cache\c6c2f7a5753f0c43be30b9dfc6630b84.mdl</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\c6dc28e850b9fadbdda51f2653c6547c">
+      <Link>Assets\AtomicEngineData\Cache\c6dc28e850b9fadbdda51f2653c6547c</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\c6dc28e850b9fadbdda51f2653c6547c.mdl">
+      <Link>Assets\AtomicEngineData\Cache\c6dc28e850b9fadbdda51f2653c6547c.mdl</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\c722a36b51cacd3c4f43c5c96dced50c">
+      <Link>Assets\AtomicEngineData\Cache\c722a36b51cacd3c4f43c5c96dced50c</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\c722a36b51cacd3c4f43c5c96dced50c.mdl">
+      <Link>Assets\AtomicEngineData\Cache\c722a36b51cacd3c4f43c5c96dced50c.mdl</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\c7f5e2299ca5074424307ee41747338b">
+      <Link>Assets\AtomicEngineData\Cache\c7f5e2299ca5074424307ee41747338b</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\c7f5e2299ca5074424307ee41747338b_thumbnail.png">
+      <Link>Assets\AtomicEngineData\Cache\c7f5e2299ca5074424307ee41747338b_thumbnail.png</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\c81da77357a5f73cf2c5e42d38776248">
+      <Link>Assets\AtomicEngineData\Cache\c81da77357a5f73cf2c5e42d38776248</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\c81da77357a5f73cf2c5e42d38776248_thumbnail.png">
+      <Link>Assets\AtomicEngineData\Cache\c81da77357a5f73cf2c5e42d38776248_thumbnail.png</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\c82b9aeca87b11196913447378ccf46c">
+      <Link>Assets\AtomicEngineData\Cache\c82b9aeca87b11196913447378ccf46c</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\c82b9aeca87b11196913447378ccf46c.mdl">
+      <Link>Assets\AtomicEngineData\Cache\c82b9aeca87b11196913447378ccf46c.mdl</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\c86827eeb9f6a9992ff688a93a46adf9">
+      <Link>Assets\AtomicEngineData\Cache\c86827eeb9f6a9992ff688a93a46adf9</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\c86827eeb9f6a9992ff688a93a46adf9.mdl">
+      <Link>Assets\AtomicEngineData\Cache\c86827eeb9f6a9992ff688a93a46adf9.mdl</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\cc7bbccca602d7c381444108d3e6a821">
+      <Link>Assets\AtomicEngineData\Cache\cc7bbccca602d7c381444108d3e6a821</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\cc7bbccca602d7c381444108d3e6a821_thumbnail.png">
+      <Link>Assets\AtomicEngineData\Cache\cc7bbccca602d7c381444108d3e6a821_thumbnail.png</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\cfa8dc829a875f14571966d902213b9a">
+      <Link>Assets\AtomicEngineData\Cache\cfa8dc829a875f14571966d902213b9a</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\cfa8dc829a875f14571966d902213b9a_thumbnail.png">
+      <Link>Assets\AtomicEngineData\Cache\cfa8dc829a875f14571966d902213b9a_thumbnail.png</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\cff2b19d7cf25f2d87051ecf712b22ce">
+      <Link>Assets\AtomicEngineData\Cache\cff2b19d7cf25f2d87051ecf712b22ce</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\cff2b19d7cf25f2d87051ecf712b22ce_thumbnail.png">
+      <Link>Assets\AtomicEngineData\Cache\cff2b19d7cf25f2d87051ecf712b22ce_thumbnail.png</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\d0b2ef18712287975c0300d164beef10">
+      <Link>Assets\AtomicEngineData\Cache\d0b2ef18712287975c0300d164beef10</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\d0b2ef18712287975c0300d164beef10_thumbnail.png">
+      <Link>Assets\AtomicEngineData\Cache\d0b2ef18712287975c0300d164beef10_thumbnail.png</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\d1c31f63117d66eb83b81f2a9b830790">
+      <Link>Assets\AtomicEngineData\Cache\d1c31f63117d66eb83b81f2a9b830790</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\d1c31f63117d66eb83b81f2a9b830790.mdl">
+      <Link>Assets\AtomicEngineData\Cache\d1c31f63117d66eb83b81f2a9b830790.mdl</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\d3a85a376a7a21720d4316eb32c88b66">
+      <Link>Assets\AtomicEngineData\Cache\d3a85a376a7a21720d4316eb32c88b66</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\d3a85a376a7a21720d4316eb32c88b66.mdl">
+      <Link>Assets\AtomicEngineData\Cache\d3a85a376a7a21720d4316eb32c88b66.mdl</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\d47303484f5e9ed5e1a4970c733b178e">
+      <Link>Assets\AtomicEngineData\Cache\d47303484f5e9ed5e1a4970c733b178e</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\d47303484f5e9ed5e1a4970c733b178e_thumbnail.png">
+      <Link>Assets\AtomicEngineData\Cache\d47303484f5e9ed5e1a4970c733b178e_thumbnail.png</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\d5ef765f8ccd72e391c73019aab9c9ea">
+      <Link>Assets\AtomicEngineData\Cache\d5ef765f8ccd72e391c73019aab9c9ea</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\d5ef765f8ccd72e391c73019aab9c9ea_thumbnail.png">
+      <Link>Assets\AtomicEngineData\Cache\d5ef765f8ccd72e391c73019aab9c9ea_thumbnail.png</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\d64952d92fdfc7b2c73396b6f8c9d3fa">
+      <Link>Assets\AtomicEngineData\Cache\d64952d92fdfc7b2c73396b6f8c9d3fa</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\d64952d92fdfc7b2c73396b6f8c9d3fa.mdl">
+      <Link>Assets\AtomicEngineData\Cache\d64952d92fdfc7b2c73396b6f8c9d3fa.mdl</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\d7fc75aea32a8ef51fac82276b22d8ad">
+      <Link>Assets\AtomicEngineData\Cache\d7fc75aea32a8ef51fac82276b22d8ad</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\d7fc75aea32a8ef51fac82276b22d8ad_thumbnail.png">
+      <Link>Assets\AtomicEngineData\Cache\d7fc75aea32a8ef51fac82276b22d8ad_thumbnail.png</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\dca120423c45ff0f876448712fc81818">
+      <Link>Assets\AtomicEngineData\Cache\dca120423c45ff0f876448712fc81818</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\dca120423c45ff0f876448712fc81818.mdl">
+      <Link>Assets\AtomicEngineData\Cache\dca120423c45ff0f876448712fc81818.mdl</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\ddc238902b6666477d2afd0ebd1043ed">
+      <Link>Assets\AtomicEngineData\Cache\ddc238902b6666477d2afd0ebd1043ed</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\ddc238902b6666477d2afd0ebd1043ed.mdl">
+      <Link>Assets\AtomicEngineData\Cache\ddc238902b6666477d2afd0ebd1043ed.mdl</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\df94871136ff2407877ba5e49b4f0cf2">
+      <Link>Assets\AtomicEngineData\Cache\df94871136ff2407877ba5e49b4f0cf2</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\df94871136ff2407877ba5e49b4f0cf2_thumbnail.png">
+      <Link>Assets\AtomicEngineData\Cache\df94871136ff2407877ba5e49b4f0cf2_thumbnail.png</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\dfac6fcff7c4e40901d93895d26186b8">
+      <Link>Assets\AtomicEngineData\Cache\dfac6fcff7c4e40901d93895d26186b8</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\dfac6fcff7c4e40901d93895d26186b8.mdl">
+      <Link>Assets\AtomicEngineData\Cache\dfac6fcff7c4e40901d93895d26186b8.mdl</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\e115ab7ace58369d73616b12c086e8ca">
+      <Link>Assets\AtomicEngineData\Cache\e115ab7ace58369d73616b12c086e8ca</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\e115ab7ace58369d73616b12c086e8ca_thumbnail.png">
+      <Link>Assets\AtomicEngineData\Cache\e115ab7ace58369d73616b12c086e8ca_thumbnail.png</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\e1664cf74272f0d645e270ec7461f082">
+      <Link>Assets\AtomicEngineData\Cache\e1664cf74272f0d645e270ec7461f082</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\e1664cf74272f0d645e270ec7461f082_thumbnail.png">
+      <Link>Assets\AtomicEngineData\Cache\e1664cf74272f0d645e270ec7461f082_thumbnail.png</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\e1d25f75350678239628d21e0205497b">
+      <Link>Assets\AtomicEngineData\Cache\e1d25f75350678239628d21e0205497b</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\e1d25f75350678239628d21e0205497b.mdl">
+      <Link>Assets\AtomicEngineData\Cache\e1d25f75350678239628d21e0205497b.mdl</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\e1fec468df493d1edc3ab01ebd5b3b31">
+      <Link>Assets\AtomicEngineData\Cache\e1fec468df493d1edc3ab01ebd5b3b31</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\e1fec468df493d1edc3ab01ebd5b3b31.mdl">
+      <Link>Assets\AtomicEngineData\Cache\e1fec468df493d1edc3ab01ebd5b3b31.mdl</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\e2377b87bd9aa83e997f8b8f9fd0f60f">
+      <Link>Assets\AtomicEngineData\Cache\e2377b87bd9aa83e997f8b8f9fd0f60f</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\e2377b87bd9aa83e997f8b8f9fd0f60f.mdl">
+      <Link>Assets\AtomicEngineData\Cache\e2377b87bd9aa83e997f8b8f9fd0f60f.mdl</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\e30fa79a0b75b75cbe5b03a73baa28a5">
+      <Link>Assets\AtomicEngineData\Cache\e30fa79a0b75b75cbe5b03a73baa28a5</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\e30fa79a0b75b75cbe5b03a73baa28a5.mdl">
+      <Link>Assets\AtomicEngineData\Cache\e30fa79a0b75b75cbe5b03a73baa28a5.mdl</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\e30fa79a0b75b75cbe5b03a73baa28a5_Idle.ani">
+      <Link>Assets\AtomicEngineData\Cache\e30fa79a0b75b75cbe5b03a73baa28a5_Idle.ani</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\e30fa79a0b75b75cbe5b03a73baa28a5_Run.ani">
+      <Link>Assets\AtomicEngineData\Cache\e30fa79a0b75b75cbe5b03a73baa28a5_Run.ani</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\e4ac33475331b09456aa0a24745df4c2">
+      <Link>Assets\AtomicEngineData\Cache\e4ac33475331b09456aa0a24745df4c2</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\e4ac33475331b09456aa0a24745df4c2.mdl">
+      <Link>Assets\AtomicEngineData\Cache\e4ac33475331b09456aa0a24745df4c2.mdl</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\e80e4afc4052a23523a3934be8204a07">
+      <Link>Assets\AtomicEngineData\Cache\e80e4afc4052a23523a3934be8204a07</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\e80e4afc4052a23523a3934be8204a07_thumbnail.png">
+      <Link>Assets\AtomicEngineData\Cache\e80e4afc4052a23523a3934be8204a07_thumbnail.png</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\e943ba494bc88f0c9975999fdae76a3f">
+      <Link>Assets\AtomicEngineData\Cache\e943ba494bc88f0c9975999fdae76a3f</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\e943ba494bc88f0c9975999fdae76a3f.mdl">
+      <Link>Assets\AtomicEngineData\Cache\e943ba494bc88f0c9975999fdae76a3f.mdl</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\e95cdb4904ae716b59ba62d02af1741c">
+      <Link>Assets\AtomicEngineData\Cache\e95cdb4904ae716b59ba62d02af1741c</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\e95cdb4904ae716b59ba62d02af1741c.mdl">
+      <Link>Assets\AtomicEngineData\Cache\e95cdb4904ae716b59ba62d02af1741c.mdl</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\eb817704337121809fa8e8915e841abb">
+      <Link>Assets\AtomicEngineData\Cache\eb817704337121809fa8e8915e841abb</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\eb817704337121809fa8e8915e841abb.mdl">
+      <Link>Assets\AtomicEngineData\Cache\eb817704337121809fa8e8915e841abb.mdl</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\ec8932eed1fbb61b8f08117069201d65">
+      <Link>Assets\AtomicEngineData\Cache\ec8932eed1fbb61b8f08117069201d65</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\ec8932eed1fbb61b8f08117069201d65_thumbnail.png">
+      <Link>Assets\AtomicEngineData\Cache\ec8932eed1fbb61b8f08117069201d65_thumbnail.png</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\ed62dac35ad39896d5efe0ce60cb1a38">
+      <Link>Assets\AtomicEngineData\Cache\ed62dac35ad39896d5efe0ce60cb1a38</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\ed62dac35ad39896d5efe0ce60cb1a38_thumbnail.png">
+      <Link>Assets\AtomicEngineData\Cache\ed62dac35ad39896d5efe0ce60cb1a38_thumbnail.png</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\ed71c4b4427a8c124c9097872eaffddf">
+      <Link>Assets\AtomicEngineData\Cache\ed71c4b4427a8c124c9097872eaffddf</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\ed71c4b4427a8c124c9097872eaffddf.mdl">
+      <Link>Assets\AtomicEngineData\Cache\ed71c4b4427a8c124c9097872eaffddf.mdl</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\ed78250c5fc83b95b7b317e9118e8a5e">
+      <Link>Assets\AtomicEngineData\Cache\ed78250c5fc83b95b7b317e9118e8a5e</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\ed78250c5fc83b95b7b317e9118e8a5e_thumbnail.png">
+      <Link>Assets\AtomicEngineData\Cache\ed78250c5fc83b95b7b317e9118e8a5e_thumbnail.png</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\ed99b36cfa4c522a9460bf84fc36ca8b">
+      <Link>Assets\AtomicEngineData\Cache\ed99b36cfa4c522a9460bf84fc36ca8b</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\ed99b36cfa4c522a9460bf84fc36ca8b_thumbnail.png">
+      <Link>Assets\AtomicEngineData\Cache\ed99b36cfa4c522a9460bf84fc36ca8b_thumbnail.png</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\f07c5105dbc568e72b4f97ec694962a9">
+      <Link>Assets\AtomicEngineData\Cache\f07c5105dbc568e72b4f97ec694962a9</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\f07c5105dbc568e72b4f97ec694962a9.mdl">
+      <Link>Assets\AtomicEngineData\Cache\f07c5105dbc568e72b4f97ec694962a9.mdl</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\f24c0b3faf75f3e68dfa7e1a1eabfb2d">
+      <Link>Assets\AtomicEngineData\Cache\f24c0b3faf75f3e68dfa7e1a1eabfb2d</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\f24c0b3faf75f3e68dfa7e1a1eabfb2d.mdl">
+      <Link>Assets\AtomicEngineData\Cache\f24c0b3faf75f3e68dfa7e1a1eabfb2d.mdl</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\f2578a2f15e79781597f26c2e2136811">
+      <Link>Assets\AtomicEngineData\Cache\f2578a2f15e79781597f26c2e2136811</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\f2578a2f15e79781597f26c2e2136811.mdl">
+      <Link>Assets\AtomicEngineData\Cache\f2578a2f15e79781597f26c2e2136811.mdl</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\f2a2e2cb4f4c51f43fb69f922f49f4e7">
+      <Link>Assets\AtomicEngineData\Cache\f2a2e2cb4f4c51f43fb69f922f49f4e7</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\f2a2e2cb4f4c51f43fb69f922f49f4e7.mdl">
+      <Link>Assets\AtomicEngineData\Cache\f2a2e2cb4f4c51f43fb69f922f49f4e7.mdl</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\f331a26e834d4fe049072f5a3e8a552f">
+      <Link>Assets\AtomicEngineData\Cache\f331a26e834d4fe049072f5a3e8a552f</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\f331a26e834d4fe049072f5a3e8a552f_thumbnail.png">
+      <Link>Assets\AtomicEngineData\Cache\f331a26e834d4fe049072f5a3e8a552f_thumbnail.png</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\f7092a1bb8ae06a93b66fc9a84bff243">
+      <Link>Assets\AtomicEngineData\Cache\f7092a1bb8ae06a93b66fc9a84bff243</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\f7092a1bb8ae06a93b66fc9a84bff243.mdl">
+      <Link>Assets\AtomicEngineData\Cache\f7092a1bb8ae06a93b66fc9a84bff243.mdl</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\f7284a88669d8a409e8a838e2fdb8269">
+      <Link>Assets\AtomicEngineData\Cache\f7284a88669d8a409e8a838e2fdb8269</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\f7284a88669d8a409e8a838e2fdb8269_thumbnail.png">
+      <Link>Assets\AtomicEngineData\Cache\f7284a88669d8a409e8a838e2fdb8269_thumbnail.png</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\f75f0a1fc24c65fbca61e800a0501a62">
+      <Link>Assets\AtomicEngineData\Cache\f75f0a1fc24c65fbca61e800a0501a62</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\f75f0a1fc24c65fbca61e800a0501a62_thumbnail.png">
+      <Link>Assets\AtomicEngineData\Cache\f75f0a1fc24c65fbca61e800a0501a62_thumbnail.png</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\f832611c5270351dece8dba7ef14e428">
+      <Link>Assets\AtomicEngineData\Cache\f832611c5270351dece8dba7ef14e428</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\f832611c5270351dece8dba7ef14e428.mdl">
+      <Link>Assets\AtomicEngineData\Cache\f832611c5270351dece8dba7ef14e428.mdl</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\f87131a34d667c11604705103aa217b6">
+      <Link>Assets\AtomicEngineData\Cache\f87131a34d667c11604705103aa217b6</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\f87131a34d667c11604705103aa217b6_thumbnail.png">
+      <Link>Assets\AtomicEngineData\Cache\f87131a34d667c11604705103aa217b6_thumbnail.png</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\f93af14b7f4ac31ecc365a685a331f41">
+      <Link>Assets\AtomicEngineData\Cache\f93af14b7f4ac31ecc365a685a331f41</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\f93af14b7f4ac31ecc365a685a331f41_thumbnail.png">
+      <Link>Assets\AtomicEngineData\Cache\f93af14b7f4ac31ecc365a685a331f41_thumbnail.png</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\f946619332129252b4eed0f955d82f32">
+      <Link>Assets\AtomicEngineData\Cache\f946619332129252b4eed0f955d82f32</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\f946619332129252b4eed0f955d82f32.mdl">
+      <Link>Assets\AtomicEngineData\Cache\f946619332129252b4eed0f955d82f32.mdl</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\fa08eaa7e2157ea97972cb7e367b0e9c">
+      <Link>Assets\AtomicEngineData\Cache\fa08eaa7e2157ea97972cb7e367b0e9c</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\fa08eaa7e2157ea97972cb7e367b0e9c.mdl">
+      <Link>Assets\AtomicEngineData\Cache\fa08eaa7e2157ea97972cb7e367b0e9c.mdl</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\fa91a30681d071d59bf1274525b8e2cb">
+      <Link>Assets\AtomicEngineData\Cache\fa91a30681d071d59bf1274525b8e2cb</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\fa91a30681d071d59bf1274525b8e2cb_thumbnail.png">
+      <Link>Assets\AtomicEngineData\Cache\fa91a30681d071d59bf1274525b8e2cb_thumbnail.png</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\fab3152a1a73867b6067589006473df0">
+      <Link>Assets\AtomicEngineData\Cache\fab3152a1a73867b6067589006473df0</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\fab3152a1a73867b6067589006473df0.mdl">
+      <Link>Assets\AtomicEngineData\Cache\fab3152a1a73867b6067589006473df0.mdl</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\fd062a91a3356cc8590dd80d7302765a">
+      <Link>Assets\AtomicEngineData\Cache\fd062a91a3356cc8590dd80d7302765a</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\fd062a91a3356cc8590dd80d7302765a_thumbnail.png">
+      <Link>Assets\AtomicEngineData\Cache\fd062a91a3356cc8590dd80d7302765a_thumbnail.png</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\ff83e8a7cfcefc18cb373735c3ae4084">
+      <Link>Assets\AtomicEngineData\Cache\ff83e8a7cfcefc18cb373735c3ae4084</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Cache\ff83e8a7cfcefc18cb373735c3ae4084_thumbnail.png">
+      <Link>Assets\AtomicEngineData\Cache\ff83e8a7cfcefc18cb373735c3ae4084_thumbnail.png</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Data\ScreenJoystick.xml">
+      <Link>Assets\AtomicEngineData\Data\ScreenJoystick.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Materials\Appentis_Texture.xml">
+      <Link>Assets\AtomicEngineData\Materials\Appentis_Texture.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Materials\Awning_Texture.xml">
+      <Link>Assets\AtomicEngineData\Materials\Awning_Texture.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Materials\Barrel.xml">
+      <Link>Assets\AtomicEngineData\Materials\Barrel.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Materials\Basin_Texture.xml">
+      <Link>Assets\AtomicEngineData\Materials\Basin_Texture.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Materials\Bed1_1_Texture.xml">
+      <Link>Assets\AtomicEngineData\Materials\Bed1_1_Texture.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Materials\Bed1_2_Texture.xml">
+      <Link>Assets\AtomicEngineData\Materials\Bed1_2_Texture.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Materials\Bed2_Texture.xml">
+      <Link>Assets\AtomicEngineData\Materials\Bed2_Texture.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Materials\Bench1_Texture.xml">
+      <Link>Assets\AtomicEngineData\Materials\Bench1_Texture.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Materials\BlueGrid.xml">
+      <Link>Assets\AtomicEngineData\Materials\BlueGrid.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Materials\Books_Texture.xml">
+      <Link>Assets\AtomicEngineData\Materials\Books_Texture.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Materials\Bottle_Texture.xml">
+      <Link>Assets\AtomicEngineData\Materials\Bottle_Texture.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Materials\Box.xml">
+      <Link>Assets\AtomicEngineData\Materials\Box.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Materials\Bucket1_Texture.xml">
+      <Link>Assets\AtomicEngineData\Materials\Bucket1_Texture.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Materials\Bucket2_Texture.xml">
+      <Link>Assets\AtomicEngineData\Materials\Bucket2_Texture.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Materials\Building1_1_Texture.xml">
+      <Link>Assets\AtomicEngineData\Materials\Building1_1_Texture.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Materials\Building2bis_2_Texture.xml">
+      <Link>Assets\AtomicEngineData\Materials\Building2bis_2_Texture.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Materials\Building2_1Texture.xml">
+      <Link>Assets\AtomicEngineData\Materials\Building2_1Texture.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Materials\Building3_Texture.xml">
+      <Link>Assets\AtomicEngineData\Materials\Building3_Texture.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Materials\Building4_1_Texture.xml">
+      <Link>Assets\AtomicEngineData\Materials\Building4_1_Texture.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Materials\Building4_2_Texture.xml">
+      <Link>Assets\AtomicEngineData\Materials\Building4_2_Texture.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Materials\Building5_Texture.xml">
+      <Link>Assets\AtomicEngineData\Materials\Building5_Texture.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Materials\Carpet1_1_Texture.xml">
+      <Link>Assets\AtomicEngineData\Materials\Carpet1_1_Texture.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Materials\Carpet1_2_Texture.xml">
+      <Link>Assets\AtomicEngineData\Materials\Carpet1_2_Texture.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Materials\Carpet2_1_Texture.xml">
+      <Link>Assets\AtomicEngineData\Materials\Carpet2_1_Texture.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Materials\Chair1_Texture.xml">
+      <Link>Assets\AtomicEngineData\Materials\Chair1_Texture.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Materials\Chest_Texture.xml">
+      <Link>Assets\AtomicEngineData\Materials\Chest_Texture.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Materials\Coffer.xml">
+      <Link>Assets\AtomicEngineData\Materials\Coffer.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Materials\Coffer2.xml">
+      <Link>Assets\AtomicEngineData\Materials\Coffer2.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Materials\Crate.xml">
+      <Link>Assets\AtomicEngineData\Materials\Crate.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Materials\DemoTerrain.xml">
+      <Link>Assets\AtomicEngineData\Materials\DemoTerrain.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Materials\Door_Texture.xml">
+      <Link>Assets\AtomicEngineData\Materials\Door_Texture.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Materials\Fire_Texture.xml">
+      <Link>Assets\AtomicEngineData\Materials\Fire_Texture.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Materials\FlourBags.xml">
+      <Link>Assets\AtomicEngineData\Materials\FlourBags.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Materials\Furniture1_Texture.xml">
+      <Link>Assets\AtomicEngineData\Materials\Furniture1_Texture.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Materials\Furniture2_1_Texture.xml">
+      <Link>Assets\AtomicEngineData\Materials\Furniture2_1_Texture.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Materials\Furniture3_1_Texture.xml">
+      <Link>Assets\AtomicEngineData\Materials\Furniture3_1_Texture.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Materials\Furniture3_2_Texture.xml">
+      <Link>Assets\AtomicEngineData\Materials\Furniture3_2_Texture.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Materials\Furniture4_Texture.xml">
+      <Link>Assets\AtomicEngineData\Materials\Furniture4_Texture.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Materials\Horseshoe_Texture.xml">
+      <Link>Assets\AtomicEngineData\Materials\Horseshoe_Texture.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Materials\InkStand_Texture.xml">
+      <Link>Assets\AtomicEngineData\Materials\InkStand_Texture.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Materials\Lantern.xml">
+      <Link>Assets\AtomicEngineData\Materials\Lantern.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Materials\LightPost.xml">
+      <Link>Assets\AtomicEngineData\Materials\LightPost.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Materials\LogPile.xml">
+      <Link>Assets\AtomicEngineData\Materials\LogPile.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Materials\Optimized Bark Material.xml">
+      <Link>Assets\AtomicEngineData\Materials\Optimized Bark Material.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Materials\Optimized Leaf Material.xml">
+      <Link>Assets\AtomicEngineData\Materials\Optimized Leaf Material.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Materials\Painting1_Texture.xml">
+      <Link>Assets\AtomicEngineData\Materials\Painting1_Texture.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Materials\Painting2_Texture.xml">
+      <Link>Assets\AtomicEngineData\Materials\Painting2_Texture.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Materials\Pallet.xml">
+      <Link>Assets\AtomicEngineData\Materials\Pallet.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Materials\Pot3.xml">
+      <Link>Assets\AtomicEngineData\Materials\Pot3.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Materials\Pots.xml">
+      <Link>Assets\AtomicEngineData\Materials\Pots.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Materials\Robot_01_Diffuse.xml">
+      <Link>Assets\AtomicEngineData\Materials\Robot_01_Diffuse.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Materials\Shelves1_Texture.xml">
+      <Link>Assets\AtomicEngineData\Materials\Shelves1_Texture.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Materials\Shield_Texture.xml">
+      <Link>Assets\AtomicEngineData\Materials\Shield_Texture.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Materials\Shutter1_Texture.xml">
+      <Link>Assets\AtomicEngineData\Materials\Shutter1_Texture.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Materials\Shutter2_Texture.xml">
+      <Link>Assets\AtomicEngineData\Materials\Shutter2_Texture.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Materials\Sign1_Texture.xml">
+      <Link>Assets\AtomicEngineData\Materials\Sign1_Texture.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Materials\Sign2_Texture.xml">
+      <Link>Assets\AtomicEngineData\Materials\Sign2_Texture.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Materials\Sign4_Texture.xml">
+      <Link>Assets\AtomicEngineData\Materials\Sign4_Texture.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Materials\Stool1_Texture.xml">
+      <Link>Assets\AtomicEngineData\Materials\Stool1_Texture.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Materials\Stool2_Texture.xml">
+      <Link>Assets\AtomicEngineData\Materials\Stool2_Texture.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Materials\Table1_Texture.xml">
+      <Link>Assets\AtomicEngineData\Materials\Table1_Texture.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Materials\Table2_Texture.xml">
+      <Link>Assets\AtomicEngineData\Materials\Table2_Texture.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Materials\Table3_Texture.xml">
+      <Link>Assets\AtomicEngineData\Materials\Table3_Texture.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Materials\Table4_Texture.xml">
+      <Link>Assets\AtomicEngineData\Materials\Table4_Texture.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Materials\Tankard_Texture.xml">
+      <Link>Assets\AtomicEngineData\Materials\Tankard_Texture.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Materials\Walls.xml">
+      <Link>Assets\AtomicEngineData\Materials\Walls.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Materials\weathercock_Texture.xml">
+      <Link>Assets\AtomicEngineData\Materials\weathercock_Texture.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Materials\Windows_Texture.xml">
+      <Link>Assets\AtomicEngineData\Materials\Windows_Texture.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Materials\WoodenBarrier.xml">
+      <Link>Assets\AtomicEngineData\Materials\WoodenBarrier.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Materials\Woodensign_Texture.xml">
+      <Link>Assets\AtomicEngineData\Materials\Woodensign_Texture.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Models\Appentis_Appentis.mdl">
+      <Link>Assets\AtomicEngineData\Models\Appentis_Appentis.mdl</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Models\Awning_Awning.mdl">
+      <Link>Assets\AtomicEngineData\Models\Awning_Awning.mdl</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Models\Barrel_Barrel.mdl">
+      <Link>Assets\AtomicEngineData\Models\Barrel_Barrel.mdl</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Models\Basin_Basin.mdl">
+      <Link>Assets\AtomicEngineData\Models\Basin_Basin.mdl</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Models\Bed1_1_Bed1_1.mdl">
+      <Link>Assets\AtomicEngineData\Models\Bed1_1_Bed1_1.mdl</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Models\Bed1_2_Bed1_2.mdl">
+      <Link>Assets\AtomicEngineData\Models\Bed1_2_Bed1_2.mdl</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Models\Bed2_Bed2.mdl">
+      <Link>Assets\AtomicEngineData\Models\Bed2_Bed2.mdl</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Models\Bench1_Bench1.mdl">
+      <Link>Assets\AtomicEngineData\Models\Bench1_Bench1.mdl</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Models\Book1_Book1.mdl">
+      <Link>Assets\AtomicEngineData\Models\Book1_Book1.mdl</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Models\Book2_Book2.mdl">
+      <Link>Assets\AtomicEngineData\Models\Book2_Book2.mdl</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Models\Book4_Book4.mdl">
+      <Link>Assets\AtomicEngineData\Models\Book4_Book4.mdl</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Models\Book5_Book5.mdl">
+      <Link>Assets\AtomicEngineData\Models\Book5_Book5.mdl</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Models\Book6_Book6.mdl">
+      <Link>Assets\AtomicEngineData\Models\Book6_Book6.mdl</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Models\Book8_Book8.mdl">
+      <Link>Assets\AtomicEngineData\Models\Book8_Book8.mdl</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Models\Books1_Books1.mdl">
+      <Link>Assets\AtomicEngineData\Models\Books1_Books1.mdl</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Models\Books2_Books2.mdl">
+      <Link>Assets\AtomicEngineData\Models\Books2_Books2.mdl</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Models\Books3_Books3.mdl">
+      <Link>Assets\AtomicEngineData\Models\Books3_Books3.mdl</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Models\Books4_Books4.mdl">
+      <Link>Assets\AtomicEngineData\Models\Books4_Books4.mdl</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Models\Bottle_Bottle.mdl">
+      <Link>Assets\AtomicEngineData\Models\Bottle_Bottle.mdl</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Models\Box.mdl">
+      <Link>Assets\AtomicEngineData\Models\Box.mdl</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Models\Box1_Box1.mdl">
+      <Link>Assets\AtomicEngineData\Models\Box1_Box1.mdl</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Models\Box2_Box1.mdl">
+      <Link>Assets\AtomicEngineData\Models\Box2_Box1.mdl</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Models\Bucket1_Bucket1.mdl">
+      <Link>Assets\AtomicEngineData\Models\Bucket1_Bucket1.mdl</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Models\Bucket2_Bucket2.mdl">
+      <Link>Assets\AtomicEngineData\Models\Bucket2_Bucket2.mdl</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Models\Building1_1_SEPARATED_Building1_1_Bottom.mdl">
+      <Link>Assets\AtomicEngineData\Models\Building1_1_SEPARATED_Building1_1_Bottom.mdl</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Models\Building1_1_SEPARATED_Building1_1_Top.mdl">
+      <Link>Assets\AtomicEngineData\Models\Building1_1_SEPARATED_Building1_1_Top.mdl</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Models\Building1_1_SEPARATED_Windows_Building1_1.mdl">
+      <Link>Assets\AtomicEngineData\Models\Building1_1_SEPARATED_Windows_Building1_1.mdl</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Models\Building2bis_2_CLOSED_Building2bis_2_CLOSED.mdl">
+      <Link>Assets\AtomicEngineData\Models\Building2bis_2_CLOSED_Building2bis_2_CLOSED.mdl</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Models\Building2_1_SEPARATED_Building2_1_Bottom.mdl">
+      <Link>Assets\AtomicEngineData\Models\Building2_1_SEPARATED_Building2_1_Bottom.mdl</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Models\Building2_1_SEPARATED_Building2_1_Top.mdl">
+      <Link>Assets\AtomicEngineData\Models\Building2_1_SEPARATED_Building2_1_Top.mdl</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Models\Building2_1_SEPARATED_Windows.mdl">
+      <Link>Assets\AtomicEngineData\Models\Building2_1_SEPARATED_Windows.mdl</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Models\Building3_SEPARATED_Building3_Bottom.mdl">
+      <Link>Assets\AtomicEngineData\Models\Building3_SEPARATED_Building3_Bottom.mdl</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Models\Building3_SEPARATED_Building3_Top.mdl">
+      <Link>Assets\AtomicEngineData\Models\Building3_SEPARATED_Building3_Top.mdl</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Models\Building4_1_SEPARATED_Building4_1_Bottom.mdl">
+      <Link>Assets\AtomicEngineData\Models\Building4_1_SEPARATED_Building4_1_Bottom.mdl</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Models\Building4_1_SEPARATED_Building4_1_Top.mdl">
+      <Link>Assets\AtomicEngineData\Models\Building4_1_SEPARATED_Building4_1_Top.mdl</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Models\Building4_1_SEPARATED_Windows.mdl">
+      <Link>Assets\AtomicEngineData\Models\Building4_1_SEPARATED_Windows.mdl</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Models\Building4_2_SEPARATED_Building4_2_Bottom.mdl">
+      <Link>Assets\AtomicEngineData\Models\Building4_2_SEPARATED_Building4_2_Bottom.mdl</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Models\Building4_2_SEPARATED_Building4_2_Top.mdl">
+      <Link>Assets\AtomicEngineData\Models\Building4_2_SEPARATED_Building4_2_Top.mdl</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Models\Building4_2_SEPARATED_Windows.mdl">
+      <Link>Assets\AtomicEngineData\Models\Building4_2_SEPARATED_Windows.mdl</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Models\Building5_CLOSED_Building5_CLOSED.mdl">
+      <Link>Assets\AtomicEngineData\Models\Building5_CLOSED_Building5_CLOSED.mdl</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Models\Building5_SEPARATED_Building5_Bottom.mdl">
+      <Link>Assets\AtomicEngineData\Models\Building5_SEPARATED_Building5_Bottom.mdl</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Models\Building5_SEPARATED_Building5_Top.mdl">
+      <Link>Assets\AtomicEngineData\Models\Building5_SEPARATED_Building5_Top.mdl</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Models\Building5_SEPARATED_Windows.mdl">
+      <Link>Assets\AtomicEngineData\Models\Building5_SEPARATED_Windows.mdl</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Models\Bush1_Mesh.mdl">
+      <Link>Assets\AtomicEngineData\Models\Bush1_Mesh.mdl</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Models\Bush2_Mesh.mdl">
+      <Link>Assets\AtomicEngineData\Models\Bush2_Mesh.mdl</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Models\Carpet1_1_Carpet1_1.mdl">
+      <Link>Assets\AtomicEngineData\Models\Carpet1_1_Carpet1_1.mdl</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Models\Carpet1_2_Carpet1_2.mdl">
+      <Link>Assets\AtomicEngineData\Models\Carpet1_2_Carpet1_2.mdl</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Models\Carpet2_1_Carpet2.mdl">
+      <Link>Assets\AtomicEngineData\Models\Carpet2_1_Carpet2.mdl</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Models\Chair1_Chair1.mdl">
+      <Link>Assets\AtomicEngineData\Models\Chair1_Chair1.mdl</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Models\Chest_Chest.mdl">
+      <Link>Assets\AtomicEngineData\Models\Chest_Chest.mdl</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Models\Coffer2_Coffer2.mdl">
+      <Link>Assets\AtomicEngineData\Models\Coffer2_Coffer2.mdl</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Models\Coffer_Coffer.mdl">
+      <Link>Assets\AtomicEngineData\Models\Coffer_Coffer.mdl</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Models\Crate.mdl">
+      <Link>Assets\AtomicEngineData\Models\Crate.mdl</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Models\Door_Door.mdl">
+      <Link>Assets\AtomicEngineData\Models\Door_Door.mdl</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Models\Fire_Fire.mdl">
+      <Link>Assets\AtomicEngineData\Models\Fire_Fire.mdl</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Models\FlourBag1_FlourBags.mdl">
+      <Link>Assets\AtomicEngineData\Models\FlourBag1_FlourBags.mdl</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Models\FlourBag2_FlourBag2.mdl">
+      <Link>Assets\AtomicEngineData\Models\FlourBag2_FlourBag2.mdl</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Models\FlourBags_FlourBag01.mdl">
+      <Link>Assets\AtomicEngineData\Models\FlourBags_FlourBag01.mdl</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Models\Furniture1_Furniture1.mdl">
+      <Link>Assets\AtomicEngineData\Models\Furniture1_Furniture1.mdl</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Models\Furniture2_2_Furniture2_2.mdl">
+      <Link>Assets\AtomicEngineData\Models\Furniture2_2_Furniture2_2.mdl</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Models\Furniture3_1_Furniture3_1.mdl">
+      <Link>Assets\AtomicEngineData\Models\Furniture3_1_Furniture3_1.mdl</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Models\Furniture3_2_Furniture3_2.mdl">
+      <Link>Assets\AtomicEngineData\Models\Furniture3_2_Furniture3_2.mdl</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Models\Furniture4_Furniture4.mdl">
+      <Link>Assets\AtomicEngineData\Models\Furniture4_Furniture4.mdl</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Models\Horseshoe_Horseshoe.mdl">
+      <Link>Assets\AtomicEngineData\Models\Horseshoe_Horseshoe.mdl</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Models\Inkstand_Inkstand.mdl">
+      <Link>Assets\AtomicEngineData\Models\Inkstand_Inkstand.mdl</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Models\Jack.mdl">
+      <Link>Assets\AtomicEngineData\Models\Jack.mdl</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Models\Jack_Walk.ani">
+      <Link>Assets\AtomicEngineData\Models\Jack_Walk.ani</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Models\Lantern2_Lantern.mdl">
+      <Link>Assets\AtomicEngineData\Models\Lantern2_Lantern.mdl</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Models\Lantern_Lantern.mdl">
+      <Link>Assets\AtomicEngineData\Models\Lantern_Lantern.mdl</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Models\LogPile_LogPile.mdl">
+      <Link>Assets\AtomicEngineData\Models\LogPile_LogPile.mdl</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Models\Painting1_Painting1.mdl">
+      <Link>Assets\AtomicEngineData\Models\Painting1_Painting1.mdl</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Models\Painting2_Painting2.mdl">
+      <Link>Assets\AtomicEngineData\Models\Painting2_Painting2.mdl</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Models\Pallet.mdl">
+      <Link>Assets\AtomicEngineData\Models\Pallet.mdl</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Models\Plane.mdl">
+      <Link>Assets\AtomicEngineData\Models\Plane.mdl</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Models\Plant1_Mesh.mdl">
+      <Link>Assets\AtomicEngineData\Models\Plant1_Mesh.mdl</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Models\Plant3_Mesh.mdl">
+      <Link>Assets\AtomicEngineData\Models\Plant3_Mesh.mdl</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Models\PostLight_Post.mdl">
+      <Link>Assets\AtomicEngineData\Models\PostLight_Post.mdl</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Models\Pot1_pot1.mdl">
+      <Link>Assets\AtomicEngineData\Models\Pot1_pot1.mdl</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Models\Pot2_pot1.mdl">
+      <Link>Assets\AtomicEngineData\Models\Pot2_pot1.mdl</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Models\Pot3_Pot3.mdl">
+      <Link>Assets\AtomicEngineData\Models\Pot3_Pot3.mdl</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Models\Shelves_Shelves1.mdl">
+      <Link>Assets\AtomicEngineData\Models\Shelves_Shelves1.mdl</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Models\Shield_Shield.mdl">
+      <Link>Assets\AtomicEngineData\Models\Shield_Shield.mdl</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Models\Shutter1_Shutter1.mdl">
+      <Link>Assets\AtomicEngineData\Models\Shutter1_Shutter1.mdl</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Models\Shutter2_Shutter2.mdl">
+      <Link>Assets\AtomicEngineData\Models\Shutter2_Shutter2.mdl</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Models\Sign1_Sign1.mdl">
+      <Link>Assets\AtomicEngineData\Models\Sign1_Sign1.mdl</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Models\Sign2_Sign2.mdl">
+      <Link>Assets\AtomicEngineData\Models\Sign2_Sign2.mdl</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Models\Sign4_Sign4.mdl">
+      <Link>Assets\AtomicEngineData\Models\Sign4_Sign4.mdl</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Models\Stool1_Stool1.mdl">
+      <Link>Assets\AtomicEngineData\Models\Stool1_Stool1.mdl</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Models\Stool2_Stool2.mdl">
+      <Link>Assets\AtomicEngineData\Models\Stool2_Stool2.mdl</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Models\Table1_Table1.mdl">
+      <Link>Assets\AtomicEngineData\Models\Table1_Table1.mdl</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Models\Table2_Table2.mdl">
+      <Link>Assets\AtomicEngineData\Models\Table2_Table2.mdl</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Models\Table3_Table3.mdl">
+      <Link>Assets\AtomicEngineData\Models\Table3_Table3.mdl</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Models\Table4_Table4.mdl">
+      <Link>Assets\AtomicEngineData\Models\Table4_Table4.mdl</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Models\Tankard1_Tankard.mdl">
+      <Link>Assets\AtomicEngineData\Models\Tankard1_Tankard.mdl</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Models\Tankard2_Tankard2.mdl">
+      <Link>Assets\AtomicEngineData\Models\Tankard2_Tankard2.mdl</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Models\Tree 2_Mesh.mdl">
+      <Link>Assets\AtomicEngineData\Models\Tree 2_Mesh.mdl</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Models\Tree_Mesh.mdl">
+      <Link>Assets\AtomicEngineData\Models\Tree_Mesh.mdl</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Models\Wall1_Wall1.mdl">
+      <Link>Assets\AtomicEngineData\Models\Wall1_Wall1.mdl</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Models\Wall2_Wall2.mdl">
+      <Link>Assets\AtomicEngineData\Models\Wall2_Wall2.mdl</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Models\Wall3_Wall3.mdl">
+      <Link>Assets\AtomicEngineData\Models\Wall3_Wall3.mdl</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Models\Weathercock_Weathercock.mdl">
+      <Link>Assets\AtomicEngineData\Models\Weathercock_Weathercock.mdl</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Models\WoodenBarrier_woodenBarrier.mdl">
+      <Link>Assets\AtomicEngineData\Models\WoodenBarrier_woodenBarrier.mdl</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Models\Woodensign_Woodensign.mdl">
+      <Link>Assets\AtomicEngineData\Models\Woodensign_Woodensign.mdl</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Music\StoryTime.ogg">
+      <Link>Assets\AtomicEngineData\Music\StoryTime.ogg</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Roboman\Robo_01.fbx">
+      <Link>Assets\AtomicEngineData\Roboman\Robo_01.fbx</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Roboman\Materials\Robot_01_mat.material">
+      <Link>Assets\AtomicEngineData\Roboman\Materials\Robot_01_mat.material</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Scenes\ToonTown.scene">
+      <Link>Assets\AtomicEngineData\Scenes\ToonTown.scene</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Textures\Appentis_Texture.png">
+      <Link>Assets\AtomicEngineData\Textures\Appentis_Texture.png</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Textures\AtomicRobot.png">
+      <Link>Assets\AtomicEngineData\Textures\AtomicRobot.png</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Textures\Awning_Texture.png">
+      <Link>Assets\AtomicEngineData\Textures\Awning_Texture.png</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Textures\Barrel.png">
+      <Link>Assets\AtomicEngineData\Textures\Barrel.png</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Textures\Basin_Texture.png">
+      <Link>Assets\AtomicEngineData\Textures\Basin_Texture.png</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Textures\Bed1_1_Texture.png">
+      <Link>Assets\AtomicEngineData\Textures\Bed1_1_Texture.png</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Textures\Bed1_2_Texture.png">
+      <Link>Assets\AtomicEngineData\Textures\Bed1_2_Texture.png</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Textures\Bed2_Texture.png">
+      <Link>Assets\AtomicEngineData\Textures\Bed2_Texture.png</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Textures\Bench1_Texture.png">
+      <Link>Assets\AtomicEngineData\Textures\Bench1_Texture.png</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Textures\BlueGrid.png">
+      <Link>Assets\AtomicEngineData\Textures\BlueGrid.png</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Textures\Books_Texture.png">
+      <Link>Assets\AtomicEngineData\Textures\Books_Texture.png</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Textures\Bottle_Texture.png">
+      <Link>Assets\AtomicEngineData\Textures\Bottle_Texture.png</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Textures\Box.png">
+      <Link>Assets\AtomicEngineData\Textures\Box.png</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Textures\BrightDay1_NegX.dds">
+      <Link>Assets\AtomicEngineData\Textures\BrightDay1_NegX.dds</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Textures\BrightDay1_NegY.dds">
+      <Link>Assets\AtomicEngineData\Textures\BrightDay1_NegY.dds</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Textures\BrightDay1_NegZ.dds">
+      <Link>Assets\AtomicEngineData\Textures\BrightDay1_NegZ.dds</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Textures\BrightDay1_PosX.dds">
+      <Link>Assets\AtomicEngineData\Textures\BrightDay1_PosX.dds</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Textures\BrightDay1_PosY.dds">
+      <Link>Assets\AtomicEngineData\Textures\BrightDay1_PosY.dds</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Textures\BrightDay1_PosZ.dds">
+      <Link>Assets\AtomicEngineData\Textures\BrightDay1_PosZ.dds</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Textures\Bucket1_Texture.png">
+      <Link>Assets\AtomicEngineData\Textures\Bucket1_Texture.png</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Textures\Bucket2_Texture.png">
+      <Link>Assets\AtomicEngineData\Textures\Bucket2_Texture.png</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Textures\Building1_1_Texture.png">
+      <Link>Assets\AtomicEngineData\Textures\Building1_1_Texture.png</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Textures\Building2bis_2_Texture.png">
+      <Link>Assets\AtomicEngineData\Textures\Building2bis_2_Texture.png</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Textures\Building2_1Texture.png">
+      <Link>Assets\AtomicEngineData\Textures\Building2_1Texture.png</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Textures\Building3_Texture.png">
+      <Link>Assets\AtomicEngineData\Textures\Building3_Texture.png</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Textures\Building4_1_Texture.png">
+      <Link>Assets\AtomicEngineData\Textures\Building4_1_Texture.png</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Textures\Building4_2_Texture.png">
+      <Link>Assets\AtomicEngineData\Textures\Building4_2_Texture.png</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Textures\Building5_Texture.png">
+      <Link>Assets\AtomicEngineData\Textures\Building5_Texture.png</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Textures\Carpet1_1_Texture.png">
+      <Link>Assets\AtomicEngineData\Textures\Carpet1_1_Texture.png</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Textures\Carpet1_2_Texture.png">
+      <Link>Assets\AtomicEngineData\Textures\Carpet1_2_Texture.png</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Textures\Carpet2_1_Texture.png">
+      <Link>Assets\AtomicEngineData\Textures\Carpet2_1_Texture.png</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Textures\Chair1_Texture.png">
+      <Link>Assets\AtomicEngineData\Textures\Chair1_Texture.png</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Textures\Chest_Texture.png">
+      <Link>Assets\AtomicEngineData\Textures\Chest_Texture.png</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Textures\Coffer.png">
+      <Link>Assets\AtomicEngineData\Textures\Coffer.png</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Textures\Coffer2.png">
+      <Link>Assets\AtomicEngineData\Textures\Coffer2.png</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Textures\Crate.png">
+      <Link>Assets\AtomicEngineData\Textures\Crate.png</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Textures\diffuse.png">
+      <Link>Assets\AtomicEngineData\Textures\diffuse.png</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Textures\Door_Texture.png">
+      <Link>Assets\AtomicEngineData\Textures\Door_Texture.png</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Textures\Eject_Seat.png">
+      <Link>Assets\AtomicEngineData\Textures\Eject_Seat.png</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Textures\Enemy1.png">
+      <Link>Assets\AtomicEngineData\Textures\Enemy1.png</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Textures\Fire_Texture.png">
+      <Link>Assets\AtomicEngineData\Textures\Fire_Texture.png</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Textures\Flare.dds">
+      <Link>Assets\AtomicEngineData\Textures\Flare.dds</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Textures\FlourBags.png">
+      <Link>Assets\AtomicEngineData\Textures\FlourBags.png</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Textures\Furniture1_Texture.png">
+      <Link>Assets\AtomicEngineData\Textures\Furniture1_Texture.png</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Textures\Furniture2_1_Texture.png">
+      <Link>Assets\AtomicEngineData\Textures\Furniture2_1_Texture.png</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Textures\Furniture3_1_Texture.png">
+      <Link>Assets\AtomicEngineData\Textures\Furniture3_1_Texture.png</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Textures\Furniture3_2_Texture.png">
+      <Link>Assets\AtomicEngineData\Textures\Furniture3_2_Texture.png</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Textures\Furniture4_Texture.png">
+      <Link>Assets\AtomicEngineData\Textures\Furniture4_Texture.png</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Textures\Glass_Cockpit.png">
+      <Link>Assets\AtomicEngineData\Textures\Glass_Cockpit.png</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Textures\Grass.dds">
+      <Link>Assets\AtomicEngineData\Textures\Grass.dds</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Textures\Ground_Texture03.jpg">
+      <Link>Assets\AtomicEngineData\Textures\Ground_Texture03.jpg</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Textures\Ground_Texture06.jpg">
+      <Link>Assets\AtomicEngineData\Textures\Ground_Texture06.jpg</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Textures\Ground_Texture07.jpg">
+      <Link>Assets\AtomicEngineData\Textures\Ground_Texture07.jpg</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Textures\HeightMap.png">
+      <Link>Assets\AtomicEngineData\Textures\HeightMap.png</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Textures\Horseshoe_Texture.png">
+      <Link>Assets\AtomicEngineData\Textures\Horseshoe_Texture.png</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Textures\InkStand_Texture.png">
+      <Link>Assets\AtomicEngineData\Textures\InkStand_Texture.png</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Textures\Jack_body_color.jpg">
+      <Link>Assets\AtomicEngineData\Textures\Jack_body_color.jpg</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Textures\Jack_face.jpg">
+      <Link>Assets\AtomicEngineData\Textures\Jack_face.jpg</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Textures\Lantern.png">
+      <Link>Assets\AtomicEngineData\Textures\Lantern.png</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Textures\LightPost.png">
+      <Link>Assets\AtomicEngineData\Textures\LightPost.png</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Textures\Logo.png">
+      <Link>Assets\AtomicEngineData\Textures\Logo.png</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Textures\Logo.xml">
+      <Link>Assets\AtomicEngineData\Textures\Logo.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Textures\LogoLarge.png">
+      <Link>Assets\AtomicEngineData\Textures\LogoLarge.png</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Textures\LogoLarge.xml">
+      <Link>Assets\AtomicEngineData\Textures\LogoLarge.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Textures\LogPile.png">
+      <Link>Assets\AtomicEngineData\Textures\LogPile.png</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Textures\Mushroom.dds">
+      <Link>Assets\AtomicEngineData\Textures\Mushroom.dds</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Textures\OldUI.png">
+      <Link>Assets\AtomicEngineData\Textures\OldUI.png</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Textures\OldUI.xml">
+      <Link>Assets\AtomicEngineData\Textures\OldUI.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Textures\Painting1_Texture.png">
+      <Link>Assets\AtomicEngineData\Textures\Painting1_Texture.png</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Textures\Painting2_Texture.png">
+      <Link>Assets\AtomicEngineData\Textures\Painting2_Texture.png</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Textures\Pallet.png">
+      <Link>Assets\AtomicEngineData\Textures\Pallet.png</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Textures\Player1.png">
+      <Link>Assets\AtomicEngineData\Textures\Player1.png</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Textures\Pot3.png">
+      <Link>Assets\AtomicEngineData\Textures\Pot3.png</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Textures\Pots.png">
+      <Link>Assets\AtomicEngineData\Textures\Pots.png</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Textures\Robot_01_Diffuse.png">
+      <Link>Assets\AtomicEngineData\Textures\Robot_01_Diffuse.png</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Textures\Shelves1_Texture.png">
+      <Link>Assets\AtomicEngineData\Textures\Shelves1_Texture.png</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Textures\Shield_Texture.png">
+      <Link>Assets\AtomicEngineData\Textures\Shield_Texture.png</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Textures\Shutter1_Texture.png">
+      <Link>Assets\AtomicEngineData\Textures\Shutter1_Texture.png</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Textures\Shutter2_Texture.png">
+      <Link>Assets\AtomicEngineData\Textures\Shutter2_Texture.png</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Textures\Sign1_Texture.png">
+      <Link>Assets\AtomicEngineData\Textures\Sign1_Texture.png</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Textures\Sign2_Texture.png">
+      <Link>Assets\AtomicEngineData\Textures\Sign2_Texture.png</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Textures\Sign4_Texture.png">
+      <Link>Assets\AtomicEngineData\Textures\Sign4_Texture.png</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Textures\Skybox.xml">
+      <Link>Assets\AtomicEngineData\Textures\Skybox.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Textures\Smoke.dds">
+      <Link>Assets\AtomicEngineData\Textures\Smoke.dds</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Textures\StoneDiffuse.dds">
+      <Link>Assets\AtomicEngineData\Textures\StoneDiffuse.dds</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Textures\StoneNormal.dds">
+      <Link>Assets\AtomicEngineData\Textures\StoneNormal.dds</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Textures\Stool1_Texture.png">
+      <Link>Assets\AtomicEngineData\Textures\Stool1_Texture.png</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Textures\Stool2_Texture.png">
+      <Link>Assets\AtomicEngineData\Textures\Stool2_Texture.png</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Textures\Table1_Texture.png">
+      <Link>Assets\AtomicEngineData\Textures\Table1_Texture.png</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Textures\Table2_Texture.png">
+      <Link>Assets\AtomicEngineData\Textures\Table2_Texture.png</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Textures\Table3_Texture.png">
+      <Link>Assets\AtomicEngineData\Textures\Table3_Texture.png</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Textures\Table4_Texture.png">
+      <Link>Assets\AtomicEngineData\Textures\Table4_Texture.png</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Textures\Tankard_Texture.png">
+      <Link>Assets\AtomicEngineData\Textures\Tankard_Texture.png</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Textures\TerrainDetail1.dds">
+      <Link>Assets\AtomicEngineData\Textures\TerrainDetail1.dds</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Textures\TerrainDetail2.dds">
+      <Link>Assets\AtomicEngineData\Textures\TerrainDetail2.dds</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Textures\TerrainDetail3.dds">
+      <Link>Assets\AtomicEngineData\Textures\TerrainDetail3.dds</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Textures\TerrainHeightMap.png">
+      <Link>Assets\AtomicEngineData\Textures\TerrainHeightMap.png</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Textures\TerrainWeights.dds">
+      <Link>Assets\AtomicEngineData\Textures\TerrainWeights.dds</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Textures\TerrainWeights.png">
+      <Link>Assets\AtomicEngineData\Textures\TerrainWeights.png</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Textures\TouchInput.png">
+      <Link>Assets\AtomicEngineData\Textures\TouchInput.png</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Textures\UI.png">
+      <Link>Assets\AtomicEngineData\Textures\UI.png</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Textures\UI.xml">
+      <Link>Assets\AtomicEngineData\Textures\UI.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Textures\UrhoDecal.dds">
+      <Link>Assets\AtomicEngineData\Textures\UrhoDecal.dds</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Textures\UrhoDecalAlpha.dds">
+      <Link>Assets\AtomicEngineData\Textures\UrhoDecalAlpha.dds</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Textures\UrhoIcon.icns">
+      <Link>Assets\AtomicEngineData\Textures\UrhoIcon.icns</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Textures\UrhoIcon.png">
+      <Link>Assets\AtomicEngineData\Textures\UrhoIcon.png</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Textures\Walls.png">
+      <Link>Assets\AtomicEngineData\Textures\Walls.png</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Textures\WaterNoise.dds">
+      <Link>Assets\AtomicEngineData\Textures\WaterNoise.dds</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Textures\weathercock_Texture.png">
+      <Link>Assets\AtomicEngineData\Textures\weathercock_Texture.png</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Textures\Windows_Texture.png">
+      <Link>Assets\AtomicEngineData\Textures\Windows_Texture.png</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Textures\WoodenBarrier.png">
+      <Link>Assets\AtomicEngineData\Textures\WoodenBarrier.png</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Textures\Woodensign_Texture.png">
+      <Link>Assets\AtomicEngineData\Textures\Woodensign_Texture.png</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Textures\Editor\BW.png">
+      <Link>Assets\AtomicEngineData\Textures\Editor\BW.png</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Textures\Editor\EditorIcons.png">
+      <Link>Assets\AtomicEngineData\Textures\Editor\EditorIcons.png</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Textures\Editor\EditorIcons.xml">
+      <Link>Assets\AtomicEngineData\Textures\Editor\EditorIcons.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Textures\Editor\HSV20.png">
+      <Link>Assets\AtomicEngineData\Textures\Editor\HSV20.png</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Textures\Editor\IconCamera.png">
+      <Link>Assets\AtomicEngineData\Textures\Editor\IconCamera.png</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Textures\Editor\IconCollisionTrigger.png">
+      <Link>Assets\AtomicEngineData\Textures\Editor\IconCollisionTrigger.png</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Textures\Editor\IconCustomGeometry.png">
+      <Link>Assets\AtomicEngineData\Textures\Editor\IconCustomGeometry.png</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Textures\Editor\IconLight.png">
+      <Link>Assets\AtomicEngineData\Textures\Editor\IconLight.png</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Textures\Editor\IconParticleEmitter.png">
+      <Link>Assets\AtomicEngineData\Textures\Editor\IconParticleEmitter.png</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Textures\Editor\IconPointLight.png">
+      <Link>Assets\AtomicEngineData\Textures\Editor\IconPointLight.png</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Textures\Editor\IconSoundListener.png">
+      <Link>Assets\AtomicEngineData\Textures\Editor\IconSoundListener.png</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Textures\Editor\IconSoundSource.png">
+      <Link>Assets\AtomicEngineData\Textures\Editor\IconSoundSource.png</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Textures\Editor\IconSplinePathPoint.png">
+      <Link>Assets\AtomicEngineData\Textures\Editor\IconSplinePathPoint.png</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Textures\Editor\IconSpotLight.png">
+      <Link>Assets\AtomicEngineData\Textures\Editor\IconSpotLight.png</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Textures\Editor\IconZone.png">
+      <Link>Assets\AtomicEngineData\Textures\Editor\IconZone.png</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Textures\Editor\NoPreviewAvailable.png">
+      <Link>Assets\AtomicEngineData\Textures\Editor\NoPreviewAvailable.png</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Textures\NinjaSnowWar\CloudPlane.dds">
+      <Link>Assets\AtomicEngineData\Textures\NinjaSnowWar\CloudPlane.dds</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Textures\NinjaSnowWar\HealthBarBorder.png">
+      <Link>Assets\AtomicEngineData\Textures\NinjaSnowWar\HealthBarBorder.png</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Textures\NinjaSnowWar\HealthBarInside.png">
+      <Link>Assets\AtomicEngineData\Textures\NinjaSnowWar\HealthBarInside.png</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Textures\NinjaSnowWar\Ninja.dds">
+      <Link>Assets\AtomicEngineData\Textures\NinjaSnowWar\Ninja.dds</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Textures\NinjaSnowWar\Sight.png">
+      <Link>Assets\AtomicEngineData\Textures\NinjaSnowWar\Sight.png</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Textures\NinjaSnowWar\Sight.xml">
+      <Link>Assets\AtomicEngineData\Textures\NinjaSnowWar\Sight.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Textures\NinjaSnowWar\Snow.dds">
+      <Link>Assets\AtomicEngineData\Textures\NinjaSnowWar\Snow.dds</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\Textures\NinjaSnowWar\SnowCrate.dds">
+      <Link>Assets\AtomicEngineData\Textures\NinjaSnowWar\SnowCrate.dds</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\UI\DefaultStyle.xml">
+      <Link>Assets\AtomicEngineData\UI\DefaultStyle.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\UI\EditorColorWheel.xml">
+      <Link>Assets\AtomicEngineData\UI\EditorColorWheel.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\UI\EditorContextMenu.xml">
+      <Link>Assets\AtomicEngineData\UI\EditorContextMenu.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\UI\EditorHierarchyWindow.xml">
+      <Link>Assets\AtomicEngineData\UI\EditorHierarchyWindow.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\UI\EditorIcons.xml">
+      <Link>Assets\AtomicEngineData\UI\EditorIcons.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\UI\EditorInspectorWindow.xml">
+      <Link>Assets\AtomicEngineData\UI\EditorInspectorWindow.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\UI\EditorInspector_Attribute.xml">
+      <Link>Assets\AtomicEngineData\UI\EditorInspector_Attribute.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\UI\EditorInspector_Style.xml">
+      <Link>Assets\AtomicEngineData\UI\EditorInspector_Style.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\UI\EditorInspector_Variable.xml">
+      <Link>Assets\AtomicEngineData\UI\EditorInspector_Variable.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\UI\EditorLayersWindow.xml">
+      <Link>Assets\AtomicEngineData\UI\EditorLayersWindow.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\UI\EditorMaterialWindow.xml">
+      <Link>Assets\AtomicEngineData\UI\EditorMaterialWindow.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\UI\EditorParticleEffectWindow.xml">
+      <Link>Assets\AtomicEngineData\UI\EditorParticleEffectWindow.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\UI\EditorPreferencesDialog.xml">
+      <Link>Assets\AtomicEngineData\UI\EditorPreferencesDialog.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\UI\EditorQuickMenu.xml">
+      <Link>Assets\AtomicEngineData\UI\EditorQuickMenu.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\UI\EditorResourceBrowser.xml">
+      <Link>Assets\AtomicEngineData\UI\EditorResourceBrowser.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\UI\EditorResourceFilterWindow.xml">
+      <Link>Assets\AtomicEngineData\UI\EditorResourceFilterWindow.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\UI\EditorSettingsDialog.xml">
+      <Link>Assets\AtomicEngineData\UI\EditorSettingsDialog.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\UI\EditorSoundTypeWindow.xml">
+      <Link>Assets\AtomicEngineData\UI\EditorSoundTypeWindow.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\UI\EditorSpawnWindow.xml">
+      <Link>Assets\AtomicEngineData\UI\EditorSpawnWindow.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\UI\EditorViewport.xml">
+      <Link>Assets\AtomicEngineData\UI\EditorViewport.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\UI\MessageBox.xml">
+      <Link>Assets\AtomicEngineData\UI\MessageBox.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\UI\OldStyle.xml">
+      <Link>Assets\AtomicEngineData\UI\OldStyle.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\UI\ScreenJoystick.xml">
+      <Link>Assets\AtomicEngineData\UI\ScreenJoystick.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\UI\ScreenJoystickSettings.xml">
+      <Link>Assets\AtomicEngineData\UI\ScreenJoystickSettings.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\UI\ScreenJoystickSettings_NinjaSnowWar.xml">
+      <Link>Assets\AtomicEngineData\UI\ScreenJoystickSettings_NinjaSnowWar.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\UI\ScreenJoystickSettings_Samples.xml">
+      <Link>Assets\AtomicEngineData\UI\ScreenJoystickSettings_Samples.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\UI\ScreenJoystick_NinjaSnowWar.xml">
+      <Link>Assets\AtomicEngineData\UI\ScreenJoystick_NinjaSnowWar.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\UI\ScreenJoystick_Samples.xml">
+      <Link>Assets\AtomicEngineData\UI\ScreenJoystick_Samples.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\AtomicEngineData\UI\UILoadExample.xml">
+      <Link>Assets\AtomicEngineData\UI\UILoadExample.xml</Link>
+    </AndroidAsset>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="UrhoSharpReadme.txt" />
+  </ItemGroup>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\..\packages\UrhoSharp.1.0.149\build\MonoAndroid\UrhoSharp.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\UrhoSharp.1.0.149\build\MonoAndroid\UrhoSharp.targets'))" />
+  </Target>
+  <Import Project="..\..\packages\UrhoSharp.1.0.149\build\MonoAndroid\UrhoSharp.targets" Condition="Exists('..\..\packages\UrhoSharp.1.0.149\build\MonoAndroid\UrhoSharp.targets')" />
+</Project>
