@@ -22,6 +22,9 @@
 //
 
 using System.Linq;
+using Urho.Navigation;
+using Urho.Resources;
+using Urho.Gui;
 
 namespace Urho.Samples
 {
@@ -45,14 +48,13 @@ namespace Urho.Samples
 		void CreateUI()
 		{
 			var cache = ResourceCache;
-			UI ui = UI;
 
 			// Create a Cursor UI element because we want to be able to hide and show it at will. When hidden, the mouse cursor will
 			// control the camera, and when visible, it will point the raycast target
 			XmlFile style = cache.GetXmlFile("UI/DefaultStyle.xml");
 			Cursor cursor = new Cursor(Context);
 			cursor.SetStyleAuto(style);
-			ui.Cursor = cursor;
+			UI.Cursor = cursor;
 
 			// Set starting position of the cursor at the rendering window center
 			var graphics = Graphics;
@@ -76,8 +78,8 @@ namespace Urho.Samples
 			// Position the text relative to the screen center
 			instructionText.HorizontalAlignment = HorizontalAlignment.Center;
 			instructionText.VerticalAlignment = VerticalAlignment.Center;
-			instructionText.SetPosition(0, ui.Root.Height / 4);
-			ui.Root.AddChild(instructionText);
+			instructionText.SetPosition(0, UI.Root.Height / 4);
+			UI.Root.AddChild(instructionText);
 		}
 
 		protected override void OnUpdate(float timeStep)

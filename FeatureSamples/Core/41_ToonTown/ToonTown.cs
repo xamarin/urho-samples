@@ -15,6 +15,8 @@
 
 using System;
 using System.Diagnostics;
+using Urho.Physics;
+using Urho.Audio;
 
 namespace Urho.Samples
 {
@@ -97,8 +99,7 @@ namespace Urho.Samples
 				character.Controls.Set(CtrlForward | CtrlBack | CtrlLeft | CtrlRight | CtrlJump, false);
 
 				// Update controls using keys
-				UI ui = UI;
-				if (ui.FocusElement == null)
+				if (UI.FocusElement == null)
 				{
 					character.Controls.Set(CtrlForward, input.GetKeyDown(Key.W));
 					character.Controls.Set(CtrlBack, input.GetKeyDown(Key.S));

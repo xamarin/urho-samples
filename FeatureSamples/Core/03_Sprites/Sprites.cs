@@ -22,6 +22,8 @@
 //
 
 using System.Collections.Generic;
+using Urho.Gui;
+using Urho.Urho2D;
 
 namespace Urho.Samples
 {

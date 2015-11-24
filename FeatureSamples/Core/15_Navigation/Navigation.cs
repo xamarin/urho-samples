@@ -23,6 +23,9 @@
 
 using System.Collections.Generic;
 using System.Linq;
+using Urho.Resources;
+using Urho.Gui;
+using Urho.Navigation;
 
 namespace Urho.Samples
 {

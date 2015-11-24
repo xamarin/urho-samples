@@ -22,6 +22,7 @@
 //
 
 using System.Linq;
+using Urho.Gui;
 
 namespace Urho.Samples
 {

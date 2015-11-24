@@ -22,6 +22,7 @@
 //
 
 using System;
+using Urho.Physics;
 
 namespace Urho.Samples
 {

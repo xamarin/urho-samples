@@ -1,5 +1,7 @@
 ﻿using System.Linq;
 using Urho;
+using Urho.Actions;
+using Urho.Urho2D;
 
 namespace SamplyGame
 {

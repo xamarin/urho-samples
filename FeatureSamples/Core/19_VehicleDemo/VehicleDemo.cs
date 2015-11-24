@@ -20,6 +20,7 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 //
+using Urho.Physics;
 
 namespace Urho.Samples
 {
@@ -90,10 +91,8 @@ namespace Urho.Samples
 
 			if (vehicle != null)
 			{
-				UI ui = UI;
-
 				// Get movement controls and assign them to the vehicle component. If UI has a focused element, clear controls
-				if (ui.FocusElement == null)
+				if (UI.FocusElement == null)
 				{
 					vehicle.Controls.Set(Vehicle.CtrlForward, input.GetKeyDown(Key.W));
 					vehicle.Controls.Set(Vehicle.CtrlBack, input.GetKeyDown(Key.S));

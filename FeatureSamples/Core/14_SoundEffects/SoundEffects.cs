@@ -23,6 +23,10 @@
 
 using System.Collections.Generic;
 using System.Linq;
+using Urho.Gui;
+using Urho.Resources;
+using Urho.Gui;
+using Urho.Audio;
 
 namespace Urho.Samples
 {

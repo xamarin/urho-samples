@@ -1,5 +1,7 @@
 ﻿using System.Threading.Tasks;
 using Urho;
+using Urho.Gui;
+using Urho.Actions;
 
 namespace SamplyGame
 {

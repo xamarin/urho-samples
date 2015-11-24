@@ -23,6 +23,11 @@
 
 using System.Collections.Generic;
 using System.Text;
+using Urho.Gui;
+using Urho.IO;
+using Urho.Network;
+using Urho.Resources;
+using Urho.Gui;
 
 namespace Urho.Samples
 {
@@ -141,7 +146,7 @@ namespace Urho.Samples
 
 		void UpdateButtons()
 		{
-			Network network = Network;
+			var network = Network;
 			Connection serverConnection = network.ServerConnection;
 			bool serverRunning = network.IsServerRunning();
 	
@@ -163,8 +168,7 @@ namespace Urho.Samples
 			if (string.IsNullOrEmpty(text))
 				return; // Do not send an empty message
 	
-			Network network = Network;
-			Connection serverConnection = network.ServerConnection;
+			Connection serverConnection = Network.ServerConnection;
 	
 			if (serverConnection != null)
 			{
@@ -177,7 +181,6 @@ namespace Urho.Samples
 
 		void HandleConnect()
 		{
-			Network network = Network;
 			string address = textEdit.Text.Trim();
 			if (string.IsNullOrEmpty(address))
 				address = "localhost"; // Use localhost to connect if nothing else specified
@@ -187,14 +190,14 @@ namespace Urho.Samples
 			// Connect to server, do not specify a client scene as we are not using scene replication, just messages.
 			// At connect time we could also send identity parameters (such as username) in a VariantMap, but in this
 			// case we skip it for simplicity
-			network.Connect(address, ChatServerPort, null);
+			Network.Connect(address, ChatServerPort, null);
 	
 			UpdateButtons();
 		}
 
 		void HandleDisconnect()
 		{
-			Network network = Network;
+			var network = Network;
 			Connection serverConnection = network.ServerConnection;
 			// If we were connected to server, disconnect
 			if (serverConnection != null)
@@ -208,16 +211,13 @@ namespace Urho.Samples
 
 		void HandleStartServer()
 		{
-			Network network = Network;
-			network.StartServer((ushort)ChatServerPort);
+			Network.StartServer((ushort)ChatServerPort);
 	
 			UpdateButtons();
 		}
 
 		unsafe void HandleNetworkMessage(NetworkMessageEventArgs args)
 		{
-			Network network = Network;
-	
 			int msgID = args.MessageID;
 			if (msgID == MsgChat)
 			{
@@ -226,13 +226,13 @@ namespace Urho.Samples
 			
 				// If we are the server, prepend the sender's IP address and port and echo to everyone
 				// If we are a client, just display the message
-				if (network.IsServerRunning())
+				if (Network.IsServerRunning())
 				{
 					Connection sender = args.Connection;
 					text = sender + " " + text;
 					// Broadcast as in-order and reliable
 					fixed (byte* p = textBytes)
-						network.BroadcastMessage(MsgChat, true, true, p, (uint) textBytes.Length, 0);
+						Network.BroadcastMessage(MsgChat, true, true, p, (uint) textBytes.Length, 0);
 				}
 
 				ShowChatText(text);

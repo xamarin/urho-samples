@@ -1,6 +1,10 @@
 ﻿using System.Linq;
 using System.Threading.Tasks;
 using Urho;
+using Urho.Physics;
+using Urho.Audio;
+using Urho.Actions;
+using Urho.Urho2D;
 
 namespace SamplyGame
 {

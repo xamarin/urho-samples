@@ -22,7 +22,7 @@
 //
 
 using System.Collections.Generic;
-
+using Urho.Gui;
 namespace Urho.Samples
 {
 	public class UIDrag : Sample

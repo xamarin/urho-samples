@@ -22,6 +22,7 @@
 //
 
 using System;
+using Urho.Physics;
 
 namespace Urho.Samples
 {
@@ -139,8 +140,7 @@ namespace Urho.Samples
 				touch?.UpdateTouches(character.Controls);
 
 				// Update controls using keys
-				UI ui = UI;
-				if (ui.FocusElement == null)
+				if (UI.FocusElement == null)
 				{
 					if (touch == null || !touch.UseGyroscope)
 					{
