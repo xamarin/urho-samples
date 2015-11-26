@@ -29,6 +29,7 @@ namespace SamplyGame
 			bigAircraft.SetScale(1.2f);
 			bigAircraft.Rotate(new Quaternion(0, 220, 40), TransformSpace.Local);
 			bigAircraft.Position = new Vector3(10, 2, 10);
+			bigAircraft.RunActionsAsync(new RepeatForever(new Sequence(new RotateBy(1f, 0f, 0f, 5f), new RotateBy(1f, 0f, 0f, -5f))));
 
 			//TODO: rotor should be defined in the model + animation
 			rotor = bigAircraft.CreateChild();
