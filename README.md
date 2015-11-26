@@ -32,3 +32,5 @@ The structure of each solution is this:
 * `Android`: Contains the Android launcher.
 
 * `Desktop`: Contains the Desktop launcher, works on Mac and Windows.
+
+![Screenshot](SamplyGame/Video.gif)
