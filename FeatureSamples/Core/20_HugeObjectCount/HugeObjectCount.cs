@@ -34,8 +34,6 @@ namespace Urho.Samples
 		bool useGroups;
 		List<Node> boxNodes;
 
-		public HugeObjectCount(Context ctx) : base(ctx) { }
-
 		public override void Start()
 		{
 			base.Start();

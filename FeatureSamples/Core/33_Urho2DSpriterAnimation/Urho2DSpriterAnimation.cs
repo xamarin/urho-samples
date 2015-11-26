@@ -42,8 +42,6 @@ namespace Urho.Samples
 				"dead3",
 			};
 
-		public Urho2DSpriterAnimation(Context ctx) : base(ctx) { }
-
 		public override void Start()
 		{
 			base.Start();

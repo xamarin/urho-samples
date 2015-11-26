@@ -28,8 +28,6 @@ namespace Urho.Samples
 	{
 		Scene scene;
 
-		public SignedDistanceFieldText(Context ctx) : base(ctx) { }
-
 		public override void Start()
 		{
 			base.Start();

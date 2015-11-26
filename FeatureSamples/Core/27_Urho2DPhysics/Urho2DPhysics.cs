@@ -31,8 +31,6 @@ namespace Urho.Samples
 		Scene scene;
 		const uint NumObjects = 100;
 
-		public Urho2DPhysics(Context ctx) : base(ctx) { }
-
 		public override void Start()
 		{
 			base.Start();

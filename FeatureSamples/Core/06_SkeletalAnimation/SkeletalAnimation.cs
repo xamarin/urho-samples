@@ -31,8 +31,6 @@ namespace Urho.Samples
 		Camera camera;
 		bool drawDebug;
 
-		public SkeletalAnimation (Context c) : base (c) {}
-	
 		void CreateScene ()
 		{
 			var cache = ResourceCache;

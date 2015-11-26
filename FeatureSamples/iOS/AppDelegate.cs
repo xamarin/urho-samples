@@ -1,9 +1,7 @@
-﻿using System;
-using System.Linq;
+﻿using System.Linq;
 using Foundation;
 using UIKit;
 using Urho.iOS;
-using System.Threading.Tasks;
 using MonoTouch.Dialog;
 
 namespace Urho.Samples.iOS

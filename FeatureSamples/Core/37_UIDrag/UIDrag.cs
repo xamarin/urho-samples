@@ -27,8 +27,6 @@ namespace Urho.Samples
 {
 	public class UIDrag : Sample
 	{
-		public UIDrag(Context ctx) : base(ctx) { }
-
 		Dictionary<UIElement, ElementInfo> elements; 
 
 		public override void Start()

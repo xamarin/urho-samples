@@ -37,8 +37,6 @@ namespace Urho.Samples
 		readonly List<Vector3> originalVertices = new List<Vector3>();
 		readonly List<VertexBuffer> animatingBuffers = new List<VertexBuffer>();
 
-		public DynamicGeometry(Context ctx) : base(ctx) { }
-
 		public override void Start()
 		{
 			base.Start();

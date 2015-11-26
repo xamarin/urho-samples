@@ -29,8 +29,6 @@ namespace Urho.Samples
 		bool drawDebug;
 		Node rearCameraNode;
 
-		public MultipleViewports(Context ctx) : base(ctx) { }
-
 		public override void Start()
 		{
 			base.Start();

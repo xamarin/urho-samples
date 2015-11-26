@@ -19,7 +19,7 @@ namespace SamplyGame
 
 		public Viewport Viewport { get; private set; }
 
-		public SamplyGame(Context c) : base(c, new ApplicationOptions { Height = 736, Width = 414, Orientation = ApplicationOptions.OrientationType.Portrait, LimitFps = false }) { }
+		public SamplyGame() : base(new ApplicationOptions { Height = 736, Width = 414, Orientation = ApplicationOptions.OrientationType.Portrait}) { }
 
 		public override void Start()
 		{

@@ -35,7 +35,7 @@ namespace Urho.Samples.Desktop
 			}
 
 			UrhoEngine.Init(pathToAssets: @"../../Assets");
-			var game = (Application) Activator.CreateInstance(selectedSampleType, new Context());
+			var game = (Application) Activator.CreateInstance(selectedSampleType);
 			var exitCode = game.Run();
 			WriteLine($"Exit code: {exitCode}. Press any key to exit...", ConsoleColor.DarkYellow);
 			Console.ReadKey();

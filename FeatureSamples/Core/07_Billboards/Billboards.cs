@@ -30,8 +30,6 @@ namespace Urho.Samples
 		Scene scene;
 		bool drawDebug;
 
-		public Billboards(Context ctx) : base(ctx) {}
-
 		public override void Start()
 		{
 			base.Start();

@@ -45,7 +45,7 @@ namespace Urho.Samples
 		float osc2;
 
 
-		public SoundSynthesis(Context ctx) : base(ctx)
+		public SoundSynthesis()
 		{
 			filter = 0.5f;
 			accumulator = 0f;

@@ -33,15 +33,11 @@ namespace Urho.Samples
 		IntVector2 dragBeginPosition;
 		Button draggableFish;
 
-		public HelloGUI(Context ctx) : base(ctx)
-		{
-			uiRoot = UI.Root;
-			dragBeginPosition = new IntVector2(0, 0);
-		}
-
 		public override void Start()
 		{
 			base.Start();
+
+			uiRoot = UI.Root;
 			Input.SetMouseVisible(true, false);
 			// Load XML file containing default UI style sheet
 			var cache = ResourceCache;

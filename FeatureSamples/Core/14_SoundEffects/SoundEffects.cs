@@ -41,8 +41,6 @@ namespace Urho.Samples
 				{"Power-up",  "Sounds/Powerup.wav"},
 			}; 
 
-		public SoundEffects(Context ctx) : base(ctx) { }
-
 		public override void Start()
 		{
 			base.Start();

@@ -56,8 +56,6 @@ namespace Urho.Samples
 		Button startServerButton;
 
 
-		public Chat(Context ctx) : base(ctx) { }
-
 		public override void Start()
 		{
 			base.Start();

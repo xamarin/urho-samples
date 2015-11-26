@@ -7,7 +7,7 @@ namespace SamplyGame.Desktop
 		static void Main(string[] args)
 		{
 			UrhoEngine.Init(@"../../Assets");
-			new SamplyGame(new Context()).Run();
+			new SamplyGame().Run();
 		}
 	}
 }

@@ -39,8 +39,6 @@ namespace Urho.Samples
 		Vector3 endPos;
 		List<Vector3> currentPath = new List<Vector3>();
 
-		public Navigation(Context ctx) : base(ctx) { }
-
 		public override void Start()
 		{
 			base.Start();

@@ -32,8 +32,6 @@ namespace Urho.Samples
 		List<NodeInfo> spriteNodes;
 		const uint NumSprites = 200;
 
-		public Urho2DSprite(Context ctx) : base(ctx) { }
-
 		public override void Start()
 		{
 			base.Start();

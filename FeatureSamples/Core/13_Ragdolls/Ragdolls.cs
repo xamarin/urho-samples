@@ -30,8 +30,6 @@ namespace Urho.Samples
 		bool drawDebug;
 		Camera camera;
 
-		public Ragdolls(Context ctx) : base(ctx) { }
-
 		public override void Start()
 		{
 			base.Start();

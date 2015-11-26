@@ -29,8 +29,6 @@ namespace Urho.Samples
 		Scene scene;
 		bool drawDebug;
 
-		public Physics(Context ctx) : base(ctx) { }
-
 		public override void Start()
 		{
 			base.Start();

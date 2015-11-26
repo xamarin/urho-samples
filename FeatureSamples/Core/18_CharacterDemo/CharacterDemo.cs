@@ -57,8 +57,6 @@ namespace Urho.Samples
 		bool firstPerson;
 		PhysicsWorld physicsWorld;
 
-		public CharacterDemo(Context ctx) : base(ctx) { }
-
 		public override void Start()
 		{
 			base.Start();

@@ -29,8 +29,6 @@ namespace Urho.Samples
 	{
 		Scene scene;
 
-		public SceneAndUILoad(Context ctx) : base(ctx) { }
-
 		public override void Start()
 		{
 			base.Start();

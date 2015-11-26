@@ -43,7 +43,7 @@ namespace Urho.Samples
 				ResourcePackagesPaths = new[] { "CoreData.pak" }
 			};
 
-		public ToonTown(Context ctx) : base(ctx, options) {}
+		public ToonTown() : base(options) {}
 
 		public override void Start()
 		{

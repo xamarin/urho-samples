@@ -27,8 +27,6 @@ namespace Urho.Samples
 	{
 		Scene scene;
 
-		public AnimatingScene (Context c) : base (c) {}
-
 		void CreateScene ()
 		{
 			var cache = ResourceCache;

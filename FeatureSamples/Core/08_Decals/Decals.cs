@@ -32,8 +32,6 @@ namespace Urho.Samples
 		bool drawDebug;
 		Camera camera;
 
-		public Decals(Context ctx) : base(ctx) { }
-
 		public override void Start()
 		{
 			base.Start();

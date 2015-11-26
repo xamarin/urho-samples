@@ -26,8 +26,6 @@ namespace Urho.Samples
 {
 	public class Actions : Sample
 	{
-		public Actions(Context ctx) : base(ctx) { }
-
 		Scene scene;
 		Node boxNode;
 

@@ -31,8 +31,6 @@ namespace Urho.Samples
 		Scene scene;
 		Node particleNode;
 
-		public Urho2DParticle(Context ctx) : base(ctx) { }
-
 		public override void Start()
 		{
 			base.Start();

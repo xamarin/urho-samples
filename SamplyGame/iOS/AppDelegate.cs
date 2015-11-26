@@ -19,7 +19,7 @@ namespace SamplyGame.iOS
 		{
 			await Task.Yield();
 			UrhoEngine.Init();
-			new SamplyGame(new Context()).Run();
+			new SamplyGame().Run();
 		}
 	}
 }

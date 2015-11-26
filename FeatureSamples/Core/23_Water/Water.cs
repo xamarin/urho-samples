@@ -32,8 +32,6 @@ namespace Urho.Samples
 		Plane waterPlane;
 		Plane waterClipPlane;
 
-		public Water(Context ctx) : base(ctx) { }
-
 		public override void Start()
 		{
 			base.Start();
