@@ -1,3 +1,3 @@
 #### Samply game
 
-![Screenshot](Screenshot.png)
+![Screenshot](Video.gif)
