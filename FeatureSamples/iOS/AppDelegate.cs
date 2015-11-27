@@ -22,7 +22,7 @@ namespace Urho.Samples.iOS
 				new Section ("Feature Samples"){
 					from type in typeof (HelloWorld).Assembly.GetTypes ()
 						where type.IsSubclassOf (typeof (Sample))
-					select new StringElement ("Sample" + type.Name, () => Run (type))
+					select new StringElement (type.Name, () => Run (type))
 				}
 			});
 			window.MakeKeyAndVisible ();

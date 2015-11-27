@@ -155,7 +155,7 @@ namespace Urho.Samples
 						for (uint i = 0; i < input.NumTouches; ++i)
 						{
 							TouchState state = input.GetTouch(i);
-							if (state.TouchedElement() != null)    // Touch on empty space
+							if (state.TouchedElement() == null)    // Touch on empty space
 							{
 								Camera camera = CameraNode.GetComponent<Camera>();
 								if (camera == null)
@@ -345,30 +345,6 @@ namespace Urho.Samples
 		/// </summary>
 		protected override string JoystickLayoutPatch =>
 			"<patch>" +
-			"    <add sel=\"/element\">" +
-			"        <element type=\"Button\">" +
-			"            <attribute name=\"Name\" value=\"Button3\" />" +
-			"            <attribute name=\"Position\" value=\"-120 -120\" />" +
-			"            <attribute name=\"Size\" value=\"96 96\" />" +
-			"            <attribute name=\"Horiz Alignment\" value=\"Right\" />" +
-			"            <attribute name=\"Vert Alignment\" value=\"Bottom\" />" +
-			"            <attribute name=\"Texture\" value=\"Texture2D;Textures/TouchInput.png\" />" +
-			"            <attribute name=\"Image Rect\" value=\"96 0 192 96\" />" +
-			"            <attribute name=\"Hover Image Offset\" value=\"0 0\" />" +
-			"            <attribute name=\"Pressed Image Offset\" value=\"0 0\" />" +
-			"            <element type=\"Text\">" +
-			"                <attribute name=\"Name\" value=\"Label\" />" +
-			"                <attribute name=\"Horiz Alignment\" value=\"Center\" />" +
-			"                <attribute name=\"Vert Alignment\" value=\"Center\" />" +
-			"                <attribute name=\"Color\" value=\"0 0 0 1\" />" +
-			"                <attribute name=\"Text\" value=\"Gyroscope\" />" +
-			"            </element>" +
-			"            <element type=\"Text\">" +
-			"                <attribute name=\"Name\" value=\"KeyBinding\" />" +
-			"                <attribute name=\"Text\" value=\"G\" />" +
-			"            </element>" +
-			"        </element>" +
-			"    </add>" +
 			"    <remove sel=\"/element/element[./attribute[@name='Name' and @value='Button0']]/attribute[@name='Is Visible']\" />" +
 			"    <replace sel=\"/element/element[./attribute[@name='Name' and @value='Button0']]/element[./attribute[@name='Name' and @value='Label']]/attribute[@name='Text']/@value\">1st/3rd</replace>" +
 			"    <add sel=\"/element/element[./attribute[@name='Name' and @value='Button0']]\">" +

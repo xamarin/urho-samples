@@ -113,7 +113,7 @@ namespace Urho.Samples
 						for (uint i = 0; i < input.NumTouches; ++i)
 						{
 							TouchState state = input.GetTouch(i);
-							if (state.TouchedElement() != null)    // Touch on empty space
+							if (state.TouchedElement() == null)    // Touch on empty space
 							{
 								Camera camera = CameraNode.GetComponent<Camera>();
 								if (camera == null)
@@ -190,7 +190,6 @@ namespace Urho.Samples
 			obj.Model = cache.GetModel("Models/Jack.mdl");
 			var material = cache.GetMaterial("Materials/BlueGrid.xml");
 			obj.SetMaterial(material);
-			obj.CastShadows = true;
 			objectNode.CreateComponent<AnimationController>();
 
 			// Create rigidbody, and set non-zero mass so that the body becomes dynamic

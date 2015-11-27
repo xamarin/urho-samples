@@ -70,19 +70,11 @@ namespace Urho.Samples
 		public override void Start ()
 		{
 			base.Start();
-			if (Platform == Platforms.Android || Platform == Platforms.iOS)
+			if (Platform == Platforms.Android || 
+				Platform == Platforms.iOS || 
+				Options.TouchEmulation)
 			{
 				InitTouchInput();
-			}
-			else if (Input.NumJoysticks == 0)
-			{
-				Subscription subscription = null;
-				subscription = Input.SubscribeToTouchBegin(args =>
-					{
-						// On some platforms like Windows the presence of touch input can only be detected dynamically
-						InitTouchInput();
-						subscription.Unsubscribe();
-					});
 			}
 
 			MonoDebugHud = new MonoDebugHud(this);
@@ -163,7 +155,7 @@ namespace Urho.Samples
 			for (uint i = 0, num = input.NumTouches; i < num; ++i)
 			{
 				TouchState state = input.GetTouch(i);
-				if (state.TouchedElement() != null)
+				if (state.TouchedElement != null)
 					continue;
 
 				if (state.Delta.X != 0 || state.Delta.Y != 0)
