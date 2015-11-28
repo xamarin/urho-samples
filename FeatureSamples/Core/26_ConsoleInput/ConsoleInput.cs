@@ -57,7 +57,7 @@ namespace Urho.Samples
 				"Urho is homing in on you mercilessly"
 			};
 
-		public override void Start()
+		protected override void Start()
 		{
 			base.Start();
 			Console.SubscribeToConsoleCommand(HandleConsoleCommand);

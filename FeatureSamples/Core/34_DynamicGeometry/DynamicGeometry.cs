@@ -37,7 +37,7 @@ namespace Urho.Samples
 		readonly List<Vector3> originalVertices = new List<Vector3>();
 		readonly List<VertexBuffer> animatingBuffers = new List<VertexBuffer>();
 
-		public override void Start()
+		protected override void Start()
 		{
 			base.Start();
 			CreateScene();

@@ -53,7 +53,7 @@ namespace Urho.Samples
 			osc2 = 180f;
 		}
 
-		public override void Start()
+		protected override void Start()
 		{
 			base.Start();
 			CreateSound();

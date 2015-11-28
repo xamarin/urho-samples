@@ -99,7 +99,7 @@ namespace Urho.Samples
 			renderer.SetViewport (0, new Viewport (Context, scene, CameraNode.GetComponent<Camera>(), null));
 		}
 
-		public override void Start ()
+		protected override void Start ()
 		{
 			base.Start ();
 			CreateScene ();

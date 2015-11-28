@@ -28,7 +28,7 @@ namespace Urho.Samples
 	{
 		Scene scene;
 
-		public override void Start()
+		protected override void Start()
 		{
 			base.Start();
 			SetupInstructions();

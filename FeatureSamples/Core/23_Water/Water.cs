@@ -32,7 +32,7 @@ namespace Urho.Samples
 		Plane waterPlane;
 		Plane waterClipPlane;
 
-		public override void Start()
+		protected override void Start()
 		{
 			base.Start();
 			CreateScene();

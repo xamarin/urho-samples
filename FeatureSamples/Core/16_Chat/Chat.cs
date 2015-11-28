@@ -56,7 +56,7 @@ namespace Urho.Samples
 		Button startServerButton;
 
 
-		public override void Start()
+		protected override void Start()
 		{
 			base.Start();
 			Input.SetMouseVisible(true, false);

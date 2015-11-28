@@ -26,7 +26,7 @@ namespace Urho.Samples
 {
 	public class HelloWorld : Application 
 	{
-		public override void Start()
+		protected override void Start()
 		{
 			var cache = ResourceCache;
 			var helloText = new Text(Context)

@@ -33,7 +33,7 @@ namespace Urho.Samples
 		// Number of sprites to draw
 		const uint NumSprites = 100;
 
-		public override void Start()
+		protected override void Start()
 		{
 			base.Start();
 			CreateSprites();

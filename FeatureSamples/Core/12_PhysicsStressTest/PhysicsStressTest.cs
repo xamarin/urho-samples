@@ -29,7 +29,7 @@ namespace Urho.Samples
 		Scene scene;
 		bool drawDebug;
 
-		public override void Start()
+		protected override void Start()
 		{
 			base.Start();
 			CreateScene();

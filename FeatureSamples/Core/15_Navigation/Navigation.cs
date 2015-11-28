@@ -39,7 +39,7 @@ namespace Urho.Samples
 		Vector3 endPos;
 		List<Vector3> currentPath = new List<Vector3>();
 
-		public override void Start()
+		protected override void Start()
 		{
 			base.Start();
 			CreateScene();

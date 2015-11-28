@@ -30,7 +30,7 @@ namespace Urho.Samples
 		Camera camera;
 		Scene scene;
 
-		public override void Start ()
+		protected override void Start ()
 		{
 			base.Start ();
 			CreateScene ();

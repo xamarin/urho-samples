@@ -57,7 +57,7 @@ namespace Urho.Samples
 				touch2 = input.GetTouch(1);
 
 				// Check for zoom pattern (touches moving in opposite directions and on empty space)
-				if (touch1.TouchedElement() != null && touch2.TouchedElement() != null && ((touch1.Delta.Y > 0 && touch2.Delta.Y < 0) || (touch1.Delta.Y < 0 && touch2.Delta.Y > 0)))
+				if (touch1.TouchedElement != null && touch2.TouchedElement != null && ((touch1.Delta.Y > 0 && touch2.Delta.Y < 0) || (touch1.Delta.Y < 0 && touch2.Delta.Y > 0)))
 					zoom = true;
 				else
 					zoom = false;

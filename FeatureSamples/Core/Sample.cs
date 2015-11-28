@@ -67,7 +67,7 @@ namespace Urho.Samples
 		/// </summary>
 		protected virtual string JoystickLayoutPatch => string.Empty;
 
-		public override void Start ()
+		protected override void Start ()
 		{
 			base.Start();
 			if (Platform == Platforms.Android || 

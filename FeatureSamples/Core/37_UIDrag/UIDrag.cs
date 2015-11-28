@@ -29,7 +29,7 @@ namespace Urho.Samples
 	{
 		Dictionary<UIElement, ElementInfo> elements; 
 
-		public override void Start()
+		protected override void Start()
 		{
 			base.Start();
 		

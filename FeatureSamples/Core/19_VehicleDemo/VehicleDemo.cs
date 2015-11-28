@@ -31,7 +31,7 @@ namespace Urho.Samples
 
 		const float CameraDistance = 10.0f;
 
-		public override void Start()
+		protected override void Start()
 		{
 			base.Start();
 

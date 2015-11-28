@@ -30,7 +30,7 @@ namespace Urho.Samples
 		Scene rttScene;
 		Node rttCameraNode;
 
-		public override void Start()
+		protected override void Start()
 		{
 			base.Start();
 			CreateScene();

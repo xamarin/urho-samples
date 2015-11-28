@@ -29,7 +29,7 @@ namespace Urho.Samples
 		bool drawDebug;
 		Node rearCameraNode;
 
-		public override void Start()
+		protected override void Start()
 		{
 			base.Start();
 			CreateScene();

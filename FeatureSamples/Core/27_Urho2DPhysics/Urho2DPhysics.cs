@@ -31,7 +31,7 @@ namespace Urho.Samples
 		Scene scene;
 		const uint NumObjects = 100;
 
-		public override void Start()
+		protected override void Start()
 		{
 			base.Start();
 			CreateScene();

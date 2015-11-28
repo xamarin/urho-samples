@@ -34,7 +34,7 @@ namespace Urho.Samples
 		bool useGroups;
 		List<Node> boxNodes;
 
-		public override void Start()
+		protected override void Start()
 		{
 			base.Start();
 			CreateScene();

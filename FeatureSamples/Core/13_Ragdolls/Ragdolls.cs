@@ -30,7 +30,7 @@ namespace Urho.Samples
 		bool drawDebug;
 		Camera camera;
 
-		public override void Start()
+		protected override void Start()
 		{
 			base.Start();
 			CreateScene();

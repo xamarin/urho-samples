@@ -33,7 +33,7 @@ namespace Urho.Samples
 		IntVector2 dragBeginPosition;
 		Button draggableFish;
 
-		public override void Start()
+		protected override void Start()
 		{
 			base.Start();
 

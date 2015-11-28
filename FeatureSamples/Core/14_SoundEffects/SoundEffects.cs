@@ -41,7 +41,7 @@ namespace Urho.Samples
 				{"Power-up",  "Sounds/Powerup.wav"},
 			}; 
 
-		public override void Start()
+		protected override void Start()
 		{
 			base.Start();
 			Input.SetMouseVisible(true, false);

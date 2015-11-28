@@ -57,7 +57,7 @@ namespace Urho.Samples
 		bool firstPerson;
 		PhysicsWorld physicsWorld;
 
-		public override void Start()
+		protected override void Start()
 		{
 			base.Start();
 			if (TouchEnabled)
@@ -155,7 +155,7 @@ namespace Urho.Samples
 						for (uint i = 0; i < input.NumTouches; ++i)
 						{
 							TouchState state = input.GetTouch(i);
-							if (state.TouchedElement() == null)    // Touch on empty space
+							if (state.TouchedElement == null)    // Touch on empty space
 							{
 								Camera camera = CameraNode.GetComponent<Camera>();
 								if (camera == null)

@@ -31,7 +31,7 @@ namespace Urho.Samples
 		Scene scene;
 		Node particleNode;
 
-		public override void Start()
+		protected override void Start()
 		{
 			base.Start();
 			CreateScene();

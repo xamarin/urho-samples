@@ -41,7 +41,7 @@ namespace Urho.Samples
 		Subscription mouseMoveEventToken;
 		Subscription mouseButtonUpToken;
 
-		public override void Start()
+		protected override void Start()
 		{
 			base.Start();
 			CreateScene();

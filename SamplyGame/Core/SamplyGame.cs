@@ -21,7 +21,7 @@ namespace SamplyGame
 
 		public SamplyGame() : base(new ApplicationOptions { Height = 736, Width = 414, Orientation = ApplicationOptions.OrientationType.Portrait}) { }
 
-		public override void Start()
+		protected override void Start()
 		{
 			base.Start();
 			CreateScene();
@@ -95,10 +95,11 @@ namespace SamplyGame
 			while (Player.IsAlive)
 			{
 				var coinNode = scene.CreateChild();
-				coinNode.Position = new Vector3(RandomHelper.NextRandom(-2.5f, 2.5f), 4f, 0);
+				coinNode.Position = new Vector3(RandomHelper.NextRandom(-2.5f, 2.5f), 5f, 0);
 				var coin = new Coin(Context);
 				coinNode.AddComponent(coin);
-				await Task.WhenAll(coin.FireAsync(false), coinNode.RunActionsAsync(new DelayTime(10f)));
+				await coin.FireAsync(false);
+				await coinNode.RunActionsAsync(new DelayTime(3f));
 				coinNode.Remove();
 			}
 		}

@@ -32,7 +32,7 @@ namespace Urho.Samples
 		List<NodeInfo> spriteNodes;
 		const uint NumSprites = 200;
 
-		public override void Start()
+		protected override void Start()
 		{
 			base.Start();
 			CreateScene();
