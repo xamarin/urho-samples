@@ -47,7 +47,7 @@ namespace Urho.Samples
 		void SetupViewport()
 		{
 			var renderer = Renderer;
-			renderer.SetViewport(0, new Viewport(Context, scene, CameraNode.GetComponent<Camera>(), null));
+			renderer.SetViewport(0, new Viewport(scene, CameraNode.GetComponent<Camera>(), null));
 		}
 
 		void CreateScene()
@@ -55,7 +55,7 @@ namespace Urho.Samples
 			var cache = ResourceCache;
 
 			{
-				rttScene = new Scene(Context);
+				rttScene = new Scene();
 				// Create octree, use default volume (-1000, -1000, -1000) to (1000, 1000, 1000)
 				rttScene.CreateComponent<Octree>();
 
@@ -84,7 +84,7 @@ namespace Urho.Samples
 
 					// Add our custom Rotator component which will rotate the scene node each frame, when the scene sends its update event.
 					// Simply set same rotation speed for all objects
-					Rotator rotator = new Rotator(Context);
+					Rotator rotator = new Rotator();
 					boxNode.AddComponent(rotator);
 					rotator.SetRotationSpeed(new Vector3(10.0f, 20.0f, 30.0f));
 				}
@@ -103,7 +103,7 @@ namespace Urho.Samples
 			{
 				// Create the scene in which we move around
 
-				scene = new Scene(Context);
+				scene = new Scene();
 
 				// Create octree, use also default volume (-1000, -1000, -1000) to (1000, 1000, 1000)
 				scene.CreateComponent<Octree>();
@@ -156,13 +156,13 @@ namespace Urho.Samples
 					screenObject.Model = cache.GetModel("Models/Plane.mdl");
 
 					// Create a renderable texture (1024x768, RGB format), enable bilinear filtering on it
-					Texture2D renderTexture = new Texture2D(Context);
+					Texture2D renderTexture = new Texture2D();
 					renderTexture.SetSize(1024, 768, Graphics.RGBFormat, TextureUsage.Rendertarget);
 					renderTexture.FilterMode = TextureFilterMode.Bilinear;
 
 					// Create a new material from scratch, use the diffuse unlit technique, assign the render texture
 					// as its diffuse texture, then assign the material to the screen plane object
-					Material renderMaterial = new Material(Context);
+					Material renderMaterial = new Material();
 					renderMaterial.SetTechnique(0, cache.GetTechnique("Techniques/DiffUnlit.xml"), 0, 0);
 					renderMaterial.SetTexture(TextureUnit.Diffuse, renderTexture);
 					screenObject.SetMaterial(renderMaterial);
@@ -172,7 +172,7 @@ namespace Urho.Samples
 					// to the Renderer subsystem. By default the texture viewport will be updated when the texture is visible
 					// in the main view
 					RenderSurface surface = renderTexture.RenderSurface;
-					Viewport rttViewport = new Viewport(Context, rttScene, rttCameraNode.GetComponent<Camera>(), null);
+					Viewport rttViewport = new Viewport(rttScene, rttCameraNode.GetComponent<Camera>(), null);
 					surface.SetViewport(0, rttViewport);
 				}
 
@@ -191,7 +191,7 @@ namespace Urho.Samples
 	{
 		Vector3 rotationSpeed;
 
-		public Rotator(Context c) : base(c)
+		public Rotator()
 		{
 			ReceiveSceneUpdates = true;
 		}

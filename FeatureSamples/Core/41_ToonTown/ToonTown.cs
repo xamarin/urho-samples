@@ -56,17 +56,17 @@ namespace Urho.Samples
 		void CreateScene()
 		{
 			var cache = ResourceCache;
-			scene = new Scene(Context);
+			scene = new Scene();
 
 			// Simply open a scene designed in the Atomic Game Engine:
 			// https://habrastorage.org/files/3b5/fe9/5ba/3b5fe95ba61044dcbae77233f09748ad.png
 			scene.LoadXmlFromCache(cache, "Scenes/ToonTown.scene");
 
 			// Set up a viewport
-			CameraNode = new Node(Context);
+			CameraNode = new Node();
 			Camera camera = CameraNode.CreateComponent<Camera>();
 			camera.FarClip = 300.0f;
-			Renderer.SetViewport(0, new Viewport(Context, scene, camera, null));
+			Renderer.SetViewport(0, new Viewport(scene, camera, null));
 
 			// Load music:
 			var musicFile = cache.GetSound("Music/StoryTime.ogg");
@@ -211,7 +211,7 @@ namespace Urho.Samples
 			// Create the character logic component, which takes care of steering the rigidbody
 			// Remember it so that we can set the controls. Use a WeakPtr because the scene hierarchy already owns it
 			// and keeps it alive as long as it's not removed from the hierarchy
-			character = new RoboMan(Context);
+			character = new RoboMan();
 			objectNode.AddComponent(character);
 			character.Start();
 		}

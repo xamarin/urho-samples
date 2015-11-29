@@ -55,7 +55,7 @@ namespace Urho.Samples
 
 			for (int i = 0; i < 10; i++)
 			{
-				Button b = new Button(Context);
+				Button b = new Button();
 				root.AddChild(b);
 				// Reference a style from the style sheet loaded earlier:
 				b.SetStyle("Button", null);
@@ -68,7 +68,7 @@ namespace Urho.Samples
 				b.SubscribeToDragEnd(HandleDragEnd);
 
 				{
-					var t = new Text(Context);
+					var t = new Text();
 					b.AddChild(t);
 					t.SetStyle("Text", null);
 					t.HorizontalAlignment = HorizontalAlignment.Center;
@@ -77,7 +77,7 @@ namespace Urho.Samples
 				}
 
 				{
-					var t = new Text(Context);
+					var t = new Text();
 					b.AddChild(t);
 					t.SetStyle("Text", null);
 					t.Name=("Event Touch");
@@ -86,7 +86,7 @@ namespace Urho.Samples
 				}
 
 				{
-					var t = new Text(Context);
+					var t = new Text();
 					b.AddChild(t);
 					t.SetStyle("Text", null);
 					t.Name=("Num Touch");
@@ -97,7 +97,7 @@ namespace Urho.Samples
 
 			for (int i = 0; i< 10; i++)
 			{
-				var t = new Text(Context);
+				var t = new Text();
 				root.AddChild(t);
 				t.SetStyle("Text", null);
 				t.Name=("Touch "+ i);
@@ -111,7 +111,7 @@ namespace Urho.Samples
 			UI ui = UI;
 
 			// Construct new Text object, set string to display and font to use
-			var instructionText = new Text(Context);
+			var instructionText = new Text();
 			instructionText.Value = "Drag on the buttons to move them around.\nMulti- button drag also supported.";
 			instructionText.SetFont(cache.GetFont("Fonts/Anonymous Pro.ttf"), 15);
 			ui.Root.AddChild(instructionText);

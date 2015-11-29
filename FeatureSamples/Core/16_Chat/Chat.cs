@@ -76,17 +76,17 @@ namespace Urho.Samples
 			root.SetDefaultStyle(uiStyle);
 
 			Font font = cache.GetFont("Fonts/Anonymous Pro.ttf");
-			chatHistoryText = new Text(Context);
+			chatHistoryText = new Text();
 			chatHistoryText.SetFont(font, 12);
 			root.AddChild(chatHistoryText);
 
-			buttonContainer = new UIElement(Context);
+			buttonContainer = new UIElement();
 			root.AddChild(buttonContainer);
 			buttonContainer.SetFixedSize(graphics.Width, 20);
 			buttonContainer.SetPosition(0, graphics.Height - 20);
 			buttonContainer.LayoutMode = LayoutMode.Horizontal;
 
-			textEdit = new LineEdit(Context); 
+			textEdit = new LineEdit(); 
 			textEdit.SetStyleAuto(null);
 			buttonContainer.AddChild(textEdit);
 
@@ -121,12 +121,12 @@ namespace Urho.Samples
 			var cache = ResourceCache;
 			Font font = cache.GetFont("Fonts/Anonymous Pro.ttf");
 
-			Button button = new Button(Context);
+			Button button = new Button();
 			buttonContainer.AddChild(button);
 			button.SetStyleAuto(null);
 			button.SetFixedWidth(width);
 	
-			var buttonText = new Text(Context);
+			var buttonText = new Text();
 			button.AddChild(buttonText);
 			buttonText.SetFont(font, 12);
 			buttonText.SetAlignment(HorizontalAlignment.Center, VerticalAlignment.Center);

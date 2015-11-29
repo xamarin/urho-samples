@@ -36,7 +36,7 @@ namespace Urho.Samples
 
 		public Touch(IntPtr handle) : base(handle) { }
 
-		public Touch(Context ctx, float touchSensitivity, Input input) : base(ctx)
+		public Touch(float touchSensitivity, Input input)
 		{
 			this.touchSensitivity = touchSensitivity;
 			this.input = input;

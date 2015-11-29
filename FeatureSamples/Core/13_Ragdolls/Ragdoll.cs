@@ -31,7 +31,7 @@ namespace Urho.Samples
 	{
 		public Ragdoll(IntPtr handle) : base(handle) {}
 
-		public Ragdoll(Context context) : base(context) {}
+		public Ragdoll() {}
 
 		public override void OnAttachedToNode(Node node)
 		{

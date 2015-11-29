@@ -80,14 +80,14 @@ namespace Urho.Samples
 		void SetupViewport()
 		{
 			var renderer = Renderer;
-			renderer.SetViewport(0, new Viewport(Context, scene, CameraNode.GetComponent<Camera>(), null));
+			renderer.SetViewport(0, new Viewport(scene, CameraNode.GetComponent<Camera>(), null));
 		}
 
 		void CreateScene()
 		{
 			var cache = ResourceCache;
 			if (scene == null)
-				scene = new Scene(Context);
+				scene = new Scene();
 			else
 			{
 				scene.Clear(true, true);
@@ -169,7 +169,7 @@ namespace Urho.Samples
 			if (CameraNode == null)
 			{
 				// Create the camera. Limit far clip distance to match the fog
-				CameraNode = new Node(Context);
+				CameraNode = new Node();
 				CameraNode.Position = new Vector3(0.0f, 10.0f, -100.0f);
 				camera = CameraNode.CreateComponent<Camera>();
 				camera.FarClip = 300.0f;

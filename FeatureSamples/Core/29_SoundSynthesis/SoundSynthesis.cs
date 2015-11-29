@@ -82,7 +82,7 @@ namespace Urho.Samples
 			UI ui = UI;
 
 			// Construct new Text object, set string to display and font to use
-			instructionText = new Text(Context);
+			instructionText = new Text();
 			instructionText.Value = ("Use arrow up and down to control sound filtering");
 			instructionText.SetFont(cache.GetFont("Fonts/Anonymous Pro.ttf"), 15);
 
@@ -98,7 +98,7 @@ namespace Urho.Samples
 		void CreateSound()
 		{
 			// Sound source needs a node so that it is considered enabled
-			node = new Node(Context);
+			node = new Node();
 			SoundSource source = node.CreateComponent<SoundSource>();
 
 			soundStream = new BufferedSoundStream();

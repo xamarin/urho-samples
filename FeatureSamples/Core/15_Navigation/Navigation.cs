@@ -137,7 +137,7 @@ namespace Urho.Samples
 		void SetupViewport()
 		{
 			var renderer = Renderer;
-			renderer.SetViewport(0, new Viewport(Context, scene, CameraNode.GetComponent<Camera>(), null));
+			renderer.SetViewport(0, new Viewport(scene, CameraNode.GetComponent<Camera>(), null));
 		}
 
 		void CreateUI()
@@ -147,7 +147,7 @@ namespace Urho.Samples
 			// Create a Cursor UI element because we want to be able to hide and show it at will. When hidden, the mouse cursor will
 			// control the camera, and when visible, it will point the raycast target
 			XmlFile style = cache.GetXmlFile("UI/DefaultStyle.xml");
-			Cursor cursor=new Cursor(Context);
+			Cursor cursor=new Cursor();
 			cursor.SetStyleAuto(style);
 			UI.Cursor=cursor;
 
@@ -156,7 +156,7 @@ namespace Urho.Samples
 			cursor.SetPosition(graphics.Width / 2, graphics.Height / 2);
 
 			// Construct new Text object, set string to display and font to use
-			var instructionText = new Text(Context);
+			var instructionText = new Text();
 			instructionText.Value =
 				"Use WASD keys to move, RMB to rotate view\n" +
 				"LMB to set destination, SHIFT+LMB to teleport\n" +
@@ -178,7 +178,7 @@ namespace Urho.Samples
 		{
 			var cache = ResourceCache;
 
-			scene = new Scene(Context);
+			scene = new Scene();
 
 			// Create octree, use default volume (-1000, -1000, -1000) to (1000, 1000, 1000)
 			// Also create a DebugRenderer component so that we can draw debug geometry

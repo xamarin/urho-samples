@@ -47,7 +47,7 @@ namespace Urho.Samples
 		{
 			var cache = ResourceCache;
 
-			scene = new Scene(Context);
+			scene = new Scene();
 
 			// Load scene content prepared in the editor (XML format). GetFile() returns an open file from the resource system
 			// which scene.LoadXML() will read
@@ -71,7 +71,7 @@ namespace Urho.Samples
 
 			// Create a Cursor UI element because we want to be able to hide and show it at will. When hidden, the mouse cursor will
 			// control the camera, and when visible, it will interact with the UI
-			Cursor cursor=new Cursor(Context);
+			Cursor cursor=new Cursor();
 			cursor.SetStyleAuto(null);
 			UI.Cursor=cursor;
 			// Set starting position of the cursor at the rendering window center
@@ -98,7 +98,7 @@ namespace Urho.Samples
 		void SetupViewport()
 		{
 			var renderer = Renderer;
-			renderer.SetViewport(0, new Viewport(Context, scene, CameraNode.GetComponent<Camera>(), null));
+			renderer.SetViewport(0, new Viewport(scene, CameraNode.GetComponent<Camera>(), null));
 		}
 
 		void ToggleLight1()

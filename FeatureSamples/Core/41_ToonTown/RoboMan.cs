@@ -40,7 +40,7 @@ namespace Urho.Samples
 
 		public RoboMan(IntPtr handle) : base(handle) { }
 
-		public RoboMan(Context context) : base(context)
+		public RoboMan()
 		{
 			okToJump = true;
 		}

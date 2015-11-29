@@ -29,7 +29,7 @@ namespace Urho.Samples
 		protected override void Start()
 		{
 			var cache = ResourceCache;
-			var helloText = new Text(Context)
+			var helloText = new Text()
 				{
 					Value = "Hello World from UrhoSharp",
 					HorizontalAlignment = HorizontalAlignment.Center,

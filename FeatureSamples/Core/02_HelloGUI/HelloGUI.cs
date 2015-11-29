@@ -59,16 +59,16 @@ namespace Urho.Samples
 		void InitControls()
 		{
 			// Create a CheckBox
-			CheckBox checkBox = new CheckBox(Context);
+			CheckBox checkBox = new CheckBox();
 			checkBox.Name = "CheckBox";
 
 			// Create a Button
-			Button button = new Button(Context);
+			Button button = new Button();
 			button.Name = "Button";
 			button.MinHeight = 24;
 
 			// Create a LineEdit
-			LineEdit lineEdit = new LineEdit(Context);
+			LineEdit lineEdit = new LineEdit();
 			lineEdit.Name = "LineEdit";
 			lineEdit.MinHeight = 24;
 
@@ -86,7 +86,7 @@ namespace Urho.Samples
 		void InitWindow()
 		{
 			// Create the Window and add it to the UI's root node
-			window = new Window(Context);
+			window = new Window();
 			uiRoot.AddChild(window);
 
 			// Set Window size and layout settings
@@ -96,18 +96,18 @@ namespace Urho.Samples
 			window.Name = "Window";
 
 			// Create Window 'titlebar' container
-			UIElement titleBar = new UIElement(Context);
+			UIElement titleBar = new UIElement();
 			titleBar.SetMinSize(0, 24);
 			titleBar.VerticalAlignment = VerticalAlignment.Top;
 			titleBar.LayoutMode = LayoutMode.Horizontal;
 
 			// Create the Window title Text
-			var windowTitle = new Text(Context);
+			var windowTitle = new Text();
 			windowTitle.Name = "WindowTitle";
 			windowTitle.Value = "Hello GUI!";
 
 			// Create the Window's close button
-			Button buttonClose = new Button(Context);
+			Button buttonClose = new Button();
 			buttonClose.Name = "CloseButton";
 
 			// Add the controls to the title bar
@@ -134,7 +134,7 @@ namespace Urho.Samples
 			var graphics = Graphics;
 
 			// Create a draggable Fish button
-			draggableFish = new Button(Context);
+			draggableFish = new Button();
 			draggableFish.Texture = cache.GetTexture2D("Textures/UrhoDecal.dds"); // Set texture
 			draggableFish.BlendMode = BlendMode.Add;
 			draggableFish.SetSize(128, 128);
@@ -143,14 +143,14 @@ namespace Urho.Samples
 			uiRoot.AddChild(draggableFish);
 
 			// Add a tooltip to Fish button
-			ToolTip toolTip = new ToolTip(Context);
+			ToolTip toolTip = new ToolTip();
 			draggableFish.AddChild(toolTip);
 			toolTip.Position = new IntVector2(draggableFish.Width + 5, draggableFish.Width/2);
 			// slightly offset from close button
-			BorderImage textHolder = new BorderImage(Context);
+			BorderImage textHolder = new BorderImage();
 			toolTip.AddChild(textHolder);
 			textHolder.SetStyle("ToolTipBorderImage", null);
-			var toolTipText = new Text(Context);
+			var toolTipText = new Text();
 			textHolder.AddChild(toolTipText);
 			toolTipText.SetStyle("ToolTipText", null);
 			toolTipText.Value = "Please drag me!";

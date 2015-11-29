@@ -38,7 +38,7 @@ namespace Urho.Samples
 
 		void SetupInstructions()
 		{
-			var instructions = new Text(Context)
+			var instructions = new Text()
 			{
 				Value = "Use WASD keys and mouse/touch to move",
 				HorizontalAlignment = HorizontalAlignment.Center,
@@ -49,7 +49,7 @@ namespace Urho.Samples
 			UI.Root.AddChild(instructions);
 
 			// Animating text
-			Text text = new Text(Context);
+			Text text = new Text();
 			text.Name = "animatingText";
 			text.SetFont(font, 15);
 			text.HorizontalAlignment = HorizontalAlignment.Center;
@@ -67,14 +67,14 @@ namespace Urho.Samples
 		void SetupViewport()
 		{
 			var renderer = Renderer;
-			renderer.SetViewport(0, new Viewport(Context, scene, CameraNode.GetComponent<Camera>(), null));
+			renderer.SetViewport(0, new Viewport(scene, CameraNode.GetComponent<Camera>(), null));
 		}
 
 		void CreateScene()
 		{
 			var cache = ResourceCache;
 
-			scene = new Scene(Context);
+			scene = new Scene();
 
 			// Create the Octree component to the scene. This is required before adding any drawable components, or else nothing will
 			// show up. The default octree volume will be from (-1000, -1000, -1000) to (1000, 1000, 1000) in world coordinates; it
@@ -98,10 +98,10 @@ namespace Urho.Samples
 			light.Range = (10.0f);
 
 			// Create light animation
-			ObjectAnimation lightAnimation=new ObjectAnimation(Context);
+			ObjectAnimation lightAnimation=new ObjectAnimation();
 
 			// Create light position animation
-			ValueAnimation positionAnimation=new ValueAnimation(Context);
+			ValueAnimation positionAnimation=new ValueAnimation();
 			// Use spline interpolation method
 			positionAnimation.InterpolationMethod= InterpMethod.Spline;
 			// Set spline tension
@@ -116,7 +116,7 @@ namespace Urho.Samples
 			lightAnimation.AddAttributeAnimation("Position", positionAnimation, WrapMode.Loop, 1f);
 
 			// Create text animation
-			ValueAnimation textAnimation=new ValueAnimation(Context);
+			ValueAnimation textAnimation=new ValueAnimation();
 			textAnimation.SetKeyFrame(0.0f, "WHITE");
 			textAnimation.SetKeyFrame(1.0f, "RED");
 			textAnimation.SetKeyFrame(2.0f, "YELLOW");
@@ -126,7 +126,7 @@ namespace Urho.Samples
 			uiElement.SetAttributeAnimation("Text", textAnimation, WrapMode.Loop, 1f);
 
 			// Create light color animation
-			ValueAnimation colorAnimation=new ValueAnimation(Context);
+			ValueAnimation colorAnimation=new ValueAnimation();
 			colorAnimation.SetKeyFrame(0.0f, Color.White);
 			colorAnimation.SetKeyFrame(1.0f, Color.Red);
 			colorAnimation.SetKeyFrame(2.0f, Color.Yellow);

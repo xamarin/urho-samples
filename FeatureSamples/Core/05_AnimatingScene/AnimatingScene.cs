@@ -30,7 +30,7 @@ namespace Urho.Samples
 		void CreateScene ()
 		{
 			var cache = ResourceCache;
-			scene = new Scene (Context);
+			scene = new Scene ();
 
 			// Create the Octree component to the scene so that drawable objects can be rendered. Use default volume
 			// (-1000, -1000, -1000) to (1000, 1000, 1000)
@@ -54,7 +54,7 @@ namespace Urho.Samples
 			const int numObjects = 2000;
 			for (var i = 0; i < numObjects; ++i)
 			{
-				Node boxNode = new Node(Context); 
+				Node boxNode = new Node(); 
 				boxesNode.AddChild(boxNode, 0);
 				boxNode.Position = new Vector3(NextRandom (200f) - 100f, NextRandom (200f) - 100f, NextRandom (200f) - 100f);
 				// Orient using random pitch, yaw and roll Euler angles
@@ -78,7 +78,7 @@ namespace Urho.Samples
 
 				// First style: use a Rotator instance, which is a component subclass, and
 				// add it to the boxNode.
-				var rotator = new Rotator (Context) { RotationSpeed = rotationSpeed };
+				var rotator = new Rotator () { RotationSpeed = rotationSpeed };
 				boxNode.AddComponent (rotator);
 			}
 			// Create the camera. Let the starting position be at the world origin. As the fog limits maximum visible distance, we can
@@ -96,7 +96,7 @@ namespace Urho.Samples
 		void SetupViewport ()
 		{
 			var renderer = Renderer;
-			renderer.SetViewport (0, new Viewport (Context, scene, CameraNode.GetComponent<Camera>(), null));
+			renderer.SetViewport (0, new Viewport (scene, CameraNode.GetComponent<Camera>(), null));
 		}
 
 		protected override void Start ()
@@ -119,7 +119,7 @@ namespace Urho.Samples
 
 		class Rotator : Component
 		{
-			public Rotator(Context ctx) : base(ctx)
+			public Rotator()
 			{
 				//to receive OnUpdate:
 				ReceiveSceneUpdates = true;

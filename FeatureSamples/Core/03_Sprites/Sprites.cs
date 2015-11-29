@@ -57,7 +57,7 @@ namespace Urho.Samples
 			for (uint i = 0; i < NumSprites; ++i)
 			{
 				// Create a new sprite, set it to use the texture
-				Sprite sprite = new Sprite(Context);
+				Sprite sprite = new Sprite();
 				sprite.Texture = decalTex;
 
 				// The UI root element is as big as the rendering window, set random position within it

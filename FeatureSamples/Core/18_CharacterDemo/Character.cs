@@ -41,7 +41,7 @@ namespace Urho.Samples
 		RigidBody body;
 		AnimationController animCtrl;
 
-		public Character(Context context) : base(context)
+		public Character()
 		{
 			okToJump = true;
 		}

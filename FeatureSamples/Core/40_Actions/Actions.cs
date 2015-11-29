@@ -81,7 +81,7 @@ namespace Urho.Samples
 		void CreateScene()
 		{
 			var cache = ResourceCache;
-			scene = new Scene(Context);
+			scene = new Scene();
 
 			scene.CreateComponent<Octree>();
 			var planeNode = scene.CreateChild("Plane");
@@ -108,7 +108,7 @@ namespace Urho.Samples
 			var camera = CameraNode.CreateComponent<Camera>();
 			CameraNode.Position = new Vector3(0, 20, -60);
 			CameraNode.Rotation = new Quaternion(30f, 0f, 0f);
-			Renderer.SetViewport(0, new Viewport(Context, scene, camera, null));
+			Renderer.SetViewport(0, new Viewport(scene, camera, null));
 		}
 	}
 }

@@ -74,12 +74,12 @@ namespace Urho.Samples
 		void SetupViewport()
 		{
 			var renderer = Renderer;
-			renderer.SetViewport(0, new Viewport(Context, scene, CameraNode.GetComponent<Camera>(), null));
+			renderer.SetViewport(0, new Viewport(scene, CameraNode.GetComponent<Camera>(), null));
 		}
 
 		void CreateScene()
 		{
-			scene = new Scene(Context);
+			scene = new Scene();
 			scene.CreateComponent<Octree>();
 			spriteNodes = new List<NodeInfo>((int) NumSprites);
 

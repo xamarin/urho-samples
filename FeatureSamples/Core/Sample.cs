@@ -185,7 +185,7 @@ namespace Urho.Samples
 	
 		protected void SimpleCreateInstructions(string text = "")
 		{
-			var textElement = new Text(Context)
+			var textElement = new Text()
 				{
 					Value = text,
 					HorizontalAlignment = HorizontalAlignment.Center,
@@ -315,7 +315,7 @@ namespace Urho.Samples
 			var layout = ResourceCache.GetXmlFile("UI/ScreenJoystick_Samples.xml");
 			if (!string.IsNullOrEmpty(JoystickLayoutPatch))
 			{
-				XmlFile patchXmlFile = new XmlFile(Context);
+				XmlFile patchXmlFile = new XmlFile();
 				patchXmlFile.FromString(JoystickLayoutPatch);
 				layout.Patch(patchXmlFile);
 			}

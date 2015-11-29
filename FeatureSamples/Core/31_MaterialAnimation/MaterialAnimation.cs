@@ -60,14 +60,14 @@ namespace Urho.Samples
 		void SetupViewport()
 		{
 			var renderer = Renderer;
-			renderer.SetViewport(0, new Viewport(Context, scene, CameraNode.GetComponent<Camera>(), null));
+			renderer.SetViewport(0, new Viewport(scene, CameraNode.GetComponent<Camera>(), null));
 		}
 
 		void CreateScene()
 		{
 			var cache = ResourceCache;
 
-			scene = new Scene(Context);
+			scene = new Scene();
 
 			// Create the Octree component to the scene. This is required before adding any drawable components, or else nothing will
 			// show up. The default octree volume will be from (-1000, -1000, -1000) to (1000, 1000, 1000) in world coordinates; it
@@ -100,7 +100,7 @@ namespace Urho.Samples
 			// scene.
 			Material mushroomMat = cache.GetMaterial("Materials/Mushroom.xml");
 			// Apply shader parameter animation to material
-			ValueAnimation specColorAnimation=new ValueAnimation(Context);
+			ValueAnimation specColorAnimation=new ValueAnimation();
 
 			specColorAnimation.SetKeyFrame(0.0f, new Color(0.1f, 0.1f, 0.1f, 16.0f));
 			specColorAnimation.SetKeyFrame(1.0f, new Color(1.0f, 0.0f, 0.0f, 2.0f));

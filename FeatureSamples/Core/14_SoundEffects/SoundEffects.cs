@@ -55,13 +55,13 @@ namespace Urho.Samples
 			Font font = cache.GetFont("Fonts/Anonymous Pro.ttf");
 
 			// Create the button and center the text onto it
-			Button button = new Button(Context);
+			Button button = new Button();
 			root.AddChild(button);
 			button.SetStyleAuto(null);
 			button.SetPosition(x, y);
 			button.SetSize(xSize, ySize);
 
-			Text buttonText = new Text(Context);
+			Text buttonText = new Text();
 			button.AddChild(buttonText);
 			buttonText.SetAlignment(HorizontalAlignment.Center, VerticalAlignment.Center);
 			buttonText.SetFont(font, 12);
@@ -76,13 +76,13 @@ namespace Urho.Samples
 			ResourceCache cache = ResourceCache;
 			Font font = cache.GetFont("Fonts/Anonymous Pro.ttf");
 			// Create text and slider below it
-			Text sliderText = new Text(Context);
+			Text sliderText = new Text();
 			root.AddChild(sliderText);
 			sliderText.SetPosition(x, y);
 			sliderText.SetFont(font, 12);
 			sliderText.Value = text;
 
-			Slider slider = new Slider(Context);
+			Slider slider = new Slider();
 			root.AddChild(slider);
 			slider.SetStyleAuto(null);
 			slider.SetPosition(x, y + 20);
@@ -96,7 +96,7 @@ namespace Urho.Samples
 		void CreateUI()
 		{
 			var cache = ResourceCache;
-			scene = new Scene(Context);
+			scene = new Scene();
 			// Create a scene which will not be actually rendered, but is used to hold SoundSource components while they play sounds
 
 			UIElement root = UI.Root;

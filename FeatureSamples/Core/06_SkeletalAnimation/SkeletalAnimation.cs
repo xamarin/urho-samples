@@ -34,7 +34,7 @@ namespace Urho.Samples
 		void CreateScene ()
 		{
 			var cache = ResourceCache;
-			scene = new Scene (Context);
+			scene = new Scene ();
 
 			// Create the Octree component to the scene so that drawable objects can be rendered. Use default volume
 			// (-1000, -1000, -1000) to (1000, 1000, 1000)
@@ -82,7 +82,7 @@ namespace Urho.Samples
 				modelNode.Position = new Vector3(NextRandom(-45,45), 0.0f, NextRandom (-45, 45));
 				modelNode.Rotation = new Quaternion (0, NextRandom(0, 360), 0);
 				//var modelObject = modelNode.CreateComponent<AnimatedModel>();
-				var modelObject = new AnimatedModel (Context);
+				var modelObject = new AnimatedModel ();
 				modelNode.AddComponent (modelObject);
 				modelObject.Model = cache.GetModel("Models/Jack.mdl");
 				//modelObject.Material = cache.GetMaterial("Materials/Jack.xml");
@@ -102,7 +102,7 @@ namespace Urho.Samples
 				}
 			
 				// Create our custom Mover component that will move & animate the model during each frame's update
-				var mover = new Mover (Context, modelMoveSpeed, modelRotateSpeed, bounds);
+				var mover = new Mover (modelMoveSpeed, modelRotateSpeed, bounds);
 				modelNode.AddComponent (mover);
 			}
 		
@@ -118,7 +118,7 @@ namespace Urho.Samples
 		void SetupViewport ()
 		{
 			var renderer = Renderer;
-			renderer.SetViewport (0, new Viewport (Context, scene, camera, null));
+			renderer.SetViewport (0, new Viewport (scene, camera, null));
 		}
 
 		protected override void OnUpdate(float timeStep)
@@ -166,7 +166,7 @@ namespace Urho.Samples
 			float RotationSpeed { get; }
 			BoundingBox Bounds { get; }
 
-			public Mover(Context ctx, float moveSpeed, float rotateSpeed, BoundingBox bounds) : base(ctx)
+			public Mover(float moveSpeed, float rotateSpeed, BoundingBox bounds)
 			{
 				MoveSpeed = moveSpeed;
 				RotationSpeed = rotateSpeed;

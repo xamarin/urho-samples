@@ -45,14 +45,14 @@ namespace Urho.Samples
 		void SetupViewport()
 		{
 			var renderer = Renderer;
-			renderer.SetViewport(0, new Viewport(Context, scene, CameraNode.GetComponent<Camera>(), null));
+			renderer.SetViewport(0, new Viewport(scene, CameraNode.GetComponent<Camera>(), null));
 		}
 
 		void CreateScene()
 		{
 			var cache = ResourceCache;
 
-			scene = new Scene(Context);
+			scene = new Scene();
 
 			// Create the Octree component to the scene. This is required before adding any drawable components, or else nothing will
 			// show up. The default octree volume will be from (-1000, -1000, -1000) to (1000, 1000, 1000) in world coordinates; it

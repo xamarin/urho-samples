@@ -76,7 +76,7 @@ namespace Urho.Samples
 		void SetupViewport()
 		{
 			var renderer = Renderer;
-			renderer.SetViewport(0, new Viewport(Context, scene, CameraNode.GetComponent<Camera>(), null));
+			renderer.SetViewport(0, new Viewport(scene, CameraNode.GetComponent<Camera>(), null));
 		}
 
 		void SpawnObject()
@@ -111,7 +111,7 @@ namespace Urho.Samples
 		{
 			var cache = ResourceCache;
 
-			scene = new Scene(Context);
+			scene = new Scene();
 
 			// Create octree, use default volume (-1000, -1000, -1000) to (1000, 1000, 1000)
 			// Create a physics simulation world with default parameters, which will update at 60fps. Like the Octree must
@@ -202,7 +202,7 @@ namespace Urho.Samples
 
 			// Create the camera. Limit far clip distance to match the fog. Note: now we actually create the camera node outside
 			// the scene, because we want it to be unaffected by scene load / save
-			CameraNode = new Node(Context);
+			CameraNode = new Node();
 			Camera camera = CameraNode.CreateComponent<Camera>();
 			camera.FarClip = 300.0f;
 

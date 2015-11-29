@@ -54,7 +54,7 @@ namespace Urho.Samples
 			var renderer = Renderer;
 			var cache = ResourceCache;
 		
-			renderer.SetViewport(0, new Viewport(Context, scene, CameraNode.GetComponent<Camera>(), null));
+			renderer.SetViewport(0, new Viewport(scene, CameraNode.GetComponent<Camera>(), null));
 
 			// Create a mathematical plane to represent the water in calculations
 
@@ -82,11 +82,11 @@ namespace Urho.Samples
 			// Create a texture and setup viewport for water reflection. Assign the reflection texture to the diffuse
 			// texture unit of the water material
 			int texSize = 1024;
-			Texture2D renderTexture = new Texture2D(Context);
+			Texture2D renderTexture = new Texture2D();
 			renderTexture.SetSize(texSize, texSize, Graphics.RGBFormat, TextureUsage.Rendertarget);
 			renderTexture.FilterMode = TextureFilterMode.Bilinear;
 			RenderSurface surface = renderTexture.RenderSurface;
-			var rttViewport = new Viewport(Context, scene, reflectionCamera, null);
+			var rttViewport = new Viewport(scene, reflectionCamera, null);
 			surface.SetViewport(0, rttViewport);
 			var waterMat = cache.GetMaterial("Materials/Water.xml");
 			waterMat.SetTexture(TextureUnit.Diffuse, renderTexture);
@@ -95,7 +95,7 @@ namespace Urho.Samples
 		void CreateScene()
 		{
 			var cache = ResourceCache;
-			scene = new Scene(Context);
+			scene = new Scene();
 
 			// Create octree, use default volume (-1000, -1000, -1000) to (1000, 1000, 1000)
 			scene.CreateComponent<Octree>();
@@ -172,7 +172,7 @@ namespace Urho.Samples
 
 
 			// Create the camera. Limit far clip distance to match the fog
-			CameraNode = new Node(Context);
+			CameraNode = new Node();
 			var camera = CameraNode.CreateComponent<Camera>();
 			camera.FarClip = 750.0f;
 			// Set an initial position for the camera scene node above the plane

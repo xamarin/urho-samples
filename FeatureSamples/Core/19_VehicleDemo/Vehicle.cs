@@ -72,7 +72,7 @@ namespace Urho.Samples
 
 		public Vehicle(IntPtr handle) : base(handle) { }
 
-		public Vehicle(Context context) : base(context) {}
+		public Vehicle() {}
 
 		public void FixedUpdate(float timeStep)
 		{

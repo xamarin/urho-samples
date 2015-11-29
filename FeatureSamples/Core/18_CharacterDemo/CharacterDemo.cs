@@ -61,7 +61,7 @@ namespace Urho.Samples
 		{
 			base.Start();
 			if (TouchEnabled)
-				touch = new Touch(Context, TouchSensitivity, Input);
+				touch = new Touch(TouchSensitivity, Input);
 			CreateScene();
 			CreateCharacter();
 			SimpleCreateInstructionsWithWasd("\nSpace to jump, F to toggle 1st/3rd person\nF5 to save scene, F7 to load");
@@ -210,7 +210,7 @@ namespace Urho.Samples
 		{
 			var cache = ResourceCache;
 
-			scene = new Scene(Context);
+			scene = new Scene();
 
 			// Create scene subsystem components
 			scene.CreateComponent<Octree>();
@@ -218,10 +218,10 @@ namespace Urho.Samples
 
 			// Create camera and define viewport. We will be doing load / save, so it's convenient to create the camera outside the scene,
 			// so that it won't be destroyed and recreated, and we don't have to redefine the viewport on load
-			CameraNode = new Node(Context);
+			CameraNode = new Node();
 			Camera camera = CameraNode.CreateComponent<Camera>();
 			camera.FarClip = 300.0f;
-			Renderer.SetViewport(0, new Viewport(Context, scene, camera, null));
+			Renderer.SetViewport(0, new Viewport(scene, camera, null));
 
 			// Create static scene content. First create a zone for ambient lighting and fog control
 			Node zoneNode = scene.CreateChild("Zone");
@@ -336,7 +336,7 @@ namespace Urho.Samples
 			// Create the character logic component, which takes care of steering the rigidbody
 			// Remember it so that we can set the controls. Use a WeakPtr because the scene hierarchy already owns it
 			// and keeps it alive as long as it's not removed from the hierarchy
-			character = new Character(Context);
+			character = new Character();
 			objectNode.AddComponent(character);
 		}
 

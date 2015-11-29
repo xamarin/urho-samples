@@ -95,14 +95,14 @@ namespace Urho.Samples
 		void SetupViewport()
 		{
 			var renderer = Renderer;
-			renderer.SetViewport(0, new Viewport(Context, scene, CameraNode.GetComponent<Camera>(), null));
+			renderer.SetViewport(0, new Viewport(scene, CameraNode.GetComponent<Camera>(), null));
 		}
 
 		void CreateScene()
 		{
 			var cache = ResourceCache;
 
-			scene = new Scene(Context);
+			scene = new Scene();
 
 			// Create the Octree component to the scene so that drawable objects can be rendered. Use default volume
 			// (-1000, -1000, -1000) to (1000, 1000, 1000)
@@ -225,10 +225,10 @@ namespace Urho.Samples
 					15, 16, 17
 				};
 
-				Model fromScratchModel = new Model(Context);
-				VertexBuffer vb = new VertexBuffer(Context, false);
-				IndexBuffer ib = new IndexBuffer(Context, false);
-				Geometry geom = new Geometry(Context);
+				Model fromScratchModel = new Model();
+				VertexBuffer vb = new VertexBuffer(false);
+				IndexBuffer ib = new IndexBuffer(false);
+				Geometry geom = new Geometry();
 
 				// Shadowed buffer needed for raycasts to work, and so that data can be automatically restored on device loss
 				vb.SetShadowed(true);
@@ -254,7 +254,7 @@ namespace Urho.Samples
 			}
 
 			// Create the camera
-			CameraNode = new Node(Context);
+			CameraNode = new Node();
 			CameraNode.Position = (new Vector3(0.0f, 2.0f, -20.0f));
 			Camera camera = CameraNode.CreateComponent<Camera>();
 			camera.FarClip = 300.0f;

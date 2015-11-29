@@ -146,7 +146,7 @@ namespace Urho.Samples
 			vehicleNode.Position = (new Vector3(0.0f, 5.0f, 0.0f));
 
 			// Create the vehicle logic component
-			vehicle = new Vehicle(Context); 
+			vehicle = new Vehicle(); 
 			vehicleNode.AddComponent(vehicle);
 			// Create the rendering and physics components
 			vehicle.Init();
@@ -157,7 +157,7 @@ namespace Urho.Samples
 		{
 			var cache = ResourceCache;
 
-			scene = new Scene(Context);
+			scene = new Scene();
 
 			// Create scene subsystem components
 			scene.CreateComponent<Octree>();
@@ -165,10 +165,10 @@ namespace Urho.Samples
 
 			// Create camera and define viewport. We will be doing load / save, so it's convenient to create the camera outside the scene,
 			// so that it won't be destroyed and recreated, and we don't have to redefine the viewport on load
-			CameraNode = new Node(Context);
+			CameraNode = new Node();
 			Camera camera = CameraNode.CreateComponent<Camera>();
 			camera.FarClip = 500.0f;
-			Renderer.SetViewport(0, new Viewport(Context, scene, camera, null));
+			Renderer.SetViewport(0, new Viewport(scene, camera, null));
 
 			// Create static scene content. First create a zone for ambient lighting and fog control
 			Node zoneNode = scene.CreateChild("Zone");
