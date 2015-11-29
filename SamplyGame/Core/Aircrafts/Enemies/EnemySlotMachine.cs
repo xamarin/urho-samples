@@ -4,8 +4,6 @@ namespace SamplyGame
 {
 	public class EnemySlotMachine : Enemy
 	{
-		public EnemySlotMachine(Context context) : base(context) { }
-
 		public override int MaxHealth => 50;
 
 		protected override void Init()
@@ -19,7 +17,7 @@ namespace SamplyGame
 			node.Position = new Vector3(0f, 5f, 0f);
 
 			// load weapons:
-			node.AddComponent(new Joysticks(Context));
+			node.AddComponent(new Joysticks());
 
 			base.Init();
 		}

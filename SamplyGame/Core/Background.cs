@@ -15,8 +15,6 @@ namespace SamplyGame
 		const float BackgroundSpeed = 0.05f;
 		const float FlightHeight = 10f;
 
-		public Background(Context context) : base(context) {}
-
 		public void Start()
 		{
 			// Background consists of two huge tiles (each BackgroundScale x BackgroundScale)

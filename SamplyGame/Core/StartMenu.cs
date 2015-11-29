@@ -14,7 +14,7 @@ namespace SamplyGame
 		Node menuLight;
 		bool finished = true;
 
-		public StartMenu(Context context) : base(context)
+		public StartMenu()
 		{
 			ReceiveSceneUpdates = true;
 		}
@@ -43,11 +43,11 @@ namespace SamplyGame
 
 			menuLight = bigAircraft.CreateChild();
 			menuLight.Position = new Vector3(-3, 6, 2);
-			menuLight.AddComponent(new Light(Context) { LightType = LightType.Point, Range = 14, Brightness = 1f });
+			menuLight.AddComponent(new Light { LightType = LightType.Point, Range = 14, Brightness = 1f });
 
 			await bigAircraft.RunActionsAsync(new EaseIn(new MoveBy(1f, new Vector3(-10, -2, -10)), 2));
 
-			textBlock = new Text(Context);
+			textBlock = new Text();
 			textBlock.HorizontalAlignment = HorizontalAlignment.Center;
 			textBlock.VerticalAlignment = VerticalAlignment.Bottom;
 			textBlock.Value = "TAP TO START";

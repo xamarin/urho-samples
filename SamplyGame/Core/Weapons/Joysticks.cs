@@ -8,8 +8,6 @@ namespace SamplyGame
 {
 	public class Joysticks : Weapon
 	{
-		public Joysticks(Context context) : base(context) { }
-
 		public override TimeSpan ReloadDuration => TimeSpan.FromSeconds(2f);
 
 		public override int Damage => 10;

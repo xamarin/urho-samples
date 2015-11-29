@@ -8,8 +8,6 @@ namespace SamplyGame
 {
 	public class MassMachineGun : Weapon
 	{
-		public MassMachineGun(Context context) : base(context) { }
-
 		public override TimeSpan ReloadDuration => TimeSpan.FromSeconds(1f);
 
 		public override int Damage => 8;

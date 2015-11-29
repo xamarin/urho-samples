@@ -15,7 +15,7 @@ namespace SamplyGame
 	{
 		TaskCompletionSource<bool> liveTask;
 
-		protected Aircraft(Context context) : base(context)
+		protected Aircraft()
 		{
 			ReceiveSceneUpdates = true;
 		}
@@ -106,7 +106,7 @@ namespace SamplyGame
 				return;
 			//NOTE: the material should not be cached (Clone() should be called) or all object with it will be blinking
 			material.SetShaderParameter("MatSpecColor", new Color(0, 0, 0, 0));
-			var specColorAnimation = new ValueAnimation(Context);
+			var specColorAnimation = new ValueAnimation();
 			specColorAnimation.SetKeyFrame(0.0f, new Color(1.0f, 1.0f, 1.0f, 0.5f));
 			specColorAnimation.SetKeyFrame(0.1f, new Color(0, 0, 0, 0));
 			material.SetShaderParameterAnimation("MatSpecColor", specColorAnimation, WrapMode.Once, 1.0f);

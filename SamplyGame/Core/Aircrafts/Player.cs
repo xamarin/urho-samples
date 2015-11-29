@@ -9,8 +9,6 @@ namespace SamplyGame
 	{
 		Node rotor;
 
-		public Player(Context context) : base(context) {}
-
 		protected override CollisionLayers CollisionLayer => CollisionLayers.Player;
 
 		protected override Vector3 CollisionShapeSize => new Vector3(2.1f, 1.2f, 1.2f); // extend default shape to get collisions by wings too
@@ -41,8 +39,8 @@ namespace SamplyGame
 			rotor.RunActionsAsync(new RepeatForever(new RotateBy(1f, 0, 0, 360f * 4))); //RPM
 
 			// Load weapons
-			node.AddComponent(new MachineGun(Context));
-			node.AddComponent(new Missile(Context));
+			node.AddComponent(new MachineGun());
+			node.AddComponent(new Missile());
 
 			await node.RunActionsAsync(new EaseOut(new MoveBy(0.5f, new Vector3(0, 3, 0)), 2));
 			MoveRandomly();

@@ -9,8 +9,6 @@ namespace SamplyGame
 	{
 		bool isInited;
 
-		protected Weapon(Context context) : base(context) { }
-
 		public DateTime LastLaunchDate { get; set; }
 
 		/// <summary>
@@ -64,7 +62,7 @@ namespace SamplyGame
 			shape.SetBox(collisionBox, Vector3.Zero, Quaternion.Identity);
 			body.SetKinematic(true);
 			body.CollisionLayer = byPlayer ? (uint)CollisionLayers.Enemy : (uint)CollisionLayers.Player;
-			bullet.AddComponent(new WeaponReferenceComponent(Context, this));
+			bullet.AddComponent(new WeaponReferenceComponent(this));
 			return bullet;
 		}
 
@@ -83,7 +81,7 @@ namespace SamplyGame
 	{
 		public Weapon Weapon { get; private set; }
 
-		public WeaponReferenceComponent(Context context, Weapon weapon) : base(context)
+		public WeaponReferenceComponent(Weapon weapon)
 		{
 			Weapon = weapon;
 		}

@@ -7,9 +7,7 @@ namespace SamplyGame
 	{
 		readonly bool fromLeftSide;
 
-		public EnemyMonitorScreen(Context context) : base(context) { }
-
-		public EnemyMonitorScreen(Context context, bool fromLeftSide) : base(context)
+		public EnemyMonitorScreen(bool fromLeftSide)
 		{
 			this.fromLeftSide = fromLeftSide;
 		}
@@ -28,7 +26,7 @@ namespace SamplyGame
 			node.SetScale(1f);
 
 			// load weapons:
-			node.AddComponent(new SmallPlates(Context));
+			node.AddComponent(new SmallPlates());
 
 			var direction = fromLeftSide ? -1 : 1;
 			node.Position = new Vector3(3 * direction, 3, 0);

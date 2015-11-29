@@ -30,7 +30,7 @@ namespace SamplyGame
 
 		async void CreateScene()
 		{
-			scene = new Scene(Context);
+			scene = new Scene();
 			scene.CreateComponent<Octree>();
 
 			var physics = scene.CreateComponent<PhysicsWorld>();
@@ -41,28 +41,28 @@ namespace SamplyGame
 			cameraNode.Position = (new Vector3(0.0f, 0.0f, -10.0f));
 			cameraNode.CreateComponent<Camera>();
 			
-			Renderer.SetViewport(0, Viewport = new Viewport(Context, scene, cameraNode.GetComponent<Camera>(), null));
+			Renderer.SetViewport(0, Viewport = new Viewport(scene, cameraNode.GetComponent<Camera>(), null));
 
 			// UI
-			coinsText = new Text(Context);
+			coinsText = new Text();
 			coinsText.HorizontalAlignment = HorizontalAlignment.Right;
 			coinsText.SetFont(ResourceCache.GetFont(Assets.Fonts.Font), Graphics.Width / 20);
 			UI.Root.AddChild(coinsText);
 			Input.SetMouseVisible(true, false);
 
 			// Background
-			var background = new Background(Context);
+			var background = new Background();
 			scene.AddComponent(background);
 			background.Start();
 
 			// Lights:
 			var lightNode1 = scene.CreateChild();
 			lightNode1.Position = new Vector3(0, -5, -40);
-			lightNode1.AddComponent(new Light(Context) {  Range = 120, Brightness = 1.5f });
+			lightNode1.AddComponent(new Light {  Range = 120, Brightness = 1.5f });
 
 			var lightNode2 = scene.CreateChild();
 			lightNode2.Position = new Vector3(10, 15, -12);
-			lightNode2.AddComponent(new Light(Context) {  Range = 30.0f, Brightness = 1.5f });
+			lightNode2.AddComponent(new Light {  Range = 30.0f, Brightness = 1.5f });
 
 			// Game logic cycle
 			while (true)
@@ -77,11 +77,11 @@ namespace SamplyGame
 		async Task StartGame()
 		{
 			UpdateCoins(0);
-			Player = new Player(Context);
+			Player = new Player();
 			var aircraftNode = scene.CreateChild(nameof(Aircraft));
 			aircraftNode.AddComponent(Player);
 			var playersLife = Player.Play();
-			Enemies enemies = new Enemies(Context, Player);
+			Enemies enemies = new Enemies(Player);
 			scene.AddComponent(enemies);
 			SpawnCoins();
 			enemies.StartSpawning();
@@ -96,10 +96,10 @@ namespace SamplyGame
 			{
 				var coinNode = scene.CreateChild();
 				coinNode.Position = new Vector3(RandomHelper.NextRandom(-2.5f, 2.5f), 5f, 0);
-				var coin = new Coin(Context);
+				var coin = new Coin();
 				coinNode.AddComponent(coin);
 				await coin.FireAsync(false);
-				await coinNode.RunActionsAsync(new DelayTime(3f));
+				await scene.RunActionsAsync(new DelayTime(3f));
 				coinNode.Remove();
 			}
 		}
@@ -111,7 +111,7 @@ namespace SamplyGame
 			if (amount % 5 == 0 && amount > 0)
 			{
 				// give player a MassMachineGun each time he earns 5 coins
-				Player.Node.AddComponent(new MassMachineGun(Context));
+				Player.Node.AddComponent(new MassMachineGun());
 			}
 			coins = amount;
 			coinsText.Value = string.Format(CoinstFormat, coins);

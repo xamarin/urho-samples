@@ -9,8 +9,6 @@ namespace SamplyGame
 {
 	public class BigWhiteCube : Weapon
 	{
-		public BigWhiteCube(Context context) : base(context) {}
-
 		public override TimeSpan ReloadDuration => TimeSpan.FromSeconds(3);
 
 		public override int Damage => 20;

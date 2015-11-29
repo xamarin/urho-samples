@@ -12,8 +12,6 @@ namespace SamplyGame
 
 		public override int Damage => 0;
 
-		public Coin(Context context) : base(context) {}
-
 		protected override async Task OnFire(bool byPlayer)
 		{
 			var cache = Application.ResourceCache;

@@ -5,8 +5,6 @@ namespace SamplyGame
 {
 	public class EnemyBat : Enemy
 	{
-		public EnemyBat(Context context) : base(context) {}
-
 		public override int MaxHealth => 30;
 
 		protected override async void Init()
@@ -20,7 +18,7 @@ namespace SamplyGame
 			node.Position = new Vector3(0f, 5f, 0f);
 
 			// load weapons:
-			node.AddComponent(new BigWhiteCube(Context));
+			node.AddComponent(new BigWhiteCube());
 
 			node.Position = new Vector3(3 * (RandomHelper.NextBoolRandom() ? 1 : -1), RandomHelper.NextRandom(0, 2), 0);
 			await Node.RunActionsAsync(new MoveTo(1f, new Vector3(RandomHelper.NextRandom(-2, 2), RandomHelper.NextRandom(2, 4), 0)));

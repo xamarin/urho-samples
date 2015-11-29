@@ -14,8 +14,7 @@ namespace SamplyGame.Aircrafts.Enemies
 		readonly Player player;
 		readonly List<Enemy> enemies;
 
-		public Enemies(Context context) : base(context) { }
-		public Enemies(Context context, Player player) : base(context)
+		public Enemies(Player player)
 		{
 			enemies = new List<Enemy>();
 			this.player = player;
@@ -42,8 +41,8 @@ namespace SamplyGame.Aircrafts.Enemies
 		Task SpawnTwoMonitors()
 		{
 			return Task.WhenAll(
-				SpawnEnemy(() => new EnemyMonitorScreen(Context, true), 1), 
-				SpawnEnemy(() => new EnemyMonitorScreen(Context, false), 1));
+				SpawnEnemy(() => new EnemyMonitorScreen(true), 1), 
+				SpawnEnemy(() => new EnemyMonitorScreen(false), 1));
 		}
 
 		async Task SpawnBats(int count, float pause)
@@ -52,9 +51,9 @@ namespace SamplyGame.Aircrafts.Enemies
 			for (int i = 1; i < count + 1 && player.IsAlive; i++)
 			{
 				if (i % 3 == 0) 
-					tasks.Add(SpawnEnemy(() => new EnemySlotMachine(Context), 3));
+					tasks.Add(SpawnEnemy(() => new EnemySlotMachine(), 3));
 				else
-					tasks.Add(SpawnEnemy(() => new EnemyBat(Context), 3));
+					tasks.Add(SpawnEnemy(() => new EnemyBat(), 3));
 
 				await Node.RunActionsAsync(new DelayTime(pause));
 			}

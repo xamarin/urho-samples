@@ -10,8 +10,6 @@ namespace SamplyGame
 {
 	public class Missile : Weapon
 	{
-		public Missile(Context context) : base(context) {}
-
 		public override TimeSpan ReloadDuration => TimeSpan.FromSeconds(3);
 
 		public override int Damage => 8;

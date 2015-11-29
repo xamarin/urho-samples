@@ -12,8 +12,6 @@ namespace SamplyGame
 		float currentGunOffset = -GunOffsetSize;
 		SoundSource soundSource;
 
-		public MachineGun(Context context) : base(context) {}
-
 		public override TimeSpan ReloadDuration => TimeSpan.FromSeconds(0.1f);
 
 		public override int Damage => 3;

@@ -7,8 +7,6 @@ namespace SamplyGame
 {
 	public class SmallPlates : Weapon
 	{
-		public SmallPlates(Context context) : base(context) { }
-
 		public override TimeSpan ReloadDuration => TimeSpan.FromSeconds(0.45f);
 
 		public override int Damage => 10;

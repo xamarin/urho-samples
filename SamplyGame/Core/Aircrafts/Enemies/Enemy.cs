@@ -9,8 +9,6 @@ namespace SamplyGame
 	/// </summary>
 	public abstract class Enemy : Aircraft
 	{
-		protected Enemy(Context context) : base(context) { }
-
 		protected override CollisionLayers CollisionLayer => CollisionLayers.Enemy;
 
 		protected override async void Init()
