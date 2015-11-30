@@ -92,7 +92,8 @@ namespace SamplyGame
 		
 		async void SpawnCoins()
 		{
-			while (Player.IsAlive)
+			var player = Player;
+			while (Player.IsAlive && player == Player)
 			{
 				var coinNode = scene.CreateChild();
 				coinNode.Position = new Vector3(RandomHelper.NextRandom(-2.5f, 2.5f), 5f, 0);
