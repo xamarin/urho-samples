@@ -9,6 +9,7 @@ namespace Urho.Samples.Desktop
 
 		static void Main(string[] args)
 		{
+			args = new[] {"36"};
 			//   UrhoEngine.Init(pathToAssets);
 			//   new Water(new Context()).Run();
 			//   return;

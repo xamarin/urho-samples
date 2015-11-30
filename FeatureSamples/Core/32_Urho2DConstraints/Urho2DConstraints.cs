@@ -205,7 +205,7 @@ namespace Urho.Samples
 		void SetupViewport()
 		{
 			var renderer = Renderer;
-			renderer.SetViewport(0, new Viewport(scene, CameraNode.GetComponent<Camera>(), null));
+			renderer.SetViewport(0, new Viewport(Context, scene, CameraNode.GetComponent<Camera>(), null));
 		}
 
 		void CreateScene()
@@ -231,7 +231,7 @@ namespace Urho.Samples
 			camera.Zoom=1.2f * Math.Min((float)graphics.Width / 1280.0f, (float)graphics.Height / 800.0f); // Set zoom according to user's resolution to ensure full visibility (initial zoom (1.2) is set for full visibility at 1280x800 resolution)
 
 			// Set up a viewport to the Renderer subsystem so that the 3D scene can be seen
-			Viewport viewport=new Viewport(scene, camera, null);
+			Viewport viewport=new Viewport(Context, scene, camera, null);
 			Renderer renderer = Renderer;
 			renderer.SetViewport(0, viewport);
 

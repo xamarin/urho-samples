@@ -75,7 +75,7 @@ namespace Urho.Samples
 			renderer.NumViewports = 2;
 
 			// Set up the front camera viewport
-			Viewport viewport = new Viewport(scene, CameraNode.GetComponent<Camera>(), null);
+			Viewport viewport = new Viewport(Context, scene, CameraNode.GetComponent<Camera>(), null);
 			renderer.SetViewport(0, viewport);
 
 			// Clone the default render path so that we do not interfere with the other viewport, then add
@@ -96,7 +96,7 @@ namespace Urho.Samples
 			// Set up the rear camera viewport on top of the front view ("rear view mirror")
 			// The viewport index must be greater in that case, otherwise the view would be left behind
 			IntRect rect = new IntRect(graphics.Width*2/3, 32, graphics.Width - 32, graphics.Height/3);
-			Viewport rearViewport = new Viewport(scene, rearCameraNode.GetComponent<Camera>(), rect, null);
+			Viewport rearViewport = new Viewport(Context, scene, rearCameraNode.GetComponent<Camera>(), rect, null);
 
 			renderer.SetViewport(1, rearViewport);
 		}

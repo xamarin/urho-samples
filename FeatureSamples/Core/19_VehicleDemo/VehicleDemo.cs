@@ -168,7 +168,7 @@ namespace Urho.Samples
 			CameraNode = new Node();
 			Camera camera = CameraNode.CreateComponent<Camera>();
 			camera.FarClip = 500.0f;
-			Renderer.SetViewport(0, new Viewport(scene, camera, null));
+			Renderer.SetViewport(0, new Viewport(Context, scene, camera, null));
 
 			// Create static scene content. First create a zone for ambient lighting and fog control
 			Node zoneNode = scene.CreateChild("Zone");

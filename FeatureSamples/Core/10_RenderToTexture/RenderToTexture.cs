@@ -47,7 +47,7 @@ namespace Urho.Samples
 		void SetupViewport()
 		{
 			var renderer = Renderer;
-			renderer.SetViewport(0, new Viewport(scene, CameraNode.GetComponent<Camera>(), null));
+			renderer.SetViewport(0, new Viewport(Context, scene, CameraNode.GetComponent<Camera>(), null));
 		}
 
 		void CreateScene()
@@ -172,7 +172,7 @@ namespace Urho.Samples
 					// to the Renderer subsystem. By default the texture viewport will be updated when the texture is visible
 					// in the main view
 					RenderSurface surface = renderTexture.RenderSurface;
-					Viewport rttViewport = new Viewport(rttScene, rttCameraNode.GetComponent<Camera>(), null);
+					Viewport rttViewport = new Viewport(Context, rttScene, rttCameraNode.GetComponent<Camera>(), null);
 					surface.SetViewport(0, rttViewport);
 				}
 

@@ -85,7 +85,7 @@ namespace Urho.Samples
 		void SetupViewport ()
 		{
 			var renderer = Renderer;
-			renderer.SetViewport (0, new Viewport (scene, camera, null));
+			renderer.SetViewport (0, new Viewport (Context, scene, camera, null));
 		}
 
 		protected override void OnUpdate(float timeStep)

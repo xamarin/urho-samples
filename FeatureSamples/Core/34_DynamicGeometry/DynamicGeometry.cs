@@ -95,7 +95,7 @@ namespace Urho.Samples
 		void SetupViewport()
 		{
 			var renderer = Renderer;
-			renderer.SetViewport(0, new Viewport(scene, CameraNode.GetComponent<Camera>(), null));
+			renderer.SetViewport(0, new Viewport(Context, scene, CameraNode.GetComponent<Camera>(), null));
 		}
 
 		void CreateScene()
@@ -226,8 +226,8 @@ namespace Urho.Samples
 				};
 
 				Model fromScratchModel = new Model();
-				VertexBuffer vb = new VertexBuffer(false);
-				IndexBuffer ib = new IndexBuffer(false);
+				VertexBuffer vb = new VertexBuffer(Context, false);
+				IndexBuffer ib = new IndexBuffer(Context, false);
 				Geometry geom = new Geometry();
 
 				// Shadowed buffer needed for raycasts to work, and so that data can be automatically restored on device loss

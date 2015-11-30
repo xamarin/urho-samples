@@ -54,7 +54,7 @@ namespace Urho.Samples
 			var renderer = Renderer;
 			var cache = ResourceCache;
 		
-			renderer.SetViewport(0, new Viewport(scene, CameraNode.GetComponent<Camera>(), null));
+			renderer.SetViewport(0, new Viewport(Context, scene, CameraNode.GetComponent<Camera>(), null));
 
 			// Create a mathematical plane to represent the water in calculations
 
@@ -86,7 +86,7 @@ namespace Urho.Samples
 			renderTexture.SetSize(texSize, texSize, Graphics.RGBFormat, TextureUsage.Rendertarget);
 			renderTexture.FilterMode = TextureFilterMode.Bilinear;
 			RenderSurface surface = renderTexture.RenderSurface;
-			var rttViewport = new Viewport(scene, reflectionCamera, null);
+			var rttViewport = new Viewport(Context, scene, reflectionCamera, null);
 			surface.SetViewport(0, rttViewport);
 			var waterMat = cache.GetMaterial("Materials/Water.xml");
 			waterMat.SetTexture(TextureUnit.Diffuse, renderTexture);

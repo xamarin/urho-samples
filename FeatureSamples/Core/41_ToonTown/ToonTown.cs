@@ -66,7 +66,7 @@ namespace Urho.Samples
 			CameraNode = new Node();
 			Camera camera = CameraNode.CreateComponent<Camera>();
 			camera.FarClip = 300.0f;
-			Renderer.SetViewport(0, new Viewport(scene, camera, null));
+			Renderer.SetViewport(0, new Viewport(Context, scene, camera, null));
 
 			// Load music:
 			var musicFile = cache.GetSound("Music/StoryTime.ogg");

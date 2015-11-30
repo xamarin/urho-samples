@@ -41,7 +41,7 @@ namespace SamplyGame
 			cameraNode.Position = (new Vector3(0.0f, 0.0f, -10.0f));
 			cameraNode.CreateComponent<Camera>();
 			
-			Renderer.SetViewport(0, Viewport = new Viewport(scene, cameraNode.GetComponent<Camera>(), null));
+			Renderer.SetViewport(0, Viewport = new Viewport(Context, scene, cameraNode.GetComponent<Camera>(), null));
 
 			// UI
 			coinsText = new Text();
