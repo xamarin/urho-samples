@@ -21,53 +21,56 @@
 // THE SOFTWARE.
 //
 using Urho.Actions;
+using Urho.Shapes;
 
 namespace Urho.Samples
 {
 	public class Actions : Sample
 	{
-		Scene scene;
 		Node boxNode;
 
 		protected override void Start()
 		{
 			base.Start();
 			CreateScene();
-			SimpleCreateInstructions("Use WASD to call Actions.");
+			SimpleCreateInstructions("W - move forward\nS - move backward\nQ - Fade out\nE - Fade in\nR - increase scale\nG - tint to random color");
 		}
 
 		protected override void OnUpdate(float timeStep)
 		{
 			var input = Input;
 
-			const float duration = 2f; //2s
+			const float duration = 1f; //2s
 			FiniteTimeAction action = null;
 
 			if (input.GetKeyPress(Key.W))
 			{
-				//move forward with easing
-				MoveBy moveBy = new MoveBy(duration, new Vector3(0, 0, 15));
-				action = new EaseBackOut(moveBy);
+				action = new MoveBy(duration, new Vector3(0, 0, 5));
 			}
+
 			if (input.GetKeyPress(Key.S))
 			{
-				//move backward with rotation (parallel actions)
-				MoveBy moveBy = new MoveBy(duration, new Vector3(0, 0, -15));
-				RotateBy rotateBy = new RotateBy(2f, 0, 360, 0);
-				action = new Parallel(moveBy, rotateBy);
+				action = new MoveBy(duration, new Vector3(0, 0, -5));
 			}
-			if (input.GetKeyPress(Key.A))
+
+			if (input.GetKeyPress(Key.E))
 			{
-				//move left, increase scale
-				MoveBy moveBy = new MoveBy(duration, new Vector3(-15, 0, 0));
-				ScaleBy scaleBy = new ScaleBy(duration, 2f);
-				action = new Parallel(moveBy, scaleBy);
+				action = new FadeIn(duration); 
 			}
-			if (input.GetKeyPress(Key.D))
+
+			if (input.GetKeyPress(Key.Q))
 			{
-				//move right
-				MoveBy moveBy = new MoveBy(duration, new Vector3(15, 0, 0));
-				action = new EaseOut(moveBy, 2);
+				action = new FadeOut(duration);
+			}
+
+			if (input.GetKeyPress(Key.R))
+			{
+				action = new EaseElasticInOut(new ScaleBy(duration, 1.3f));
+			}
+
+			if (input.GetKeyPress(Key.G))
+			{
+				action = new TintTo(duration, NextRandom(1), NextRandom(1), NextRandom(1));
 			}
 
 			if (action != null)
@@ -78,37 +81,38 @@ namespace Urho.Samples
 			base.OnUpdate(timeStep);
 		}
 
-		void CreateScene()
+		async void CreateScene()
 		{
-			var cache = ResourceCache;
-			scene = new Scene();
-
+			// 3D scene with Octree
+			var scene = new Scene(Context);
 			scene.CreateComponent<Octree>();
-			var planeNode = scene.CreateChild("Plane");
-			planeNode.Scale = new Vector3(100, 1, 100);
-			var planeObject = planeNode.CreateComponent<StaticModel>();
-			planeObject.Model = cache.GetModel("Models/Plane.mdl");
-			planeObject.SetMaterial(cache.GetMaterial("Materials/StoneTiled.xml"));
 
-			var lightNode = scene.CreateChild("DirectionalLight");
-			lightNode.SetDirection(new Vector3(0.6f, -1.0f, 0.8f));
+			// Box
+			boxNode = scene.CreateChild();
+			boxNode.Position = new Vector3(0, 0, 5);
+			boxNode.SetScale(0f);
+			boxNode.Rotation = new Quaternion(60, 0, 30);
+			var box = boxNode.CreateComponent<Box>();
+			box.Color = Color.Magenta;
+
+			// Light
+			Node lightNode = scene.CreateChild(name: "light");
+			//lightNode.SetDirection(new Vector3(0.6f, -1.0f, 0.8f));
 			var light = lightNode.CreateComponent<Light>();
-			light.LightType = LightType.Directional;
+			light.LightType = LightType.Point;
+			light.Range = 50;
 
-			boxNode = scene.CreateChild("Mushroom");
-			boxNode.Position = new Vector3(0, 1, -40);
-			boxNode.SetScale(2f);
+			// Camera
+			Node cameraNode = scene.CreateChild(name: "camera");
+			Camera camera = cameraNode.CreateComponent<Camera>();
 
-			var boxModel = boxNode.CreateComponent<StaticModel>();
-			boxModel.Model = cache.GetModel("Models/Box.mdl");
-			boxModel.SetMaterial(cache.GetMaterial("Materials/StoneEnvMapSmall.xml"));
-			boxModel.CastShadows = true;
+			// Viewport
+			Renderer.SetViewport(0, new Viewport(Context, scene, camera, null));
 
-			CameraNode = scene.CreateChild("camera");
-			var camera = CameraNode.CreateComponent<Camera>();
-			CameraNode.Position = new Vector3(0, 20, -60);
-			CameraNode.Rotation = new Quaternion(30f, 0f, 0f);
-			Renderer.SetViewport(0, new Viewport(scene, camera, null));
+			// Do actions
+			await boxNode.RunActionsAsync(new EaseBounceOut(new ScaleTo(duration: 1f, scale: 1)));
+			await boxNode.RunActionsAsync(new RepeatForever(
+				new RotateBy(duration: 1, deltaAngleX: 90, deltaAngleY: 0, deltaAngleZ: 0)));
 		}
 	}
 }
