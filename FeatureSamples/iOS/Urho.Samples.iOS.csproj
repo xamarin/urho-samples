@@ -1724,9 +1724,9 @@
     <BundleResource Include="..\Assets\AtomicEngineData\Models\Woodensign_Woodensign.mdl">
       <Link>Resources\AtomicEngineData\Models\Woodensign_Woodensign.mdl</Link>
     </BundleResource>
-    <None Include="..\Assets\AtomicEngineData\Music\StoryTime.ogg">
+    <BundleResource Include="..\Assets\AtomicEngineData\Music\StoryTime.ogg">
       <Link>Resources\AtomicEngineData\Music\StoryTime.ogg</Link>
-    </None>
+    </BundleResource>
     <BundleResource Include="..\Assets\AtomicEngineData\Roboman\Robo_01.fbx">
       <Link>Resources\AtomicEngineData\Roboman\Robo_01.fbx</Link>
     </BundleResource>
