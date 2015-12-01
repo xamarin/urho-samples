@@ -70,7 +70,7 @@ namespace Urho.Samples
 
 			// Load music:
 			var musicFile = cache.GetSound("Music/StoryTime.ogg");
-			musicFile.SetLooped(true);
+			musicFile.Looped = true;
 			var musicNode = scene.CreateChild("MusicNode");
 			var musicSource = musicNode.CreateComponent<SoundSource>();
 			musicSource.Gain = 0.5f;

@@ -141,7 +141,7 @@ namespace Urho.Samples
 			terrain.Material = cache.GetMaterial("Materials/Terrain.xml");
 			// The terrain consists of large triangles, which fits well for occlusion rendering, as a hill can occlude all
 			// terrain patches and other objects behind it
-			terrain.SetOccluder(true);
+			terrain.Occluder = true;
 
 			// Create 1000 boxes in the terrain. Always face outward along the terrain normal
 			uint numObjects = 1000;

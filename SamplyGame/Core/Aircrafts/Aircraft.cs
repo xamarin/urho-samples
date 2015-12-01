@@ -33,7 +33,7 @@ namespace SamplyGame
 		/// <summary>
 		/// Is aircraft alive
 		/// </summary>
-		public bool IsAlive => Health > 0 && IsEnabled() && !IsDeleted;
+		public bool IsAlive => Health > 0 && Enabled && !IsDeleted;
 
 		/// <summary>
 		/// Spawn the aircraft and wait until it's exploded
@@ -47,7 +47,7 @@ namespace SamplyGame
 			// Define physics for handling collisions
 			var body = node.CreateComponent<RigidBody>();
 			body.Mass = 1;
-			body.SetKinematic(true);
+			body.Kinematic = true;
 			body.CollisionMask = (uint)CollisionLayer;
 			CollisionShape shape = node.CreateComponent<CollisionShape>();
 			shape.SetBox(CollisionShapeSize, Vector3.Zero, Quaternion.Identity);
@@ -73,7 +73,7 @@ namespace SamplyGame
 			OnExplode(explosionNode);
 			var scaleAction = new ScaleTo(1f, 0f);
 			Node.RemoveAllActions();
-			Node.SetEnabled(false);
+			Node.Enabled = false;
 			await explosionNode.RunActionsAsync(scaleAction, new DelayTime(1f));
 			liveTask.TrySetResult(true);
 			explosionNode.Remove();

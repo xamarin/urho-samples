@@ -62,7 +62,7 @@ namespace Urho.Samples
 			CameraNode.Position = new Vector3(0.0f, 5.0f, -10.0f);
 
 			Camera camera = CameraNode.CreateComponent<Camera>();
-			camera.SetOrthographic(true);
+			camera.Orthographic = true;
 
 			var graphics = Graphics;
 			camera.OrthoSize = graphics.Height * 0.05f;

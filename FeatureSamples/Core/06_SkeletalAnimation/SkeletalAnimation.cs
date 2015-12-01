@@ -98,7 +98,7 @@ namespace Urho.Samples
 				{
 					// Enable full blending weight and looping
 					state.Weight = 1;
-					state.SetLooped (true);
+					state.Looped = true;
 				}
 			
 				// Create our custom Mover component that will move & animate the model during each frame's update

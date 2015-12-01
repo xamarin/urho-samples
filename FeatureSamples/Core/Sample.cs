@@ -48,8 +48,8 @@ namespace Urho.Samples
 	
 		protected bool IsLogoVisible
 		{
-			get { return logoSprite.IsVisible(); }
-			set { logoSprite.SetVisible(value); }
+			get { return logoSprite.Visible; }
+			set { logoSprite.Visible = value; }
 		}
 		
 		static readonly Random random = new Random();
@@ -172,7 +172,7 @@ namespace Urho.Samples
 				else
 				{
 					var cursor = UI.Cursor;
-					if (cursor != null && cursor.IsVisible())
+					if (cursor != null && cursor.Visible)
 						cursor.Position = state.Position;
 				}
 			}

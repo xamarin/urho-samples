@@ -164,7 +164,7 @@ namespace Urho.Samples
 				boxObject.SetMaterial(cache.GetMaterial("Materials/Stone.xml"));
 				boxObject.CastShadows=true;
 				if (size >= 3.0f)
-					boxObject.SetOccluder(true);
+					boxObject.Occluder=true;
 			}
 
 			// Create the cameras. Limit far clip distance to match the fog

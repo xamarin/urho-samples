@@ -223,7 +223,7 @@ namespace Urho.Samples
 			CameraNode.Position = (new Vector3(0.0f, 0.0f, 0.0f)); // Note that Z setting is discarded; use camera.zoom instead (see MoveCamera() below for example)
 
 			camera = CameraNode.CreateComponent<Camera>();
-			camera.SetOrthographic(true);
+			camera.Orthographic = true;
 
 			var graphics = Graphics;
 		

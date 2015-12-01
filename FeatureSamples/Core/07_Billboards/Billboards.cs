@@ -162,7 +162,7 @@ namespace Urho.Samples
 				var billboardObject = smokeNode.CreateComponent<BillboardSet>();
 				billboardObject.NumBillboards = numBillboards;
 				billboardObject.Material = cache.GetMaterial("Materials/LitSmoke.xml");
-				billboardObject.SetSorted(true);
+				billboardObject.Sorted = true;
 
 				for (uint j = 0; j < numBillboards; ++j)
 				{

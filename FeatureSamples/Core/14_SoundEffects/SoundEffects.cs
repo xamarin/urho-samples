@@ -135,7 +135,7 @@ namespace Urho.Samples
 					return;
 
 				var music = cache.GetSound ("Music/Ninja Gods.ogg");
-				music.SetLooped (true);
+				music.Looped = true;
 				Node musicNode = scene.CreateChild ("Music");
 				SoundSource musicSource = musicNode.CreateComponent<SoundSource> ();
 				// Set the sound type to music so that master volume control works correctly

@@ -231,11 +231,11 @@ namespace Urho.Samples
 				Geometry geom = new Geometry();
 
 				// Shadowed buffer needed for raycasts to work, and so that data can be automatically restored on device loss
-				vb.SetShadowed(true);
+				vb.Shadowed = true;
 				vb.SetSize(numVertices, ElementMask.Position | ElementMask.Normal, false);
 				vb.SetData(vertexData);
 
-				ib.SetShadowed(true);
+				ib.Shadowed = true;
 				ib.SetSize(numVertices, false, false);
 				ib.SetData(indexData);
 

@@ -146,13 +146,13 @@ namespace Urho.Samples
 		{
 			var network = Network;
 			Connection serverConnection = network.ServerConnection;
-			bool serverRunning = network.IsServerRunning();
+			bool serverRunning = network.ServerRunning;
 	
 			// Show and hide buttons so that eg. Connect and Disconnect are never shown at the same time
-			sendButton.SetVisible(serverConnection != null);
-			connectButton.SetVisible(serverConnection == null && !serverRunning);
-			disconnectButton.SetVisible(serverConnection != null || serverRunning);
-			startServerButton.SetVisible(serverConnection == null && !serverRunning);
+			sendButton.Visible = serverConnection != null;
+			connectButton.Visible = serverConnection == null && !serverRunning;
+			disconnectButton.Visible = serverConnection != null || serverRunning;
+			startServerButton.Visible = serverConnection == null && !serverRunning;
 		}
 
 		void HandleLogMessage(LogMessageEventArgs args)
@@ -201,7 +201,7 @@ namespace Urho.Samples
 			if (serverConnection != null)
 				serverConnection.Disconnect(0);
 			// Or if we were running a server, stop it
-			else if (network.IsServerRunning())
+			else if (network.ServerRunning)
 				network.StopServer();
 	
 			UpdateButtons();
@@ -224,7 +224,7 @@ namespace Urho.Samples
 			
 				// If we are the server, prepend the sender's IP address and port and echo to everyone
 				// If we are a client, just display the message
-				if (Network.IsServerRunning())
+				if (Network.ServerRunning)
 				{
 					Connection sender = args.Connection;
 					text = sender + " " + text;

@@ -104,13 +104,15 @@ namespace Urho.Samples
 		void ToggleLight1()
 		{
 			Node lightNode = scene.GetChild("Light1", true);
-			lightNode?.SetEnabled(!lightNode.IsEnabled());
+			if (lightNode != null)
+				lightNode.Enabled = !lightNode.Enabled;
 		}
 
 		void ToggleLight2()
 		{
 			Node lightNode = scene.GetChild("Light2", true);
-			lightNode?.SetEnabled(!lightNode.IsEnabled());
+			if (lightNode != null)
+				lightNode.Enabled = !lightNode.Enabled;
 		}
 	}
 }

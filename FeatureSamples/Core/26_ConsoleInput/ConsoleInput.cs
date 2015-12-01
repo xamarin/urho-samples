@@ -70,8 +70,8 @@ namespace Urho.Samples
 			console.NumRows = (uint) (Graphics.Height / 16);
 			console.NumBufferedRows = 2 * console.NumRows;
 			console.CommandInterpreter = GetType().Name;
-			console.SetVisible(true);
-			console.CloseButton.SetVisible(false);
+			console.Visible = true;
+			console.CloseButton.Visible = false;
 
 			// Show OS mouse cursor
 			Input.SetMouseVisible(true, false);

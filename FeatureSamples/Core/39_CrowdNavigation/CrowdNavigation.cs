@@ -149,7 +149,7 @@ namespace Urho.Samples
 			// Right mouse button controls mouse cursor visibility: hide when pressed
 			UI ui = UI;
 			Input input = Input;
-			ui.Cursor.SetVisible(!input.GetMouseButtonDown(MouseButton.Right));
+			ui.Cursor.Visible = !input.GetMouseButtonDown(MouseButton.Right);
 
 			// Do not move if the UI has a focused element (the console)
 			if (ui.FocusElement != null)
@@ -162,7 +162,7 @@ namespace Urho.Samples
 
 			// Use this frame's mouse motion to adjust camera node yaw and pitch. Clamp the pitch between -90 and 90 degrees
 			// Only move the camera when the cursor is hidden
-			if (!ui.Cursor.IsVisible())
+			if (!ui.Cursor.Visible)
 			{
 				IntVector2 mouseMove = input.MouseMove;
 				Yaw += mouseSensitivity * mouseMove.X;
@@ -209,7 +209,7 @@ namespace Urho.Samples
 			UI ui = UI;
 			IntVector2 pos = ui.CursorPosition;
 			// Check the cursor is visible and there is no UI element in front of the cursor
-			if (!ui.Cursor.IsVisible() || ui.GetElementAt(pos, true) != null)
+			if (!ui.Cursor.Visible || ui.GetElementAt(pos, true) != null)
 				return false;
 
 			var graphics = Graphics;
@@ -325,7 +325,7 @@ namespace Urho.Samples
 				boxObject.SetMaterial(cache.GetMaterial("Materials/Stone.xml"));
 				boxObject.CastShadows = true;
 				if (size >= 3.0f)
-					boxObject.SetOccluder(true);
+					boxObject.Occluder = true;
 			}
 
 			// Create a DynamicNavigationMesh component to the scene root

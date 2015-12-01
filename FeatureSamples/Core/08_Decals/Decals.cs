@@ -75,7 +75,7 @@ namespace Urho.Samples
 		{
 			UI ui = UI;
 			var input = Input;
-			ui.Cursor.SetVisible(!input.GetMouseButtonDown(MouseButton.Right));
+			ui.Cursor.Visible = !input.GetMouseButtonDown(MouseButton.Right);
 
 			const float mouseSensitivity = .1f;
 			const float moveSpeed = 40f;
@@ -83,7 +83,7 @@ namespace Urho.Samples
 			if (UI.FocusElement != null)
 				return;
 
-			if (!ui.Cursor.IsVisible())
+			if (!ui.Cursor.Visible)
 			{
 				var mouseMove = input.MouseMove;
 				Yaw += mouseSensitivity * mouseMove.X;
@@ -105,7 +105,7 @@ namespace Urho.Samples
 			if (Input.GetKeyPress(Key.Space))
 				drawDebug = !drawDebug;
 
-			if (UI.Cursor.IsVisible() && Input.GetMouseButtonPress(MouseButton.Left))
+			if (UI.Cursor.Visible && Input.GetMouseButtonPress(MouseButton.Left))
 				PaintDecal();
 			base.OnUpdate(timeStep);
 		}
@@ -180,7 +180,7 @@ namespace Urho.Samples
 				boxObject.SetMaterial(cache.GetMaterial("Materials/Stone.xml"));
 				boxObject.CastShadows=true;
 				if (size >= 3.0f)
-					boxObject.SetOccluder(true);
+					boxObject.Occluder = true;
 			}
 
 			// Create the camera. Limit far clip distance to match the fog
@@ -201,7 +201,7 @@ namespace Urho.Samples
 
 			IntVector2 pos = ui.CursorPosition; 
 			// Check the cursor is visible and there is no UI element in front of the cursor
-			if (!ui.Cursor.IsVisible() || ui.GetElementAt(pos, true) != null)
+			if (!ui.Cursor.Visible || ui.GetElementAt(pos, true) != null)
 				return false;
 
 			Ray cameraRay = camera.GetScreenRay((float) pos.X/graphics.Width, (float) pos.Y/graphics.Height);

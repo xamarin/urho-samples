@@ -88,7 +88,7 @@ namespace Urho.Samples
 		void MoveCamera(float timeStep)
 		{
 			// Right mouse button controls mouse cursor visibility: hide when pressed
-			UI.Cursor.SetVisible(!Input.GetMouseButtonDown(MouseButton.Right));
+			UI.Cursor.Visible = !Input.GetMouseButtonDown(MouseButton.Right);
 
 			// Do not move if the UI has a focused element (the console)
 			if (UI.FocusElement != null)
@@ -101,7 +101,7 @@ namespace Urho.Samples
 
 			// Use this frame's mouse motion to adjust camera node yaw and pitch. Clamp the pitch between -90 and 90 degrees
 			// Only move the camera when the cursor is hidden
-			if (!UI.Cursor.IsVisible())
+			if (!UI.Cursor.Visible)
 			{
 				IntVector2 mouseMove = Input.MouseMove;
 				yaw += mouseSensitivity * mouseMove.X;
@@ -229,7 +229,7 @@ namespace Urho.Samples
 				boxObject.SetMaterial(cache.GetMaterial("Materials/Stone.xml"));
 				boxObject.CastShadows = true;
 				if (size >= 3.0f)
-					boxObject.SetOccluder(true);
+					boxObject.Occluder = true;
 			}
 
 			// Create Jack node that will follow the path
@@ -345,7 +345,7 @@ namespace Urho.Samples
 			
 			IntVector2 pos = UI.CursorPosition;
 			// Check the cursor is visible and there is no UI element in front of the cursor
-			if (!UI.Cursor.IsVisible() || UI.GetElementAt(pos, true) != null)
+			if (!UI.Cursor.Visible || UI.GetElementAt(pos, true) != null)
 				return false;
 
 			var graphics = Graphics;

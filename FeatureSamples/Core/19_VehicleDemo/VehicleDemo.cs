@@ -200,7 +200,7 @@ namespace Urho.Samples
 			terrain.Material = cache.GetMaterial("Materials/Terrain.xml");
 			// The terrain consists of large triangles, which fits well for occlusion rendering, as a hill can occlude all
 			// terrain patches and other objects behind it
-			terrain.SetOccluder(true);
+			terrain.Occluder = true;
 
 			RigidBody body = terrainNode.CreateComponent<RigidBody>();
 			body.CollisionLayer = 2; // Use layer bitmask 2 for static geometry

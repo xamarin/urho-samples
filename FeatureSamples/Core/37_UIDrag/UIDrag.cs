@@ -101,7 +101,7 @@ namespace Urho.Samples
 				root.AddChild(t);
 				t.SetStyle("Text", null);
 				t.Name=("Touch "+ i);
-				t.SetVisible(false);
+				t.Visible = false;
 			}
 		}
 
@@ -183,13 +183,13 @@ namespace Urho.Samples
 				pos.Y -= 30;
 
 				text.Position = (pos);
-				text.SetVisible(true);
+				text.Visible = true;
 			}
 
 			for (uint i = n; i < 10; i++)
 			{
 				var text = root.GetChild("Touch " + i, false);
-				text.SetVisible(false);
+				text.Visible = false;
 			}
 		}
 

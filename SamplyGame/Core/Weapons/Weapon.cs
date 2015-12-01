@@ -45,7 +45,9 @@ namespace SamplyGame
 
 		public virtual void OnHit(Aircraft target, bool killed, Node bulletNode)
 		{
-			bulletNode.GetComponent<RigidBody>()?.SetEnabled(false);
+			var body = bulletNode.GetComponent<RigidBody>();
+			if (body != null)
+				body.Enabled = false;
 			bulletNode.SetScale(0);
 		}
 
@@ -60,7 +62,7 @@ namespace SamplyGame
 			var body = bullet.CreateComponent<RigidBody>();
 			CollisionShape shape = bullet.CreateComponent<CollisionShape>();
 			shape.SetBox(collisionBox, Vector3.Zero, Quaternion.Identity);
-			body.SetKinematic(true);
+			body.Kinematic = true;
 			body.CollisionLayer = byPlayer ? (uint)CollisionLayers.Enemy : (uint)CollisionLayers.Player;
 			bullet.AddComponent(new WeaponReferenceComponent(this));
 			return bullet;

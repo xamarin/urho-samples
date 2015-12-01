@@ -153,7 +153,7 @@ namespace Urho.Samples
 					RigidBody body = modelNode.CreateComponent<RigidBody>();
 					// The Trigger mode makes the rigid body only detect collisions, but impart no forces on the
 					// colliding objects
-					body.SetTrigger(true);
+					body.Trigger=true;
 					CollisionShape shape = modelNode.CreateComponent<CollisionShape>();
 					// Create the capsule shape with an offset so that it is correctly aligned with the model, which
 					// has its origin at the feet
