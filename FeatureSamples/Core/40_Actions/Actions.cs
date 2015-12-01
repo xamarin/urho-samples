@@ -114,5 +114,17 @@ namespace Urho.Samples
 			await boxNode.RunActionsAsync(new RepeatForever(
 				new RotateBy(duration: 1, deltaAngleX: 90, deltaAngleY: 0, deltaAngleZ: 0)));
 		}
+
+		protected override string JoystickLayoutPatch => 
+			"<patch>" +
+			"    <remove sel=\"/element/element[./attribute[@name='Name' and @value='Button0']]/attribute[@name='Is Visible']\" />" +
+			"    <replace sel=\"/element/element[./attribute[@name='Name' and @value='Button0']]/element[./attribute[@name='Name' and @value='Label']]/attribute[@name='Text']/@value\">G</replace>" +
+			"    <add sel=\"/element/element[./attribute[@name='Name' and @value='Button0']]\">" +
+			"        <element type=\"Text\">" +
+			"            <attribute name=\"Name\" value=\"KeyBinding\" />" +
+			"            <attribute name=\"Text\" value=\"G\" />" +
+			"        </element>" +
+			"    </add>" +
+			"</patch>";
 	}
 }
