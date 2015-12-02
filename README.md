@@ -1,5 +1,5 @@
-This directory contains various samples for the UrhoSharp engine and
-they can be compiled for Android or iOS, or can be executed on Windows
+This directory contains various samples for the [UrhoSharp](http://developer.xamarin.com/guides/cross-platform/urho/) 
+engine and they can be compiled for Android or iOS, or can be executed on Windows
 and Mac with the published NuGet package.
 
 The toplevel "FeatureSamples" solution showcases 40 independent UrhoSharp
