@@ -6,4 +6,4 @@ This sample demonstrates:
 - Using triangle meshes for collision
 - Optimizing physics simulation by leaving out collision event signaling
 
-![Screenshot](Screenshot.png)
+![Screenshot](Screenshots/Screenshot.png)

@@ -6,4 +6,4 @@ This sample demonstrates:
 - Moving an AnimatedModel's bones with physics and connecting them with constraints
 - Using rolling friction to stop rolling objects from moving infinitely
 
-![Screenshot](Screenshot.png)
+![Screenshot](Screenshots/Screenshot.png)

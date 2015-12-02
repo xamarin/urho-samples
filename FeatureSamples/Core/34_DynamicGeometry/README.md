@@ -6,4 +6,4 @@ This sample demonstrates:
 - Modifying the vertex buffer data of the cloned models at runtime to efficiently animate them
 - Creating a Model resource and its buffer data from scratch
 
-![Screenshot](Screenshot.png)
+![Screenshot](Screenshots/Screenshot.png)

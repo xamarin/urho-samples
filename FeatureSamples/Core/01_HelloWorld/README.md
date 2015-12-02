@@ -7,4 +7,4 @@ Furthermore it shows:
 - Adding a Text element to the graphical user interface
 - Subscribing to and handling of update events
 
-![Screenshot](Screenshot.png)
+![Screenshot](Screenshots/Screenshot.png)

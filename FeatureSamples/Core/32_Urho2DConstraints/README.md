@@ -10,4 +10,4 @@ This sample demonstrates:
 - Using Text3D to display some text affected by zoom
 - Setting the background color for the scene
 
-![Screenshot](Screenshot.png)
+![Screenshot](Screenshots/Screenshot.png)

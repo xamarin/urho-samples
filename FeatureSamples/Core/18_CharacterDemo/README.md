@@ -9,4 +9,4 @@ This sample demonstrates:
 - Defining attributes of a custom component so that it can be saved and loaded
 - Using touch inputs/gyroscope for iOS/Android (implemented through an external file)
 
-![Screenshot](Screenshot.png)
+![Screenshot](Screenshots/Screenshot.png)

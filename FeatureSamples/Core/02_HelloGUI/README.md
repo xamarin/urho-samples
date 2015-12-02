@@ -9,4 +9,4 @@ For more advanced users (beginners can skip this section):
 - Dragging UIElements
 - Displaying tooltips
 
-![Screenshot](Screenshot.png)
+![Screenshot](Screenshots/Screenshot.png)

@@ -9,4 +9,4 @@ This sample demonstrates:
 - Raycasting drawable components
 - Making a node follow the Detour path
 
-![Screenshot](Screenshot.png)
+![Screenshot](Screenshots/Screenshot.png)

@@ -6,4 +6,4 @@ This sample demonstrates:
 - Create roop constraint
 - Displaying physics debug geometry
 
-![Screenshot](Screenshot.png)
+![Screenshot](Screenshots/Screenshot.png)

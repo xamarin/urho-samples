@@ -7,4 +7,4 @@ This sample demonstrates:
 - Marking suitable (large) objects as occluders for occlusion culling
 - Displaying renderer debug geometry to see the effect of occlusion
 
-![Screenshot](Screenshot.png)
+![Screenshot](Screenshots/Screenshot.png)

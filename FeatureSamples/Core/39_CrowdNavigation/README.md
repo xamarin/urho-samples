@@ -11,4 +11,4 @@ This sample demonstrates:
 - Using off-mesh connections to make boxes climbable
 - Using agents to simulate moving obstacles
 
-![Screenshot](Screenshot.png)
+![Screenshot](Screenshots/Screenshot.png)

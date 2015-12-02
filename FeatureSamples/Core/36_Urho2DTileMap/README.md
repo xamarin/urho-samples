@@ -6,4 +6,4 @@ This sample demonstrates:
 - Displaying the scene using the Renderer subsystem
 - Handling keyboard to move and zoom 2D camera
 
-![Screenshot](Screenshot.png)
+![Screenshot](Screenshots/Screenshot.png)

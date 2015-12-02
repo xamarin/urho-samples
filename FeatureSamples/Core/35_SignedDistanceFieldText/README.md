@@ -7,4 +7,4 @@ This sample demonstrates:
 - Displaying the scene using the Renderer subsystem
 - Handling keyboard and mouse input to move a freelook camera
 
-![Screenshot](Screenshot.png)
+![Screenshot](Screenshots/Screenshot.png)

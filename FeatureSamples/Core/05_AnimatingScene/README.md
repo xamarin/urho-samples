@@ -6,4 +6,4 @@ This sample demonstrates:
 - Controlling scene ambience with the Zone component
 - Attaching a light to an object (the camera)
 
-![Screenshot](Screenshot.png)
+![Screenshot](Screenshots/Screenshot.png)

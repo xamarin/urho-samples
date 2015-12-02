@@ -6,4 +6,4 @@ This sample demonstrates:
 - Displaying the scene using the Renderer subsystem
 - Handling mouse move to move particle
 
-![Screenshot](Screenshot.png)
+![Screenshot](Screenshots/Screenshot.png)

@@ -7,4 +7,4 @@ This sample demonstrates:
 - Using the Skybox component for setting up an unmoving sky
 - Saving a scene to a file and loading it to restore a previous state
 
-![Screenshot](Screenshot.png)
+![Screenshot](Screenshots/Screenshot.png)

@@ -8,4 +8,4 @@ This sample demonstrates:
 over a large area (typically used in outdoor scenes for shadows cast by sunlight)
 - Displaying renderer debug geometry
 
-![Screenshot](Screenshot.png)
+![Screenshot](Screenshots/Screenshot.png)

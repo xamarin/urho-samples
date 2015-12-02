@@ -4,4 +4,4 @@
 This sample demonstrates:
 - Playing back a sound stream produced on-the-fly by a simple CPU synthesis algorithm
 
-![Screenshot](Screenshot.png)
+![Screenshot](Screenshots/Screenshot.png)

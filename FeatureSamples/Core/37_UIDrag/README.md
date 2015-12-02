@@ -6,4 +6,4 @@ This sample demonstrates:
 - Loading GUI Style from xml
 - Subscribing to GUI drag events and handling them.
 
-![Screenshot](Screenshot.png)
+![Screenshot](Screenshots/Screenshot.png)

@@ -8,4 +8,4 @@ This sample demonstrates:
 - Using the profiler to measure the time taken to animate the scene
 - Optionally speeding up rendering by grouping objects with the StaticModelGroup component
 
-![Screenshot](Screenshot.png)
+![Screenshot](Screenshots/Screenshot.png)
