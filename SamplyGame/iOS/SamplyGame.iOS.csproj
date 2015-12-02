@@ -50,9 +50,8 @@
     <ConsolePause>false</ConsolePause>
     <MtouchArch>ARMv7, ARM64</MtouchArch>
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
-    <CodesignKey>iPhone Developer: Yahor Bahatau (PW9C6H2Z34)</CodesignKey>
+    <CodesignKey>iPhone Developer</CodesignKey>
     <MtouchDebug>true</MtouchDebug>
-    <CodesignProvision>1c92fa31-7088-4869-9304-8ff238fee60a</CodesignProvision>
     <MtouchFastDev>true</MtouchFastDev>
     <IpaPackageName>
     </IpaPackageName>
