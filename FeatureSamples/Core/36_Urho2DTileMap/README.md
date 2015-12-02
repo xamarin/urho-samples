@@ -1,4 +1,5 @@
-#### 36. Urho2D tile map example.
+ Urho2D tile map example.
+=============
 
 This sample demonstrates:
 - Creating a 2D scene with tile map

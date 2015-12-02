@@ -1,4 +1,5 @@
-#### 32. Dynamic geometry example.
+ Dynamic geometry example.
+=============
 
 This sample demonstrates:
 - Cloning a Model resource

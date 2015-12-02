@@ -1,4 +1,5 @@
-#### 2. A simple 'HelloWorld' GUI created purely from code.
+ A simple 'HelloWorld' GUI created purely from code.
+=============
 
 This sample demonstrates:
 - Creation of controls and building a UI hierarchy

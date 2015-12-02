@@ -1,4 +1,5 @@
-#### 12. Physics stress test example.
+ Physics stress test example.
+=============
 
 This sample demonstrates:
 - Physics and rendering performance with a high (1000) moving object count

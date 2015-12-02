@@ -1,4 +1,5 @@
-#### 10. Render to texture example
+ Render to texture example
+=============
 
 This sample demonstrates:
 - Creating two 3D scenes and rendering the other into a texture

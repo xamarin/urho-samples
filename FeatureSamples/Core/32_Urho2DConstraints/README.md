@@ -1,4 +1,5 @@
-#### 32. Urho2D constraints sample.
+ Urho2D constraints sample.
+=============
 
 This sample is designed to help understanding and chosing the right constraint.
 This sample demonstrates:

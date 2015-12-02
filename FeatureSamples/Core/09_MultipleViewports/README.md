@@ -1,4 +1,5 @@
-#### 9. Multiple viewports example.
+ Multiple viewports example.
+=============
 
 This sample demonstrates:
 - Setting up two viewports with two separate cameras

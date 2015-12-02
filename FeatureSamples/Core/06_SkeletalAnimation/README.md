@@ -1,4 +1,5 @@
-#### 6. Skeletal animation example.
+ Skeletal animation example.
+=============
 
 This sample demonstrates:
 - Populating a 3D scene with skeletally animated AnimatedModel components;

@@ -1,4 +1,5 @@
-#### 39. CrowdNavigation example.
+ CrowdNavigation example.
+=============
 
 This sample demonstrates:
 - Generating a dynamic navigation mesh into the scene

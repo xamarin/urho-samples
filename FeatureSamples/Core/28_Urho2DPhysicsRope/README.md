@@ -1,4 +1,5 @@
-#### 28. Urho2D physics rope sample.
+ Urho2D physics rope sample.
+=============
 
 This sample demonstrates:
 - Create revolute constraint

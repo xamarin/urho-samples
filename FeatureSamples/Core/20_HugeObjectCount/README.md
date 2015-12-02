@@ -1,4 +1,5 @@
-#### 20. Huge object count example.
+ Huge object count example.
+=============
 
 This sample demonstrates:
 - Creating a scene with 250 x 250 simple objects

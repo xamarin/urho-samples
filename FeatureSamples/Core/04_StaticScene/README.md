@@ -1,4 +1,5 @@
-#### 4. Static 3D scene example.
+ Static 3D scene example.
+=============
 
 This sample demonstrates:
 - Creating a 3D scene with static content

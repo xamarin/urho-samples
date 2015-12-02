@@ -1,4 +1,5 @@
-#### 18. Moving character example.
+ Moving character example.
+=============
 
 This sample demonstrates:
 - Controlling a humanoid character through physics

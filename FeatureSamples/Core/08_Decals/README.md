@@ -1,4 +1,5 @@
-#### 8. Decals example.
+ Decals example.
+=============
 
 This sample demonstrates:
 - Performing a raycast to the octree and adding a decal to the hit location

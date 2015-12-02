@@ -1,4 +1,5 @@
-#### 16. Chat example
+ Chat example
+=============
 
 This sample demonstrates:
 - Starting up a network server or connecting to it

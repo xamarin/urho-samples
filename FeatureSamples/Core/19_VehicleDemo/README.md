@@ -1,4 +1,5 @@
-#### 19. Vehicle example.
+ Vehicle example.
+=============
 
 This sample demonstrates:
 - Creating a heightmap terrain with collision

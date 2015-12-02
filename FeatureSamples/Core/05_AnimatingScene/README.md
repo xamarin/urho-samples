@@ -1,4 +1,5 @@
-#### 5. Animating 3D scene example.
+ Animating 3D scene example.
+=============
 
 This sample demonstrates:
 - Creating a 3D scene and using a custom component to animate the objects

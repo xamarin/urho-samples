@@ -1,4 +1,5 @@
-#### 38. Scene & UI load example.
+ Scene & UI load example.
+=============
 
 This sample demonstrates:
 - Loading a scene from a file and showing it

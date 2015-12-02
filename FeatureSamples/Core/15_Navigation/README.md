@@ -1,4 +1,5 @@
-#### 15. Navigation example.
+ Navigation example.
+=============
 
 This sample demonstrates:
 - Generating a navigation mesh into the scene

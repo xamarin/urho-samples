@@ -1,4 +1,5 @@
-#### 3. Moving sprites example.
+ Moving sprites example.
+=============
 
 This sample demonstrates:
 - Adding Sprite elements to the UI
