@@ -2,13 +2,13 @@ This directory contains various samples for the [UrhoSharp](http://developer.xam
 engine and they can be compiled for Android or iOS, or can be executed on Windows
 and Mac with the published NuGet package.
 
-The toplevel "FeatureSamples" solution showcases 40 independent UrhoSharp
+The toplevel `FeatureSamples` solution showcases 40 independent UrhoSharp
 features, each one showcasing a particular element of the framework and runs
-on all supported platforms.   It also contains a more complete "ToonTown" sample.
+on all supported platforms.   It also contains a more complete `ToonTown` sample.
 
 ![Screenshot](FeatureSamples/Core/41_ToonTown/Video.gif)
 
-The "SamplyGame" directory contains a more complete game, it is a sample
+The `SamplyGame` directory contains a more complete game, it is a sample
 inspired by the gameplay and artwork of ShootySkies and shows a more 
 complete game in action, showing how to load assets, write game code and
 structure a game.   It is our first game build with this, so be kind.
