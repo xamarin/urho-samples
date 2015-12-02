@@ -7,6 +7,6 @@
         <SupportedPlatforms>Android, iOS, tvOS, Windows, Mac</SupportedPlatforms>
         <LicenseRequirement>Indie</LicenseRequirement>
         <Gallery>true</Gallery>
-        <Brief>Sound effects example</Brief>
+        <Brief>Playing sound effects and music;   Controlling sound and music master volume.</Brief>
 </SampleMetadata>
 

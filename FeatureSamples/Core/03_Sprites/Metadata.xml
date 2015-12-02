@@ -7,6 +7,6 @@
         <SupportedPlatforms>Android, iOS, tvOS, Windows, Mac</SupportedPlatforms>
         <LicenseRequirement>Indie</LicenseRequirement>
         <Gallery>true</Gallery>
-        <Brief>Moving sprites example.</Brief>
+        <Brief>Shows how to add Sprite elements to the UI, storing custom data on UI Elements and handling frame update events when sprites move.</Brief>
 </SampleMetadata>
 

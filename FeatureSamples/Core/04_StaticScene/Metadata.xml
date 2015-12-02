@@ -7,6 +7,6 @@
         <SupportedPlatforms>Android, iOS, tvOS, Windows, Mac</SupportedPlatforms>
         <LicenseRequirement>Indie</LicenseRequirement>
         <Gallery>true</Gallery>
-        <Brief>Static 3D scene example.</Brief>
+        <Brief>Shows creating a 3D scene with static content and how to handle keyboard and mouse input to implement a freelook camera.</Brief>
 </SampleMetadata>
 

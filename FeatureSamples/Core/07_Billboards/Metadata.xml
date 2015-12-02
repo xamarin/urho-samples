@@ -7,6 +7,6 @@
         <SupportedPlatforms>Android, iOS, tvOS, Windows, Mac</SupportedPlatforms>
         <LicenseRequirement>Indie</LicenseRequirement>
         <Gallery>true</Gallery>
-        <Brief>Billboard example.</Brief>
+        <Brief>Populates a 3D scene with boolboard sets and several shadow casting spotlights and shows rendering performance with large object and light counts.</Brief>
 </SampleMetadata>
 

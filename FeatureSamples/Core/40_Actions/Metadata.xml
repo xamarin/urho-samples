@@ -7,6 +7,6 @@
         <SupportedPlatforms>Android, iOS, tvOS, Windows, Mac</SupportedPlatforms>
         <LicenseRequirement>Indie</LicenseRequirement>
         <Gallery>true</Gallery>
-        <Brief>Shows the Actions framework</Brief>
+        <Brief>Shows the Actions framework in action, how you can attach actions to nodes</Brief>
 </SampleMetadata>
 

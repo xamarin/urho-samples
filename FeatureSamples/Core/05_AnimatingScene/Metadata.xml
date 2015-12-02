@@ -7,6 +7,6 @@
         <SupportedPlatforms>Android, iOS, tvOS, Windows, Mac</SupportedPlatforms>
         <LicenseRequirement>Indie</LicenseRequirement>
         <Gallery>true</Gallery>
-        <Brief>Animating 3D scene example.</Brief>
+        <Brief>Shows how to create a 3D scene using a custom component to animate the objects, controlling scene ambiance with Zone components and attaching lights to a Node (the camera).</Brief>
 </SampleMetadata>
 

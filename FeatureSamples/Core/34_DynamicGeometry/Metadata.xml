@@ -7,6 +7,7 @@
         <SupportedPlatforms>Android, iOS, tvOS, Windows, Mac</SupportedPlatforms>
         <LicenseRequirement>Indie</LicenseRequirement>
         <Gallery>true</Gallery>
-        <Brief>Dynamic geometry example.</Brief>
+        <Brief>Cloning a Model resource; Modifying the vertex buffer data of the cloned models at runtime to efficiently animate them; Creating a Model resource and its buffer data from scratch.
+</Brief>
 </SampleMetadata>
 

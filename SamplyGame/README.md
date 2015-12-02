@@ -1,3 +1,3 @@
-1. Samply game
+A simple game
 
 ![Screenshot](Screenshots/Video.gif)

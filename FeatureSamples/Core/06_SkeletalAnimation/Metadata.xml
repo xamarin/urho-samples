@@ -7,6 +7,6 @@
         <SupportedPlatforms>Android, iOS, tvOS, Windows, Mac</SupportedPlatforms>
         <LicenseRequirement>Indie</LicenseRequirement>
         <Gallery>true</Gallery>
-        <Brief>Skeletal animation example.</Brief>
+        <Brief>Shows how to populate a 3D scene with skeletarlly animated AnimatedModel components as well as shadow maps for directional lights and using the debug geometry tool.</Brief>
 </SampleMetadata>
 

@@ -7,6 +7,6 @@
         <SupportedPlatforms>Android, iOS, tvOS, Windows, Mac</SupportedPlatforms>
         <LicenseRequirement>Indie</LicenseRequirement>
         <Gallery>true</Gallery>
-        <Brief>Render to texture example</Brief>
+        <Brief>Creates two 3D scenes and renders one into a texture that is rendered into the other one.  Shows creating rendertarget textures and materials programatically.</Brief>
 </SampleMetadata>
 

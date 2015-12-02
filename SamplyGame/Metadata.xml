@@ -7,6 +7,6 @@
         <SupportedPlatforms>Android, iOS, tvOS, Windows, Mac</SupportedPlatforms>
         <LicenseRequirement>Indie</LicenseRequirement>
         <Gallery>true</Gallery>
-        <Brief>SamplyGame is a partial clone of the ShootySkies games and a showcase of how you can structure a game using UrhoSharp.</Brief>
+        <Brief>SamplyGame is a homage to the ShootySkies games and a showcase of how you can structure a game using UrhoSharp.</Brief>
 </SampleMetadata>
 

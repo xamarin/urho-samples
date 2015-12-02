@@ -7,6 +7,6 @@
         <SupportedPlatforms>Android, iOS, tvOS, Windows, Mac</SupportedPlatforms>
         <LicenseRequirement>Indie</LicenseRequirement>
         <Gallery>true</Gallery>
-        <Brief>Decals example.</Brief>
+        <Brief>Performs a raycast to the Octree and adds decals to hit location, shows large objects being used as occluders.</Brief>
 </SampleMetadata>
 

@@ -7,6 +7,6 @@
         <SupportedPlatforms>Android, iOS, tvOS, Windows, Mac</SupportedPlatforms>
         <LicenseRequirement>Indie</LicenseRequirement>
         <Gallery>true</Gallery>
-        <Brief>Multiple viewports example.</Brief>
+        <Brief>Shows how to setup two viewports with two separate cameras as well as adding post-processing effects to a viewport render path.</Brief>
 </SampleMetadata>
 

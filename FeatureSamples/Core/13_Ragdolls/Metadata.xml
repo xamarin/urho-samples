@@ -7,6 +7,6 @@
         <SupportedPlatforms>Android, iOS, tvOS, Windows, Mac</SupportedPlatforms>
         <LicenseRequirement>Indie</LicenseRequirement>
         <Gallery>true</Gallery>
-        <Brief>Ragdoll example, shows physics collisions and bone with physics movement.</Brief>
+        <Brief>Shows how to detect physics collisions, moving the AnimatedModel bones with physics and connecting them with constraints and using rolling friction to stop rolling objects from moving infinitely.</Brief>
 </SampleMetadata>
 

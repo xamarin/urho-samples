@@ -7,6 +7,7 @@
         <SupportedPlatforms>Android, iOS, tvOS, Windows, Mac</SupportedPlatforms>
         <LicenseRequirement>Indie</LicenseRequirement>
         <Gallery>true</Gallery>
-        <Brief>Chat example</Brief>
+        <Brief>Starting up a network server or connecting to it; Implementing simple chat functionality with network messages.
+</Brief>
 </SampleMetadata>
 
