@@ -1,4 +1,4 @@
-#### 13. Ragdoll example.
+#### 13. Ragdoll example
 
 This sample demonstrates:
 - Detecting physics collisions

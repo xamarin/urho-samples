@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<SampleMetadata>
+        <ID>28B4B048-2EB2-4D96-ACB0-A3BC793A84FC</ID>
+        <IsFullApplication>false</IsFullApplication>
+        <Level>Advanced</Level>
+        <Tags>Graphics, Games, UrhoSharp</Tags>
+        <SupportedPlatforms>Android, iOS, tvOS, Windows, Mac</SupportedPlatforms>
+        <LicenseRequirement>Indie</LicenseRequirement>
+        <Gallery>true</Gallery>
+        <Brief>Ragdoll example, shows physics collisions and bone with physics movement.</Brief>
+</SampleMetadata>
+

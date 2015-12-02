@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<SampleMetadata>
+        <ID>C14A9DD9-D00B-4B09-8C4A-8A375C466EB6</ID>
+        <IsFullApplication>false</IsFullApplication>
+        <Level>Intermediate</Level>
+        <Tags>Graphics, Games, UrhoSharp</Tags>
+        <SupportedPlatforms>Android, iOS, tvOS, Windows, Mac</SupportedPlatforms>
+        <LicenseRequirement>Indie</LicenseRequirement>
+        <Gallery>true</Gallery>
+        <Brief>Using physics on a humanoid character and the use of 1st and 3rd person cameras.</Brief>
+</SampleMetadata>
+

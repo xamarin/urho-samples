@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<SampleMetadata>
+        <ID>021B2D04-477C-4A8C-9607-3E5A3A896A2F</ID>
+        <IsFullApplication>false</IsFullApplication>
+        <Level>Intermediate</Level>
+        <Tags>Graphics, Games, UrhoSharp</Tags>
+        <SupportedPlatforms>Android, iOS, tvOS, Windows, Mac</SupportedPlatforms>
+        <LicenseRequirement>Indie</LicenseRequirement>
+        <Gallery>true</Gallery>
+        <Brief>ToonTown provides a simple character that navigates a
+	town, this was originally crated in Unity and exported to Urho.</Brief>
+</SampleMetadata>
+

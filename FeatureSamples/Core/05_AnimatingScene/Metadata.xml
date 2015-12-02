@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<SampleMetadata>
+        <ID>77BE4500-9B5E-4F63-95CC-5C5403B6E765</ID>
+        <IsFullApplication>false</IsFullApplication>
+        <Level>Beginning</Level>
+        <Tags>Graphics, Games, UrhoSharp</Tags>
+        <SupportedPlatforms>Android, iOS, tvOS, Windows, Mac</SupportedPlatforms>
+        <LicenseRequirement>Indie</LicenseRequirement>
+        <Gallery>true</Gallery>
+        <Brief>Animating 3D scene example.</Brief>
+</SampleMetadata>
+
