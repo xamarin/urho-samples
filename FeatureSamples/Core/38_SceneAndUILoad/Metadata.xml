@@ -2,7 +2,7 @@
 <SampleMetadata>
         <ID>D7680CAC-FDC6-456F-BF69-22426919F1F8</ID>
         <IsFullApplication>false</IsFullApplication>
-        <Level>Intermediate</Level>
+        <HideZip>true</HideZip><Level>Intermediate</Level>
         <Tags>Graphics, Games, UrhoSharp</Tags>
         <SupportedPlatforms>Android, iOS, tvOS, Windows, Mac</SupportedPlatforms>
         <LicenseRequirement>Indie</LicenseRequirement>

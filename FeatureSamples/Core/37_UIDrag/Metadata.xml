@@ -2,7 +2,7 @@
 <SampleMetadata>
         <ID>264E795E-D98D-4253-86CE-F250FD544C7E</ID>
         <IsFullApplication>false</IsFullApplication>
-        <Level>Beginning</Level>
+        <HideZip>true</HideZip><Level>Beginning</Level>
         <Tags>Graphics, Games, UrhoSharp</Tags>
         <SupportedPlatforms>Android, iOS, tvOS, Windows, Mac</SupportedPlatforms>
         <LicenseRequirement>Indie</LicenseRequirement>
