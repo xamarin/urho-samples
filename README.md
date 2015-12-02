@@ -6,14 +6,14 @@ The toplevel `FeatureSamples` solution showcases 40 independent UrhoSharp
 features, each one showcasing a particular element of the framework and runs
 on all supported platforms.   It also contains a more complete `ToonTown` sample.
 
-![Screenshot](FeatureSamples/Core/41_ToonTown/Video.gif)
+![Screenshot](FeatureSamples/Core/41_ToonTown/Screenshots/Video.gif)
 
 The `SamplyGame` directory contains a more complete game, it is a sample
 inspired by the gameplay and artwork of ShootySkies and shows a more 
 complete game in action, showing how to load assets, write game code and
 structure a game.   It is our first game build with this, so be kind.
 
-![Screenshot](SamplyGame/Video.gif)
+![Screenshot](SamplyGame/Screenshots/Video.gif)
 
 Both solutions are structured to have their cross platform code written
 in the `Core` directory, where we build a portable class library.   While
