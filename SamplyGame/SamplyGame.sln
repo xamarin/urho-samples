@@ -3,13 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.23107.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SamplyGame", "SamplyGame\Core\SamplyGame.csproj", "{7C4B3936-72F4-49E0-B5A7-E1284863C8C4}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SamplyGame", "Core\SamplyGame.csproj", "{7C4B3936-72F4-49E0-B5A7-E1284863C8C4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SamplyGame.Droid", "SamplyGame\Droid\SamplyGame.Droid.csproj", "{80290692-9757-4755-AA3D-ABF785ED4D58}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SamplyGame.Droid", "Droid\SamplyGame.Droid.csproj", "{80290692-9757-4755-AA3D-ABF785ED4D58}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SamplyGame.iOS", "SamplyGame\iOS\SamplyGame.iOS.csproj", "{3A72E714-15CE-4706-BA99-E389FB7C9B2C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SamplyGame.iOS", "iOS\SamplyGame.iOS.csproj", "{3A72E714-15CE-4706-BA99-E389FB7C9B2C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SamplyGame.Desktop", "SamplyGame\Desktop\SamplyGame.Desktop.csproj", "{6CED9E4F-1CED-41B9-A8C4-DE4C0F23636F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SamplyGame.Desktop", "Desktop\SamplyGame.Desktop.csproj", "{6CED9E4F-1CED-41B9-A8C4-DE4C0F23636F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

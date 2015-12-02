@@ -3,13 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.23107.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Urho.Samples.Droid", "FeatureSamples\Android\Urho.Samples.Droid.csproj", "{9599B6A8-09DA-455C-9391-319A1FCDC5B6}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Urho.Samples.Droid", "Android\Urho.Samples.Droid.csproj", "{9599B6A8-09DA-455C-9391-319A1FCDC5B6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Urho.Samples", "FeatureSamples\Core\Urho.Samples.csproj", "{792AF649-1BB3-4242-8BA3-61F67E357B18}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Urho.Samples", "Core\Urho.Samples.csproj", "{792AF649-1BB3-4242-8BA3-61F67E357B18}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Urho.Samples.Desktop", "FeatureSamples\Desktop\Urho.Samples.Desktop.csproj", "{C9D62FA9-7107-466F-BD0D-B0AAA69D975B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Urho.Samples.Desktop", "Desktop\Urho.Samples.Desktop.csproj", "{C9D62FA9-7107-466F-BD0D-B0AAA69D975B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Urho.Samples.iOS", "FeatureSamples\iOS\Urho.Samples.iOS.csproj", "{4190D8C8-C168-4B6C-B76C-0F4F63E7D5CF}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Urho.Samples.iOS", "iOS\Urho.Samples.iOS.csproj", "{4190D8C8-C168-4B6C-B76C-0F4F63E7D5CF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
