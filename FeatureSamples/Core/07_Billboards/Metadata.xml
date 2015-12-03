@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<SampleMetadata>
+        <ID>C2C7075F-5CC2-46CA-8D60-F8A5AB531F65</ID>
+        <IsFullApplication>false</IsFullApplication>
+        <HideZip>true</HideZip><Level>Intermediate</Level>
+        <Tags>Graphics, Games, UrhoSharp</Tags>
+        <SupportedPlatforms>Android, iOS, tvOS, Windows, Mac</SupportedPlatforms>
+        <LicenseRequirement>Indie</LicenseRequirement>
+        <Gallery>true</Gallery>
+        <Brief>Populates a 3D scene with boolboard sets and several shadow casting spotlights and shows rendering performance with large object and light counts.</Brief>
+</SampleMetadata>
+

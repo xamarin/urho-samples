@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<SampleMetadata>
+        <ID>61364FC9-9D0E-49E7-AB46-FDD1B7A5683C</ID>
+        <IsFullApplication>false</IsFullApplication>
+        <HideZip>true</HideZip><Level>Intermediate</Level>
+        <Tags>Graphics, Games, UrhoSharp</Tags>
+        <SupportedPlatforms>Android, iOS, tvOS, Windows, Mac</SupportedPlatforms>
+        <LicenseRequirement>Indie</LicenseRequirement>
+        <Gallery>true</Gallery>
+        <Brief>Crow navigation example using a dynamic navigation mesh
+	with obstacles and agents navigating the space .</Brief>
+</SampleMetadata>
+

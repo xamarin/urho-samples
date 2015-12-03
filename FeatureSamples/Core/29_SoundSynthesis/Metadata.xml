@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<SampleMetadata>
+        <ID>F8DF6B5E-17F2-40CB-B53E-132ECDFF1E1F</ID>
+        <IsFullApplication>false</IsFullApplication>
+        <HideZip>true</HideZip><Level>Intermediate</Level>
+        <Tags>Graphics, Games, UrhoSharp, Media</Tags>
+        <SupportedPlatforms>Android, iOS, tvOS, Windows, Mac</SupportedPlatforms>
+        <LicenseRequirement>Indie</LicenseRequirement>
+        <Gallery>true</Gallery>
+        <Brief>Sound synthesis example.</Brief>
+</SampleMetadata>
+

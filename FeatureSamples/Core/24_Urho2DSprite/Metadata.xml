@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<SampleMetadata>
+        <ID>1A8A6ED0-0D74-418A-B80E-A10817D8DE42</ID>
+        <IsFullApplication>false</IsFullApplication>
+        <HideZip>true</HideZip><Level>Beginning</Level>
+        <Tags>Graphics, Games, UrhoSharp</Tags>
+        <SupportedPlatforms>Android, iOS, tvOS, Windows, Mac</SupportedPlatforms>
+        <LicenseRequirement>Indie</LicenseRequirement>
+        <Gallery>true</Gallery>
+        <Brief>Urho2D sprite example and the use of the Renderer subsystem.</Brief>
+</SampleMetadata>
+

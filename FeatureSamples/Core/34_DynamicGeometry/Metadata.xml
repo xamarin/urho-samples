@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<SampleMetadata>
+        <ID>E9F3F9D5-38CA-4D91-AF21-D5CA7C30B181</ID>
+        <IsFullApplication>false</IsFullApplication>
+        <HideZip>true</HideZip><Level>Advanced</Level>
+        <Tags>Graphics, Games, UrhoSharp</Tags>
+        <SupportedPlatforms>Android, iOS, tvOS, Windows, Mac</SupportedPlatforms>
+        <LicenseRequirement>Indie</LicenseRequirement>
+        <Gallery>true</Gallery>
+        <Brief>Cloning a Model resource; Modifying the vertex buffer data of the cloned models at runtime to efficiently animate them; Creating a Model resource and its buffer data from scratch.
+</Brief>
+</SampleMetadata>
+

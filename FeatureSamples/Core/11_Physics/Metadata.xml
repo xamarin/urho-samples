@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<SampleMetadata>
+        <ID>2235F4E4-74ED-440F-94C5-518FD40F36D7</ID>
+        <IsFullApplication>false</IsFullApplication>
+        <HideZip>true</HideZip><Level>Intermediate</Level>
+        <Tags>Graphics, Games, UrhoSharp</Tags>
+        <SupportedPlatforms>Android, iOS, tvOS, Windows, Mac</SupportedPlatforms>
+        <LicenseRequirement>Indie</LicenseRequirement>
+        <Gallery>true</Gallery>
+        <Brief>Creating both static and moving physics objects to a scene;  Displaying physics debug geometry; Using the Skybox component for setting up an unmoving sky; Saving a scene to a file and loading it to restore a previous state.</Brief>
+</SampleMetadata>
+

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<SampleMetadata>
+        <ID>0A7427AF-1E57-494A-85BF-0108082AC903</ID>
+        <IsFullApplication>false</IsFullApplication>
+        <HideZip>true</HideZip><Level>Intermediate</Level>
+        <Tags>Graphics, Games, UrhoSharp</Tags>
+        <SupportedPlatforms>Android, iOS, tvOS, Windows, Mac</SupportedPlatforms>
+        <LicenseRequirement>Indie</LicenseRequirement>
+        <Gallery>true</Gallery>
+        <Brief>Generating a navigation mesh into the scene; Performing path queries to the navigation mesh; Rebuilding the navigation mesh partially when adding or removing objects; Raycasting drawable components; Making a node follow the Detour path.
+</Brief>
+</SampleMetadata>
+

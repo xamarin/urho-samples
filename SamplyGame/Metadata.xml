@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<SampleMetadata>
+        <ID>3CBA600F-9FF2-45D3-82D8-9C988F8F3872</ID>
+        <IsFullApplication>true</IsFullApplication>
+        <Level>Intermediate</Level>
+        <Tags>Graphics, Games, UrhoSharp</Tags>
+        <SupportedPlatforms>Android, iOS, tvOS, Windows, Mac</SupportedPlatforms>
+        <LicenseRequirement>Indie</LicenseRequirement>
+        <Gallery>true</Gallery>
+        <Brief>SamplyGame is a homage to the ShootySkies games and a showcase of how you can structure a game using UrhoSharp.</Brief>
+</SampleMetadata>
+

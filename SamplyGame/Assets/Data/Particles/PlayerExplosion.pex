@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<particleEmitterConfig>
+	<texture name="PlayerExplosion.png" />
+	<sourcePosition x="0" y="0" />
+	<sourcePositionVariance x="7" y="7" />
+	<speed value="202.02" />
+	<speedVariance value="20" />
+	<particleLifeSpan value="0.7" />
+	<particleLifespanVariance value="0.2" />
+	<angle value="0" />
+	<angleVariance value="360" />
+	<gravity x="0" y="0" />
+	<radialAcceleration value="505.05" />
+	<tangentialAcceleration value="-100" />
+	<radialAccelVariance value="0" />
+	<tangentialAccelVariance value="0" />
+	<startColor red="1" green="0.7" blue="0.3" alpha="1" />
+	<startColorVariance red="0.1" green="0.1" blue="0.1" alpha="0" />
+	<finishColor red="1" green="0.9" blue="0.9" alpha="1" />
+	<finishColorVariance red="0.3" green="0.3" blue="0.3" alpha="0" />
+	<maxParticles value="504" />
+	<startParticleSize value="50" />
+	<startParticleSizeVariance value="40" />
+	<finishParticleSize value="15" />
+	<FinishParticleSizeVariance value="5" />
+	<duration value="-1" />
+	<emitterType value="0" />
+	<maxRadius value="30" />
+	<maxRadiusVariance value="0" />
+	<minRadius value="0" />
+	<minRadiusVariance value="0" />
+	<rotatePerSecond value="0" />
+	<rotatePerSecondVariance value="0" />
+	<blendFuncSource value="770" />
+	<blendFuncDestination value="771" />
+	<rotationStart value="0" />
+	<rotationStartVariance value="0" />
+	<rotationEnd value="0" />
+	<rotationEndVariance value="0" />
+</particleEmitterConfig>

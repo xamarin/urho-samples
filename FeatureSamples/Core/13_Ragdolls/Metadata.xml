@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<SampleMetadata>
+        <ID>28B4B048-2EB2-4D96-ACB0-A3BC793A84FC</ID>
+        <IsFullApplication>false</IsFullApplication>
+        <HideZip>true</HideZip><Level>Advanced</Level>
+        <Tags>Graphics, Games, UrhoSharp</Tags>
+        <SupportedPlatforms>Android, iOS, tvOS, Windows, Mac</SupportedPlatforms>
+        <LicenseRequirement>Indie</LicenseRequirement>
+        <Gallery>true</Gallery>
+        <Brief>Shows how to detect physics collisions, moving the AnimatedModel bones with physics and connecting them with constraints and using rolling friction to stop rolling objects from moving infinitely.</Brief>
+</SampleMetadata>
+

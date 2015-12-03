@@ -1,0 +1,929 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{9599B6A8-09DA-455C-9391-319A1FCDC5B6}</ProjectGuid>
+    <ProjectTypeGuids>{EFBA0AD7-5A72-4C68-AF49-83D382785DCF};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Urho.Samples.Droid</RootNamespace>
+    <AssemblyName>Urho.Samples.Droid</AssemblyName>
+    <FileAlignment>512</FileAlignment>
+    <AndroidApplication>true</AndroidApplication>
+    <AndroidResgenFile>Resources\Resource.Designer.cs</AndroidResgenFile>
+    <GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
+    <AndroidUseLatestPlatformSdk>True</AndroidUseLatestPlatformSdk>
+    <TargetFrameworkVersion>v6.0</TargetFrameworkVersion>
+    <AndroidManifest>Properties\AndroidManifest.xml</AndroidManifest>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AndroidLinkMode>None</AndroidLinkMode>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AndroidUseSharedRuntime>False</AndroidUseSharedRuntime>
+    <AndroidLinkSkip>
+    </AndroidLinkSkip>
+    <EmbedAssembliesIntoApk>True</EmbedAssembliesIntoApk>
+    <AndroidSupportedAbis>armeabi,armeabi-v7a,x86</AndroidSupportedAbis>
+    <AndroidStoreUncompressedFileExtensions>
+    </AndroidStoreUncompressedFileExtensions>
+    <MandroidI18n>
+    </MandroidI18n>
+    <Debugger>Xamarin</Debugger>
+    <DevInstrumentationEnabled>False</DevInstrumentationEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug Mac|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\Debug Mac\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <WarningLevel>4</WarningLevel>
+    <Optimize>false</Optimize>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release Mac|AnyCPU'">
+    <OutputPath>bin\Release Mac\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Mono.Android" />
+    <Reference Include="mscorlib" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Urho, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+      <HintPath>..\packages\UrhoSharp.1.0.237\lib\MonoAndroid\Urho.dll</HintPath>
+    </Reference>
+    <Reference Include="Urho.Droid, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+      <HintPath>..\packages\UrhoSharp.1.0.237\lib\MonoAndroid\Urho.Droid.dll</HintPath>
+    </Reference>
+    <Reference Include="Urho.Droid.SdlBindings, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+      <HintPath>..\packages\UrhoSharp.1.0.237\lib\MonoAndroid\Urho.Droid.SdlBindings.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="GameActivity.cs" />
+    <Compile Include="SamplesSelectorActivity.cs" />
+    <Compile Include="Resources\Resource.Designer.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\values\Strings.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\Icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+    <None Include="Properties\AndroidManifest.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\logo_large.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\samples_list.axml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\samples_list_text_view.axml" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Core\Urho.Samples.csproj">
+      <Project>{792AF649-1BB3-4242-8BA3-61F67E357B18}</Project>
+      <Name>Urho.Samples</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+     Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+  <ItemGroup>
+    <AndroidAsset Include="..\Assets\Data\CommandLine.txt">
+      <Link>Assets\Data\CommandLine.txt</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\EditorStrings.json">
+      <Link>Assets\Data\EditorStrings.json</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\NinjaSnowWarShaders.xml">
+      <Link>Assets\Data\NinjaSnowWarShaders.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\StringsDe.json">
+      <Link>Assets\Data\StringsDe.json</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\StringsEnRu.json">
+      <Link>Assets\Data\StringsEnRu.json</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Fonts\Anonymous Pro.png">
+      <Link>Assets\Data\Fonts\Anonymous Pro.png</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Fonts\Anonymous Pro.sdf">
+      <Link>Assets\Data\Fonts\Anonymous Pro.sdf</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Fonts\Anonymous Pro.ttf">
+      <Link>Assets\Data\Fonts\Anonymous Pro.ttf</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Fonts\BlueHighway.png">
+      <Link>Assets\Data\Fonts\BlueHighway.png</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Fonts\BlueHighway.sdf">
+      <Link>Assets\Data\Fonts\BlueHighway.sdf</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Fonts\BlueHighway.ttf">
+      <Link>Assets\Data\Fonts\BlueHighway.ttf</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Fonts\OFL.txt">
+      <Link>Assets\Data\Fonts\OFL.txt</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Fonts\read_me.html">
+      <Link>Assets\Data\Fonts\read_me.html</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Materials\Enemy1.xml">
+      <Link>Assets\Data\Materials\Enemy1.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Materials\glass.xml">
+      <Link>Assets\Data\Materials\glass.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Materials\Grass.xml">
+      <Link>Assets\Data\Materials\Grass.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Materials\Green.xml">
+      <Link>Assets\Data\Materials\Green.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Materials\GreenTransparent.xml">
+      <Link>Assets\Data\Materials\GreenTransparent.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Materials\Jack.xml">
+      <Link>Assets\Data\Materials\Jack.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Materials\JackEnvMap.xml">
+      <Link>Assets\Data\Materials\JackEnvMap.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Materials\LitSmoke.xml">
+      <Link>Assets\Data\Materials\LitSmoke.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Materials\Mushroom.xml">
+      <Link>Assets\Data\Materials\Mushroom.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Materials\MushroomEnvMap.xml">
+      <Link>Assets\Data\Materials\MushroomEnvMap.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Materials\MushroomWind.xml">
+      <Link>Assets\Data\Materials\MushroomWind.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Materials\MushroomWindUnlit.xml">
+      <Link>Assets\Data\Materials\MushroomWindUnlit.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Materials\Particle.xml">
+      <Link>Assets\Data\Materials\Particle.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Materials\plane.xml">
+      <Link>Assets\Data\Materials\plane.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Materials\Player.xml">
+      <Link>Assets\Data\Materials\Player.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Materials\Skybox.xml">
+      <Link>Assets\Data\Materials\Skybox.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Materials\Smoke.xml">
+      <Link>Assets\Data\Materials\Smoke.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Materials\Stone.xml">
+      <Link>Assets\Data\Materials\Stone.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Materials\StoneEnvMap.xml">
+      <Link>Assets\Data\Materials\StoneEnvMap.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Materials\StoneEnvMapSmall.xml">
+      <Link>Assets\Data\Materials\StoneEnvMapSmall.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Materials\StoneSmall.xml">
+      <Link>Assets\Data\Materials\StoneSmall.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Materials\StoneTiled.xml">
+      <Link>Assets\Data\Materials\StoneTiled.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Materials\StoneTiledH.xml">
+      <Link>Assets\Data\Materials\StoneTiledH.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Materials\Terrain.xml">
+      <Link>Assets\Data\Materials\Terrain.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Materials\UrhoDecal.xml">
+      <Link>Assets\Data\Materials\UrhoDecal.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Materials\UrhoDecalAlpha.xml">
+      <Link>Assets\Data\Materials\UrhoDecalAlpha.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Materials\VColUnlit.xml">
+      <Link>Assets\Data\Materials\VColUnlit.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Materials\Water.xml">
+      <Link>Assets\Data\Materials\Water.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Materials\Editor\BlueUnlit.xml">
+      <Link>Assets\Data\Materials\Editor\BlueUnlit.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Materials\Editor\BrightBlueUnlit.xml">
+      <Link>Assets\Data\Materials\Editor\BrightBlueUnlit.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Materials\Editor\BrightGreenUnlit.xml">
+      <Link>Assets\Data\Materials\Editor\BrightGreenUnlit.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Materials\Editor\BrightRedUnlit.xml">
+      <Link>Assets\Data\Materials\Editor\BrightRedUnlit.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Materials\Editor\DebugIconCamera.xml">
+      <Link>Assets\Data\Materials\Editor\DebugIconCamera.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Materials\Editor\DebugIconCollisionTrigger.xml">
+      <Link>Assets\Data\Materials\Editor\DebugIconCollisionTrigger.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Materials\Editor\DebugIconCustomGeometry.xml">
+      <Link>Assets\Data\Materials\Editor\DebugIconCustomGeometry.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Materials\Editor\DebugIconLight.xml">
+      <Link>Assets\Data\Materials\Editor\DebugIconLight.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Materials\Editor\DebugIconParticleEmitter.xml">
+      <Link>Assets\Data\Materials\Editor\DebugIconParticleEmitter.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Materials\Editor\DebugIconPointLight.xml">
+      <Link>Assets\Data\Materials\Editor\DebugIconPointLight.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Materials\Editor\DebugIconSoundListener.xml">
+      <Link>Assets\Data\Materials\Editor\DebugIconSoundListener.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Materials\Editor\DebugIconSoundSource.xml">
+      <Link>Assets\Data\Materials\Editor\DebugIconSoundSource.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Materials\Editor\DebugIconSplinePathPoint.xml">
+      <Link>Assets\Data\Materials\Editor\DebugIconSplinePathPoint.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Materials\Editor\DebugIconSpotLight.xml">
+      <Link>Assets\Data\Materials\Editor\DebugIconSpotLight.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Materials\Editor\DebugIconZone.xml">
+      <Link>Assets\Data\Materials\Editor\DebugIconZone.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Materials\Editor\GreenUnlit.xml">
+      <Link>Assets\Data\Materials\Editor\GreenUnlit.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Materials\Editor\RedUnlit.xml">
+      <Link>Assets\Data\Materials\Editor\RedUnlit.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Materials\Editor\TexturedUnlit.xml">
+      <Link>Assets\Data\Materials\Editor\TexturedUnlit.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Materials\NinjaSnowWar\CloudPlane.xml">
+      <Link>Assets\Data\Materials\NinjaSnowWar\CloudPlane.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Materials\NinjaSnowWar\Ninja.xml">
+      <Link>Assets\Data\Materials\NinjaSnowWar\Ninja.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Materials\NinjaSnowWar\Potion.xml">
+      <Link>Assets\Data\Materials\NinjaSnowWar\Potion.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Materials\NinjaSnowWar\Snow.xml">
+      <Link>Assets\Data\Materials\NinjaSnowWar\Snow.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Materials\NinjaSnowWar\SnowCrate.xml">
+      <Link>Assets\Data\Materials\NinjaSnowWar\SnowCrate.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Models\Box.mdl">
+      <Link>Assets\Data\Models\Box.mdl</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Models\Cone.mdl">
+      <Link>Assets\Data\Models\Cone.mdl</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Models\Cylinder.mdl">
+      <Link>Assets\Data\Models\Cylinder.mdl</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Models\Dome.mdl">
+      <Link>Assets\Data\Models\Dome.mdl</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Models\Enemy1.mdl">
+      <Link>Assets\Data\Models\Enemy1.mdl</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Models\Jack.mdl">
+      <Link>Assets\Data\Models\Jack.mdl</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Models\Jack_Walk.ani">
+      <Link>Assets\Data\Models\Jack_Walk.ani</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Models\Mushroom.mdl">
+      <Link>Assets\Data\Models\Mushroom.mdl</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Models\Plane.mdl">
+      <Link>Assets\Data\Models\Plane.mdl</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Models\Player.mdl">
+      <Link>Assets\Data\Models\Player.mdl</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Models\Pyramid.mdl">
+      <Link>Assets\Data\Models\Pyramid.mdl</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Models\Sphere.mdl">
+      <Link>Assets\Data\Models\Sphere.mdl</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Models\TeaPot.mdl">
+      <Link>Assets\Data\Models\TeaPot.mdl</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Models\Torus.mdl">
+      <Link>Assets\Data\Models\Torus.mdl</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Models\Editor\Axes.mdl">
+      <Link>Assets\Data\Models\Editor\Axes.mdl</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Models\Editor\ImagePlane.mdl">
+      <Link>Assets\Data\Models\Editor\ImagePlane.mdl</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Models\Editor\RotateAxes.mdl">
+      <Link>Assets\Data\Models\Editor\RotateAxes.mdl</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Models\Editor\ScaleAxes.mdl">
+      <Link>Assets\Data\Models\Editor\ScaleAxes.mdl</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Models\NinjaSnowWar\CloudPlane.mdl">
+      <Link>Assets\Data\Models\NinjaSnowWar\CloudPlane.mdl</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Models\NinjaSnowWar\Level.mdl">
+      <Link>Assets\Data\Models\NinjaSnowWar\Level.mdl</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Models\NinjaSnowWar\Ninja.mdl">
+      <Link>Assets\Data\Models\NinjaSnowWar\Ninja.mdl</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Models\NinjaSnowWar\Ninja_Attack1.ani">
+      <Link>Assets\Data\Models\NinjaSnowWar\Ninja_Attack1.ani</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Models\NinjaSnowWar\Ninja_Attack2.ani">
+      <Link>Assets\Data\Models\NinjaSnowWar\Ninja_Attack2.ani</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Models\NinjaSnowWar\Ninja_Attack3.ani">
+      <Link>Assets\Data\Models\NinjaSnowWar\Ninja_Attack3.ani</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Models\NinjaSnowWar\Ninja_Backflip.ani">
+      <Link>Assets\Data\Models\NinjaSnowWar\Ninja_Backflip.ani</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Models\NinjaSnowWar\Ninja_Block.ani">
+      <Link>Assets\Data\Models\NinjaSnowWar\Ninja_Block.ani</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Models\NinjaSnowWar\Ninja_Climb.ani">
+      <Link>Assets\Data\Models\NinjaSnowWar\Ninja_Climb.ani</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Models\NinjaSnowWar\Ninja_Crouch.ani">
+      <Link>Assets\Data\Models\NinjaSnowWar\Ninja_Crouch.ani</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Models\NinjaSnowWar\Ninja_Death1.ani">
+      <Link>Assets\Data\Models\NinjaSnowWar\Ninja_Death1.ani</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Models\NinjaSnowWar\Ninja_Death2.ani">
+      <Link>Assets\Data\Models\NinjaSnowWar\Ninja_Death2.ani</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Models\NinjaSnowWar\Ninja_HighJump.ani">
+      <Link>Assets\Data\Models\NinjaSnowWar\Ninja_HighJump.ani</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Models\NinjaSnowWar\Ninja_Idle1.ani">
+      <Link>Assets\Data\Models\NinjaSnowWar\Ninja_Idle1.ani</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Models\NinjaSnowWar\Ninja_Idle2.ani">
+      <Link>Assets\Data\Models\NinjaSnowWar\Ninja_Idle2.ani</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Models\NinjaSnowWar\Ninja_Idle3.ani">
+      <Link>Assets\Data\Models\NinjaSnowWar\Ninja_Idle3.ani</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Models\NinjaSnowWar\Ninja_Jump.ani">
+      <Link>Assets\Data\Models\NinjaSnowWar\Ninja_Jump.ani</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Models\NinjaSnowWar\Ninja_JumpNoHeight.ani">
+      <Link>Assets\Data\Models\NinjaSnowWar\Ninja_JumpNoHeight.ani</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Models\NinjaSnowWar\Ninja_Kick.ani">
+      <Link>Assets\Data\Models\NinjaSnowWar\Ninja_Kick.ani</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Models\NinjaSnowWar\Ninja_SideKick.ani">
+      <Link>Assets\Data\Models\NinjaSnowWar\Ninja_SideKick.ani</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Models\NinjaSnowWar\Ninja_Spin.ani">
+      <Link>Assets\Data\Models\NinjaSnowWar\Ninja_Spin.ani</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Models\NinjaSnowWar\Ninja_Stealth.ani">
+      <Link>Assets\Data\Models\NinjaSnowWar\Ninja_Stealth.ani</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Models\NinjaSnowWar\Ninja_Stealth.xml">
+      <Link>Assets\Data\Models\NinjaSnowWar\Ninja_Stealth.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Models\NinjaSnowWar\Ninja_Walk.ani">
+      <Link>Assets\Data\Models\NinjaSnowWar\Ninja_Walk.ani</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Models\NinjaSnowWar\Ninja_Walk.xml">
+      <Link>Assets\Data\Models\NinjaSnowWar\Ninja_Walk.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Models\NinjaSnowWar\Potion.mdl">
+      <Link>Assets\Data\Models\NinjaSnowWar\Potion.mdl</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Models\NinjaSnowWar\SnowBall.mdl">
+      <Link>Assets\Data\Models\NinjaSnowWar\SnowBall.mdl</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Models\NinjaSnowWar\SnowCrate.mdl">
+      <Link>Assets\Data\Models\NinjaSnowWar\SnowCrate.mdl</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Music\Ninja Gods.ogg">
+      <Link>Assets\Data\Music\Ninja Gods.ogg</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Objects\LightFlash.xml">
+      <Link>Assets\Data\Objects\LightFlash.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Objects\Ninja.xml">
+      <Link>Assets\Data\Objects\Ninja.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Objects\Potion.xml">
+      <Link>Assets\Data\Objects\Potion.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Objects\SnowBall.xml">
+      <Link>Assets\Data\Objects\SnowBall.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Objects\SnowCrate.xml">
+      <Link>Assets\Data\Objects\SnowCrate.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Particle\Disco.xml">
+      <Link>Assets\Data\Particle\Disco.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Particle\Fire.xml">
+      <Link>Assets\Data\Particle\Fire.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Particle\Smoke.xml">
+      <Link>Assets\Data\Particle\Smoke.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Particle\SmokeStack.xml">
+      <Link>Assets\Data\Particle\SmokeStack.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Particle\SnowExplosion.xml">
+      <Link>Assets\Data\Particle\SnowExplosion.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Particle\SnowExplosionBig.xml">
+      <Link>Assets\Data\Particle\SnowExplosionBig.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Particle\SnowExplosionFade.xml">
+      <Link>Assets\Data\Particle\SnowExplosionFade.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\PostProcess\AutoExposure.xml">
+      <Link>Assets\Data\PostProcess\AutoExposure.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\PostProcess\Bloom.xml">
+      <Link>Assets\Data\PostProcess\Bloom.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\PostProcess\BloomHDR.xml">
+      <Link>Assets\Data\PostProcess\BloomHDR.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\PostProcess\Blur.xml">
+      <Link>Assets\Data\PostProcess\Blur.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\PostProcess\ColorCorrection.xml">
+      <Link>Assets\Data\PostProcess\ColorCorrection.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\PostProcess\FXAA2.xml">
+      <Link>Assets\Data\PostProcess\FXAA2.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\PostProcess\FXAA3.xml">
+      <Link>Assets\Data\PostProcess\FXAA3.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\PostProcess\GammaCorrection.xml">
+      <Link>Assets\Data\PostProcess\GammaCorrection.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\PostProcess\GreyScale.xml">
+      <Link>Assets\Data\PostProcess\GreyScale.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\PostProcess\Tonemap.xml">
+      <Link>Assets\Data\PostProcess\Tonemap.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Scenes\NinjaSnowWar.xml">
+      <Link>Assets\Data\Scenes\NinjaSnowWar.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Scenes\SceneLoadExample.xml">
+      <Link>Assets\Data\Scenes\SceneLoadExample.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Sounds\BigExplosion.wav">
+      <Link>Assets\Data\Sounds\BigExplosion.wav</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Sounds\NutThrow.wav">
+      <Link>Assets\Data\Sounds\NutThrow.wav</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Sounds\PlayerFist.wav">
+      <Link>Assets\Data\Sounds\PlayerFist.wav</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Sounds\PlayerFistHit.wav">
+      <Link>Assets\Data\Sounds\PlayerFistHit.wav</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Sounds\PlayerLand.wav">
+      <Link>Assets\Data\Sounds\PlayerLand.wav</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Sounds\Powerup.wav">
+      <Link>Assets\Data\Sounds\Powerup.wav</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Sounds\SmallExplosion.wav">
+      <Link>Assets\Data\Sounds\SmallExplosion.wav</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Textures\BrightDay1_NegX.dds">
+      <Link>Assets\Data\Textures\BrightDay1_NegX.dds</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Textures\BrightDay1_NegY.dds">
+      <Link>Assets\Data\Textures\BrightDay1_NegY.dds</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Textures\BrightDay1_NegZ.dds">
+      <Link>Assets\Data\Textures\BrightDay1_NegZ.dds</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Textures\BrightDay1_PosX.dds">
+      <Link>Assets\Data\Textures\BrightDay1_PosX.dds</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Textures\BrightDay1_PosY.dds">
+      <Link>Assets\Data\Textures\BrightDay1_PosY.dds</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Textures\BrightDay1_PosZ.dds">
+      <Link>Assets\Data\Textures\BrightDay1_PosZ.dds</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Textures\Eject_Seat.png">
+      <Link>Assets\Data\Textures\Eject_Seat.png</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Textures\Enemy1.png">
+      <Link>Assets\Data\Textures\Enemy1.png</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Textures\Flare.dds">
+      <Link>Assets\Data\Textures\Flare.dds</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Textures\Glass_Cockpit.png">
+      <Link>Assets\Data\Textures\Glass_Cockpit.png</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Textures\Grass.dds">
+      <Link>Assets\Data\Textures\Grass.dds</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Textures\HeightMap.png">
+      <Link>Assets\Data\Textures\HeightMap.png</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Textures\Jack_body_color.jpg">
+      <Link>Assets\Data\Textures\Jack_body_color.jpg</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Textures\Jack_face.jpg">
+      <Link>Assets\Data\Textures\Jack_face.jpg</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Textures\Logo.png">
+      <Link>Assets\Data\Textures\Logo.png</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Textures\Logo.xml">
+      <Link>Assets\Data\Textures\Logo.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Textures\LogoLarge.png">
+      <Link>Assets\Data\Textures\LogoLarge.png</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Textures\LogoLarge.xml">
+      <Link>Assets\Data\Textures\LogoLarge.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Textures\Mushroom.dds">
+      <Link>Assets\Data\Textures\Mushroom.dds</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Textures\OldUI.png">
+      <Link>Assets\Data\Textures\OldUI.png</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Textures\OldUI.xml">
+      <Link>Assets\Data\Textures\OldUI.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Textures\Player1.png">
+      <Link>Assets\Data\Textures\Player1.png</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Textures\Skybox.xml">
+      <Link>Assets\Data\Textures\Skybox.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Textures\Smoke.dds">
+      <Link>Assets\Data\Textures\Smoke.dds</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Textures\StoneDiffuse.dds">
+      <Link>Assets\Data\Textures\StoneDiffuse.dds</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Textures\StoneNormal.dds">
+      <Link>Assets\Data\Textures\StoneNormal.dds</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Textures\TerrainDetail1.dds">
+      <Link>Assets\Data\Textures\TerrainDetail1.dds</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Textures\TerrainDetail2.dds">
+      <Link>Assets\Data\Textures\TerrainDetail2.dds</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Textures\TerrainDetail3.dds">
+      <Link>Assets\Data\Textures\TerrainDetail3.dds</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Textures\TerrainWeights.dds">
+      <Link>Assets\Data\Textures\TerrainWeights.dds</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Textures\TouchInput.png">
+      <Link>Assets\Data\Textures\TouchInput.png</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Textures\UI.png">
+      <Link>Assets\Data\Textures\UI.png</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Textures\UI.xml">
+      <Link>Assets\Data\Textures\UI.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Textures\UrhoDecal.dds">
+      <Link>Assets\Data\Textures\UrhoDecal.dds</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Textures\UrhoDecalAlpha.dds">
+      <Link>Assets\Data\Textures\UrhoDecalAlpha.dds</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Textures\UrhoIcon.icns">
+      <Link>Assets\Data\Textures\UrhoIcon.icns</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Textures\UrhoIcon.png">
+      <Link>Assets\Data\Textures\UrhoIcon.png</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Textures\WaterNoise.dds">
+      <Link>Assets\Data\Textures\WaterNoise.dds</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Textures\Editor\BW.png">
+      <Link>Assets\Data\Textures\Editor\BW.png</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Textures\Editor\EditorIcons.png">
+      <Link>Assets\Data\Textures\Editor\EditorIcons.png</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Textures\Editor\EditorIcons.xml">
+      <Link>Assets\Data\Textures\Editor\EditorIcons.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Textures\Editor\HSV20.png">
+      <Link>Assets\Data\Textures\Editor\HSV20.png</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Textures\Editor\IconCamera.png">
+      <Link>Assets\Data\Textures\Editor\IconCamera.png</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Textures\Editor\IconCollisionTrigger.png">
+      <Link>Assets\Data\Textures\Editor\IconCollisionTrigger.png</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Textures\Editor\IconCustomGeometry.png">
+      <Link>Assets\Data\Textures\Editor\IconCustomGeometry.png</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Textures\Editor\IconLight.png">
+      <Link>Assets\Data\Textures\Editor\IconLight.png</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Textures\Editor\IconParticleEmitter.png">
+      <Link>Assets\Data\Textures\Editor\IconParticleEmitter.png</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Textures\Editor\IconPointLight.png">
+      <Link>Assets\Data\Textures\Editor\IconPointLight.png</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Textures\Editor\IconSoundListener.png">
+      <Link>Assets\Data\Textures\Editor\IconSoundListener.png</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Textures\Editor\IconSoundSource.png">
+      <Link>Assets\Data\Textures\Editor\IconSoundSource.png</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Textures\Editor\IconSplinePathPoint.png">
+      <Link>Assets\Data\Textures\Editor\IconSplinePathPoint.png</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Textures\Editor\IconSpotLight.png">
+      <Link>Assets\Data\Textures\Editor\IconSpotLight.png</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Textures\Editor\IconZone.png">
+      <Link>Assets\Data\Textures\Editor\IconZone.png</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Textures\Editor\NoPreviewAvailable.png">
+      <Link>Assets\Data\Textures\Editor\NoPreviewAvailable.png</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Textures\NinjaSnowWar\CloudPlane.dds">
+      <Link>Assets\Data\Textures\NinjaSnowWar\CloudPlane.dds</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Textures\NinjaSnowWar\HealthBarBorder.png">
+      <Link>Assets\Data\Textures\NinjaSnowWar\HealthBarBorder.png</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Textures\NinjaSnowWar\HealthBarInside.png">
+      <Link>Assets\Data\Textures\NinjaSnowWar\HealthBarInside.png</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Textures\NinjaSnowWar\Ninja.dds">
+      <Link>Assets\Data\Textures\NinjaSnowWar\Ninja.dds</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Textures\NinjaSnowWar\Sight.png">
+      <Link>Assets\Data\Textures\NinjaSnowWar\Sight.png</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Textures\NinjaSnowWar\Sight.xml">
+      <Link>Assets\Data\Textures\NinjaSnowWar\Sight.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Textures\NinjaSnowWar\Snow.dds">
+      <Link>Assets\Data\Textures\NinjaSnowWar\Snow.dds</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Textures\NinjaSnowWar\SnowCrate.dds">
+      <Link>Assets\Data\Textures\NinjaSnowWar\SnowCrate.dds</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\UI\DefaultStyle.xml">
+      <Link>Assets\Data\UI\DefaultStyle.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\UI\EditorColorWheel.xml">
+      <Link>Assets\Data\UI\EditorColorWheel.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\UI\EditorContextMenu.xml">
+      <Link>Assets\Data\UI\EditorContextMenu.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\UI\EditorHierarchyWindow.xml">
+      <Link>Assets\Data\UI\EditorHierarchyWindow.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\UI\EditorIcons.xml">
+      <Link>Assets\Data\UI\EditorIcons.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\UI\EditorInspectorWindow.xml">
+      <Link>Assets\Data\UI\EditorInspectorWindow.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\UI\EditorInspector_Attribute.xml">
+      <Link>Assets\Data\UI\EditorInspector_Attribute.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\UI\EditorInspector_Style.xml">
+      <Link>Assets\Data\UI\EditorInspector_Style.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\UI\EditorInspector_Variable.xml">
+      <Link>Assets\Data\UI\EditorInspector_Variable.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\UI\EditorLayersWindow.xml">
+      <Link>Assets\Data\UI\EditorLayersWindow.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\UI\EditorMaterialWindow.xml">
+      <Link>Assets\Data\UI\EditorMaterialWindow.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\UI\EditorParticleEffectWindow.xml">
+      <Link>Assets\Data\UI\EditorParticleEffectWindow.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\UI\EditorPreferencesDialog.xml">
+      <Link>Assets\Data\UI\EditorPreferencesDialog.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\UI\EditorQuickMenu.xml">
+      <Link>Assets\Data\UI\EditorQuickMenu.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\UI\EditorResourceBrowser.xml">
+      <Link>Assets\Data\UI\EditorResourceBrowser.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\UI\EditorResourceFilterWindow.xml">
+      <Link>Assets\Data\UI\EditorResourceFilterWindow.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\UI\EditorSettingsDialog.xml">
+      <Link>Assets\Data\UI\EditorSettingsDialog.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\UI\EditorSoundTypeWindow.xml">
+      <Link>Assets\Data\UI\EditorSoundTypeWindow.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\UI\EditorSpawnWindow.xml">
+      <Link>Assets\Data\UI\EditorSpawnWindow.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\UI\EditorViewport.xml">
+      <Link>Assets\Data\UI\EditorViewport.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\UI\MessageBox.xml">
+      <Link>Assets\Data\UI\MessageBox.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\UI\OldStyle.xml">
+      <Link>Assets\Data\UI\OldStyle.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\UI\ScreenJoystick.xml">
+      <Link>Assets\Data\UI\ScreenJoystick.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\UI\ScreenJoystickSettings.xml">
+      <Link>Assets\Data\UI\ScreenJoystickSettings.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\UI\ScreenJoystickSettings_NinjaSnowWar.xml">
+      <Link>Assets\Data\UI\ScreenJoystickSettings_NinjaSnowWar.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\UI\ScreenJoystickSettings_Samples.xml">
+      <Link>Assets\Data\UI\ScreenJoystickSettings_Samples.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\UI\ScreenJoystick_NinjaSnowWar.xml">
+      <Link>Assets\Data\UI\ScreenJoystick_NinjaSnowWar.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\UI\ScreenJoystick_Samples.xml">
+      <Link>Assets\Data\UI\ScreenJoystick_Samples.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\UI\UILoadExample.xml">
+      <Link>Assets\Data\UI\UILoadExample.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Urho2D\Aster.png">
+      <Link>Assets\Data\Urho2D\Aster.png</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Urho2D\Ball.png">
+      <Link>Assets\Data\Urho2D\Ball.png</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Urho2D\Box.png">
+      <Link>Assets\Data\Urho2D\Box.png</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Urho2D\GoldIcon.scml">
+      <Link>Assets\Data\Urho2D\GoldIcon.scml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Urho2D\greenspiral.pex">
+      <Link>Assets\Data\Urho2D\greenspiral.pex</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Urho2D\greenspiral.png">
+      <Link>Assets\Data\Urho2D\greenspiral.png</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Urho2D\isometric_grass_and_water.png">
+      <Link>Assets\Data\Urho2D\isometric_grass_and_water.png</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Urho2D\isometric_grass_and_water.tmx">
+      <Link>Assets\Data\Urho2D\isometric_grass_and_water.tmx</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Urho2D\sun.pex">
+      <Link>Assets\Data\Urho2D\sun.pex</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Urho2D\sun.png">
+      <Link>Assets\Data\Urho2D\sun.png</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Urho2D\sun2.pex">
+      <Link>Assets\Data\Urho2D\sun2.pex</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Urho2D\sun2.png">
+      <Link>Assets\Data\Urho2D\sun2.png</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Urho2D\sun3.pex">
+      <Link>Assets\Data\Urho2D\sun3.pex</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Urho2D\GoldIcon\1.png">
+      <Link>Assets\Data\Urho2D\GoldIcon\1.png</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Urho2D\GoldIcon\2.png">
+      <Link>Assets\Data\Urho2D\GoldIcon\2.png</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Urho2D\GoldIcon\3.png">
+      <Link>Assets\Data\Urho2D\GoldIcon\3.png</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Urho2D\GoldIcon\4.png">
+      <Link>Assets\Data\Urho2D\GoldIcon\4.png</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Urho2D\GoldIcon\5.png">
+      <Link>Assets\Data\Urho2D\GoldIcon\5.png</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Urho2D\imp\imp.scml">
+      <Link>Assets\Data\Urho2D\imp\imp.scml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Urho2D\imp\imp.txt">
+      <Link>Assets\Data\Urho2D\imp\imp.txt</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Urho2D\imp\imp_blood.png">
+      <Link>Assets\Data\Urho2D\imp\imp_blood.png</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Urho2D\imp\imp_body.png">
+      <Link>Assets\Data\Urho2D\imp\imp_body.png</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Urho2D\imp\imp_footbig.png">
+      <Link>Assets\Data\Urho2D\imp\imp_footbig.png</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Urho2D\imp\imp_footsmall.png">
+      <Link>Assets\Data\Urho2D\imp\imp_footsmall.png</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Urho2D\imp\imp_handbig.png">
+      <Link>Assets\Data\Urho2D\imp\imp_handbig.png</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Urho2D\imp\imp_handsmall.png">
+      <Link>Assets\Data\Urho2D\imp\imp_handsmall.png</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Urho2D\imp\imp_handthrow.png">
+      <Link>Assets\Data\Urho2D\imp\imp_handthrow.png</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Urho2D\imp\imp_head.png">
+      <Link>Assets\Data\Urho2D\imp\imp_head.png</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Urho2D\imp\imp_headangry.png">
+      <Link>Assets\Data\Urho2D\imp\imp_headangry.png</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Urho2D\imp\imp_headblink.png">
+      <Link>Assets\Data\Urho2D\imp\imp_headblink.png</Link>
+    </AndroidAsset>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="UrhoSharpReadme.txt" />
+  </ItemGroup>
+  <Import Project="..\packages\UrhoSharp.1.0.237\build\MonoAndroid\UrhoSharp.targets" Condition="Exists('..\packages\UrhoSharp.1.0.237\build\MonoAndroid\UrhoSharp.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\UrhoSharp.1.0.237\build\MonoAndroid\UrhoSharp.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\UrhoSharp.1.0.237\build\MonoAndroid\UrhoSharp.targets'))" />
+  </Target>
+</Project>

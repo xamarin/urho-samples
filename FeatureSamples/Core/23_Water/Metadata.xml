@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<SampleMetadata>
+        <ID>74FA082E-3CD4-4CFE-B283-9AC5DE085FDA</ID>
+        <IsFullApplication>false</IsFullApplication>
+        <HideZip>true</HideZip><Level>Advanced</Level>
+        <Tags>Graphics, Games, UrhoSharp</Tags>
+        <SupportedPlatforms>Android, iOS, tvOS, Windows, Mac</SupportedPlatforms>
+        <LicenseRequirement>Indie</LicenseRequirement>
+        <Gallery>true</Gallery>
+        <Brief>Water example using large planes to represent water for
+	rendering and the use of a second camera to render reflections
+	on the water surface.</Brief>
+</SampleMetadata>
+
