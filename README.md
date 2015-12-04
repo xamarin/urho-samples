@@ -35,3 +35,6 @@ The structure of each solution is this:
 
 * `Desktop`: Contains the Desktop launcher, works on Mac and Windows.
 
+To build the samples:
+* Windows: Use [Visual Studio 2015](https://www.visualstudio.com/en-us/products/vs-2015-product-editions.aspx).
+* Mac: Use the latest [Xamarin Studio](https://xamarin.com/studio) 
