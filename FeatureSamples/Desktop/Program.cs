@@ -29,6 +29,10 @@ namespace Urho.Samples.Desktop
 					selectedSampleType = ParseSampleFromNumber(Console.ReadLine());
 				}
 			}
+			else 
+			{
+				selectedSampleType = typeof(Water);	
+			}
 
 			UrhoEngine.Init(pathToAssets: @"../../Assets");
 			var game = (Application) Activator.CreateInstance(selectedSampleType);
