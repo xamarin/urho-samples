@@ -29,6 +29,8 @@ namespace Urho.Samples
 		Scene scene;
 		bool drawDebug;
 
+		public PhysicsStressTest(ApplicationOptions options = null) : base(options) { }
+
 		protected override void Start()
 		{
 			base.Start();

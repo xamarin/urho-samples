@@ -21,7 +21,7 @@ namespace Urho.Samples.Droid
 		{
 			base.OnCreate(bundle);
 			var mLayout = new AbsoluteLayout(this);
-			surface = UrhoSurface.CreateSurface(this, Type.GetType(Intent.GetStringExtra("Type")));
+			surface = UrhoSurface.CreateSurface(this, Type.GetType(Intent.GetStringExtra("Type")), new ApplicationOptions("Data"));
 			mLayout.AddView(surface);
 			SetContentView(mLayout);
 		}

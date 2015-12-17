@@ -57,6 +57,8 @@ namespace Urho.Samples
 				"Urho is homing in on you mercilessly"
 			};
 
+		public ConsoleInput(ApplicationOptions options = null) : base(options) { }
+
 		protected override void Start()
 		{
 			base.Start();

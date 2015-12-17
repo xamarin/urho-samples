@@ -34,6 +34,8 @@ namespace Urho.Samples
 		bool drawDebug;
 		CrowdManager crowdManager;
 
+		public CrowdNavigation(ApplicationOptions options = null) : base(options) { }
+
 		protected override void Start()
 		{
 			base.Start();

@@ -30,6 +30,8 @@ namespace Urho.Samples
 		Camera camera;
 		Scene scene;
 
+		public StaticScene(ApplicationOptions options = null) : base(options) { }
+
 		protected override void Start ()
 		{
 			base.Start ();

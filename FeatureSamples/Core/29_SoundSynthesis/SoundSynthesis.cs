@@ -44,6 +44,8 @@ namespace Urho.Samples
 		/// Second oscillator.
 		float osc2;
 
+		public SoundSynthesis(ApplicationOptions options = null) : base(options) { }
+
 
 		public SoundSynthesis()
 		{

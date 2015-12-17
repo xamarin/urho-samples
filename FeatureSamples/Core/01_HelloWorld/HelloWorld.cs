@@ -26,6 +26,8 @@ namespace Urho.Samples
 {
 	public class HelloWorld : Application 
 	{
+		public HelloWorld(ApplicationOptions options = null) : base(options) {}
+
 		protected override void Start()
 		{
 			var cache = ResourceCache;

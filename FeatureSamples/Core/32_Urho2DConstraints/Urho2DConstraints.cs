@@ -41,6 +41,8 @@ namespace Urho.Samples
 		Subscription mouseMoveEventToken;
 		Subscription mouseButtonUpToken;
 
+		public Urho2DConstraints(ApplicationOptions options = null) : base(options) { }
+
 		protected override void Start()
 		{
 			base.Start();

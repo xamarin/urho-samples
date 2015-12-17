@@ -32,6 +32,8 @@ namespace Urho.Samples
 		bool drawDebug;
 		Camera camera;
 
+		public Decals(ApplicationOptions options = null) : base(options) { }
+
 		protected override void Start()
 		{
 			base.Start();

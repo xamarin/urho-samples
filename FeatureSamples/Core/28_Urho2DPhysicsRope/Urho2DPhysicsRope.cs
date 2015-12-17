@@ -31,6 +31,8 @@ namespace Urho.Samples
 		Scene scene;
 		const uint NumObjects = 10;
 
+		public Urho2DPhysicsRope(ApplicationOptions options = null) : base(options) { }
+
 		protected override void Start()
 		{
 			base.Start();

@@ -31,6 +31,8 @@ namespace Urho.Samples
 		Scene scene;
 		const uint NumObjects = 100;
 
+		public Urho2DPhysics(ApplicationOptions options = null) : base(options) { }
+
 		protected override void Start()
 		{
 			base.Start();

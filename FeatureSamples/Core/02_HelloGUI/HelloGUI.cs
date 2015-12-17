@@ -33,6 +33,8 @@ namespace Urho.Samples
 		IntVector2 dragBeginPosition;
 		Button draggableFish;
 
+		public HelloGUI(ApplicationOptions options = null) : base(options) { }
+
 		protected override void Start()
 		{
 			base.Start();

@@ -28,6 +28,8 @@ namespace Urho.Samples
 	{
 		Scene scene;
 
+		public LightAnimation(ApplicationOptions options = null) : base(options) { }
+
 		protected override void Start()
 		{
 			base.Start();

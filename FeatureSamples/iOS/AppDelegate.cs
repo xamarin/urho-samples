@@ -34,7 +34,7 @@ namespace Urho.Samples.iOS
 
 		static void Run(System.Type type)
 		{
-			Urho.Application.CreateInstance(type).Run();
+			Urho.Application.CreateInstance(type, new ApplicationOptions("Data")).Run();
 		}
 	}
 }

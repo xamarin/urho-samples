@@ -55,6 +55,8 @@ namespace Urho.Samples
 		/// Start server button.
 		Button startServerButton;
 
+		public Chat(ApplicationOptions options = null) : base(options) { }
+
 
 		protected override void Start()
 		{

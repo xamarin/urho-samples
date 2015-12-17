@@ -39,7 +39,9 @@ namespace Urho.Samples
 				{"Fist",      "Sounds/PlayerFistHit.wav"},
 				{"Explosion", "Sounds/BigExplosion.wav"},
 				{"Power-up",  "Sounds/Powerup.wav"},
-			}; 
+			};
+
+		public SoundEffects(ApplicationOptions options = null) : base(options) { }
 
 		protected override void Start()
 		{

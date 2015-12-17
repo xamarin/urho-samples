@@ -30,6 +30,8 @@ namespace Urho.Samples
 		Scene rttScene;
 		Node rttCameraNode;
 
+		public RenderToTexture(ApplicationOptions options = null) : base(options) { }
+
 		protected override void Start()
 		{
 			base.Start();
