@@ -10,7 +10,6 @@ namespace Urho.Samples.Mac
 		/// <param name="args">sample number, e.g. "19"</param>
 		static void Main(string[] args)
 		{
-			args = new string[] {"37"};
 			//   UrhoEngine.Init(pathToAssets);
 			//   new Water().Run();
 			//   return;
