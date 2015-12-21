@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using Urho.Actions;
 using Urho.Gui;
 using Urho.Shapes;
@@ -10,6 +11,9 @@ namespace Urho.Samples
 	{
 		bool movementsEnabled;
 		Node plotNode;
+		Camera camera;
+		Octree octree;
+		Bar selectedBar;
 
 		public Charts(ApplicationOptions options = null) : base(SetOptions(options)) {}
 
@@ -23,23 +27,24 @@ namespace Urho.Samples
 		{
 			base.Start();
 			Input.SubscribeToKeyDown(k => { if (k.Key == Key.Esc) Engine.Exit(); });
+			Input.SubscribeToTouchEnd(OnTouched);
 
 			// 3D scene with Octree
 			var scene = new Scene(Context);
-			scene.CreateComponent<Octree>();
+			octree = scene.CreateComponent<Octree>();
 
 			// Camera
-			var CameraNode = scene.CreateChild(name: "camera");
-			CameraNode.Position = new Vector3(10, 14, 10);
-			CameraNode.Rotation = new Quaternion(-0.121f, 0.878f, -0.305f, -0.35f);
-			Camera camera = CameraNode.CreateComponent<Camera>();
+			var cameraNode = scene.CreateChild(name: "camera");
+			cameraNode.Position = new Vector3(10, 14, 10);
+			cameraNode.Rotation = new Quaternion(-0.121f, 0.878f, -0.305f, -0.35f);
+			camera = cameraNode.CreateComponent<Camera>();
 
 			// Light
-			Node lightNode = CameraNode.CreateChild(name: "light");
+			Node lightNode = cameraNode.CreateChild(name: "light");
 			var light = lightNode.CreateComponent<Light>();
 			light.LightType = LightType.Point;
 			light.Range = 100;
-			light.Brightness = 1.5f;
+			light.Brightness = 1.3f;
 
 			// Viewport
 			Renderer.SetViewport(0, new Viewport(Context, scene, camera, null));
@@ -57,20 +62,37 @@ namespace Urho.Samples
 				{
 					var boxNode = plotNode.CreateChild();
 					boxNode.Position = new Vector3(size / 2f - i + 0.5f, 0, size / 2f - j + 0.5f);
-					var box = boxNode.CreateComponent<Bar>();
-					box.UpdateData((Math.Abs(i) + Math.Abs(j) + 1) / 2f, h => Math.Round(h, 1).ToString(), new Color(Sample.NextRandom(), Sample.NextRandom(), Sample.NextRandom(), 0.9f));
+					var box = new Bar(h => Math.Round(h, 1).ToString(), new Color(Sample.NextRandom(), Sample.NextRandom(), Sample.NextRandom(), 0.9f));
+					boxNode.AddComponent(box);
+					box.Value = (Math.Abs(i) + Math.Abs(j) + 1) / 2f;
 				}
 			}
 			await plotNode.RunActionsAsync(new EaseBackOut(new RotateBy(2f, 0, 360, 0)));
 			movementsEnabled = true;
 		}
 
+		private void OnTouched(TouchEndEventArgs e)
+		{
+			Ray cameraRay = camera.GetScreenRay((float)e.X / Graphics.Width, (float)e.Y / Graphics.Height);
+			var results = octree.RaycastSingle(cameraRay, RayQueryLevel.Triangle, 100, DrawableFlags.Geometry);
+			if (results != null && results.Any())
+			{
+				var bar = results[0].Node?.Parent?.GetComponent<Bar>();
+				if (selectedBar != bar)
+				{
+					selectedBar?.Deselect();
+					selectedBar = bar;
+					selectedBar?.Select();
+				}
+			}
+		}
+
 		protected override void OnUpdate(float timeStep)
 		{
-			if (Input.NumTouches > 0)
+			if (Input.NumTouches == 1 && movementsEnabled)
 			{
-				var touchDelta = Input.GetTouch(0).Delta;
-				plotNode.Rotate(new Quaternion(0, -touchDelta.X, 0), TransformSpace.Local);
+				var touch = Input.GetTouch(0);
+				plotNode.Rotate(new Quaternion(0, -touch.Delta.X, 0), TransformSpace.Local);
 			}
 			base.OnUpdate(timeStep);
 		}
@@ -81,35 +103,43 @@ namespace Urho.Samples
 		Func<float, string> heightToTextFunc;
 		Node barNode;
 		Node textNode;
-		Box box;
 		Text3D text3D;
+		Color color;
+		float value;
 
-		public Bar() { ReceiveSceneUpdates = true; }
+		public float Value
+		{
+			get { return value; }
+			set
+			{
+				this.value = value;
+				barNode.RunActionsAsync(new EaseBackOut(new ScaleTo(Sample.NextRandom(3f, 15f), 1, value, 1)));
+			}
+		}
+
+		public Bar(Func<float, string> heightToTextFunc, Color color)
+		{
+			this.heightToTextFunc = heightToTextFunc;
+			this.color = color;
+			ReceiveSceneUpdates = true;
+		}
 
 		public override void OnAttachedToNode(Node node)
 		{
 			barNode = node.CreateChild();
-			barNode.Scale = new Vector3(1, 0, 1);
-			box = barNode.CreateComponent<Box>();
+			barNode.Scale = new Vector3(1, 0, 1); //means zero height
+			var box = barNode.CreateComponent<Box>();
+			box.Color = color;
 
 			textNode = node.CreateChild();
 			textNode.Rotate(new Quaternion(0, 180, 0), TransformSpace.World);
 			textNode.Position = new Vector3(0, 10, 0);
 			text3D = textNode.CreateComponent<Text3D>();
 			text3D.SetFont(Application.ResourceCache.GetFont("Fonts/Anonymous Pro.ttf"), 60);
-			text3D.TextEffect = TextEffect.Shadow;
+			text3D.TextEffect = TextEffect.None;
+			//textNode.LookAt() //Look at camera
 
 			base.OnAttachedToNode(node);
-		}
-
-		public void UpdateData(float height, Func<float, string> heightToTextFunc, Color color)
-		{
-			this.heightToTextFunc = heightToTextFunc;
-			box.Color = Color.Red;
-			var duration = Sample.NextRandom(3f, 15f);
-			barNode.RunActionsAsync(new Parallel(
-				new EaseBackOut(new ScaleTo(duration, 1, height, 1)),
-				new EaseBackOut(new TintTo(duration, color.R, color.G, color.B))));
 		}
 
 		protected override void OnUpdate(float timeStep)
@@ -119,6 +149,18 @@ namespace Urho.Samples
 			barNode.Position = new Vector3(pos.X, scale.Y / 2f, pos.Z);
 			textNode.Position = new Vector3(0.5f, scale.Y + 0.2f, 0);
 			text3D.Text = heightToTextFunc(scale.Y);
+		}
+
+		public void Deselect()
+		{
+			barNode.RemoveAllActions();//TODO: remove only "selection" action
+			barNode.RunActionsAsync(new EaseBackOut(new TintTo(1f, color.R, color.G, color.B)));
+		}
+
+		public void Select()
+		{
+			// "blinking" animation
+			barNode.RunActionsAsync(new RepeatForever(new TintTo(0.3f, 1f, 1f, 1f), new TintTo(0.3f, color.R, color.G, color.B)));
 		}
 	}
 }
