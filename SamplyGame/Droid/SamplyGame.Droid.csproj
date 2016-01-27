@@ -45,16 +45,12 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Xml" />
-    <Reference Include="Urho">
-      <HintPath>..\packages\UrhoSharp.1.0.264\lib\MonoAndroid\Urho.dll</HintPath>
+    <Reference Include="Urho, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\UrhoSharp.1.0.307\lib\MonoAndroid\Urho.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Urho.Droid">
-      <HintPath>..\packages\UrhoSharp.1.0.264\lib\MonoAndroid\Urho.Droid.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Urho.Droid.SdlBindings">
-      <HintPath>..\packages\UrhoSharp.1.0.264\lib\MonoAndroid\Urho.Droid.SdlBindings.dll</HintPath>
+    <Reference Include="Urho.Droid.SdlBindings, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\UrhoSharp.1.0.307\lib\MonoAndroid\Urho.Droid.SdlBindings.dll</HintPath>
       <Private>True</Private>
     </Reference>
   </ItemGroup>
@@ -248,13 +244,11 @@
   <ItemGroup>
     <Content Include="UrhoSharpReadme.txt" />
   </ItemGroup>
+  <Import Project="..\packages\UrhoSharp.1.0.307\build\MonoAndroid\UrhoSharp.targets" Condition="Exists('..\packages\UrhoSharp.1.0.307\build\MonoAndroid\UrhoSharp.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
-    <Error Condition="!Exists('..\..\FeatureSamples\packages\UrhoSharp.1.0.264\build\MonoAndroid\UrhoSharp.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\FeatureSamples\packages\UrhoSharp.1.0.264\build\MonoAndroid\UrhoSharp.targets'))" />
-    <Error Condition="!Exists('..\packages\UrhoSharp.1.0.264\build\MonoAndroid\UrhoSharp.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\UrhoSharp.1.0.264\build\MonoAndroid\UrhoSharp.targets'))" />
+    <Error Condition="!Exists('..\packages\UrhoSharp.1.0.307\build\MonoAndroid\UrhoSharp.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\UrhoSharp.1.0.307\build\MonoAndroid\UrhoSharp.targets'))" />
   </Target>
-  <Import Project="..\..\FeatureSamples\packages\UrhoSharp.1.0.264\build\MonoAndroid\UrhoSharp.targets" Condition="Exists('..\..\FeatureSamples\packages\UrhoSharp.1.0.264\build\MonoAndroid\UrhoSharp.targets')" />
-  <Import Project="..\packages\UrhoSharp.1.0.264\build\MonoAndroid\UrhoSharp.targets" Condition="Exists('..\packages\UrhoSharp.1.0.264\build\MonoAndroid\UrhoSharp.targets')" />
 </Project>

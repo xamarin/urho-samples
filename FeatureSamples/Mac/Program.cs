@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using Urho.Desktop;
 
 namespace Urho.Samples.Mac
 {
@@ -17,7 +18,7 @@ namespace Urho.Samples.Mac
 			samples = typeof(Sample).Assembly.GetTypes().Where(t => t.IsSubclassOf(typeof(Application)) && t != typeof(Sample)).ToArray();
 			Type selectedSampleType = args.Length > 0 ? ParseSampleFromNumber(args[0]) : typeof (Water);
 
-			UrhoEngine.Init(pathToAssets: @"../../Assets");
+			DesktopUrhoInitializer.AssetsDirectory = @"../../Assets";
 			var game = (Application) Activator.CreateInstance(selectedSampleType, new ApplicationOptions("Data"));
 			var exitCode = game.Run();
 			Console.WriteLine($"Exit code: {exitCode}. Press any key to exit...");

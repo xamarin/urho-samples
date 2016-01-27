@@ -4,6 +4,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Forms;
+using Urho.Desktop;
 
 namespace Urho.Samples.WPF
 {
@@ -19,7 +20,7 @@ namespace Urho.Samples.WPF
 		public MainWindow()
 		{
 			InitializeComponent();
-			UrhoEngine.Init(pathToAssets: @"../../Assets");
+			DesktopUrhoInitializer.AssetsDirectory = @"../../Assets";
 			GameTypes = typeof(Sample).Assembly.GetTypes()
 				.Where(t => t.IsSubclassOf(typeof(Application)) && t != typeof(Sample))
 				.Select((t, i) => new TypeInfo(t, $"{i + 1}. {t.Name}", ""))

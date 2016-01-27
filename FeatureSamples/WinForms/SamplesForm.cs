@@ -3,6 +3,7 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Urho.Desktop;
 
 namespace Urho.Samples.WinForms
 {
@@ -14,7 +15,7 @@ namespace Urho.Samples.WinForms
 		public SamplesForm()
 		{
 			InitializeComponent();
-			UrhoEngine.Init(pathToAssets: @"../../Assets");
+			DesktopUrhoInitializer.AssetsDirectory = @"../../Assets";
 			var sampleTypes = typeof(Sample).Assembly.GetTypes()
 				.Where(t => t.IsSubclassOf(typeof(Application)) && t != typeof(Sample))
 				.ToArray();

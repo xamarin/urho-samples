@@ -23,7 +23,6 @@ namespace Urho.Samples.iOS
 				}
 			});
 			window.MakeKeyAndVisible ();
-			UrhoEngine.Init();
 			return true;
 		}
 

@@ -31,7 +31,6 @@ namespace Urho.Samples.Droid
 			}
 			SetContentView(Resource.Layout.samples_list);
 			ListAdapter = adapter;
-			UrhoEngine.Init();
 		}
 		
 		protected override void OnListItemClick(Android.Widget.ListView l, Android.Views.View v, int position, long id)

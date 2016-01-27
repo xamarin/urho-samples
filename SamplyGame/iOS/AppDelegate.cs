@@ -18,7 +18,6 @@ namespace SamplyGame.iOS
 		async void LaunchGame()
 		{
 			await Task.Yield();
-			UrhoEngine.Init();
 			new SamplyGame().Run();
 		}
 	}
