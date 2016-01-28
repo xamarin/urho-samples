@@ -24,7 +24,7 @@ namespace Urho.Samples.Droid
 
 			//Show a list of available samples (click to run):
 			ArrayAdapter<string> adapter = new ArrayAdapter<string>(this, Resource.Layout.samples_list_text_view);
-			sampleTypes = typeof(Sample).Assembly.GetTypes().Where(t => t.BaseType == typeof(Sample)).ToArray();
+			sampleTypes = typeof(Sample).Assembly.GetTypes().Where(t => t.IsSubclassOf(typeof(Application)) && t != typeof(Sample)).ToArray();
 			foreach (var sample in sampleTypes)
 			{
 				adapter.Add(sample.Name);
