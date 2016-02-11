@@ -149,20 +149,8 @@
     <AndroidAsset Include="..\Assets\Data\Fonts\Anonymous Pro.ttf">
       <Link>Assets\Data\Fonts\Anonymous Pro.ttf</Link>
     </AndroidAsset>
-    <AndroidAsset Include="..\Assets\Data\Fonts\BlueHighway.png">
-      <Link>Assets\Data\Fonts\BlueHighway.png</Link>
-    </AndroidAsset>
-    <AndroidAsset Include="..\Assets\Data\Fonts\BlueHighway.sdf">
-      <Link>Assets\Data\Fonts\BlueHighway.sdf</Link>
-    </AndroidAsset>
-    <AndroidAsset Include="..\Assets\Data\Fonts\BlueHighway.ttf">
-      <Link>Assets\Data\Fonts\BlueHighway.ttf</Link>
-    </AndroidAsset>
     <AndroidAsset Include="..\Assets\Data\Fonts\OFL.txt">
       <Link>Assets\Data\Fonts\OFL.txt</Link>
-    </AndroidAsset>
-    <AndroidAsset Include="..\Assets\Data\Fonts\read_me.html">
-      <Link>Assets\Data\Fonts\read_me.html</Link>
     </AndroidAsset>
     <AndroidAsset Include="..\Assets\Data\Materials\Enemy1.xml">
       <Link>Assets\Data\Materials\Enemy1.xml</Link>

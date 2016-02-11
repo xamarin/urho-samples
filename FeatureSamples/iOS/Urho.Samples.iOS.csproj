@@ -168,20 +168,8 @@
     <BundleResource Include="..\Assets\Data\Fonts\Anonymous Pro.ttf">
       <Link>Resources\Data\Fonts\Anonymous Pro.ttf</Link>
     </BundleResource>
-    <BundleResource Include="..\Assets\Data\Fonts\BlueHighway.png">
-      <Link>Resources\Data\Fonts\BlueHighway.png</Link>
-    </BundleResource>
-    <BundleResource Include="..\Assets\Data\Fonts\BlueHighway.sdf">
-      <Link>Resources\Data\Fonts\BlueHighway.sdf</Link>
-    </BundleResource>
-    <BundleResource Include="..\Assets\Data\Fonts\BlueHighway.ttf">
-      <Link>Resources\Data\Fonts\BlueHighway.ttf</Link>
-    </BundleResource>
     <BundleResource Include="..\Assets\Data\Fonts\OFL.txt">
       <Link>Resources\Data\Fonts\OFL.txt</Link>
-    </BundleResource>
-    <BundleResource Include="..\Assets\Data\Fonts\read_me.html">
-      <Link>Resources\Data\Fonts\read_me.html</Link>
     </BundleResource>
     <BundleResource Include="..\Assets\Data\Materials\GreenTransparent.xml">
       <Link>Resources\Data\Materials\GreenTransparent.xml</Link>
