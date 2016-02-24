@@ -12,17 +12,19 @@ namespace Urho.Samples.iOS
 	[Register("AppDelegate")]
 	public partial class AppDelegate : UIApplicationDelegate
 	{
+		public override UIWindow Window { get;set;}
+		
 		public override bool FinishedLaunching(UIApplication app, NSDictionary options)
 		{
-			var window = new UIWindow (UIScreen.MainScreen.Bounds);
-			window.RootViewController = new DialogViewController (new RootElement ("UrhoSharp") {
+			Window = new UIWindow (UIScreen.MainScreen.Bounds);
+			Window.RootViewController = new DialogViewController (new RootElement ("UrhoSharp") {
 				new Section ("Feature Samples"){
 					from type in typeof (HelloWorld).Assembly.GetTypes ()
 						where type.IsSubclassOf (typeof (Sample))
 					select new StringElement (type.Name, () => Run (type))
 				}
 			});
-			window.MakeKeyAndVisible ();
+			Window.MakeKeyAndVisible ();
 			return true;
 		}
 
