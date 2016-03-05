@@ -2507,6 +2507,9 @@ namespace FormsSample.Droid
 			// aapt resource value: 0x7f05001b
 			public const int abc_toolbar_collapse_description = 2131034139;
 			
+			// aapt resource value: 0x7f05001e
+			public const int app_name = 2131034142;
+			
 			// aapt resource value: 0x7f05001d
 			public const int appbar_scrolling_view_behavior = 2131034141;
 			

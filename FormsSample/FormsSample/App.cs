@@ -1,45 +1,62 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
+using Urho;
+using Urho.Forms;
 using Xamarin.Forms;
 
 namespace FormsSample
 {
-	public class App : Application
+	public class App : Xamarin.Forms.Application
 	{
+		UrhoSurface urhoSurface;
+		Charts urhoApp;
+		Slider selectedBarSlider;
+
 		public App()
 		{
-			// The root page of your application
-			MainPage = new ContentPage
-			{
-				Content = new StackLayout
-				{
-					VerticalOptions = LayoutOptions.Center,
+			urhoSurface = new UrhoSurface();
+			urhoSurface.VerticalOptions = LayoutOptions.FillAndExpand;
+
+			Slider rotationSlider = new Slider(0, 500, 250);
+			rotationSlider.ValueChanged += (s, e) => urhoApp?.Rotate((float)(e.NewValue - e.OldValue));
+
+			selectedBarSlider = new Slider(0, 5, 2.5);
+			selectedBarSlider.ValueChanged += OnValuesSliderValueChanged;
+
+			MainPage = new NavigationPage(new ContentPage {
+				Title = " UrhoSharp + Xamarin.Forms",
+				Content = new StackLayout {
+					Padding = new Thickness(0, 0, 0, 40),
+					VerticalOptions = LayoutOptions.FillAndExpand,
 					Children = {
-						new Label {
-							XAlign = TextAlignment.Center,
-							Text = "Welcome to Xamarin Forms!"
-						}
+						urhoSurface,
+						new Label { Text = "ROTATION:"},
+						rotationSlider,
+						new Label { Text = "SELECTED VALUE:" },
+						selectedBarSlider,
 					}
 				}
-			};
+			});
 		}
 
-		protected override void OnStart()
+		void OnValuesSliderValueChanged(object sender, ValueChangedEventArgs e)
 		{
-			// Handle when your app starts
+			if (urhoApp?.SelectedBar != null)
+				urhoApp.SelectedBar.Value = (float)e.NewValue;
 		}
 
-		protected override void OnSleep()
+		private void OnBarSelection(Bar bar)
 		{
-			// Handle when your app sleeps
+			//reset value
+			selectedBarSlider.ValueChanged -= OnValuesSliderValueChanged;
+			selectedBarSlider.Value = bar.Value;
+			selectedBarSlider.ValueChanged += OnValuesSliderValueChanged;
 		}
 
-		protected override void OnResume()
+		protected override async void OnStart()
 		{
-			// Handle when your app resumes
+			urhoApp = await urhoSurface.Show<Charts>(new ApplicationOptions(assetsFolder: null));
+			foreach (var bar in urhoApp.Bars)
+				bar.Selected += OnBarSelection;
 		}
 	}
 }
