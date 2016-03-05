@@ -16,19 +16,13 @@ namespace FormsSample
 		Camera camera;
 		Octree octree;
 		List<Bar> bars;
-		private Node cameraNode;
+		Node cameraNode;
 
-		public Charts(ApplicationOptions options = null) : base(SetOptions(options)) { }
+		public Charts(ApplicationOptions options = null) : base(options) { }
 
 		public Bar SelectedBar { get; private set; }
 
 		public IEnumerable<Bar> Bars => bars;
-
-		private static ApplicationOptions SetOptions(ApplicationOptions options)
-		{
-			options.TouchEmulation = true;
-			return options;
-		}
 
 		protected override async void Start()
 		{
