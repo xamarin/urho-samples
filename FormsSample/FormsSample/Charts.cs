@@ -18,11 +18,11 @@ namespace FormsSample
 		List<Bar> bars;
 		private Node cameraNode;
 
-		public Charts(ApplicationOptions options = null) : base(SetOptions(options)) {}
+		public Charts(ApplicationOptions options = null) : base(SetOptions(options)) { }
 
 		public Bar SelectedBar { get; private set; }
 
-		public IEnumerable<Bar> Bars => bars; 
+		public IEnumerable<Bar> Bars => bars;
 
 		private static ApplicationOptions SetOptions(ApplicationOptions options)
 		{
@@ -42,7 +42,7 @@ namespace FormsSample
 
 			// Camera
 			cameraNode = scene.CreateChild(name: "camera");
-			cameraNode.Position = new Vector3(5, 7, 5);
+			cameraNode.Position = new Vector3(6, 8, 6);
 			cameraNode.Rotation = new Quaternion(-0.121f, 0.878f, -0.305f, -0.35f);
 			camera = cameraNode.CreateComponent<Camera>();
 
@@ -120,6 +120,7 @@ namespace FormsSample
 		Node textNode;
 		Text3D text3D;
 		Color color;
+		float lastUpdateValue;
 
 		public float Value
 		{
@@ -147,7 +148,7 @@ namespace FormsSample
 			textNode.Position = new Vector3(0, 10, 0);
 			text3D = textNode.CreateComponent<Text3D>();
 			text3D.SetFont(Application.ResourceCache.GetFont("Fonts/Anonymous Pro.ttf"), 60);
-			text3D.TextEffect = TextEffect.None;
+			text3D.TextEffect = TextEffect.Stroke;
 			//textNode.LookAt() //Look at camera
 
 			base.OnAttachedToNode(node);
@@ -159,7 +160,10 @@ namespace FormsSample
 			var scale = barNode.Scale;
 			barNode.Position = new Vector3(pos.X, scale.Y / 2f, pos.Z);
 			textNode.Position = new Vector3(0.5f, scale.Y + 0.2f, 0);
-			text3D.Text = Math.Round(scale.Y, 1).ToString(CultureInfo.InvariantCulture);
+			var newValue = (float)Math.Round(scale.Y, 1);
+			if (lastUpdateValue != newValue)
+				text3D.Text = newValue.ToString("F01", CultureInfo.InvariantCulture);
+			lastUpdateValue = newValue;
 		}
 
 		public void Deselect()

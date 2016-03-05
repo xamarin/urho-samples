@@ -1,4 +1,5 @@
-﻿using Urho;
+﻿using System;
+using Urho;
 using Urho.Forms;
 using Xamarin.Forms;
 
@@ -21,15 +22,19 @@ namespace FormsSample
 			selectedBarSlider = new Slider(0, 5, 2.5);
 			selectedBarSlider.ValueChanged += OnValuesSliderValueChanged;
 
-			MainPage = new NavigationPage(new ContentPage {
+			MainPage = new NavigationPage(new ContentPage
+			{
 				Title = " UrhoSharp + Xamarin.Forms",
-				Content = new StackLayout {
+				Content = new StackLayout
+				{
 					Padding = new Thickness(0, 0, 0, 40),
 					VerticalOptions = LayoutOptions.FillAndExpand,
 					Children = {
 						urhoSurface,
-						new Label { Text = "ROTATION:"}, rotationSlider,
-						new Label { Text = "SELECTED VALUE:" }, selectedBarSlider,
+						new Label { Text = "ROTATION:"},
+						rotationSlider,
+						new Label { Text = "SELECTED VALUE:" },
+						selectedBarSlider,
 					}
 				}
 			});
