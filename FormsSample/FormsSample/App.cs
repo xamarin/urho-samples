@@ -1,5 +1,4 @@
-﻿using System;
-using Urho;
+﻿using Urho;
 using Urho.Forms;
 using Xamarin.Forms;
 
@@ -29,10 +28,8 @@ namespace FormsSample
 					VerticalOptions = LayoutOptions.FillAndExpand,
 					Children = {
 						urhoSurface,
-						new Label { Text = "ROTATION:"},
-						rotationSlider,
-						new Label { Text = "SELECTED VALUE:" },
-						selectedBarSlider,
+						new Label { Text = "ROTATION:"}, rotationSlider,
+						new Label { Text = "SELECTED VALUE:" }, selectedBarSlider,
 					}
 				}
 			});
@@ -54,7 +51,7 @@ namespace FormsSample
 
 		protected override async void OnStart()
 		{
-			urhoApp = await urhoSurface.Show<Charts>(new ApplicationOptions(assetsFolder: null));
+			urhoApp = await urhoSurface.Show<Charts>(new ApplicationOptions(assetsFolder: null) { Orientation = ApplicationOptions.OrientationType.Portrait });
 			foreach (var bar in urhoApp.Bars)
 				bar.Selected += OnBarSelection;
 		}

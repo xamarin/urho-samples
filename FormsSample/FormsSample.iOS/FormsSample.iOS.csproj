@@ -23,9 +23,19 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <ConsolePause>false</ConsolePause>
-    <MtouchArch>i386, x86_64</MtouchArch>
+    <MtouchArch>i386</MtouchArch>
     <MtouchLink>None</MtouchLink>
-    <MtouchDebug>true</MtouchDebug>
+    <MtouchDebug>True</MtouchDebug>
+    <MtouchSdkVersion />
+    <MtouchProfiling>False</MtouchProfiling>
+    <MtouchFastDev>False</MtouchFastDev>
+    <MtouchUseLlvm>False</MtouchUseLlvm>
+    <MtouchUseThumb>False</MtouchUseThumb>
+    <MtouchUseSGen>False</MtouchUseSGen>
+    <MtouchUseRefCounting>False</MtouchUseRefCounting>
+    <OptimizePNGs>True</OptimizePNGs>
+    <MtouchFloat32>False</MtouchFloat32>
+    <MtouchI18n />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhoneSimulator' ">
     <DebugType>none</DebugType>
@@ -34,8 +44,19 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <MtouchLink>None</MtouchLink>
-    <MtouchArch>i386, x86_64</MtouchArch>
+    <MtouchArch>i386</MtouchArch>
     <ConsolePause>false</ConsolePause>
+    <MtouchSdkVersion />
+    <MtouchDebug>False</MtouchDebug>
+    <MtouchProfiling>False</MtouchProfiling>
+    <MtouchFastDev>False</MtouchFastDev>
+    <MtouchUseLlvm>False</MtouchUseLlvm>
+    <MtouchUseThumb>False</MtouchUseThumb>
+    <MtouchUseSGen>False</MtouchUseSGen>
+    <MtouchUseRefCounting>False</MtouchUseRefCounting>
+    <OptimizePNGs>True</OptimizePNGs>
+    <MtouchFloat32>False</MtouchFloat32>
+    <MtouchI18n />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|iPhone' ">
     <DebugSymbols>true</DebugSymbols>
@@ -91,7 +112,9 @@
     <Compile Include="Main.cs" />
     <Compile Include="AppDelegate.cs" />
     <None Include="Entitlements.plist" />
-    <None Include="Info.plist" />
+    <None Include="Info.plist">
+      <SubType>Designer</SubType>
+    </None>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <ITunesArtwork Include="iTunesArtwork" />
     <ITunesArtwork Include="iTunesArtwork@2x" />
