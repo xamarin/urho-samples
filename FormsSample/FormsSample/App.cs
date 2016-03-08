@@ -44,7 +44,6 @@ namespace FormsSample
 			};
 		}
 
-
 		void OnValuesSliderValueChanged(object sender, ValueChangedEventArgs e)
 		{
 			if (urhoApp?.SelectedBar != null)
@@ -61,7 +60,9 @@ namespace FormsSample
 
 		protected override async void OnAppearing ()
 		{
-			urhoApp = await urhoSurface.Show<Charts>(new ApplicationOptions(assetsFolder: null) { AdditionalFlags = "-landscape -portrait" });
+			urhoApp = await urhoSurface.Show<Charts>(new ApplicationOptions(assetsFolder: null) { Orientation = ApplicationOptions.OrientationType.Portrait });
+			foreach (var bar in urhoApp.Bars)
+				bar.Selected += OnBarSelection;
 		}
 	}
 }
