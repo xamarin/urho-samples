@@ -9,11 +9,11 @@ namespace FormsSample
 	{
 		public App()
 		{
-			MainPage = new NavigationPage(new UrhoPage());
+			MainPage = new NavigationPage(new UrhoPage {});
 		}
 	}
 
-	public class UrhoPage : ContentPage
+	public class UrhoPage : ContentPage 
 	{
 		UrhoSurface urhoSurface;
 		Charts urhoApp;
@@ -24,7 +24,7 @@ namespace FormsSample
 			urhoSurface = new UrhoSurface();
 			urhoSurface.VerticalOptions = LayoutOptions.FillAndExpand;
 
-			var rotationSlider = new Slider(0, 500, 250);
+			Slider rotationSlider = new Slider(0, 500, 250);
 			rotationSlider.ValueChanged += (s, e) => urhoApp?.Rotate((float)(e.NewValue - e.OldValue));
 
 			selectedBarSlider = new Slider(0, 5, 2.5);
@@ -32,25 +32,18 @@ namespace FormsSample
 
 			Title = " UrhoSharp + Xamarin.Forms";
 			Content = new StackLayout {
-					Padding = new Thickness(0, 0, 0, 40),
-					VerticalOptions = LayoutOptions.FillAndExpand,
-					Children = {
-						urhoSurface,
-						new Label { Text = "ROTATION:"},
-						rotationSlider,
-						new Label { Text = "SELECTED VALUE:" },
-						selectedBarSlider,
-					}
-				};
+				Padding = new Thickness (12, 12, 12, 40),
+				VerticalOptions = LayoutOptions.FillAndExpand,
+				Children = {
+					urhoSurface,
+					new Label { Text = "ROTATION:" },
+					rotationSlider,
+					new Label { Text = "SELECTED VALUE:" },
+					selectedBarSlider,
+				}
+			};
 		}
 
-		protected override async void OnAppearing()
-		{
-			base.OnAppearing();
-			urhoApp = await urhoSurface.Show<Charts>(new ApplicationOptions(assetsFolder: null) { Orientation = ApplicationOptions.OrientationType.Portrait });
-			foreach (var bar in urhoApp.Bars)
-				bar.Selected += OnBarSelection;
-		}
 
 		void OnValuesSliderValueChanged(object sender, ValueChangedEventArgs e)
 		{
@@ -64,6 +57,11 @@ namespace FormsSample
 			selectedBarSlider.ValueChanged -= OnValuesSliderValueChanged;
 			selectedBarSlider.Value = bar.Value;
 			selectedBarSlider.ValueChanged += OnValuesSliderValueChanged;
+		}
+
+		protected override async void OnAppearing ()
+		{
+			urhoApp = await urhoSurface.Show<Charts>(new ApplicationOptions(assetsFolder: null) { AdditionalFlags = "-landscape -portrait" });
 		}
 	}
 }

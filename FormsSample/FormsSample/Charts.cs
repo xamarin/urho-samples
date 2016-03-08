@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
@@ -12,48 +12,48 @@ namespace FormsSample
 	public class Charts : Application
 	{
 		bool movementsEnabled;
+		Scene scene;
 		Node plotNode;
 		Camera camera;
 		Octree octree;
 		List<Bar> bars;
-		Node cameraNode;
-
-		public Charts(ApplicationOptions options = null) : base(options) { }
 
 		public Bar SelectedBar { get; private set; }
 
 		public IEnumerable<Bar> Bars => bars;
 
-		protected override async void Start()
+		public Charts(ApplicationOptions options = null) : base(options) { }
+
+		protected override void Start ()
 		{
-			base.Start();
-			Input.SubscribeToKeyDown(k => { if (k.Key == Key.Esc) Engine.Exit(); });
+			base.Start ();
+			CreateScene ();
+			SetupViewport ();
+		}
+
+		async void CreateScene ()
+		{
 			Input.SubscribeToTouchEnd(OnTouched);
 
-			// 3D scene with Octree
-			var scene = new Scene(Context);
-			octree = scene.CreateComponent<Octree>();
-
-			// Camera
-			cameraNode = scene.CreateChild(name: "camera");
-			cameraNode.Position = new Vector3(6, 8, 6);
-			cameraNode.Rotation = new Quaternion(-0.121f, 0.878f, -0.305f, -0.35f);
-			camera = cameraNode.CreateComponent<Camera>();
-
-			// Light
-			Node lightNode = cameraNode.CreateChild(name: "light");
-			var light = lightNode.CreateComponent<Light>();
-			light.LightType = LightType.Point;
-			light.Range = 100;
-			light.Brightness = 1.3f;
-
-			// Viewport
-			Renderer.SetViewport(0, new Viewport(Context, scene, camera, null));
+			var cache = ResourceCache;
+			scene = new Scene ();
+			octree = scene.CreateComponent<Octree> ();
 
 			plotNode = scene.CreateChild();
 			var baseNode = plotNode.CreateChild().CreateChild();
 			var plane = baseNode.CreateComponent<StaticModel>();
 			plane.Model = ResourceCache.GetModel("Models/Plane.mdl");
+
+			var cameraNode = scene.CreateChild ("camera");
+			camera = cameraNode.CreateComponent<Camera>();
+			cameraNode.Position = new Vector3(10, 15, 10) / 1.75f;
+			cameraNode.Rotation = new Quaternion(-0.121f, 0.878f, -0.305f, -0.35f);
+
+			Node lightNode = cameraNode.CreateChild(name: "light");
+			var light = lightNode.CreateComponent<Light>();
+			light.LightType = LightType.Point;
+			light.Range = 100;
+			light.Brightness = 1.3f;
 
 			int size = 3;
 			baseNode.Scale = new Vector3(size * 1.5f, 1, size * 1.5f);
@@ -76,7 +76,7 @@ namespace FormsSample
 			movementsEnabled = true;
 		}
 
-		private void OnTouched(TouchEndEventArgs e)
+		void OnTouched(TouchEndEventArgs e)
 		{
 			Ray cameraRay = camera.GetScreenRay((float)e.X / Graphics.Width, (float)e.Y / Graphics.Height);
 			var results = octree.RaycastSingle(cameraRay, RayQueryLevel.Triangle, 100, DrawableFlags.Geometry);
@@ -94,7 +94,7 @@ namespace FormsSample
 
 		protected override void OnUpdate(float timeStep)
 		{
-			if (Input.NumTouches == 1 && movementsEnabled)
+			if (Input.NumTouches >= 1 && movementsEnabled)
 			{
 				var touch = Input.GetTouch(0);
 				plotNode.Rotate(new Quaternion(0, -touch.Delta.X, 0), TransformSpace.Local);
@@ -105,6 +105,12 @@ namespace FormsSample
 		public void Rotate(float toValue)
 		{
 			plotNode.Rotate(new Quaternion(0, toValue, 0), TransformSpace.Local);
+		}
+		
+		void SetupViewport ()
+		{
+			var renderer = Renderer;
+			renderer.SetViewport (0, new Viewport (Context, scene, camera, null));
 		}
 	}
 
