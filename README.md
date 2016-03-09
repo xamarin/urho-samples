@@ -9,7 +9,7 @@ and Mac with the published NuGet package.
 The 'FormsSamples' solution demonstrates how UrhoSharp can be used in Xamarin.Forms 
 applications as a View element.
 
-![Screenshot](FormsSamples/Screenshots/Android.gif) ![Screenshot](FormsSamples/Screenshots/Ios.gif)
+![Screenshot](FormsSample/Screenshots/Android.gif) ![Screenshot](FormsSample/Screenshots/Ios.gif)
 
 # FeatureSamples
 
