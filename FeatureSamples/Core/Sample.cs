@@ -289,11 +289,10 @@ namespace Urho.Samples
 
 				// shadow depth and filtering quality
 				case Key.N6:
-					var q = renderer.ShadowQuality;
-					q++;
+					var q = (int)renderer.ShadowQuality++;
 					if (q > 3)
 						q = 0;
-					renderer.ShadowQuality = q;
+					renderer.ShadowQuality = (ShadowQuality)q;
 					break;
 
 				// occlusion culling
