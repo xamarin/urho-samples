@@ -9,9 +9,20 @@ namespace FormsSample
 	{
 		public App()
 		{
-			MainPage = new NavigationPage(new UrhoPage {});
+			MainPage = new NavigationPage(new StartPage {});
 		}
 	}
+
+	public class StartPage : ContentPage
+	{
+		public StartPage()
+		{
+			var b = new Button { Text = "Launch sample" }; 
+			b.Clicked += (sender, e) => Navigation.PushAsync(new UrhoPage());
+			Content = new StackLayout { Children = { b }, VerticalOptions = LayoutOptions.Center };
+		}
+	}
+
 
 	public class UrhoPage : ContentPage 
 	{
@@ -21,6 +32,9 @@ namespace FormsSample
 
 		public UrhoPage()
 		{
+			var restartBtn = new Button { Text = "Restart" };
+			restartBtn.Clicked += (sender, e) => StartUrhoApp();
+
 			urhoSurface = new UrhoSurface();
 			urhoSurface.VerticalOptions = LayoutOptions.FillAndExpand;
 
@@ -36,6 +50,7 @@ namespace FormsSample
 				VerticalOptions = LayoutOptions.FillAndExpand,
 				Children = {
 					urhoSurface,
+					restartBtn,
 					new Label { Text = "ROTATION:" },
 					rotationSlider,
 					new Label { Text = "SELECTED VALUE:" },
@@ -60,9 +75,12 @@ namespace FormsSample
 
 		protected override async void OnAppearing ()
 		{
-			urhoApp = await urhoSurface.Show<Charts>(new ApplicationOptions(assetsFolder: null) { Orientation = ApplicationOptions.OrientationType.Portrait });
-			foreach (var bar in urhoApp.Bars)
-				bar.Selected += OnBarSelection;
+			StartUrhoApp ();
+		}
+
+		async void StartUrhoApp()
+		{
+			urhoApp = await urhoSurface.Show<Charts>(new ApplicationOptions(assetsFolder: null) { Orientation = ApplicationOptions.OrientationType.LandscapeAndPortrait });
 		}
 	}
 }
