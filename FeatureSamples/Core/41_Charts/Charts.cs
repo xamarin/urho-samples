@@ -47,7 +47,9 @@ namespace Urho.Samples
 			light.Brightness = 1.3f;
 
 			// Viewport
-			Renderer.SetViewport(0, new Viewport(Context, scene, camera, null));
+			var viewport = new Viewport(Context, scene, camera, null);
+			Renderer.SetViewport(0, viewport);
+			viewport.SetClearColor(new Color(0.4f, 0.4f, 0.4f));
 
 			plotNode = scene.CreateChild();
 			var baseNode = plotNode.CreateChild().CreateChild();
