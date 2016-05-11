@@ -17,21 +17,35 @@ namespace FaceDetection
 		Scene scene;
 		Camera camera;
 
+		public const int VideoCapturingFPS = 0; //200, 60, 24, 0 (no limit)
+
 		public UrhoApp(ApplicationOptions options) : base(options) {}
 
 		public async void CaptureVideo(Func<Task<FrameWithFaces>> frameSource)
 		{
 			while (!Engine.Exiting && !IsDeleted)
 			{
+				DateTime time = DateTime.UtcNow;
 				var result = await frameSource();
 				InvokeOnMain(() => SetFrame(result));
+				if (VideoCapturingFPS > 0)
+				{
+					var elapsedMs = (DateTime.UtcNow - time).TotalMilliseconds;
+					var timeToWait = 1000d / VideoCapturingFPS - elapsedMs;
+					if (timeToWait >= 0)
+						await Task.Delay(TimeSpan.FromMilliseconds(timeToWait));
+				}
 			}
 		}
 
 		public async void Rotate()
 		{
+			if (planeNode == null)//not created yet
+				return;
 			var moveAction = new MoveBy(1f, new Vector3(0, 0, 5));
 			var rotateAction = new RotateBy(duration: 1, deltaAngleX: 0, deltaAngleY: 90, deltaAngleZ: 20);
+			//planeNode.GetComponent<StaticModel>().Model = CoreAssets.Models.Sphere;
+			//planeNode.SetScale(7f);
 			await planeNode.RunActionsAsync(new Urho.Actions.Parallel(moveAction, rotateAction));
 			await planeNode.RunActionsAsync(new RepeatForever(new RotateBy(duration: 1, deltaAngleX: 0, deltaAngleY: 90, deltaAngleZ: 0)));
 		}
