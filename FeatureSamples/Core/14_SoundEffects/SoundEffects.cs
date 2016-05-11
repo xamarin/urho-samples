@@ -125,7 +125,6 @@ namespace Urho.Samples
 						// In case we also play music, set the sound volume below maximum so that we don't clip the output
 						soundSource.Gain = 0.75f;
 						// Set the sound component to automatically remove its scene node from the scene when the sound is done playing
-						soundSource.AutoRemove = true;
 					}
 				});
 			}
