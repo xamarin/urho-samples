@@ -50,7 +50,7 @@ namespace FaceDetection
 			await planeNode.RunActionsAsync(new RepeatForever(new RotateBy(duration: 1, deltaAngleX: 0, deltaAngleY: 90, deltaAngleZ: 0)));
 		}
 
-		unsafe void SetFrame(FrameWithFaces frame)
+		public unsafe void SetFrame(FrameWithFaces frame)
 		{
 			fixed (byte* bptr = frame.FrameData)
 			{
