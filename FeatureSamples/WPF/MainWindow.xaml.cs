@@ -39,7 +39,7 @@ namespace Urho.Samples.WPF
 
 		async void RunGame(TypeInfo value)
 		{
-			currentApplication?.Engine.Exit();
+			currentApplication?.Exit();
 			if (value == null) return;
 			await semaphoreSlim.WaitAsync();
 			//urho will destroy our Panel on Exit so let's create it for each sample
@@ -48,7 +48,7 @@ namespace Urho.Samples.WPF
 			WindowsFormsHost.Child = urhoSurface;
 			WindowsFormsHost.Focus();
 			urhoSurface.Focus();
-			await Task.Delay(100); //give GC some time to collect MCW from prev sample (Task.Yield won't help)
+			await Task.Yield();
 			var appOptions = new ApplicationOptions(assetsFolder: "Data")
 				{
 					ExternalWindow = RunInSdlWindow.IsChecked.Value ? IntPtr.Zero : urhoSurface.Handle,

@@ -124,7 +124,7 @@ namespace Urho.Samples
 			windowTitle.SetStyleAuto(null);
 			buttonClose.SetStyle("CloseButton", null);
 
-			buttonClose.SubscribeToReleased(_ => Engine.Exit());
+			buttonClose.SubscribeToReleased(_ => Exit());
 				
 			// Subscribe also to all UI mouse clicks just to see where we have clicked
 			UI.SubscribeToUIMouseClick(HandleControlClicked);

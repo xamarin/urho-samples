@@ -239,7 +239,7 @@ namespace Urho.Samples
 			switch (e.Key)
 			{
 				case Key.Esc:
-					Engine.Exit();
+					Exit();
 					return;
 				case Key.F1:
 					console.Toggle();

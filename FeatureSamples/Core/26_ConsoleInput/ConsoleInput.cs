@@ -104,7 +104,7 @@ namespace Urho.Samples
 		{
 			// Unlike the other samples, exiting the engine when ESC is pressed instead of just closing the console
 			if (args.Key == Key.Esc)
-				Engine.Exit();
+				Exit();
 		}
 
 		void StartGame()
@@ -188,7 +188,7 @@ namespace Urho.Samples
 			}
 
 			if (inputLower == "quit" || inputLower == "exit")
-				Engine.Exit();
+				Exit();
 			else if (gameOn)
 			{
 				// Game is on
@@ -249,7 +249,7 @@ namespace Urho.Samples
 				if (inputLower[0] == 'y')
 					StartGame();
 				else if (inputLower[0] == 'n')
-					Engine.Exit();
+					Exit();
 				else
 					Print("Please answer 'y' or 'n'.");
 			}

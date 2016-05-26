@@ -26,7 +26,7 @@ namespace Urho.Samples
 		protected override async void Start()
 		{
 			base.Start();
-			Input.SubscribeToKeyDown(k => { if (k.Key == Key.Esc) Engine.Exit(); });
+			Input.SubscribeToKeyDown(k => { if (k.Key == Key.Esc) Exit(); });
 			Input.SubscribeToTouchEnd(OnTouched);
 
 			// 3D scene with Octree

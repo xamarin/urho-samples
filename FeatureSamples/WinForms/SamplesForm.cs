@@ -26,7 +26,7 @@ namespace Urho.Samples.WinForms
 
 		async void samplesListbox_SelectedIndexChanged(object sender, EventArgs e)
 		{
-			currentApplication?.Engine.Exit();
+			currentApplication?.Exit();
 			currentApplication = null;
 			await semaphoreSlim.WaitAsync();
 			var type = (Type) samplesListbox.SelectedItem;
@@ -34,7 +34,7 @@ namespace Urho.Samples.WinForms
 			urhoSurfacePlaceholder.Controls.Clear(); //urho will destroy previous control so we have to create a new one
 			var urhoSurface = new Panel { Dock = DockStyle.Fill };
 			urhoSurfacePlaceholder.Controls.Add(urhoSurface);
-			await Task.Delay(100);//give some time for GC to cleanup everything
+			await Task.Yield();//give some time for GC to cleanup everything
 			currentApplication = Application.CreateInstance(type, new ApplicationOptions("Data") { ExternalWindow = urhoSurface.Handle });
 			urhoSurface.Focus();
 			currentApplication.Run();
