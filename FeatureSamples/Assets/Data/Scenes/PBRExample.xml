@@ -1349,8 +1349,8 @@
 			<attribute name="Scale" value="1 1 1" />
 			<attribute name="Variables" />
 			<component type="Text3D" id="154">
-				<attribute name="Font" value="Font;Fonts/BlueHighway.ttf" />
-				<attribute name="Font Size" value="15" />
+				<attribute name="Font" value="Font;Fonts/Anonymous Pro.ttf" />
+				<attribute name="Font Size" value="13" />
 				<attribute name="Text" value="Roughness Value    &lt;-1.0  -&gt;0.0" />
 				<attribute name="Width" value="262" />
 			</component>
@@ -1364,8 +1364,8 @@
 			<attribute name="Scale" value="1 1 1" />
 			<attribute name="Variables" />
 			<component type="Text3D" id="155">
-				<attribute name="Font" value="Font;Fonts/BlueHighway.ttf" />
-				<attribute name="Font Size" value="15" />
+				<attribute name="Font" value="Font;Fonts/Anonymous Pro.ttf" />
+				<attribute name="Font Size" value="13" />
 				<attribute name="Text" value="Metallic Value    &lt;-0.0  -&gt;1.0" />
 				<attribute name="Width" value="236" />
 			</component>
