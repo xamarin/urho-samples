@@ -241,7 +241,7 @@ namespace Urho.Samples
 				ib.SetSize(numVertices, false, false);
 				ib.SetData(indexData);
 
-				geom.SetVertexBuffer(0, vb, uint.MaxValue);
+				geom.SetVertexBuffer(0, vb);
 				geom.IndexBuffer = ib;
 				geom.SetDrawRange(PrimitiveType.TriangleList, 0, numVertices, true);
 

@@ -27,7 +27,6 @@ using Urho.Gui;
 using Urho.IO;
 using Urho.Network;
 using Urho.Resources;
-using Urho.Gui;
 
 namespace Urho.Samples
 {
