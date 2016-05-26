@@ -25,7 +25,7 @@ namespace SamplyGame
 		{
 			base.Start();
 			CreateScene();
-			Input.SubscribeToKeyDown(e => { if (e.Key == Key.Esc) Engine.Exit(); });
+			Input.SubscribeToKeyDown(e => { if (e.Key == Key.Esc) Exit(); });
 		}
 
 		async void CreateScene()

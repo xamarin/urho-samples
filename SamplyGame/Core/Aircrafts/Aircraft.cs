@@ -67,7 +67,6 @@ namespace SamplyGame
 			SoundSource soundSource = explosionNode.CreateComponent<SoundSource>();
 			soundSource.Play(Application.ResourceCache.GetSound(Assets.Sounds.BigExplosion));
 			soundSource.Gain = 0.5f;
-			soundSource.AutoRemove = true;
 
 			explosionNode.Position = Node.WorldPosition;
 			OnExplode(explosionNode);
