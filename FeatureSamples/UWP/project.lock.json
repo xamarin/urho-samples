@@ -1,4 +1,4 @@
-﻿{
+{
   "locked": false,
   "version": 1,
   "targets": {
@@ -15070,7 +15070,7 @@
       ]
     },
     "UrhoSharp/1.0.557": {
-      "sha512": "g/0FMOJrw+U3s4wk4pt94AplsFa8iYn8lyWsCKWHot+v1hAiyeJGk66yJFNcmAK+zxp6TphYirUfV70poLkHvA==",
+      "sha512": "UuYzDSieEnIpHSpUAfK5rNey27mqqMGUXO0iNbwZ/+YXsKwNYknl/F6oZ75pB8bbZrYW1xVO1henQRB85zBFwA==",
       "type": "package",
       "files": [
         "UrhoSharp.1.0.557.nupkg.sha512",

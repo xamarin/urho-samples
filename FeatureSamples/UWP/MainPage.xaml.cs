@@ -36,7 +36,7 @@ namespace Urho.Samples.UWP
 
 		public void RunGame(TypeInfo value)
 		{
-			currentApplication?.Engine.Exit();
+			currentApplication?.Exit();
 			//at this moment, UWP supports assets only in pak files (see PackageTool)
 			currentApplication = UrhoSurface.Run(value.Type, "Data.pak");
 		}
