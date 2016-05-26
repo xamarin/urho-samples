@@ -141,24 +141,6 @@
     <None Include="Info.plist" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\Default-568h%402x.png" />
-    <BundleResource Include="..\Assets\Data\CommandLine.txt">
-      <Link>Resources\Data\CommandLine.txt</Link>
-    </BundleResource>
-    <BundleResource Include="..\Assets\Data\EditorStrings.json">
-      <Link>Resources\Data\EditorStrings.json</Link>
-    </BundleResource>
-    <BundleResource Include="..\Assets\Data\NinjaSnowWarShaders.xml">
-      <Link>Resources\Data\NinjaSnowWarShaders.xml</Link>
-    </BundleResource>
-    <BundleResource Include="..\Assets\Data\StringsDe.json">
-      <Link>Resources\Data\StringsDe.json</Link>
-    </BundleResource>
-    <BundleResource Include="..\Assets\Data\StringsEnRu.json">
-      <Link>Resources\Data\StringsEnRu.json</Link>
-    </BundleResource>
     <BundleResource Include="..\Assets\Data\Fonts\Anonymous Pro.png">
       <Link>Resources\Data\Fonts\Anonymous Pro.png</Link>
     </BundleResource>
@@ -170,6 +152,18 @@
     </BundleResource>
     <BundleResource Include="..\Assets\Data\Fonts\OFL.txt">
       <Link>Resources\Data\Fonts\OFL.txt</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\Data\Materials\Enemy1.xml">
+      <Link>Resources\Data\Materials\Enemy1.xml</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\Data\Materials\glass.xml">
+      <Link>Resources\Data\Materials\glass.xml</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\Data\Materials\Grass.xml">
+      <Link>Resources\Data\Materials\Grass.xml</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\Data\Materials\Green.xml">
+      <Link>Resources\Data\Materials\Green.xml</Link>
     </BundleResource>
     <BundleResource Include="..\Assets\Data\Materials\GreenTransparent.xml">
       <Link>Resources\Data\Materials\GreenTransparent.xml</Link>
@@ -198,8 +192,17 @@
     <BundleResource Include="..\Assets\Data\Materials\Particle.xml">
       <Link>Resources\Data\Materials\Particle.xml</Link>
     </BundleResource>
+    <BundleResource Include="..\Assets\Data\Materials\plane.xml">
+      <Link>Resources\Data\Materials\plane.xml</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\Data\Materials\Player.xml">
+      <Link>Resources\Data\Materials\Player.xml</Link>
+    </BundleResource>
     <BundleResource Include="..\Assets\Data\Materials\Skybox.xml">
       <Link>Resources\Data\Materials\Skybox.xml</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\Data\Materials\Skybox2.xml">
+      <Link>Resources\Data\Materials\Skybox2.xml</Link>
     </BundleResource>
     <BundleResource Include="..\Assets\Data\Materials\Smoke.xml">
       <Link>Resources\Data\Materials\Smoke.xml</Link>
@@ -306,6 +309,51 @@
     <BundleResource Include="..\Assets\Data\Materials\NinjaSnowWar\SnowCrate.xml">
       <Link>Resources\Data\Materials\NinjaSnowWar\SnowCrate.xml</Link>
     </BundleResource>
+    <BundleResource Include="..\Assets\Data\Materials\PBR\ColorGrid.xml">
+      <Link>Resources\Data\Materials\PBR\ColorGrid.xml</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\Data\Materials\PBR\Concrete.xml">
+      <Link>Resources\Data\Materials\PBR\Concrete.xml</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\Data\Materials\PBR\EmissivePannel.xml">
+      <Link>Resources\Data\Materials\PBR\EmissivePannel.xml</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\Data\Materials\PBR\Metallic0.xml">
+      <Link>Resources\Data\Materials\PBR\Metallic0.xml</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\Data\Materials\PBR\Metallic10.xml">
+      <Link>Resources\Data\Materials\PBR\Metallic10.xml</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\Data\Materials\PBR\Metallic3.xml">
+      <Link>Resources\Data\Materials\PBR\Metallic3.xml</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\Data\Materials\PBR\Metallic5.xml">
+      <Link>Resources\Data\Materials\PBR\Metallic5.xml</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\Data\Materials\PBR\Metallic7.xml">
+      <Link>Resources\Data\Materials\PBR\Metallic7.xml</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\Data\Materials\PBR\Metallic9.xml">
+      <Link>Resources\Data\Materials\PBR\Metallic9.xml</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\Data\Materials\PBR\Roughness0.xml">
+      <Link>Resources\Data\Materials\PBR\Roughness0.xml</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\Data\Materials\PBR\Roughness10.xml">
+      <Link>Resources\Data\Materials\PBR\Roughness10.xml</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\Data\Materials\PBR\Roughness3.xml">
+      <Link>Resources\Data\Materials\PBR\Roughness3.xml</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\Data\Materials\PBR\Roughness5.xml">
+      <Link>Resources\Data\Materials\PBR\Roughness5.xml</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\Data\Materials\PBR\Roughness7.xml">
+      <Link>Resources\Data\Materials\PBR\Roughness7.xml</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\Data\Materials\PBR\Tile.xml">
+      <Link>Resources\Data\Materials\PBR\Tile.xml</Link>
+    </BundleResource>
     <BundleResource Include="..\Assets\Data\Models\Box.mdl">
       <Link>Resources\Data\Models\Box.mdl</Link>
     </BundleResource>
@@ -318,6 +366,9 @@
     <BundleResource Include="..\Assets\Data\Models\Dome.mdl">
       <Link>Resources\Data\Models\Dome.mdl</Link>
     </BundleResource>
+    <BundleResource Include="..\Assets\Data\Models\Enemy1.mdl">
+      <Link>Resources\Data\Models\Enemy1.mdl</Link>
+    </BundleResource>
     <BundleResource Include="..\Assets\Data\Models\Jack.mdl">
       <Link>Resources\Data\Models\Jack.mdl</Link>
     </BundleResource>
@@ -329,6 +380,9 @@
     </BundleResource>
     <BundleResource Include="..\Assets\Data\Models\Plane.mdl">
       <Link>Resources\Data\Models\Plane.mdl</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\Data\Models\Player.mdl">
+      <Link>Resources\Data\Models\Player.mdl</Link>
     </BundleResource>
     <BundleResource Include="..\Assets\Data\Models\Pyramid.mdl">
       <Link>Resources\Data\Models\Pyramid.mdl</Link>
@@ -456,6 +510,9 @@
     <BundleResource Include="..\Assets\Data\Objects\SnowCrate.xml">
       <Link>Resources\Data\Objects\SnowCrate.xml</Link>
     </BundleResource>
+    <BundleResource Include="..\Assets\Data\Particle\Burst.xml">
+      <Link>Resources\Data\Particle\Burst.xml</Link>
+    </BundleResource>
     <BundleResource Include="..\Assets\Data\Particle\Disco.xml">
       <Link>Resources\Data\Particle\Disco.xml</Link>
     </BundleResource>
@@ -510,6 +567,9 @@
     <BundleResource Include="..\Assets\Data\Scenes\NinjaSnowWar.xml">
       <Link>Resources\Data\Scenes\NinjaSnowWar.xml</Link>
     </BundleResource>
+    <BundleResource Include="..\Assets\Data\Scenes\PBRExample.xml">
+      <Link>Resources\Data\Scenes\PBRExample.xml</Link>
+    </BundleResource>
     <BundleResource Include="..\Assets\Data\Scenes\SceneLoadExample.xml">
       <Link>Resources\Data\Scenes\SceneLoadExample.xml</Link>
     </BundleResource>
@@ -552,8 +612,20 @@
     <BundleResource Include="..\Assets\Data\Textures\BrightDay1_PosZ.dds">
       <Link>Resources\Data\Textures\BrightDay1_PosZ.dds</Link>
     </BundleResource>
+    <BundleResource Include="..\Assets\Data\Textures\Eject_Seat.png">
+      <Link>Resources\Data\Textures\Eject_Seat.png</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\Data\Textures\Enemy1.png">
+      <Link>Resources\Data\Textures\Enemy1.png</Link>
+    </BundleResource>
     <BundleResource Include="..\Assets\Data\Textures\Flare.dds">
       <Link>Resources\Data\Textures\Flare.dds</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\Data\Textures\Glass_Cockpit.png">
+      <Link>Resources\Data\Textures\Glass_Cockpit.png</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\Data\Textures\Grass.dds">
+      <Link>Resources\Data\Textures\Grass.dds</Link>
     </BundleResource>
     <BundleResource Include="..\Assets\Data\Textures\HeightMap.png">
       <Link>Resources\Data\Textures\HeightMap.png</Link>
@@ -585,8 +657,32 @@
     <BundleResource Include="..\Assets\Data\Textures\OldUI.xml">
       <Link>Resources\Data\Textures\OldUI.xml</Link>
     </BundleResource>
+    <BundleResource Include="..\Assets\Data\Textures\output_skybox_negx.dds">
+      <Link>Resources\Data\Textures\output_skybox_negx.dds</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\Data\Textures\output_skybox_negy.dds">
+      <Link>Resources\Data\Textures\output_skybox_negy.dds</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\Data\Textures\output_skybox_negz.dds">
+      <Link>Resources\Data\Textures\output_skybox_negz.dds</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\Data\Textures\output_skybox_posx.dds">
+      <Link>Resources\Data\Textures\output_skybox_posx.dds</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\Data\Textures\output_skybox_posy.dds">
+      <Link>Resources\Data\Textures\output_skybox_posy.dds</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\Data\Textures\output_skybox_posz.dds">
+      <Link>Resources\Data\Textures\output_skybox_posz.dds</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\Data\Textures\Player1.png">
+      <Link>Resources\Data\Textures\Player1.png</Link>
+    </BundleResource>
     <BundleResource Include="..\Assets\Data\Textures\Skybox.xml">
       <Link>Resources\Data\Textures\Skybox.xml</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\Data\Textures\Skybox2.xml">
+      <Link>Resources\Data\Textures\Skybox2.xml</Link>
     </BundleResource>
     <BundleResource Include="..\Assets\Data\Textures\Smoke.dds">
       <Link>Resources\Data\Textures\Smoke.dds</Link>
@@ -611,6 +707,12 @@
     </BundleResource>
     <BundleResource Include="..\Assets\Data\Textures\TouchInput.png">
       <Link>Resources\Data\Textures\TouchInput.png</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\Data\Textures\T_ColorGrid.png">
+      <Link>Resources\Data\Textures\T_ColorGrid.png</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\Data\Textures\T_ColorGrid.xml">
+      <Link>Resources\Data\Textures\T_ColorGrid.xml</Link>
     </BundleResource>
     <BundleResource Include="..\Assets\Data\Textures\UI.png">
       <Link>Resources\Data\Textures\UI.png</Link>
@@ -705,6 +807,48 @@
     <BundleResource Include="..\Assets\Data\Textures\NinjaSnowWar\SnowCrate.dds">
       <Link>Resources\Data\Textures\NinjaSnowWar\SnowCrate.dds</Link>
     </BundleResource>
+    <BundleResource Include="..\Assets\Data\Textures\PBR\PBRTextureLicence.txt">
+      <Link>Resources\Data\Textures\PBR\PBRTextureLicence.txt</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\Data\Textures\PBR\Concrete\Albedo.jpg">
+      <Link>Resources\Data\Textures\PBR\Concrete\Albedo.jpg</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\Data\Textures\PBR\Concrete\Albedo.xml">
+      <Link>Resources\Data\Textures\PBR\Concrete\Albedo.xml</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\Data\Textures\PBR\Concrete\Normal.jpg">
+      <Link>Resources\Data\Textures\PBR\Concrete\Normal.jpg</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\Data\Textures\PBR\Concrete\PBR.jpg">
+      <Link>Resources\Data\Textures\PBR\Concrete\PBR.jpg</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\Data\Textures\PBR\Emissive Pannel\Albedo.jpg">
+      <Link>Resources\Data\Textures\PBR\Emissive Pannel\Albedo.jpg</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\Data\Textures\PBR\Emissive Pannel\Albedo.xml">
+      <Link>Resources\Data\Textures\PBR\Emissive Pannel\Albedo.xml</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\Data\Textures\PBR\Emissive Pannel\Emissive.jpg">
+      <Link>Resources\Data\Textures\PBR\Emissive Pannel\Emissive.jpg</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\Data\Textures\PBR\Emissive Pannel\Normal.jpg">
+      <Link>Resources\Data\Textures\PBR\Emissive Pannel\Normal.jpg</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\Data\Textures\PBR\Emissive Pannel\PBR.jpg">
+      <Link>Resources\Data\Textures\PBR\Emissive Pannel\PBR.jpg</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\Data\Textures\PBR\Pannel\Albedo.jpg">
+      <Link>Resources\Data\Textures\PBR\Pannel\Albedo.jpg</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\Data\Textures\PBR\Pannel\Albedo.xml">
+      <Link>Resources\Data\Textures\PBR\Pannel\Albedo.xml</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\Data\Textures\PBR\Pannel\Normal.jpg">
+      <Link>Resources\Data\Textures\PBR\Pannel\Normal.jpg</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\Data\Textures\PBR\Pannel\PBR.jpg">
+      <Link>Resources\Data\Textures\PBR\Pannel\PBR.jpg</Link>
+    </BundleResource>
     <BundleResource Include="..\Assets\Data\UI\DefaultStyle.xml">
       <Link>Resources\Data\UI\DefaultStyle.xml</Link>
     </BundleResource>
@@ -728,6 +872,9 @@
     </BundleResource>
     <BundleResource Include="..\Assets\Data\UI\EditorInspector_Style.xml">
       <Link>Resources\Data\UI\EditorInspector_Style.xml</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\Data\UI\EditorInspector_Tags.xml">
+      <Link>Resources\Data\UI\EditorInspector_Tags.xml</Link>
     </BundleResource>
     <BundleResource Include="..\Assets\Data\UI\EditorInspector_Variable.xml">
       <Link>Resources\Data\UI\EditorInspector_Variable.xml</Link>
@@ -822,6 +969,15 @@
     <BundleResource Include="..\Assets\Data\Urho2D\sun.png">
       <Link>Resources\Data\Urho2D\sun.png</Link>
     </BundleResource>
+    <BundleResource Include="..\Assets\Data\Urho2D\sun2.pex">
+      <Link>Resources\Data\Urho2D\sun2.pex</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\Data\Urho2D\sun2.png">
+      <Link>Resources\Data\Urho2D\sun2.png</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\Data\Urho2D\sun3.pex">
+      <Link>Resources\Data\Urho2D\sun3.pex</Link>
+    </BundleResource>
     <BundleResource Include="..\Assets\Data\Urho2D\GoldIcon\1.png">
       <Link>Resources\Data\Urho2D\GoldIcon\1.png</Link>
     </BundleResource>
@@ -873,6 +1029,9 @@
     <BundleResource Include="..\Assets\Data\Urho2D\imp\imp_headblink.png">
       <Link>Resources\Data\Urho2D\imp\imp_headblink.png</Link>
     </BundleResource>
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\Default-568h%402x.png" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />

@@ -31,13 +31,10 @@
     <AndroidUseSharedRuntime>True</AndroidUseSharedRuntime>
     <AndroidLinkSkip />
     <EmbedAssembliesIntoApk>False</EmbedAssembliesIntoApk>
-    <BundleAssemblies>False</BundleAssemblies>
-    <AndroidCreatePackagePerAbi>False</AndroidCreatePackagePerAbi>
     <AndroidSupportedAbis>armeabi,armeabi-v7a,x86</AndroidSupportedAbis>
     <AndroidStoreUncompressedFileExtensions />
     <MandroidI18n />
     <Debugger>Xamarin</Debugger>
-    <AndroidEnableMultiDex>False</AndroidEnableMultiDex>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -106,46 +103,6 @@
   <ItemGroup>
     <None Include="packages.config" />
     <None Include="Properties\AndroidManifest.xml" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable\logo_large.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\layout\samples_list.axml" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\layout\samples_list_text_view.axml" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Core\Urho.Samples.csproj">
-      <Project>{792AF649-1BB3-4242-8BA3-61F67E357B18}</Project>
-      <Name>Urho.Samples</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
-     Other similar extension points exist, see Microsoft.Common.targets.
-  <Target Name="BeforeBuild">
-  </Target>
-  <Target Name="AfterBuild">
-  </Target>
-  -->
-  <ItemGroup>
-    <AndroidAsset Include="..\Assets\Data\CommandLine.txt">
-      <Link>Assets\Data\CommandLine.txt</Link>
-    </AndroidAsset>
-    <AndroidAsset Include="..\Assets\Data\EditorStrings.json">
-      <Link>Assets\Data\EditorStrings.json</Link>
-    </AndroidAsset>
-    <AndroidAsset Include="..\Assets\Data\NinjaSnowWarShaders.xml">
-      <Link>Assets\Data\NinjaSnowWarShaders.xml</Link>
-    </AndroidAsset>
-    <AndroidAsset Include="..\Assets\Data\StringsDe.json">
-      <Link>Assets\Data\StringsDe.json</Link>
-    </AndroidAsset>
-    <AndroidAsset Include="..\Assets\Data\StringsEnRu.json">
-      <Link>Assets\Data\StringsEnRu.json</Link>
-    </AndroidAsset>
     <AndroidAsset Include="..\Assets\Data\Fonts\Anonymous Pro.png">
       <Link>Assets\Data\Fonts\Anonymous Pro.png</Link>
     </AndroidAsset>
@@ -205,6 +162,9 @@
     </AndroidAsset>
     <AndroidAsset Include="..\Assets\Data\Materials\Skybox.xml">
       <Link>Assets\Data\Materials\Skybox.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Materials\Skybox2.xml">
+      <Link>Assets\Data\Materials\Skybox2.xml</Link>
     </AndroidAsset>
     <AndroidAsset Include="..\Assets\Data\Materials\Smoke.xml">
       <Link>Assets\Data\Materials\Smoke.xml</Link>
@@ -310,6 +270,51 @@
     </AndroidAsset>
     <AndroidAsset Include="..\Assets\Data\Materials\NinjaSnowWar\SnowCrate.xml">
       <Link>Assets\Data\Materials\NinjaSnowWar\SnowCrate.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Materials\PBR\ColorGrid.xml">
+      <Link>Assets\Data\Materials\PBR\ColorGrid.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Materials\PBR\Concrete.xml">
+      <Link>Assets\Data\Materials\PBR\Concrete.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Materials\PBR\EmissivePannel.xml">
+      <Link>Assets\Data\Materials\PBR\EmissivePannel.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Materials\PBR\Metallic0.xml">
+      <Link>Assets\Data\Materials\PBR\Metallic0.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Materials\PBR\Metallic10.xml">
+      <Link>Assets\Data\Materials\PBR\Metallic10.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Materials\PBR\Metallic3.xml">
+      <Link>Assets\Data\Materials\PBR\Metallic3.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Materials\PBR\Metallic5.xml">
+      <Link>Assets\Data\Materials\PBR\Metallic5.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Materials\PBR\Metallic7.xml">
+      <Link>Assets\Data\Materials\PBR\Metallic7.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Materials\PBR\Metallic9.xml">
+      <Link>Assets\Data\Materials\PBR\Metallic9.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Materials\PBR\Roughness0.xml">
+      <Link>Assets\Data\Materials\PBR\Roughness0.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Materials\PBR\Roughness10.xml">
+      <Link>Assets\Data\Materials\PBR\Roughness10.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Materials\PBR\Roughness3.xml">
+      <Link>Assets\Data\Materials\PBR\Roughness3.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Materials\PBR\Roughness5.xml">
+      <Link>Assets\Data\Materials\PBR\Roughness5.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Materials\PBR\Roughness7.xml">
+      <Link>Assets\Data\Materials\PBR\Roughness7.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Materials\PBR\Tile.xml">
+      <Link>Assets\Data\Materials\PBR\Tile.xml</Link>
     </AndroidAsset>
     <AndroidAsset Include="..\Assets\Data\Models\Box.mdl">
       <Link>Assets\Data\Models\Box.mdl</Link>
@@ -467,6 +472,9 @@
     <AndroidAsset Include="..\Assets\Data\Objects\SnowCrate.xml">
       <Link>Assets\Data\Objects\SnowCrate.xml</Link>
     </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Particle\Burst.xml">
+      <Link>Assets\Data\Particle\Burst.xml</Link>
+    </AndroidAsset>
     <AndroidAsset Include="..\Assets\Data\Particle\Disco.xml">
       <Link>Assets\Data\Particle\Disco.xml</Link>
     </AndroidAsset>
@@ -520,6 +528,9 @@
     </AndroidAsset>
     <AndroidAsset Include="..\Assets\Data\Scenes\NinjaSnowWar.xml">
       <Link>Assets\Data\Scenes\NinjaSnowWar.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Scenes\PBRExample.xml">
+      <Link>Assets\Data\Scenes\PBRExample.xml</Link>
     </AndroidAsset>
     <AndroidAsset Include="..\Assets\Data\Scenes\SceneLoadExample.xml">
       <Link>Assets\Data\Scenes\SceneLoadExample.xml</Link>
@@ -608,11 +619,32 @@
     <AndroidAsset Include="..\Assets\Data\Textures\OldUI.xml">
       <Link>Assets\Data\Textures\OldUI.xml</Link>
     </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Textures\output_skybox_negx.dds">
+      <Link>Assets\Data\Textures\output_skybox_negx.dds</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Textures\output_skybox_negy.dds">
+      <Link>Assets\Data\Textures\output_skybox_negy.dds</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Textures\output_skybox_negz.dds">
+      <Link>Assets\Data\Textures\output_skybox_negz.dds</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Textures\output_skybox_posx.dds">
+      <Link>Assets\Data\Textures\output_skybox_posx.dds</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Textures\output_skybox_posy.dds">
+      <Link>Assets\Data\Textures\output_skybox_posy.dds</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Textures\output_skybox_posz.dds">
+      <Link>Assets\Data\Textures\output_skybox_posz.dds</Link>
+    </AndroidAsset>
     <AndroidAsset Include="..\Assets\Data\Textures\Player1.png">
       <Link>Assets\Data\Textures\Player1.png</Link>
     </AndroidAsset>
     <AndroidAsset Include="..\Assets\Data\Textures\Skybox.xml">
       <Link>Assets\Data\Textures\Skybox.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Textures\Skybox2.xml">
+      <Link>Assets\Data\Textures\Skybox2.xml</Link>
     </AndroidAsset>
     <AndroidAsset Include="..\Assets\Data\Textures\Smoke.dds">
       <Link>Assets\Data\Textures\Smoke.dds</Link>
@@ -637,6 +669,12 @@
     </AndroidAsset>
     <AndroidAsset Include="..\Assets\Data\Textures\TouchInput.png">
       <Link>Assets\Data\Textures\TouchInput.png</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Textures\T_ColorGrid.png">
+      <Link>Assets\Data\Textures\T_ColorGrid.png</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Textures\T_ColorGrid.xml">
+      <Link>Assets\Data\Textures\T_ColorGrid.xml</Link>
     </AndroidAsset>
     <AndroidAsset Include="..\Assets\Data\Textures\UI.png">
       <Link>Assets\Data\Textures\UI.png</Link>
@@ -731,6 +769,48 @@
     <AndroidAsset Include="..\Assets\Data\Textures\NinjaSnowWar\SnowCrate.dds">
       <Link>Assets\Data\Textures\NinjaSnowWar\SnowCrate.dds</Link>
     </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Textures\PBR\PBRTextureLicence.txt">
+      <Link>Assets\Data\Textures\PBR\PBRTextureLicence.txt</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Textures\PBR\Concrete\Albedo.jpg">
+      <Link>Assets\Data\Textures\PBR\Concrete\Albedo.jpg</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Textures\PBR\Concrete\Albedo.xml">
+      <Link>Assets\Data\Textures\PBR\Concrete\Albedo.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Textures\PBR\Concrete\Normal.jpg">
+      <Link>Assets\Data\Textures\PBR\Concrete\Normal.jpg</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Textures\PBR\Concrete\PBR.jpg">
+      <Link>Assets\Data\Textures\PBR\Concrete\PBR.jpg</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Textures\PBR\Emissive Pannel\Albedo.jpg">
+      <Link>Assets\Data\Textures\PBR\Emissive Pannel\Albedo.jpg</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Textures\PBR\Emissive Pannel\Albedo.xml">
+      <Link>Assets\Data\Textures\PBR\Emissive Pannel\Albedo.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Textures\PBR\Emissive Pannel\Emissive.jpg">
+      <Link>Assets\Data\Textures\PBR\Emissive Pannel\Emissive.jpg</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Textures\PBR\Emissive Pannel\Normal.jpg">
+      <Link>Assets\Data\Textures\PBR\Emissive Pannel\Normal.jpg</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Textures\PBR\Emissive Pannel\PBR.jpg">
+      <Link>Assets\Data\Textures\PBR\Emissive Pannel\PBR.jpg</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Textures\PBR\Pannel\Albedo.jpg">
+      <Link>Assets\Data\Textures\PBR\Pannel\Albedo.jpg</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Textures\PBR\Pannel\Albedo.xml">
+      <Link>Assets\Data\Textures\PBR\Pannel\Albedo.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Textures\PBR\Pannel\Normal.jpg">
+      <Link>Assets\Data\Textures\PBR\Pannel\Normal.jpg</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Textures\PBR\Pannel\PBR.jpg">
+      <Link>Assets\Data\Textures\PBR\Pannel\PBR.jpg</Link>
+    </AndroidAsset>
     <AndroidAsset Include="..\Assets\Data\UI\DefaultStyle.xml">
       <Link>Assets\Data\UI\DefaultStyle.xml</Link>
     </AndroidAsset>
@@ -754,6 +834,9 @@
     </AndroidAsset>
     <AndroidAsset Include="..\Assets\Data\UI\EditorInspector_Style.xml">
       <Link>Assets\Data\UI\EditorInspector_Style.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\UI\EditorInspector_Tags.xml">
+      <Link>Assets\Data\UI\EditorInspector_Tags.xml</Link>
     </AndroidAsset>
     <AndroidAsset Include="..\Assets\Data\UI\EditorInspector_Variable.xml">
       <Link>Assets\Data\UI\EditorInspector_Variable.xml</Link>
@@ -909,6 +992,29 @@
       <Link>Assets\Data\Urho2D\imp\imp_headblink.png</Link>
     </AndroidAsset>
   </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\logo_large.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\samples_list.axml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\samples_list_text_view.axml" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Core\Urho.Samples.csproj">
+      <Project>{792AF649-1BB3-4242-8BA3-61F67E357B18}</Project>
+      <Name>Urho.Samples</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+     Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
   <ItemGroup>
     <Content Include="UrhoSharpReadme.txt" />
   </ItemGroup>
