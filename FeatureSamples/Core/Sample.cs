@@ -22,6 +22,7 @@
 //
 
 using System;
+using System.Globalization;
 using Urho.Resources;
 using Urho.Gui;
 
@@ -249,9 +250,6 @@ namespace Urho.Samples
 					return;
 			}
 
-			if (UI.FocusElement == null)
-				return;
-
 			var renderer = Renderer;
 			switch (e.Key)
 			{
@@ -304,6 +302,12 @@ namespace Urho.Samples
 				// instancing
 				case Key.N8:
 					renderer.DynamicInstancing = !renderer.DynamicInstancing;
+					break;
+
+				case Key.N9:
+					Image screenshot = new Image();
+					Graphics.TakeScreenShot(screenshot);
+					screenshot.SavePNG(FileSystem.ProgramDir + $"Data/Screenshot_{GetType().Name}_{DateTime.Now.ToString("yyyy-MM-dd-HH-mm-ss", CultureInfo.InvariantCulture)}.png");
 					break;
 			}
 		}
