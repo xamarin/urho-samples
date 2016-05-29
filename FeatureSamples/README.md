@@ -14,6 +14,6 @@ sequence and integration of Urho with a particular operating system.   The inclu
 * `Mac/` - Integration with Cocoa, using Xamarin.Mac APIs
 * `UWP/` - Integration with Windows's UWP
 * `WPF/` - Integration with Windows's WPF
-* `Winforms/' - Integration with Window's Windows.Forms
+* `Winforms/` - Integration with Window's Windows.Forms
 * `iOS` - Integration with iOS
 
