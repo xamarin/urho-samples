@@ -69,7 +69,7 @@ namespace Urho.Samples
 					// bones. Note that debug geometry has to be separately requested each frame. Disable depth test so that we can see the
 					// bones properly
 					if (drawDebug)
-						Renderer.DrawDebugGeometry(false);
+						Renderer.DrawDebugGeometry(drawDebug);
 				});
 		}
 
