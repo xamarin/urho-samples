@@ -269,6 +269,9 @@
     <Reference Include="Xamarin.iOS" />
   </ItemGroup>
   <ItemGroup>
+    <BundleResource Include="..\Assets\Data\PostProcess\FXAA3.xml">
+      <Link>Resources\Data\PostProcess\FXAA3.xml</Link>
+    </BundleResource>
     <Content Include="Entitlements.plist" />
     <Content Include="UrhoSharpReadme.txt" />
   </ItemGroup>

@@ -37,7 +37,7 @@ namespace SamplyGame
 
 			soundSource.Play(Application.ResourceCache.GetSound(Assets.Sounds.MachineGun));
 			await bulletNode.RunActionsAsync(
-				new MoveBy(0.7f, new Vector3(0, 10, 0) * (player ? 1 : -1)),
+				new MoveBy(0.5f, new Vector3(0, 10, 0) * (player ? 1 : -1)),
 				new CallFunc(() => bulletNode.SetScale(0f))); // collapse
 
 			//remove the bullet from the scene.

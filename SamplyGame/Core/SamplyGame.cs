@@ -4,6 +4,7 @@ using Urho;
 using Urho.Gui;
 using Urho.Physics;
 using Urho.Actions;
+using Urho.Shapes;
 
 namespace SamplyGame
 {
@@ -19,13 +20,33 @@ namespace SamplyGame
 
 		public Viewport Viewport { get; private set; }
 
-		public SamplyGame() : base(new ApplicationOptions(assetsFolder: "Data") { Height = 736, Width = 414, Orientation = ApplicationOptions.OrientationType.Portrait}) { }
+		public SamplyGame() : base(new ApplicationOptions(assetsFolder: "Data") { Height = 1024 / 2, Width = 576 / 2, Orientation = ApplicationOptions.OrientationType.Portrait}) { }
 
 		protected override void Start()
 		{
 			base.Start();
 			CreateScene();
-			Input.SubscribeToKeyDown(e => { if (e.Key == Key.Esc) Exit(); });
+			Input.SubscribeToKeyDown(e =>
+			{
+				if (e.Key == Key.Esc) Exit();
+				if (e.Key == Key.C) AddCollisionDebugBox(scene, true);
+				if (e.Key == Key.V) AddCollisionDebugBox(scene, false);
+			});
+		}
+
+		static void AddCollisionDebugBox(Node rootNode, bool add)
+		{
+			var nodes = rootNode.GetChildrenWithComponent<CollisionShape>(true);
+			foreach (var node in nodes)
+			{
+				node.GetChild("CollisionDebugBox", false)?.Remove();
+				if (!add)
+					continue;
+				var subNode = node.CreateChild("CollisionDebugBox");
+				var box = subNode.CreateComponent<Box>();
+				subNode.Scale = node.GetComponent<CollisionShape>().WorldBoundingBox.Size;
+				box.Color = new Color(Color.Red, 0.4f);
+			}
 		}
 
 		async void CreateScene()
@@ -40,9 +61,20 @@ namespace SamplyGame
 			var cameraNode = scene.CreateChild();
 			cameraNode.Position = (new Vector3(0.0f, 0.0f, -10.0f));
 			cameraNode.CreateComponent<Camera>();
-			
-			Renderer.SetViewport(0, Viewport = new Viewport(Context, scene, cameraNode.GetComponent<Camera>(), null));
+			Viewport = new Viewport(Context, scene, cameraNode.GetComponent<Camera>(), null);
 
+			RenderPath effectRenderPath = Viewport.RenderPath.Clone();
+			var fxaaRp = ResourceCache.GetXmlFile(Assets.PostProcess.FXAA3);
+			effectRenderPath.Append(fxaaRp);
+			Viewport.RenderPath = effectRenderPath;
+
+			Renderer.SetViewport(0, Viewport);
+
+			var zoneNode = scene.CreateChild();
+			var zone = zoneNode.CreateComponent<Zone>();
+			zone.SetBoundingBox(new BoundingBox(-300.0f, 300.0f));
+			zone.AmbientColor = new Color(1f, 1f, 1f);
+			
 			// UI
 			coinsText = new Text();
 			coinsText.HorizontalAlignment = HorizontalAlignment.Right;
@@ -56,21 +88,19 @@ namespace SamplyGame
 			background.Start();
 
 			// Lights:
-			var lightNode1 = scene.CreateChild();
-			lightNode1.Position = new Vector3(0, -5, -40);
-			lightNode1.AddComponent(new Light {  Range = 120, Brightness = 1.5f });
-
-			var lightNode2 = scene.CreateChild();
-			lightNode2.Position = new Vector3(10, 15, -12);
-			lightNode2.AddComponent(new Light {  Range = 30.0f, Brightness = 1.5f });
+			var lightNode = scene.CreateChild();
+			lightNode.Position = new Vector3(0, -5, -40);
+			lightNode.AddComponent(new Light { Range = 120, Brightness = 0.8f });
 
 			// Game logic cycle
+			bool firstCycle = true;
 			while (true)
 			{
 				var startMenu = scene.CreateComponent<StartMenu>();
-				await startMenu.ShowStartMenu(); //wait for "start"
+				await startMenu.ShowStartMenu(!firstCycle); //wait for "start"
 				startMenu.Remove();
 				await StartGame();
+				firstCycle = false;
 			}
 		}
 
@@ -97,7 +127,7 @@ namespace SamplyGame
 			{
 				var coinNode = scene.CreateChild();
 				coinNode.Position = new Vector3(RandomHelper.NextRandom(-2.5f, 2.5f), 5f, 0);
-				var coin = new Coin();
+				var coin = new Apple();
 				coinNode.AddComponent(coin);
 				await coin.FireAsync(false);
 				await scene.RunActionsAsync(new DelayTime(3f));

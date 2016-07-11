@@ -12,7 +12,7 @@ namespace SamplyGame
 	{
 		public override TimeSpan ReloadDuration => TimeSpan.FromSeconds(3);
 
-		public override int Damage => 8;
+		public override int Damage => 12;
 
 		protected override async Task OnFire(bool player)
 		{
@@ -32,7 +32,7 @@ namespace SamplyGame
 			var carrierPos = carrier.Position;
 
 			var bulletNode = CreateRigidBullet(player);
-			bulletNode.Position = new Vector3(carrierPos.X + 0.7f * (left ? -1 : 1), carrierPos.Y + 0.3f, carrierPos.Z);
+			bulletNode.Position = new Vector3(carrierPos.X + 0.4f * (left ? -1 : 1), carrierPos.Y + 0.3f, carrierPos.Z);
 			var bulletModelNode = bulletNode.CreateChild();
 
 			bulletModelNode.Scale = new Vector3(1f, 2f, 1f) / 2.5f;

@@ -11,6 +11,8 @@ namespace SamplyGame
 	{
 		protected override CollisionLayers CollisionLayer => CollisionLayers.Enemy;
 
+		protected Quaternion InitialRotation { get; set; } = new Quaternion(0, 0, 0);
+
 		protected override async void Init()
 		{
 			await Node.RunActionsAsync(new MoveBy(0.6f, new Vector3(0, -2, 0)));
@@ -44,9 +46,11 @@ namespace SamplyGame
 			}
 		}
 
+
 		protected override void OnUpdate(float timeStep)
 		{
 			Node.LookAt(new Vector3(0, -3, 0), new Vector3(0, 1, -1), TransformSpace.World);
+			Node.Rotate(InitialRotation, TransformSpace.Local);
 		}
 	}
 }

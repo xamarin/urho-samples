@@ -4,6 +4,7 @@ using Urho;
 using Urho.Physics;
 using Urho.Audio;
 using Urho.Actions;
+using Urho.Shapes;
 using Urho.Urho2D;
 
 namespace SamplyGame
@@ -51,6 +52,7 @@ namespace SamplyGame
 			body.CollisionMask = (uint)CollisionLayer;
 			CollisionShape shape = node.CreateComponent<CollisionShape>();
 			shape.SetBox(CollisionShapeSize, Vector3.Zero, Quaternion.Identity);
+
 			Init();
 			node.SubscribeToNodeCollisionStart(OnCollided);
 			return liveTask.Task;

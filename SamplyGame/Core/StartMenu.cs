@@ -2,6 +2,8 @@
 using Urho;
 using Urho.Gui;
 using Urho.Actions;
+using Urho.Repl;
+using Urho.Shapes;
 
 namespace SamplyGame
 {
@@ -19,38 +21,49 @@ namespace SamplyGame
 			ReceiveSceneUpdates = true;
 		}
 
-		public async Task ShowStartMenu()
+		public async Task ShowStartMenu(bool gameOver)
 		{
 			var cache = Application.ResourceCache;
 			bigAircraft = Node.CreateChild();
 			var model = bigAircraft.CreateComponent<StaticModel>();
-			model.Model = cache.GetModel(Assets.Models.Player);
-			model.SetMaterial(cache.GetMaterial(Assets.Materials.Player).Clone(""));
-			bigAircraft.SetScale(1.2f);
-			bigAircraft.Rotate(new Quaternion(0, 220, 40), TransformSpace.Local);
+
+			if (gameOver)
+			{
+				model.Model = cache.GetModel(Assets.Models.Enemy1);
+				model.SetMaterial(cache.GetMaterial(Assets.Materials.Enemy1).Clone(""));
+				bigAircraft.SetScale(0.3f);
+				bigAircraft.Rotate(new Quaternion(180, 90, 20), TransformSpace.Local);
+			}
+			else
+			{
+				model.Model = cache.GetModel(Assets.Models.Player);
+				model.SetMaterial(cache.GetMaterial(Assets.Materials.Player).Clone(""));
+				bigAircraft.SetScale(1f);
+				bigAircraft.Rotate(new Quaternion(0, 40, -50), TransformSpace.Local);
+			}
+
 			bigAircraft.Position = new Vector3(10, 2, 10);
-			bigAircraft.RunActionsAsync(new RepeatForever(new Sequence(new RotateBy(1f, 0f, 0f, 5f), new RotateBy(1f, 0f, 0f, -5f))));
+			bigAircraft.RunActions(new RepeatForever(new Sequence(new RotateBy(1f, 0f, 0f, 5f), new RotateBy(1f, 0f, 0f, -5f))));
 
 			//TODO: rotor should be defined in the model + animation
 			rotor = bigAircraft.CreateChild();
-			var rotorModel = rotor.CreateComponent<StaticModel>();
-			rotorModel.Model = cache.GetModel(Assets.Models.Box);
-			rotorModel.SetMaterial(cache.GetMaterial(Assets.Materials.Black));
-			rotor.Scale = new Vector3(0.1f, 1.6f, 0.1f);
-			rotor.Rotation = new Quaternion(0, 0, 0);
-			rotor.Position = new Vector3(0, -0.15f, 1);
-			rotor.RunActionsAsync(new RepeatForever(new RotateBy(1f, 0, 0, 360f * 3))); //RPM
-
+			var rotorModel = rotor.CreateComponent<Box>();
+			rotorModel.Color = Color.White;
+			rotor.Scale = new Vector3(0.1f, 1.5f, 0.1f);
+			rotor.Position = new Vector3(0, 0, -1.3f);
+			var rotorAction = new RepeatForever(new RotateBy(1f, 0, 0, 360f*6)); //RPM
+			rotor.RunActions(rotorAction);
+			
 			menuLight = bigAircraft.CreateChild();
 			menuLight.Position = new Vector3(-3, 6, 2);
-			menuLight.AddComponent(new Light { LightType = LightType.Point, Range = 14, Brightness = 1f });
+			menuLight.AddComponent(new Light { LightType = LightType.Point, Brightness = 0.3f });
 
 			await bigAircraft.RunActionsAsync(new EaseIn(new MoveBy(1f, new Vector3(-10, -2, -10)), 2));
 
 			textBlock = new Text();
 			textBlock.HorizontalAlignment = HorizontalAlignment.Center;
 			textBlock.VerticalAlignment = VerticalAlignment.Bottom;
-			textBlock.Value = "TAP TO START";
+			textBlock.Value = gameOver ? "GAME OVER" : "TAP TO START";
 			textBlock.SetFont(cache.GetFont(Assets.Fonts.Font), Application.Graphics.Width / 15);
 			Application.UI.Root.AddChild(textBlock);
 

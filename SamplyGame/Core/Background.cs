@@ -63,17 +63,17 @@ namespace SamplyGame
 
 			Node treeNode = tile.CreateChild();
 			treeNode.Rotate(new Quaternion(0, RandomHelper.NextRandom(0, 5) * 90, 0), TransformSpace.Local);
-			treeNode.SetScale(0.35f);//RandomHelper.NextRandom(0.33f, 0.38f));
+			treeNode.Scale = new Vector3(0.3f, 0.4f, 0.3f);
 			var treeGroup = treeNode.CreateComponent<StaticModel>();
 			treeGroup.Model = cache.GetModel(Assets.Models.Tree);
-			treeGroup.SetMaterial(cache.GetMaterial(Assets.Materials.TreeMaterial));
+			treeGroup.SetMaterial(cache.GetMaterial(Assets.Materials.Pyramid));
 
-			for (float i = -sizeX; i < sizeX; i += 2.6f)
+			for (float i = -sizeX; i < sizeX; i += 3.2f)
 			{
-				for (float j = -sizeZ; j < sizeZ; j += 3f)
+				for (float j = -sizeZ; j < sizeZ; j += 3.2f)
 				{
 					var clonedTreeNode = treeNode.Clone(CreateMode.Local);
-					clonedTreeNode.Position = new Vector3(i + RandomHelper.NextRandom(-0.5f, 0.5f), 0, j);
+					clonedTreeNode.Position = new Vector3(i + RandomHelper.NextRandom(-0.3f, 0.3f), 0, j);
 				}
 			}
 

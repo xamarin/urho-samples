@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Urho;
 using Urho.Actions;
+using Urho.Repl;
 
 namespace SamplyGame.Aircrafts.Enemies
 {
@@ -13,6 +14,7 @@ namespace SamplyGame.Aircrafts.Enemies
 	{
 		readonly Player player;
 		readonly List<Enemy> enemies;
+		Random rand = new Random();
 
 		public Enemies(Player player)
 		{
@@ -30,7 +32,7 @@ namespace SamplyGame.Aircrafts.Enemies
 
 		public async void StartSpawning()
 		{
-			int count = 3;
+			int count = 6;
 			while (player.IsAlive)
 			{
 				await SpawnBats(count: count++, pause: 1f);
@@ -41,8 +43,8 @@ namespace SamplyGame.Aircrafts.Enemies
 		Task SpawnTwoMonitors()
 		{
 			return Task.WhenAll(
-				SpawnEnemy(() => new EnemyMonitorScreen(true), 1), 
-				SpawnEnemy(() => new EnemyMonitorScreen(false), 1));
+				SpawnEnemy(() => new EnemyEvilMonitor(true), 1), 
+				SpawnEnemy(() => new EnemyEvilMonitor(false), 1));
 		}
 
 		async Task SpawnBats(int count, float pause)
@@ -50,10 +52,10 @@ namespace SamplyGame.Aircrafts.Enemies
 			var tasks = new List<Task>();
 			for (int i = 1; i < count + 1 && player.IsAlive; i++)
 			{
-				if (i % 3 == 0) 
-					tasks.Add(SpawnEnemy(() => new EnemySlotMachine(), 3));
+				if (i %  3 == 0) 
+					tasks.Add(SpawnEnemy(() => new EnemySkull(), 3));
 				else
-					tasks.Add(SpawnEnemy(() => new EnemyBat(), 3));
+					tasks.Add(SpawnEnemy(() => new EnemyXamonkey(), 3));
 
 				await Node.RunActionsAsync(new DelayTime(pause));
 			}

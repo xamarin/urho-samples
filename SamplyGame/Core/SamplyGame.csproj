@@ -35,23 +35,23 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Aircrafts\Aircraft.cs" />
-    <Compile Include="Aircrafts\Enemies\EnemySlotMachine.cs" />
+    <Compile Include="Aircrafts\Enemies\EnemySkull.cs" />
     <Compile Include="Aircrafts\Enemies\Enemies.cs" />
     <Compile Include="Assets.cs" />
-    <Compile Include="Weapons\Coin.cs" />
+    <Compile Include="Weapons\Apple.cs" />
     <Compile Include="Aircrafts\Enemies\Enemy.cs" />
-    <Compile Include="Aircrafts\Enemies\EnemyBat.cs" />
-    <Compile Include="Aircrafts\Enemies\EnemyMonitorScreen.cs" />
+    <Compile Include="Aircrafts\Enemies\EnemyXamonkey.cs" />
+    <Compile Include="Aircrafts\Enemies\EnemyEvilMonitor.cs" />
     <Compile Include="Aircrafts\Player.cs" />
     <Compile Include="Background.cs" />
     <Compile Include="Helpers\RandomHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SamplyGame.cs" />
     <Compile Include="StartMenu.cs" />
-    <Compile Include="Weapons\BigWhiteCube.cs" />
-    <Compile Include="Weapons\SmallPlates.cs" />
+    <Compile Include="Weapons\XamarinCube.cs" />
+    <Compile Include="Weapons\SmallPlate.cs" />
     <Compile Include="Weapons\MassMachineGun.cs" />
-    <Compile Include="Weapons\Joysticks.cs" />
+    <Compile Include="Weapons\MassCross.cs" />
     <Compile Include="Weapons\MachineGun.cs" />
     <Compile Include="Weapons\Missile.cs" />
     <Compile Include="Weapons\Weapon.cs" />

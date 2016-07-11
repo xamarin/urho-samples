@@ -1,6 +1,8 @@
 ﻿using System.Linq;
+using System.Threading.Tasks;
 using Urho;
 using Urho.Actions;
+using Urho.Shapes;
 using Urho.Urho2D;
 
 namespace SamplyGame
@@ -11,9 +13,9 @@ namespace SamplyGame
 
 		protected override CollisionLayers CollisionLayer => CollisionLayers.Player;
 
-		protected override Vector3 CollisionShapeSize => new Vector3(2.1f, 1.2f, 1.2f); // extend default shape to get collisions by wings too
+		protected override Vector3 CollisionShapeSize => new Vector3(3.1f, 1.2f, 1.2f); // extend default shape to get collisions by wings too
 
-		public override int MaxHealth => 70;
+		public override int MaxHealth => 1;
 
 		protected override async void Init()
 		{
@@ -23,20 +25,18 @@ namespace SamplyGame
 			model.Model = cache.GetModel(Assets.Models.Player);
 			var material = cache.GetMaterial(Assets.Materials.Player).Clone("");
 			model.SetMaterial(material);
-
-			node.SetScale(0.45f);
+			
+			node.SetScale(0.35f);
 			node.Position = new Vector3(0f, -6f, 0f);
-			node.Rotation = new Quaternion(-40, 0, 0);
+			node.Rotation = new Quaternion(0, 0, 180);
 
 			//TODO: rotor should be defined in the model + animation
 			rotor = node.CreateChild();
-			var rotorModel = rotor.CreateComponent<StaticModel>();
-			rotorModel.Model = cache.GetModel(Assets.Models.Box);
-			rotorModel.SetMaterial(cache.GetMaterial(Assets.Materials.Black));
-			rotor.Scale = new Vector3(0.1f, 1.4f, 0.1f);
-			rotor.Rotation = new Quaternion(0, 0, 0);
-			rotor.Position = new Vector3(0, -0.15f, 1.2f);
-			rotor.RunActionsAsync(new RepeatForever(new RotateBy(1f, 0, 0, 360f * 4))); //RPM
+			var rotorModel = rotor.CreateComponent<Box>();
+			rotorModel.Color = Color.White;
+			rotor.Scale = new Vector3(0.1f, 1.5f, 0.1f);
+			rotor.Position = new Vector3(0, -0.15f, -1.5f);
+			rotor.RunActions(new RepeatForever(new RotateBy(1f, 0, 0, 360f * 4))); //RPM
 
 			// Load weapons
 			node.AddComponent(new MachineGun());
@@ -44,6 +44,12 @@ namespace SamplyGame
 
 			await node.RunActionsAsync(new EaseOut(new MoveBy(0.5f, new Vector3(0, 3, 0)), 2));
 			MoveRandomly();
+
+			// Do an alleron roll each 5 seconds
+			Node.RunActions(
+				new RepeatForever(new DelayTime(2),
+					new EaseBackInOut(
+						new RotateBy(1f, 0f, 0f, 360))));
 		}
 
 		protected override void OnExplode(Node explodeNode)
@@ -63,7 +69,7 @@ namespace SamplyGame
 				await Node.RunActionsAsync(moveAction, moveAction.Reverse());
 			}
 		}
-
+		
 		protected override void OnUpdate(float timeStep)
 		{
 			if (!IsAlive)
@@ -104,6 +110,7 @@ namespace SamplyGame
 			}
 
 			aircraft.LookAt(new Vector3(0, aircraft.WorldPosition.Y + 10, 10), new Vector3(0, 1, -1), TransformSpace.World);
+			aircraft.Rotate(new Quaternion(0, 180, 0), TransformSpace.Local);
 		}
 	}
 }

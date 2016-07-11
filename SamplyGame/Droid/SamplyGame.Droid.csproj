@@ -238,6 +238,9 @@
     </AndroidAsset>
   </ItemGroup>
   <ItemGroup>
+    <AndroidAsset Include="..\Assets\Data\PostProcess\FXAA3.xml">
+      <Link>Assets\Data\PostProcess\FXAA3.xml</Link>
+    </AndroidAsset>
     <Content Include="UrhoSharpReadme.txt" />
   </ItemGroup>
   <Import Project="..\packages\UrhoSharp.1.0.557\build\MonoAndroid\UrhoSharp.targets" Condition="Exists('..\packages\UrhoSharp.1.0.557\build\MonoAndroid\UrhoSharp.targets')" />

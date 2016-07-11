@@ -10,7 +10,7 @@ namespace SamplyGame
 	{
 		public override TimeSpan ReloadDuration => TimeSpan.FromSeconds(1f);
 
-		public override int Damage => 8;
+		public override int Damage => 4;
 
 		protected override Task OnFire(bool byPlayer)
 		{
