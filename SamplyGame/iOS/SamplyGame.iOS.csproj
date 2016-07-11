@@ -98,41 +98,23 @@
   <ItemGroup>
     <Compile Include="Main.cs" />
     <Compile Include="AppDelegate.cs" />
-    <BundleResource Include="..\Assets\Data\Fonts\Anonymous Pro.ttf">
-      <Link>Resources\Data\Fonts\Anonymous Pro.ttf</Link>
-    </BundleResource>
-    <BundleResource Include="..\Assets\Data\Models\Plane.mdl">
-      <Link>Resources\Data\Models\Plane.mdl</Link>
-    </BundleResource>
     <None Include="Info.plist" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\Default-568h%402x.png" />
     <BundleResource Include="..\Assets\Data\Icon.png">
       <Link>Resources\Data\Icon.png</Link>
     </BundleResource>
     <BundleResource Include="..\Assets\Data\Splashscreen.png">
       <Link>Resources\Data\Splashscreen.png</Link>
     </BundleResource>
+    <BundleResource Include="..\Assets\Data\Fonts\Anonymous Pro.ttf">
+      <Link>Resources\Data\Fonts\Anonymous Pro.ttf</Link>
+    </BundleResource>
     <BundleResource Include="..\Assets\Data\Fonts\Font.ttf">
       <Link>Resources\Data\Fonts\Font.ttf</Link>
     </BundleResource>
-    <BundleResource Include="..\Assets\Data\Materials\Black.xml">
-      <Link>Resources\Data\Materials\Black.xml</Link>
-    </BundleResource>
-    <BundleResource Include="..\Assets\Data\Materials\Coin.xml">
-      <Link>Resources\Data\Materials\Coin.xml</Link>
-    </BundleResource>
-    <BundleResource Include="..\Assets\Data\Materials\DefaultMaterial.xml">
-      <Link>Resources\Data\Materials\DefaultMaterial.xml</Link>
-    </BundleResource>
-    <BundleResource Include="..\Assets\Data\Materials\Enemy1.xml">
-      <Link>Resources\Data\Materials\Enemy1.xml</Link>
-    </BundleResource>
-    <BundleResource Include="..\Assets\Data\Materials\Enemy2.xml">
-      <Link>Resources\Data\Materials\Enemy2.xml</Link>
+    <BundleResource Include="..\Assets\Data\Materials\Apple.xml">
+      <Link>Resources\Data\Materials\Apple.xml</Link>
     </BundleResource>
     <BundleResource Include="..\Assets\Data\Materials\Enemy3.xml">
       <Link>Resources\Data\Materials\Enemy3.xml</Link>
@@ -140,41 +122,26 @@
     <BundleResource Include="..\Assets\Data\Materials\Enemy3weapon.xml">
       <Link>Resources\Data\Materials\Enemy3weapon.xml</Link>
     </BundleResource>
+    <BundleResource Include="..\Assets\Data\Materials\Enemy4DD.xml">
+      <Link>Resources\Data\Materials\Enemy4DD.xml</Link>
+    </BundleResource>
     <BundleResource Include="..\Assets\Data\Materials\Grass.xml">
       <Link>Resources\Data\Materials\Grass.xml</Link>
     </BundleResource>
     <BundleResource Include="..\Assets\Data\Materials\MachineGun.xml">
       <Link>Resources\Data\Materials\MachineGun.xml</Link>
     </BundleResource>
-    <BundleResource Include="..\Assets\Data\Materials\None.xml">
-      <Link>Resources\Data\Materials\None.xml</Link>
+    <BundleResource Include="..\Assets\Data\Materials\Monkey.xml">
+      <Link>Resources\Data\Materials\Monkey.xml</Link>
     </BundleResource>
-    <BundleResource Include="..\Assets\Data\Materials\Particle.xml">
-      <Link>Resources\Data\Materials\Particle.xml</Link>
+    <BundleResource Include="..\Assets\Data\Materials\Player1D.xml">
+      <Link>Resources\Data\Materials\Player1D.xml</Link>
     </BundleResource>
-    <BundleResource Include="..\Assets\Data\Materials\Player-material.xml">
-      <Link>Resources\Data\Materials\Player-material.xml</Link>
+    <BundleResource Include="..\Assets\Data\Materials\PyramidMaterial.xml">
+      <Link>Resources\Data\Materials\PyramidMaterial.xml</Link>
     </BundleResource>
-    <BundleResource Include="..\Assets\Data\Materials\Player.xml">
-      <Link>Resources\Data\Materials\Player.xml</Link>
-    </BundleResource>
-    <BundleResource Include="..\Assets\Data\Materials\SMWeapon.xml">
-      <Link>Resources\Data\Materials\SMWeapon.xml</Link>
-    </BundleResource>
-    <BundleResource Include="..\Assets\Data\Materials\TreeMaterial.xml">
-      <Link>Resources\Data\Materials\TreeMaterial.xml</Link>
-    </BundleResource>
-    <BundleResource Include="..\Assets\Data\Models\Box.mdl">
-      <Link>Resources\Data\Models\Box.mdl</Link>
-    </BundleResource>
-    <BundleResource Include="..\Assets\Data\Models\Coin.mdl">
-      <Link>Resources\Data\Models\Coin.mdl</Link>
-    </BundleResource>
-    <BundleResource Include="..\Assets\Data\Models\Enemy1.mdl">
-      <Link>Resources\Data\Models\Enemy1.mdl</Link>
-    </BundleResource>
-    <BundleResource Include="..\Assets\Data\Models\Enemy2.mdl">
-      <Link>Resources\Data\Models\Enemy2.mdl</Link>
+    <BundleResource Include="..\Assets\Data\Models\Apple.mdl">
+      <Link>Resources\Data\Models\Apple.mdl</Link>
     </BundleResource>
     <BundleResource Include="..\Assets\Data\Models\Enemy3.mdl">
       <Link>Resources\Data\Models\Enemy3.mdl</Link>
@@ -182,17 +149,23 @@
     <BundleResource Include="..\Assets\Data\Models\Enemy3weapon.mdl">
       <Link>Resources\Data\Models\Enemy3weapon.mdl</Link>
     </BundleResource>
-    <BundleResource Include="..\Assets\Data\Models\Player.mdl">
-      <Link>Resources\Data\Models\Player.mdl</Link>
+    <BundleResource Include="..\Assets\Data\Models\Enemy4.mdl">
+      <Link>Resources\Data\Models\Enemy4.mdl</Link>
     </BundleResource>
-    <BundleResource Include="..\Assets\Data\Models\SMWeapon.mdl">
-      <Link>Resources\Data\Models\SMWeapon.mdl</Link>
+    <BundleResource Include="..\Assets\Data\Models\Monkey.mdl">
+      <Link>Resources\Data\Models\Monkey.mdl</Link>
     </BundleResource>
-    <BundleResource Include="..\Assets\Data\Models\Sphere.mdl">
-      <Link>Resources\Data\Models\Sphere.mdl</Link>
+    <BundleResource Include="..\Assets\Data\Models\Plane.mdl">
+      <Link>Resources\Data\Models\Plane.mdl</Link>
     </BundleResource>
-    <BundleResource Include="..\Assets\Data\Models\Tree.mdl">
-      <Link>Resources\Data\Models\Tree.mdl</Link>
+    <BundleResource Include="..\Assets\Data\Models\Player1.mdl">
+      <Link>Resources\Data\Models\Player1.mdl</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\Data\Models\PyramidTree.mdl">
+      <Link>Resources\Data\Models\PyramidTree.mdl</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\Data\Models\Skull.mdl">
+      <Link>Resources\Data\Models\Skull.mdl</Link>
     </BundleResource>
     <BundleResource Include="..\Assets\Data\Particles\Explosion.pex">
       <Link>Resources\Data\Particles\Explosion.pex</Link>
@@ -215,6 +188,12 @@
     <BundleResource Include="..\Assets\Data\Particles\PlayerExplosion.png">
       <Link>Resources\Data\Particles\PlayerExplosion.png</Link>
     </BundleResource>
+    <BundleResource Include="..\Assets\Data\PostProcess\FXAA3.xml">
+      <Link>Resources\Data\PostProcess\FXAA3.xml</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\Data\Shaders\GLSL\Vibrance.glsl">
+      <Link>Resources\Data\Shaders\GLSL\Vibrance.glsl</Link>
+    </BundleResource>
     <BundleResource Include="..\Assets\Data\Sounds\BigExplosion.wav">
       <Link>Resources\Data\Sounds\BigExplosion.wav</Link>
     </BundleResource>
@@ -227,14 +206,8 @@
     <BundleResource Include="..\Assets\Data\Sounds\SmallExplosion.wav">
       <Link>Resources\Data\Sounds\SmallExplosion.wav</Link>
     </BundleResource>
-    <BundleResource Include="..\Assets\Data\Textures\Coin.png">
-      <Link>Resources\Data\Textures\Coin.png</Link>
-    </BundleResource>
-    <BundleResource Include="..\Assets\Data\Textures\Enemy1.png">
-      <Link>Resources\Data\Textures\Enemy1.png</Link>
-    </BundleResource>
-    <BundleResource Include="..\Assets\Data\Textures\Enemy2.png">
-      <Link>Resources\Data\Textures\Enemy2.png</Link>
+    <BundleResource Include="..\Assets\Data\Textures\Apple.png">
+      <Link>Resources\Data\Textures\Apple.png</Link>
     </BundleResource>
     <BundleResource Include="..\Assets\Data\Textures\Enemy3.png">
       <Link>Resources\Data\Textures\Enemy3.png</Link>
@@ -242,21 +215,30 @@
     <BundleResource Include="..\Assets\Data\Textures\Enemy3weapon.png">
       <Link>Resources\Data\Textures\Enemy3weapon.png</Link>
     </BundleResource>
+    <BundleResource Include="..\Assets\Data\Textures\Enemy4DD.png">
+      <Link>Resources\Data\Textures\Enemy4DD.png</Link>
+    </BundleResource>
     <BundleResource Include="..\Assets\Data\Textures\Grass.dds">
       <Link>Resources\Data\Textures\Grass.dds</Link>
     </BundleResource>
-    <BundleResource Include="..\Assets\Data\Textures\Player.002">
-      <Link>Resources\Data\Textures\Player.002</Link>
+    <BundleResource Include="..\Assets\Data\Textures\Monkey.png">
+      <Link>Resources\Data\Textures\Monkey.png</Link>
     </BundleResource>
-    <BundleResource Include="..\Assets\Data\Textures\Player1.png">
-      <Link>Resources\Data\Textures\Player1.png</Link>
+    <BundleResource Include="..\Assets\Data\Textures\Player1D.png">
+      <Link>Resources\Data\Textures\Player1D.png</Link>
     </BundleResource>
-    <BundleResource Include="..\Assets\Data\Textures\SMWeapon.002">
-      <Link>Resources\Data\Textures\SMWeapon.002</Link>
+    <BundleResource Include="..\Assets\Data\Textures\Pyramid.png">
+      <Link>Resources\Data\Textures\Pyramid.png</Link>
     </BundleResource>
     <BundleResource Include="..\Assets\Data\Textures\TreeUV2.png">
       <Link>Resources\Data\Textures\TreeUV2.png</Link>
     </BundleResource>
+    <BundleResource Include="..\Assets\Data\Textures\xamarin.png">
+      <Link>Resources\Data\Textures\xamarin.png</Link>
+    </BundleResource>
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\Default-568h%402x.png" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -269,9 +251,6 @@
     <Reference Include="Xamarin.iOS" />
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="..\Assets\Data\PostProcess\FXAA3.xml">
-      <Link>Resources\Data\PostProcess\FXAA3.xml</Link>
-    </BundleResource>
     <Content Include="Entitlements.plist" />
     <Content Include="UrhoSharpReadme.txt" />
   </ItemGroup>

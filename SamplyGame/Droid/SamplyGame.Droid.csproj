@@ -62,56 +62,22 @@
     <AndroidResource Include="Resources\drawable\Icon.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidAsset Include="..\Assets\Data\Models\Plane.mdl">
-      <Link>Assets\Data\Models\Plane.mdl</Link>
-    </AndroidAsset>
-    <AndroidAsset Include="..\Assets\Data\Fonts\Anonymous Pro.ttf">
-      <Link>Assets\Data\Fonts\Anonymous Pro.ttf</Link>
-    </AndroidAsset>
     <None Include="packages.config" />
     <None Include="Properties\AndroidManifest.xml" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Core\SamplyGame.csproj">
-      <Project>{7C4B3936-72F4-49E0-B5A7-E1284863C8C4}</Project>
-      <Name>SamplyGame</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
-     Other similar extension points exist, see Microsoft.Common.targets.
-  <Target Name="BeforeBuild">
-  </Target>
-  <Target Name="AfterBuild">
-  </Target>
-  -->
-  <ItemGroup>
-    <Folder Include="Resources\layout\" />
-  </ItemGroup>
-  <ItemGroup>
     <AndroidAsset Include="..\Assets\Data\Icon.png">
       <Link>Assets\Data\Icon.png</Link>
     </AndroidAsset>
     <AndroidAsset Include="..\Assets\Data\Splashscreen.png">
       <Link>Assets\Data\Splashscreen.png</Link>
     </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Fonts\Anonymous Pro.ttf">
+      <Link>Assets\Data\Fonts\Anonymous Pro.ttf</Link>
+    </AndroidAsset>
     <AndroidAsset Include="..\Assets\Data\Fonts\Font.ttf">
       <Link>Assets\Data\Fonts\Font.ttf</Link>
     </AndroidAsset>
-    <AndroidAsset Include="..\Assets\Data\Materials\Black.xml">
-      <Link>Assets\Data\Materials\Black.xml</Link>
-    </AndroidAsset>
-    <AndroidAsset Include="..\Assets\Data\Materials\Coin.xml">
-      <Link>Assets\Data\Materials\Coin.xml</Link>
-    </AndroidAsset>
-    <AndroidAsset Include="..\Assets\Data\Materials\DefaultMaterial.xml">
-      <Link>Assets\Data\Materials\DefaultMaterial.xml</Link>
-    </AndroidAsset>
-    <AndroidAsset Include="..\Assets\Data\Materials\Enemy1.xml">
-      <Link>Assets\Data\Materials\Enemy1.xml</Link>
-    </AndroidAsset>
-    <AndroidAsset Include="..\Assets\Data\Materials\Enemy2.xml">
-      <Link>Assets\Data\Materials\Enemy2.xml</Link>
+    <AndroidAsset Include="..\Assets\Data\Materials\Apple.xml">
+      <Link>Assets\Data\Materials\Apple.xml</Link>
     </AndroidAsset>
     <AndroidAsset Include="..\Assets\Data\Materials\Enemy3.xml">
       <Link>Assets\Data\Materials\Enemy3.xml</Link>
@@ -119,41 +85,26 @@
     <AndroidAsset Include="..\Assets\Data\Materials\Enemy3weapon.xml">
       <Link>Assets\Data\Materials\Enemy3weapon.xml</Link>
     </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Materials\Enemy4DD.xml">
+      <Link>Assets\Data\Materials\Enemy4DD.xml</Link>
+    </AndroidAsset>
     <AndroidAsset Include="..\Assets\Data\Materials\Grass.xml">
       <Link>Assets\Data\Materials\Grass.xml</Link>
     </AndroidAsset>
     <AndroidAsset Include="..\Assets\Data\Materials\MachineGun.xml">
       <Link>Assets\Data\Materials\MachineGun.xml</Link>
     </AndroidAsset>
-    <AndroidAsset Include="..\Assets\Data\Materials\None.xml">
-      <Link>Assets\Data\Materials\None.xml</Link>
+    <AndroidAsset Include="..\Assets\Data\Materials\Monkey.xml">
+      <Link>Assets\Data\Materials\Monkey.xml</Link>
     </AndroidAsset>
-    <AndroidAsset Include="..\Assets\Data\Materials\Particle.xml">
-      <Link>Assets\Data\Materials\Particle.xml</Link>
+    <AndroidAsset Include="..\Assets\Data\Materials\Player1D.xml">
+      <Link>Assets\Data\Materials\Player1D.xml</Link>
     </AndroidAsset>
-    <AndroidAsset Include="..\Assets\Data\Materials\Player-material.xml">
-      <Link>Assets\Data\Materials\Player-material.xml</Link>
+    <AndroidAsset Include="..\Assets\Data\Materials\PyramidMaterial.xml">
+      <Link>Assets\Data\Materials\PyramidMaterial.xml</Link>
     </AndroidAsset>
-    <AndroidAsset Include="..\Assets\Data\Materials\Player.xml">
-      <Link>Assets\Data\Materials\Player.xml</Link>
-    </AndroidAsset>
-    <AndroidAsset Include="..\Assets\Data\Materials\SMWeapon.xml">
-      <Link>Assets\Data\Materials\SMWeapon.xml</Link>
-    </AndroidAsset>
-    <AndroidAsset Include="..\Assets\Data\Materials\TreeMaterial.xml">
-      <Link>Assets\Data\Materials\TreeMaterial.xml</Link>
-    </AndroidAsset>
-    <AndroidAsset Include="..\Assets\Data\Models\Box.mdl">
-      <Link>Assets\Data\Models\Box.mdl</Link>
-    </AndroidAsset>
-    <AndroidAsset Include="..\Assets\Data\Models\Coin.mdl">
-      <Link>Assets\Data\Models\Coin.mdl</Link>
-    </AndroidAsset>
-    <AndroidAsset Include="..\Assets\Data\Models\Enemy1.mdl">
-      <Link>Assets\Data\Models\Enemy1.mdl</Link>
-    </AndroidAsset>
-    <AndroidAsset Include="..\Assets\Data\Models\Enemy2.mdl">
-      <Link>Assets\Data\Models\Enemy2.mdl</Link>
+    <AndroidAsset Include="..\Assets\Data\Models\Apple.mdl">
+      <Link>Assets\Data\Models\Apple.mdl</Link>
     </AndroidAsset>
     <AndroidAsset Include="..\Assets\Data\Models\Enemy3.mdl">
       <Link>Assets\Data\Models\Enemy3.mdl</Link>
@@ -161,17 +112,23 @@
     <AndroidAsset Include="..\Assets\Data\Models\Enemy3weapon.mdl">
       <Link>Assets\Data\Models\Enemy3weapon.mdl</Link>
     </AndroidAsset>
-    <AndroidAsset Include="..\Assets\Data\Models\Player.mdl">
-      <Link>Assets\Data\Models\Player.mdl</Link>
+    <AndroidAsset Include="..\Assets\Data\Models\Enemy4.mdl">
+      <Link>Assets\Data\Models\Enemy4.mdl</Link>
     </AndroidAsset>
-    <AndroidAsset Include="..\Assets\Data\Models\SMWeapon.mdl">
-      <Link>Assets\Data\Models\SMWeapon.mdl</Link>
+    <AndroidAsset Include="..\Assets\Data\Models\Monkey.mdl">
+      <Link>Assets\Data\Models\Monkey.mdl</Link>
     </AndroidAsset>
-    <AndroidAsset Include="..\Assets\Data\Models\Sphere.mdl">
-      <Link>Assets\Data\Models\Sphere.mdl</Link>
+    <AndroidAsset Include="..\Assets\Data\Models\Plane.mdl">
+      <Link>Assets\Data\Models\Plane.mdl</Link>
     </AndroidAsset>
-    <AndroidAsset Include="..\Assets\Data\Models\Tree.mdl">
-      <Link>Assets\Data\Models\Tree.mdl</Link>
+    <AndroidAsset Include="..\Assets\Data\Models\Player1.mdl">
+      <Link>Assets\Data\Models\Player1.mdl</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Models\PyramidTree.mdl">
+      <Link>Assets\Data\Models\PyramidTree.mdl</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Models\Skull.mdl">
+      <Link>Assets\Data\Models\Skull.mdl</Link>
     </AndroidAsset>
     <AndroidAsset Include="..\Assets\Data\Particles\Explosion.pex">
       <Link>Assets\Data\Particles\Explosion.pex</Link>
@@ -194,6 +151,12 @@
     <AndroidAsset Include="..\Assets\Data\Particles\PlayerExplosion.png">
       <Link>Assets\Data\Particles\PlayerExplosion.png</Link>
     </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\PostProcess\FXAA3.xml">
+      <Link>Assets\Data\PostProcess\FXAA3.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Shaders\GLSL\Vibrance.glsl">
+      <Link>Assets\Data\Shaders\GLSL\Vibrance.glsl</Link>
+    </AndroidAsset>
     <AndroidAsset Include="..\Assets\Data\Sounds\BigExplosion.wav">
       <Link>Assets\Data\Sounds\BigExplosion.wav</Link>
     </AndroidAsset>
@@ -206,14 +169,8 @@
     <AndroidAsset Include="..\Assets\Data\Sounds\SmallExplosion.wav">
       <Link>Assets\Data\Sounds\SmallExplosion.wav</Link>
     </AndroidAsset>
-    <AndroidAsset Include="..\Assets\Data\Textures\Coin.png">
-      <Link>Assets\Data\Textures\Coin.png</Link>
-    </AndroidAsset>
-    <AndroidAsset Include="..\Assets\Data\Textures\Enemy1.png">
-      <Link>Assets\Data\Textures\Enemy1.png</Link>
-    </AndroidAsset>
-    <AndroidAsset Include="..\Assets\Data\Textures\Enemy2.png">
-      <Link>Assets\Data\Textures\Enemy2.png</Link>
+    <AndroidAsset Include="..\Assets\Data\Textures\Apple.png">
+      <Link>Assets\Data\Textures\Apple.png</Link>
     </AndroidAsset>
     <AndroidAsset Include="..\Assets\Data\Textures\Enemy3.png">
       <Link>Assets\Data\Textures\Enemy3.png</Link>
@@ -221,26 +178,46 @@
     <AndroidAsset Include="..\Assets\Data\Textures\Enemy3weapon.png">
       <Link>Assets\Data\Textures\Enemy3weapon.png</Link>
     </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Textures\Enemy4DD.png">
+      <Link>Assets\Data\Textures\Enemy4DD.png</Link>
+    </AndroidAsset>
     <AndroidAsset Include="..\Assets\Data\Textures\Grass.dds">
       <Link>Assets\Data\Textures\Grass.dds</Link>
     </AndroidAsset>
-    <AndroidAsset Include="..\Assets\Data\Textures\Player.002">
-      <Link>Assets\Data\Textures\Player.002</Link>
+    <AndroidAsset Include="..\Assets\Data\Textures\Monkey.png">
+      <Link>Assets\Data\Textures\Monkey.png</Link>
     </AndroidAsset>
-    <AndroidAsset Include="..\Assets\Data\Textures\Player1.png">
-      <Link>Assets\Data\Textures\Player1.png</Link>
+    <AndroidAsset Include="..\Assets\Data\Textures\Player1D.png">
+      <Link>Assets\Data\Textures\Player1D.png</Link>
     </AndroidAsset>
-    <AndroidAsset Include="..\Assets\Data\Textures\SMWeapon.002">
-      <Link>Assets\Data\Textures\SMWeapon.002</Link>
+    <AndroidAsset Include="..\Assets\Data\Textures\Pyramid.png">
+      <Link>Assets\Data\Textures\Pyramid.png</Link>
     </AndroidAsset>
     <AndroidAsset Include="..\Assets\Data\Textures\TreeUV2.png">
       <Link>Assets\Data\Textures\TreeUV2.png</Link>
     </AndroidAsset>
+    <AndroidAsset Include="..\Assets\Data\Textures\xamarin.png">
+      <Link>Assets\Data\Textures\xamarin.png</Link>
+    </AndroidAsset>
   </ItemGroup>
   <ItemGroup>
-    <AndroidAsset Include="..\Assets\Data\PostProcess\FXAA3.xml">
-      <Link>Assets\Data\PostProcess\FXAA3.xml</Link>
-    </AndroidAsset>
+    <ProjectReference Include="..\Core\SamplyGame.csproj">
+      <Project>{7C4B3936-72F4-49E0-B5A7-E1284863C8C4}</Project>
+      <Name>SamplyGame</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+     Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+  <ItemGroup>
+    <Folder Include="Resources\layout\" />
+  </ItemGroup>
+  <ItemGroup>
     <Content Include="UrhoSharpReadme.txt" />
   </ItemGroup>
   <Import Project="..\packages\UrhoSharp.1.0.557\build\MonoAndroid\UrhoSharp.targets" Condition="Exists('..\packages\UrhoSharp.1.0.557\build\MonoAndroid\UrhoSharp.targets')" />
