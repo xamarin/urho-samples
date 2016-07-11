@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Urho;
 using Urho.Actions;
-using Urho.Repl;
 
 namespace SamplyGame.Aircrafts.Enemies
 {
@@ -14,7 +13,6 @@ namespace SamplyGame.Aircrafts.Enemies
 	{
 		readonly Player player;
 		readonly List<Enemy> enemies;
-		Random rand = new Random();
 
 		public Enemies(Player player)
 		{
@@ -32,7 +30,7 @@ namespace SamplyGame.Aircrafts.Enemies
 
 		public async void StartSpawning()
 		{
-			int count = 6;
+			int count = 3;
 			while (player.IsAlive)
 			{
 				await SpawnBats(count: count++, pause: 1f);

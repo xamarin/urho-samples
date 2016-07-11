@@ -15,7 +15,7 @@ namespace SamplyGame
 
 		protected override Vector3 CollisionShapeSize => new Vector3(3.1f, 1.2f, 1.2f); // extend default shape to get collisions by wings too
 
-		public override int MaxHealth => 1;
+		public override int MaxHealth => 40;
 
 		protected override async void Init()
 		{
@@ -46,10 +46,8 @@ namespace SamplyGame
 			MoveRandomly();
 
 			// Do an alleron roll each 5 seconds
-			Node.RunActions(
-				new RepeatForever(new DelayTime(2),
-					new EaseBackInOut(
-						new RotateBy(1f, 0f, 0f, 360))));
+			Node.RunActions(new RepeatForever(new DelayTime(5),
+					new EaseBackInOut(new RotateBy(1f, 0f, 0f, 360))));
 		}
 
 		protected override void OnExplode(Node explodeNode)
