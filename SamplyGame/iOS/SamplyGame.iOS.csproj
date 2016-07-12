@@ -100,7 +100,6 @@
     <Compile Include="AppDelegate.cs" />
     <None Include="Info.plist" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <None Include="packages.config" />
     <BundleResource Include="..\Assets\Data\Icon.png">
       <Link>Resources\Data\Icon.png</Link>
     </BundleResource>
@@ -233,6 +232,7 @@
     <BundleResource Include="..\Assets\Data\Textures\xamarin.png">
       <Link>Resources\Data\Textures\xamarin.png</Link>
     </BundleResource>
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\Default-568h%402x.png" />
@@ -242,7 +242,7 @@
     <Reference Include="System.Xml" />
     <Reference Include="System.Core" />
     <Reference Include="Urho, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\UrhoSharp.1.0.557\lib\Xamarin.iOS10\Urho.dll</HintPath>
+      <HintPath>..\packages\UrhoSharp.1.1.81\lib\Xamarin.iOS10\Urho.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Xamarin.iOS" />

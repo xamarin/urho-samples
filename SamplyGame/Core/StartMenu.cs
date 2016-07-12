@@ -2,7 +2,6 @@
 using Urho;
 using Urho.Gui;
 using Urho.Actions;
-using Urho.Repl;
 using Urho.Shapes;
 
 namespace SamplyGame

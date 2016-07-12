@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Urho;
 using Urho.Actions;
-using Urho.Repl;
 using Urho.Shapes;
 
 namespace SamplyGame
