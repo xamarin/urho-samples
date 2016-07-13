@@ -191,9 +191,6 @@
     <BundleResource Include="..\Assets\Data\PostProcess\FXAA3.xml">
       <Link>Resources\Data\PostProcess\FXAA3.xml</Link>
     </BundleResource>
-    <BundleResource Include="..\Assets\Data\Shaders\GLSL\Vibrance.glsl">
-      <Link>Resources\Data\Shaders\GLSL\Vibrance.glsl</Link>
-    </BundleResource>
     <BundleResource Include="..\Assets\Data\Sounds\BigExplosion.wav">
       <Link>Resources\Data\Sounds\BigExplosion.wav</Link>
     </BundleResource>

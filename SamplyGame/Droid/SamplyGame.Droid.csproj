@@ -14,7 +14,7 @@
     <AndroidResgenFile>Resources\Resource.Designer.cs</AndroidResgenFile>
     <GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
     <AndroidUseLatestPlatformSdk>True</AndroidUseLatestPlatformSdk>
-    <TargetFrameworkVersion>v6.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v5.0</TargetFrameworkVersion>
     <AndroidManifest>Properties\AndroidManifest.xml</AndroidManifest>
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
@@ -153,9 +153,6 @@
     </AndroidAsset>
     <AndroidAsset Include="..\Assets\Data\PostProcess\FXAA3.xml">
       <Link>Assets\Data\PostProcess\FXAA3.xml</Link>
-    </AndroidAsset>
-    <AndroidAsset Include="..\Assets\Data\Shaders\GLSL\Vibrance.glsl">
-      <Link>Assets\Data\Shaders\GLSL\Vibrance.glsl</Link>
     </AndroidAsset>
     <AndroidAsset Include="..\Assets\Data\Sounds\BigExplosion.wav">
       <Link>Assets\Data\Sounds\BigExplosion.wav</Link>
