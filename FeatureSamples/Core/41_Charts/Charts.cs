@@ -64,7 +64,7 @@ namespace Urho.Samples
 				{
 					var boxNode = plotNode.CreateChild();
 					boxNode.Position = new Vector3(size / 2f - i + 0.5f, 0, size / 2f - j + 0.5f);
-					var box = new Bar(h => Math.Round(h, 1).ToString(), new Color(Sample.NextRandom(), Sample.NextRandom(), Sample.NextRandom(), 0.9f));
+					var box = new Bar(h => h.ToString("F1"), new Color(Sample.NextRandom(), Sample.NextRandom(), Sample.NextRandom(), 0.9f));
 					boxNode.AddComponent(box);
 					box.Value = (Math.Abs(i) + Math.Abs(j) + 1) / 2f;
 				}
