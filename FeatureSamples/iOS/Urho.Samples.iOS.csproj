@@ -140,7 +140,6 @@
     <Compile Include="AppDelegate.cs" />
     <None Include="Info.plist" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <None Include="packages.config" />
     <BundleResource Include="..\Assets\Data\Fonts\Anonymous Pro.png">
       <Link>Resources\Data\Fonts\Anonymous Pro.png</Link>
     </BundleResource>
@@ -1029,6 +1028,7 @@
     <BundleResource Include="..\Assets\Data\Urho2D\imp\imp_headblink.png">
       <Link>Resources\Data\Urho2D\imp\imp_headblink.png</Link>
     </BundleResource>
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\Default-568h%402x.png" />
@@ -1038,7 +1038,7 @@
     <Reference Include="System.Xml" />
     <Reference Include="System.Core" />
     <Reference Include="Urho, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\UrhoSharp.1.0.557\lib\Xamarin.iOS10\Urho.dll</HintPath>
+      <HintPath>..\packages\UrhoSharp.1.1.91\lib\Xamarin.iOS10\Urho.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Xamarin.iOS" />

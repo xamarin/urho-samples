@@ -1778,7 +1778,7 @@
           }
         }
       },
-      "UrhoSharp/1.0.557": {
+      "UrhoSharp/1.1.91": {
         "compile": {
           "lib/uap10.0/Urho.dll": {}
         },
@@ -1803,6 +1803,9 @@
           "native/Urho3D/Source/bin/CoreData/Models/Pyramid.mdl": {},
           "native/Urho3D/Source/bin/CoreData/Models/Sphere.mdl": {},
           "native/Urho3D/Source/bin/CoreData/Models/Torus.mdl": {},
+          "native/Urho3D/Source/bin/CoreData/PostProcess/Blur.xml": {},
+          "native/Urho3D/Source/bin/CoreData/PostProcess/FXAA2.xml": {},
+          "native/Urho3D/Source/bin/CoreData/PostProcess/FXAA3.xml": {},
           "native/Urho3D/Source/bin/CoreData/RenderPaths/Deferred.xml": {},
           "native/Urho3D/Source/bin/CoreData/RenderPaths/DeferredHWDepth.xml": {},
           "native/Urho3D/Source/bin/CoreData/RenderPaths/Forward.xml": {},
@@ -3672,7 +3675,7 @@
           "lib/netcore50/System.Xml.XmlSerializer.dll": {}
         }
       },
-      "UrhoSharp/1.0.557": {
+      "UrhoSharp/1.1.91": {
         "compile": {
           "lib/uap10.0/Urho.dll": {}
         },
@@ -5276,7 +5279,7 @@
           "runtimes/win8-aot/lib/netcore50/System.Xml.XmlSerializer.dll": {}
         }
       },
-      "UrhoSharp/1.0.557": {
+      "UrhoSharp/1.1.91": {
         "compile": {
           "lib/uap10.0/Urho.dll": {}
         },
@@ -6930,7 +6933,7 @@
           "lib/netcore50/System.Xml.XmlSerializer.dll": {}
         }
       },
-      "UrhoSharp/1.0.557": {
+      "UrhoSharp/1.1.91": {
         "compile": {
           "lib/uap10.0/Urho.dll": {}
         },
@@ -8534,7 +8537,7 @@
           "runtimes/win8-aot/lib/netcore50/System.Xml.XmlSerializer.dll": {}
         }
       },
-      "UrhoSharp/1.0.557": {
+      "UrhoSharp/1.1.91": {
         "compile": {
           "lib/uap10.0/Urho.dll": {}
         },
@@ -10188,7 +10191,7 @@
           "lib/netcore50/System.Xml.XmlSerializer.dll": {}
         }
       },
-      "UrhoSharp/1.0.557": {
+      "UrhoSharp/1.1.91": {
         "compile": {
           "lib/uap10.0/Urho.dll": {}
         },
@@ -11792,7 +11795,7 @@
           "runtimes/win8-aot/lib/netcore50/System.Xml.XmlSerializer.dll": {}
         }
       },
-      "UrhoSharp/1.0.557": {
+      "UrhoSharp/1.1.91": {
         "compile": {
           "lib/uap10.0/Urho.dll": {}
         },
@@ -15069,11 +15072,11 @@
         "runtimes/win8-aot/lib/netcore50/System.Xml.XmlSerializer.dll"
       ]
     },
-    "UrhoSharp/1.0.557": {
-      "sha512": "UuYzDSieEnIpHSpUAfK5rNey27mqqMGUXO0iNbwZ/+YXsKwNYknl/F6oZ75pB8bbZrYW1xVO1henQRB85zBFwA==",
+    "UrhoSharp/1.1.91": {
+      "sha512": "Ld05W6B0/5QeJqkqd0L1DSvzCfrFLwPA/gzhrziuTkGtyRPBgB/jLh+JAb4G8O4ei5x/GLB+4rfDuV4bWRwaQw==",
       "type": "package",
       "files": [
-        "UrhoSharp.1.0.557.nupkg.sha512",
+        "UrhoSharp.1.1.91.nupkg.sha512",
         "UrhoSharp.nuspec",
         "build/MonoAndroid/UrhoSharp.targets",
         "build/net45/UrhoSharp.targets",
@@ -15081,6 +15084,7 @@
         "content/MonoAndroid/UrhoSharpReadme.txt",
         "content/Xamarin.iOS10/UrhoSharpReadme.txt",
         "content/net45/UrhoSharpReadme.txt",
+        "lib/MonoAndroid/Urho.Droid.SdlBinding.dll",
         "lib/MonoAndroid/Urho.XML",
         "lib/MonoAndroid/Urho.dll",
         "lib/Xamarin.iOS10/Urho.XML",
@@ -15108,6 +15112,9 @@
         "native/Urho3D/Source/bin/CoreData/Models/Pyramid.mdl",
         "native/Urho3D/Source/bin/CoreData/Models/Sphere.mdl",
         "native/Urho3D/Source/bin/CoreData/Models/Torus.mdl",
+        "native/Urho3D/Source/bin/CoreData/PostProcess/Blur.xml",
+        "native/Urho3D/Source/bin/CoreData/PostProcess/FXAA2.xml",
+        "native/Urho3D/Source/bin/CoreData/PostProcess/FXAA3.xml",
         "native/Urho3D/Source/bin/CoreData/RenderPaths/Deferred.xml",
         "native/Urho3D/Source/bin/CoreData/RenderPaths/DeferredHWDepth.xml",
         "native/Urho3D/Source/bin/CoreData/RenderPaths/Forward.xml",
@@ -15343,7 +15350,7 @@
   "projectFileDependencyGroups": {
     "": [
       "Microsoft.NETCore.UniversalWindowsPlatform >= 5.1.0",
-      "UrhoSharp >= 1.0.557"
+      "UrhoSharp >= 1.1.91"
     ],
     "UAP,Version=v10.0": []
   }
