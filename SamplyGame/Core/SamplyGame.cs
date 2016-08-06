@@ -63,11 +63,13 @@ namespace SamplyGame
 			cameraNode.CreateComponent<Camera>();
 			Viewport = new Viewport(Context, scene, cameraNode.GetComponent<Camera>(), null);
 
-			RenderPath effectRenderPath = Viewport.RenderPath.Clone();
-			var fxaaRp = ResourceCache.GetXmlFile(Assets.PostProcess.FXAA3);
-			effectRenderPath.Append(fxaaRp);
-			Viewport.RenderPath = effectRenderPath;
-
+			if (Platform != Platforms.Android && Platform != Platforms.iOS)
+			{
+				RenderPath effectRenderPath = Viewport.RenderPath.Clone();
+				var fxaaRp = ResourceCache.GetXmlFile(Assets.PostProcess.FXAA3);
+				effectRenderPath.Append(fxaaRp);
+				Viewport.RenderPath = effectRenderPath;
+			}
 			Renderer.SetViewport(0, Viewport);
 
 			var zoneNode = scene.CreateChild();
