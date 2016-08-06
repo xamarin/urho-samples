@@ -1778,7 +1778,7 @@
           }
         }
       },
-      "UrhoSharp/1.1.124": {
+      "UrhoSharp/1.1.125": {
         "compile": {
           "lib/uap10.0/Urho.dll": {}
         },
@@ -3686,7 +3686,7 @@
           "lib/netcore50/System.Xml.XmlSerializer.dll": {}
         }
       },
-      "UrhoSharp/1.1.124": {
+      "UrhoSharp/1.1.125": {
         "compile": {
           "lib/uap10.0/Urho.dll": {}
         },
@@ -5290,7 +5290,7 @@
           "runtimes/win8-aot/lib/netcore50/System.Xml.XmlSerializer.dll": {}
         }
       },
-      "UrhoSharp/1.1.124": {
+      "UrhoSharp/1.1.125": {
         "compile": {
           "lib/uap10.0/Urho.dll": {}
         },
@@ -6944,7 +6944,7 @@
           "lib/netcore50/System.Xml.XmlSerializer.dll": {}
         }
       },
-      "UrhoSharp/1.1.124": {
+      "UrhoSharp/1.1.125": {
         "compile": {
           "lib/uap10.0/Urho.dll": {}
         },
@@ -8548,7 +8548,7 @@
           "runtimes/win8-aot/lib/netcore50/System.Xml.XmlSerializer.dll": {}
         }
       },
-      "UrhoSharp/1.1.124": {
+      "UrhoSharp/1.1.125": {
         "compile": {
           "lib/uap10.0/Urho.dll": {}
         },
@@ -10202,7 +10202,7 @@
           "lib/netcore50/System.Xml.XmlSerializer.dll": {}
         }
       },
-      "UrhoSharp/1.1.124": {
+      "UrhoSharp/1.1.125": {
         "compile": {
           "lib/uap10.0/Urho.dll": {}
         },
@@ -11806,7 +11806,7 @@
           "runtimes/win8-aot/lib/netcore50/System.Xml.XmlSerializer.dll": {}
         }
       },
-      "UrhoSharp/1.1.124": {
+      "UrhoSharp/1.1.125": {
         "compile": {
           "lib/uap10.0/Urho.dll": {}
         },
@@ -15083,11 +15083,11 @@
         "runtimes/win8-aot/lib/netcore50/System.Xml.XmlSerializer.dll"
       ]
     },
-    "UrhoSharp/1.1.124": {
-      "sha512": "4JE5mQllvUUffPYnr1p0B15rK3ZnWFNakAFzK+oMkvgJiFCPzIWDbGlMpFs1muMmYq9icDQbvbGJPDFAGUiv+A==",
+    "UrhoSharp/1.1.125": {
+      "sha512": "bmhqKIxQrbdItSfqca7NDDkQriICx7mIfexa+sFWzwDGqVvUENaqanhiONjo98VCrPfVM/K42DuFX+k1zXu0OA==",
       "type": "package",
       "files": [
-        "UrhoSharp.1.1.124.nupkg.sha512",
+        "UrhoSharp.1.1.125.nupkg.sha512",
         "UrhoSharp.nuspec",
         "build/MonoAndroid/UrhoSharp.targets",
         "build/net45/UrhoSharp.targets",
@@ -15372,7 +15372,7 @@
   "projectFileDependencyGroups": {
     "": [
       "Microsoft.NETCore.UniversalWindowsPlatform >= 5.1.0",
-      "UrhoSharp >= 1.1.124"
+      "UrhoSharp >= 1.1.125"
     ],
     "UAP,Version=v10.0": []
   }
