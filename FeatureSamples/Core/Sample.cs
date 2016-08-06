@@ -77,7 +77,7 @@ namespace Urho.Samples
 			{
 				InitTouchInput();
 			}
-
+			Input.Enabled = true;
 			MonoDebugHud = new MonoDebugHud(this);
 			MonoDebugHud.Show();
 

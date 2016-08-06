@@ -1778,7 +1778,7 @@
           }
         }
       },
-      "UrhoSharp/1.1.112": {
+      "UrhoSharp/1.1.124": {
         "compile": {
           "lib/uap10.0/Urho.dll": {}
         },
@@ -2025,6 +2025,7 @@
           "native/Urho3D/CoreData/Techniques/VegetationDiffUnlit.xml": {},
           "native/Urho3D/CoreData/Techniques/VegetationDiffUnlitAlphaMask.xml": {},
           "native/Urho3D/CoreData/Techniques/Water.xml": {},
+          "native/Urho3D/CoreData/Textures/DefaultUI.png": {},
           "native/Urho3D/CoreData/Textures/LUTIdentity.png": {},
           "native/Urho3D/CoreData/Textures/LUTIdentity.xml": {},
           "native/Urho3D/CoreData/Textures/Ramp.png": {},
@@ -2038,7 +2039,6 @@
           "native/Urho3D/CoreData/Textures/SpotWide.png": {},
           "native/Urho3D/CoreData/Textures/SpotWide.xml": {},
           "native/Urho3D/CoreData/Textures/TouchInput.png": {},
-          "native/Urho3D/CoreData/Textures/UI.png": {},
           "native/Urho3D/CoreData/Textures/UI.xml": {},
           "native/Urho3D/CoreData/UI/DefaultStyle.xml": {},
           "native/Urho3D/CoreData/UI/MessageBox.xml": {},
@@ -3686,7 +3686,7 @@
           "lib/netcore50/System.Xml.XmlSerializer.dll": {}
         }
       },
-      "UrhoSharp/1.1.112": {
+      "UrhoSharp/1.1.124": {
         "compile": {
           "lib/uap10.0/Urho.dll": {}
         },
@@ -5290,7 +5290,7 @@
           "runtimes/win8-aot/lib/netcore50/System.Xml.XmlSerializer.dll": {}
         }
       },
-      "UrhoSharp/1.1.112": {
+      "UrhoSharp/1.1.124": {
         "compile": {
           "lib/uap10.0/Urho.dll": {}
         },
@@ -6944,7 +6944,7 @@
           "lib/netcore50/System.Xml.XmlSerializer.dll": {}
         }
       },
-      "UrhoSharp/1.1.112": {
+      "UrhoSharp/1.1.124": {
         "compile": {
           "lib/uap10.0/Urho.dll": {}
         },
@@ -8548,7 +8548,7 @@
           "runtimes/win8-aot/lib/netcore50/System.Xml.XmlSerializer.dll": {}
         }
       },
-      "UrhoSharp/1.1.112": {
+      "UrhoSharp/1.1.124": {
         "compile": {
           "lib/uap10.0/Urho.dll": {}
         },
@@ -10202,7 +10202,7 @@
           "lib/netcore50/System.Xml.XmlSerializer.dll": {}
         }
       },
-      "UrhoSharp/1.1.112": {
+      "UrhoSharp/1.1.124": {
         "compile": {
           "lib/uap10.0/Urho.dll": {}
         },
@@ -11806,7 +11806,7 @@
           "runtimes/win8-aot/lib/netcore50/System.Xml.XmlSerializer.dll": {}
         }
       },
-      "UrhoSharp/1.1.112": {
+      "UrhoSharp/1.1.124": {
         "compile": {
           "lib/uap10.0/Urho.dll": {}
         },
@@ -15083,11 +15083,11 @@
         "runtimes/win8-aot/lib/netcore50/System.Xml.XmlSerializer.dll"
       ]
     },
-    "UrhoSharp/1.1.112": {
-      "sha512": "TXQFpjzn0rIOYavsYzKB0yD8njhfKRp2ZKqpUbsXe14j+t8rtWxXlcOH2W+IeYTjdJEC4UxLrtcKo3H2p/V/qQ==",
+    "UrhoSharp/1.1.124": {
+      "sha512": "4JE5mQllvUUffPYnr1p0B15rK3ZnWFNakAFzK+oMkvgJiFCPzIWDbGlMpFs1muMmYq9icDQbvbGJPDFAGUiv+A==",
       "type": "package",
       "files": [
-        "UrhoSharp.1.1.112.nupkg.sha512",
+        "UrhoSharp.1.1.124.nupkg.sha512",
         "UrhoSharp.nuspec",
         "build/MonoAndroid/UrhoSharp.targets",
         "build/net45/UrhoSharp.targets",
@@ -15345,6 +15345,7 @@
         "native/Urho3D/CoreData/Techniques/VegetationDiffUnlit.xml",
         "native/Urho3D/CoreData/Techniques/VegetationDiffUnlitAlphaMask.xml",
         "native/Urho3D/CoreData/Techniques/Water.xml",
+        "native/Urho3D/CoreData/Textures/DefaultUI.png",
         "native/Urho3D/CoreData/Textures/LUTIdentity.png",
         "native/Urho3D/CoreData/Textures/LUTIdentity.xml",
         "native/Urho3D/CoreData/Textures/Ramp.png",
@@ -15358,7 +15359,6 @@
         "native/Urho3D/CoreData/Textures/SpotWide.png",
         "native/Urho3D/CoreData/Textures/SpotWide.xml",
         "native/Urho3D/CoreData/Textures/TouchInput.png",
-        "native/Urho3D/CoreData/Textures/UI.png",
         "native/Urho3D/CoreData/Textures/UI.xml",
         "native/Urho3D/CoreData/UI/DefaultStyle.xml",
         "native/Urho3D/CoreData/UI/MessageBox.xml",
@@ -15372,7 +15372,7 @@
   "projectFileDependencyGroups": {
     "": [
       "Microsoft.NETCore.UniversalWindowsPlatform >= 5.1.0",
-      "UrhoSharp >= 1.1.112"
+      "UrhoSharp >= 1.1.124"
     ],
     "UAP,Version=v10.0": []
   }
