@@ -53,9 +53,9 @@ The structure of each solution is this:
 
 * `WPF`: Contains the Windows launcher based on WPF.
 
-* `WinForms`: Contains the Mac launcher based on WinForms.
+* `WinForms`: Contains the Windows launcher based on WinForms.
 
 # To build the samples
 
-* Windows: Use [Visual Studio 2015](https://www.visualstudio.com/en-us/products/vs-2015-product-editions.aspx).
+* Windows: Use [Visual Studio 2015](https://www.visualstudio.com/).
 * Mac: Use the latest [Xamarin Studio](https://xamarin.com/studio) 
