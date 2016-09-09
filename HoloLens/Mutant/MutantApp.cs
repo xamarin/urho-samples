@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Urho;
+using Urho.Actions;
 using Urho.Holographics;
 
 namespace Mutant
@@ -11,6 +12,17 @@ namespace Mutant
 		Vector3 monsterPositionBeforeManipulations;
 		AnimationController animation;
 
+		const string IdleAni = "Mutant_Idle1.ani";
+		const string KillAni = "Mutant_Death.ani";
+		const string HipHopAni = "Mutant_HipHop1.ani";
+		const string JumpAni = "Mutant_Jump.ani";
+		const string JumpAttack = "Mutant_JumpAttack.ani";
+		const string KickAni = "Mutant_Kick.ani";
+		const string PunchAni = "Mutant_Punch.ani";
+		const string RunAni = "Mutant_Run.ani";
+		const string SwipeAni = "Mutant_Swipe.ani";
+		const string WalkAni = "Mutant_Walk.ani";
+
 		public MutantApp(string pak) : base(pak) { }
 
 		protected override void Start()
@@ -20,7 +32,7 @@ namespace Mutant
 			EnableGestureManipulation = true;
 
 			mutantNode = Scene.CreateChild();
-			SetMutantPosition(new Vector3(0, 0, 1f));
+			mutantNode.Position = new Vector3(0, 0, 1f);
 			var mutantModelNode = mutantNode.CreateChild();
 			mutantModelNode.SetScale(0.1f);
 			var mutant = mutantModelNode.CreateComponent<AnimatedModel>();
@@ -28,20 +40,21 @@ namespace Mutant
 			mutant.Model = ResourceCache.GetModel("Mutant.mdl");
 			mutant.SetMaterial(ResourceCache.GetMaterial("Materials/mutant_M.xml"));
 			animation = mutantModelNode.CreateComponent<AnimationController>();
+			PlayAnimation(IdleAni);
 
 			RegisterCortanaCommands(new Dictionary<string, Action>
 				{
 					//play animations using Cortana
-					{"idle", () => PlayAnimation("Mutant_Idle1.ani")},
-					{"kill", () => PlayAnimation("Mutant_Death.ani")},
-					{"hip hop", () => PlayAnimation("Mutant_HipHop1.ani")},
-					{"jump", () => PlayAnimation("Mutant_Jump.ani")},
-					{"jump attack", () => PlayAnimation("Mutant_JumpAttack.ani")},
-					{"kick", () => PlayAnimation("Mutant_Kick.ani")},
-					{"punch", () => PlayAnimation("Mutant_Punch.ani")},
-					{"run", () => PlayAnimation("Mutant_Run.ani")},
-					{"swipe", () => PlayAnimation("Mutant_Swipe.ani")},
-					{"walk", () => PlayAnimation("Mutant_Walk.ani")},
+					{"idle", () => PlayAnimation(IdleAni)},
+					{"kill", () => PlayAnimation(KillAni)},
+					{"hip hop", () => PlayAnimation(HipHopAni)},
+					{"jump", () => PlayAnimation(JumpAni)},
+					{"jump attack", () => PlayAnimation(JumpAttack)},
+					{"kick", () => PlayAnimation(KickAni)},
+					{"punch", () => PlayAnimation(PunchAni)},
+					{"run", () => PlayAnimation(RunAni)},
+					{"swipe", () => PlayAnimation(SwipeAni)},
+					{"walk", () => PlayAnimation(WalkAni)},
 
 					{"bigger", () => mutantModelNode.ScaleNode(1.2f)},
 					{"smaller", () => mutantModelNode.ScaleNode(0.8f)},
@@ -59,8 +72,25 @@ namespace Mutant
 
 		void PlayAnimation(string file, bool looped = true)
 		{
+			mutantNode.RemoveAllActions();
+
+			if (file == WalkAni)
+				mutantNode.RunActions(new RepeatForever(new MoveBy(1f, new Vector3(0, 0, -0.1f))));
+			else if (file == RunAni)
+				mutantNode.RunActions(new RepeatForever(new MoveBy(1f, new Vector3(0, 0, -0.3f))));
+
 			animation.StopAll(0.2f);
 			animation.Play(file, 0, looped, 0.2f);
+		}
+
+
+		protected override void OnUpdate(float timeStep)
+		{
+			base.OnUpdate(timeStep);
+
+			//for optical stabilization:
+			//TODO: PostUpdate?
+			FocusWorldPoint = mutantNode.WorldPosition;
 		}
 
 		// Handle spatial input gestures:
@@ -72,15 +102,7 @@ namespace Mutant
 
 		public override void OnGestureManipulationUpdated(Vector3 relativeHandPosition)
 		{
-			SetMutantPosition(relativeHandPosition + monsterPositionBeforeManipulations);
-		}
-
-		void SetMutantPosition(Vector3 pos)
-		{
-			mutantNode.Position = pos;
-
-			//for optical stabilization:
-			FocusWorldPoint = mutantNode.WorldPosition;
+			mutantNode.Position = relativeHandPosition + monsterPositionBeforeManipulations;
 		}
 	}
 }
