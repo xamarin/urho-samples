@@ -73,7 +73,6 @@
     <VisualStudioVersion>14.0</VisualStudioVersion>
   </PropertyGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\WindowsXaml\v$(VisualStudioVersion)\Microsoft.Windows.UI.Xaml.CSharp.targets" />
-  <Import Project="ms.fxcompile.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
       <ErrorText>This project references NuGet package(s). NuGet Package Restore will attempt to automatically find or download them when you build this project in Visual Studio. For more information, see http://go.microsoft.com/fwlink/?LinkID=322105.</ErrorText>

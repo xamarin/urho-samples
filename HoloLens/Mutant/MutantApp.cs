@@ -20,7 +20,7 @@ namespace Mutant
 			EnableGestureManipulation = true;
 
 			mutantNode = Scene.CreateChild();
-			SetMutantPosition(new Vector3(0, 0, 0.7f));
+			SetMutantPosition(new Vector3(0, 0, 1f));
 			var mutantModelNode = mutantNode.CreateChild();
 			mutantModelNode.SetScale(0.1f);
 			var mutant = mutantModelNode.CreateComponent<AnimatedModel>();
