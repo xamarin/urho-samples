@@ -4,14 +4,23 @@ This directory contains various samples for the [UrhoSharp](http://developer.xam
 engine and they can be compiled for Android or iOS, or can be executed on Windows
 and Mac with the published NuGet package.
 
-# FormsSamples
+# Samples
+
+Some of the samples here include:
+
+* FormsSamples
+* FeatureSamples
+* SamplyGame
+* HoloLens
+* 
+## FormsSamples
 
 The 'FormsSamples' solution demonstrates how UrhoSharp can be used in Xamarin.Forms 
 applications as a View element.
 
 ![Screenshot](FormsSample/Screenshots/Android.gif) ![Screenshot](FormsSample/Screenshots/Ios.gif)
 
-# FeatureSamples
+## FeatureSamples
 
 The toplevel `FeatureSamples` solution showcases 40 independent UrhoSharp
 features, each one showcasing a particular element of the framework and runs
@@ -20,7 +29,7 @@ on all supported platforms.
 ![Physics2D](https://habrastorage.org/files/d77/060/698/d770606980874fb6a15484d04bea6dd6.gif)
 ![Water](https://habrastorage.org/files/e3e/8f1/80d/e3e8f180d8b54f0989d9448c98eacd5b.png)
 
-# SamplyGame
+## SamplyGame
 
 The `SamplyGame` directory contains a more complete game, it is a sample
 inspired by the gameplay and artwork of ShootySkies and shows a more 
@@ -29,7 +38,12 @@ structure a game.   It is our first game build with this, so be kind.
 
 ![Screenshot](SamplyGame/Screenshots/Video.gif)
 
-# Structure
+## Hololens
+
+This directory contains samples for running UrhoSharp on HoloLens and creating
+augmented reality applications.
+
+## Structure
 
 All solutions are structured to have their cross platform code written
 in the `Core` directory, where we build a portable class library.   While
