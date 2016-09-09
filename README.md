@@ -12,7 +12,7 @@ Some of the samples here include:
 * FeatureSamples
 * SamplyGame
 * HoloLens
-* 
+
 ## FormsSamples
 
 The 'FormsSamples' solution demonstrates how UrhoSharp can be used in Xamarin.Forms 
