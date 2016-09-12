@@ -4,6 +4,8 @@ and show how you can use Urho to create Holographic applications with HoloLens.
 
 ![Screenshot](Mutant/Screenshots/Video.gif) 
 
+The above is the [Mutant](https://github.com/xamarin/urho-samples/blob/master/HoloLens/Mutant/) sample in this directory.
+
 Making HoloLens applications with Urho is trivial, all you have to do is this:
 
 ```
