@@ -1,5 +1,6 @@
 ﻿using System;
 using Windows.ApplicationModel.Core;
+using Urho.HoloLens;
 
 namespace Mutant
 {
@@ -17,5 +18,14 @@ namespace Mutant
             var exclusiveViewApplicationSource = new AppViewSource();
             CoreApplication.Run(exclusiveViewApplicationSource);
         }
-    }
+	}
+
+	// The entry point for the app.
+	internal class AppViewSource : IFrameworkViewSource
+	{
+		public IFrameworkView CreateView()
+		{
+			return UrhoAppView.Create<MutantApp>("MutantData"); // Assets packed into a MutantData.pak by PackageTool, see https://urho3d.github.io/documentation/1.6/_tools.html
+		}
+	}
 }

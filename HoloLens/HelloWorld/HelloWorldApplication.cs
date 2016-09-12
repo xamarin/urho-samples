@@ -1,7 +1,6 @@
 ﻿using Urho;
 using Urho.Actions;
 using Urho.Holographics;
-using Urho.HoloLens;
 using Urho.Shapes;
 
 namespace HelloWorld
