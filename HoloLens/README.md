@@ -2,6 +2,8 @@
 These samples use the [UrhoSharp.HoloLens](https://www.nuget.org/packages/UrhoSharp.HoloLens/) package 
 and show how you can use Urho to create Holographic applications with HoloLens.
 
+![Screenshot](Mutant/Screenshots/Video.gif) 
+
 Making HoloLens applications with Urho is trivial, all you have to do is this:
 
 ```
@@ -12,6 +14,7 @@ using Urho.HoloLens;
 using Urho.Shapes;
 using Windows.ApplicationModel.Core;
 
+// In your AppViewSource.cs:
 public IFrameworkView CreateView()
 {
     return UrhoAppView.Create<MyHoloApp>("MyData");   // pass null if you just need the core assets
@@ -44,7 +47,6 @@ public class MyHoloApp : HoloApplication
     public override void OnGestureTapped(GazeInfo gaze)
     {
         SetBoxPosition(gaze.Position + (2f /*Z meters*/ * gaze.Forward));
-	      base.OnGestureTapped(gaze);
     }
 
     void SetBoxPosition(Vector3 pos)
