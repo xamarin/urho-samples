@@ -9,7 +9,7 @@ namespace HelloWorld
 	{
 		Node boxNode;
 
-		public HelloWorldApplication(string pak) : base(pak) { }
+		public HelloWorldApplication(string pak, bool emulator) : base(pak, emulator) { }
 
 		protected override async void Start()
 		{

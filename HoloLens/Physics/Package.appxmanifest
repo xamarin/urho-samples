@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<Package
+  xmlns="http://schemas.microsoft.com/appx/manifest/foundation/windows10"
+  xmlns:mp="http://schemas.microsoft.com/appx/2014/phone/manifest"
+  xmlns:uap="http://schemas.microsoft.com/appx/manifest/uap/windows10"
+	xmlns:uap2="http://schemas.microsoft.com/appx/manifest/uap/windows10/2"
+  IgnorableNamespaces="uap mp">
+
+  <Identity Name="Physics"
+            Publisher="CN=Egor"
+            Version="1.0.0.0" />
+
+  <mp:PhoneIdentity PhoneProductId="be23a018-5a1d-4318-9b0d-eebf08753639" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
+
+  <Properties>
+    <DisplayName>Physics</DisplayName>
+    <PublisherDisplayName>Egor</PublisherDisplayName>
+    <Logo>Assets\StoreLogo.png</Logo>
+  </Properties>
+
+  <Dependencies>
+    <TargetDeviceFamily Name="Windows.Holographic" MinVersion="10.0.10240.0" MaxVersionTested="10.0.10586.0" />
+  </Dependencies>
+
+  <Resources>
+    <Resource Language="x-generate"/>
+  </Resources>
+
+  <Applications>
+    <Application Id="App"
+        Executable="$targetnametoken$.exe"
+        EntryPoint="Physics.AppView">
+        <uap:VisualElements
+             DisplayName="Physics"
+             Square150x150Logo="Assets\Square150x150Logo.png" 
+             Square44x44Logo="Assets\Square44x44Logo.png" 
+             Description="Physics"
+             BackgroundColor="#464646">
+          <uap:DefaultTile Wide310x150Logo="Assets\Wide310x150Logo.png" />
+          <uap:SplashScreen Image="Assets\SplashScreen.png" />
+        </uap:VisualElements>
+      </Application>
+  </Applications>
+	<Capabilities>
+		<uap2:Capability Name="spatialPerception" />
+		<Capability Name="internetClient" />
+	</Capabilities>
+</Package>
