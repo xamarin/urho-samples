@@ -268,6 +268,15 @@
           "lib/dotnet/Microsoft.Win32.Primitives.dll": {}
         }
       },
+      "Newtonsoft.Json/9.0.1": {
+        "type": "package",
+        "compile": {
+          "lib/portable-net45+wp80+win8+wpa81/Newtonsoft.Json.dll": {}
+        },
+        "runtime": {
+          "lib/portable-net45+wp80+win8+wpa81/Newtonsoft.Json.dll": {}
+        }
+      },
       "System.AppContext/4.0.0": {
         "type": "package",
         "dependencies": {
@@ -1885,7 +1894,7 @@
           }
         }
       },
-      "UrhoSharp.HoloLens/1.1.10": {
+      "UrhoSharp.HoloLens/1.1.12": {
         "type": "package",
         "compile": {
           "lib/uap10.0/Urho.dll": {}
@@ -2162,6 +2171,15 @@
         },
         "runtime": {
           "lib/dotnet/Microsoft.Win32.Primitives.dll": {}
+        }
+      },
+      "Newtonsoft.Json/9.0.1": {
+        "type": "package",
+        "compile": {
+          "lib/portable-net45+wp80+win8+wpa81/Newtonsoft.Json.dll": {}
+        },
+        "runtime": {
+          "lib/portable-net45+wp80+win8+wpa81/Newtonsoft.Json.dll": {}
         }
       },
       "System.AppContext/4.0.0": {
@@ -3645,7 +3663,7 @@
           "lib/netcore50/System.Xml.XmlSerializer.dll": {}
         }
       },
-      "UrhoSharp.HoloLens/1.1.10": {
+      "UrhoSharp.HoloLens/1.1.12": {
         "type": "package",
         "compile": {
           "lib/uap10.0/Urho.dll": {}
@@ -3898,6 +3916,15 @@
         },
         "runtime": {
           "lib/dotnet/Microsoft.Win32.Primitives.dll": {}
+        }
+      },
+      "Newtonsoft.Json/9.0.1": {
+        "type": "package",
+        "compile": {
+          "lib/portable-net45+wp80+win8+wpa81/Newtonsoft.Json.dll": {}
+        },
+        "runtime": {
+          "lib/portable-net45+wp80+win8+wpa81/Newtonsoft.Json.dll": {}
         }
       },
       "System.AppContext/4.0.0": {
@@ -5358,7 +5385,7 @@
           "runtimes/win8-aot/lib/netcore50/System.Xml.XmlSerializer.dll": {}
         }
       },
-      "UrhoSharp.HoloLens/1.1.10": {
+      "UrhoSharp.HoloLens/1.1.12": {
         "type": "package",
         "compile": {
           "lib/uap10.0/Urho.dll": {}
@@ -5790,6 +5817,29 @@
         "ref/net46/Microsoft.Win32.Primitives.dll",
         "ref/xamarinios10/_._",
         "ref/xamarinmac20/_._"
+      ]
+    },
+    "Newtonsoft.Json/9.0.1": {
+      "sha512": "U82mHQSKaIk+lpSVCbWYKNavmNH1i5xrExDEquU1i6I5pV6UMOqRnJRSlKO3cMPfcpp0RgDY+8jUXHdQ4IfXvw==",
+      "type": "package",
+      "files": [
+        "Newtonsoft.Json.9.0.1.nupkg.sha512",
+        "Newtonsoft.Json.nuspec",
+        "lib/net20/Newtonsoft.Json.dll",
+        "lib/net20/Newtonsoft.Json.xml",
+        "lib/net35/Newtonsoft.Json.dll",
+        "lib/net35/Newtonsoft.Json.xml",
+        "lib/net40/Newtonsoft.Json.dll",
+        "lib/net40/Newtonsoft.Json.xml",
+        "lib/net45/Newtonsoft.Json.dll",
+        "lib/net45/Newtonsoft.Json.xml",
+        "lib/netstandard1.0/Newtonsoft.Json.dll",
+        "lib/netstandard1.0/Newtonsoft.Json.xml",
+        "lib/portable-net40+sl5+wp80+win8+wpa81/Newtonsoft.Json.dll",
+        "lib/portable-net40+sl5+wp80+win8+wpa81/Newtonsoft.Json.xml",
+        "lib/portable-net45+wp80+win8+wpa81/Newtonsoft.Json.dll",
+        "lib/portable-net45+wp80+win8+wpa81/Newtonsoft.Json.xml",
+        "tools/install.ps1"
       ]
     },
     "System.AppContext/4.0.0": {
@@ -8287,11 +8337,11 @@
         "runtimes/win8-aot/lib/netcore50/System.Xml.XmlSerializer.dll"
       ]
     },
-    "UrhoSharp.HoloLens/1.1.10": {
-      "sha512": "dheFBEl1xBy6fA4OCeGBlPui+fVmPxW4HuV9hjWbXcjGcGSILzaTWIPE8w65/BmGRqDuq6URS9+t+7Id1JfOHA==",
+    "UrhoSharp.HoloLens/1.1.12": {
+      "sha512": "DviGllwurp6RAoBEbvMufQiYL0/vNgx8JeSaxE0JXZlpMCnRxfnlZ5hpWbow5wXBvZjZdBI9Ov7iLfWWs19tiQ==",
       "type": "package",
       "files": [
-        "UrhoSharp.HoloLens.1.1.10.nupkg.sha512",
+        "UrhoSharp.HoloLens.1.1.12.nupkg.sha512",
         "UrhoSharp.HoloLens.nuspec",
         "build/uap10.0/UrhoSharp.HoloLens.targets",
         "lib/uap10.0/Urho.XML",
@@ -8303,7 +8353,8 @@
   "projectFileDependencyGroups": {
     "": [
       "Microsoft.NETCore.UniversalWindowsPlatform >= 5.0.0",
-      "UrhoSharp.HoloLens >= 1.1.10"
+      "Newtonsoft.Json >= 9.0.1",
+      "UrhoSharp.HoloLens >= 1.1.12"
     ],
     "UAP,Version=v10.0": []
   }

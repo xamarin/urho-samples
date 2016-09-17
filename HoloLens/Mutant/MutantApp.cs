@@ -59,7 +59,7 @@ namespace Mutant
 					{"bigger", () => mutantModelNode.ScaleNode(1.2f)},
 					{"smaller", () => mutantModelNode.ScaleNode(0.8f)},
 					{"increase the brightness", () => IncreaseBrightness(1.2f)},
-					{"decrease the brightness", () => IncreaseBrightness(0.2f)},
+					{"decrease the brightness", () => IncreaseBrightness(0.8f)},
 				});
 		}
 

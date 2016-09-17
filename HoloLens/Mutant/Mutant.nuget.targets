@@ -4,6 +4,6 @@
     <NuGetPackageRoot>$(UserProfile)\.nuget\packages\</NuGetPackageRoot>
   </PropertyGroup>
   <ImportGroup>
-    <Import Project="$(NuGetPackageRoot)\UrhoSharp.HoloLens\1.1.10\build\uap10.0\UrhoSharp.HoloLens.targets" Condition="Exists('$(NuGetPackageRoot)\UrhoSharp.HoloLens\1.1.10\build\uap10.0\UrhoSharp.HoloLens.targets')" />
+    <Import Project="$(NuGetPackageRoot)\UrhoSharp.HoloLens\1.1.12\build\uap10.0\UrhoSharp.HoloLens.targets" Condition="Exists('$(NuGetPackageRoot)\UrhoSharp.HoloLens\1.1.12\build\uap10.0\UrhoSharp.HoloLens.targets')" />
   </ImportGroup>
 </Project>
