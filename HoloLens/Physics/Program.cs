@@ -25,7 +25,7 @@ namespace Physics
 	{
 		public IFrameworkView CreateView()
 		{
-			return UrhoAppView.Create<PhysicsSample>(null); // null means only CoreData
+			return UrhoAppView.Create<PhysicsSample>("BucketData"); // null means only CoreData
 		}
 	}
 }
