@@ -19,8 +19,10 @@ using Windows.ApplicationModel.Core;
 // In your AppViewSource.cs:
 public IFrameworkView CreateView()
 {
-    return UrhoAppView.Create<MyHoloApp>("MyData");   // pass null if you just need the core assets
+    return UrhoAppView.Create<MyHoloApp>("MyData"); // pass null if 
+                                   // you just need the core assets
 }
+
 
 public class MyHoloApp : HoloApplication
 {
@@ -30,33 +32,28 @@ public class MyHoloApp : HoloApplication
 
     protected override async void Start()
     {
+        // base.Start() creates a basic Scene
         base.Start();
 
         EnableGestureTapped = true; // Receive Tapped event (click)                                                                                                                                           
-
+        
+        // Create a node
         boxNode = Scene.CreateChild();
         boxNode.Rotation = new Quaternion(0, 45, 0);
-        SetBoxPosition(new Vector3(0, 0, 2)); //1 meter                                                                                                                                                       
-        var boxModelNode = boxNode.CreateChild();
-        boxModelNode.SetScale(0.3f); //30cm*30cm*30cm                                                                                                                                                         
-        var box = boxModelNode.CreateComponent<Box>();
-        box.Color = Color.Green;
+        boxNode.Position = new Vector3(0, 0, 2); //2 meters 
+        boxNode.SetScale(0.3f); //30cm*30cm*30cm
 
-        await boxModelNode.RunActionsAsync(new TintTo(3f, 1, 1, 1));
+        // Attach a StaticModel to the node:
+        var model = boxNode.CreateComponent<StaticModel>();
+		model.Model = CoreAssets.Models.Box;
+		mode.SetMaterial(Material.FromColor(Color.Yellow));
+		
         boxNode.RunActions(new RepeatForever(new RotateBy(1f, 0, 90, 0)));
     }
 
     public override void OnGestureTapped(GazeInfo gaze)
     {
-        SetBoxPosition(gaze.Position + (2f /*Z meters*/ * gaze.Forward));
-    }
-
-    void SetBoxPosition(Vector3 pos)
-    {
-        boxNode.Position = pos;
-
-        //for optical stabilization:                                                                                                                                                                          
-        FocusWorldPoint = boxNode.WorldPosition;
+        boxNode.Position = gaze.Position + (2f /*Z meters*/ * gaze.Forward);
     }
 }
 ```

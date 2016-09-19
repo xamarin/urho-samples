@@ -1,3 +1,3 @@
 The main code lives in `PhysicsSample.cs`
 
-![Screenshot](Screenshots/Video.gif) 
+![Screenshot](Screenshots/Video2.gif) 
