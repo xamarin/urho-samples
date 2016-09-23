@@ -8,4 +8,4 @@ visible into the user's world.
 By using `UrhoAppView` in your main program, we connect the HoloLens Camera and configure the
 world for you.
 
-![Screenshot](Screenshots/Video2.gif) 
+![Screenshot](Screenshots/Video.gif) 
