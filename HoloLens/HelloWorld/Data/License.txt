@@ -1,0 +1,8 @@
+--------------------------
+Assets under CC 4.0 License
+--------------------------
+Earth.jpg
+Moon.jpg
+
+website: http://www.solarsystemscope.com/textures/
+license: https://creativecommons.org/licenses/by/4.0/

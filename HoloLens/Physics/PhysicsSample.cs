@@ -18,7 +18,9 @@ namespace Physics
 		Node textNode;
 
 		const int MaxBalls = 5;
-		Queue<Node> balls = new Queue<Node>();
+		readonly Queue<Node> balls = new Queue<Node>();
+		readonly Color validPositionColor = Color.Gray;
+		readonly Color invalidPositionColor = Color.Red;
 
 		public PhysicsSample(string pak, bool emulator) : base(pak, emulator) { }
 
@@ -48,8 +50,8 @@ namespace Physics
 
 			// Model and Physics for the bucket
 			var bucketModel = bucketNode.CreateComponent<StaticModel>();
-			bucketMaterial = Material.FromColor(Color.Yellow);
-			bucketModel.Model = ResourceCache.GetModel("bucket1.mdl");
+			bucketMaterial = Material.FromColor(validPositionColor);
+			bucketModel.Model = ResourceCache.GetModel("Models/bucket.mdl");
 			bucketModel.SetMaterial(bucketMaterial);
 			bucketModel.ViewMask = 0x80000000; //hide from raycasts
 			var rigidBody = bucketNode.CreateComponent<RigidBody>();
@@ -60,7 +62,8 @@ namespace Physics
 			spatialMaterial = new Material();
 			spatialMaterial.SetTechnique(0, CoreAssets.Techniques.NoTextureUnlitVCol, 1, 1);
 
-			var allowed = await StartSpatialMapping(new Vector3(50, 50, 10), 1200);
+			// make sure 'spatialMapping' and 'Microphone' capabilaties are enabled in the app manifest.
+			var spatialMappingAllowed = await StartSpatialMapping(new Vector3(50, 50, 10), 1200);
 		}
 
 		protected override void OnUpdate(float timeStep)
@@ -73,18 +76,18 @@ namespace Physics
 
 			Ray cameraRay = RightCamera.GetScreenRay(0.5f, 0.5f);
 			var result = Scene.GetComponent<Octree>().RaycastSingle(cameraRay, RayQueryLevel.Triangle, 100, DrawableFlags.Geometry, 0x70000000);
-			if (result != null && result.Count > 0)
+			if (result != null)
 			{
-				var angle = Vector3.CalculateAngle(new Vector3(0, 1, 0), result[0].Normal);
+				var angle = Vector3.CalculateAngle(new Vector3(0, 1, 0), result.Value.Normal);
 				surfaceIsValid = angle < 0.3f; //allow only horizontal surfaces
-				bucketMaterial.SetShaderParameter("MatDiffColor", surfaceIsValid ? Color.Gray : Color.Red);
-				bucketNode.Position = result[0].Position;
+				bucketMaterial.SetShaderParameter("MatDiffColor", surfaceIsValid ? validPositionColor : invalidPositionColor);
+				bucketNode.Position = result.Value.Position;
 			}
 			else
 			{
 				// no spatial surfaces found
 				surfaceIsValid = false;
-				bucketMaterial.SetShaderParameter("MatDiffColor", Color.Red);
+				bucketMaterial.SetShaderParameter("MatDiffColor", validPositionColor);
 			}
 		}
 

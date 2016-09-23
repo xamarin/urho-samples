@@ -1885,7 +1885,7 @@
           }
         }
       },
-      "UrhoSharp.HoloLens/1.1.12": {
+      "UrhoSharp.HoloLens/1.1.13": {
         "type": "package",
         "compile": {
           "lib/uap10.0/Urho.dll": {}
@@ -1894,6 +1894,7 @@
           "lib/uap10.0/Urho.dll": {}
         },
         "native": {
+          "native/CoreData.pak": {},
           "native/HoloLens32/mono-holourho.dll": {}
         }
       }
@@ -3645,7 +3646,7 @@
           "lib/netcore50/System.Xml.XmlSerializer.dll": {}
         }
       },
-      "UrhoSharp.HoloLens/1.1.12": {
+      "UrhoSharp.HoloLens/1.1.13": {
         "type": "package",
         "compile": {
           "lib/uap10.0/Urho.dll": {}
@@ -5358,7 +5359,7 @@
           "runtimes/win8-aot/lib/netcore50/System.Xml.XmlSerializer.dll": {}
         }
       },
-      "UrhoSharp.HoloLens/1.1.12": {
+      "UrhoSharp.HoloLens/1.1.13": {
         "type": "package",
         "compile": {
           "lib/uap10.0/Urho.dll": {}
@@ -8287,15 +8288,16 @@
         "runtimes/win8-aot/lib/netcore50/System.Xml.XmlSerializer.dll"
       ]
     },
-    "UrhoSharp.HoloLens/1.1.12": {
-      "sha512": "DviGllwurp6RAoBEbvMufQiYL0/vNgx8JeSaxE0JXZlpMCnRxfnlZ5hpWbow5wXBvZjZdBI9Ov7iLfWWs19tiQ==",
+    "UrhoSharp.HoloLens/1.1.13": {
+      "sha512": "kEXHISigTe3voUA1/XTokt8Oi/8p6BPDbQFWKSknJY3r57jk1vJy3h6MfIKmUhCBT1OwPURIcNd/puWy0hV2iA==",
       "type": "package",
       "files": [
-        "UrhoSharp.HoloLens.1.1.12.nupkg.sha512",
+        "UrhoSharp.HoloLens.1.1.13.nupkg.sha512",
         "UrhoSharp.HoloLens.nuspec",
         "build/uap10.0/UrhoSharp.HoloLens.targets",
         "lib/uap10.0/Urho.XML",
         "lib/uap10.0/Urho.dll",
+        "native/CoreData.pak",
         "native/HoloLens32/mono-holourho.dll"
       ]
     }
@@ -8303,7 +8305,7 @@
   "projectFileDependencyGroups": {
     "": [
       "Microsoft.NETCore.UniversalWindowsPlatform >= 5.0.0",
-      "UrhoSharp.HoloLens >= 1.1.12"
+      "UrhoSharp.HoloLens >= 1.1.13"
     ],
     "UAP,Version=v10.0": []
   }

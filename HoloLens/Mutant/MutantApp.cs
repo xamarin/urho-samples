@@ -37,7 +37,7 @@ namespace Mutant
 			mutantModelNode.SetScale(0.1f);
 			var mutant = mutantModelNode.CreateComponent<AnimatedModel>();
 
-			mutant.Model = ResourceCache.GetModel("Mutant.mdl");
+			mutant.Model = ResourceCache.GetModel("Models/Mutant.mdl");
 			mutant.SetMaterial(ResourceCache.GetMaterial("Materials/mutant_M.xml"));
 			animation = mutantModelNode.CreateComponent<AnimationController>();
 			PlayAnimation(IdleAni);
@@ -80,7 +80,7 @@ namespace Mutant
 				mutantNode.RunActions(new RepeatForever(new MoveBy(1f, new Vector3(0, 0, -0.3f))));
 
 			animation.StopAll(0.2f);
-			animation.Play(file, 0, looped, 0.2f);
+			animation.Play("Animations/" + file, 0, looped, 0.2f);
 		}
 
 

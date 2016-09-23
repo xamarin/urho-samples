@@ -56,6 +56,9 @@
     <None Include="HelloWorld_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Data\Earth.jpg" />
+    <Content Include="Data\License.txt" />
+    <Content Include="Data\Moon.jpg" />
     <Content Include="Properties\Default.rd.xml" />
   </ItemGroup>
   <ItemGroup>
@@ -67,6 +70,7 @@
     <Content Include="Assets\StoreLogo.png" />
     <Content Include="Assets\Wide310x150Logo.scale-200.png" />
   </ItemGroup>
+  <ItemGroup />
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
   </PropertyGroup>

@@ -42,7 +42,7 @@
   </PropertyGroup>
   <ItemGroup>
     <!-- A reference to the entire .Net Framework and Windows SDK are automatically included -->
-    <Content Include="BucketData.pak" />
+    <Content Include="Data\Models\bucket.mdl" />
     <None Include="project.json" />
   </ItemGroup>
   <ItemGroup>

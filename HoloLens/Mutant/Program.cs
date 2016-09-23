@@ -25,7 +25,7 @@ namespace Mutant
 	{
 		public IFrameworkView CreateView()
 		{
-			return UrhoAppView.Create<MutantApp>("MutantData"); // Assets packed into a MutantData.pak by PackageTool, see https://urho3d.github.io/documentation/1.6/_tools.html
+			return UrhoAppView.Create<MutantApp>("Data"); // Assets packed into a MutantData.pak by PackageTool, see https://urho3d.github.io/documentation/1.6/_tools.html
 		}
 	}
 }
