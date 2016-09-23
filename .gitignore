@@ -30,6 +30,7 @@ x64/
 *.vspscc
 *.vssscc
 .builds
+project.lock.json
 
 # NuGet Packages Directory
 packages
