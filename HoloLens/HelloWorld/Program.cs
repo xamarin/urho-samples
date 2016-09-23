@@ -25,7 +25,7 @@ namespace HelloWorld
 	{
 		public IFrameworkView CreateView()
 		{
-			return UrhoAppView.Create<HelloWorldApplication>(null); // null means only CoreData
+			return UrhoAppView.Create<HelloWorldApplication>("Data"); // null means only CoreData
 		}
 	}
 }
