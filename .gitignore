@@ -27,6 +27,7 @@ x64/
 *.tli
 *.tlh
 *.tmp
+*.blend1
 *.log
 *.vspscc
 *.vssscc
