@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Urho;
+using Urho.Actions;
 using Urho.Holographics;
 
 namespace SpatialMapping
@@ -25,17 +26,14 @@ namespace SpatialMapping
 			var cortanaAllowed = await RegisterCortanaCommands(new Dictionary<string, Action> {
 					{ "show results" , ShowResults }
 				});
-			var spatialMappingAllowed = await StartSpatialMapping(new Vector3(50, 50, 10), 1200);
+			var spatialMappingAllowed = await StartSpatialMapping(new Vector3(50, 50, 10), 1000);
 		}
 
-		void ShowResults()
+		async void ShowResults()
 		{
 			EnableGestureManipulation = true;
 			mappingEnded = true;
 			StopSpatialMapping();
-			environmentNode.SetScale(0.03f);
-			environmentNode.Position = LeftCamera.Node.Position + LeftCamera.Node.Direction * 0.5f;
-			environmentNode.Translate(new Vector3(0, -0.15f, 0));
 
 			var material = new Material();
 			material.CullMode = CullMode.Ccw;
@@ -43,9 +41,12 @@ namespace SpatialMapping
 			material.SetShaderParameter("MatDiffColor", new Color(0.1f, 0.8f, 0.1f));
 
 			foreach (var node in environmentNode.Children)
-			{
 				node.GetComponent<StaticModel>().SetMaterial(material);
-			}
+
+			var previewPosition = LeftCamera.Node.Position + (LeftCamera.Node.Direction * 0.5f);
+			environmentNode.Position = previewPosition;
+
+			await environmentNode.RunActionsAsync(new EaseOut(new ScaleTo(1f, 0.03f), 1f));
 		}
 
 		public override void OnGestureTapped(GazeInfo gaze)
@@ -69,6 +70,9 @@ namespace SpatialMapping
 
 		public override void OnSurfaceAddedOrUpdated(SpatialMeshInfo surface, Model generatedModel)
 		{
+			if (mappingEnded)
+				return;
+
 			bool isNew = false;
 			StaticModel staticModel = null;
 			Node node = environmentNode.GetChild(surface.SurfaceId, false);
@@ -90,7 +94,7 @@ namespace SpatialMapping
 
 			Material mat;
 			Color startColor;
-			Color endColor = new Color(0.3f, 0.3f, 0.3f);
+			Color endColor = new Color(0.8f, 0.8f, 0.8f);
 
 			if (isNew)
 			{

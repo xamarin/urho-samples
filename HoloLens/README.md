@@ -2,9 +2,9 @@
 These samples use the [UrhoSharp.HoloLens](https://www.nuget.org/packages/UrhoSharp.HoloLens/) package 
 and show how you can use Urho to create Holographic applications with HoloLens.
 
-![Screenshot](Mutant/Screenshots/Video.gif) 
+![Screenshot](Physics/Screenshots/Video2.gif) 
 
-The above is the [Mutant](https://github.com/xamarin/urho-samples/blob/master/HoloLens/Mutant/) sample in this directory.
+The above is the [Physics](https://github.com/xamarin/urho-samples/blob/master/HoloLens/Physics/) sample in this directory.
 
 Making HoloLens applications with Urho is trivial, all you have to do is this:
 
@@ -23,19 +23,16 @@ public IFrameworkView CreateView()
                                    // you just need the core assets
 }
 
-
 public class MyHoloApp : HoloApplication
 {
     Node boxNode;
 
-    public HelloWorldApplication(string pak) : base(pak) { }
+    public HelloWorldApplication(string pak, bool emulator) : base(pak, emulator) { }
 
     protected override async void Start()
     {
         // base.Start() creates a basic Scene
         base.Start();
-
-        EnableGestureTapped = true; // Receive Tapped event (click)                                                                                                                                           
         
         // Create a node
         boxNode = Scene.CreateChild();
@@ -45,15 +42,12 @@ public class MyHoloApp : HoloApplication
 
         // Attach a StaticModel to the node:
         var model = boxNode.CreateComponent<StaticModel>();
-		model.Model = CoreAssets.Models.Box;
-		mode.SetMaterial(Material.FromColor(Color.Yellow));
-		
+        model.Model = CoreAssets.Models.Box;
+        mode.SetMaterial(Material.FromColor(Color.Yellow));
+        
         boxNode.RunActions(new RepeatForever(new RotateBy(1f, 0, 90, 0)));
-    }
-
-    public override void OnGestureTapped(GazeInfo gaze)
-    {
-        boxNode.Position = gaze.Position + (2f /*Z meters*/ * gaze.Forward);
     }
 }
 ```
+
+![Screenshot](CrowdNavigation/Screenshots/Video.gif) 

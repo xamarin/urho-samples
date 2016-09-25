@@ -34,7 +34,7 @@ namespace CrowdNavigation
 		{
 			base.Start();
 			environmentNode = Scene.CreateChild();
-
+			
 			// Allow tap gesture
 			EnableGestureTapped = true;
 
@@ -47,9 +47,12 @@ namespace CrowdNavigation
 			spatialMaterial = new Material();
 			spatialMaterial.SetTechnique(0, CoreAssets.Techniques.NoTextureUnlitVCol, 1, 1);
 
+			DirectionalLight.Brightness += 0.3f;
+
 			var microphoneAllowed = await RegisterCortanaCommands(new Dictionary<string, Action> {
 				{ "debug mode", () => debug = !debug },
 				{ "kill all", KillAll },
+				{ "die", KillAll },
 			});
 			var spatialMappingAllowed = await StartSpatialMapping(new Vector3(50, 50, 10), 1200, onlyAdd: true);
 		}
@@ -217,6 +220,7 @@ namespace CrowdNavigation
 
 			if (positionIsSelected)
 			{
+				Scene.GetComponent<SpatialCursor>().ClickAnimation();
 				navMesh = Scene.GetComponent<NavigationMesh>();
 				Vector3 pathPos = navMesh.FindNearestPoint(hitPos.Value, new Vector3(0.1f, 0.1f, 0.1f));
 				Scene.GetComponent<CrowdManager>().SetCrowdTarget(pathPos, Scene);
