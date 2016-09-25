@@ -43,6 +43,7 @@
   <ItemGroup>
     <!-- A reference to the entire .Net Framework and Windows SDK are automatically included -->
     <Content Include="Data\Models\bucket.mdl" />
+    <None Include="Data\Models\bucket.blend" />
     <None Include="project.json" />
   </ItemGroup>
   <ItemGroup>

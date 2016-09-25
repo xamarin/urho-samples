@@ -34,8 +34,7 @@ namespace Physics
 
 			// Create a bucket
 			bucketNode = Scene.CreateChild();
-			bucketNode.SetScale(0.15f);
-			//var bucketBaseNode = bucketNode.CreateChild();
+			bucketNode.SetScale(0.1f);
 
 			// Create instructions
 			textNode = bucketNode.CreateChild();
