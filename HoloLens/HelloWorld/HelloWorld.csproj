@@ -55,6 +55,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Data\Earth.jpg" />
+    <Content Include="Data\Earth.xml" />
+    <Content Include="Data\Earth_Clouds.jpg" />
+    <Content Include="Data\Earth_NormalsMap.png" />
+    <Content Include="Data\Earth_SpecularMap.png" />
     <Content Include="Data\License.txt" />
     <Content Include="Data\Moon.jpg" />
     <Content Include="Properties\Default.rd.xml" />
