@@ -1,4 +1,4 @@
-The main code lives in `MutantApp.cs`
+The main code lives in `Program.cs`
 
 This sample shows both how to create a scene in the Hololens world with Urho, it creates a mutant
 and places it on the screen which you can control via a series of Cortana voice commands.   

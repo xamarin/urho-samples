@@ -9,7 +9,7 @@ using Urho.Shapes;
 namespace HelloWorld
 {
 	/// <summary>
-	/// Windows Holographic application using SharpDX.
+	/// Windows Holographic application using UrhoSharp.
 	/// </summary>
 	internal class Program
 	{
@@ -22,14 +22,10 @@ namespace HelloWorld
 			var exclusiveViewApplicationSource = new AppViewSource();
 			CoreApplication.Run(exclusiveViewApplicationSource);
 		}
-	}
 
-	// The entry point for the app.
-	internal class AppViewSource : IFrameworkViewSource
-	{
-		public IFrameworkView CreateView()
+		class AppViewSource : IFrameworkViewSource
 		{
-			return UrhoAppView.Create<HelloWorldApplication>("Data"); // null means only CoreData
+			public IFrameworkView CreateView() => UrhoAppView.Create<HelloWorldApplication>("Data");
 		}
 	}
 

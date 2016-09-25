@@ -5,7 +5,7 @@ using Urho.HoloLens;
 namespace Physics
 {
 	/// <summary>
-	/// Windows Holographic application using SharpDX.
+	/// Windows Holographic application using UrhoSharp.
 	/// </summary>
 	internal class Program
 	{
@@ -18,14 +18,11 @@ namespace Physics
 			var exclusiveViewApplicationSource = new AppViewSource();
 			CoreApplication.Run(exclusiveViewApplicationSource);
 		}
-	}
 
-	// The entry point for the app.
-	internal class AppViewSource : IFrameworkViewSource
-	{
-		public IFrameworkView CreateView()
+		class AppViewSource : IFrameworkViewSource
 		{
-			return UrhoAppView.Create<PhysicsSample>("Data"); // null means only CoreData
+			public IFrameworkView CreateView() => UrhoAppView.Create<PhysicsSample>("Data");
 		}
 	}
+
 }

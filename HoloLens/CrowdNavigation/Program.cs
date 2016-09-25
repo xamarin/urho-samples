@@ -4,17 +4,8 @@ using Urho.HoloLens;
 
 namespace CrowdNavigation
 {
-	// The entry point for the app.
-	internal class AppViewSource : IFrameworkViewSource
-	{
-		public IFrameworkView CreateView()
-		{
-			return UrhoAppView.Create<CrowdApp>("Data");
-		}
-	}
-
 	/// <summary>
-	/// Windows Holographic application using SharpDX.
+	/// Windows Holographic application using UrhoSharp.
 	/// </summary>
 	internal class Program
 	{
@@ -26,6 +17,11 @@ namespace CrowdNavigation
 		{
 			var exclusiveViewApplicationSource = new AppViewSource();
 			CoreApplication.Run(exclusiveViewApplicationSource);
+		}
+
+		class AppViewSource : IFrameworkViewSource
+		{
+			public IFrameworkView CreateView() => UrhoAppView.Create<CrowdApp>("Data");
 		}
 	}
 }
