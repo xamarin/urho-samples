@@ -2,7 +2,7 @@
 using Windows.ApplicationModel.Core;
 using Urho.HoloLens;
 
-namespace Physics
+namespace SpatialMapping
 {
 	/// <summary>
 	/// Windows Holographic application using SharpDX.
@@ -25,7 +25,7 @@ namespace Physics
 	{
 		public IFrameworkView CreateView()
 		{
-			return UrhoAppView.Create<PhysicsSample>("Data"); // null means only CoreData
+			return UrhoAppView.Create<SpatialMappingApp>(null); // null means only CoreData
 		}
 	}
 }

@@ -54,7 +54,7 @@ namespace Physics
 			bucketModel.Model = ResourceCache.GetModel("Models/bucket.mdl");
 			bucketModel.SetMaterial(bucketMaterial);
 			bucketModel.ViewMask = 0x80000000; //hide from raycasts
-			var rigidBody = bucketNode.CreateComponent<RigidBody>();
+			bucketNode.CreateComponent<RigidBody>();
 			var shape = bucketNode.CreateComponent<CollisionShape>();
 			shape.SetTriangleMesh(bucketModel.Model, 0, Vector3.One, Vector3.Zero, Quaternion.Identity);
 
@@ -62,7 +62,7 @@ namespace Physics
 			spatialMaterial = new Material();
 			spatialMaterial.SetTechnique(0, CoreAssets.Techniques.NoTextureUnlitVCol, 1, 1);
 
-			// make sure 'spatialMapping' and 'Microphone' capabilaties are enabled in the app manifest.
+			// make sure 'spatialMapping' capabilaty is enabled in the app manifest.
 			var spatialMappingAllowed = await StartSpatialMapping(new Vector3(50, 50, 10), 1200);
 		}
 
@@ -132,14 +132,12 @@ namespace Physics
 				balls.Dequeue().Remove();
 		}
 
-		public override void OnSurfaceAddedOrUpdated(string surfaceId, DateTimeOffset lastUpdateTimeUtc, 
-			SpatialVertex[] vertexData, short[] indexData, 
-			Vector3 boundsCenter, Quaternion boundsRotation)
+		public override void OnSurfaceAddedOrUpdated(SpatialMeshInfo surface, Model generatedModel)
 		{
 
 			bool isNew = false;
 			StaticModel staticModel = null;
-			Node node = environmentNode.GetChild(surfaceId, false);
+			Node node = environmentNode.GetChild(surface.SurfaceId, false);
 			if (node != null)
 			{
 				isNew = false;
@@ -148,23 +146,28 @@ namespace Physics
 			else
 			{
 				isNew = true;
-				node = environmentNode.CreateChild(surfaceId);
+				node = environmentNode.CreateChild(surface.SurfaceId);
 				staticModel = node.CreateComponent<StaticModel>();
 			}
 
-			node.Position = boundsCenter;
-			node.Rotation = boundsRotation;
-			var model = CreateModelFromVertexData(vertexData, indexData);
-			staticModel.Model = model;
+			node.Position = surface.BoundsCenter;
+			node.Rotation = surface.BoundsRotation;
+			staticModel.Model = generatedModel;
 
 			if (isNew)
+			{
 				staticModel.SetMaterial(spatialMaterial);
-
-			var rigidBody = node.CreateComponent<RigidBody>();
-			rigidBody.RollingFriction = 0.5f;
-			rigidBody.Friction = 0.5f;
-			var collisionShape = node.CreateComponent<CollisionShape>();
-			collisionShape.SetTriangleMesh(model, 0, Vector3.One, Vector3.Zero, Quaternion.Identity);
+				var rigidBody = node.CreateComponent<RigidBody>();
+				rigidBody.RollingFriction = 0.5f;
+				rigidBody.Friction = 0.5f;
+				var collisionShape = node.CreateComponent<CollisionShape>();
+				collisionShape.SetTriangleMesh(generatedModel, 0, Vector3.One, Vector3.Zero, Quaternion.Identity);
+			}
+			else
+			{
+				//Update Collision shape
+			}
 		}
+
 	}
 }
