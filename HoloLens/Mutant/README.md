@@ -18,3 +18,5 @@ world.
 The mutant's node gets an [AnimatedModel](https://developer.xamarin.com/api/type/Urho.AnimatedModel/)
 and we load the `Mutant.mdl` file which contains the model with their named animations, which we trigger
 when the commands are issued.
+
+![Screenshot](Screenshots/Video.gif) 
