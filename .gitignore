@@ -1,6 +1,7 @@
 # Build Folders (you can keep bin if you'd like, to store dlls and pdbs)
 [Bb]in/
 [Oo]bj/
+.vs/
 
 # User-specific files
 *.suo
@@ -29,6 +30,7 @@ x64/
 *.log
 *.vspscc
 *.vssscc
+*.nuget.targets
 .builds
 project.lock.json
 

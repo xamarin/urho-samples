@@ -57,7 +57,6 @@
     <AppxManifest Include="Package.appxmanifest">
       <SubType>Designer</SubType>
     </AppxManifest>
-    <None Include="CrowdNavigation_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Data\License.txt" />
