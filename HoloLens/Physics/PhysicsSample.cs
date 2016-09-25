@@ -134,7 +134,6 @@ namespace Physics
 
 		public override void OnSurfaceAddedOrUpdated(SpatialMeshInfo surface, Model generatedModel)
 		{
-
 			bool isNew = false;
 			StaticModel staticModel = null;
 			Node node = environmentNode.GetChild(surface.SurfaceId, false);
