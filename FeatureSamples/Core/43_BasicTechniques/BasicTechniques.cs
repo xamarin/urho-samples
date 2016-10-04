@@ -1,4 +1,6 @@
-﻿using Urho.Actions;
+﻿using System;
+using System.Runtime.InteropServices;
+using Urho.Actions;
 using Urho.Gui;
 
 namespace Urho.Samples
@@ -58,10 +60,8 @@ namespace Urho.Samples
 			{
 				{ "NoTexture", "NoTextureUnlit", "NoTextureNormal", "NoTextureAdd", "NoTextureMultiply" },
 				{ "Diff", "DiffUnlit", "DiffNormal", "DiffAlpha", "DiffAdd" },
-				{ "DiffEmissive", "DiffSpec", "DiffAO", "DiffNormalSpec", "DiffEnvCube" },
-				{ "Water", "Terrain", "PBRSand", "PBRConcrete", "PBRLeather" },
-				// for experiments
-				{ "Empty", "Empty", "Empty", "Empty", "Empty" },
+				{ "DiffEmissive", "DiffSpec", "DiffNormalSpec", "DiffAO", "DiffEnvCube" },
+				{ "Water", "Terrain", "NoTextureVCol", "Default", "Empty" },
 			};
 			
 			for (int i = 0; i < materials.GetLength(1); i++)
@@ -71,21 +71,26 @@ namespace Urho.Samples
 					var sphereNode = scene.CreateChild();
 					var earthNode = sphereNode.CreateChild();
 					var textNode = sphereNode.CreateChild();
+					var material = materials[j, i];
 
 					Text3D text = textNode.CreateComponent<Text3D>();
-					text.Text = materials[j, i];
+					text.Text = material;
 					text.SetFont(CoreAssets.Fonts.AnonymousPro, 13);
 					text.TextAlignment = HorizontalAlignment.Center;
 					text.VerticalAlignment = VerticalAlignment.Bottom;
 					text.HorizontalAlignment = HorizontalAlignment.Center;
 					textNode.Position = new Vector3(0, -0.75f, 0);
-
+		
 					sphereNode.Position = new Vector3(i * stepX, -j * stepY, 1);
 					sphereNode.SetScale(0.2f);
+
 					var earthModel = earthNode.CreateComponent<StaticModel>();
-					earthModel.Model = CoreAssets.Models.Sphere;
-					earthModel.SetMaterial(ResourceCache.GetMaterial("Sample43/Mat" + materials[j, i] + ".xml"));
-					
+					if (material.Contains("VCol"))
+						earthModel.Model = ResourceCache.GetModel("Sample43/SphereVCol.mdl");
+					else
+						earthModel.Model = CoreAssets.Models.Sphere;
+
+					earthModel.SetMaterial(ResourceCache.GetMaterial($"Sample43/Mat{material}.xml"));
 					var backgroundNode = sphereNode.CreateChild();
 					backgroundNode.Scale = new Vector3(1, 1, 0.001f) * 1.1f;
 					backgroundNode.Position = new Vector3(0, 0, 0.55f);

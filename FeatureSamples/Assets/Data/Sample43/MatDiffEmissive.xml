@@ -2,5 +2,5 @@
     <technique name="Techniques/DiffEmissive.xml" />
 	<texture unit="diffuse" name="Sample43/Earth.jpg" />
 	<texture unit="emissive" name="Sample43/Earth_SpecularMap.png" />
-    <parameter name="MatEmissiveColor" value="0 0 3" />
+    <parameter name="MatEmissiveColor" value="0 0 4" />
 </material>
