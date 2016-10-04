@@ -1,4 +1,5 @@
-﻿using Urho.Gui;
+﻿using Urho.Actions;
+using Urho.Gui;
 
 namespace Urho.Samples
 {
@@ -44,7 +45,7 @@ namespace Urho.Samples
 			lightNode.SetDirection(new Vector3(-1, -1, 1));
 			Light light = lightNode.CreateComponent<Light>();
 			light.LightType = LightType.Directional;
-			light.Brightness = 1.5f;
+			light.Brightness = 1.1f;
 			lightNode.Position = new Vector3(0, 0, 0);
 
 			//Add a skybox
@@ -58,6 +59,7 @@ namespace Urho.Samples
 				{ "NoTexture", "NoTextureUnlit", "NoTextureNormal", "NoTextureAdd", "NoTextureMultiply" },
 				{ "Diff", "DiffUnlit", "DiffNormal", "DiffAlpha", "DiffAdd" },
 				{ "DiffEmissive", "DiffSpec", "DiffAO", "DiffNormalSpec", "DiffEnvCube" },
+				{ "Water", "Terrain", "PBRSand", "PBRConcrete", "PBRLeather" },
 				// for experiments
 				{ "Empty", "Empty", "Empty", "Empty", "Empty" },
 			};
@@ -66,9 +68,9 @@ namespace Urho.Samples
 			{
 				for (int j = 0; j < materials.GetLength(0); j++)
 				{
-					var earthNode = scene.CreateChild();
-					var textNode = earthNode.CreateChild();
-
+					var sphereNode = scene.CreateChild();
+					var earthNode = sphereNode.CreateChild();
+					var textNode = sphereNode.CreateChild();
 
 					Text3D text = textNode.CreateComponent<Text3D>();
 					text.Text = materials[j, i];
@@ -78,18 +80,20 @@ namespace Urho.Samples
 					text.HorizontalAlignment = HorizontalAlignment.Center;
 					textNode.Position = new Vector3(0, -0.75f, 0);
 
-					earthNode.Position = new Vector3(i * stepX, -j * stepY, 1);
-					earthNode.SetScale(0.2f);
+					sphereNode.Position = new Vector3(i * stepX, -j * stepY, 1);
+					sphereNode.SetScale(0.2f);
 					var earthModel = earthNode.CreateComponent<StaticModel>();
 					earthModel.Model = CoreAssets.Models.Sphere;
 					earthModel.SetMaterial(ResourceCache.GetMaterial("Sample43/Mat" + materials[j, i] + ".xml"));
 					
-					var backgroundNode = earthNode.CreateChild();
+					var backgroundNode = sphereNode.CreateChild();
 					backgroundNode.Scale = new Vector3(1, 1, 0.001f) * 1.1f;
 					backgroundNode.Position = new Vector3(0, 0, 0.55f);
 					var backgroundModel = backgroundNode.CreateComponent<StaticModel>();
 					backgroundModel.Model = CoreAssets.Models.Box;
 					backgroundModel.SetMaterial(Material.FromImage("Sample43/Background.png"));
+
+					earthNode.RunActions(new RepeatForever(new RotateBy(1f, 0, 5, 0)));
 				}
 			}
 		}
