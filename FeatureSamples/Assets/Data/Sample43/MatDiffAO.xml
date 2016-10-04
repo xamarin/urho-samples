@@ -1,0 +1,6 @@
+﻿<material>
+    <technique name="Techniques/DiffAO.xml" />
+	<texture unit="diffuse" name="Sample43/Earth.jpg" />
+	<texture unit="emissive" name="Sample43/Earth_SpecularMap.png" />
+    <parameter name="MatSpecColor" value="0.3 0.3 0.3 1" />
+</material>

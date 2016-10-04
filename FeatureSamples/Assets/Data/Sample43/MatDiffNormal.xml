@@ -1,0 +1,5 @@
+﻿<material>
+	<technique name="Techniques/DiffNormal.xml" quality="0" />
+	<texture unit="diffuse" name="Sample43/Earth.jpg" />
+	<texture unit="normal" name="Sample43/Earth_NormalsMap.png" />
+</material>

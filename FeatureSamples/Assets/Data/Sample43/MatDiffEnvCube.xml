@@ -1,0 +1,6 @@
+﻿<material>
+	<technique name="Techniques/DiffEnvCube.xml" quality="0" />
+    <texture unit="environment" name="Textures/Skybox2.xml" />
+	<texture unit="diffuse" name="Sample43/Earth.jpg" />
+    <parameter name="MatEnvMapColor" value="0.8 0.8 0.8" />
+</material>

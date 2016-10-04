@@ -1,0 +1,6 @@
+﻿<material>
+    <technique name="Techniques/DiffSpec.xml" />
+	<texture unit="diffuse" name="Sample43/Earth.jpg" />
+	<texture unit="specular" name="Sample43/Earth_SpecularMap.png" />
+    <parameter name="MatSpecColor" value="1 1 1 8" />
+</material>

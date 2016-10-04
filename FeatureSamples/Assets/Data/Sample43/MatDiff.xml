@@ -1,0 +1,5 @@
+﻿<material>
+	<technique name="Techniques/Diff.xml" quality="0" />
+	<texture unit="diffuse" name="Sample43/Earth.jpg" />
+	<parameter name="MatDiffColor" value="1 1 1 0.5" />
+</material>
