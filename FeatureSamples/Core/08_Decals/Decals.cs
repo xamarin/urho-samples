@@ -207,12 +207,11 @@ namespace Urho.Samples
 				return false;
 
 			Ray cameraRay = camera.GetScreenRay((float) pos.X/graphics.Width, (float) pos.Y/graphics.Height);
-			var results = scene.GetComponent<Octree>().RaycastSingle(cameraRay, RayQueryLevel.Triangle, maxDistance, DrawableFlags.Geometry, uint.MaxValue);
-			if (results != null && results.Any())
+			var result = scene.GetComponent<Octree>().RaycastSingle(cameraRay, RayQueryLevel.Triangle, maxDistance, DrawableFlags.Geometry, uint.MaxValue);
+			if (result != null)
 			{
-				var first = results.First();
-				hitPos = first.Position;
-				hitDrawable = first.Drawable;
+				hitPos = result.Value.Position;
+				hitDrawable = result.Value.Drawable;
 				return true;
 			}
 			return false;

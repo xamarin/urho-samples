@@ -76,10 +76,10 @@ namespace Urho.Samples
 		private void OnTouched(TouchEndEventArgs e)
 		{
 			Ray cameraRay = camera.GetScreenRay((float)e.X / Graphics.Width, (float)e.Y / Graphics.Height);
-			var results = octree.RaycastSingle(cameraRay, RayQueryLevel.Triangle, 100, DrawableFlags.Geometry);
-			if (results != null && results.Any())
+			var result = octree.RaycastSingle(cameraRay, RayQueryLevel.Triangle, 100, DrawableFlags.Geometry);
+			if (result != null)
 			{
-				var bar = results[0].Node?.Parent?.GetComponent<Bar>();
+				var bar = result.Value.Node?.Parent?.GetComponent<Bar>();
 				if (selectedBar != bar)
 				{
 					selectedBar?.Deselect();
