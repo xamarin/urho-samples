@@ -50,7 +50,7 @@ namespace SpatialMapping
 			var cortanaAllowed = await RegisterCortanaCommands(new Dictionary<string, Action> {
 					{ "show results" , ShowResults }
 				});
-			var spatialMappingAllowed = await StartSpatialMapping(new Vector3(50, 50, 10), 1000);
+			var spatialMappingAllowed = await StartSpatialMapping(new Vector3(50, 50, 50));
 		}
 
 		async void ShowResults()
@@ -61,8 +61,7 @@ namespace SpatialMapping
 
 			var material = new Material();
 			material.CullMode = CullMode.Ccw;
-			material.SetTechnique(0, CoreAssets.Techniques.NoTexture, 1, 1);
-			material.SetShaderParameter("MatDiffColor", new Color(0.1f, 0.8f, 0.1f));
+			material.SetTechnique(0, CoreAssets.Techniques.NoTextureUnlitVCol, 1, 1);
 
 			foreach (var node in environmentNode.Children)
 				node.GetComponent<StaticModel>().SetMaterial(material);
@@ -88,15 +87,22 @@ namespace SpatialMapping
 
 		public override Model GenerateModelFromSpatialSurface(SpatialMeshInfo surface)
 		{
-			//NOTE: not the main thread
-			return base.GenerateModelFromSpatialSurface(surface);
+			// modify VertexColor for the VCol technique
+			for (int i = 0; i < surface.VertexData.Length; i++)
+			{
+				var vtx = surface.VertexData[i];
+				var worldPosition = surface.BoundsRotation * vtx.Position + surface.BoundsCenter;
+				surface.VertexData[i].Color = new Color((worldPosition.Y + 2f) / 3f, 0.5f, 0);
+			}
+
+			return CreateModelFromVertexData(surface.VertexData, surface.IndexData);
 		}
 
 		public override void OnSurfaceAddedOrUpdated(SpatialMeshInfo surface, Model generatedModel)
 		{
 			if (mappingEnded)
 				return;
-
+			
 			bool isNew = false;
 			StaticModel staticModel = null;
 			Node node = environmentNode.GetChild(surface.SurfaceId, false);
