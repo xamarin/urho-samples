@@ -51,12 +51,18 @@ namespace FormsSample
 				Children = {
 					urhoSurface,
 					restartBtn,
-					new Label { Text = "ROTATION:" },
+					new Label { Text = "ROTATION::" },
 					rotationSlider,
 					new Label { Text = "SELECTED VALUE:" },
 					selectedBarSlider,
 				}
 			};
+		}
+
+		protected override void OnDisappearing()
+		{
+			UrhoSurface.OnDestroy();
+			base.OnDisappearing();
 		}
 
 		void OnValuesSliderValueChanged(object sender, ValueChangedEventArgs e)

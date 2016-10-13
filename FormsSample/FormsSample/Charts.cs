@@ -80,9 +80,9 @@ namespace FormsSample
 		{
 			Ray cameraRay = camera.GetScreenRay((float)e.X / Graphics.Width, (float)e.Y / Graphics.Height);
 			var results = octree.RaycastSingle(cameraRay, RayQueryLevel.Triangle, 100, DrawableFlags.Geometry);
-			if (results != null && results.Any())
+			if (results != null)
 			{
-				var bar = results[0].Node?.Parent?.GetComponent<Bar>();
+				var bar = results.Value.Node?.Parent?.GetComponent<Bar>();
 				if (SelectedBar != bar)
 				{
 					SelectedBar?.Deselect();
