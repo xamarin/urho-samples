@@ -29,11 +29,13 @@ x64/
 *.tmp
 *.blend1
 *.log
+*.csproj.bak
 *.vspscc
 *.vssscc
 *.nuget.targets
 .builds
 project.lock.json
+CoreData.pak
 
 # NuGet Packages Directory
 packages
