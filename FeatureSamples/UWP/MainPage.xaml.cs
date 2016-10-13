@@ -38,7 +38,7 @@ namespace Urho.Samples.UWP
 		{
 			currentApplication?.Exit();
 			//at this moment, UWP supports assets only in pak files (see PackageTool)
-			currentApplication = UrhoSurface.Run(value.Type, "Data.pak");
+			currentApplication = UrhoSurface.Run(value.Type, new ApplicationOptions("Data"));
 		}
 	}
 

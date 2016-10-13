@@ -1,7 +1,7 @@
 ﻿{
   "dependencies": {
     "Microsoft.NETCore.UniversalWindowsPlatform": "5.1.0",
-    "UrhoSharp": "1.1.125"
+    "UrhoSharp": "1.1.211"
   },
   "frameworks": {
     "uap10.0": {}

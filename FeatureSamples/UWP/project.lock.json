@@ -1778,7 +1778,7 @@
           }
         }
       },
-      "UrhoSharp/1.1.125": {
+      "UrhoSharp/1.1.211": {
         "compile": {
           "lib/uap10.0/Urho.dll": {}
         },
@@ -1908,12 +1908,9 @@
           "native/Urho3D/CoreData/Techniques/Diff.xml": {},
           "native/Urho3D/CoreData/Techniques/DiffAO.xml": {},
           "native/Urho3D/CoreData/Techniques/DiffAOAlpha.xml": {},
-          "native/Urho3D/CoreData/Techniques/DiffAOAlphaMask.xml": {},
           "native/Urho3D/CoreData/Techniques/DiffAdd.xml": {},
           "native/Urho3D/CoreData/Techniques/DiffAddAlpha.xml": {},
           "native/Urho3D/CoreData/Techniques/DiffAlpha.xml": {},
-          "native/Urho3D/CoreData/Techniques/DiffAlphaMask.xml": {},
-          "native/Urho3D/CoreData/Techniques/DiffAlphaMaskTranslucent.xml": {},
           "native/Urho3D/CoreData/Techniques/DiffAlphaTranslucent.xml": {},
           "native/Urho3D/CoreData/Techniques/DiffEmissive.xml": {},
           "native/Urho3D/CoreData/Techniques/DiffEmissiveAlpha.xml": {},
@@ -1928,41 +1925,16 @@
           "native/Urho3D/CoreData/Techniques/DiffNormal.xml": {},
           "native/Urho3D/CoreData/Techniques/DiffNormalAO.xml": {},
           "native/Urho3D/CoreData/Techniques/DiffNormalAOAlpha.xml": {},
-          "native/Urho3D/CoreData/Techniques/DiffNormalAOAlphaMask.xml": {},
           "native/Urho3D/CoreData/Techniques/DiffNormalAlpha.xml": {},
-          "native/Urho3D/CoreData/Techniques/DiffNormalAlphaMask.xml": {},
-          "native/Urho3D/CoreData/Techniques/DiffNormalAlphaMaskTranslucent.xml": {},
           "native/Urho3D/CoreData/Techniques/DiffNormalAlphaTranslucent.xml": {},
           "native/Urho3D/CoreData/Techniques/DiffNormalEmissive.xml": {},
           "native/Urho3D/CoreData/Techniques/DiffNormalEmissiveAlpha.xml": {},
           "native/Urho3D/CoreData/Techniques/DiffNormalEnvCube.xml": {},
           "native/Urho3D/CoreData/Techniques/DiffNormalEnvCubeAlpha.xml": {},
-          "native/Urho3D/CoreData/Techniques/DiffNormalPacked.xml": {},
-          "native/Urho3D/CoreData/Techniques/DiffNormalPackedAO.xml": {},
-          "native/Urho3D/CoreData/Techniques/DiffNormalPackedAOAlpha.xml": {},
-          "native/Urho3D/CoreData/Techniques/DiffNormalPackedAOAlphaMask.xml": {},
-          "native/Urho3D/CoreData/Techniques/DiffNormalPackedAlpha.xml": {},
-          "native/Urho3D/CoreData/Techniques/DiffNormalPackedAlphaMask.xml": {},
-          "native/Urho3D/CoreData/Techniques/DiffNormalPackedAlphaMaskTranslucent.xml": {},
-          "native/Urho3D/CoreData/Techniques/DiffNormalPackedAlphaTranslucent.xml": {},
-          "native/Urho3D/CoreData/Techniques/DiffNormalPackedEmissive.xml": {},
-          "native/Urho3D/CoreData/Techniques/DiffNormalPackedEmissiveAlpha.xml": {},
-          "native/Urho3D/CoreData/Techniques/DiffNormalPackedEnvCube.xml": {},
-          "native/Urho3D/CoreData/Techniques/DiffNormalPackedEnvCubeAlpha.xml": {},
-          "native/Urho3D/CoreData/Techniques/DiffNormalPackedSpec.xml": {},
-          "native/Urho3D/CoreData/Techniques/DiffNormalPackedSpecAO.xml": {},
-          "native/Urho3D/CoreData/Techniques/DiffNormalPackedSpecAOAlpha.xml": {},
-          "native/Urho3D/CoreData/Techniques/DiffNormalPackedSpecAOAlphaMask.xml": {},
-          "native/Urho3D/CoreData/Techniques/DiffNormalPackedSpecAlpha.xml": {},
-          "native/Urho3D/CoreData/Techniques/DiffNormalPackedSpecAlphaMask.xml": {},
-          "native/Urho3D/CoreData/Techniques/DiffNormalPackedSpecEmissive.xml": {},
-          "native/Urho3D/CoreData/Techniques/DiffNormalPackedSpecEmissiveAlpha.xml": {},
           "native/Urho3D/CoreData/Techniques/DiffNormalSpec.xml": {},
           "native/Urho3D/CoreData/Techniques/DiffNormalSpecAO.xml": {},
           "native/Urho3D/CoreData/Techniques/DiffNormalSpecAOAlpha.xml": {},
-          "native/Urho3D/CoreData/Techniques/DiffNormalSpecAOAlphaMask.xml": {},
           "native/Urho3D/CoreData/Techniques/DiffNormalSpecAlpha.xml": {},
-          "native/Urho3D/CoreData/Techniques/DiffNormalSpecAlphaMask.xml": {},
           "native/Urho3D/CoreData/Techniques/DiffNormalSpecEmissive.xml": {},
           "native/Urho3D/CoreData/Techniques/DiffNormalSpecEmissiveAlpha.xml": {},
           "native/Urho3D/CoreData/Techniques/DiffOverlay.xml": {},
@@ -1972,10 +1944,8 @@
           "native/Urho3D/CoreData/Techniques/DiffSkyplane.xml": {},
           "native/Urho3D/CoreData/Techniques/DiffSpec.xml": {},
           "native/Urho3D/CoreData/Techniques/DiffSpecAlpha.xml": {},
-          "native/Urho3D/CoreData/Techniques/DiffSpecAlphaMask.xml": {},
           "native/Urho3D/CoreData/Techniques/DiffUnlit.xml": {},
           "native/Urho3D/CoreData/Techniques/DiffUnlitAlpha.xml": {},
-          "native/Urho3D/CoreData/Techniques/DiffUnlitAlphaMask.xml": {},
           "native/Urho3D/CoreData/Techniques/DiffVCol.xml": {},
           "native/Urho3D/CoreData/Techniques/DiffVColAdd.xml": {},
           "native/Urho3D/CoreData/Techniques/DiffVColAddAlpha.xml": {},
@@ -1994,8 +1964,6 @@
           "native/Urho3D/CoreData/Techniques/NoTextureMultiply.xml": {},
           "native/Urho3D/CoreData/Techniques/NoTextureNormal.xml": {},
           "native/Urho3D/CoreData/Techniques/NoTextureNormalAlpha.xml": {},
-          "native/Urho3D/CoreData/Techniques/NoTextureNormalPacked.xml": {},
-          "native/Urho3D/CoreData/Techniques/NoTextureNormalPackedAlpha.xml": {},
           "native/Urho3D/CoreData/Techniques/NoTextureOverlay.xml": {},
           "native/Urho3D/CoreData/Techniques/NoTextureUnlit.xml": {},
           "native/Urho3D/CoreData/Techniques/NoTextureUnlitAlpha.xml": {},
@@ -2021,9 +1989,7 @@
           "native/Urho3D/CoreData/Techniques/PBR/PBRNoTextureAlpha.xml": {},
           "native/Urho3D/CoreData/Techniques/TerrainBlend.xml": {},
           "native/Urho3D/CoreData/Techniques/VegetationDiff.xml": {},
-          "native/Urho3D/CoreData/Techniques/VegetationDiffAlphaMask.xml": {},
           "native/Urho3D/CoreData/Techniques/VegetationDiffUnlit.xml": {},
-          "native/Urho3D/CoreData/Techniques/VegetationDiffUnlitAlphaMask.xml": {},
           "native/Urho3D/CoreData/Techniques/Water.xml": {},
           "native/Urho3D/CoreData/Textures/DefaultUI.png": {},
           "native/Urho3D/CoreData/Textures/LUTIdentity.png": {},
@@ -3686,7 +3652,7 @@
           "lib/netcore50/System.Xml.XmlSerializer.dll": {}
         }
       },
-      "UrhoSharp/1.1.125": {
+      "UrhoSharp/1.1.211": {
         "compile": {
           "lib/uap10.0/Urho.dll": {}
         },
@@ -5290,7 +5256,7 @@
           "runtimes/win8-aot/lib/netcore50/System.Xml.XmlSerializer.dll": {}
         }
       },
-      "UrhoSharp/1.1.125": {
+      "UrhoSharp/1.1.211": {
         "compile": {
           "lib/uap10.0/Urho.dll": {}
         },
@@ -6944,7 +6910,7 @@
           "lib/netcore50/System.Xml.XmlSerializer.dll": {}
         }
       },
-      "UrhoSharp/1.1.125": {
+      "UrhoSharp/1.1.211": {
         "compile": {
           "lib/uap10.0/Urho.dll": {}
         },
@@ -8548,7 +8514,7 @@
           "runtimes/win8-aot/lib/netcore50/System.Xml.XmlSerializer.dll": {}
         }
       },
-      "UrhoSharp/1.1.125": {
+      "UrhoSharp/1.1.211": {
         "compile": {
           "lib/uap10.0/Urho.dll": {}
         },
@@ -10202,7 +10168,7 @@
           "lib/netcore50/System.Xml.XmlSerializer.dll": {}
         }
       },
-      "UrhoSharp/1.1.125": {
+      "UrhoSharp/1.1.211": {
         "compile": {
           "lib/uap10.0/Urho.dll": {}
         },
@@ -11806,7 +11772,7 @@
           "runtimes/win8-aot/lib/netcore50/System.Xml.XmlSerializer.dll": {}
         }
       },
-      "UrhoSharp/1.1.125": {
+      "UrhoSharp/1.1.211": {
         "compile": {
           "lib/uap10.0/Urho.dll": {}
         },
@@ -15083,18 +15049,17 @@
         "runtimes/win8-aot/lib/netcore50/System.Xml.XmlSerializer.dll"
       ]
     },
-    "UrhoSharp/1.1.125": {
-      "sha512": "bmhqKIxQrbdItSfqca7NDDkQriICx7mIfexa+sFWzwDGqVvUENaqanhiONjo98VCrPfVM/K42DuFX+k1zXu0OA==",
+    "UrhoSharp/1.1.211": {
+      "sha512": "wMhFfySyn2M/y7d/mEeaO0w2GVUf37j/JHmPpRrtwVsi9o6TOFZkWSpj0GK0BDLPW3WozFD2kGJQY65fDTMcug==",
       "type": "package",
       "files": [
-        "UrhoSharp.1.1.125.nupkg.sha512",
+        "UrhoSharp.1.1.211.nupkg.sha512",
         "UrhoSharp.nuspec",
         "build/MonoAndroid/UrhoSharp.targets",
         "build/net45/UrhoSharp.targets",
         "build/uap10.0/UrhoSharp.targets",
         "content/MonoAndroid/UrhoSharpReadme.txt",
         "content/Xamarin.iOS10/UrhoSharpReadme.txt",
-        "content/net45/UrhoSharpReadme.txt",
         "lib/MonoAndroid/Urho.Droid.SdlBinding.dll",
         "lib/MonoAndroid/Urho.XML",
         "lib/MonoAndroid/Urho.dll",
@@ -15228,12 +15193,9 @@
         "native/Urho3D/CoreData/Techniques/Diff.xml",
         "native/Urho3D/CoreData/Techniques/DiffAO.xml",
         "native/Urho3D/CoreData/Techniques/DiffAOAlpha.xml",
-        "native/Urho3D/CoreData/Techniques/DiffAOAlphaMask.xml",
         "native/Urho3D/CoreData/Techniques/DiffAdd.xml",
         "native/Urho3D/CoreData/Techniques/DiffAddAlpha.xml",
         "native/Urho3D/CoreData/Techniques/DiffAlpha.xml",
-        "native/Urho3D/CoreData/Techniques/DiffAlphaMask.xml",
-        "native/Urho3D/CoreData/Techniques/DiffAlphaMaskTranslucent.xml",
         "native/Urho3D/CoreData/Techniques/DiffAlphaTranslucent.xml",
         "native/Urho3D/CoreData/Techniques/DiffEmissive.xml",
         "native/Urho3D/CoreData/Techniques/DiffEmissiveAlpha.xml",
@@ -15248,41 +15210,16 @@
         "native/Urho3D/CoreData/Techniques/DiffNormal.xml",
         "native/Urho3D/CoreData/Techniques/DiffNormalAO.xml",
         "native/Urho3D/CoreData/Techniques/DiffNormalAOAlpha.xml",
-        "native/Urho3D/CoreData/Techniques/DiffNormalAOAlphaMask.xml",
         "native/Urho3D/CoreData/Techniques/DiffNormalAlpha.xml",
-        "native/Urho3D/CoreData/Techniques/DiffNormalAlphaMask.xml",
-        "native/Urho3D/CoreData/Techniques/DiffNormalAlphaMaskTranslucent.xml",
         "native/Urho3D/CoreData/Techniques/DiffNormalAlphaTranslucent.xml",
         "native/Urho3D/CoreData/Techniques/DiffNormalEmissive.xml",
         "native/Urho3D/CoreData/Techniques/DiffNormalEmissiveAlpha.xml",
         "native/Urho3D/CoreData/Techniques/DiffNormalEnvCube.xml",
         "native/Urho3D/CoreData/Techniques/DiffNormalEnvCubeAlpha.xml",
-        "native/Urho3D/CoreData/Techniques/DiffNormalPacked.xml",
-        "native/Urho3D/CoreData/Techniques/DiffNormalPackedAO.xml",
-        "native/Urho3D/CoreData/Techniques/DiffNormalPackedAOAlpha.xml",
-        "native/Urho3D/CoreData/Techniques/DiffNormalPackedAOAlphaMask.xml",
-        "native/Urho3D/CoreData/Techniques/DiffNormalPackedAlpha.xml",
-        "native/Urho3D/CoreData/Techniques/DiffNormalPackedAlphaMask.xml",
-        "native/Urho3D/CoreData/Techniques/DiffNormalPackedAlphaMaskTranslucent.xml",
-        "native/Urho3D/CoreData/Techniques/DiffNormalPackedAlphaTranslucent.xml",
-        "native/Urho3D/CoreData/Techniques/DiffNormalPackedEmissive.xml",
-        "native/Urho3D/CoreData/Techniques/DiffNormalPackedEmissiveAlpha.xml",
-        "native/Urho3D/CoreData/Techniques/DiffNormalPackedEnvCube.xml",
-        "native/Urho3D/CoreData/Techniques/DiffNormalPackedEnvCubeAlpha.xml",
-        "native/Urho3D/CoreData/Techniques/DiffNormalPackedSpec.xml",
-        "native/Urho3D/CoreData/Techniques/DiffNormalPackedSpecAO.xml",
-        "native/Urho3D/CoreData/Techniques/DiffNormalPackedSpecAOAlpha.xml",
-        "native/Urho3D/CoreData/Techniques/DiffNormalPackedSpecAOAlphaMask.xml",
-        "native/Urho3D/CoreData/Techniques/DiffNormalPackedSpecAlpha.xml",
-        "native/Urho3D/CoreData/Techniques/DiffNormalPackedSpecAlphaMask.xml",
-        "native/Urho3D/CoreData/Techniques/DiffNormalPackedSpecEmissive.xml",
-        "native/Urho3D/CoreData/Techniques/DiffNormalPackedSpecEmissiveAlpha.xml",
         "native/Urho3D/CoreData/Techniques/DiffNormalSpec.xml",
         "native/Urho3D/CoreData/Techniques/DiffNormalSpecAO.xml",
         "native/Urho3D/CoreData/Techniques/DiffNormalSpecAOAlpha.xml",
-        "native/Urho3D/CoreData/Techniques/DiffNormalSpecAOAlphaMask.xml",
         "native/Urho3D/CoreData/Techniques/DiffNormalSpecAlpha.xml",
-        "native/Urho3D/CoreData/Techniques/DiffNormalSpecAlphaMask.xml",
         "native/Urho3D/CoreData/Techniques/DiffNormalSpecEmissive.xml",
         "native/Urho3D/CoreData/Techniques/DiffNormalSpecEmissiveAlpha.xml",
         "native/Urho3D/CoreData/Techniques/DiffOverlay.xml",
@@ -15292,10 +15229,8 @@
         "native/Urho3D/CoreData/Techniques/DiffSkyplane.xml",
         "native/Urho3D/CoreData/Techniques/DiffSpec.xml",
         "native/Urho3D/CoreData/Techniques/DiffSpecAlpha.xml",
-        "native/Urho3D/CoreData/Techniques/DiffSpecAlphaMask.xml",
         "native/Urho3D/CoreData/Techniques/DiffUnlit.xml",
         "native/Urho3D/CoreData/Techniques/DiffUnlitAlpha.xml",
-        "native/Urho3D/CoreData/Techniques/DiffUnlitAlphaMask.xml",
         "native/Urho3D/CoreData/Techniques/DiffVCol.xml",
         "native/Urho3D/CoreData/Techniques/DiffVColAdd.xml",
         "native/Urho3D/CoreData/Techniques/DiffVColAddAlpha.xml",
@@ -15314,8 +15249,6 @@
         "native/Urho3D/CoreData/Techniques/NoTextureMultiply.xml",
         "native/Urho3D/CoreData/Techniques/NoTextureNormal.xml",
         "native/Urho3D/CoreData/Techniques/NoTextureNormalAlpha.xml",
-        "native/Urho3D/CoreData/Techniques/NoTextureNormalPacked.xml",
-        "native/Urho3D/CoreData/Techniques/NoTextureNormalPackedAlpha.xml",
         "native/Urho3D/CoreData/Techniques/NoTextureOverlay.xml",
         "native/Urho3D/CoreData/Techniques/NoTextureUnlit.xml",
         "native/Urho3D/CoreData/Techniques/NoTextureUnlitAlpha.xml",
@@ -15341,9 +15274,7 @@
         "native/Urho3D/CoreData/Techniques/PBR/PBRNoTextureAlpha.xml",
         "native/Urho3D/CoreData/Techniques/TerrainBlend.xml",
         "native/Urho3D/CoreData/Techniques/VegetationDiff.xml",
-        "native/Urho3D/CoreData/Techniques/VegetationDiffAlphaMask.xml",
         "native/Urho3D/CoreData/Techniques/VegetationDiffUnlit.xml",
-        "native/Urho3D/CoreData/Techniques/VegetationDiffUnlitAlphaMask.xml",
         "native/Urho3D/CoreData/Techniques/Water.xml",
         "native/Urho3D/CoreData/Textures/DefaultUI.png",
         "native/Urho3D/CoreData/Textures/LUTIdentity.png",
@@ -15372,7 +15303,7 @@
   "projectFileDependencyGroups": {
     "": [
       "Microsoft.NETCore.UniversalWindowsPlatform >= 5.1.0",
-      "UrhoSharp >= 1.1.125"
+      "UrhoSharp >= 1.1.211"
     ],
     "UAP,Version=v10.0": []
   }
