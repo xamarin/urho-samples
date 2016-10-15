@@ -2,9 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using Urho;
-using Urho.Holographics;
+using Urho.HoloLens;
 using Urho.Navigation;
-using Urho.Portable.Holographics;
 using Urho.Shapes;
 
 namespace CrowdNavigation
@@ -28,7 +27,7 @@ namespace CrowdNavigation
 		const string IdleAnimation = @"Animations/Mutant_Idle0.ani";
 		const string DeathAnimation = @"Animations/Mutant_Death.ani";
 
-		public CrowdApp(string pak, bool emulator) : base(pak, emulator) { }
+		public CrowdApp(string assets) : base(assets) { }
 
 		protected override async void Start()
 		{
@@ -162,7 +161,7 @@ namespace CrowdNavigation
 			}
 		}
 
-		public override void OnGestureTapped(GazeInfo gaze)
+		public override void OnGestureTapped()
 		{
 			var hitPos = Raycast();
 			if (hitPos == null)

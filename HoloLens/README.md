@@ -27,7 +27,7 @@ public class MyHoloApp : HoloApplication
 {
     Node boxNode;
 
-    public HelloWorldApplication(string pak, bool emulator) : base(pak, emulator) { }
+    public HelloWorldApplication(string assets) : base(assets) { }
 
     protected override async void Start()
     {

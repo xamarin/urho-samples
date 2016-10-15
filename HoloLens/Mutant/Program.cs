@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using Windows.ApplicationModel.Core;
 using Urho;
 using Urho.Actions;
-using Urho.Holographics;
 using Urho.HoloLens;
 
 namespace Mutant
@@ -47,7 +46,7 @@ namespace Mutant
 		const string SwipeAni = "Mutant_Swipe.ani";
 		const string WalkAni = "Mutant_Walk.ani";
 
-		public MutantApp(string pak, bool emulator) : base(pak, emulator) { }
+		public MutantApp(string assets) : base(assets) { }
 
 		protected override void Start()
 		{

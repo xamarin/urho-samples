@@ -2,7 +2,6 @@
 using Windows.ApplicationModel.Core;
 using Urho;
 using Urho.Actions;
-using Urho.Holographics;
 using Urho.HoloLens;
 using Urho.Shapes;
 
@@ -34,7 +33,7 @@ namespace HelloWorld
 	{
 		Node earthNode;
 
-		public HelloWorldApplication(string pak, bool emulator) : base(pak, emulator) { }
+		public HelloWorldApplication(string assets) : base(assets) { }
 
 		protected override async void Start()
 		{

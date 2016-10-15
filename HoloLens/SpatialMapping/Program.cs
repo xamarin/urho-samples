@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using Windows.ApplicationModel.Core;
 using Urho;
 using Urho.Actions;
-using Urho.Holographics;
 using Urho.HoloLens;
 
 namespace SpatialMapping
@@ -37,7 +36,7 @@ namespace SpatialMapping
 		Vector3 envPositionBeforeManipulations;
 		Node environmentNode;
 
-		public SpatialMappingApp(string pak, bool emulation) : base(pak, emulation) { }
+		public SpatialMappingApp(string assets) : base(assets) { }
 
 		protected override async void Start()
 		{
@@ -72,7 +71,7 @@ namespace SpatialMapping
 			await environmentNode.RunActionsAsync(new EaseOut(new ScaleTo(1f, 0.03f), 1f));
 		}
 
-		public override void OnGestureTapped(GazeInfo gaze)
+		public override void OnGestureTapped()
 		{
 			if (mappingEnded)
 				return;

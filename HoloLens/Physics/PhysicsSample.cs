@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using Urho;
 using Urho.Gui;
-using Urho.Holographics;
+using Urho.HoloLens;
 using Urho.Physics;
 
 namespace Physics
@@ -22,7 +22,7 @@ namespace Physics
 		readonly Color validPositionColor = Color.Gray;
 		readonly Color invalidPositionColor = Color.Red;
 
-		public PhysicsSample(string pak, bool emulator) : base(pak, emulator) { }
+		public PhysicsSample(string assets) : base(assets) { }
 
 		protected override async void Start()
 		{
@@ -90,7 +90,7 @@ namespace Physics
 			}
 		}
 
-		public override void OnGestureTapped(GazeInfo gaze)
+		public override void OnGestureTapped()
 		{
 			if (positionIsSelected)
 				ThrowBall();
@@ -102,7 +102,7 @@ namespace Physics
 				textNode = null;
 			}
 
-			base.OnGestureTapped(gaze);
+			base.OnGestureTapped();
 		}
 
 		void ThrowBall()

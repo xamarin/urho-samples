@@ -14,7 +14,6 @@ using Windows.Media.SpeechSynthesis;
 using Windows.Storage;
 using Microsoft.ProjectOxford.Vision;
 using Urho;
-using Urho.Holographics;
 using Urho.HoloLens;
 
 namespace CognitiveServices
@@ -52,7 +51,7 @@ namespace CognitiveServices
 		bool inited;
 		bool busy;
 
-		public HelloWorldApplication(string pak, bool emulator) : base(pak, emulator) { }
+		public HelloWorldApplication(string assets) : base(assets) { }
 
 		protected override async void Start()
 		{
