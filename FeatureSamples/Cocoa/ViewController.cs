@@ -24,7 +24,6 @@ namespace Urho.Samples.Cocoa
 		public override async void ViewDidLoad()
 		{
 			base.ViewDidLoad();
-
 			sampleTypes = typeof(Sample).Assembly.GetTypes()
 				.Where(t => t.IsSubclassOf(typeof(Application)) && t != typeof(Sample))
 				.ToArray();
@@ -48,11 +47,13 @@ namespace Urho.Samples.Cocoa
 			view.AutoresizingMask = NSViewResizingMask.WidthSizable | NSViewResizingMask.HeightSizable;
 			UrhoSurface.AddSubview(view);
 
+			string assets = "../../../../../Assets";
+			Urho.Desktop.DesktopUrhoInitializer.CopyEmbeddedCoreDataTo(assets);
 			options = new ApplicationOptions("Data")
 				{
 					ExternalWindow = view.Handle,
 					LimitFps = true,
-					ResourcePrefixPaths = new string[] { "../../../../../Assets" },
+					ResourcePrefixPaths = new string[] { assets },
 				};
 		}
 
