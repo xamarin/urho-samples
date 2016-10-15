@@ -8,7 +8,7 @@
     xmlns:uwp="using:Urho.UWP"
     mc:Ignorable="d">
 
-	<Grid>
+	<Grid x:Name="Grid">
 		<Grid.ColumnDefinitions>
 			<ColumnDefinition Width="270"/>
 			<ColumnDefinition/>

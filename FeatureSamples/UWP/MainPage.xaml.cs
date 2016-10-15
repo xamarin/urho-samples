@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Linq;
 using System.Reflection;
+using System.Threading.Tasks;
+using Windows.ApplicationModel;
 using Windows.UI.Xaml.Controls;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
@@ -23,7 +25,6 @@ namespace Urho.Samples.UWP
 				.Select((t, i) => new TypeInfo(t, $"{i + 1}. {t.Name}", ""))
 				.ToArray();
 			DataContext = this;
-			Loaded += (s, e) => SelectedGameType = GameTypes[0]; //water
 		}
 
 		public TypeInfo[] GameTypes { get; set; }
@@ -34,11 +35,11 @@ namespace Urho.Samples.UWP
 			set { RunGame(value); selectedGameType = value; }
 		}
 
-		public void RunGame(TypeInfo value)
+		public async void RunGame(TypeInfo value)
 		{
 			currentApplication?.Exit();
 			//at this moment, UWP supports assets only in pak files (see PackageTool)
-			currentApplication = UrhoSurface.Run(value.Type, new ApplicationOptions("Data"));
+			currentApplication = UrhoSurface.Run(value.Type, new ApplicationOptions("Data") { Width = (int)UrhoSurface.ActualWidth, Height = (int)UrhoSurface.ActualHeight});
 		}
 	}
 
