@@ -1,6 +1,6 @@
-# Microsoft Cognition Services
+# Microsoft Cognitive Services
 
-The sample uses Microsoft Cognition Services to obtain some 
+The sample uses Microsoft Cognitive Services to obtain some 
 environment information using HoloLens.
 
 The algorith is the following:
