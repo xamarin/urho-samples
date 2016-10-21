@@ -1,3 +1,5 @@
+UrhoSharp HoloLens Samples
+=======
 
 These samples use the [UrhoSharp.HoloLens](https://www.nuget.org/packages/UrhoSharp.HoloLens/) package 
 and show how you can use Urho to create Holographic applications with HoloLens.
@@ -5,6 +7,15 @@ and show how you can use Urho to create Holographic applications with HoloLens.
 ![Screenshot](Physics/Screenshots/Video2.gif) 
 
 The above is the [Physics](https://github.com/xamarin/urho-samples/blob/master/HoloLens/Physics/) sample in this directory.
+
+
+Quick start
+=======
+
+In order to start doing your holograms you can try our Visual Studio project template. It contains a basic scene
+and a few assets to get started:
+![vstemplate](https://habrastorage.org/files/dc7/595/7d9/dc75957d9f9c4e49acfeea9c6c25bd3e.gif)
+
 
 Making HoloLens applications with Urho is trivial, all you have to do is this:
 
