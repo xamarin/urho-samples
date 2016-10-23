@@ -4,9 +4,9 @@ UrhoSharp HoloLens Samples
 These samples use the [UrhoSharp.HoloLens](https://www.nuget.org/packages/UrhoSharp.HoloLens/) package 
 and show how you can use Urho to create Holographic applications with HoloLens.
 
-![Screenshot](Physics/Screenshots/Video2.gif) 
+![Screenshot](05_Physics/Screenshots/Video2.gif) 
 
-The above is the [Physics](https://github.com/xamarin/urho-samples/blob/master/HoloLens/Physics/) sample in this directory.
+The above is the [Physics](https://github.com/xamarin/urho-samples/blob/master/HoloLens/05_Physics/) sample in this directory.
 
 
 Quick start
@@ -61,4 +61,4 @@ public class MyHoloApp : HoloApplication
 }
 ```
 
-![Screenshot](CrowdNavigation/Screenshots/Video.gif) 
+![Screenshot](06_CrowdNavigation/Screenshots/Video.gif) 

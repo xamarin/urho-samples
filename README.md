@@ -43,7 +43,7 @@ structure a game.   It is our first game build with this, so be kind.
 This directory contains samples for running UrhoSharp on HoloLens and creating
 augmented reality applications.
 
-![Screenshot](HoloLens/Mutant/Screenshots/Video.gif) 
+![Screenshot](HoloLens/03_Mutant/Screenshots/Video.gif) 
 
 ## Structure
 

@@ -3,17 +3,19 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "01_HelloWorld", "HelloWorld\01_HelloWorld.csproj", "{CB6C6931-42F8-4962-9355-05970F06C84F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "01_HelloWorld", "01_HelloWorld\01_HelloWorld.csproj", "{CB6C6931-42F8-4962-9355-05970F06C84F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "02_Mutant", "Mutant\02_Mutant.csproj", "{2CE22E80-E880-4962-BD34-1A8036D3BC3A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "03_Mutant", "03_Mutant\03_Mutant.csproj", "{2CE22E80-E880-4962-BD34-1A8036D3BC3A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "04_Physics", "Physics\04_Physics.csproj", "{09B3CF23-6CF7-4356-9CAC-1AB2419510FB}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "05_Physics", "05_Physics\05_Physics.csproj", "{09B3CF23-6CF7-4356-9CAC-1AB2419510FB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "03_SpatialMapping", "SpatialMapping\03_SpatialMapping.csproj", "{AF3A464F-5E82-4FC6-BFBB-1105B2A5F0EF}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "04_SpatialMapping", "04_SpatialMapping\04_SpatialMapping.csproj", "{AF3A464F-5E82-4FC6-BFBB-1105B2A5F0EF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "05_CrowdNavigation", "CrowdNavigation\05_CrowdNavigation.csproj", "{2172873C-2749-49D2-A752-8A3FF6061F1C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "06_CrowdNavigation", "06_CrowdNavigation\06_CrowdNavigation.csproj", "{2172873C-2749-49D2-A752-8A3FF6061F1C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "06_CognitiveServices", "CognitiveServices\06_CognitiveServices.csproj", "{8FC7C2DD-78C9-4F51-B7E9-A10ADA359BFC}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "07_CognitiveServices", "07_CognitiveServices\07_CognitiveServices.csproj", "{8FC7C2DD-78C9-4F51-B7E9-A10ADA359BFC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "02_HelloWorldAdvanced", "02_HelloWorldAdvanced\02_HelloWorldAdvanced.csproj", "{0CE4BC40-4D5D-4F85-86C0-B4A21C22B4C8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -57,6 +59,12 @@ Global
 		{8FC7C2DD-78C9-4F51-B7E9-A10ADA359BFC}.Release|x86.ActiveCfg = Release|x86
 		{8FC7C2DD-78C9-4F51-B7E9-A10ADA359BFC}.Release|x86.Build.0 = Release|x86
 		{8FC7C2DD-78C9-4F51-B7E9-A10ADA359BFC}.Release|x86.Deploy.0 = Release|x86
+		{0CE4BC40-4D5D-4F85-86C0-B4A21C22B4C8}.Debug|x86.ActiveCfg = Debug|x86
+		{0CE4BC40-4D5D-4F85-86C0-B4A21C22B4C8}.Debug|x86.Build.0 = Debug|x86
+		{0CE4BC40-4D5D-4F85-86C0-B4A21C22B4C8}.Debug|x86.Deploy.0 = Debug|x86
+		{0CE4BC40-4D5D-4F85-86C0-B4A21C22B4C8}.Release|x86.ActiveCfg = Release|x86
+		{0CE4BC40-4D5D-4F85-86C0-B4A21C22B4C8}.Release|x86.Build.0 = Release|x86
+		{0CE4BC40-4D5D-4F85-86C0-B4A21C22B4C8}.Release|x86.Deploy.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
