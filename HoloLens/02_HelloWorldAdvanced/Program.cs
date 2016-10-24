@@ -42,18 +42,18 @@ namespace _07_HelloWorldWithCustomShaders
 			base.Start();
 
 			EnableGestureManipulation = true;
+			EnableGestureTapped = true;
 
 			Log.LogLevel = LogLevel.Warning;
 			Log.LogMessage += l => { Debug.WriteLine(l.Level + ":  " + l.Message); };
 
 			// Create a node for the Earth
 			earthNode = Scene.CreateChild();
-			earthNode.Position = new Vector3(0, 0, 1); //one meter away
-			earthNode.SetScale(0.2f); //20cm
-			earthNode.Rotation = new Quaternion(x: 0, y: 23.26f, z: 0); // Earth's obliquity is 23°26′
+			earthNode.Position = new Vector3(0, 0, 0.7f); //one meter away
+			earthNode.SetScale(0.15f); //20cm
 
-			DirectionalLight.Brightness = 0.5f;
-			DirectionalLight.Node.SetDirection(new Vector3(-1, 0, 0f));
+			DirectionalLight.Brightness = 1f;
+			DirectionalLight.Node.SetDirection(new Vector3(-1, 0, 0.3f));
 
 			var earth = earthNode.CreateComponent<Sphere>();
 			earthMaterial = ResourceCache.GetMaterial("Materials/Earth.xml");
@@ -73,13 +73,12 @@ namespace _07_HelloWorldWithCustomShaders
 		{
 			// Move clouds via CloudsOffset (defined in the material.xml and used in the PS)
 			cloudsOffset += 0.00005f;
-			earthMaterial.SetShaderParameter("CloudsOffset", new Vector2(cloudsOffset, cloudsOffset / 2));
+			earthMaterial.SetShaderParameter("CloudsOffset", new Vector2(cloudsOffset, cloudsOffset));
 			//NOTE: this could be done via SetShaderParameterAnimation
 		}
 
 		// For HL optical stabilization (optional)
 		public override Vector3 FocusWorldPoint => earthNode.WorldPosition;
-
 
 		public override void OnGestureManipulationStarted()
 		{
@@ -89,6 +88,11 @@ namespace _07_HelloWorldWithCustomShaders
 		public override void OnGestureManipulationUpdated(Vector3 relativeHandPosition)
 		{
 			earthNode.Position = relativeHandPosition + earthPosBeforManipulations;
+		}
+
+		public override void OnGestureDoubleTapped()
+		{
+			earthNode.Scale *= 1.2f;
 		}
 	}
 }

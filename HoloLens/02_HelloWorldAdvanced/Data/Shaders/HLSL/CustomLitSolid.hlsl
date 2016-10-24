@@ -2,7 +2,6 @@
 #include "Samplers.hlsl"
 #include "Transform.hlsl"
 #include "ScreenPos.hlsl"
-#include "Lighting.hlsl"
 
 // parameters for PS
 // defined in materials (see Materials/Earth.xml)
@@ -23,24 +22,20 @@ void PS(
 	float4 earthDiff = Sample2D(DiffMap, iTexCoord.xy);
 	float4 clouds = Sample2D(EnvMap, iTexCoord.xy + cCloudsOffset);
 	float4 night = Sample2D(EmissiveMap, iTexCoord.xy);
-	float3 specColor = cSpecColor.rgb * Sample2D(SpecMap, iTexCoord.xy).rgb;
+	float3 spec = Sample2D(SpecMap, iTexCoord.xy);
 	float3x3 tbn = float3x3(iTangent.xyz, float3(iTexCoord.zw, iTangent.w), iNormal);
 	float3 normal = normalize(mul(DecodeNormal(Sample2D(NormalMap, iTexCoord.xy)), tbn));
 
-	float3 lightDir;
-	float3 finalColor;
-
 	// Earth texture
-	finalColor = earthDiff.rgb;
+	float3 finalColor = earthDiff.rgb;
 	// Specular map
-	finalColor += specColor * cLightColor.a;
-	// Normal map
-	finalColor *= GetDiffuse(normal, iWorldPos.xyz, lightDir);
+	finalColor += cSpecColor.rgb * spec.rgb * cLightColor.a;
+	// Normal map & directional light (we use only this kind of light in this shader, no Ambient, Spot, etc)
+	finalColor *= saturate(dot(normal, cLightDirPS));
 	// Clouds:
-	finalColor += clouds.rgb * cCloudsFactor;
-	// Nigth lamps
-	finalColor += night.rgb;
-
+	finalColor += clouds.rgb * (dot(iNormal, cLightDirPS) + 0.5);
+	// Nigth lamps (only for the dark side)
+	finalColor += night.rgb * (1 - dot(iNormal, cLightDirPS));
 	// Return final color
 	oColor = float4(finalColor, 1.0);
 }
