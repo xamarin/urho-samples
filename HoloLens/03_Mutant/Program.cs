@@ -31,7 +31,7 @@ namespace Mutant
 		const string SwipeAni = "Mutant_Swipe.ani";
 		const string WalkAni = "Mutant_Walk.ani";
 
-		public MutantApp(string assets) : base(assets) { }
+		public MutantApp(ApplicationOptions opts) : base(opts) { }
 
 		protected override void Start()
 		{

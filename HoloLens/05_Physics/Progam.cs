@@ -5,6 +5,7 @@ using Urho;
 using Urho.Gui;
 using Urho.HoloLens;
 using Urho.Physics;
+using Urho.Resources;
 
 namespace Physics
 {
@@ -19,6 +20,7 @@ namespace Physics
 		Node environmentNode;
 		Material spatialMaterial;
 		Material bucketMaterial;
+		Material ballMaterial;
 		bool surfaceIsValid;
 		bool positionIsSelected;
 		Node bucketNode;
@@ -29,7 +31,7 @@ namespace Physics
 		readonly Color validPositionColor = Color.Gray;
 		readonly Color invalidPositionColor = Color.Red;
 
-		public Progam(string assets) : base(assets) { }
+		public Progam(ApplicationOptions assets) : base(assets) { }
 
 		protected override async void Start()
 		{
@@ -63,6 +65,8 @@ namespace Physics
 			bucketNode.CreateComponent<RigidBody>();
 			var shape = bucketNode.CreateComponent<CollisionShape>();
 			shape.SetTriangleMesh(bucketModel.Model, 0, Vector3.One, Vector3.Zero, Quaternion.Identity);
+
+			ballMaterial = Material.FromColor(new Color(Randoms.Next(0.2f, 1f), Randoms.Next(0.2f, 1f), Randoms.Next(0.2f, 1f)));
 
 			// Material for spatial surfaces
 			spatialMaterial = new Material();
@@ -122,7 +126,7 @@ namespace Physics
 
 			var ball = ballNode.CreateComponent<StaticModel>();
 			ball.Model = CoreAssets.Models.Sphere;
-			ball.SetMaterial(Material.FromColor(new Color(Randoms.Next(0.2f, 1f), Randoms.Next(0.2f, 1f), Randoms.Next(0.2f, 1f))));
+			ball.SetMaterial(ballMaterial);
 			ball.ViewMask = 0x80000000; //hide from raycasts
 
 			var ballRigidBody = ballNode.CreateComponent<RigidBody>();

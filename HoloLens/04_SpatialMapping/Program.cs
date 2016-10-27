@@ -20,7 +20,7 @@ namespace SpatialMapping
 		Vector3 envPositionBeforeManipulations;
 		Node environmentNode;
 
-		public SpatialMappingApp(string assets) : base(assets) { }
+		public SpatialMappingApp(ApplicationOptions opts) : base(opts) { }
 
 		protected override async void Start()
 		{

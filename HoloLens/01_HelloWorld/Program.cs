@@ -4,6 +4,7 @@ using Urho;
 using Urho.Actions;
 using Urho.HoloLens;
 using Urho.Shapes;
+using Urho.Resources;
 
 namespace HelloWorld
 {
@@ -18,7 +19,7 @@ namespace HelloWorld
 	{
 		Node earthNode;
 
-		public HelloWorldApplication(string assets) : base(assets) { }
+		public HelloWorldApplication(ApplicationOptions opts) : base(opts) { }
 
 		protected override void Start()
 		{

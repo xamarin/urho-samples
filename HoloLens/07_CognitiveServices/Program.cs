@@ -37,7 +37,7 @@ namespace CognitiveServices
 		bool inited;
 		bool busy;
 
-		public HelloWorldApplication(string assets) : base(assets) { }
+		public HelloWorldApplication(ApplicationOptions opts) : base(opts) { }
 
 		protected override async void Start()
 		{

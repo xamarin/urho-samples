@@ -5,6 +5,7 @@ using Urho;
 using Urho.Actions;
 using Urho.HoloLens;
 using Urho.Shapes;
+using Urho.Resources;
 
 namespace _07_HelloWorldWithCustomShaders
 {
@@ -35,7 +36,7 @@ namespace _07_HelloWorldWithCustomShaders
 		Material earthMaterial;
 		float cloudsOffset;
 
-		public HelloWorldApplication(string assets) : base(assets) { }
+		public HelloWorldApplication(ApplicationOptions opts) : base(opts) { }
 
 		protected override async void Start()
 		{

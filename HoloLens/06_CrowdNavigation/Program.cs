@@ -35,7 +35,7 @@ namespace CrowdNavigation
 		const string IdleAnimation = @"Animations/Mutant_Idle0.ani";
 		const string DeathAnimation = @"Animations/Mutant_Death.ani";
 
-		public CrowdApp(string assets) : base(assets) { }
+		public CrowdApp(ApplicationOptions opts) : base(opts) { }
 
 		protected override async void Start()
 		{
