@@ -27,18 +27,17 @@ using Urho.HoloLens;
 using Urho.Shapes;
 using Windows.ApplicationModel.Core;
 
-// In your AppViewSource.cs:
-public IFrameworkView CreateView()
+internal class Program
 {
-    return UrhoAppView.Create<MyHoloApp>("MyData"); // pass null if 
-                                   // you just need the core assets
+    [MTAThread]
+    static void Main() => CoreApplication.Run(
+        new UrhoAppViewSource<HelloWorldApplication>(
+            new ApplicationOptions("Data")));
 }
 
 public class MyHoloApp : HoloApplication
 {
-    Node boxNode;
-
-    public HelloWorldApplication(string assets) : base(assets) { }
+    public MyHoloApp(ApplicationOptions opts) : base(opts) { }
 
     protected override async void Start()
     {
