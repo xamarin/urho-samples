@@ -12,7 +12,7 @@ namespace CrowdNavigation
 	internal class Program
 	{
 		[MTAThread]
-		static void Main() => CoreApplication.Run(new UrhoAppViewSource<CrowdApp>("Data"));
+		static void Main() => CoreApplication.Run(new UrhoAppViewSource<CrowdApp>(new ApplicationOptions("Data")));
 	}
 
 

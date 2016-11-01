@@ -12,7 +12,8 @@ namespace Physics
 	internal class Program
 	{
 		[MTAThread]
-		static void Main() => CoreApplication.Run(new UrhoAppViewSource<Progam>("Data"));
+		static void Main() => CoreApplication.Run(
+			new UrhoAppViewSource<Progam>(new ApplicationOptions("Data")));
 	}
 
 	public class Progam : HoloApplication

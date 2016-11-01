@@ -10,7 +10,7 @@
 	<texture unit="emissive" name="Textures/Earth_Night.jpg" />
 	
 	<!--parameters-->
-	<parameter name="SpecColor" value="0.5 0.5 0.5 1" />
-	<parameter name="CloudsFactor" value="0.8" />
+	<parameter name="SpecColor" value="0.2 0.2 0.2 0.7" />
+	<parameter name="CloudsFactor" value="1" />
 	<parameter name="CloudsOffset" value="0 0" />
 </material>

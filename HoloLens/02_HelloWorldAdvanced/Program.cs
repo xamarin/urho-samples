@@ -5,7 +5,6 @@ using Urho;
 using Urho.Actions;
 using Urho.HoloLens;
 using Urho.Shapes;
-using Urho.Resources;
 
 namespace _07_HelloWorldWithCustomShaders
 {
@@ -18,15 +17,7 @@ namespace _07_HelloWorldWithCustomShaders
 		/// Defines the entry point of the application.
 		/// </summary>
 		[MTAThread]
-		private static void Main()
-		{
-			CoreApplication.Run(new AppViewSource());
-		}
-
-		class AppViewSource : IFrameworkViewSource
-		{
-			public IFrameworkView CreateView() => UrhoAppView.Create<HelloWorldApplication>("Data");
-		}
+		static void Main() => CoreApplication.Run(new UrhoAppViewSource<HelloWorldApplication>(new ApplicationOptions("Data")));
 	}
 
 	public class HelloWorldApplication : HoloApplication
@@ -50,11 +41,11 @@ namespace _07_HelloWorldWithCustomShaders
 
 			// Create a node for the Earth
 			earthNode = Scene.CreateChild();
-			earthNode.Position = new Vector3(0, 0, 0.7f); //one meter away
-			earthNode.SetScale(0.15f); //20cm
+			earthNode.Position = new Vector3(0, 0, 1.5f);
+			earthNode.SetScale(0.3f);
 
 			DirectionalLight.Brightness = 1f;
-			DirectionalLight.Node.SetDirection(new Vector3(-1, 0, 0.3f));
+			DirectionalLight.Node.SetDirection(new Vector3(-1, 0, 0.5f));
 
 			var earth = earthNode.CreateComponent<Sphere>();
 			earthMaterial = ResourceCache.GetMaterial("Materials/Earth.xml");
@@ -74,7 +65,7 @@ namespace _07_HelloWorldWithCustomShaders
 		{
 			// Move clouds via CloudsOffset (defined in the material.xml and used in the PS)
 			cloudsOffset += 0.00005f;
-			earthMaterial.SetShaderParameter("CloudsOffset", new Vector2(cloudsOffset, cloudsOffset));
+			earthMaterial.SetShaderParameter("CloudsOffset", new Vector2(cloudsOffset, 0));
 			//NOTE: this could be done via SetShaderParameterAnimation
 		}
 

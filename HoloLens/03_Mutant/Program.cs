@@ -10,7 +10,8 @@ namespace Mutant
 	internal class Program
 	{
 		[MTAThread]
-		static void Main() => CoreApplication.Run(new UrhoAppViewSource<MutantApp>("Data"));
+		static void Main() => CoreApplication.Run(
+			new UrhoAppViewSource<MutantApp>(new ApplicationOptions("Data")));
 	}
 
 
@@ -39,9 +40,12 @@ namespace Mutant
 
 			EnableGestureManipulation = true;
 
+			Zone.AmbientColor = new Color(0.8f, 0.8f, 0.8f);
+			DirectionalLight.Brightness = 1;
+
 			mutantNode = Scene.CreateChild();
-			mutantNode.Position = new Vector3(0, 0, 1f);
-			mutantNode.SetScale(0.1f);
+			mutantNode.Position = new Vector3(0, 0, 2f);
+			mutantNode.SetScale(0.2f);
 			var mutant = mutantNode.CreateComponent<AnimatedModel>();
 
 			mutant.Model = ResourceCache.GetModel("Models/Mutant.mdl");
@@ -53,8 +57,8 @@ namespace Mutant
 				{
 					//play animations using Cortana
 					{"idle", () => PlayAnimation(IdleAni)},
-					{"kill", () => PlayAnimation(KillAni)},
-					{"hip hop", () => PlayAnimation(HipHopAni)},
+					{"die", () => PlayAnimation(KillAni)},
+					{"dance", () => PlayAnimation(HipHopAni)},
 					{"jump", () => PlayAnimation(JumpAni)},
 					{"jump attack", () => PlayAnimation(JumpAttack)},
 					{"kick", () => PlayAnimation(KickAni)},
@@ -67,7 +71,23 @@ namespace Mutant
 					{"smaller", () => mutantNode.ScaleNode(0.8f)},
 					{"increase the brightness", () => IncreaseBrightness(1.2f)},
 					{"decrease the brightness", () => IncreaseBrightness(0.8f)},
+					{"look at me", LookAtMe },
+					{"turn around", () => mutantNode.RunActions(new RotateBy(1f, 0, 180, 0))},
+					{"help", Help }
 				});
+		}
+
+		void LookAtMe()
+		{
+			mutantNode.Rotation = new Quaternion(0, -LeftCamera.Node.Rotation.ToEulerAngles().Y, 0);
+			//or mutantNode.LookAt(...);
+		}
+
+		async void Help()
+		{
+			await TextToSpeech("Available commands are:");
+			foreach (var cortanaCommand in CortanaCommands.Keys)
+				await TextToSpeech(cortanaCommand);
 		}
 
 		void IncreaseBrightness(float byValue)
@@ -81,9 +101,9 @@ namespace Mutant
 			mutantNode.RemoveAllActions();
 
 			if (file == WalkAni)
-				mutantNode.RunActions(new RepeatForever(new MoveBy(1f, new Vector3(0, 0, -mutantNode.Scale.X))));
+				mutantNode.RunActions(new RepeatForever(new MoveBy(1f, mutantNode.Rotation * new Vector3(0, 0, -mutantNode.Scale.X))));
 			else if (file == RunAni)
-				mutantNode.RunActions(new RepeatForever(new MoveBy(1f, new Vector3(0, 0, -mutantNode.Scale.X * 2))));
+				mutantNode.RunActions(new RepeatForever(new MoveBy(1f, mutantNode.Rotation * new Vector3(0, 0, -mutantNode.Scale.X * 2))));
 
 			animation.StopAll(0.2f);
 			animation.Play("Animations/" + file, 0, looped, 0.2f);
@@ -108,7 +128,7 @@ namespace Mutant
 
 		public override void OnGestureManipulationUpdated(Vector3 relativeHandPosition)
 		{
-			mutantNode.Position = relativeHandPosition + monsterPositionBeforeManipulations;
+			mutantNode.Position = relativeHandPosition * 2 + monsterPositionBeforeManipulations;
 		}
 	}
 }

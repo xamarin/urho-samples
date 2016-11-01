@@ -22,11 +22,11 @@ namespace CognitiveServices
 	internal class Program
 	{
 		[MTAThread]
-		static void Main() => CoreApplication.Run(new UrhoAppViewSource<HelloWorldApplication>());
+		static void Main() => CoreApplication.Run(new UrhoAppViewSource<CognitiveServicesApp>());
 	}
 
 
-	public class HelloWorldApplication : HoloApplication
+	public class CognitiveServicesApp : HoloApplication
 	{
 		//the key can be obtained for free here: https://www.microsoft.com/cognitive-services/en-us/computer-vision-api
 		//click on "Get started for free"
@@ -36,9 +36,9 @@ namespace CognitiveServices
 		MediaCapture mediaCapture;
 		bool inited;
 		bool busy;
-		bool withPreview = true;
+		bool withPreview;
 
-		public HelloWorldApplication(ApplicationOptions opts) : base(opts) { }
+		public CognitiveServicesApp(ApplicationOptions opts) : base(opts) { }
 
 		protected override async void Start()
 		{

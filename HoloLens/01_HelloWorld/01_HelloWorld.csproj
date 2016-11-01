@@ -55,8 +55,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Data\Textures\Earth.jpg" />
-    <Content Include="Data\Materials\Earth.xml" />
-    <Content Include="Data\Textures\License.txt" />
     <Content Include="Data\Textures\Moon.jpg" />
     <Content Include="Properties\Default.rd.xml" />
   </ItemGroup>
