@@ -5,8 +5,8 @@ The sample consists of two applications:
 2. Client - Xamarin.Forms application for Android, iOS and UWP. Displays Scanner's data.
 
 The connection between both apps is established using TCP\IP where the Client is the host and shares
-it's IP via QR code. Scanner sends continually sends spatial mapping data and current position, also it allows 
-user to manually mark smart devices (e.g. wi-fi bulbs) in order to control them in the Client app. 
+it's IP via QR code. Scanner continuously sends spatial mapping data. Also, it allows 
+user to manually mark smart devices (e.g. wi-fi bulbs) in order to be able to control them in the Client app. 
 
 ![Screenshot](Screenshots/Screenshot.gif)
 
