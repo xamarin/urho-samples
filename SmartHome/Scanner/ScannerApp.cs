@@ -96,8 +96,7 @@ namespace SmartHome.HoloLens
 		{
 			StopSpatialMapping();
 			await TextToSpeech("Disconnected");
-			while (!await ConnectAsync())
-				await environmentNode.RunActionsAsync(new DelayTime(2));
+			while (!await ConnectAsync()) { }
 		}
 
 		protected override void OnUpdate(float timeStep)
