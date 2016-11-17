@@ -14,15 +14,19 @@ namespace SmartHome
 		async void Initialize()
 		{
 			var ip = await ScannerConnection.GetLocalIp() ?? "ERROR";
+			var qrSize = (int)(Height * 0.7f);
+
 			var barcode = new ZXingBarcodeImageView
 			{
-				HorizontalOptions = LayoutOptions.FillAndExpand,
-				VerticalOptions = LayoutOptions.FillAndExpand,
+				WidthRequest = qrSize,
+				HeightRequest = qrSize,
+				HorizontalOptions = LayoutOptions.Center,
+				VerticalOptions = LayoutOptions.Center,
 				BarcodeFormat = ZXing.BarcodeFormat.QR_CODE,
 				BarcodeOptions =
 					{
-						Width = 640,
-						Height = 640,
+						Width = qrSize,
+						Height = qrSize,
 					},
 				BarcodeValue = ip,
 			};
@@ -30,6 +34,7 @@ namespace SmartHome
 			Content = new StackLayout
 			{
 				VerticalOptions = LayoutOptions.Center,
+				HorizontalOptions = LayoutOptions.Center,
 				Children =
 				{
 					new Label
