@@ -1,0 +1,16 @@
+﻿{
+  "dependencies": {
+    "Microsoft.NETCore.UniversalWindowsPlatform": "5.0.0",
+    "Newtonsoft.Json": "9.0.1",
+    "rda.SocketsForPCL": "2.0.2",
+    "UrhoSharp.HoloLens": "1.1.231",
+    "ZXing.Net.Mobile": "2.1.47"
+  },
+  "frameworks": {
+    "uap10.0": {}
+  },
+  "runtimes": {
+    "win10-x86": {},
+    "win10-x86-aot": {}
+  }
+}
