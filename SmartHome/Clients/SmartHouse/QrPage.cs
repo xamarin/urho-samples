@@ -14,7 +14,7 @@ namespace SmartHome
 		async void Initialize()
 		{
 			var ip = await ScannerConnection.GetLocalIp() ?? "ERROR";
-			var qrSize = (int)(Height * 0.7f);
+			var qrSize = 320;
 
 			var barcode = new ZXingBarcodeImageView
 			{
