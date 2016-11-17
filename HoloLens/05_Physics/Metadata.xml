@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<SampleMetadata>
+        <ID>a82d1b0b-0120-4e76-8eee-27d008f9e5ae</ID>
+        <IsFullApplication>false</IsFullApplication>
+        <HideZip>true</HideZip>
+		<Level>Beginning</Level>
+        <Tags>HoloLens, Graphics, Games, UrhoSharp</Tags>
+        <SupportedPlatforms>HoloLens</SupportedPlatforms>
+        <LicenseRequirement>Indie</LicenseRequirement>
+        <Gallery>true</Gallery>
+        <Brief>Adds some physics to holograms.</Brief>
+</SampleMetadata>
+

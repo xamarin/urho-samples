@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<SampleMetadata>
+        <ID>7eccef97-a112-4af3-969d-8e96dc3d6ca2</ID>
+        <IsFullApplication>false</IsFullApplication>
+        <HideZip>true</HideZip><Level>Beginning</Level>
+        <Tags>HoloLens, Graphics, Games, UrhoSharp</Tags>
+        <SupportedPlatforms>UWP, HoloLens</SupportedPlatforms>
+        <LicenseRequirement>Indie</LicenseRequirement>
+        <Gallery>true</Gallery>
+        <Brief>Hello World sample, a hologram in less than 50 lines of code.</Brief>
+</SampleMetadata>
+

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<SampleMetadata>
+        <ID>4b6994aa-0953-4764-a3d8-931408651fa9</ID>
+        <IsFullApplication>false</IsFullApplication>
+        <HideZip>true</HideZip>
+		<Level>Beginning</Level>
+        <Tags>HoloLens, Graphics, Games, UrhoSharp</Tags>
+        <SupportedPlatforms>HoloLens</SupportedPlatforms>
+        <LicenseRequirement>Indie</LicenseRequirement>
+        <Gallery>true</Gallery>
+        <Brief>Shows how to display the result of the Spatial Mapping process.</Brief>
+</SampleMetadata>
+

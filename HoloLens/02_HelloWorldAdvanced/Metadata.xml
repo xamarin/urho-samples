@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<SampleMetadata>
+        <ID>d8dbe325-0d2c-4fc2-8e16-e490c50ebb0b</ID>
+        <IsFullApplication>false</IsFullApplication>
+        <HideZip>true</HideZip>
+		<Level>Beginning</Level>
+        <Tags>HoloLens, Graphics, Games, UrhoSharp</Tags>
+        <SupportedPlatforms>UWP, HoloLens</SupportedPlatforms>
+        <LicenseRequirement>Indie</LicenseRequirement>
+        <Gallery>true</Gallery>
+        <Brief>More advanced Hello World sample, advanced materials, custom shaders and techniques.</Brief>
+</SampleMetadata>
+
