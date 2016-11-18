@@ -12,6 +12,8 @@ user to manually mark smart devices (e.g. wi-fi bulbs) in order to be able to co
 
 Full video is here: [https://www.youtube.com/watch?v=OnDbRScYuCo](https://www.youtube.com/watch?v=OnDbRScYuCo)
 
+![Screenshot](Screenshots/Screenshot2.png)
+
 Third Party Libraries:
 =======
 - [Sockets Plugin for Xamarin](https://github.com/rdavisau/sockets-for-pcl) - TCP/IP transport
