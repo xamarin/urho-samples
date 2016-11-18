@@ -32,17 +32,11 @@ namespace SmartHome.HoloLens
 			environmentNode = Scene.CreateChild();
 			EnableGestureTapped = true;
 
-
 			//material = Material.FromColor(Color.Gray); -- debug mode
 			material = Material.FromColor(Color.Transparent, true);
 
 			await RegisterCortanaCommands(new Dictionary<string, Action> {
-				{ "stop spatial mapping", () =>
-				{
-					StopSpatialMapping();
-					TextToSpeech("Ok");
-				}},
-				{ "add cursor", () => cursor = Scene.CreateComponent<SpatialCursor>() }
+				{ "stop spatial mapping", StopSpatialMapping}
 			});
 
 			while (!await ConnectAsync()) { }
@@ -85,12 +79,12 @@ namespace SmartHome.HoloLens
 				InvokeOnMain(() =>
 					{
 						textNode.Remove();
+						cursor = Scene.CreateComponent<SpatialCursor>();
 					});
 				return true;
 			}
 			return false;
 		}
-
 
 		async void ClientConnection_Disconnected()
 		{
