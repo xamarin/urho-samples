@@ -13,7 +13,7 @@ namespace Shared
 	{
 		public event Action<BaseDto> ObjectDeserialized;
 
-		public void ReadStream(Stream stream, CancellationToken token)
+		public void ReadFromStream(Stream stream, CancellationToken token)
 		{
 			while (!token.IsCancellationRequested)
 			{
@@ -22,7 +22,7 @@ namespace Shared
 			}
 		}
 
-		public void Write(Stream stream, BaseDto dto)
+		public void WriteToStream(Stream stream, BaseDto dto)
 		{
 			var bytes = Serialize(dto);
 			stream.Write(bytes, 0, bytes.Length);
@@ -35,6 +35,14 @@ namespace Shared
 			{
 				Serializer.SerializeWithLengthPrefix(ms, dto, PrefixStyle.Base128, fieldNumber: 1);
 				return ms.ToArray();
+			}
+		}
+
+		public T Deserialize<T>(byte[] data) where T : BaseDto
+		{
+			using (var ms = new MemoryStream(data))
+			{
+				return Serializer.DeserializeWithLengthPrefix<T>(ms, PrefixStyle.Base128, fieldNumber: 1);
 			}
 		}
 	}

@@ -1,4 +1,5 @@
-﻿using System.Runtime.InteropServices;
+﻿using System.Collections.Generic;
+using System.Runtime.InteropServices;
 using ProtoBuf;
 
 namespace Shared
@@ -7,6 +8,7 @@ namespace Shared
 	[ProtoInclude(100, typeof(SurfaceDto))]
 	[ProtoInclude(200, typeof(CurrentPositionDto))]
 	[ProtoInclude(300, typeof(BulbAddedDto))]
+	[ProtoInclude(400, typeof(ApartmentsDto))]
 	public class BaseDto { }
 
 	[ProtoContract(ImplicitFields = ImplicitFields.AllPublic)]
@@ -31,6 +33,13 @@ namespace Shared
 	public class BulbAddedDto : BaseDto
 	{
 		public Vector3Dto Position { get; set; }
+	}
+
+	[ProtoContract(ImplicitFields = ImplicitFields.AllPublic)]
+	public class ApartmentsDto : BaseDto
+	{
+		public Dictionary<string, SurfaceDto> Surfaces { get; set; } = new Dictionary<string, SurfaceDto>();
+		public List<Vector3Dto> Bulbs { get; set; } = new List<Vector3Dto>();
 	}
 
 

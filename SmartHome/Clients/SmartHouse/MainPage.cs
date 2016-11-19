@@ -1,8 +1,10 @@
 ﻿using System;
+using System.Threading.Tasks;
 using Shared;
 using Urho;
 using Urho.Forms;
 using Xamarin.Forms;
+using Application = Xamarin.Forms.Application;
 using Color = Xamarin.Forms.Color;
 
 namespace SmartHome
@@ -11,13 +13,16 @@ namespace SmartHome
 	{
 		readonly StackLayout bulbsStack;
 		readonly UrhoSurface urhoSurface;
+		readonly ApartmentsDto apartments;
+		readonly INetworkSerializer serializer;
 		UrhoApp app;
 
-		public MainPage()
+		public MainPage(ScannerConnection connection, bool offlineMode)
 		{
+			serializer = new ProtobufNetworkSerializer();
 			NavigationPage.SetHasNavigationBar(this, false);
 
-			Grid grid = new Grid();
+			var grid = new Grid();
 			grid.ColumnDefinitions.Add(new ColumnDefinition {Width = new GridLength(1, GridUnitType.Star)});
 			grid.ColumnDefinitions.Add(new ColumnDefinition {Width = new GridLength(4, GridUnitType.Star)});
 
@@ -25,30 +30,58 @@ namespace SmartHome
 			grid.Children.Add(bulbsStack);
 
 			urhoSurface = new UrhoSurface
-			{
-				BackgroundColor = Color.Black,
-				VerticalOptions = LayoutOptions.FillAndExpand
-			};
+				{
+					BackgroundColor = Color.Black,
+					VerticalOptions = LayoutOptions.FillAndExpand
+				};
 
 			var stack = new StackLayout
-			{
-				VerticalOptions = LayoutOptions.FillAndExpand,
-				Children = {urhoSurface}
-			};
+				{
+					VerticalOptions = LayoutOptions.FillAndExpand,
+					Children = {urhoSurface}
+				};
 
 			grid.Children.Add(stack);
 			Grid.SetColumn(stack, 1);
-
 			Content = grid;
 
-			ScannerConnection.RegisterFor<SurfaceDto>(OnSurfaceReceived);
-			ScannerConnection.RegisterFor<BulbAddedDto>(OnBulbAdded);
-			ScannerConnection.RegisterFor<CurrentPositionDto>(OnCurrentPositionUpdated);
+			if (!offlineMode)
+			{
+				apartments = new ApartmentsDto();
+				connection.RegisterFor<SurfaceDto>(OnSurfaceReceived);
+				connection.RegisterFor<BulbAddedDto>(OnBulbAdded);
+				connection.RegisterFor<CurrentPositionDto>(OnCurrentPositionUpdated);
+
+				Start();
+			}
+			else
+			{
+				apartments = serializer.Deserialize<ApartmentsDto>(
+					(byte[])Application.Current.Properties[nameof(ApartmentsDto)]);
+			}
+		}
+
+		async void Start()
+		{
+			while (true)
+			{
+				lock (apartments)
+					Application.Current.Properties[nameof(ApartmentsDto)] = serializer.Serialize(apartments);
+				await Application.Current.SavePropertiesAsync();
+				await Task.Delay(3000);
+			}
 		}
 
 		void OnBulbAdded(BulbAddedDto dto)
 		{
-			Urho.Application.InvokeOnMain(() => app?.AddBulb(new Vector3(dto.Position.X, dto.Position.Y, dto.Position.Z)));
+			lock (apartments)
+				apartments.Bulbs.Add(dto.Position);
+			AddBulb(dto.Position);
+		}
+
+		void AddBulb(Vector3Dto position)
+		{
+			Urho.Application.InvokeOnMain(() => app?.AddBulb(new Vector3(position.X, position.Y, position.Z)));
 			Device.BeginInvokeOnMainThread(() =>
 			{
 				int index = bulbsStack.Children.Count;
@@ -99,12 +132,21 @@ namespace SmartHome
 
 		void OnSurfaceReceived(SurfaceDto surface)
 		{
+			lock (apartments)
+				apartments.Surfaces[surface.Id] = surface;
 			Urho.Application.InvokeOnMain(() => app?.AddOrUpdateSurface(surface));
 		}
 
 		async void StartUrhoApp()
 		{
 			app = await urhoSurface.Show<UrhoApp>(new Urho.ApplicationOptions(assetsFolder: "Data"));
+			Urho.Application.InvokeOnMain(() =>
+				{
+					foreach (var surface in apartments.Surfaces)
+						app.AddOrUpdateSurface(surface.Value);
+					foreach (var bulb in apartments.Bulbs)
+						AddBulb(bulb);
+				});
 		}
 	}
 }

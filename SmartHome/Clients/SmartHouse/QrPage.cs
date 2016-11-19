@@ -1,4 +1,6 @@
-﻿using Xamarin.Forms;
+﻿using System;
+using Shared;
+using Xamarin.Forms;
 using ZXing.Net.Mobile.Forms;
 
 namespace SmartHome
@@ -14,8 +16,15 @@ namespace SmartHome
 		async void Initialize()
 		{
 			var ip = await ScannerConnection.GetLocalIp() ?? "ERROR";
-			var qrSize = 320;
 
+			Button offlineModeBtn = new Button
+				{
+					Text = "Offline mode",
+					BackgroundColor = new Color(0.8f, 0.8f, 0.8f)
+				};
+			offlineModeBtn.Clicked += OnOfflineModeClicked;
+
+			var qrSize = 320;
 			var barcode = new ZXingBarcodeImageView
 			{
 				WidthRequest = qrSize,
@@ -31,7 +40,7 @@ namespace SmartHome
 				BarcodeValue = ip,
 			};
 			BackgroundColor = Color.White;
-			Content = new StackLayout
+			var stack = new StackLayout
 			{
 				VerticalOptions = LayoutOptions.Center,
 				HorizontalOptions = LayoutOptions.Center,
@@ -43,12 +52,24 @@ namespace SmartHome
 						HorizontalTextAlignment = TextAlignment.Center,
 						Text = $"Open SmartHome for HoloLens companion app and\nscan this qr code in order to be connected ({ip}):"
 					},
-					barcode
+					barcode,
 				}
 			};
 
-			await ScannerConnection.WaitForCompanion();
-			await Navigation.PushAsync(new MainPage());
+			Content = stack;
+			if (Application.Current.Properties.ContainsKey(nameof(ApartmentsDto)))
+			{
+				stack.Children.Add(offlineModeBtn);
+			}
+
+			var connection = new ScannerConnection();
+			await connection.WaitForCompanion();
+			await Navigation.PushAsync(new MainPage(connection, false));
+		}
+
+		async void OnOfflineModeClicked(object sender, EventArgs e)
+		{
+			await Navigation.PushAsync(new MainPage(null, true));
 		}
 	}
 }

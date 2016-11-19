@@ -80,13 +80,13 @@ namespace SmartHome.HoloLens
 						{
 							foreach (var surface in surfacesToSend)
 							{
-								networkSerializer.Write(socketClient.WriteStream, dtoRealTimeCallback());
-								networkSerializer.Write(socketClient.WriteStream, surface);
+								networkSerializer.WriteToStream(socketClient.WriteStream, dtoRealTimeCallback());
+								networkSerializer.WriteToStream(socketClient.WriteStream, surface);
 							}
 						}
 						else
 						{
-							networkSerializer.Write(socketClient.WriteStream, dtoRealTimeCallback());
+							networkSerializer.WriteToStream(socketClient.WriteStream, dtoRealTimeCallback());
 						}
 						await Task.Delay(20);
 					}

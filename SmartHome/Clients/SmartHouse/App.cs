@@ -8,7 +8,6 @@ namespace SmartHome
 		{
 			// The root page of your application
 			MainPage = new NavigationPage(new QrPage());
-			//MainPage = new MainPage();
 		}
 
 		protected override void OnStart ()

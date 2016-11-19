@@ -4,17 +4,19 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Shared;
 using Sockets.Plugin;
+using Sockets.Plugin.Abstractions;
 
 namespace SmartHome
 {
-	public static class ScannerConnection
+	public class ScannerConnection
 	{
 		const int Port = 5206;
-		static INetworkSerializer networkSerializer;
-		static TcpSocketListener listener;
-		static Dictionary<Type, Action<object>> callbacks = new Dictionary<Type, Action<object>>();
+		INetworkSerializer networkSerializer;
+		TcpSocketListener listener;
+		ITcpSocketClient client;
+		Dictionary<Type, Action<object>> callbacks = new Dictionary<Type, Action<object>>();
 
-		public static async Task WaitForCompanion()
+		public async Task WaitForCompanion()
 		{
 			networkSerializer = new ProtobufNetworkSerializer();
 			var tcs = new TaskCompletionSource<bool>();
@@ -23,10 +25,10 @@ namespace SmartHome
 			{
 				networkSerializer.ObjectDeserialized += SimpleNetworkSerializerObjectDeserialized;
 				tcs.TrySetResult(true);
-				var client = e.SocketClient;
+				client = e.SocketClient;
 				try
 				{
-					networkSerializer.ReadStream(client.ReadStream);
+					networkSerializer.ReadFromStream(client.ReadStream);
 				}
 				catch (Exception exc)
 				{
@@ -37,7 +39,19 @@ namespace SmartHome
 			await tcs.Task;
 		}
 
-		public static void RegisterFor<T>(Action<T> callback)
+		public void Send(BaseDto dto)
+		{
+			try
+			{
+				networkSerializer.WriteToStream(client.WriteStream, dto);
+			}
+			catch (Exception exc)
+			{
+				//show error?
+			}
+		}
+
+		public void RegisterFor<T>(Action<T> callback)
 		{
 			lock (callbacks)
 			{
@@ -52,7 +66,7 @@ namespace SmartHome
 			return interfaces.Last(i => !i.IsLoopback && i.IsUsable).IpAddress + ":" + Port;
 		}
 
-		static void SimpleNetworkSerializerObjectDeserialized(object obj)
+		void SimpleNetworkSerializerObjectDeserialized(object obj)
 		{
 			if (obj == null)
 				return;

@@ -32,8 +32,8 @@ namespace SmartHome.HoloLens
 			environmentNode = Scene.CreateChild();
 			EnableGestureTapped = true;
 
-			//material = Material.FromColor(Color.Gray); -- debug mode
-			material = Material.FromColor(Color.Transparent, true);
+			material = Material.FromColor(Color.Gray); //-- debug mode
+			//material = Material.FromColor(Color.Transparent, true);
 
 			await RegisterCortanaCommands(new Dictionary<string, Action> {
 				{ "stop spatial mapping", StopSpatialMapping}

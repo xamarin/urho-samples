@@ -49,7 +49,7 @@ namespace SmartHome
 			environmentNode.SetScale(0.1f);
 
 			humanNode = environmentNode.CreateChild();
-			humanNode.Position = new Vector3(0, -0.5f, 0);
+			humanNode.Position = new Vector3(0, -1f, 0);
 			humanNode.SetScale(1f);
 			var model = humanNode.CreateComponent<StaticModel>();
 			model.Model = ResourceCache.GetModel("Jack.mdl");
@@ -60,6 +60,8 @@ namespace SmartHome
 			pitch = 55;
 			cameraNode.Position = new Vector3(0.6f, 1.3f, -0.4f);
 			cameraNode.Rotation = new Quaternion(pitch, yaw, 0);
+
+			lightNode.SetDirection(new Vector3(-1, -1f, 0));
 		}
 
 		public void AddOrUpdateSurface(SurfaceDto surface)
@@ -125,7 +127,6 @@ namespace SmartHome
 
 		protected override void OnUpdate(float timeStep)
 		{
-			lightNode.SetDirection(cameraNode.Direction + new Vector3(0, 0.1f, 0));
 
 			if (Input.NumTouches > 0)
 			{

@@ -7,8 +7,9 @@ namespace Shared
 	public interface INetworkSerializer
 	{
 		event Action<BaseDto> ObjectDeserialized;
-		void ReadStream(Stream stream, CancellationToken token = default(CancellationToken));
-		void Write(Stream stream, BaseDto dto);
+		void ReadFromStream(Stream stream, CancellationToken token = default(CancellationToken));
+		void WriteToStream(Stream stream, BaseDto dto);
 		byte[] Serialize(BaseDto dto);
+		T Deserialize<T>(byte[] currentProperty) where T : BaseDto;
 	}
 }
