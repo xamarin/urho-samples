@@ -15,6 +15,7 @@ namespace SmartHome.HoloLens
 		Node environmentNode;
 		SpatialCursor cursor;
 		Material material;
+		Node cubeNode;
 		ClientConnection clientConnection;
 
 		public ScannerApp(ApplicationOptions opts) : base(opts) { }
@@ -25,6 +26,7 @@ namespace SmartHome.HoloLens
 			clientConnection = new ClientConnection();
 			clientConnection.Disconnected += ClientConnection_Disconnected;
 			clientConnection.RegisterForRealtimeUpdate(GetCurrentPositionDto);
+			clientConnection.RegisterFor<PointerPositionChangedDto>(OnClientPointerChanged);
 
 			Zone.AmbientColor = new Color(0.3f, 0.3f, 0.3f);
 			DirectionalLight.Brightness = 0.5f;
@@ -32,14 +34,29 @@ namespace SmartHome.HoloLens
 			environmentNode = Scene.CreateChild();
 			EnableGestureTapped = true;
 
-			material = Material.FromColor(Color.Gray); //-- debug mode
-			//material = Material.FromColor(Color.Transparent, true);
+			cubeNode = environmentNode.CreateChild();
+			cubeNode.SetScale(0.2f);
+			cubeNode.Position = new Vector3(1000, 1000, 1000);
+			var box = cubeNode.CreateComponent<Box>();
+			box.Color = Color.White;
+
+			var moveAction = new MoveBy(0.5f, new Vector3(0, 0.005f, 0));
+			cubeNode.RunActions(new RepeatForever(new RotateBy(1f, 0, 120, 0)));
+			cubeNode.RunActions(new RepeatForever(moveAction, moveAction.Reverse()));
+
+			//material = Material.FromColor(Color.Gray); //-- debug mode
+			material = Material.FromColor(Color.Transparent, true);
 
 			await RegisterCortanaCommands(new Dictionary<string, Action> {
 				{ "stop spatial mapping", StopSpatialMapping}
 			});
 
 			while (!await ConnectAsync()) { }
+		}
+
+		void OnClientPointerChanged(PointerPositionChangedDto obj)
+		{
+			InvokeOnMain(() => cubeNode.Position = new Vector3(obj.Position.X, obj.Position.Y, obj.Position.Z));
 		}
 
 		public async Task<bool> ConnectAsync()

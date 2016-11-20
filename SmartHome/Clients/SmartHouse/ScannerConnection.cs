@@ -11,24 +11,25 @@ namespace SmartHome
 	public class ScannerConnection
 	{
 		const int Port = 5206;
-		INetworkSerializer networkSerializer;
 		TcpSocketListener listener;
 		ITcpSocketClient client;
 		Dictionary<Type, Action<object>> callbacks = new Dictionary<Type, Action<object>>();
 
+		public INetworkSerializer Serializer { get; private set; }
+
 		public async Task WaitForCompanion()
 		{
-			networkSerializer = new ProtobufNetworkSerializer();
+			Serializer = new ProtobufNetworkSerializer();
 			var tcs = new TaskCompletionSource<bool>();
 			listener = new TcpSocketListener();
 			listener.ConnectionReceived += (s, e) =>
 			{
-				networkSerializer.ObjectDeserialized += SimpleNetworkSerializerObjectDeserialized;
+				Serializer.ObjectDeserialized += SimpleNetworkSerializerObjectDeserialized;
 				tcs.TrySetResult(true);
 				client = e.SocketClient;
 				try
 				{
-					networkSerializer.ReadFromStream(client.ReadStream);
+					Serializer.ReadFromStream(client.ReadStream);
 				}
 				catch (Exception exc)
 				{
@@ -43,7 +44,7 @@ namespace SmartHome
 		{
 			try
 			{
-				networkSerializer.WriteToStream(client.WriteStream, dto);
+				Serializer.WriteToStream(client.WriteStream, dto);
 			}
 			catch (Exception exc)
 			{

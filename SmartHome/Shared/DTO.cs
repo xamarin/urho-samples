@@ -8,7 +8,8 @@ namespace Shared
 	[ProtoInclude(100, typeof(SurfaceDto))]
 	[ProtoInclude(200, typeof(CurrentPositionDto))]
 	[ProtoInclude(300, typeof(BulbAddedDto))]
-	[ProtoInclude(400, typeof(ApartmentsDto))]
+	[ProtoInclude(400, typeof(SpaceDto))]
+	[ProtoInclude(500, typeof(PointerPositionChangedDto))]
 	public class BaseDto { }
 
 	[ProtoContract(ImplicitFields = ImplicitFields.AllPublic)]
@@ -36,12 +37,17 @@ namespace Shared
 	}
 
 	[ProtoContract(ImplicitFields = ImplicitFields.AllPublic)]
-	public class ApartmentsDto : BaseDto
+	public class SpaceDto : BaseDto
 	{
 		public Dictionary<string, SurfaceDto> Surfaces { get; set; } = new Dictionary<string, SurfaceDto>();
 		public List<Vector3Dto> Bulbs { get; set; } = new List<Vector3Dto>();
 	}
 
+	[ProtoContract(ImplicitFields = ImplicitFields.AllPublic)]
+	public class PointerPositionChangedDto : BaseDto
+	{
+		public Vector3Dto Position { get; set; }
+	}
 
 	// Additional:
 

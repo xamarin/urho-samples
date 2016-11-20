@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 using Shared;
 using Xamarin.Forms;
 using ZXing.Net.Mobile.Forms;
@@ -57,7 +58,7 @@ namespace SmartHome
 			};
 
 			Content = stack;
-			if (Application.Current.Properties.ContainsKey(nameof(ApartmentsDto)))
+			if (Application.Current.Properties.ContainsKey(nameof(SpaceDto)))
 			{
 				stack.Children.Add(offlineModeBtn);
 			}

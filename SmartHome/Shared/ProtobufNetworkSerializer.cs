@@ -2,6 +2,7 @@
 using System.IO;
 using System.Threading;
 using ProtoBuf;
+using ProtoBuf.Meta;
 
 namespace Shared
 {
@@ -15,6 +16,7 @@ namespace Shared
 
 		public void ReadFromStream(Stream stream, CancellationToken token)
 		{
+			RuntimeTypeModel.Default.MetadataTimeoutMilliseconds = 300000;
 			while (!token.IsCancellationRequested)
 			{
 				var obj = Serializer.DeserializeWithLengthPrefix<BaseDto>(stream, PrefixStyle.Base128, fieldNumber: 1);

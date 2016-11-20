@@ -10,9 +10,9 @@ namespace SmartHome.HoloLens
 	public class ClientConnection
 	{
 		TcpSocketClient socketClient;
-		INetworkSerializer networkSerializer;
 		Func<BaseDto> dtoRealTimeCallback;
 		readonly Dictionary<string, BaseDto> objectsToSend = new Dictionary<string, BaseDto>();
+		Dictionary<Type, Action<object>> callbacks = new Dictionary<Type, Action<object>>();
 
 		/// <summary>
 		/// Fired when conneciton is closed.
@@ -24,6 +24,9 @@ namespace SmartHome.HoloLens
 		/// </summary>
 		public bool Connected { get; private set; }
 
+
+		public INetworkSerializer Serializer { get; set; }
+
 		/// <summary>
 		/// Connect to a client
 		/// </summary>
@@ -32,9 +35,10 @@ namespace SmartHome.HoloLens
 			try
 			{
 				socketClient = new TcpSocketClient();
-				networkSerializer = new ProtobufNetworkSerializer();
+				Serializer = new ProtobufNetworkSerializer();
 				await socketClient.ConnectAsync(ip, port);
 				Connected = true;
+				Task.Run(() => StartListening());
 			}
 			catch (Exception)
 			{
@@ -42,6 +46,41 @@ namespace SmartHome.HoloLens
 			}
 			StartSendingData();
 			return true;
+		}
+
+		void StartListening()
+		{
+			try
+			{
+				Serializer.ObjectDeserialized += OnObjectDeserialized;
+				Serializer.ReadFromStream(socketClient.ReadStream);
+			}
+			catch (Exception exc)
+			{
+			}
+		}
+
+		void OnObjectDeserialized(BaseDto obj)
+		{
+			if (obj == null)
+				return;
+
+			lock (callbacks)
+			{
+				Action<object> callback;
+				if (callbacks.TryGetValue(obj.GetType(), out callback))
+				{
+					callback(obj);
+				}
+			}
+		}
+
+		public void RegisterFor<T>(Action<T> callback)
+		{
+			lock (callbacks)
+			{
+				callbacks[typeof(T)] = obj => callback((T)obj);
+			}
 		}
 
 		public void SendObject(string id, BaseDto dto)
@@ -80,13 +119,13 @@ namespace SmartHome.HoloLens
 						{
 							foreach (var surface in surfacesToSend)
 							{
-								networkSerializer.WriteToStream(socketClient.WriteStream, dtoRealTimeCallback());
-								networkSerializer.WriteToStream(socketClient.WriteStream, surface);
+								Serializer.WriteToStream(socketClient.WriteStream, dtoRealTimeCallback());
+								Serializer.WriteToStream(socketClient.WriteStream, surface);
 							}
 						}
 						else
 						{
-							networkSerializer.WriteToStream(socketClient.WriteStream, dtoRealTimeCallback());
+							Serializer.WriteToStream(socketClient.WriteStream, dtoRealTimeCallback());
 						}
 						await Task.Delay(20);
 					}

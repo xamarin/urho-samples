@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using Shared;
+using SmartHouse;
 using Urho;
-using Urho.Shapes;
 
 namespace SmartHome
 {
@@ -18,6 +18,7 @@ namespace SmartHome
 		MonoDebugHud debugHud;
 		Material material;
 		List<Node> bulbNodes = new List<Node>();
+		ScannerConnection connection;
 
 		public UrhoApp(ApplicationOptions options) : base(options) {}
 
@@ -35,7 +36,7 @@ namespace SmartHome
 			var camera = cameraNode.CreateComponent<Camera>();
 
 			var viewport = new Viewport(scene, camera, null);
-			//viewport.SetClearColor(Color.White);
+			// viewport.SetClearColor(Color.White);
 			Renderer.SetViewport(0, viewport);
 
 			lightNode = scene.CreateChild();
@@ -62,6 +63,15 @@ namespace SmartHome
 			cameraNode.Rotation = new Quaternion(pitch, yaw, 0);
 
 			lightNode.SetDirection(new Vector3(-1, -1f, 0));
+			InitTouchInput();
+			var pointer = scene.CreateComponent<CubePointer>();
+			pointer.PositionChanged += Pointer_PositionChanged;
+		}
+
+		void Pointer_PositionChanged(Vector3 position)
+		{
+			position /= environmentNode.Scale.X;
+			connection?.Send(new PointerPositionChangedDto { Position = new Vector3Dto(position.X, position.Y, position.Z) });
 		}
 
 		public void AddOrUpdateSurface(SurfaceDto surface)
@@ -93,7 +103,7 @@ namespace SmartHome
 				surface.BoundsOrientation.W);
 
 			if (isNew)
-				staticModel.SetMaterial(material);
+				staticModel.SetMaterial(material.Clone(""));
 		}
 
 		unsafe Model CreateModelFromVertexData(SurfaceDto surface)
@@ -127,7 +137,6 @@ namespace SmartHome
 
 		protected override void OnUpdate(float timeStep)
 		{
-
 			if (Input.NumTouches > 0)
 			{
 				// move
@@ -153,16 +162,16 @@ namespace SmartHome
 				}
 			}
 
+			int moveSpeed = 1;
+			if (Input.GetKeyDown(Key.W)) cameraNode.Translate(Vector3.UnitZ * moveSpeed * timeStep);
+			if (Input.GetKeyDown(Key.S)) cameraNode.Translate(-Vector3.UnitZ * moveSpeed * timeStep);
+			if (Input.GetKeyDown(Key.A)) cameraNode.Translate(-Vector3.UnitX * moveSpeed * timeStep);
+			if (Input.GetKeyDown(Key.D)) cameraNode.Translate(Vector3.UnitX * moveSpeed * timeStep);
+
 			base.OnUpdate(timeStep);
 		}
 
-		/// <summary>
-		/// Distance between two 2D points (should be moved to IntVector2).
-		/// </summary>
-		float Distance(IntVector2 v1, IntVector2 v2)
-		{
-			return (float)Math.Sqrt((v1.X - v2.X) * (v1.X - v2.X) + (v1.Y - v2.Y) * (v1.Y - v2.Y));
-		}
+		public void SetConnection(ScannerConnection connection) => this.connection = connection;
 
 		public void ToggleLight(int index)
 		{
@@ -192,6 +201,21 @@ namespace SmartHome
 			light.Brightness = 1.85f;
 			light.CastShadows = true;
 			light.SpecularIntensity = 2f;
+		}
+
+		void InitTouchInput()
+		{
+			var layout = ResourceCache.GetXmlFile("UI/ScreenJoystick2.xml");
+			var screenJoystickIndex = Input.AddScreenJoystick(layout, ResourceCache.GetXmlFile("UI/DefaultStyle.xml"));
+			Input.SetScreenJoystickVisible(screenJoystickIndex, false);
+		}
+
+		/// <summary>
+		/// Distance between two 2D points (should be moved to IntVector2).
+		/// </summary>
+		float Distance(IntVector2 v1, IntVector2 v2)
+		{
+			return (float)Math.Sqrt((v1.X - v2.X) * (v1.X - v2.X) + (v1.Y - v2.Y) * (v1.Y - v2.Y));
 		}
 	}
 }

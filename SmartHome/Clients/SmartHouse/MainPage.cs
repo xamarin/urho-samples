@@ -13,13 +13,15 @@ namespace SmartHome
 	{
 		readonly StackLayout bulbsStack;
 		readonly UrhoSurface urhoSurface;
-		readonly ApartmentsDto apartments;
+		readonly SpaceDto space;
 		readonly INetworkSerializer serializer;
+		readonly ScannerConnection connection;
 		UrhoApp app;
 
 		public MainPage(ScannerConnection connection, bool offlineMode)
 		{
-			serializer = new ProtobufNetworkSerializer();
+			this.connection = connection;
+			this.serializer = new ProtobufNetworkSerializer();
 			NavigationPage.SetHasNavigationBar(this, false);
 
 			var grid = new Grid();
@@ -47,17 +49,16 @@ namespace SmartHome
 
 			if (!offlineMode)
 			{
-				apartments = new ApartmentsDto();
+				space = new SpaceDto();
 				connection.RegisterFor<SurfaceDto>(OnSurfaceReceived);
 				connection.RegisterFor<BulbAddedDto>(OnBulbAdded);
 				connection.RegisterFor<CurrentPositionDto>(OnCurrentPositionUpdated);
-
 				Start();
 			}
 			else
 			{
-				apartments = serializer.Deserialize<ApartmentsDto>(
-					(byte[])Application.Current.Properties[nameof(ApartmentsDto)]);
+				space = serializer.Deserialize<SpaceDto>(
+					(byte[])Application.Current.Properties[nameof(SpaceDto)]);
 			}
 		}
 
@@ -65,17 +66,21 @@ namespace SmartHome
 		{
 			while (true)
 			{
-				lock (apartments)
-					Application.Current.Properties[nameof(ApartmentsDto)] = serializer.Serialize(apartments);
+				await Task.Delay(15000);
+				var bytes = Task.Run(() =>
+				{
+					lock (space)
+						return serializer.Serialize(space);
+				});
+				Application.Current.Properties[nameof(SpaceDto)] = bytes;
 				await Application.Current.SavePropertiesAsync();
-				await Task.Delay(3000);
 			}
 		}
 
 		void OnBulbAdded(BulbAddedDto dto)
 		{
-			lock (apartments)
-				apartments.Bulbs.Add(dto.Position);
+			lock (space)
+				space.Bulbs.Add(dto.Position);
 			AddBulb(dto.Position);
 		}
 
@@ -132,19 +137,20 @@ namespace SmartHome
 
 		void OnSurfaceReceived(SurfaceDto surface)
 		{
-			lock (apartments)
-				apartments.Surfaces[surface.Id] = surface;
+			lock (space)
+				space.Surfaces[surface.Id] = surface;
 			Urho.Application.InvokeOnMain(() => app?.AddOrUpdateSurface(surface));
 		}
 
 		async void StartUrhoApp()
 		{
 			app = await urhoSurface.Show<UrhoApp>(new Urho.ApplicationOptions(assetsFolder: "Data"));
+			app.SetConnection(connection);
 			Urho.Application.InvokeOnMain(() =>
 				{
-					foreach (var surface in apartments.Surfaces)
+					foreach (var surface in space.Surfaces)
 						app.AddOrUpdateSurface(surface.Value);
-					foreach (var bulb in apartments.Bulbs)
+					foreach (var bulb in space.Bulbs)
 						AddBulb(bulb);
 				});
 		}
