@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <SampleMetadata>
-        <ID>4b6994aa-0953-4764-a3d8-931408651fa9</ID>
+        <ID>731c6ad3-0562-4c6f-9c37-ffeaaadf612d</ID>
         <IsFullApplication>false</IsFullApplication>
         <HideZip>true</HideZip>
 		<Level>Intermediate</Level>
         <Tags>HoloLens, Graphics, Games, UrhoSharp</Tags>
-        <SupportedPlatforms>HoloLens</SupportedPlatforms>
+        <SupportedPlatforms>Android, iOS, HoloLens, UWP</SupportedPlatforms>
         <LicenseRequirement>Indie</LicenseRequirement>
         <Gallery>true</Gallery>
-        <Brief>Spatial mapping data to UrhoSharp Geometry.</Brief>
+        <Brief>Smart home sample. Scan your apartments via HoloLens and observe the results in the Xamarin.Forms app</Brief>
 </SampleMetadata>
 

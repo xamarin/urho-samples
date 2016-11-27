@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <SampleMetadata>
-        <ID>4b6994aa-0953-4764-a3d8-931408651fa9</ID>
+        <ID>4e8271fe-e4bf-4f4e-af6a-2671b358e7bd</ID>
         <IsFullApplication>false</IsFullApplication>
         <HideZip>true</HideZip>
 		<Level>Intermediate</Level>
@@ -8,6 +8,6 @@
         <SupportedPlatforms>HoloLens</SupportedPlatforms>
         <LicenseRequirement>Indie</LicenseRequirement>
         <Gallery>true</Gallery>
-        <Brief>Spatial mapping data to UrhoSharp Geometry.</Brief>
+        <Brief>Microsoft Cognitive Services + HoloLens Camera for environment understanding.</Brief>
 </SampleMetadata>
 

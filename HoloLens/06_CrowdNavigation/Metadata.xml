@@ -3,7 +3,7 @@
         <ID>ef272f75-7b08-4889-ae78-dfe5c959b520</ID>
         <IsFullApplication>false</IsFullApplication>
         <HideZip>true</HideZip>
-		<Level>Beginning</Level>
+		<Level>Intermediate</Level>
         <Tags>HoloLens, Graphics, Games, UrhoSharp</Tags>
         <SupportedPlatforms>HoloLens</SupportedPlatforms>
         <LicenseRequirement>Indie</LicenseRequirement>
