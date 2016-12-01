@@ -16,7 +16,7 @@
     <AndroidResgenFile>Resources\Resource.Designer.cs</AndroidResgenFile>
     <GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
     <AndroidUseLatestPlatformSdk>True</AndroidUseLatestPlatformSdk>
-    <TargetFrameworkVersion>v6.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v7.0</TargetFrameworkVersion>
     <AndroidManifest>Properties\AndroidManifest.xml</AndroidManifest>
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
@@ -50,7 +50,15 @@
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Xml" />
     <Reference Include="Urho, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\UrhoSharp.1.0.500\lib\MonoAndroid\Urho.dll</HintPath>
+      <HintPath>..\packages\UrhoSharp.1.2.8\lib\MonoAndroid\Urho.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Urho.Droid.GoogleVR, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\UrhoSharp.1.2.8\lib\MonoAndroid\Urho.Droid.GoogleVR.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Urho.Droid.SdlBinding, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\UrhoSharp.1.2.8\lib\MonoAndroid\Urho.Droid.SdlBinding.dll</HintPath>
       <Private>True</Private>
     </Reference>
   </ItemGroup>
@@ -74,20 +82,20 @@
     <None Include="Properties\AndroidManifest.xml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="UrhoSharpReadme.txt" />
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\Core\FaceDetection.csproj">
       <Project>{47bbbf31-9620-4c61-81ba-eaa693f72a78}</Project>
       <Name>FaceDetection</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="UrhoSharpReadme.txt" />
+  </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
-  <Import Project="..\packages\UrhoSharp.1.0.500\build\MonoAndroid\UrhoSharp.targets" Condition="Exists('..\packages\UrhoSharp.1.0.500\build\MonoAndroid\UrhoSharp.targets')" />
+  <Import Project="..\packages\UrhoSharp.1.2.8\build\MonoAndroid\UrhoSharp.targets" Condition="Exists('..\packages\UrhoSharp.1.2.8\build\MonoAndroid\UrhoSharp.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
-    <Error Condition="!Exists('..\packages\UrhoSharp.1.0.500\build\MonoAndroid\UrhoSharp.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\UrhoSharp.1.0.500\build\MonoAndroid\UrhoSharp.targets'))" />
+    <Error Condition="!Exists('..\packages\UrhoSharp.1.2.8\build\MonoAndroid\UrhoSharp.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\UrhoSharp.1.2.8\build\MonoAndroid\UrhoSharp.targets'))" />
   </Target>
 </Project>

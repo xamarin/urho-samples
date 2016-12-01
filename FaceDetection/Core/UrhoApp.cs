@@ -4,7 +4,6 @@ using System.Threading.Tasks;
 using Urho;
 using Urho.Gui;
 using Urho.Actions;
-using Urho.Repl;
 using Urho.Urho2D;
 
 namespace FaceDetection
@@ -19,6 +18,7 @@ namespace FaceDetection
 
 		public const int VideoCapturingFPS = 0; //200, 60, 24, 0 (no limit)
 
+		[Preserve]
 		public UrhoApp(ApplicationOptions options) : base(options) {}
 
 		public async void CaptureVideo(Func<Task<FrameWithFaces>> frameSource)
