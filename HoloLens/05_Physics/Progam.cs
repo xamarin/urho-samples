@@ -21,13 +21,12 @@ namespace Physics
 		Node environmentNode;
 		Material spatialMaterial;
 		Material bucketMaterial;
-		Material ballMaterial;
 		bool surfaceIsValid;
 		bool positionIsSelected;
 		Node bucketNode;
 		Node textNode;
 
-		const int MaxBalls = 5;
+		const int MaxBalls = 10;
 		readonly Queue<Node> balls = new Queue<Node>();
 		readonly Color validPositionColor = Color.Gray;
 		readonly Color invalidPositionColor = Color.Red;
@@ -66,8 +65,6 @@ namespace Physics
 			bucketNode.CreateComponent<RigidBody>();
 			var shape = bucketNode.CreateComponent<CollisionShape>();
 			shape.SetTriangleMesh(bucketModel.Model, 0, Vector3.One, Vector3.Zero, Quaternion.Identity);
-
-			ballMaterial = Material.FromColor(new Color(Randoms.Next(0.2f, 1f), Randoms.Next(0.2f, 1f), Randoms.Next(0.2f, 1f)));
 
 			// Material for spatial surfaces
 			spatialMaterial = new Material();
@@ -127,7 +124,7 @@ namespace Physics
 
 			var ball = ballNode.CreateComponent<StaticModel>();
 			ball.Model = CoreAssets.Models.Sphere;
-			ball.SetMaterial(ballMaterial);
+			ball.SetMaterial(Material.FromColor(Randoms.NextColor()));
 			ball.ViewMask = 0x80000000; //hide from raycasts
 
 			var ballRigidBody = ballNode.CreateComponent<RigidBody>();
