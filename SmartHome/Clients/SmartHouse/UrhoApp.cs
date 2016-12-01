@@ -20,6 +20,7 @@ namespace SmartHome
 		List<Node> bulbNodes = new List<Node>();
 		ScannerConnection connection;
 
+		[Preserve]
 		public UrhoApp(ApplicationOptions options) : base(options) {}
 
 		protected override void Start()
