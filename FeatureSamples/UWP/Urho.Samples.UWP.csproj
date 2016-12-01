@@ -995,6 +995,9 @@
     <Content Include="..\assets\data\urho2d\sun2.png">
       <Link>Data\Urho2D\sun2.png</Link>
     </Content>
+    <Content Include="Data\Materials\LitSmokeSoft.xml" />
+    <Content Include="Data\Materials\SmokeSoft.xml" />
+    <Content Include="Data\Materials\UrhoDecalAlphaMaskTwoSided.xml" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LockScreenLogo.scale-200.png" />
     <Content Include="Assets\SplashScreen.scale-200.png" />

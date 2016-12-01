@@ -1778,7 +1778,7 @@
           }
         }
       },
-      "UrhoSharp/1.1.214": {
+      "UrhoSharp/1.2.8": {
         "compile": {
           "lib/uap10.0/Urho.dll": {}
         },
@@ -1855,6 +1855,7 @@
           "native/Urho3D/CoreData/Shaders/GLSL/Transform.glsl": {},
           "native/Urho3D/CoreData/Shaders/GLSL/Uniforms.glsl": {},
           "native/Urho3D/CoreData/Shaders/GLSL/Unlit.glsl": {},
+          "native/Urho3D/CoreData/Shaders/GLSL/UnlitParticle.glsl": {},
           "native/Urho3D/CoreData/Shaders/GLSL/Urho2D.glsl": {},
           "native/Urho3D/CoreData/Shaders/GLSL/Vegetation.glsl": {},
           "native/Urho3D/CoreData/Shaders/GLSL/VegetationDepth.glsl": {},
@@ -1899,6 +1900,7 @@
           "native/Urho3D/CoreData/Shaders/HLSL/Transform.hlsl": {},
           "native/Urho3D/CoreData/Shaders/HLSL/Uniforms.hlsl": {},
           "native/Urho3D/CoreData/Shaders/HLSL/Unlit.hlsl": {},
+          "native/Urho3D/CoreData/Shaders/HLSL/UnlitParticle.hlsl": {},
           "native/Urho3D/CoreData/Shaders/HLSL/Urho2D.hlsl": {},
           "native/Urho3D/CoreData/Shaders/HLSL/Vegetation.hlsl": {},
           "native/Urho3D/CoreData/Shaders/HLSL/VegetationDepth.hlsl": {},
@@ -1921,6 +1923,8 @@
           "native/Urho3D/CoreData/Techniques/DiffLightMap.xml": {},
           "native/Urho3D/CoreData/Techniques/DiffLightMapAlpha.xml": {},
           "native/Urho3D/CoreData/Techniques/DiffLitParticleAlpha.xml": {},
+          "native/Urho3D/CoreData/Techniques/DiffLitParticleAlphaSoft.xml": {},
+          "native/Urho3D/CoreData/Techniques/DiffLitParticleAlphaSoftExpand.xml": {},
           "native/Urho3D/CoreData/Techniques/DiffMultiply.xml": {},
           "native/Urho3D/CoreData/Techniques/DiffNormal.xml": {},
           "native/Urho3D/CoreData/Techniques/DiffNormalAO.xml": {},
@@ -1946,6 +1950,12 @@
           "native/Urho3D/CoreData/Techniques/DiffSpecAlpha.xml": {},
           "native/Urho3D/CoreData/Techniques/DiffUnlit.xml": {},
           "native/Urho3D/CoreData/Techniques/DiffUnlitAlpha.xml": {},
+          "native/Urho3D/CoreData/Techniques/DiffUnlitParticleAdd.xml": {},
+          "native/Urho3D/CoreData/Techniques/DiffUnlitParticleAddSoft.xml": {},
+          "native/Urho3D/CoreData/Techniques/DiffUnlitParticleAddSoftExpand.xml": {},
+          "native/Urho3D/CoreData/Techniques/DiffUnlitParticleAlpha.xml": {},
+          "native/Urho3D/CoreData/Techniques/DiffUnlitParticleAlphaSoft.xml": {},
+          "native/Urho3D/CoreData/Techniques/DiffUnlitParticleAlphaSoftExpand.xml": {},
           "native/Urho3D/CoreData/Techniques/DiffVCol.xml": {},
           "native/Urho3D/CoreData/Techniques/DiffVColAdd.xml": {},
           "native/Urho3D/CoreData/Techniques/DiffVColAddAlpha.xml": {},
@@ -3652,7 +3662,7 @@
           "lib/netcore50/System.Xml.XmlSerializer.dll": {}
         }
       },
-      "UrhoSharp/1.1.214": {
+      "UrhoSharp/1.2.8": {
         "compile": {
           "lib/uap10.0/Urho.dll": {}
         },
@@ -5256,7 +5266,7 @@
           "runtimes/win8-aot/lib/netcore50/System.Xml.XmlSerializer.dll": {}
         }
       },
-      "UrhoSharp/1.1.214": {
+      "UrhoSharp/1.2.8": {
         "compile": {
           "lib/uap10.0/Urho.dll": {}
         },
@@ -6910,7 +6920,7 @@
           "lib/netcore50/System.Xml.XmlSerializer.dll": {}
         }
       },
-      "UrhoSharp/1.1.214": {
+      "UrhoSharp/1.2.8": {
         "compile": {
           "lib/uap10.0/Urho.dll": {}
         },
@@ -8514,7 +8524,7 @@
           "runtimes/win8-aot/lib/netcore50/System.Xml.XmlSerializer.dll": {}
         }
       },
-      "UrhoSharp/1.1.214": {
+      "UrhoSharp/1.2.8": {
         "compile": {
           "lib/uap10.0/Urho.dll": {}
         },
@@ -10168,7 +10178,7 @@
           "lib/netcore50/System.Xml.XmlSerializer.dll": {}
         }
       },
-      "UrhoSharp/1.1.214": {
+      "UrhoSharp/1.2.8": {
         "compile": {
           "lib/uap10.0/Urho.dll": {}
         },
@@ -11772,7 +11782,7 @@
           "runtimes/win8-aot/lib/netcore50/System.Xml.XmlSerializer.dll": {}
         }
       },
-      "UrhoSharp/1.1.214": {
+      "UrhoSharp/1.2.8": {
         "compile": {
           "lib/uap10.0/Urho.dll": {}
         },
@@ -15049,17 +15059,18 @@
         "runtimes/win8-aot/lib/netcore50/System.Xml.XmlSerializer.dll"
       ]
     },
-    "UrhoSharp/1.1.214": {
-      "sha512": "HKMKrm/eacJVyvgZJmFS6Q8APOeDGxkq64CjK2S1FMAdLCUxuSHkM5iW3JTYCuxyT+UkX9oYOzZqNnPD/saDIw==",
+    "UrhoSharp/1.2.8": {
+      "sha512": "0P6FnA+/4YvtwkEsCBWWoxHryY2+CpKojmYIpCYmrhL0wCbM757RjYatE7T+UnTiXyT/vJWDuVUNSMJLe4VqfA==",
       "type": "package",
       "files": [
-        "UrhoSharp.1.1.214.nupkg.sha512",
+        "UrhoSharp.1.2.8.nupkg.sha512",
         "UrhoSharp.nuspec",
         "build/MonoAndroid/UrhoSharp.targets",
         "build/net45/UrhoSharp.targets",
         "build/uap10.0/UrhoSharp.targets",
         "content/MonoAndroid/UrhoSharpReadme.txt",
         "content/Xamarin.iOS10/UrhoSharpReadme.txt",
+        "lib/MonoAndroid/Urho.Droid.GoogleVR.dll",
         "lib/MonoAndroid/Urho.Droid.SdlBinding.dll",
         "lib/MonoAndroid/Urho.XML",
         "lib/MonoAndroid/Urho.dll",
@@ -15140,6 +15151,7 @@
         "native/Urho3D/CoreData/Shaders/GLSL/Transform.glsl",
         "native/Urho3D/CoreData/Shaders/GLSL/Uniforms.glsl",
         "native/Urho3D/CoreData/Shaders/GLSL/Unlit.glsl",
+        "native/Urho3D/CoreData/Shaders/GLSL/UnlitParticle.glsl",
         "native/Urho3D/CoreData/Shaders/GLSL/Urho2D.glsl",
         "native/Urho3D/CoreData/Shaders/GLSL/Vegetation.glsl",
         "native/Urho3D/CoreData/Shaders/GLSL/VegetationDepth.glsl",
@@ -15184,6 +15196,7 @@
         "native/Urho3D/CoreData/Shaders/HLSL/Transform.hlsl",
         "native/Urho3D/CoreData/Shaders/HLSL/Uniforms.hlsl",
         "native/Urho3D/CoreData/Shaders/HLSL/Unlit.hlsl",
+        "native/Urho3D/CoreData/Shaders/HLSL/UnlitParticle.hlsl",
         "native/Urho3D/CoreData/Shaders/HLSL/Urho2D.hlsl",
         "native/Urho3D/CoreData/Shaders/HLSL/Vegetation.hlsl",
         "native/Urho3D/CoreData/Shaders/HLSL/VegetationDepth.hlsl",
@@ -15206,6 +15219,8 @@
         "native/Urho3D/CoreData/Techniques/DiffLightMap.xml",
         "native/Urho3D/CoreData/Techniques/DiffLightMapAlpha.xml",
         "native/Urho3D/CoreData/Techniques/DiffLitParticleAlpha.xml",
+        "native/Urho3D/CoreData/Techniques/DiffLitParticleAlphaSoft.xml",
+        "native/Urho3D/CoreData/Techniques/DiffLitParticleAlphaSoftExpand.xml",
         "native/Urho3D/CoreData/Techniques/DiffMultiply.xml",
         "native/Urho3D/CoreData/Techniques/DiffNormal.xml",
         "native/Urho3D/CoreData/Techniques/DiffNormalAO.xml",
@@ -15231,6 +15246,12 @@
         "native/Urho3D/CoreData/Techniques/DiffSpecAlpha.xml",
         "native/Urho3D/CoreData/Techniques/DiffUnlit.xml",
         "native/Urho3D/CoreData/Techniques/DiffUnlitAlpha.xml",
+        "native/Urho3D/CoreData/Techniques/DiffUnlitParticleAdd.xml",
+        "native/Urho3D/CoreData/Techniques/DiffUnlitParticleAddSoft.xml",
+        "native/Urho3D/CoreData/Techniques/DiffUnlitParticleAddSoftExpand.xml",
+        "native/Urho3D/CoreData/Techniques/DiffUnlitParticleAlpha.xml",
+        "native/Urho3D/CoreData/Techniques/DiffUnlitParticleAlphaSoft.xml",
+        "native/Urho3D/CoreData/Techniques/DiffUnlitParticleAlphaSoftExpand.xml",
         "native/Urho3D/CoreData/Techniques/DiffVCol.xml",
         "native/Urho3D/CoreData/Techniques/DiffVColAdd.xml",
         "native/Urho3D/CoreData/Techniques/DiffVColAddAlpha.xml",
@@ -15303,7 +15324,7 @@
   "projectFileDependencyGroups": {
     "": [
       "Microsoft.NETCore.UniversalWindowsPlatform >= 5.1.0",
-      "UrhoSharp >= 1.1.214"
+      "UrhoSharp >= 1.2.8"
     ],
     "UAP,Version=v10.0": []
   }

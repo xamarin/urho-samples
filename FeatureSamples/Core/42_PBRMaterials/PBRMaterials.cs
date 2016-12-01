@@ -8,6 +8,8 @@
 
 		protected override void Start()
 		{
+			Application.UnhandledException += Application_UnhandledException;
+
 			base.Start();
 
 			// Create the scene content
@@ -15,6 +17,11 @@
 
 			// Setup the viewport for displaying the scene
 			SetupViewport();
+		}
+
+		void Application_UnhandledException(object sender, UnhandledExceptionEventArgs e)
+		{
+			e.Handled = true;
 		}
 
 		void CreateScene()

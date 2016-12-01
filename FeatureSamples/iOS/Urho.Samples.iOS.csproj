@@ -1038,13 +1038,22 @@
     <Reference Include="System.Xml" />
     <Reference Include="System.Core" />
     <Reference Include="Urho, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\UrhoSharp.1.1.214\lib\Xamarin.iOS10\Urho.dll</HintPath>
+      <HintPath>..\packages\UrhoSharp.1.2.8\lib\Xamarin.iOS10\Urho.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Xamarin.iOS" />
     <Reference Include="MonoTouch.Dialog-1" />
   </ItemGroup>
   <ItemGroup>
+    <BundleResource Include="..\Assets\Data\Materials\LitSmokeSoft.xml">
+      <Link>Resources\Data\Materials\LitSmokeSoft.xml</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\Data\Materials\SmokeSoft.xml">
+      <Link>Resources\Data\Materials\SmokeSoft.xml</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\Data\Materials\UrhoDecalAlphaMaskTwoSided.xml">
+      <Link>Resources\Data\Materials\UrhoDecalAlphaMaskTwoSided.xml</Link>
+    </BundleResource>
     <Content Include="Entitlements.plist" />
     <Content Include="UrhoSharpReadme.txt" />
   </ItemGroup>

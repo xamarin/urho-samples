@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -57,7 +57,7 @@
     <Reference Include="System.Core" />
     <Reference Include="Xamarin.Mac" />
     <Reference Include="Urho">
-      <HintPath>..\packages\UrhoSharp.1.1.214\lib\net45\Urho.dll</HintPath>
+      <HintPath>..\packages\UrhoSharp.1.2.8\lib\net45\Urho.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -102,5 +102,5 @@
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Mac\Xamarin.Mac.CSharp.targets" />
-  <Import Project="..\packages\UrhoSharp.1.1.214\build\net45\UrhoSharp.targets" Condition="Exists('..\packages\UrhoSharp.1.1.214\build\net45\UrhoSharp.targets')" />
+  <Import Project="..\packages\UrhoSharp.1.2.8\build\net45\UrhoSharp.targets" Condition="Exists('..\packages\UrhoSharp.1.2.8\build\net45\UrhoSharp.targets')" />
 </Project>

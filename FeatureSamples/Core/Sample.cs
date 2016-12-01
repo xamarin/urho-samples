@@ -22,6 +22,7 @@
 //
 
 using System;
+using System.Diagnostics;
 using System.Globalization;
 using Urho.Resources;
 using Urho.Gui;
@@ -36,7 +37,6 @@ namespace Urho.Samples
 		Sprite logoSprite;
 		UI ui;
 
-		protected const float PixelSize = 0.01f;
 		protected const float TouchSensitivity = 2;
 		protected float Yaw { get; set; }
 		protected float Pitch { get; set; }
@@ -44,7 +44,7 @@ namespace Urho.Samples
 		protected Node CameraNode { get; set; }
 		protected MonoDebugHud MonoDebugHud { get; set; }
 
-		protected Sample () {}
+		[Preserve]
 		protected Sample (ApplicationOptions options = null) : base (options) {}
 	
 		protected bool IsLogoVisible
@@ -70,6 +70,7 @@ namespace Urho.Samples
 
 		protected override void Start ()
 		{
+			Log.LogMessage += e => Debug.WriteLine($"[{e.Level}] {e.Message}");
 			base.Start();
 			if (Platform == Platforms.Android || 
 				Platform == Platforms.iOS || 
