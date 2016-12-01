@@ -57,7 +57,7 @@
 
 		public static class Textures
 		{
-			public const string XamarinLogo = "Textures/Xamarin.png";
+			public const string XamarinLogo = "Textures/xamarin.png";
 		}
 	}
 }
