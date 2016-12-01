@@ -22,6 +22,7 @@ namespace FormsSample
 
 		public IEnumerable<Bar> Bars => bars;
 
+		[Preserve]
 		public Charts(ApplicationOptions options = null) : base(options) { }
 
 		protected override void Start ()
