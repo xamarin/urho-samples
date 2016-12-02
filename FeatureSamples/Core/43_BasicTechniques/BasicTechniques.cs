@@ -90,7 +90,7 @@ namespace Urho.Samples
 					else
 						earthModel.Model = CoreAssets.Models.Sphere;
 
-					earthModel.SetMaterial(ResourceCache.GetMaterial($"Sample43/Mat{material}.xml"));
+					earthModel.SetMaterial(ResourceCache.GetMaterial($"Sample43/Mat{material}.xml", sendEventOnFailure: false));
 					var backgroundNode = sphereNode.CreateChild();
 					backgroundNode.Scale = new Vector3(1, 1, 0.001f) * 1.1f;
 					backgroundNode.Position = new Vector3(0, 0, 0.55f);
