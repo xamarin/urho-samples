@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System.Diagnostics;
+using System.Threading.Tasks;
 using SamplyGame.Aircrafts.Enemies;
 using Urho;
 using Urho.Gui;
@@ -25,6 +26,16 @@ namespace SamplyGame
 
 		[Preserve]
 		public SamplyGame(ApplicationOptions opts) : base(opts) { }
+
+		static SamplyGame()
+		{
+			UnhandledException += (s, e) =>
+			{
+				if (Debugger.IsAttached)
+					Debugger.Break();
+				e.Handled = true;
+			};
+		}
 
 		protected override void Start()
 		{

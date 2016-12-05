@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Globalization;
 using System.Linq;
 using Urho;
@@ -24,6 +25,16 @@ namespace FormsSample
 
 		[Preserve]
 		public Charts(ApplicationOptions options = null) : base(options) { }
+
+		static Charts()
+		{
+			UnhandledException += (s, e) =>
+			{
+				if (Debugger.IsAttached)
+					Debugger.Break();
+				e.Handled = true;
+			};
+		}
 
 		protected override void Start ()
 		{

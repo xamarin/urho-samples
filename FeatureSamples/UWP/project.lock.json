@@ -1778,7 +1778,7 @@
           }
         }
       },
-      "UrhoSharp/1.2.8": {
+      "UrhoSharp/1.2.21": {
         "compile": {
           "lib/uap10.0/Urho.dll": {}
         },
@@ -3662,7 +3662,7 @@
           "lib/netcore50/System.Xml.XmlSerializer.dll": {}
         }
       },
-      "UrhoSharp/1.2.8": {
+      "UrhoSharp/1.2.21": {
         "compile": {
           "lib/uap10.0/Urho.dll": {}
         },
@@ -5266,7 +5266,7 @@
           "runtimes/win8-aot/lib/netcore50/System.Xml.XmlSerializer.dll": {}
         }
       },
-      "UrhoSharp/1.2.8": {
+      "UrhoSharp/1.2.21": {
         "compile": {
           "lib/uap10.0/Urho.dll": {}
         },
@@ -6920,7 +6920,7 @@
           "lib/netcore50/System.Xml.XmlSerializer.dll": {}
         }
       },
-      "UrhoSharp/1.2.8": {
+      "UrhoSharp/1.2.21": {
         "compile": {
           "lib/uap10.0/Urho.dll": {}
         },
@@ -8524,7 +8524,7 @@
           "runtimes/win8-aot/lib/netcore50/System.Xml.XmlSerializer.dll": {}
         }
       },
-      "UrhoSharp/1.2.8": {
+      "UrhoSharp/1.2.21": {
         "compile": {
           "lib/uap10.0/Urho.dll": {}
         },
@@ -10178,7 +10178,7 @@
           "lib/netcore50/System.Xml.XmlSerializer.dll": {}
         }
       },
-      "UrhoSharp/1.2.8": {
+      "UrhoSharp/1.2.21": {
         "compile": {
           "lib/uap10.0/Urho.dll": {}
         },
@@ -11782,7 +11782,7 @@
           "runtimes/win8-aot/lib/netcore50/System.Xml.XmlSerializer.dll": {}
         }
       },
-      "UrhoSharp/1.2.8": {
+      "UrhoSharp/1.2.21": {
         "compile": {
           "lib/uap10.0/Urho.dll": {}
         },
@@ -15059,18 +15059,17 @@
         "runtimes/win8-aot/lib/netcore50/System.Xml.XmlSerializer.dll"
       ]
     },
-    "UrhoSharp/1.2.8": {
-      "sha512": "0P6FnA+/4YvtwkEsCBWWoxHryY2+CpKojmYIpCYmrhL0wCbM757RjYatE7T+UnTiXyT/vJWDuVUNSMJLe4VqfA==",
+    "UrhoSharp/1.2.21": {
+      "sha512": "E3WUe5+0m/agyV72/zANKbhGKEwPRF59wHHieadWCxGxElCNeTGBpufhf18g2v0LuLBcdeoaXIY/qttqEpTJMQ==",
       "type": "package",
       "files": [
-        "UrhoSharp.1.2.8.nupkg.sha512",
+        "UrhoSharp.1.2.21.nupkg.sha512",
         "UrhoSharp.nuspec",
         "build/MonoAndroid/UrhoSharp.targets",
         "build/net45/UrhoSharp.targets",
         "build/uap10.0/UrhoSharp.targets",
         "content/MonoAndroid/UrhoSharpReadme.txt",
         "content/Xamarin.iOS10/UrhoSharpReadme.txt",
-        "lib/MonoAndroid/Urho.Droid.GoogleVR.dll",
         "lib/MonoAndroid/Urho.Droid.SdlBinding.dll",
         "lib/MonoAndroid/Urho.XML",
         "lib/MonoAndroid/Urho.dll",
@@ -15324,7 +15323,7 @@
   "projectFileDependencyGroups": {
     "": [
       "Microsoft.NETCore.UniversalWindowsPlatform >= 5.1.0",
-      "UrhoSharp >= 1.2.8"
+      "UrhoSharp >= 1.2.21"
     ],
     "UAP,Version=v10.0": []
   }

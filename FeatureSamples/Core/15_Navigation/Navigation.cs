@@ -65,7 +65,7 @@ namespace Urho.Samples
 						// Visualize the current calculated path
 						DebugRenderer debug = scene.GetComponent<DebugRenderer>();
 						debug.AddBoundingBox(new BoundingBox(endPos - new Vector3(0.1f, 0.1f, 0.1f), endPos + new Vector3(0.1f, 0.1f, 0.1f)),
-							new Color(1.0f, 1.0f, 1.0f), true, false);
+							new Color(1.0f, 1.0f, 1.0f), true);
 
 						// Draw the path with a small upward bias so that it does not clip into the surfaces
 						Vector3 bias = new Vector3(0.0f, 0.05f, 0.0f);

@@ -45,8 +45,20 @@ namespace Urho.Samples
 		protected MonoDebugHud MonoDebugHud { get; set; }
 
 		[Preserve]
-		protected Sample (ApplicationOptions options = null) : base (options) {}
-	
+		protected Sample(ApplicationOptions options = null) : base(options) {}
+
+		static Sample()
+		{
+			Urho.Application.UnhandledException += Application_UnhandledException1;
+		}
+
+		static void Application_UnhandledException1(object sender, UnhandledExceptionEventArgs e)
+		{
+			if (Debugger.IsAttached)
+				Debugger.Break();
+			e.Handled = true;
+		}
+
 		protected bool IsLogoVisible
 		{
 			get { return logoSprite.Visible; }

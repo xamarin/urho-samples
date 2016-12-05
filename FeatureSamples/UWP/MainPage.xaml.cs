@@ -19,6 +19,7 @@ namespace Urho.Samples.UWP
 
 		public MainPage()
 		{
+			Urho.Application.UnhandledException += (s, e) => e.Handled = true;
 			InitializeComponent();
 			GameTypes = typeof(Sample).GetTypeInfo().Assembly.GetTypes()
 				.Where(t => t.GetTypeInfo().IsSubclassOf(typeof(Application)) && t != typeof(Sample))
