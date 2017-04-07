@@ -53,9 +53,21 @@ namespace Urho.Samples.WPF
 				{
 					ExternalWindow = RunInSdlWindow.IsChecked.Value ? IntPtr.Zero : urhoSurface.Handle,
 					LimitFps = false, //true means "limit to 200fps"
+#if !NATIVE_GAME_LOOP
+				DelayedStart = true, //it means we will control the game loop ourselves
+#endif
 				};
+
 			currentApplication = Urho.Application.CreateInstance(value.Type, appOptions);
 			currentApplication.Run();
+
+#if !NATIVE_GAME_LOOP
+			while (!currentApplication.IsExiting)
+			{
+				currentApplication.Engine.RunFrame();
+				await Task.Delay(16);
+			}
+#endif
 			semaphoreSlim.Release();
 		}
 	}

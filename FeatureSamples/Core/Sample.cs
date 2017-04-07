@@ -54,7 +54,7 @@ namespace Urho.Samples
 
 		static void Application_UnhandledException1(object sender, UnhandledExceptionEventArgs e)
 		{
-			if (Debugger.IsAttached)
+			if (Debugger.IsAttached && !e.Exception.Message.Contains("BlueHighway.ttf"))
 				Debugger.Break();
 			e.Handled = true;
 		}

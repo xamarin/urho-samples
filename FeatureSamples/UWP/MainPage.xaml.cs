@@ -22,7 +22,9 @@ namespace Urho.Samples.UWP
 			Urho.Application.UnhandledException += (s, e) => e.Handled = true;
 			InitializeComponent();
 			GameTypes = typeof(Sample).GetTypeInfo().Assembly.GetTypes()
-				.Where(t => t.GetTypeInfo().IsSubclassOf(typeof(Application)) && t != typeof(Sample))
+				.Where(t => t.GetTypeInfo().IsSubclassOf(typeof(Application)) 
+					&& t != typeof(Sample) && t != typeof(BasicTechniques) 
+					&& t != typeof(PBRMaterials) && t != typeof(DynamicGeometry))
 				.Select((t, i) => new TypeInfo(t, $"{i + 1}. {t.Name}", ""))
 				.ToArray();
 			DataContext = this;

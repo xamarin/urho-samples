@@ -20,6 +20,8 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 //
+
+using System;
 using Urho.Actions;
 using Urho.Shapes;
 
@@ -111,10 +113,14 @@ namespace Urho.Samples
 			// Viewport
 			Renderer.SetViewport(0, new Viewport(Context, scene, camera, null));
 
-			// Do actions
-			await boxNode.RunActionsAsync(new EaseBounceOut(new ScaleTo(duration: 1f, scale: 1)));
-			await boxNode.RunActionsAsync(new RepeatForever(
+			try
+			{
+				// Do actions
+				await boxNode.RunActionsAsync(new EaseBounceOut(new ScaleTo(duration: 1f, scale: 1)));
+				await boxNode.RunActionsAsync(new RepeatForever(
 				new RotateBy(duration: 1, deltaAngleX: 90, deltaAngleY: 0, deltaAngleZ: 0)));
+			}
+			catch (OperationCanceledException) {}
 		}
 
 		protected override string JoystickLayoutPatch => 

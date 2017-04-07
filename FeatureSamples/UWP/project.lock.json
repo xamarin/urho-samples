@@ -1778,250 +1778,12 @@
           }
         }
       },
-      "UrhoSharp/1.2.21": {
+      "UrhoSharp/1.3.1.18": {
         "compile": {
           "lib/uap10.0/Urho.dll": {}
         },
         "runtime": {
           "lib/uap10.0/Urho.dll": {}
-        },
-        "native": {
-          "native/Android/arm64-v8a/libmono-urho.so": {},
-          "native/Android/armeabi-v7a/libmono-urho.so": {},
-          "native/Android/armeabi/libmono-urho.so": {},
-          "native/Android/x86/libmono-urho.so": {},
-          "native/Android/x86_64/libmono-urho.so": {},
-          "native/CoreData.pak": {},
-          "native/Mac/libmono-urho.dylib": {},
-          "native/UWP32/mono-urho.dll": {},
-          "native/Urho3D/CoreData/Fonts/Anonymous Pro.ttf": {},
-          "native/Urho3D/CoreData/Materials/DefaultGrey.xml": {},
-          "native/Urho3D/CoreData/Models/Box.mdl": {},
-          "native/Urho3D/CoreData/Models/Cone.mdl": {},
-          "native/Urho3D/CoreData/Models/Cylinder.mdl": {},
-          "native/Urho3D/CoreData/Models/Dome.mdl": {},
-          "native/Urho3D/CoreData/Models/Plane.mdl": {},
-          "native/Urho3D/CoreData/Models/Pyramid.mdl": {},
-          "native/Urho3D/CoreData/Models/Sphere.mdl": {},
-          "native/Urho3D/CoreData/Models/Torus.mdl": {},
-          "native/Urho3D/CoreData/PostProcess/Blur.xml": {},
-          "native/Urho3D/CoreData/PostProcess/FXAA2.xml": {},
-          "native/Urho3D/CoreData/PostProcess/FXAA3.xml": {},
-          "native/Urho3D/CoreData/RenderPaths/Deferred.xml": {},
-          "native/Urho3D/CoreData/RenderPaths/DeferredHWDepth.xml": {},
-          "native/Urho3D/CoreData/RenderPaths/Forward.xml": {},
-          "native/Urho3D/CoreData/RenderPaths/ForwardDepth.xml": {},
-          "native/Urho3D/CoreData/RenderPaths/ForwardHWDepth.xml": {},
-          "native/Urho3D/CoreData/RenderPaths/PBRDeferred.xml": {},
-          "native/Urho3D/CoreData/RenderPaths/PBRDeferredHWDepth.xml": {},
-          "native/Urho3D/CoreData/RenderPaths/Prepass.xml": {},
-          "native/Urho3D/CoreData/RenderPaths/PrepassHDR.xml": {},
-          "native/Urho3D/CoreData/RenderPaths/PrepassHWDepth.xml": {},
-          "native/Urho3D/CoreData/Shaders/GLSL/AutoExposure.glsl": {},
-          "native/Urho3D/CoreData/Shaders/GLSL/BRDF.glsl": {},
-          "native/Urho3D/CoreData/Shaders/GLSL/Basic.glsl": {},
-          "native/Urho3D/CoreData/Shaders/GLSL/Bloom.glsl": {},
-          "native/Urho3D/CoreData/Shaders/GLSL/BloomHDR.glsl": {},
-          "native/Urho3D/CoreData/Shaders/GLSL/Blur.glsl": {},
-          "native/Urho3D/CoreData/Shaders/GLSL/ColorCorrection.glsl": {},
-          "native/Urho3D/CoreData/Shaders/GLSL/Constants.glsl": {},
-          "native/Urho3D/CoreData/Shaders/GLSL/CopyFramebuffer.glsl": {},
-          "native/Urho3D/CoreData/Shaders/GLSL/DeferredLight.glsl": {},
-          "native/Urho3D/CoreData/Shaders/GLSL/Depth.glsl": {},
-          "native/Urho3D/CoreData/Shaders/GLSL/FXAA2.glsl": {},
-          "native/Urho3D/CoreData/Shaders/GLSL/FXAA3.glsl": {},
-          "native/Urho3D/CoreData/Shaders/GLSL/Fog.glsl": {},
-          "native/Urho3D/CoreData/Shaders/GLSL/GammaCorrection.glsl": {},
-          "native/Urho3D/CoreData/Shaders/GLSL/GreyScale.glsl": {},
-          "native/Urho3D/CoreData/Shaders/GLSL/IBL.glsl": {},
-          "native/Urho3D/CoreData/Shaders/GLSL/Lighting.glsl": {},
-          "native/Urho3D/CoreData/Shaders/GLSL/LitParticle.glsl": {},
-          "native/Urho3D/CoreData/Shaders/GLSL/LitSolid.glsl": {},
-          "native/Urho3D/CoreData/Shaders/GLSL/PBR.glsl": {},
-          "native/Urho3D/CoreData/Shaders/GLSL/PBRDeferred.glsl": {},
-          "native/Urho3D/CoreData/Shaders/GLSL/PBRLitSolid.glsl": {},
-          "native/Urho3D/CoreData/Shaders/GLSL/PostProcess.glsl": {},
-          "native/Urho3D/CoreData/Shaders/GLSL/PrepassLight.glsl": {},
-          "native/Urho3D/CoreData/Shaders/GLSL/Samplers.glsl": {},
-          "native/Urho3D/CoreData/Shaders/GLSL/ScreenPos.glsl": {},
-          "native/Urho3D/CoreData/Shaders/GLSL/Shadow.glsl": {},
-          "native/Urho3D/CoreData/Shaders/GLSL/ShadowBlur.glsl": {},
-          "native/Urho3D/CoreData/Shaders/GLSL/Skybox.glsl": {},
-          "native/Urho3D/CoreData/Shaders/GLSL/Skydome.glsl": {},
-          "native/Urho3D/CoreData/Shaders/GLSL/Stencil.glsl": {},
-          "native/Urho3D/CoreData/Shaders/GLSL/TerrainBlend.glsl": {},
-          "native/Urho3D/CoreData/Shaders/GLSL/Text.glsl": {},
-          "native/Urho3D/CoreData/Shaders/GLSL/Tonemap.glsl": {},
-          "native/Urho3D/CoreData/Shaders/GLSL/Transform.glsl": {},
-          "native/Urho3D/CoreData/Shaders/GLSL/Uniforms.glsl": {},
-          "native/Urho3D/CoreData/Shaders/GLSL/Unlit.glsl": {},
-          "native/Urho3D/CoreData/Shaders/GLSL/UnlitParticle.glsl": {},
-          "native/Urho3D/CoreData/Shaders/GLSL/Urho2D.glsl": {},
-          "native/Urho3D/CoreData/Shaders/GLSL/Vegetation.glsl": {},
-          "native/Urho3D/CoreData/Shaders/GLSL/VegetationDepth.glsl": {},
-          "native/Urho3D/CoreData/Shaders/GLSL/VegetationShadow.glsl": {},
-          "native/Urho3D/CoreData/Shaders/GLSL/Water.glsl": {},
-          "native/Urho3D/CoreData/Shaders/HLSL/AutoExposure.hlsl": {},
-          "native/Urho3D/CoreData/Shaders/HLSL/BRDF.hlsl": {},
-          "native/Urho3D/CoreData/Shaders/HLSL/Basic.hlsl": {},
-          "native/Urho3D/CoreData/Shaders/HLSL/Bloom.hlsl": {},
-          "native/Urho3D/CoreData/Shaders/HLSL/BloomHDR.hlsl": {},
-          "native/Urho3D/CoreData/Shaders/HLSL/Blur.hlsl": {},
-          "native/Urho3D/CoreData/Shaders/HLSL/ClearFramebuffer.hlsl": {},
-          "native/Urho3D/CoreData/Shaders/HLSL/ColorCorrection.hlsl": {},
-          "native/Urho3D/CoreData/Shaders/HLSL/Constants.hlsl": {},
-          "native/Urho3D/CoreData/Shaders/HLSL/CopyFramebuffer.hlsl": {},
-          "native/Urho3D/CoreData/Shaders/HLSL/DeferredLight.hlsl": {},
-          "native/Urho3D/CoreData/Shaders/HLSL/Depth.hlsl": {},
-          "native/Urho3D/CoreData/Shaders/HLSL/FXAA2.hlsl": {},
-          "native/Urho3D/CoreData/Shaders/HLSL/FXAA3.hlsl": {},
-          "native/Urho3D/CoreData/Shaders/HLSL/Fog.hlsl": {},
-          "native/Urho3D/CoreData/Shaders/HLSL/GammaCorrection.hlsl": {},
-          "native/Urho3D/CoreData/Shaders/HLSL/GreyScale.hlsl": {},
-          "native/Urho3D/CoreData/Shaders/HLSL/IBL.hlsl": {},
-          "native/Urho3D/CoreData/Shaders/HLSL/Lighting.hlsl": {},
-          "native/Urho3D/CoreData/Shaders/HLSL/LitParticle.hlsl": {},
-          "native/Urho3D/CoreData/Shaders/HLSL/LitSolid.hlsl": {},
-          "native/Urho3D/CoreData/Shaders/HLSL/PBR.hlsl": {},
-          "native/Urho3D/CoreData/Shaders/HLSL/PBRDeferred.hlsl": {},
-          "native/Urho3D/CoreData/Shaders/HLSL/PBRLitSolid.hlsl": {},
-          "native/Urho3D/CoreData/Shaders/HLSL/PostProcess.hlsl": {},
-          "native/Urho3D/CoreData/Shaders/HLSL/PrepassLight.hlsl": {},
-          "native/Urho3D/CoreData/Shaders/HLSL/Samplers.hlsl": {},
-          "native/Urho3D/CoreData/Shaders/HLSL/ScreenPos.hlsl": {},
-          "native/Urho3D/CoreData/Shaders/HLSL/Shadow.hlsl": {},
-          "native/Urho3D/CoreData/Shaders/HLSL/ShadowBlur.hlsl": {},
-          "native/Urho3D/CoreData/Shaders/HLSL/Skybox.hlsl": {},
-          "native/Urho3D/CoreData/Shaders/HLSL/Skydome.hlsl": {},
-          "native/Urho3D/CoreData/Shaders/HLSL/Stencil.hlsl": {},
-          "native/Urho3D/CoreData/Shaders/HLSL/TerrainBlend.hlsl": {},
-          "native/Urho3D/CoreData/Shaders/HLSL/Text.hlsl": {},
-          "native/Urho3D/CoreData/Shaders/HLSL/Tonemap.hlsl": {},
-          "native/Urho3D/CoreData/Shaders/HLSL/Transform.hlsl": {},
-          "native/Urho3D/CoreData/Shaders/HLSL/Uniforms.hlsl": {},
-          "native/Urho3D/CoreData/Shaders/HLSL/Unlit.hlsl": {},
-          "native/Urho3D/CoreData/Shaders/HLSL/UnlitParticle.hlsl": {},
-          "native/Urho3D/CoreData/Shaders/HLSL/Urho2D.hlsl": {},
-          "native/Urho3D/CoreData/Shaders/HLSL/Vegetation.hlsl": {},
-          "native/Urho3D/CoreData/Shaders/HLSL/VegetationDepth.hlsl": {},
-          "native/Urho3D/CoreData/Shaders/HLSL/VegetationShadow.hlsl": {},
-          "native/Urho3D/CoreData/Shaders/HLSL/Water.hlsl": {},
-          "native/Urho3D/CoreData/Techniques/BasicVColUnlitAlpha.xml": {},
-          "native/Urho3D/CoreData/Techniques/Diff.xml": {},
-          "native/Urho3D/CoreData/Techniques/DiffAO.xml": {},
-          "native/Urho3D/CoreData/Techniques/DiffAOAlpha.xml": {},
-          "native/Urho3D/CoreData/Techniques/DiffAdd.xml": {},
-          "native/Urho3D/CoreData/Techniques/DiffAddAlpha.xml": {},
-          "native/Urho3D/CoreData/Techniques/DiffAlpha.xml": {},
-          "native/Urho3D/CoreData/Techniques/DiffAlphaTranslucent.xml": {},
-          "native/Urho3D/CoreData/Techniques/DiffEmissive.xml": {},
-          "native/Urho3D/CoreData/Techniques/DiffEmissiveAlpha.xml": {},
-          "native/Urho3D/CoreData/Techniques/DiffEnvCube.xml": {},
-          "native/Urho3D/CoreData/Techniques/DiffEnvCubeAO.xml": {},
-          "native/Urho3D/CoreData/Techniques/DiffEnvCubeAOAlpha.xml": {},
-          "native/Urho3D/CoreData/Techniques/DiffEnvCubeAlpha.xml": {},
-          "native/Urho3D/CoreData/Techniques/DiffLightMap.xml": {},
-          "native/Urho3D/CoreData/Techniques/DiffLightMapAlpha.xml": {},
-          "native/Urho3D/CoreData/Techniques/DiffLitParticleAlpha.xml": {},
-          "native/Urho3D/CoreData/Techniques/DiffLitParticleAlphaSoft.xml": {},
-          "native/Urho3D/CoreData/Techniques/DiffLitParticleAlphaSoftExpand.xml": {},
-          "native/Urho3D/CoreData/Techniques/DiffMultiply.xml": {},
-          "native/Urho3D/CoreData/Techniques/DiffNormal.xml": {},
-          "native/Urho3D/CoreData/Techniques/DiffNormalAO.xml": {},
-          "native/Urho3D/CoreData/Techniques/DiffNormalAOAlpha.xml": {},
-          "native/Urho3D/CoreData/Techniques/DiffNormalAlpha.xml": {},
-          "native/Urho3D/CoreData/Techniques/DiffNormalAlphaTranslucent.xml": {},
-          "native/Urho3D/CoreData/Techniques/DiffNormalEmissive.xml": {},
-          "native/Urho3D/CoreData/Techniques/DiffNormalEmissiveAlpha.xml": {},
-          "native/Urho3D/CoreData/Techniques/DiffNormalEnvCube.xml": {},
-          "native/Urho3D/CoreData/Techniques/DiffNormalEnvCubeAlpha.xml": {},
-          "native/Urho3D/CoreData/Techniques/DiffNormalSpec.xml": {},
-          "native/Urho3D/CoreData/Techniques/DiffNormalSpecAO.xml": {},
-          "native/Urho3D/CoreData/Techniques/DiffNormalSpecAOAlpha.xml": {},
-          "native/Urho3D/CoreData/Techniques/DiffNormalSpecAlpha.xml": {},
-          "native/Urho3D/CoreData/Techniques/DiffNormalSpecEmissive.xml": {},
-          "native/Urho3D/CoreData/Techniques/DiffNormalSpecEmissiveAlpha.xml": {},
-          "native/Urho3D/CoreData/Techniques/DiffOverlay.xml": {},
-          "native/Urho3D/CoreData/Techniques/DiffSkybox.xml": {},
-          "native/Urho3D/CoreData/Techniques/DiffSkyboxHDRScale.xml": {},
-          "native/Urho3D/CoreData/Techniques/DiffSkydome.xml": {},
-          "native/Urho3D/CoreData/Techniques/DiffSkyplane.xml": {},
-          "native/Urho3D/CoreData/Techniques/DiffSpec.xml": {},
-          "native/Urho3D/CoreData/Techniques/DiffSpecAlpha.xml": {},
-          "native/Urho3D/CoreData/Techniques/DiffUnlit.xml": {},
-          "native/Urho3D/CoreData/Techniques/DiffUnlitAlpha.xml": {},
-          "native/Urho3D/CoreData/Techniques/DiffUnlitParticleAdd.xml": {},
-          "native/Urho3D/CoreData/Techniques/DiffUnlitParticleAddSoft.xml": {},
-          "native/Urho3D/CoreData/Techniques/DiffUnlitParticleAddSoftExpand.xml": {},
-          "native/Urho3D/CoreData/Techniques/DiffUnlitParticleAlpha.xml": {},
-          "native/Urho3D/CoreData/Techniques/DiffUnlitParticleAlphaSoft.xml": {},
-          "native/Urho3D/CoreData/Techniques/DiffUnlitParticleAlphaSoftExpand.xml": {},
-          "native/Urho3D/CoreData/Techniques/DiffVCol.xml": {},
-          "native/Urho3D/CoreData/Techniques/DiffVColAdd.xml": {},
-          "native/Urho3D/CoreData/Techniques/DiffVColAddAlpha.xml": {},
-          "native/Urho3D/CoreData/Techniques/DiffVColMultiply.xml": {},
-          "native/Urho3D/CoreData/Techniques/DiffVColUnlitAlpha.xml": {},
-          "native/Urho3D/CoreData/Techniques/NoTexture.xml": {},
-          "native/Urho3D/CoreData/Techniques/NoTextureAO.xml": {},
-          "native/Urho3D/CoreData/Techniques/NoTextureAOAlpha.xml": {},
-          "native/Urho3D/CoreData/Techniques/NoTextureAdd.xml": {},
-          "native/Urho3D/CoreData/Techniques/NoTextureAddAlpha.xml": {},
-          "native/Urho3D/CoreData/Techniques/NoTextureAlpha.xml": {},
-          "native/Urho3D/CoreData/Techniques/NoTextureEnvCube.xml": {},
-          "native/Urho3D/CoreData/Techniques/NoTextureEnvCubeAO.xml": {},
-          "native/Urho3D/CoreData/Techniques/NoTextureEnvCubeAOAlpha.xml": {},
-          "native/Urho3D/CoreData/Techniques/NoTextureEnvCubeAlpha.xml": {},
-          "native/Urho3D/CoreData/Techniques/NoTextureMultiply.xml": {},
-          "native/Urho3D/CoreData/Techniques/NoTextureNormal.xml": {},
-          "native/Urho3D/CoreData/Techniques/NoTextureNormalAlpha.xml": {},
-          "native/Urho3D/CoreData/Techniques/NoTextureOverlay.xml": {},
-          "native/Urho3D/CoreData/Techniques/NoTextureUnlit.xml": {},
-          "native/Urho3D/CoreData/Techniques/NoTextureUnlitAlpha.xml": {},
-          "native/Urho3D/CoreData/Techniques/NoTextureUnlitVCol.xml": {},
-          "native/Urho3D/CoreData/Techniques/NoTextureVCol.xml": {},
-          "native/Urho3D/CoreData/Techniques/NoTextureVColAdd.xml": {},
-          "native/Urho3D/CoreData/Techniques/NoTextureVColAddAlpha.xml": {},
-          "native/Urho3D/CoreData/Techniques/NoTextureVColMultiply.xml": {},
-          "native/Urho3D/CoreData/Techniques/PBR/DiffNormalSpecEmissive.xml": {},
-          "native/Urho3D/CoreData/Techniques/PBR/DiffNormalSpecEmissiveAlpha.xml": {},
-          "native/Urho3D/CoreData/Techniques/PBR/PBRDiff.xml": {},
-          "native/Urho3D/CoreData/Techniques/PBR/PBRDiffAlpha.xml": {},
-          "native/Urho3D/CoreData/Techniques/PBR/PBRDiffNormal.xml": {},
-          "native/Urho3D/CoreData/Techniques/PBR/PBRDiffNormalAlpha.xml": {},
-          "native/Urho3D/CoreData/Techniques/PBR/PBRDiffNormalEmissive.xml": {},
-          "native/Urho3D/CoreData/Techniques/PBR/PBRDiffNormalEmissiveAlpha.xml": {},
-          "native/Urho3D/CoreData/Techniques/PBR/PBRMetallicRoughDiffNormalSpec.xml": {},
-          "native/Urho3D/CoreData/Techniques/PBR/PBRMetallicRoughDiffNormalSpecEmissive.xml": {},
-          "native/Urho3D/CoreData/Techniques/PBR/PBRMetallicRoughDiffNormalSpecEmissiveAlpha.xml": {},
-          "native/Urho3D/CoreData/Techniques/PBR/PBRMetallicRoughDiffSpec.xml": {},
-          "native/Urho3D/CoreData/Techniques/PBR/PBRMetallicRoughDiffSpecAlpha.xml": {},
-          "native/Urho3D/CoreData/Techniques/PBR/PBRNoTexture.xml": {},
-          "native/Urho3D/CoreData/Techniques/PBR/PBRNoTextureAlpha.xml": {},
-          "native/Urho3D/CoreData/Techniques/TerrainBlend.xml": {},
-          "native/Urho3D/CoreData/Techniques/VegetationDiff.xml": {},
-          "native/Urho3D/CoreData/Techniques/VegetationDiffUnlit.xml": {},
-          "native/Urho3D/CoreData/Techniques/Water.xml": {},
-          "native/Urho3D/CoreData/Textures/DefaultUI.png": {},
-          "native/Urho3D/CoreData/Textures/LUTIdentity.png": {},
-          "native/Urho3D/CoreData/Textures/LUTIdentity.xml": {},
-          "native/Urho3D/CoreData/Textures/Ramp.png": {},
-          "native/Urho3D/CoreData/Textures/Ramp.xml": {},
-          "native/Urho3D/CoreData/Textures/RampExtreme.png": {},
-          "native/Urho3D/CoreData/Textures/RampExtreme.xml": {},
-          "native/Urho3D/CoreData/Textures/RampWide.png": {},
-          "native/Urho3D/CoreData/Textures/RampWide.xml": {},
-          "native/Urho3D/CoreData/Textures/Spot.png": {},
-          "native/Urho3D/CoreData/Textures/Spot.xml": {},
-          "native/Urho3D/CoreData/Textures/SpotWide.png": {},
-          "native/Urho3D/CoreData/Textures/SpotWide.xml": {},
-          "native/Urho3D/CoreData/Textures/TouchInput.png": {},
-          "native/Urho3D/CoreData/Textures/UI.xml": {},
-          "native/Urho3D/CoreData/UI/DefaultStyle.xml": {},
-          "native/Urho3D/CoreData/UI/MessageBox.xml": {},
-          "native/Urho3D/CoreData/UI/ScreenJoystick.xml": {},
-          "native/Urho3D/CoreData/UI/ScreenJoystick2.xml": {},
-          "native/Win32/mono-urho.dll": {},
-          "native/Win64/mono-urho.dll": {}
         }
       }
     },
@@ -3662,7 +3424,7 @@
           "lib/netcore50/System.Xml.XmlSerializer.dll": {}
         }
       },
-      "UrhoSharp/1.2.21": {
+      "UrhoSharp/1.3.1.18": {
         "compile": {
           "lib/uap10.0/Urho.dll": {}
         },
@@ -5266,7 +5028,7 @@
           "runtimes/win8-aot/lib/netcore50/System.Xml.XmlSerializer.dll": {}
         }
       },
-      "UrhoSharp/1.2.21": {
+      "UrhoSharp/1.3.1.18": {
         "compile": {
           "lib/uap10.0/Urho.dll": {}
         },
@@ -6920,7 +6682,7 @@
           "lib/netcore50/System.Xml.XmlSerializer.dll": {}
         }
       },
-      "UrhoSharp/1.2.21": {
+      "UrhoSharp/1.3.1.18": {
         "compile": {
           "lib/uap10.0/Urho.dll": {}
         },
@@ -8524,7 +8286,7 @@
           "runtimes/win8-aot/lib/netcore50/System.Xml.XmlSerializer.dll": {}
         }
       },
-      "UrhoSharp/1.2.21": {
+      "UrhoSharp/1.3.1.18": {
         "compile": {
           "lib/uap10.0/Urho.dll": {}
         },
@@ -10178,7 +9940,7 @@
           "lib/netcore50/System.Xml.XmlSerializer.dll": {}
         }
       },
-      "UrhoSharp/1.2.21": {
+      "UrhoSharp/1.3.1.18": {
         "compile": {
           "lib/uap10.0/Urho.dll": {}
         },
@@ -11782,7 +11544,7 @@
           "runtimes/win8-aot/lib/netcore50/System.Xml.XmlSerializer.dll": {}
         }
       },
-      "UrhoSharp/1.2.21": {
+      "UrhoSharp/1.3.1.18": {
         "compile": {
           "lib/uap10.0/Urho.dll": {}
         },
@@ -15059,11 +14821,12 @@
         "runtimes/win8-aot/lib/netcore50/System.Xml.XmlSerializer.dll"
       ]
     },
-    "UrhoSharp/1.2.21": {
-      "sha512": "E3WUe5+0m/agyV72/zANKbhGKEwPRF59wHHieadWCxGxElCNeTGBpufhf18g2v0LuLBcdeoaXIY/qttqEpTJMQ==",
+    "UrhoSharp/1.3.1.18": {
+      "sha512": "KsmBhhCFfh4kj3W/h7jO/pssKHkWITNk1pC9UMgNRu8xv4nvfrzIe+EZXML+jtWfd0S80qUdtygG5eDpljul8g==",
       "type": "package",
+      "path": "UrhoSharp/1.3.1.18",
       "files": [
-        "UrhoSharp.1.2.21.nupkg.sha512",
+        "UrhoSharp.1.3.1.18.nupkg.sha512",
         "UrhoSharp.nuspec",
         "build/MonoAndroid/UrhoSharp.targets",
         "build/net45/UrhoSharp.targets",
@@ -15323,7 +15086,7 @@
   "projectFileDependencyGroups": {
     "": [
       "Microsoft.NETCore.UniversalWindowsPlatform >= 5.1.0",
-      "UrhoSharp >= 1.2.21"
+      "UrhoSharp >= 1.3.1.18"
     ],
     "UAP,Version=v10.0": []
   }
