@@ -47,21 +47,20 @@ namespace FormsSample
 		{
 			Input.SubscribeToTouchEnd(OnTouched);
 
-			var cache = ResourceCache;
 			scene = new Scene ();
 			octree = scene.CreateComponent<Octree> ();
 
 			plotNode = scene.CreateChild();
 			var baseNode = plotNode.CreateChild().CreateChild();
 			var plane = baseNode.CreateComponent<StaticModel>();
-			plane.Model = ResourceCache.GetModel("Models/Plane.mdl");
+			plane.Model = CoreAssets.Models.Plane;
 
-			var cameraNode = scene.CreateChild ("camera");
+			var cameraNode = scene.CreateChild ();
 			camera = cameraNode.CreateComponent<Camera>();
 			cameraNode.Position = new Vector3(10, 15, 10) / 1.75f;
 			cameraNode.Rotation = new Quaternion(-0.121f, 0.878f, -0.305f, -0.35f);
 
-			Node lightNode = cameraNode.CreateChild(name: "light");
+			Node lightNode = cameraNode.CreateChild();
 			var light = lightNode.CreateComponent<Light>();
 			light.LightType = LightType.Point;
 			light.Range = 100;
@@ -82,9 +81,15 @@ namespace FormsSample
 					bars.Add(box);
 				}
 			}
+
 			SelectedBar = bars.First();
 			SelectedBar.Select();
-			await plotNode.RunActionsAsync(new EaseBackOut(new RotateBy(2f, 0, 360, 0)));
+
+			try
+			{
+				await plotNode.RunActionsAsync(new EaseBackOut(new RotateBy(2f, 0, 360, 0)));
+			}
+			catch (OperationCanceledException) {}
 			movementsEnabled = true;
 		}
 
@@ -159,9 +164,8 @@ namespace FormsSample
 			textNode.Rotate(new Quaternion(0, 180, 0), TransformSpace.World);
 			textNode.Position = new Vector3(0, 10, 0);
 			text3D = textNode.CreateComponent<Text3D>();
-			text3D.SetFont(Application.ResourceCache.GetFont("Fonts/Anonymous Pro.ttf"), 60);
+			text3D.SetFont(CoreAssets.Fonts.AnonymousPro, 60);
 			text3D.TextEffect = TextEffect.Stroke;
-			//textNode.LookAt() //Look at camera
 
 			base.OnAttachedToNode(node);
 		}
@@ -181,14 +185,14 @@ namespace FormsSample
 		public void Deselect()
 		{
 			barNode.RemoveAllActions();//TODO: remove only "selection" action
-			barNode.RunActionsAsync(new EaseBackOut(new TintTo(1f, color.R, color.G, color.B)));
+			barNode.RunActions(new EaseBackOut(new TintTo(1f, color.R, color.G, color.B)));
 		}
 
 		public void Select()
 		{
 			Selected?.Invoke(this);
 			// "blinking" animation
-			barNode.RunActionsAsync(new RepeatForever(new TintTo(0.3f, 1f, 1f, 1f), new TintTo(0.3f, color.R, color.G, color.B)));
+			barNode.RunActions(new RepeatForever(new TintTo(0.3f, 1f, 1f, 1f), new TintTo(0.3f, color.R, color.G, color.B)));
 		}
 
 		public event Action<Bar> Selected;
