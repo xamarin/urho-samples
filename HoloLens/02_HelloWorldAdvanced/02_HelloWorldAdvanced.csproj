@@ -11,7 +11,7 @@
     <AssemblyName>07_HelloWorldWithCustomShaders</AssemblyName>
     <DefaultLanguage>en-US</DefaultLanguage>
     <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
-    <TargetPlatformVersion>10.0.10586.0</TargetPlatformVersion>
+    <TargetPlatformVersion>10.0.15063.0</TargetPlatformVersion>
     <TargetPlatformMinVersion>10.0.10240.0</TargetPlatformMinVersion>
     <MinimumVisualStudioVersion>14</MinimumVisualStudioVersion>
     <FileAlignment>512</FileAlignment>
@@ -72,6 +72,7 @@
     <Content Include="Data\Textures\License.txt" />
     <Content Include="Data\Textures\Moon.jpg" />
     <Content Include="Data\Textures\Moon_NormalsMap.png" />
+    <Content Include="Data\Textures\Space.png" />
     <Content Include="Properties\Default.rd.xml" />
   </ItemGroup>
   <ItemGroup>

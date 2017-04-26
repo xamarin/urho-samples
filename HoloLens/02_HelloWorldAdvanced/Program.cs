@@ -5,6 +5,7 @@ using Urho;
 using Urho.Actions;
 using Urho.HoloLens;
 using Urho.Shapes;
+using Urho.Resources;
 
 namespace _07_HelloWorldWithCustomShaders
 {
@@ -56,6 +57,22 @@ namespace _07_HelloWorldWithCustomShaders
 			moonNode.Position = new Vector3(1.2f, 0, 0);
 			var moon = moonNode.CreateComponent<Sphere>();
 			moon.SetMaterial(ResourceCache.GetMaterial("Materials/Moon.xml"));
+
+			var display = Windows.Graphics.Holographic.HolographicDisplay.GetDefault();
+			if (display != null && !display.IsOpaque)
+			{
+				//HoloLens - do nothing
+			}
+			else
+			{
+				//Since the display is opaque - we can display a skybox with stars
+				var skyboxNode = Scene.CreateChild();
+				skyboxNode.SetScale(100);
+				var skybox = skyboxNode.CreateComponent<Skybox>();
+				skybox.Model = CoreAssets.Models.Box;
+				//Skybox is usally a 6 textures joined together, see FeatureSamples/Core/23_Water sample
+				skybox.SetMaterial(Material.SkyboxFromImage("Textures/Space.png"));
+			}
 
 			// Run a few actions to spin the Earth, the Moon and the clouds.
 			earthNode.RunActions(new RepeatForever(new RotateBy(duration: 1f, deltaAngleX: 0, deltaAngleY: -4, deltaAngleZ: 0)));
