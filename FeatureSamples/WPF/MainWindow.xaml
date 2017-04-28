@@ -3,6 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:wpf="clr-namespace:Urho.Extensions.Wpf;assembly=Urho.Extensions.Wpf"
         mc:Ignorable="d"
         Title="UrhoSharp samples" Height="600" Width="1000">
     <Grid>
@@ -12,8 +13,7 @@
         </Grid.ColumnDefinitions>
         <TextBlock Grid.Column="1" Text="Select a game to display" VerticalAlignment="Center" HorizontalAlignment="Center"/>
         
-        <!--we use System.Windows.Forms.Panel-->
-        <WindowsFormsHost Grid.Column="1" x:Name="WindowsFormsHost" Margin="10,0,10,40"/>
+        <wpf:UrhoSurface Grid.Column="2" x:Name="UrhoSurfaceCtrl" Margin="10,0"/>
         
         <ListBox Grid.Column="0" ItemsSource="{Binding GameTypes}" SelectedItem="{Binding SelectedGameType}">
             <ListBox.ItemTemplate>
@@ -24,7 +24,5 @@
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
-        <CheckBox Content="Run in a separate SDL window" Grid.Column="1"
-                  VerticalAlignment="Bottom" Margin="10" HorizontalAlignment="Left" x:Name="RunInSdlWindow"/>
     </Grid>
 </Window>

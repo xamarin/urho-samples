@@ -15,15 +15,17 @@ namespace Urho.Samples.Droid
 		ScreenOrientation = ScreenOrientation.Landscape)]
 	public class GameActivity : Activity
 	{
-		private SDLSurface surface;
+		SDLSurface surface;
+		Application app;
 
-		protected override void OnCreate(Bundle bundle)
+		protected override async void OnCreate(Bundle bundle)
 		{
 			base.OnCreate(bundle);
 			var mLayout = new AbsoluteLayout(this);
-			surface = UrhoSurface.CreateSurface(this, Type.GetType(Intent.GetStringExtra("Type")), new ApplicationOptions("Data"), true);
+			surface = UrhoSurface.CreateSurface(this);// (this, , true);
 			mLayout.AddView(surface);
 			SetContentView(mLayout);
+			app = await surface.Show(Type.GetType(Intent.GetStringExtra("Type")), new ApplicationOptions("Data"));
 		}
 
 		protected override void OnResume()
@@ -52,6 +54,12 @@ namespace Urho.Samples.Droid
 
 		public override bool DispatchKeyEvent(KeyEvent e)
 		{
+			if (e.KeyCode == Android.Views.Keycode.Back)
+			{
+				this.Finish();
+				return false;
+			}
+
 			if (!UrhoSurface.DispatchKeyEvent(e))
 				return false;
 			return base.DispatchKeyEvent(e);

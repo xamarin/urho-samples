@@ -4,6 +4,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Urho.Desktop;
+using Urho.Extensions.WinForms;
 
 namespace Urho.Samples.WinForms
 {
@@ -11,6 +12,7 @@ namespace Urho.Samples.WinForms
 	{
 		Application currentApplication;
 		SemaphoreSlim semaphoreSlim = new SemaphoreSlim(1);
+		UrhoSurface surface;
 
 		public SamplesForm()
 		{
@@ -21,24 +23,20 @@ namespace Urho.Samples.WinForms
 				.ToArray();
 			samplesListbox.DisplayMember = "Name";
 			samplesListbox.Items.AddRange(sampleTypes);
+
+			surface = new UrhoSurface();
+			surface.Dock = DockStyle.Fill;
+			urhoSurfacePlaceholder.Controls.Add(surface);
+
 			samplesListbox.SelectedIndex = 19; //Water by default
 		}
 
 		async void samplesListbox_SelectedIndexChanged(object sender, EventArgs e)
 		{
-			currentApplication?.Exit();
-			currentApplication = null;
-			await semaphoreSlim.WaitAsync();
-			var type = (Type) samplesListbox.SelectedItem;
-			if (type == null) return;
-			urhoSurfacePlaceholder.Controls.Clear(); //urho will destroy previous control so we have to create a new one
-			var urhoSurface = new Panel { Dock = DockStyle.Fill };
-			urhoSurfacePlaceholder.Controls.Add(urhoSurface);
-			await Task.Yield();//give some time for GC to cleanup everything
-			currentApplication = Application.CreateInstance(type, new ApplicationOptions("Data") { ExternalWindow = urhoSurface.Handle });
-			urhoSurface.Focus();
-			currentApplication.Run();
-			semaphoreSlim.Release();
+			var type = (Type)samplesListbox.SelectedItem;
+			if (type == null)
+				return;
+			var app = await surface.Show(type, new ApplicationOptions("Data"));
 		}
 	}
 }

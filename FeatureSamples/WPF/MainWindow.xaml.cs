@@ -13,9 +13,7 @@ namespace Urho.Samples.WPF
 	/// </summary>
 	public partial class MainWindow : Window
 	{
-		Application currentApplication;
 		TypeInfo selectedGameType;
-		SemaphoreSlim semaphoreSlim = new SemaphoreSlim(1);
 
 		public MainWindow()
 		{
@@ -39,36 +37,8 @@ namespace Urho.Samples.WPF
 
 		async void RunGame(TypeInfo value)
 		{
-			currentApplication?.Exit();
-			if (value == null) return;
-			await semaphoreSlim.WaitAsync();
-			//urho will destroy our Panel on Exit so let's create it for each sample
-			var urhoSurface = new Panel { Dock = DockStyle.Fill };
-			//TODO: capture mouse inside the control
-			WindowsFormsHost.Child = urhoSurface;
-			WindowsFormsHost.Focus();
-			urhoSurface.Focus();
-			await Task.Yield();
-			var appOptions = new ApplicationOptions(assetsFolder: "Data")
-				{
-					ExternalWindow = RunInSdlWindow.IsChecked.Value ? IntPtr.Zero : urhoSurface.Handle,
-					LimitFps = false, //true means "limit to 200fps"
-#if !NATIVE_GAME_LOOP
-				DelayedStart = true, //it means we will control the game loop ourselves
-#endif
-				};
-
-			currentApplication = Urho.Application.CreateInstance(value.Type, appOptions);
-			currentApplication.Run();
-
-#if !NATIVE_GAME_LOOP
-			while (!currentApplication.IsExiting)
-			{
-				currentApplication.Engine.RunFrame();
-				await Task.Delay(16);
-			}
-#endif
-			semaphoreSlim.Release();
+			var app = await UrhoSurfaceCtrl.Show(value.Type, new ApplicationOptions(assetsFolder: "Data"));
+			Application.InvokeOnMain(() => { /*app.DoSomeStuff();*/});
 		}
 	}
 
