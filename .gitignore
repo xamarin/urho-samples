@@ -33,6 +33,7 @@ x64/
 *.vspscc
 *.vssscc
 *.nuget.targets
+*.nuget.props
 .builds
 project.lock.json
 CoreData.pak
