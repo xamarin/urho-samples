@@ -13,13 +13,14 @@ namespace SamplyGame.Droid
 		ScreenOrientation = ScreenOrientation.Portrait)]
 	public class MainActivity : Activity
 	{
-		protected override void OnCreate(Bundle bundle)
+		protected override async void OnCreate(Bundle bundle)
 		{
 			base.OnCreate(bundle);
 			var mLayout = new AbsoluteLayout(this);
-			var surface = UrhoSurface.CreateSurface<SamplyGame>(this, new Urho.ApplicationOptions("Data"));
+			var surface = UrhoSurface.CreateSurface(this);// (this, , true);
 			mLayout.AddView(surface);
 			SetContentView(mLayout);
+			var app = await surface.Show<SamplyGame>(new Urho.ApplicationOptions("Data"));
 		}
 
 		protected override void OnResume()
@@ -48,6 +49,12 @@ namespace SamplyGame.Droid
 
 		public override bool DispatchKeyEvent(KeyEvent e)
 		{
+			if (e.KeyCode == Android.Views.Keycode.Back)
+			{
+				this.Finish();
+				return false;
+			}
+
 			if (!UrhoSurface.DispatchKeyEvent(e))
 				return false;
 			return base.DispatchKeyEvent(e);

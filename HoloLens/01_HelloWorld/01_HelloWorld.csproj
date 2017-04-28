@@ -56,7 +56,6 @@
   <ItemGroup>
     <Content Include="Data\Textures\Earth.jpg" />
     <Content Include="Data\Textures\Moon.jpg" />
-    <Content Include="Data\Textures\Space.png" />
     <Content Include="Properties\Default.rd.xml" />
   </ItemGroup>
   <ItemGroup>
