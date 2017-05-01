@@ -1,4 +1,4 @@
-UrhoSharp HoloLens Samples
+﻿UrhoSharp HoloLens Samples
 =======
 
 These samples use the [UrhoSharp.HoloLens](https://www.nuget.org/packages/UrhoSharp.HoloLens/) package 
@@ -23,7 +23,7 @@ Making HoloLens applications with Urho is trivial, all you have to do is this:
 using Urho;
 using Urho.Actions;
 using Urho.Holographics;
-using Urho.HoloLens;
+using Urho.SharpReality;
 using Urho.Shapes;
 using Windows.ApplicationModel.Core;
 
@@ -35,7 +35,7 @@ internal class Program
             new ApplicationOptions("Data")));
 }
 
-public class MyHoloApp : HoloApplication
+public class MyHoloApp : StereoApplication
 {
     public MyHoloApp(ApplicationOptions opts) : base(opts) { }
 

@@ -1,16 +1,16 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Shared;
 using Urho;
 using Urho.Actions;
 using Urho.Gui;
-using Urho.HoloLens;
+using Urho.SharpReality;
 using Urho.Shapes;
 
 namespace SmartHome.HoloLens
 {
-	public class ScannerApp : HoloApplication
+	public class ScannerApp : StereoApplication
 	{
 		Node environmentNode;
 		SpatialCursor cursor;

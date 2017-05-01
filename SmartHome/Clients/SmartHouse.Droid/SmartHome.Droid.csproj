@@ -82,11 +82,11 @@
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Xml" />
     <Reference Include="Urho.Droid.SdlBinding, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\UrhoSharp.Forms.1.4.4\lib\MonoAndroid\Urho.Droid.SdlBinding.dll</HintPath>
+      <HintPath>..\..\packages\UrhoSharp.Forms.1.4.18\lib\MonoAndroid\Urho.Droid.SdlBinding.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Urho.Forms, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\UrhoSharp.Forms.1.4.4\lib\MonoAndroid\Urho.Forms.dll</HintPath>
+      <HintPath>..\..\packages\UrhoSharp.Forms.1.4.18\lib\MonoAndroid\Urho.Forms.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Xamarin.Android.Support.Animated.Vector.Drawable, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
@@ -192,11 +192,11 @@
     </PropertyGroup>
     <Error Condition="!Exists('..\..\packages\Xamarin.Android.Support.Vector.Drawable.23.3.0\build\Xamarin.Android.Support.Vector.Drawable.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\Xamarin.Android.Support.Vector.Drawable.23.3.0\build\Xamarin.Android.Support.Vector.Drawable.targets'))" />
     <Error Condition="!Exists('..\..\packages\Xamarin.Forms.2.3.2.127\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\Xamarin.Forms.2.3.2.127\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets'))" />
-    <Error Condition="!Exists('..\..\packages\UrhoSharp.Forms.1.4.4\build\MonoAndroid\UrhoSharp.Forms.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\UrhoSharp.Forms.1.4.4\build\MonoAndroid\UrhoSharp.Forms.targets'))" />
+    <Error Condition="!Exists('..\..\packages\UrhoSharp.Forms.1.4.18\build\MonoAndroid\UrhoSharp.Forms.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\UrhoSharp.Forms.1.4.18\build\MonoAndroid\UrhoSharp.Forms.targets'))" />
     <Error Condition="!Exists('..\..\packages\refit.2.3.0\build\refit.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\refit.2.3.0\build\refit.targets'))" />
   </Target>
   <Import Project="..\..\packages\Xamarin.Forms.2.3.2.127\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets" Condition="Exists('..\..\packages\Xamarin.Forms.2.3.2.127\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets')" />
-  <Import Project="..\..\packages\UrhoSharp.Forms.1.4.4\build\MonoAndroid\UrhoSharp.Forms.targets" Condition="Exists('..\..\packages\UrhoSharp.Forms.1.4.4\build\MonoAndroid\UrhoSharp.Forms.targets')" />
+  <Import Project="..\..\packages\UrhoSharp.Forms.1.4.18\build\MonoAndroid\UrhoSharp.Forms.targets" Condition="Exists('..\..\packages\UrhoSharp.Forms.1.4.18\build\MonoAndroid\UrhoSharp.Forms.targets')" />
   <Import Project="..\..\packages\refit.2.3.0\build\refit.targets" Condition="Exists('..\..\packages\refit.2.3.0\build\refit.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
      Other similar extension points exist, see Microsoft.Common.targets.
