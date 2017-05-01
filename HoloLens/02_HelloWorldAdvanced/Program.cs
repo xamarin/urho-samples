@@ -3,7 +3,7 @@ using System.Diagnostics;
 using Windows.ApplicationModel.Core;
 using Urho;
 using Urho.Actions;
-using Urho.HoloLens;
+using Urho.SharpReality;
 using Urho.Shapes;
 using Urho.Resources;
 
@@ -21,7 +21,7 @@ namespace _07_HelloWorldWithCustomShaders
 		static void Main() => CoreApplication.Run(new UrhoAppViewSource<HelloWorldApplication>(new ApplicationOptions("Data")));
 	}
 
-	public class HelloWorldApplication : HoloApplication
+	public class HelloWorldApplication : StereoApplication
 	{
 		Node earthNode;
 		Vector3 earthPosBeforManipulations;
@@ -58,12 +58,12 @@ namespace _07_HelloWorldWithCustomShaders
 			var moon = moonNode.CreateComponent<Sphere>();
 			moon.SetMaterial(ResourceCache.GetMaterial("Materials/Moon.xml"));
 
-			var display = Windows.Graphics.Holographic.HolographicDisplay.GetDefault();
-			if (display != null && !display.IsOpaque)
-			{
-				//HoloLens - do nothing
-			}
-			else
+			// HolographicDisplay api is available in >=10.0.15063
+			// var display = Windows.Graphics.Holographic.HolographicDisplay.GetDefault();
+			// bool isHoloLens = display != null && !display.IsOpaque;
+			bool isHoloLens = true;
+
+			if (!isHoloLens)
 			{
 				//Since the display is opaque - we can display a skybox with stars
 				var skyboxNode = Scene.CreateChild();

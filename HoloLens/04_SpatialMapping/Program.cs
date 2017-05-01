@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Windows.ApplicationModel.Core;
 using Urho;
 using Urho.Actions;
-using Urho.HoloLens;
+using Urho.SharpReality;
 
 namespace SpatialMapping
 {
@@ -14,7 +14,7 @@ namespace SpatialMapping
 	}
 
 
-	public class SpatialMappingApp : HoloApplication
+	public class SpatialMappingApp : StereoApplication
 	{
 		bool wireframe;
 		Vector3 envPositionBeforeManipulations;

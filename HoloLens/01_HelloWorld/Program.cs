@@ -2,7 +2,7 @@
 using Windows.ApplicationModel.Core;
 using Urho;
 using Urho.Actions;
-using Urho.HoloLens;
+using Urho.SharpReality;
 using Urho.Shapes;
 
 namespace HelloWorld
@@ -15,7 +15,7 @@ namespace HelloWorld
 				new ApplicationOptions("Data")));
 	}
 
-	public class HelloWorldApplication : HoloApplication
+	public class HelloWorldApplication : StereoApplication
 	{
 		Node earthNode;
 

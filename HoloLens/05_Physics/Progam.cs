@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Windows.ApplicationModel.Core;
 using Urho;
 using Urho.Gui;
-using Urho.HoloLens;
+using Urho.SharpReality;
 using Urho.Physics;
 using Urho.Resources;
 
@@ -16,7 +16,7 @@ namespace Physics
 			new UrhoAppViewSource<Progam>(new ApplicationOptions("Data")));
 	}
 
-	public class Progam : HoloApplication
+	public class Progam : StereoApplication
 	{
 		Node environmentNode;
 		Material spatialMaterial;

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Windows.ApplicationModel.Core;
 using Urho;
 using Urho.Actions;
-using Urho.HoloLens;
+using Urho.SharpReality;
 
 namespace Mutant
 {
@@ -15,7 +15,7 @@ namespace Mutant
 	}
 
 
-	public class MutantApp : HoloApplication
+	public class MutantApp : StereoApplication
 	{
 		Node mutantNode;
 		Vector3 monsterPositionBeforeManipulations;

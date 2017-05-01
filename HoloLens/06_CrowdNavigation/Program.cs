@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Windows.ApplicationModel.Core;
 using Urho;
-using Urho.HoloLens;
+using Urho.SharpReality;
 using Urho.Navigation;
 using Urho.Shapes;
 
@@ -16,7 +16,7 @@ namespace CrowdNavigation
 	}
 
 
-	public class CrowdApp : HoloApplication
+	public class CrowdApp : StereoApplication
 	{
 		Node environmentNode;
 		Material spatialMaterial;

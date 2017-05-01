@@ -12,7 +12,7 @@ using Windows.Storage.Streams;
 using Microsoft.ProjectOxford.Vision;
 using Urho;
 using Urho.Actions;
-using Urho.HoloLens;
+using Urho.SharpReality;
 using Urho.Resources;
 using Urho.Shapes;
 using Urho.Urho2D;
@@ -26,7 +26,7 @@ namespace CognitiveServices
 	}
 
 
-	public class CognitiveServicesApp : HoloApplication
+	public class CognitiveServicesApp : StereoApplication
 	{
 		//the key can be obtained for free here: https://www.microsoft.com/cognitive-services/en-us/computer-vision-api
 		//click on "Get started for free"

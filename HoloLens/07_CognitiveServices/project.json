@@ -1,8 +1,8 @@
 ﻿{
   "dependencies": {
-    "Microsoft.NETCore.UniversalWindowsPlatform": "5.3.3",
-    "UrhoSharp.HoloLens": "1.4.4",
-    "Microsoft.ProjectOxford.Vision": "1.0.370",
+    "Microsoft.NETCore.UniversalWindowsPlatform": "5.2.*",
+    "UrhoSharp.SharpReality": "1.4.18",
+    "Microsoft.ProjectOxford.Vision": "1.0.370"
   },
 
   "frameworks": {
