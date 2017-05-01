@@ -19,14 +19,15 @@ namespace FaceDetection.Droid
 		Camera camera;
 		UrhoApp urhoApp;
 
-		protected override void OnCreate(Bundle bundle)
+		protected override async void OnCreate(Bundle bundle)
 		{
 			base.OnCreate(bundle);
 			var layout = new AbsoluteLayout(this);
 			Urho.Application.Started += UrhoAppStarted;
-			var surface = UrhoSurface.CreateSurface<UrhoApp>(this);
+			var surface = UrhoSurface.CreateSurface(this);
 			layout.AddView(surface);
 			SetContentView(layout);
+			urhoApp = await surface.Show<UrhoApp>();
 		}
 
 		void UrhoAppStarted()

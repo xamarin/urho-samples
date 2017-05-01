@@ -1,7 +1,7 @@
 ﻿UrhoSharp HoloLens Samples
 =======
 
-These samples use the [UrhoSharp.HoloLens](https://www.nuget.org/packages/UrhoSharp.HoloLens/) package 
+These samples use the [UrhoSharp.SharpReality](https://www.nuget.org/packages/UrhoSharp.SharpReality/) package 
 and show how you can use Urho to create Holographic applications with HoloLens.
 
 ![Screenshot](05_Physics/Screenshots/Video2.gif) 
