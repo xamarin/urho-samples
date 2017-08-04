@@ -15,7 +15,7 @@ namespace Urho.Samples.Droid
 		ScreenOrientation = ScreenOrientation.Landscape)]
 	public class GameActivity : Activity
 	{
-		SDLSurface surface;
+		UrhoSurfacePlaceholder surface;
 		Application app;
 
 		protected override async void OnCreate(Bundle bundle)

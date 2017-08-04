@@ -4,6 +4,6 @@
     <NuGetPackageRoot>$(UserProfile)\.nuget\packages\</NuGetPackageRoot>
   </PropertyGroup>
   <ImportGroup>
-    <Import Project="$(NuGetPackageRoot)\UrhoSharp\1.4.18\build\uap10.0\UrhoSharp.targets" Condition="Exists('$(NuGetPackageRoot)\UrhoSharp\1.4.18\build\uap10.0\UrhoSharp.targets')" />
+    <Import Project="$(NuGetPackageRoot)\UrhoSharp\1.5.2\build\uap10.0\UrhoSharp.targets" Condition="Exists('$(NuGetPackageRoot)\UrhoSharp\1.5.2\build\uap10.0\UrhoSharp.targets')" />
   </ImportGroup>
 </Project>
