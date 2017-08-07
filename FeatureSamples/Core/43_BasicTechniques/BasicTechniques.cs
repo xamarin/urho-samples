@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Runtime.InteropServices;
 using Urho.Actions;
 using Urho.Gui;
@@ -16,6 +17,7 @@ namespace Urho.Samples
 
 		protected override void Start()
 		{
+			Urho.Application.UnhandledException += Application_UnhandledException;
 			base.Start();
 
 			// Create the scene content
@@ -23,6 +25,12 @@ namespace Urho.Samples
 
 			// Setup the viewport for displaying the scene
 			SetupViewport();
+		}
+
+		void Application_UnhandledException(object sender, UnhandledExceptionEventArgs e)
+		{
+			Debug.WriteLine(e.Exception);
+			e.Handled = true;
 		}
 
 		void CreateScene()
@@ -36,10 +44,10 @@ namespace Urho.Samples
 			const float stepX = 0.23f;
 			const float stepY = 0.3f;
 
-			//by enabling this flag, we are able to edit assets and see changes.
+			//by enabling this flag, we are able to edit assets via external editors (e.g. VS Code) and see changes immediately.
 			ResourceCache.AutoReloadResources = true;
 
-			cameraNode = scene.CreateChild("Camera");
+			cameraNode = scene.CreateChild();
 			cameraNode.CreateComponent<Camera>();
 			cameraNode.Position = new Vector3(stepX, -stepY, 0);
 
@@ -56,12 +64,13 @@ namespace Urho.Samples
 			//skybox.Model = CoreAssets.Models.Sphere;
 			//skybox.SetMaterial(ResourceCache.GetMaterial("Materials/Skybox2.xml"));
 
+			//see /FeatureSamples/Assets/Data/Sample43
 			var materials = new string[,]
 			{
 				{ "NoTexture", "NoTextureUnlit", "NoTextureNormal", "NoTextureAdd", "NoTextureMultiply" },
 				{ "Diff", "DiffUnlit", "DiffNormal", "DiffAlpha", "DiffAdd" },
 				{ "DiffEmissive", "DiffSpec", "DiffNormalSpec", "DiffAO", "DiffEnvCube" },
-				{ "Water", "Terrain", "NoTextureVCol", "Default", "Empty" },
+				{ "Water", "Terrain", "NoTextureVCol", "Default", "CustomShader" },
 			};
 			
 			for (int i = 0; i < materials.GetLength(1); i++)
@@ -85,9 +94,11 @@ namespace Urho.Samples
 					sphereNode.SetScale(0.2f);
 
 					var earthModel = earthNode.CreateComponent<StaticModel>();
+					//for VCol we have a special model:
 					if (material.Contains("VCol"))
 						earthModel.Model = ResourceCache.GetModel("Sample43/SphereVCol.mdl");
 					else
+						//built-in sphere model (.mdl):
 						earthModel.Model = CoreAssets.Models.Sphere;
 
 					earthModel.SetMaterial(ResourceCache.GetMaterial($"Sample43/Mat{material}.xml", sendEventOnFailure: false));

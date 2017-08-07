@@ -16,7 +16,7 @@ namespace Urho.Samples.Mac
 			//   return;
 
 			samples = typeof(Sample).Assembly.GetTypes().Where(t => t.IsSubclassOf(typeof(Application)) && t != typeof(Sample)).ToArray();
-			Type selectedSampleType = args.Length > 0 ? ParseSampleFromNumber(args[0]) : typeof (Water);
+			Type selectedSampleType = args.Length > 0 ? ParseSampleFromNumber(args[0]) : typeof (BasicTechniques);
 
 			DesktopUrhoInitializer.AssetsDirectory = @"../../Assets";
 			var game = (Application) Activator.CreateInstance(selectedSampleType, new ApplicationOptions("Data"));
