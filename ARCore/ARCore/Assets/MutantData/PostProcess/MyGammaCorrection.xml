@@ -1,0 +1,5 @@
+﻿<renderpath>
+  <command type="quad" tag="MyGammaCorrection" vs="MyGammaCorrection" ps="MyGammaCorrection" output="viewport">
+    <texture unit="diffuse" name="viewport" />
+  </command>
+</renderpath>
