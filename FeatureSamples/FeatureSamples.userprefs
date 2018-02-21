@@ -1,0 +1,21 @@
+﻿<Properties StartupConfiguration="{75FEADAF-C698-4691-A1B9-48C5F04837FE}|Default">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Core/Sample.cs">
+    <Files>
+      <File FileName="Core/01_HelloWorld/HelloWorld.cs" Line="23" Column="12" />
+      <File FileName="Cocoa/ViewController.cs" Line="62" Column="4" />
+      <File FileName="Cocoa/Main.cs" Line="14" Column="1" />
+      <File FileName="Core/Sample.cs" Line="115" Column="1" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|iPhoneSimulator" />
+  <MonoDevelop.Ide.ItemProperties.Urho.Samples.Droid PreferredExecutionTarget="Android.Android_Accelerated_Nougat" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore>
+      <Catchpoint exceptionName="System.Exception" includeSubclasses="True" />
+    </BreakpointStore>
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.ItemProperties.Urho.Samples.iOS PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.67372373-C96B-4133-B288-8AE80F8700C3" />
+  <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.ItemProperties.Urho.Samples.Cocoa PreferredExecutionTarget="Test1" />
+</Properties>

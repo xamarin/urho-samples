@@ -48,15 +48,19 @@ namespace Urho.Samples.Cocoa
 			UrhoSurface.AddSubview(view);
 
 			string assets = "../../../../../Assets";
-			Urho.Desktop.DesktopUrhoInitializer.CopyEmbeddedCoreDataTo(assets);
+			string coreDataPak = "../../../CoreData.pak";
+			if (!File.Exists(coreDataPak))
+				File.Copy("../../../CoreData.pak", Path.Combine(assets, "CoreData.pak"));
+
 			options = new ApplicationOptions("Data")
 				{
 					ExternalWindow = view.Handle,
 					LimitFps = true,
+					HighDpi = true,
 					ResourcePrefixPaths = new string[] { assets },
 				};
 		}
-
+		
 		async void RunSample(Type type)
 		{
 			if (currentApp != null)
