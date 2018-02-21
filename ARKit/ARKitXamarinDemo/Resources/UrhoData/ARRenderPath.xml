@@ -1,0 +1,18 @@
+﻿<renderpath>
+    <command type="clear" color="fog" depth="1.0" stencil="0" />
+
+	<!-- Basically this RenderPath is the default Forward.xml 
+		 we just add this command to render iPhone's camera as a background
+		 textures are set via code and processed via ARCopyFramebuffer.glsl-->
+    <command type="quad" vs="ARCopyFramebuffer" ps="ARCopyFramebuffer" output="viewport"/>
+    <!-- end.-->
+
+    <command type="scenepass" pass="base" vertexlights="true" metadata="base" />
+    <command type="forwardlights" pass="light" />
+    <command type="scenepass" pass="postopaque" />
+    <command type="scenepass" pass="refract">
+        <texture unit="environment" name="viewport" />
+    </command>
+    <command type="scenepass" pass="alpha" vertexlights="true" sort="backtofront" metadata="alpha" />
+    <command type="scenepass" pass="postalpha" sort="backtofront" />
+</renderpath>

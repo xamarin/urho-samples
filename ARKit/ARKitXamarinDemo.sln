@@ -1,0 +1,23 @@
+
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ARKitXamarinDemo", "ARKitXamarinDemo\ARKitXamarinDemo.csproj", "{B081C457-940B-4DB4-9FA8-64B818A8029A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|iPhoneSimulator = Debug|iPhoneSimulator
+		Release|iPhone = Release|iPhone
+		Release|iPhoneSimulator = Release|iPhoneSimulator
+		Debug|iPhone = Debug|iPhone
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B081C457-940B-4DB4-9FA8-64B818A8029A}.Debug|iPhoneSimulator.ActiveCfg = Debug|iPhoneSimulator
+		{B081C457-940B-4DB4-9FA8-64B818A8029A}.Debug|iPhoneSimulator.Build.0 = Debug|iPhoneSimulator
+		{B081C457-940B-4DB4-9FA8-64B818A8029A}.Release|iPhone.ActiveCfg = Release|iPhone
+		{B081C457-940B-4DB4-9FA8-64B818A8029A}.Release|iPhone.Build.0 = Release|iPhone
+		{B081C457-940B-4DB4-9FA8-64B818A8029A}.Release|iPhoneSimulator.ActiveCfg = Release|iPhoneSimulator
+		{B081C457-940B-4DB4-9FA8-64B818A8029A}.Release|iPhoneSimulator.Build.0 = Release|iPhoneSimulator
+		{B081C457-940B-4DB4-9FA8-64B818A8029A}.Debug|iPhone.ActiveCfg = Debug|iPhone
+		{B081C457-940B-4DB4-9FA8-64B818A8029A}.Debug|iPhone.Build.0 = Debug|iPhone
+	EndGlobalSection
+EndGlobal

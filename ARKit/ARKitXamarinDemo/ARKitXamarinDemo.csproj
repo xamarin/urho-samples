@@ -1,0 +1,174 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">iPhoneSimulator</Platform>
+    <ProjectGuid>{B081C457-940B-4DB4-9FA8-64B818A8029A}</ProjectGuid>
+    <ProjectTypeGuids>{FEACFBD2-3405-455C-9665-78FE426C6842};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>ARKitXamarinDemo</RootNamespace>
+    <AssemblyName>ARKitXamarinDemo</AssemblyName>
+    <IPhoneResourcePrefix>Resources</IPhoneResourcePrefix>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|iPhoneSimulator' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\iPhoneSimulator\Debug</OutputPath>
+    <DefineConstants>DEBUG;ENABLE_TEST_CLOUD;</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodesignKey>iPhone Developer</CodesignKey>
+    <DeviceSpecificBuild>true</DeviceSpecificBuild>
+    <MtouchDebug>true</MtouchDebug>
+    <MtouchNoSymbolStrip>false</MtouchNoSymbolStrip>
+    <MtouchFastDev>true</MtouchFastDev>
+    <IOSDebuggerPort>55779</IOSDebuggerPort>
+    <MtouchLink>SdkOnly</MtouchLink>
+    <MtouchArch>x86_64</MtouchArch>
+    <MtouchHttpClientHandler>HttpClientHandler</MtouchHttpClientHandler>
+    <PlatformTarget>x86</PlatformTarget>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+<MtouchEnableSGenConc>true</MtouchEnableSGenConc>
+<OptimizePNGs>false</OptimizePNGs>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhone' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\iPhone\Release</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodesignKey>iPhone Developer</CodesignKey>
+    <MtouchFloat32>true</MtouchFloat32>
+    <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
+    <MtouchLink>Full</MtouchLink>
+    <MtouchArch>ARM64</MtouchArch>
+    <MtouchHttpClientHandler>HttpClientHandler</MtouchHttpClientHandler>
+    <PlatformTarget>x86</PlatformTarget>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <OptimizePNGs>false</OptimizePNGs>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhoneSimulator' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\iPhoneSimulator\Release</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodesignKey>iPhone Developer</CodesignKey>
+    <DeviceSpecificBuild>true</DeviceSpecificBuild>
+    <MtouchNoSymbolStrip>true</MtouchNoSymbolStrip>
+    <MtouchLink>None</MtouchLink>
+    <MtouchArch>i386, x86_64</MtouchArch>
+    <MtouchHttpClientHandler>HttpClientHandler</MtouchHttpClientHandler>
+    <PlatformTarget>x86</PlatformTarget>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|iPhone' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\iPhone\Debug</OutputPath>
+    <DefineConstants>DEBUG;ENABLE_TEST_CLOUD;</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodesignKey>iPhone Developer</CodesignKey>
+    <DeviceSpecificBuild>true</DeviceSpecificBuild>
+    <MtouchDebug>true</MtouchDebug>
+    <MtouchNoSymbolStrip>false</MtouchNoSymbolStrip>
+    <MtouchFastDev>false</MtouchFastDev>
+    <MtouchFloat32>true</MtouchFloat32>
+    <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
+    <MtouchLink>None</MtouchLink>
+    <MtouchArch>ARM64</MtouchArch>
+    <MtouchHttpClientHandler>HttpClientHandler</MtouchHttpClientHandler>
+    <PlatformTarget>x86</PlatformTarget>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <OptimizePNGs>false</OptimizePNGs>
+    <MtouchEnableSGenConc>true</MtouchEnableSGenConc>
+    <MtouchProfiling>false</MtouchProfiling>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Core" />
+    <Reference Include="Xamarin.iOS" />
+    <Reference Include="MonoTouch.Dialog-1" />
+    <Reference Include="Urho">
+      <HintPath>..\packages\UrhoSharp.1.8.51\lib\Xamarin.iOS10\Urho.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\Contents.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Resources\" />
+    <Folder Include="Resources\UrhoData\" />
+    <Folder Include="Resources\UrhoData\Shaders\" />
+    <Folder Include="Resources\UrhoData\Shaders\GLSL\" />
+    <Folder Include="Resources\UrhoData\Animations\" />
+    <Folder Include="Resources\UrhoData\Materials\" />
+    <Folder Include="Resources\UrhoData\Models\" />
+    <Folder Include="Resources\UrhoData\Textures\" />
+    <Folder Include="Resources\UrhoData\Techniques\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Info.plist" />
+    <None Include="Entitlements.plist" />
+    <None Include="UrhoSharpReadme.txt" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Main.cs" />
+    <Compile Include="AppDelegate.cs" />
+    <Compile Include="MutantDemo.cs" />
+    <Compile Include="CrowdDemo.cs" />
+    <Compile Include="FaceDemo.cs" />
+    <Compile Include="VerticalSurfaces.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\UrhoData\ARRenderPath.xml" />
+    <BundleResource Include="Resources\UrhoData\License.txt" />
+    <BundleResource Include="Resources\UrhoData\Animations\Mutant_Block_LY.ani" />
+    <BundleResource Include="Resources\UrhoData\Animations\Mutant_Death.ani" />
+    <BundleResource Include="Resources\UrhoData\Animations\Mutant_HipHop1.ani" />
+    <BundleResource Include="Resources\UrhoData\Animations\Mutant_HitHead_LY.ani" />
+    <BundleResource Include="Resources\UrhoData\Animations\Mutant_Idle0.ani" />
+    <BundleResource Include="Resources\UrhoData\Animations\Mutant_Idle1.ani" />
+    <BundleResource Include="Resources\UrhoData\Animations\Mutant_Jump.ani" />
+    <BundleResource Include="Resources\UrhoData\Animations\Mutant_Jump1.ani" />
+    <BundleResource Include="Resources\UrhoData\Animations\Mutant_JumpAttack.ani" />
+    <BundleResource Include="Resources\UrhoData\Animations\Mutant_JumpAttack_RM.ani" />
+    <BundleResource Include="Resources\UrhoData\Animations\Mutant_JumpStop.ani" />
+    <BundleResource Include="Resources\UrhoData\Animations\Mutant_Kick.ani" />
+    <BundleResource Include="Resources\UrhoData\Animations\Mutant_Punch.ani" />
+    <BundleResource Include="Resources\UrhoData\Animations\Mutant_Run.ani" />
+    <BundleResource Include="Resources\UrhoData\Animations\Mutant_Swipe.ani" />
+    <BundleResource Include="Resources\UrhoData\Animations\Mutant_Throw_LY.ani" />
+    <BundleResource Include="Resources\UrhoData\Animations\Mutant_Walk.ani" />
+    <BundleResource Include="Resources\UrhoData\Animations\Mutant_Wave_LY.ani" />
+    <BundleResource Include="Resources\UrhoData\Materials\mutant_M.xml" />
+    <BundleResource Include="Resources\UrhoData\Models\Mutant.mdl" />
+    <BundleResource Include="Resources\UrhoData\Textures\Mutant_diffuse.jpg" />
+    <BundleResource Include="Resources\UrhoData\Textures\Mutant_normal.jpg" />
+    <BundleResource Include="Resources\UrhoData\Techniques\DiffOutline.xml" />
+    <BundleResource Include="Resources\UrhoData\Shaders\GLSL\Outline.glsl" />
+    <BundleResource Include="Resources\UrhoData\Textures\Cursor.png" />
+    <BundleResource Include="Resources\UrhoData\Materials\PlaneTileMat.xml" />
+    <BundleResource Include="Resources\UrhoData\Textures\PlaneTile.png" />
+    <BundleResource Include="Resources\UrhoData\Sounds\death.wav" />
+    <BundleResource Include="Resources\UrhoData\Sounds\go1.wav" />
+    <BundleResource Include="Resources\UrhoData\Sounds\go2.wav" />
+    <BundleResource Include="Resources\UrhoData\Sounds\go3.wav" />
+    <BundleResource Include="Resources\UrhoData\Sounds\go4.wav" />
+    <BundleResource Include="Resources\UrhoData\Sounds\go5.wav" />
+    <BundleResource Include="Resources\UrhoData\Sounds\theme.ogg" />
+    <BundleResource Include="Resources\UrhoData\Shaders\GLSL\PlaneTile.glsl" />
+    <BundleResource Include="Resources\UrhoData\Textures\Earth_NormalsMap.png" />
+    <BundleResource Include="Resources\UrhoData\Textures\Earth.jpg" />
+    <BundleResource Include="Resources\UrhoData\Textures\License.txt" />
+    <BundleResource Include="Resources\UrhoData\Textures\Moon_NormalsMap.png" />
+    <BundleResource Include="Resources\UrhoData\Textures\Moon.jpg" />
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
+</Project>
