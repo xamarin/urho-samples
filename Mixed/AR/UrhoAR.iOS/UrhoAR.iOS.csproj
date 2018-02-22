@@ -69,7 +69,7 @@
     <MtouchDebug>true</MtouchDebug>
     <MtouchNoSymbolStrip>true</MtouchNoSymbolStrip>
     <MtouchFastDev>true</MtouchFastDev>
-    <MtouchProfiling>true</MtouchProfiling>
+    <MtouchProfiling>false</MtouchProfiling>
     <MtouchFloat32>true</MtouchFloat32>
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
     <IOSDebuggerPort>33656</IOSDebuggerPort>
@@ -77,6 +77,7 @@
     <MtouchArch>ARM64</MtouchArch>
     <MtouchHttpClientHandler>HttpClientHandler</MtouchHttpClientHandler>
     <PlatformTarget>x86</PlatformTarget>
+    <OptimizePNGs>false</OptimizePNGs>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -86,14 +87,6 @@
       <HintPath>..\packages\UrhoSharp.1.8.51\lib\Xamarin.iOS10\Urho.dll</HintPath>
     </Reference>
     <Reference Include="Xamarin.iOS" />
-  </ItemGroup>
-  <ItemGroup>
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Contents.json">
-      <Visible>false</Visible>
-    </ImageAsset>
-    <ImageAsset Include="Assets.xcassets\Contents.json">
-      <Visible>false</Visible>
-    </ImageAsset>
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
@@ -115,11 +108,38 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="..\MyData\Materials\*.*">
-      <Link>Resources\MyData\Materials\%(Filename)%(Extension)</Link>
+    <BundleResource Include="..\MyData\Materials\Earth.xml">
+      <Link>Resources\MyData\Materials\Earth.xml</Link>
     </BundleResource>
-    <BundleResource Include="..\MyData\Textures\*.*">
-      <Link>Resources\MyData\Textures\%(Filename)%(Extension)</Link>
+    <BundleResource Include="..\MyData\Materials\Moon.xml">
+      <Link>Resources\MyData\Materials\Moon.xml</Link>
+    </BundleResource>
+    <BundleResource Include="..\MyData\Textures\Earth.jpg">
+      <Link>Resources\MyData\Textures\Earth.jpg</Link>
+    </BundleResource>
+    <BundleResource Include="..\MyData\Textures\Earth_Clouds.jpg">
+      <Link>Resources\MyData\Textures\Earth_Clouds.jpg</Link>
+    </BundleResource>
+    <BundleResource Include="..\MyData\Textures\Earth_Night.jpg">
+      <Link>Resources\MyData\Textures\Earth_Night.jpg</Link>
+    </BundleResource>
+    <BundleResource Include="..\MyData\Textures\Earth_NormalsMap.png">
+      <Link>Resources\MyData\Textures\Earth_NormalsMap.png</Link>
+    </BundleResource>
+    <BundleResource Include="..\MyData\Textures\Earth_SpecularMap.png">
+      <Link>Resources\MyData\Textures\Earth_SpecularMap.png</Link>
+    </BundleResource>
+    <BundleResource Include="..\MyData\Textures\License.txt">
+      <Link>Resources\MyData\Textures\License.txt</Link>
+    </BundleResource>
+    <BundleResource Include="..\MyData\Textures\Moon.jpg">
+      <Link>Resources\MyData\Textures\Moon.jpg</Link>
+    </BundleResource>
+    <BundleResource Include="..\MyData\Textures\Moon_NormalsMap.png">
+      <Link>Resources\MyData\Textures\Moon_NormalsMap.png</Link>
+    </BundleResource>
+    <BundleResource Include="..\MyData\Textures\Space.png">
+      <Link>Resources\MyData\Textures\Space.png</Link>
     </BundleResource>
   </ItemGroup>
   <Import Project="..\Shared\Shared.projitems" Label="Shared" />

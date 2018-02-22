@@ -16,7 +16,11 @@ namespace UrhoAR.iOS
 			base.ViewDidLoad();
 
 			urhoSurface = new UrhoSurface(View.Bounds);
-			var app = await urhoSurface.Show<MyApp>(new Urho.ApplicationOptions("MyData"));
+			View.AddSubview(urhoSurface);
+			var app = await urhoSurface.Show<MyApp>(new Urho.ApplicationOptions("MyData") { 
+				Orientation = Urho.ApplicationOptions.OrientationType.Portrait,
+				DelayedStart = false,
+			});
 		}
 
 		public override void DidReceiveMemoryWarning()
