@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionCode="1" android:versionName="1.0" package="com.companyname.UrhoAR.Droid" android:installLocation="auto">
+	<uses-sdk android:minSdkVersion="26" />
+	<uses-permission android:name="android.permission.INTERNET" />
+  <uses-permission android:name="android.permission.CAMERA" />
+  <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+	<uses-feature android:glEsVersion="0x00020000" />
+	<application android:label="UrhoAR.Droid"></application>
+</manifest>
