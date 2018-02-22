@@ -8,23 +8,23 @@
     xmlns:uwp="using:Urho.UWP"
     mc:Ignorable="d">
 
-	<Grid x:Name="Grid">
-		<Grid.ColumnDefinitions>
-			<ColumnDefinition Width="270"/>
-			<ColumnDefinition/>
-		</Grid.ColumnDefinitions>
-		<TextBlock Grid.Column="1" Text="Select a game to display" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+    <Grid x:Name="Grid">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="270"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <TextBlock Grid.Column="1" Text="Select a game to display" VerticalAlignment="Center" HorizontalAlignment="Center"/>
 
-		<uwp:UrhoSurface Grid.Column="1" x:Name="UrhoSurface" Margin="10"/>
+        <uwp:UrhoSurface Grid.Column="1" x:Name="UrhoSurface" Margin="10"/>
 
-		<ListBox Grid.Column="0" ItemsSource="{Binding GameTypes}" SelectedItem="{Binding SelectedGameType, Mode=TwoWay}">
-			<ListBox.ItemTemplate>
-				<DataTemplate>
-					<StackPanel>
-						<TextBlock Text="{Binding Name}" />
-					</StackPanel>
-				</DataTemplate>
-			</ListBox.ItemTemplate>
-		</ListBox>
-	</Grid>
+        <ListBox Grid.Column="0" ItemsSource="{Binding GameTypes}" SelectedItem="{Binding SelectedGameType, Mode=TwoWay}">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel>
+                        <TextBlock Text="{Binding Name}" />
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+    </Grid>
 </Page>
