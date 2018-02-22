@@ -85,6 +85,8 @@ namespace FormsSample
 			SelectedBar = bars.First();
 			SelectedBar.Select();
 
+			
+
 			try
 			{
 				await plotNode.RunActionsAsync(new EaseBackOut(new RotateBy(2f, 0, 360, 0)));
@@ -127,7 +129,8 @@ namespace FormsSample
 		void SetupViewport ()
 		{
 			var renderer = Renderer;
-			renderer.SetViewport (0, new Viewport (Context, scene, camera, null));
+			var vp = new Viewport(Context, scene, camera, null);
+			renderer.SetViewport (0, vp);
 		}
 	}
 
