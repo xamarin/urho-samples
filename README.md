@@ -11,12 +11,12 @@ Some of the samples here include:
 * FormsSamples
 * FeatureSamples
 * SamplyGame
-* HoloLens
+* HoloLens, ARKit, ARCore
+* Mixed samples
 
+## ARKit, ARCore and HoloLens
 
-## ARKit & ARCore
-
-'ARKit' and 'ARCore' showcase simple scenes rendered on top of camera (AR)
+These directories contain samples for running UrhoSharp on HoloLens, ARKit and ARCore.  
 Also there is a mixed sample that shares a scene between iOS, Android and HoloLens (see Mixed/AR)
 
 ![Screenshot](ARKit/Mutant.gif)
