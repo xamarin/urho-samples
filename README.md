@@ -13,6 +13,15 @@ Some of the samples here include:
 * SamplyGame
 * HoloLens
 
+
+## ARKit & ARCore
+
+'ARKit' and 'ARCore' showcase simple scenes rendered on top of camera (AR)
+Also there is a mixed sample that shares a scene between iOS, Android and HoloLens (see Mixed/AR)
+
+![Screenshot](ARKit/Mutant.gif)
+![Screenshot](ARKit/Crowd.gif)
+
 ## FormsSamples
 
 The 'FormsSamples' solution demonstrates how UrhoSharp can be used in Xamarin.Forms 
