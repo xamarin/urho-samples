@@ -47,13 +47,6 @@ structure a game.   It is our first game build with this, so be kind.
 
 ![Screenshot](SamplyGame/Screenshots/Video.gif)
 
-## HoloLens
-
-This directory contains samples for running UrhoSharp on HoloLens and creating
-augmented reality applications.
-
-![Screenshot](HoloLens/03_Mutant/Screenshots/Video.gif) 
-
 ## Structure
 
 All solutions are structured to have their cross platform code written
