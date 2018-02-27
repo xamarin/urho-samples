@@ -234,23 +234,32 @@ namespace ARCore
 		public partial class Id
 		{
 			
+			// aapt resource value: 0x7f09000d
+			public const int UrhoSurfacePlaceHolder = 2131296269;
+			
+			// aapt resource value: 0x7f09000b
+			public const int @__arcore_cancelButton = 2131296267;
+			
+			// aapt resource value: 0x7f09000c
+			public const int @__arcore_continueButton = 2131296268;
+			
 			// aapt resource value: 0x7f09000a
-			public const int UrhoSurfacePlaceHolder = 2131296266;
+			public const int @__arcore_messageText = 2131296266;
 			
-			// aapt resource value: 0x7f09000e
-			public const int action_container = 2131296270;
+			// aapt resource value: 0x7f090011
+			public const int action_container = 2131296273;
 			
-			// aapt resource value: 0x7f09001a
-			public const int action_divider = 2131296282;
+			// aapt resource value: 0x7f09001d
+			public const int action_divider = 2131296285;
 			
-			// aapt resource value: 0x7f09000f
-			public const int action_image = 2131296271;
+			// aapt resource value: 0x7f090012
+			public const int action_image = 2131296274;
 			
-			// aapt resource value: 0x7f090010
-			public const int action_text = 2131296272;
+			// aapt resource value: 0x7f090013
+			public const int action_text = 2131296275;
 			
-			// aapt resource value: 0x7f09001b
-			public const int actions = 2131296283;
+			// aapt resource value: 0x7f09001e
+			public const int actions = 2131296286;
 			
 			// aapt resource value: 0x7f090005
 			public const int async = 2131296261;
@@ -258,23 +267,23 @@ namespace ARCore
 			// aapt resource value: 0x7f090006
 			public const int blocking = 2131296262;
 			
-			// aapt resource value: 0x7f090019
-			public const int chronometer = 2131296281;
+			// aapt resource value: 0x7f09001c
+			public const int chronometer = 2131296284;
 			
 			// aapt resource value: 0x7f090007
 			public const int forever = 2131296263;
 			
-			// aapt resource value: 0x7f09000d
-			public const int gammaCorrectionBtn = 2131296269;
-			
-			// aapt resource value: 0x7f090012
-			public const int icon = 2131296274;
-			
-			// aapt resource value: 0x7f09001c
-			public const int icon_group = 2131296284;
+			// aapt resource value: 0x7f090010
+			public const int gammaCorrectionBtn = 2131296272;
 			
 			// aapt resource value: 0x7f090015
-			public const int info = 2131296277;
+			public const int icon = 2131296277;
+			
+			// aapt resource value: 0x7f09001f
+			public const int icon_group = 2131296287;
+			
+			// aapt resource value: 0x7f090018
+			public const int info = 2131296280;
 			
 			// aapt resource value: 0x7f090008
 			public const int italic = 2131296264;
@@ -288,26 +297,26 @@ namespace ARCore
 			// aapt resource value: 0x7f090009
 			public const int normal = 2131296265;
 			
-			// aapt resource value: 0x7f090017
-			public const int notification_background = 2131296279;
-			
-			// aapt resource value: 0x7f090013
-			public const int notification_main_column = 2131296275;
-			
-			// aapt resource value: 0x7f090011
-			public const int notification_main_column_container = 2131296273;
-			
-			// aapt resource value: 0x7f09000b
-			public const int restartGameBtn = 2131296267;
-			
-			// aapt resource value: 0x7f09000c
-			public const int restartTrackingBtn = 2131296268;
+			// aapt resource value: 0x7f09001a
+			public const int notification_background = 2131296282;
 			
 			// aapt resource value: 0x7f090016
-			public const int right_icon = 2131296278;
+			public const int notification_main_column = 2131296278;
 			
 			// aapt resource value: 0x7f090014
-			public const int right_side = 2131296276;
+			public const int notification_main_column_container = 2131296276;
+			
+			// aapt resource value: 0x7f09000e
+			public const int restartGameBtn = 2131296270;
+			
+			// aapt resource value: 0x7f09000f
+			public const int restartTrackingBtn = 2131296271;
+			
+			// aapt resource value: 0x7f090019
+			public const int right_icon = 2131296281;
+			
+			// aapt resource value: 0x7f090017
+			public const int right_side = 2131296279;
 			
 			// aapt resource value: 0x7f090002
 			public const int text = 2131296258;
@@ -315,8 +324,8 @@ namespace ARCore
 			// aapt resource value: 0x7f090003
 			public const int text2 = 2131296259;
 			
-			// aapt resource value: 0x7f090018
-			public const int time = 2131296280;
+			// aapt resource value: 0x7f09001b
+			public const int time = 2131296283;
 			
 			// aapt resource value: 0x7f090004
 			public const int title = 2131296260;
@@ -351,25 +360,28 @@ namespace ARCore
 		{
 			
 			// aapt resource value: 0x7f030000
-			public const int Main = 2130903040;
+			public const int @__arcore_education = 2130903040;
 			
 			// aapt resource value: 0x7f030001
-			public const int notification_action = 2130903041;
+			public const int Main = 2130903041;
 			
 			// aapt resource value: 0x7f030002
-			public const int notification_action_tombstone = 2130903042;
+			public const int notification_action = 2130903042;
 			
 			// aapt resource value: 0x7f030003
-			public const int notification_template_custom_big = 2130903043;
+			public const int notification_action_tombstone = 2130903043;
 			
 			// aapt resource value: 0x7f030004
-			public const int notification_template_icon_group = 2130903044;
+			public const int notification_template_custom_big = 2130903044;
 			
 			// aapt resource value: 0x7f030005
-			public const int notification_template_part_chronometer = 2130903045;
+			public const int notification_template_icon_group = 2130903045;
 			
 			// aapt resource value: 0x7f030006
-			public const int notification_template_part_time = 2130903046;
+			public const int notification_template_part_chronometer = 2130903046;
+			
+			// aapt resource value: 0x7f030007
+			public const int notification_template_part_time = 2130903047;
 			
 			static Layout()
 			{
@@ -383,6 +395,21 @@ namespace ARCore
 		
 		public partial class String
 		{
+			
+			// aapt resource value: 0x7f040002
+			public const int @__arcore_cancel = 2130968578;
+			
+			// aapt resource value: 0x7f040003
+			public const int @__arcore_continue = 2130968579;
+			
+			// aapt resource value: 0x7f040004
+			public const int @__arcore_install_app = 2130968580;
+			
+			// aapt resource value: 0x7f040005
+			public const int @__arcore_install_feature = 2130968581;
+			
+			// aapt resource value: 0x7f040006
+			public const int @__arcore_installing = 2130968582;
 			
 			// aapt resource value: 0x7f040001
 			public const int app_name = 2130968577;

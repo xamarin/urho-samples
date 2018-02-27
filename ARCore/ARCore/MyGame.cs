@@ -46,11 +46,10 @@ namespace ARCore
 			Renderer.SetViewport(0, viewport);
 
 			// ARCore component
-			ArCore = new ARCoreComponent();
+			ArCore = scene.CreateComponent<ARCoreComponent>();
 			ArCore.ARFrameUpdated += OnARFrameUpdated;
 			ArCore.ConfigRequested += ArCore_ConfigRequested;
-			ArCore.Camera = camera;
-			scene.AddComponent(ArCore);
+			ArCore.Run();
 
 			// Mutant
 			mutantNode = scene.CreateChild();

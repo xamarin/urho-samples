@@ -23,13 +23,12 @@ namespace ARKitXamarinDemo
 			base.Start();
 
 			arkitComponent = Scene.CreateComponent<ARKitComponent>();
-			arkitComponent.Camera = Camera;
 			arkitComponent.Orientation = UIKit.UIInterfaceOrientation.Portrait;
 			arkitComponent.ARConfiguration = new ARWorldTrackingConfiguration { 
-				AutoFocusEnabled = true,
 				PlaneDetection = ARPlaneDetection.Horizontal,
 			};
-			arkitComponent.Run(Options.DelayedStart);
+			arkitComponent.RunEngineFramesInARKitCallbakcs = Options.DelayedStart;
+			arkitComponent.Run();
 
 			// Mutant
 			mutantNode = Scene.CreateChild();

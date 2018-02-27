@@ -1,7 +1,7 @@
 {
   "dependencies": {
     "Microsoft.NETCore.UniversalWindowsPlatform": "5.2.*",
-    "UrhoSharp.SharpReality": "1.8.51"
+    "UrhoSharp.SharpReality": "1.8.71"
   },
 
 	"frameworks": {

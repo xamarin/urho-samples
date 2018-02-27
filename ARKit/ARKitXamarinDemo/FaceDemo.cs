@@ -20,13 +20,13 @@ namespace ARKitXamarinDemo
 			anchorsNode = Scene.CreateChild();
 
 			arkitComponent = Scene.CreateComponent<ARKitComponent>();
-			arkitComponent.Camera = Camera;
 			arkitComponent.Orientation = UIKit.UIInterfaceOrientation.Portrait;
 			arkitComponent.ARConfiguration = new ARFaceTrackingConfiguration();
 			arkitComponent.DidAddAnchors += ArkitComponent_DidAddAnchors;
 			arkitComponent.DidRemoveAnchors += ArkitComponent_DidRemoveAnchors;
 			arkitComponent.DidUpdateAnchors += ArkitComponent_DidUpdateAnchors;
-			arkitComponent.Run(Options.DelayedStart);
+			arkitComponent.RunEngineFramesInARKitCallbakcs = Options.DelayedStart;
+			arkitComponent.Run();
 		}
 
 		void ArkitComponent_DidUpdateAnchors(ARAnchor[] anchors)

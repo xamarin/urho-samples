@@ -48,17 +48,16 @@ namespace ARKitXamarinDemo
 			base.Start();
 
 			arkitComponent = Scene.CreateComponent<ARKitComponent>();
-			arkitComponent.Camera = Camera;
 			arkitComponent.Orientation = UIKit.UIInterfaceOrientation.Portrait;
 			arkitComponent.ARConfiguration = new ARWorldTrackingConfiguration {
 				PlaneDetection = ARPlaneDetection.Horizontal,
-				AutoFocusEnabled = true,
 			};
 			arkitComponent.DidAddAnchors += ArkitComponent_DidAddAnchors;
 			arkitComponent.DidRemoveAnchors += ArkitComponent_DidRemoveAnchors;
 			arkitComponent.DidUpdateAnchors += ArkitComponent_DidUpdateAnchors;
+			arkitComponent.RunEngineFramesInARKitCallbakcs = Options.DelayedStart;
 			arkitComponent.ARFrame += ArkitComponent_ARFrame;
-			arkitComponent.Run(Options.DelayedStart);
+			arkitComponent.Run();
 
 			ContinuesHitTestAtCenter = true;
 

@@ -3,7 +3,7 @@
     "Microsoft.NETCore.UniversalWindowsPlatform": "5.0.0",
     "Newtonsoft.Json": "9.0.1",
     "rda.SocketsForPCL": "2.0.2",
-    "UrhoSharp.SharpReality": "1.8.51",
+    "UrhoSharp.SharpReality": "1.8.71",
     "ZXing.Net.Mobile": "2.1.47"
   },
   "frameworks": {

@@ -30,18 +30,21 @@ namespace ARKitXamarinDemo
 			new MonoDebugHud(this).Show(Color.Green, 45);
 
 			arkitComponent = Scene.CreateComponent<ARKitComponent>();
-			arkitComponent.Camera = Camera;
 			arkitComponent.Orientation = UIKit.UIInterfaceOrientation.Portrait;
 			arkitComponent.ARConfiguration = new ARWorldTrackingConfiguration {
-				PlaneDetection = ARPlaneDetection.Vertical | ARPlaneDetection.Horizontal,
-				AutoFocusEnabled = true
+				PlaneDetection = 
+				ARPlaneDetection.Horizontal
+#if false // uncomment once Xamarin.iOS with xcode93 is released:
+				| ARPlaneDetection.Vertical,
+#endif
 			};
 
 			arkitComponent.DidAddAnchors += ArkitComponent_DidAddAnchors;
 			arkitComponent.DidRemoveAnchors += ArkitComponent_DidRemoveAnchors;
 			arkitComponent.DidUpdateAnchors += ArkitComponent_DidUpdateAnchors;
 			arkitComponent.ARFrame += ArkitComponent_ARFrame;
-			arkitComponent.Run(Options.DelayedStart);
+			arkitComponent.RunEngineFramesInARKitCallbakcs = Options.DelayedStart;
+			arkitComponent.Run();
 
 			anchorsNode = Scene.CreateChild();
 

@@ -15,11 +15,10 @@ namespace UrhoAR
 
 		void SetupAR()
 		{
-			ArCore = new ARCoreComponent();
+			ArCore = Scene.CreateComponent<ARCoreComponent>();
 			ArCore.ARFrameUpdated += OnARFrameUpdated;
 			ArCore.ConfigRequested += ArCore_ConfigRequested;
-			ArCore.Camera = Camera;
-			Scene.AddComponent(ArCore);
+			ArCore.Run();
 		}
 
 		void ArCore_ConfigRequested(Config config)

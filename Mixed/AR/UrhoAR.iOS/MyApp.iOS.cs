@@ -16,12 +16,12 @@ namespace UrhoAR
 		void SetupAR()
 		{
 			arkitComponent = Scene.CreateComponent<ARKitComponent>();
-			arkitComponent.Camera = Camera;
 			arkitComponent.Orientation = UIKit.UIInterfaceOrientation.Portrait;
 			arkitComponent.ARConfiguration = new ARWorldTrackingConfiguration {
 				PlaneDetection = ARPlaneDetection.Horizontal,
 			};
-			arkitComponent.Run(Options.DelayedStart);
+			arkitComponent.RunEngineFramesInARKitCallbakcs = Options.DelayedStart;
+			arkitComponent.Run();
 		}
 	}
 }
