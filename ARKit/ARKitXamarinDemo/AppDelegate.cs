@@ -37,7 +37,7 @@ namespace ARKitXamarinDemo
 		{
 			var app = Urho.Application.CreateInstance<T>(new ApplicationOptions 
 			{
-				ResourcePaths = new[] { "UrhoData", "OData" }, 
+				ResourcePaths = new[] { "UrhoData" }, 
 				DelayedStart = false, // if TRUE then Engine.RunFrame() will be executed each ARKit update, otherwise - a separate game loop
 				Orientation = ApplicationOptions.OrientationType.Portrait
 			});
