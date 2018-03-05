@@ -13,4 +13,4 @@
 
 ## Video (click to play):
 
-[![Alt text](https://img.youtube.com/vi/urplsujopvY/0.jpg)](https://www.youtube.com/watch?v=urplsujopvY)
+[![Alt text](https://img.youtube.com/vi/wNrLx5A0vkc/0.jpg)](https://youtu.be/wNrLx5A0vkc?t=28)
