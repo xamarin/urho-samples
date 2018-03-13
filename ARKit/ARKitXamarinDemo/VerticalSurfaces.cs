@@ -34,7 +34,7 @@ namespace ARKitXamarinDemo
 			arkitComponent.ARConfiguration = new ARWorldTrackingConfiguration {
 				PlaneDetection = 
 				ARPlaneDetection.Horizontal
-#if false // uncomment once Xamarin.iOS with xcode93 is released:
+#if true // requires Xamarin.IOS with xcode93 support
 				| ARPlaneDetection.Vertical,
 #endif
 			};
