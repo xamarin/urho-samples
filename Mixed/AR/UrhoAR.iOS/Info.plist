@@ -44,5 +44,7 @@
 	<string>Assets.xcassets/AppIcon.appiconset</string>
 	<key>CFBundleDisplayName</key>
 	<string>UrhoSharpAR</string>
+	<key>NSCameraUsageDescription</key>
+    <string>Required for AR</string>
 </dict>
 </plist>
