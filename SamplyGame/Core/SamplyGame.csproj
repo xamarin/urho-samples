@@ -37,7 +37,11 @@
     <Compile Include="Aircrafts\Aircraft.cs" />
     <Compile Include="Aircrafts\Enemies\EnemySkull.cs" />
     <Compile Include="Aircrafts\Enemies\Enemies.cs" />
-    <Compile Include="Assets.cs" />
+    <Compile Include="UrhoAssetGenerator.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>UrhoAssetGenerator.tt</DependentUpon>
+    </Compile>
     <Compile Include="Weapons\Apple.cs" />
     <Compile Include="Aircrafts\Enemies\Enemy.cs" />
     <Compile Include="Aircrafts\Enemies\EnemyXamonkey.cs" />
@@ -64,6 +68,15 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="UrhoAssetGenerator.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>UrhoAssetGenerator.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

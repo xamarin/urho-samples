@@ -22,8 +22,8 @@ namespace SamplyGame
 			var cache = Application.ResourceCache;
 			var node = Node;
 			var model = node.CreateComponent<StaticModel>();
-			model.Model = cache.GetModel(Assets.Models.Player);
-			var material = cache.GetMaterial(Assets.Materials.Player).Clone("");
+			model.Model = cache.GetModel(Assets.Models.Player1);
+			var material = cache.GetMaterial(Assets.Materials.Player1D).Clone("");
 			model.SetMaterial(material);
 			
 			node.SetScale(0.35f);

@@ -20,8 +20,8 @@ namespace SamplyGame
 			bulletNode.SetScale(1f);
 
 			var model = bulletNode.CreateComponent<StaticModel>();
-			model.Model = cache.GetModel(Assets.Models.SmallPlate);
-			model.SetMaterial(cache.GetMaterial(Assets.Materials.SmallPlate));
+			model.Model = cache.GetModel(Assets.Models.Enemy3weapon);
+			model.SetMaterial(cache.GetMaterial(Assets.Materials.Enemy3weapon));
 			Launch(bulletNode);
 		}
 

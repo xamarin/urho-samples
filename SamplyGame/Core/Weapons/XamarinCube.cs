@@ -22,7 +22,7 @@ namespace SamplyGame
 
 			var model = bulletModelNode.CreateComponent<StaticModel>();
 			model.Model = cache.GetModel(Assets.Models.Box);
-			model.SetMaterial(Material.FromImage(Assets.Textures.XamarinLogo));
+			model.SetMaterial(Material.FromImage(Assets.Textures.Xamarin));
 			bulletModelNode.SetScale(2f);
 			bulletModelNode.Rotate(new Quaternion(45, 0, 0), TransformSpace.Local);
 			bulletNode.SetScale(RandomHelper.NextRandom(0.15f, 0.2f));

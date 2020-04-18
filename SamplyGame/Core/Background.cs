@@ -65,8 +65,8 @@ namespace SamplyGame
 			treeNode.Rotate(new Quaternion(0, RandomHelper.NextRandom(0, 5) * 90, 0), TransformSpace.Local);
 			treeNode.Scale = new Vector3(0.3f, 0.4f, 0.3f);
 			var treeGroup = treeNode.CreateComponent<StaticModel>();
-			treeGroup.Model = cache.GetModel(Assets.Models.Tree);
-			treeGroup.SetMaterial(cache.GetMaterial(Assets.Materials.Pyramid));
+			treeGroup.Model = cache.GetModel(Assets.Models.PyramidTree);
+			treeGroup.SetMaterial(cache.GetMaterial(Assets.Materials.PyramidMaterial));
 
 			for (float i = -sizeX; i < sizeX; i += 3.2f)
 			{

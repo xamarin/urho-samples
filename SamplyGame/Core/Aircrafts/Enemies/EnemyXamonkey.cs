@@ -14,8 +14,8 @@ namespace SamplyGame
 			var cache = Application.ResourceCache;
 			var node = Node;
 			var model = node.CreateComponent<StaticModel>();
-			model.Model = cache.GetModel(Assets.Models.Enemy1);
-			model.SetMaterial(cache.GetMaterial(Assets.Materials.Enemy1).Clone(""));
+			model.Model = cache.GetModel(Assets.Models.Monkey);
+			model.SetMaterial(cache.GetMaterial(Assets.Materials.Monkey).Clone(""));
 			node.SetScale(RandomHelper.NextRandom(0.1f, 0.12f));
 			node.Position = new Vector3(0f, 5f, 0f);
 

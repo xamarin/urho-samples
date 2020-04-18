@@ -28,15 +28,15 @@ namespace SamplyGame
 
 			if (gameOver)
 			{
-				model.Model = cache.GetModel(Assets.Models.Enemy1);
-				model.SetMaterial(cache.GetMaterial(Assets.Materials.Enemy1).Clone(""));
+				model.Model = cache.GetModel(Assets.Models.Monkey);
+				model.SetMaterial(cache.GetMaterial(Assets.Materials.Monkey).Clone(""));
 				bigAircraft.SetScale(0.3f);
 				bigAircraft.Rotate(new Quaternion(180, 90, 20), TransformSpace.Local);
 			}
 			else
 			{
-				model.Model = cache.GetModel(Assets.Models.Player);
-				model.SetMaterial(cache.GetMaterial(Assets.Materials.Player).Clone(""));
+				model.Model = cache.GetModel(Assets.Models.Player1);
+				model.SetMaterial(cache.GetMaterial(Assets.Materials.Player1D).Clone(""));
 				bigAircraft.SetScale(1f);
 				bigAircraft.Rotate(new Quaternion(0, 40, -50), TransformSpace.Local);
 			}
