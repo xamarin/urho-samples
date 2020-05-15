@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<SampleMetadata>
+        <ID>94701dc2-1607-49e4-9fad-66a10e6d422b</ID>
+        <IsFullApplication>false</IsFullApplication>
+        <HideZip>true</HideZip>
+		<Level>Beginning</Level>
+        <Tags>HoloLens, Graphics, Games, UrhoSharp</Tags>
+        <SupportedPlatforms>UWP, HoloLens</SupportedPlatforms>
+        <LicenseRequirement>Indie</LicenseRequirement>
+        <Gallery>true</Gallery>
+        <Brief>A simple hologram with skeletal animations. It reacts to voice commands such as 'jump', 'run' etc.</Brief>
+</SampleMetadata>
+

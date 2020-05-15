@@ -17,6 +17,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "07_CognitiveServices", "07_
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "02_HelloWorldAdvanced", "02_HelloWorldAdvanced\02_HelloWorldAdvanced.csproj", "{0CE4BC40-4D5D-4F85-86C0-B4A21C22B4C8}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "08_MixedContent", "08_MixedContent\08_MixedContent.csproj", "{949678AC-9F53-422E-98DA-8457636E520D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x86 = Debug|x86
@@ -65,6 +67,12 @@ Global
 		{0CE4BC40-4D5D-4F85-86C0-B4A21C22B4C8}.Release|x86.ActiveCfg = Release|x86
 		{0CE4BC40-4D5D-4F85-86C0-B4A21C22B4C8}.Release|x86.Build.0 = Release|x86
 		{0CE4BC40-4D5D-4F85-86C0-B4A21C22B4C8}.Release|x86.Deploy.0 = Release|x86
+		{949678AC-9F53-422E-98DA-8457636E520D}.Debug|x86.ActiveCfg = Debug|x86
+		{949678AC-9F53-422E-98DA-8457636E520D}.Debug|x86.Build.0 = Debug|x86
+		{949678AC-9F53-422E-98DA-8457636E520D}.Debug|x86.Deploy.0 = Debug|x86
+		{949678AC-9F53-422E-98DA-8457636E520D}.Release|x86.ActiveCfg = Release|x86
+		{949678AC-9F53-422E-98DA-8457636E520D}.Release|x86.Build.0 = Release|x86
+		{949678AC-9F53-422E-98DA-8457636E520D}.Release|x86.Deploy.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
